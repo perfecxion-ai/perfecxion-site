@@ -8,15 +8,26 @@ export const metadata = {
   description: 'Latest insights, news, and updates from the perfecXion.ai team.',
 };
 
+interface BlogPostMeta {
+  slug: string;
+  title: string;
+  date: string;
+  readTime?: string;
+  description?: string;
+}
+
 export default function BlogPage() {
   const postsDir = path.join(process.cwd(), 'content/blog');
   const files = fs.readdirSync(postsDir);
-  const posts = files.filter(f => f.endsWith('.mdx')).map(file => {
+  const posts: BlogPostMeta[] = files.filter(f => f.endsWith('.mdx')).map(file => {
     const source = fs.readFileSync(path.join(postsDir, file), 'utf8');
     const { data } = matter(source);
     return {
       slug: file.replace(/\.mdx$/, ''),
-      ...data,
+      title: data.title || '',
+      date: data.date || '',
+      readTime: data.readTime,
+      description: data.description,
     };
   });
   return (
