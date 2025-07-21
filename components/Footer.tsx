@@ -3,11 +3,11 @@ import Image from 'next/image'
 
 const navigation = {
   product: [
-    { name: 'perfecXion Red-T', href: '/products/perfecxion-red-t' },
-    { name: 'perfecXion Agent', href: '/products/perfecxion-agent' },
-    { name: 'perfecXion Browse', href: '/products/perfecxion-browse' },
-    { name: 'perfecXion Comply', href: '/products/perfecxion-comply' },
-    { name: 'perfecXion G-Rails', href: '/products/perfecxion-g-rails' },
+    { name: 'perfecX Red-T', href: '/products/perfecxion-red-t' },
+    { name: 'perfecX Agent', href: '/products/perfecxion-agent' },
+    { name: 'perfecX Browse', href: '/products/perfecxion-browse' },
+    { name: 'perfecX Comply', href: '/products/perfecxion-comply' },
+    { name: 'perfecX G-Rails', href: '/products/perfecxion-g-rails' },
   ],
   resources: [
     { name: 'Documentation', href: '/docs' },
@@ -17,7 +17,6 @@ const navigation = {
   ],
   company: [
     { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
     { name: 'Privacy Policy', href: '/privacy' },
     { name: 'Terms of Service', href: '/terms' },
   ],

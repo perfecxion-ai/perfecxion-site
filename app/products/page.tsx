@@ -49,7 +49,7 @@ export default function ProductsPage() {
               Our team can work with you to develop custom AI security solutions 
               tailored to your specific requirements and use cases.
             </p>
-            <Link href="/contact" className="btn-primary">
+            <Link href="/about" className="btn-primary">
               Contact Our Team
             </Link>
           </div>

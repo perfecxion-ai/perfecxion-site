@@ -11,7 +11,7 @@ export interface Product {
 export const products: Product[] = [
   {
     id: 'perfecxion-red-t',
-    name: 'perfecXion Red-T',
+    name: 'perfecX Red-T',
     description: 'Advanced red team testing platform for AI systems. Comprehensive adversarial testing to identify vulnerabilities before they become threats.',
     features: [
       'Automated red team attack simulations',
@@ -27,7 +27,7 @@ export const products: Product[] = [
   },
   {
     id: 'perfecxion-agent',
-    name: 'perfecXion Agent',
+    name: 'perfecX Agent',
     description: 'Real-time AI agent monitoring and behavioral analysis. Detect anomalies, security threats, and unauthorized activities across your AI ecosystem.',
     features: [
       'Real-time agent behavior monitoring',
@@ -43,7 +43,7 @@ export const products: Product[] = [
   },
   {
     id: 'perfecxion-browse',
-    name: 'perfecXion Browse',
+    name: 'perfecX Browse',
     description: 'Intelligent browser extension providing real-time AI safety checks, content analysis, and protection against AI-generated threats.',
     features: [
       'Real-time content analysis',
@@ -59,7 +59,7 @@ export const products: Product[] = [
   },
   {
     id: 'perfecxion-comply',
-    name: 'perfecXion Comply',
+    name: 'perfecX Comply',
     description: 'Automated compliance management for AI systems. Ensure adherence to industry standards, regulations, and internal policies.',
     features: [
       'Multi-framework compliance checking',
@@ -75,7 +75,7 @@ export const products: Product[] = [
   },
   {
     id: 'perfecxion-g-rails',
-    name: 'perfecXion G-Rails',
+    name: 'perfecX G-Rails',
     description: 'Advanced guardrail management system for AI safety. Monitor, validate, and optimize your AI safety mechanisms in real-time.',
     features: [
       'Guardrail effectiveness testing',

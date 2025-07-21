@@ -98,7 +98,7 @@ export default function HomePage() {
               Join hundreds of organizations that trust perfecXion.ai to secure their AI systems.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link href="/contact" className="btn-primary">
+              <Link href="/about" className="btn-primary">
                 Start Your Security Assessment
               </Link>
               <Link href="/docs" className="btn-secondary">

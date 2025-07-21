@@ -13,7 +13,6 @@ const navigation = [
   { name: 'Blog', href: '/blog' },
   { name: 'Docs', href: '/docs' },
   { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
 ]
 
 export default function Header() {
@@ -60,9 +59,6 @@ export default function Header() {
         
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
           <ThemeToggle />
-          <Link href="/contact" className="btn-primary">
-            Get Started
-          </Link>
         </div>
       </nav>
       
@@ -107,9 +103,6 @@ export default function Header() {
                 </div>
                 <div className="py-6 flex items-center gap-4">
                   <ThemeToggle />
-                  <Link href="/contact" className="btn-primary w-full text-center">
-                    Get Started
-                  </Link>
                 </div>
               </div>
             </div>

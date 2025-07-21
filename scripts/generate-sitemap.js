@@ -17,7 +17,6 @@ const staticPages = [
   '/learning',
   '/docs',
   '/about',
-  '/contact',
   '/support',
 ];
 
