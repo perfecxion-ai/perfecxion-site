@@ -31,7 +31,7 @@ export default function HomePage() {
             </p>
             <div className="mt-10 flex items-center gap-x-6">
               <Link href="/products" className="btn-primary">
-                Explore Products <ArrowRight className="ml-2 h-4 w-4" />
+                Explore Products<ArrowRight className="ml-2 h-4 w-4" />
               </Link>
               <Link href="/learn" className="btn-ghost">
                 Learn more <ArrowRight className="ml-2 h-4 w-4" />
@@ -111,7 +111,7 @@ export default function HomePage() {
                 </dt>
                 <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
                   <p className="flex-auto">
-                    perfecXion Red-T provides comprehensive adversarial testing to identify vulnerabilities
+                    perfecX Red-T provides comprehensive adversarial testing to identify vulnerabilities
                     and weaknesses in your AI systems before they reach production.
                   </p>
                   <p className="mt-6">
@@ -131,7 +131,7 @@ export default function HomePage() {
                 </dt>
                 <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
                   <p className="flex-auto">
-                    perfecXion Agent delivers real-time monitoring and analysis of AI agent behavior
+                    perfecX Agent delivers real-time monitoring and analysis of AI agent behavior
                     to detect anomalous activities and potential security threats.
                   </p>
                   <p className="mt-6">
@@ -151,7 +151,7 @@ export default function HomePage() {
                 </dt>
                 <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
                   <p className="flex-auto">
-                    perfecXion Comply and G-Rails ensure your AI systems meet all regulatory requirements
+                    perfecX Comply and G-Rails ensure your AI systems meet all regulatory requirements
                     and maintain the highest safety standards through automated monitoring.
                   </p>
                   <p className="mt-6">

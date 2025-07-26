@@ -36,7 +36,7 @@ export default function ProductsPage() {
             </h2>
             <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product) => (
               <div key={product.id} className="animate-slide-up">
                 <ProductCard product={product} />
