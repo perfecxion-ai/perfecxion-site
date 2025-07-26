@@ -31,7 +31,7 @@ export default function HomePage() {
             </p>
             <div className="mt-10 flex items-center gap-x-6">
               <Link href="/products" className="btn-primary">
-                Get started <ArrowRight className="ml-2 h-4 w-4" />
+                Explore Products <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
               <Link href="/learn" className="btn-ghost">
                 Learn more <ArrowRight className="ml-2 h-4 w-4" />
