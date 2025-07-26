@@ -46,7 +46,7 @@ export const products: Product[] = [
       'Real-Time Assessment - Real-time threat assessment with live monitoring and instant vulnerability detection'
     ],
     category: 'Red Team Testing',
-    status: 'available',
+    status: 'coming-soon',
     technicalSpecs: {
       responseTime: 'Real-time testing',
       throughput: 'Batch processing',
@@ -95,7 +95,7 @@ export const products: Product[] = [
       'Enterprise Scale - Monitor thousands of agents with 99.9% uptime and sub-second response times'
     ],
     category: 'Agent Monitoring',
-    status: 'available',
+    status: 'coming-soon',
     technicalSpecs: {
       responseTime: '< 50ms agent registration',
       throughput: '1000+ concurrent agents',
@@ -144,7 +144,7 @@ export const products: Product[] = [
       'Privacy-First Architecture - Local processing with no data transmission and COPPA/GDPR compliance'
     ],
     category: 'Child Safety',
-    status: 'available',
+    status: 'coming-soon',
     technicalSpecs: {
       responseTime: 'Real-time filtering',
       throughput: 'All major AI platforms',
@@ -193,7 +193,7 @@ export const products: Product[] = [
       'Asset Management - AI model discovery, cataloging, and lifecycle tracking'
     ],
     category: 'Compliance Management',
-    status: 'available',
+    status: 'coming-soon',
     technicalSpecs: {
       responseTime: '< 200ms API response time',
       throughput: '1000+ concurrent users',
@@ -242,7 +242,7 @@ export const products: Product[] = [
       'ML Pipeline Integration - Seamless integration with ML pipelines and MLOps platforms for automated safety testing'
     ],
     category: 'AI Safety & Guardrails',
-    status: 'available',
+    status: 'coming-soon',
     technicalSpecs: {
       responseTime: 'Real-time monitoring',
       throughput: 'Batch processing',
@@ -291,7 +291,7 @@ export const products: Product[] = [
       'Enterprise Security - SOC 2 Type II ready, GDPR compliant, zero data retention'
     ],
     category: 'Prompt Security',
-    status: 'available',
+    status: 'coming-soon',
     technicalSpecs: {
       responseTime: '< 500ms average',
       throughput: '10,000+ requests/second',
@@ -402,7 +402,7 @@ const { detect, isLoading, isInjection } = usePromptShield({
       'Plugin System - Extensible architecture with hot-reload capabilities for custom functionality'
     ],
     category: 'Dark Web Intelligence',
-    status: 'available',
+    status: 'coming-soon',
     technicalSpecs: {
       responseTime: 'Real-time monitoring',
       throughput: 'Scalable crawling',
