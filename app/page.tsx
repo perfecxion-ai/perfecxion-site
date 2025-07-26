@@ -173,9 +173,7 @@ export default function HomePage() {
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Ready to Secure Your AI?
             </h2>
-            <p className="mt-6 text-lg leading-8 text-primary-100">
-              Join hundreds of organizations that trust perfecXion.ai to secure their AI systems.
-            </p>
+
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link href="/about" className="bg-white text-primary-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-colors">
                 Start Your Security Assessment
