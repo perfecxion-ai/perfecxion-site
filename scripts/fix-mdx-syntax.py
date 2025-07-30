@@ -33,8 +33,9 @@ def fix_mdx_syntax():
         # Fix any remaining JSX-specific syntax
         content = re.sub(r'<br />', r'<br>', content)
         
-        # Fix any self-closing tags that might cause issues
-        content = re.sub(r'<([A-Z][a-zA-Z]+)\s+([^>]*)\s*/>', r'<\1 \2></\1>', content)
+        # Fix invalid self-closing tags like <Component class="..." ></Component>
+        # Convert them to proper self-closing tags <Component class="..." />
+        content = re.sub(r'<([A-Z][a-zA-Z]+)\s+([^>]*)\s*></\1>', r'<\1 \2 />', content)
         
         # Write the fixed content back
         with open(filepath, 'w', encoding='utf-8') as f:
