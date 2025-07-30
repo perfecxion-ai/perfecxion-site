@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Terminal, Package, Server, Cloud, Database, Shield, CheckCircle2, AlertCircle, Settings, Code, GitBranch, Zap, Key, Globe, Monitor, Cpu, HardDrive } from 'lucide-react'
+import { ArrowRight, Terminal, Package, Server, Cloud, Database, Shield, CheckCircle, AlertCircle, Settings, Code, GitBranch, Zap, Key, Globe, Monitor, Cpu, HardDrive } from 'lucide-react'
 
 export default function InstallationPage() {
   const [activeTab, setActiveTab] = useState('prerequisites')
@@ -49,7 +49,7 @@ export default function InstallationPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex space-x-8 overflow-x-auto py-4">
             {[
-              { id: 'prerequisites', label: 'Prerequisites', icon: CheckCircle2 },
+              { id: 'prerequisites', label: 'Prerequisites', icon: CheckCircle },
               { id: 'installation', label: 'Installation', icon: Package },
               { id: 'configuration', label: 'Configuration', icon: Settings },
               { id: 'verification', label: 'Verification', icon: Shield },
@@ -171,7 +171,7 @@ export default function InstallationPage() {
                   'Review security best practices documentation'
                 ].map((item, index) => (
                   <div key={index} className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" />
+                    <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400" />
                     <span className="text-gray-900 dark:text-gray-100">{item}</span>
                   </div>
                 ))}
@@ -895,7 +895,7 @@ curl -X GET https://api.yourdomain.com/v1/health \\
                       <div key={index} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                         <div className="flex items-center justify-between mb-2">
                           <h4 className="font-medium text-gray-900 dark:text-white">{item.test}</h4>
-                          <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" />
+                          <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400" />
                         </div>
                         <div className="bg-gray-900 rounded p-3 mb-2">
                           <code className="text-sm text-gray-100">{item.command}</code>

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Terminal, Shield, AlertTriangle, CheckCircle2, XCircle, Info, Zap, Target, FileSearch, Code, GitBranch, Activity, BarChart3, Filter, Download, Play, Pause, RefreshCw } from 'lucide-react'
+import { ArrowRight, Terminal, Shield, AlertTriangle, CheckCircle, XCircle, Info, Zap, Target, FileSearch, Code, GitBranch, Activity, BarChart3, Filter, Download, Play, Pause, RefreshCw } from 'lucide-react'
 
 export default function FirstScanPage() {
   const [activeTab, setActiveTab] = useState('preparation')
@@ -323,7 +323,7 @@ curl -I https://test-api.example.com/health`}
                     <ul className="space-y-1">
                       {scanType.checks.map((check, index) => (
                         <li key={index} className="text-sm text-gray-600 dark:text-gray-400 flex items-start gap-2">
-                          <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                          <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                           {check}
                         </li>
                       ))}
@@ -496,7 +496,7 @@ curl -X POST https://api.perfecxion.ai/v1/scans \\
                     )}
                     {scanStatus === 'complete' && (
                       <span className="flex items-center gap-2">
-                        <CheckCircle2 className="h-4 w-4" />
+                        <CheckCircle className="h-4 w-4" />
                         Complete
                       </span>
                     )}
@@ -531,7 +531,7 @@ curl -X POST https://api.perfecxion.ai/v1/scans \\
                     {scanStatus === 'complete' && (
                       <div className="flex items-center justify-between p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
                         <div className="flex items-center gap-3">
-                          <CheckCircle2 className="h-6 w-6 text-green-600 dark:text-green-400" />
+                          <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />
                           <div>
                             <p className="font-medium text-green-900 dark:text-green-100">Scan Complete</p>
                             <p className="text-sm text-green-800 dark:text-green-200">View detailed results in the Results tab</p>
@@ -564,15 +564,15 @@ curl -X POST https://api.perfecxion.ai/v1/scans \\
                     </h3>
                     <ul className="space-y-2">
                       <li className="flex items-start gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                         <span className="text-gray-600 dark:text-gray-400">Identify all AI components and endpoints</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                         <span className="text-gray-600 dark:text-gray-400">Map model architectures and data flows</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                         <span className="text-gray-600 dark:text-gray-400">Detect authentication mechanisms</span>
                       </li>
                     </ul>
@@ -584,15 +584,15 @@ curl -X POST https://api.perfecxion.ai/v1/scans \\
                     </h3>
                     <ul className="space-y-2">
                       <li className="flex items-start gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                         <span className="text-gray-600 dark:text-gray-400">Test for prompt injection vulnerabilities</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                         <span className="text-gray-600 dark:text-gray-400">Check model robustness and defenses</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                         <span className="text-gray-600 dark:text-gray-400">Evaluate data privacy controls</span>
                       </li>
                     </ul>
@@ -604,15 +604,15 @@ curl -X POST https://api.perfecxion.ai/v1/scans \\
                     </h3>
                     <ul className="space-y-2">
                       <li className="flex items-start gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                         <span className="text-gray-600 dark:text-gray-400">Execute security test cases</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                         <span className="text-gray-600 dark:text-gray-400">Simulate attack scenarios</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                         <span className="text-gray-600 dark:text-gray-400">Verify security controls</span>
                       </li>
                     </ul>
@@ -624,15 +624,15 @@ curl -X POST https://api.perfecxion.ai/v1/scans \\
                     </h3>
                     <ul className="space-y-2">
                       <li className="flex items-start gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                         <span className="text-gray-600 dark:text-gray-400">Compile findings and risk scores</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                         <span className="text-gray-600 dark:text-gray-400">Generate remediation recommendations</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                         <span className="text-gray-600 dark:text-gray-400">Create actionable security report</span>
                       </li>
                     </ul>
@@ -978,7 +978,7 @@ limiter = Limiter(
                           Fix prompt injection, add authentication, patch critical vulnerabilities
                         </p>
                       </div>
-                      <CheckCircle2 className="h-5 w-5 text-gray-400" />
+                      <CheckCircle className="h-5 w-5 text-gray-400" />
                     </div>
                     
                     <div className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
@@ -991,7 +991,7 @@ limiter = Limiter(
                           Implement input validation, fix data leakage, add monitoring
                         </p>
                       </div>
-                      <CheckCircle2 className="h-5 w-5 text-gray-400" />
+                      <CheckCircle className="h-5 w-5 text-gray-400" />
                     </div>
                     
                     <div className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
@@ -1004,7 +1004,7 @@ limiter = Limiter(
                           Enhance logging, update dependencies, improve error handling
                         </p>
                       </div>
-                      <CheckCircle2 className="h-5 w-5 text-gray-400" />
+                      <CheckCircle className="h-5 w-5 text-gray-400" />
                     </div>
                     
                     <div className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
@@ -1017,7 +1017,7 @@ limiter = Limiter(
                           Regular security scans, updates, and continuous monitoring
                         </p>
                       </div>
-                      <CheckCircle2 className="h-5 w-5 text-gray-400" />
+                      <CheckCircle className="h-5 w-5 text-gray-400" />
                     </div>
                   </div>
                 </div>
