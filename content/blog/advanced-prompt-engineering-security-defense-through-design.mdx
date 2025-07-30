@@ -207,39 +207,32 @@ Prompts create a unique attack surface where natural language becomes the attack
 
 
 ### The Prompt Injection Spectrum
+
 Not all prompt attacks are created equal. Understanding the spectrum helps build appropriate defenses:
 
+**Prompt Attack Classification:**
 
+**Level 1: Direct Override**
+- "Ignore previous instructions"
+- "Your new role is..."
+- Simple but often effective
 
-<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+**Level 2: Context Injection**
+- Embedding instructions in user content
+- Using formatting to confuse parsing
+- Requires more sophistication
 
+**Level 3: Behavioral Manipulation**
+- Exploiting helpfulness bias
+- Social engineering techniques
+- Psychological exploitation
 
+**Level 4: Advanced Injection**
+- Multi-turn attack sequences
+- Encoded/obfuscated payloads
+- Chain-of-thought manipulation
 
-<div className="text-gray-400 mb-3"> Prompt Attack Classification:</div>
-
-
-
-
-
-
-
-
-
-<div className="space-y-2">
-
-
-
-<div>Level 1: Direct Override</div>
-
-
-
-
-
-
-
-
-
-<div>Ignore previous instructions</div>
+*Defense complexity scales with attack sophistication*
 
 
 
@@ -249,17 +242,8 @@ Not all prompt attacks are created equal. Understanding the spectrum helps build
 
 
 
-<div>Your new role is...</div>
-
-
-
-
-
-
-
-
-
-<div>Simple but often effective</div>
+<div>• Your new role is...
+• Simple but often effective</div>
 
 
 
