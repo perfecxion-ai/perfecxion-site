@@ -31,14 +31,7 @@ const documentationSections = [
       { name: 'Webhooks', href: '/docs/api/webhooks', icon: Zap },
     ]
   },
-  {
-    title: 'Guides',
-    items: [
-      { name: 'Security Best Practices', href: '/docs/guides/security', icon: Shield },
-      { name: 'Compliance Setup', href: '/docs/guides/compliance', icon: BookOpen },
-      { name: 'Integration Examples', href: '/docs/guides/integrations', icon: Code },
-    ]
-  }
+
 ]
 
 export default function DocsLayoutClient({

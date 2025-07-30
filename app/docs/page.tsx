@@ -53,6 +53,30 @@ export default function DocumentationPage() {
                       </div>
                     </div>
                   </Link>
+                  <Link
+                    href="/docs/perfecxion-comply"
+                    className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <Shield className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+                      <div>
+                        <h3 className="font-semibold text-gray-900 dark:text-white">perfecX Comply</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">AI governance & compliance</p>
+                      </div>
+                    </div>
+                  </Link>
+                  <Link
+                    href="/docs/perfecxion-g-rails"
+                    className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <Shield className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+                      <div>
+                        <h3 className="font-semibold text-gray-900 dark:text-white">perfecX G-Rails</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">AI safety & guardrails</p>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
               </div>
 
@@ -82,6 +106,18 @@ export default function DocumentationPage() {
                       <div>
                         <h3 className="font-semibold text-gray-900 dark:text-white">SafeAI Guard</h3>
                         <p className="text-sm text-gray-600 dark:text-gray-400">AI safety for children</p>
+                      </div>
+                    </div>
+                  </Link>
+                  <Link
+                    href="/docs/torscan"
+                    className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <Shield className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+                      <div>
+                        <h3 className="font-semibold text-gray-900 dark:text-white">TorScan</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Dark web intelligence platform</p>
                       </div>
                     </div>
                   </Link>

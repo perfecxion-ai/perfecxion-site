@@ -52,30 +52,7 @@ export default function LearningCenterPage() {
             </div>
           </Link>
 
-          <Link
-            href="/learn/quick-start"
-            className="group block p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-200 hover:shadow-md"
-          >
-            <div className="flex items-start space-x-4">
-              <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 dark:bg-primary-900/20 group-hover:bg-primary-200 dark:group-hover:bg-primary-900/40 transition-colors">
-                  <Play className="h-6 w-6 text-primary-600 dark:text-primary-400" />
-                </div>
-              </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                  Quick Start Guide
-                </h3>
-                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                  Get up and running with AI security in minutes. Learn the basics and run your first security scan.
-                </p>
-                <div className="mt-4 flex items-center text-primary-600 dark:text-primary-400 text-sm font-medium">
-                  Get Started
-                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </div>
-              </div>
-            </div>
-          </Link>
+
         </div>
       </div>
 

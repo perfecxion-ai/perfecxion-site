@@ -6,15 +6,6 @@ import { ChevronRight, BookOpen, Shield, Zap, Users, Code, Settings, Play, Targe
 
 const sidebarSections = [
     {
-        title: 'GET STARTED',
-        items: [
-            { name: 'Quick Start', href: '/learn/quick-start', icon: Play },
-            { name: 'Installation', href: '/learn/installation', icon: Code },
-            { name: 'First Security Scan', href: '/learn/first-scan', icon: Shield },
-            { name: 'Basic Configuration', href: '/learn/configuration', icon: Settings },
-        ]
-    },
-    {
         title: 'FUNDAMENTALS',
         items: [
             { name: 'Traditional vs AI Security', href: '/learn/trad-vs-ai', icon: Brain },

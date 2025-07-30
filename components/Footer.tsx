@@ -6,9 +6,11 @@ const navigation = {
   product: [
     { name: 'perfecX Red-T', href: '/products/perfecxion-red-t' },
     { name: 'perfecX Agent', href: '/products/perfecxion-agent' },
-    { name: 'perfecX Browse', href: '/products/perfecxion-browse' },
+    { name: 'SafeAI Guard', href: '/products/safeai-guard' },
     { name: 'perfecX Comply', href: '/products/perfecxion-comply' },
     { name: 'perfecX G-Rails', href: '/products/perfecxion-g-rails' },
+    { name: 'PromptShield', href: '/products/promptshield' },
+    { name: 'TorScan', href: '/products/torscan' },
   ],
   resources: [
     { name: 'Documentation', href: '/docs' },
@@ -24,9 +26,9 @@ const navigation = {
 }
 
 const socialLinks = [
-  { name: 'GitHub', href: '#', icon: Github },
-  { name: 'Twitter', href: '#', icon: Twitter },
-  { name: 'LinkedIn', href: '#', icon: Linkedin },
+  { name: 'GitHub', href: 'https://github.com/perfecxion-ai', icon: Github },
+  { name: 'Twitter', href: 'https://twitter.com/perfecxion-ai', icon: Twitter },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/perfecxion-ai?trk=blended-typeahead', icon: Linkedin },
   { name: 'Email', href: 'mailto:contact@perfecxion.ai', icon: Mail },
 ]
 
