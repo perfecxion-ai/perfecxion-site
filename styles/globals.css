@@ -76,6 +76,34 @@ pre code {
   @apply bg-transparent p-0 text-gray-100 dark:text-gray-100;
 }
 
+/* Prose overrides for better blog layout */
+.prose {
+  @apply max-w-none;
+}
+
+.prose > * {
+  @apply mx-auto max-w-4xl;
+}
+
+.prose pre {
+  @apply max-w-full overflow-x-auto;
+}
+
+.prose .bg-gradient-to-r,
+.prose .grid,
+.prose .bg-gray-100,
+.prose .bg-gray-900,
+.prose .bg-red-200,
+.prose .bg-orange-200,
+.prose .bg-yellow-200,
+.prose .bg-green-200,
+.prose .bg-blue-200,
+.prose .bg-purple-200,
+.prose .bg-white,
+.prose .border {
+  @apply max-w-full;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

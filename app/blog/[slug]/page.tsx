@@ -94,52 +94,48 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   const headings = data.toc ? getHeadings(cleanContent) : [];
 
   return (
-    <main className="bg-white dark:bg-background-dark min-h-screen">
-      <div className="max-width container-padding section-padding">
-        <article className="relative w-full max-w-4xl mx-auto">
-          <header className="mb-10">
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6 leading-tight">
-              {data.title}
-            </h1>
-            <div className="flex flex-wrap items-center gap-4 text-gray-500 dark:text-gray-400 text-sm font-medium mb-4">
-              <span>{data.date}</span>
-              {data.author && <span>· {data.author}</span>}
-              {data.readTime && <span>· {data.readTime}</span>}
-              {data.category && (
-                <span className="bg-primary-100 dark:bg-primary-900/20 text-primary-800 dark:text-primary-200 px-2 py-0.5 rounded text-xs font-semibold">
-                  {data.category}
-                </span>
-              )}
-            </div>
-            {data.description && (
-              <div className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">{data.description}</div>
-            )}
-          </header>
+    <article className="relative w-full">
+      <header className="mb-10">
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6 leading-tight">
+          {data.title}
+        </h1>
+        <div className="flex flex-wrap items-center gap-4 text-gray-500 dark:text-gray-400 text-sm font-medium mb-4">
+          <span>{data.date}</span>
+          {data.author && <span>· {data.author}</span>}
+          {data.readTime && <span>· {data.readTime}</span>}
+          {data.category && (
+            <span className="bg-primary-100 dark:bg-primary-900/20 text-primary-800 dark:text-primary-200 px-2 py-0.5 rounded text-xs font-semibold">
+              {data.category}
+            </span>
+          )}
+        </div>
+        {data.description && (
+          <div className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">{data.description}</div>
+        )}
+      </header>
 
-          <div className="flex gap-12">
-            {headings.length > 0 && (
-              <nav className="hidden lg:block w-56 flex-shrink-0 sticky top-24 self-start">
-                <div className="text-xs uppercase tracking-wider text-gray-400 mb-4">On this page</div>
-                <ul className="space-y-2">
-                  {headings.map(h => (
-                    <li key={h.id}>
-                      <a
-                        href={`#${h.id}`}
-                        className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-sm"
-                      >
-                        {h.text}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            )}
-            <div className="prose prose-lg dark:prose-invert max-w-none w-full">
-              <MDXRemote source={cleanContent} components={mdxComponents} />
-            </div>
-          </div>
-        </article>
+      <div className="flex gap-8">
+        {headings.length > 0 && (
+          <nav className="hidden xl:block w-56 flex-shrink-0 sticky top-24 self-start">
+            <div className="text-xs uppercase tracking-wider text-gray-400 mb-4">On this page</div>
+            <ul className="space-y-2">
+              {headings.map(h => (
+                <li key={h.id}>
+                  <a
+                    href={`#${h.id}`}
+                    className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-sm block py-1"
+                  >
+                    {h.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
+        <div className="prose prose-lg dark:prose-invert max-w-none w-full overflow-x-hidden">
+          <MDXRemote source={cleanContent} components={mdxComponents} />
+        </div>
       </div>
-    </main>
+    </article>
   );
 }
