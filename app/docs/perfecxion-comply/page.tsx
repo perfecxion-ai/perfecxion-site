@@ -24,7 +24,7 @@ export default function PerfecxionComplyDocsHub() {
                     perfecX Comply Documentation
                 </h1>
                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-10">
-                    Everything you need to get started, integrate, and master perfecX Comply for AI compliance automation. (Add your content here)
+                    Everything you need to automate AI governance and compliance across multiple regulatory frameworks with real-time monitoring.
                 </p>
 
                 <div className="mb-8">
