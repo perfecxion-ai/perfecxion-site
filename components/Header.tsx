@@ -76,7 +76,7 @@ export default function Header() {
       </nav>
 
       {/* Mobile menu */}
-      {mobileMenuOpen && (
+      {mobileMenuOpen && !hideMobileMenu && (
         <div className="lg:hidden" role="dialog" aria-modal="true">
           <div className="fixed inset-0 z-50 bg-gray-900/20 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)}></div>
           <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white dark:bg-gray-900 px-6 py-6 sm:max-w-sm border-l border-gray-200 dark:border-gray-800">
