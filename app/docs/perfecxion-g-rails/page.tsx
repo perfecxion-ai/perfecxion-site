@@ -1,68 +1,70 @@
-import { Metadata } from 'next';
-import Link from 'next/link';
-import { BookOpen, FileText, Bot, Search } from 'lucide-react';
+import { Metadata } from 'next'
+import Link from 'next/link'
+import { BookOpen, Play, Code, FileText, ChevronRight } from 'lucide-react'
 
 export const metadata: Metadata = {
     title: 'perfecX G-Rails Documentation - perfecXion.ai',
-    description: 'Documentation hub for perfecX G-Rails, the automated AI safety and compliance platform.',
-};
+    description: 'Documentation hub for perfecX G-Rails: quick start, installation, API, and guides for AI safety guardrail management.',
+}
 
-export default function PerfecXGRailsDocsPage() {
+export default function PerfecxionGRailsDocsHub() {
     return (
         <div className="bg-white dark:bg-background-dark min-h-screen">
-            <div className="max-w-5xl mx-auto px-6 py-12">
+            <div className="max-w-4xl mx-auto px-6 py-12">
                 {/* Breadcrumb */}
-                <nav className="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
-                    <ol className="list-none p-0 inline-flex">
-                        <li className="flex items-center">
-                            <Link href="/docs" className="hover:underline text-primary-600 dark:text-primary-400">Docs</Link>
-                            <span className="mx-2">/</span>
-                        </li>
-                        <li className="text-gray-700 dark:text-gray-300">perfecX G-Rails</li>
-                    </ol>
+                <nav className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 mb-8">
+                    <Link href="/docs" className="hover:text-primary-600 dark:hover:text-primary-400">
+                        Docs
+                    </Link>
+                    <ChevronRight className="h-4 w-4" />
+                    <span className="text-gray-900 dark:text-white">perfecX G-Rails</span>
                 </nav>
 
-                {/* Title & Intro */}
-                <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">perfecX G-Rails Documentation</h1>
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                    Welcome to the perfecX G-Rails documentation hub. Here you can find guides, API references, and integration tips for using perfecX G-Rails to automate AI safety and compliance.
+                <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-4">
+                    perfecX G-Rails Documentation
+                </h1>
+                <p className="text-lg text-gray-600 dark:text-gray-300 mb-10">
+                    Everything you need to monitor, validate, and optimize your AI safety mechanisms with advanced guardrail management.
                 </p>
 
-                {/* Quick Start Guide Button */}
-                <div className="mb-10">
-                    <Link
-                        href="/docs/perfecxion-g-rails/quick-start"
-                        className="inline-flex items-center px-5 py-3 bg-primary-600 text-white rounded-lg font-semibold shadow hover:bg-primary-700 transition-colors"
-                    >
-                        <BookOpen className="w-5 h-5 mr-2" />
+                <div className="mb-8">
+                    <Link href="/docs/perfecxion-g-rails/quick-start" className="inline-flex items-center px-5 py-3 bg-primary-600 text-white rounded-lg font-semibold shadow hover:bg-primary-700 transition-colors">
+                        <Play className="h-5 w-5 mr-2" />
                         Quick Start Guide
                     </Link>
                 </div>
 
-                {/* Docs Sections Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                    <Link href="/docs/perfecxion-g-rails/quick-start" className="group block p-5 border border-gray-200 dark:border-gray-800 rounded-lg hover:shadow-lg transition">
-                        <BookOpen className="w-6 h-6 mb-2 text-primary-600 group-hover:text-primary-700 dark:text-primary-400 dark:group-hover:text-primary-300" />
-                        <div className="font-semibold mb-1">Quick Start</div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">Get up and running with perfecX G-Rails in minutes.</div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <Link href="/docs/perfecxion-g-rails/quick-start" className="block p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors">
+                        <div className="flex items-center space-x-3 mb-2">
+                            <Play className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+                            <h2 className="font-semibold text-gray-900 dark:text-white">Quick Start</h2>
+                        </div>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Get up and running with perfecX G-Rails in minutes.</p>
                     </Link>
-                    <Link href="/docs/perfecxion-g-rails/installation" className="group block p-5 border border-gray-200 dark:border-gray-800 rounded-lg hover:shadow-lg transition">
-                        <FileText className="w-6 h-6 mb-2 text-primary-600 group-hover:text-primary-700 dark:text-primary-400 dark:group-hover:text-primary-300" />
-                        <div className="font-semibold mb-1">Installation</div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">How to install and configure perfecX G-Rails.</div>
+                    <Link href="/docs/perfecxion-g-rails/installation" className="block p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors">
+                        <div className="flex items-center space-x-3 mb-2">
+                            <Code className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+                            <h2 className="font-semibold text-gray-900 dark:text-white">Installation</h2>
+                        </div>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">How to install perfecX G-Rails SDKs and CLI.</p>
                     </Link>
-                    <Link href="/docs/perfecxion-g-rails/api" className="group block p-5 border border-gray-200 dark:border-gray-800 rounded-lg hover:shadow-lg transition">
-                        <Bot className="w-6 h-6 mb-2 text-primary-600 group-hover:text-primary-700 dark:text-primary-400 dark:group-hover:text-primary-300" />
-                        <div className="font-semibold mb-1">API Reference</div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">Explore the perfecX G-Rails API endpoints.</div>
+                    <Link href="/docs/perfecxion-g-rails/api" className="block p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors">
+                        <div className="flex items-center space-x-3 mb-2">
+                            <BookOpen className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+                            <h2 className="font-semibold text-gray-900 dark:text-white">API Reference</h2>
+                        </div>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Full API documentation for perfecX G-Rails endpoints.</p>
                     </Link>
-                    <Link href="/docs/perfecxion-g-rails/guides" className="group block p-5 border border-gray-200 dark:border-gray-800 rounded-lg hover:shadow-lg transition">
-                        <Search className="w-6 h-6 mb-2 text-primary-600 group-hover:text-primary-700 dark:text-primary-400 dark:group-hover:text-primary-300" />
-                        <div className="font-semibold mb-1">Guides</div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">Best practices and advanced usage.</div>
+                    <Link href="/docs/perfecxion-g-rails/guides" className="block p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors">
+                        <div className="flex items-center space-x-3 mb-2">
+                            <FileText className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+                            <h2 className="font-semibold text-gray-900 dark:text-white">Guides & Examples</h2>
+                        </div>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Integration guides, best practices, and real-world examples.</p>
                     </Link>
                 </div>
             </div>
         </div>
-    );
+    )
 } 
