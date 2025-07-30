@@ -377,9 +377,9 @@ Using special Unicode characters, homoglyphs, or alternative encodings to disgui
 ### Chain-of-Thought Manipulation
 Advanced AI systems often use chain-of-thought reasoning, breaking down complex problems into steps. Attackers can exploit this by crafting inputs that manipulate the reasoning process.
 **Logic Chain Hijacking:**
-`1. Present a legitimate problem requiring multi-step reasoning
-`2. Embed malicious instructions within the reasoning steps
-`3. The AI follows the logic chain and executes the hidden instructions
+1. Present a legitimate problem requiring multi-step reasoning
+2. Embed malicious instructions within the reasoning steps
+3. The AI follows the logic chain and executes the hidden instructions
 
 
 
@@ -426,9 +426,9 @@ Final Prompt Assembly (secure instruction hierarchy)
 
 
 **Content Analysis Techniques:**
-`1. **Instruction Pattern Recognition**: Train classifiers to identify common injection patterns, including variations and obfuscated versions.
-`2. **Semantic Similarity Scoring**: Compare user inputs against known attack patterns using semantic embeddings rather than exact string matching.
-`3. **Multi-Language Detection**: Screen inputs for instructions in multiple languages, not just English.
+1. **Instruction Pattern Recognition**: Train classifiers to identify common injection patterns, including variations and obfuscated versions.
+2. **Semantic Similarity Scoring**: Compare user inputs against known attack patterns using semantic embeddings rather than exact string matching.
+3. **Multi-Language Detection**: Screen inputs for instructions in multiple languages, not just English.
 4. **Context Boundary Validation**: Ensure user content cannot escape its designated context within the prompt structure.
 ### Prompt Architecture Design
 The way you structure your system prompts can dramatically impact vulnerability to injection attacks. Secure prompt design follows principles similar to secure coding practices.
@@ -490,9 +490,9 @@ A financial services client reduced successful prompt injection attacks by 94% b
 ### Behavioral Monitoring and Detection
 Since prompt injection attacks often succeed by making malicious requests appear legitimate, monitoring the AI's behavior patterns becomes crucial for detection.
 **Anomaly Detection Systems:**
-`1. **Output Pattern Analysis**: Monitor for unusual changes in response patterns, tone, or content that might indicate successful injection.
-`2. **Instruction Compliance Tracking**: Track how well the AI follows its system instructions across different interactions.
-`3. **Context Switching Detection**: Alert when the AI appears to switch roles, contexts, or behavioral patterns unexpectedly.
+1. **Output Pattern Analysis**: Monitor for unusual changes in response patterns, tone, or content that might indicate successful injection.
+2. **Instruction Compliance Tracking**: Track how well the AI follows its system instructions across different interactions.
+3. **Context Switching Detection**: Alert when the AI appears to switch roles, contexts, or behavioral patterns unexpectedly.
 **Real-Time Response Validation:**
 Implement systems that validate AI responses against expected behavioral patterns before delivering them to users. This can catch successful injections even after they've bypassed input filtering.
 ### Model-Level Defenses
