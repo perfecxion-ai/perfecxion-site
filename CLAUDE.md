@@ -61,3 +61,29 @@ git push origin main  # Triggers automatic deployment via Vercel
 - DNS configured through Spaceship registrar
 - SSL certificates automatically provisioned by Vercel
 - Static site generation (SSG) for optimal performance
+
+## MDX Content Troubleshooting
+
+### Common MDX Parsing Errors and Solutions
+
+When working with MDX files in `/content`, you may encounter parsing errors during build. Here are known issues and their solutions:
+
+1. **"Unexpected closing slash `/` in tag" errors**
+   - **Cause**: Self-closing JSX component tags like `<Component />`
+   - **Solution**: Convert to regular opening/closing tags: `<Component></Component>`
+
+2. **"Expected the closing tag `</div>` either after the end of `emphasis`" errors**
+   - **Cause**: MDX interprets asterisks (*) as emphasis markers, even in code blocks
+   - **Common scenarios**:
+     - Bold markdown syntax: `**text**`
+     - Regex patterns containing `.*`
+   - **Solutions**:
+     - Replace `**text**` with `<strong>text</strong>`
+     - Escape asterisks in regex patterns: change `.*` to `.\*`
+     - Wrap loose text between sections in `<p>` tags
+
+3. **General MDX Best Practices**
+   - Avoid mixing markdown emphasis markers with JSX tags
+   - Ensure proper spacing between MDX elements
+   - Use HTML tags instead of markdown when inside JSX components
+   - Be careful with special characters in code blocks - escape when necessary
