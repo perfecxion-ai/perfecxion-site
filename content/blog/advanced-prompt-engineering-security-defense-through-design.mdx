@@ -1231,7 +1231,7 @@ Just as web applications sanitize SQL inputs, AI systems must sanitize prompt in
 
 
 
-<div>    r"ignore.*(previous|prior|above).*instruction",</div>
+<div>    r"ignore.\*(previous|prior|above).\*instruction",</div>
 
 
 
@@ -1241,7 +1241,7 @@ Just as web applications sanitize SQL inputs, AI systems must sanitize prompt in
 
 
 
-<div>    r"your.*(new|real).*role.*is",</div>
+<div>    r"your.\*(new|real).\*role.\*is",</div>
 
 
 
@@ -1251,7 +1251,7 @@ Just as web applications sanitize SQL inputs, AI systems must sanitize prompt in
 
 
 
-<div>    r"forget.*everything.*(?:before|above)",</div>
+<div>    r"forget.\*everything.\*(?:before|above)",</div>
 
 
 
@@ -1261,7 +1261,7 @@ Just as web applications sanitize SQL inputs, AI systems must sanitize prompt in
 
 
 
-<div>    r"system.*prompt.*is",</div>
+<div>    r"system.\*prompt.\*is",</div>
 
 
 
@@ -1271,7 +1271,7 @@ Just as web applications sanitize SQL inputs, AI systems must sanitize prompt in
 
 
 
-<div>    r"(?:assistant|bot).*mode.*(?:off|debug|admin)",</div>
+<div>    r"(?:assistant|bot).\*mode.\*(?:off|debug|admin)",</div>
 
 
 
@@ -1281,7 +1281,7 @@ Just as web applications sanitize SQL inputs, AI systems must sanitize prompt in
 
 
 
-<div>    r"reveal.*(?:instructions|prompt|system)",</div>
+<div>    r"reveal.\*(?:instructions|prompt|system)",</div>
 
 
 
@@ -1291,7 +1291,7 @@ Just as web applications sanitize SQL inputs, AI systems must sanitize prompt in
 
 
 
-<div>    r"\\n\\n.*(?:Human|Assistant|System):",</div>
+<div>    r"\\n\\n.\*(?:Human|Assistant|System):",</div>
 
 
 
