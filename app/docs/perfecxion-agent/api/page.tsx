@@ -317,8 +317,8 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \\
                     <p className="text-gray-600 dark:text-gray-300 mb-4">
                         Real-time monitoring and control via WebSocket connection.
                     </p>
-                    <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-6">
-                        <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`// JavaScript WebSocket example
+                    <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto mb-6">
+                        <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`// JavaScript WebSocket example
 const ws = new WebSocket('wss://monitor.perfecxion.ai/agents/my-agent-001');
 
 ws.on('open', () => {

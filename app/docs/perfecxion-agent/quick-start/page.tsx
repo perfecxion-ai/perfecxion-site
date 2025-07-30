@@ -54,16 +54,16 @@ export default function PerfecxionAgentQuickStart() {
                     <div className="space-y-4">
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Python</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <code className="text-sm text-gray-100 font-mono">
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <code className="text-sm text-gray-900 dark:text-gray-100 font-mono">
                                     pip install perfecxion-agent
                                 </code>
                             </div>
                         </div>
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Node.js</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <code className="text-sm text-gray-100 font-mono">
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <code className="text-sm text-gray-900 dark:text-gray-100 font-mono">
                                     npm install @perfecxion/agent
                                 </code>
                             </div>
@@ -79,8 +79,8 @@ export default function PerfecxionAgentQuickStart() {
                     <div className="space-y-4">
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Python Example</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`from perfecxion_agent import PerfecXAgent
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`from perfecxion_agent import PerfecXAgent
 from langchain.agents import create_react_agent
 
 # Initialize perfecX Agent
@@ -103,8 +103,8 @@ px_agent.enable_monitoring(
                         </div>
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Node.js Example</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`import { PerfecXAgent } from '@perfecxion/agent';
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`import { PerfecXAgent } from '@perfecxion/agent';
 import { createAgent } from 'langchain/agents';
 
 // Initialize perfecX Agent
@@ -133,8 +133,8 @@ pxAgent.enableMonitoring({
                     <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                         Step 3: Configure Security Policies
                     </h2>
-                    <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-4">
-                        <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`# Define security policies
+                    <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto mb-4">
+                        <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# Define security policies
 px_agent.set_policies({
     "max_execution_time": 300,  # 5 minutes
     "allowed_tools": ["web_search", "calculator", "file_reader"],
@@ -190,8 +190,8 @@ px_agent.set_alerts({
                             </div>
                         </div>
                     </div>
-                    <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                        <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`# Access monitoring data programmatically
+                    <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# Access monitoring data programmatically
 metrics = px_agent.get_metrics(
     agent_id="my-agent-001",
     time_range="last_hour"

@@ -85,8 +85,8 @@ export default function PerfecxionAgentInstallation() {
                     <div className="space-y-6">
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Using pip</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <code className="text-sm text-gray-100 font-mono">
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <code className="text-sm text-gray-900 dark:text-gray-100 font-mono">
                                     pip install perfecxion-agent
                                 </code>
                             </div>
@@ -94,8 +94,8 @@ export default function PerfecxionAgentInstallation() {
 
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Using Poetry</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <code className="text-sm text-gray-100 font-mono">
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <code className="text-sm text-gray-900 dark:text-gray-100 font-mono">
                                     poetry add perfecxion-agent
                                 </code>
                             </div>
@@ -103,8 +103,8 @@ export default function PerfecxionAgentInstallation() {
 
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Using Conda</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <code className="text-sm text-gray-100 font-mono">
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <code className="text-sm text-gray-900 dark:text-gray-100 font-mono">
                                     conda install -c perfecxion perfecxion-agent
                                 </code>
                             </div>
@@ -151,8 +151,8 @@ export default function PerfecxionAgentInstallation() {
                     <div className="space-y-6">
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Using npm</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <code className="text-sm text-gray-100 font-mono">
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <code className="text-sm text-gray-900 dark:text-gray-100 font-mono">
                                     npm install @perfecxion/agent
                                 </code>
                             </div>
@@ -160,8 +160,8 @@ export default function PerfecxionAgentInstallation() {
 
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Using yarn</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <code className="text-sm text-gray-100 font-mono">
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <code className="text-sm text-gray-900 dark:text-gray-100 font-mono">
                                     yarn add @perfecxion/agent
                                 </code>
                             </div>
@@ -169,8 +169,8 @@ export default function PerfecxionAgentInstallation() {
 
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Using pnpm</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <code className="text-sm text-gray-100 font-mono">
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <code className="text-sm text-gray-900 dark:text-gray-100 font-mono">
                                     pnpm add @perfecxion/agent
                                 </code>
                             </div>
@@ -181,8 +181,8 @@ export default function PerfecxionAgentInstallation() {
                             <p className="text-gray-600 dark:text-gray-400 mb-2">
                                 TypeScript definitions are included. No additional @types package needed.
                             </p>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`// tsconfig.json
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`// tsconfig.json
 {
   "compilerOptions": {
     "types": ["@perfecxion/agent"]
@@ -202,8 +202,8 @@ export default function PerfecxionAgentInstallation() {
                     <div className="space-y-6">
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Global Installation</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <code className="text-sm text-gray-100 font-mono">
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <code className="text-sm text-gray-900 dark:text-gray-100 font-mono">
                                     npm install -g @perfecxion/cli
                                 </code>
                             </div>
@@ -211,8 +211,8 @@ export default function PerfecxionAgentInstallation() {
 
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Verify Installation</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`perfecx --version
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`perfecx --version
 # Output: perfecX CLI v1.0.0
 
 perfecx agent --help
@@ -231,8 +231,8 @@ perfecx agent --help
                     <div className="space-y-6">
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Pull the Docker Image</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <code className="text-sm text-gray-100 font-mono">
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <code className="text-sm text-gray-900 dark:text-gray-100 font-mono">
                                     docker pull perfecxion/agent:latest
                                 </code>
                             </div>
@@ -240,8 +240,8 @@ perfecx agent --help
 
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Run with Docker Compose</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`# docker-compose.yml
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# docker-compose.yml
 version: '3.8'
 services:
   perfecx-agent:
@@ -268,8 +268,8 @@ services:
                     <div className="space-y-6">
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Environment Variables</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`# .env file
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# .env file
 PERFECX_API_KEY=your-api-key-here
 PERFECX_ENVIRONMENT=production
 PERFECX_LOG_LEVEL=info
@@ -280,8 +280,8 @@ PERFECX_REGION=us-east-1`}</pre>
 
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Configuration File</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`# perfecx.config.json
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# perfecx.config.json
 {
   "apiKey": "${process.env.PERFECX_API_KEY}",
   "environment": "production",
@@ -310,8 +310,8 @@ PERFECX_REGION=us-east-1`}</pre>
                     <div className="space-y-6">
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Python</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`import perfecxion_agent
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`import perfecxion_agent
 
 # Check version
 print(perfecxion_agent.__version__)
@@ -325,8 +325,8 @@ print(f"Connection status: {status}")`}</pre>
 
                         <div>
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Node.js</h3>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`const { PerfecXAgent } = require('@perfecxion/agent');
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`const { PerfecXAgent } = require('@perfecxion/agent');
 
 // Check version
 console.log(PerfecXAgent.VERSION);

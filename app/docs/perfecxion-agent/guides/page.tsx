@@ -46,8 +46,8 @@ export default function PerfecxionAgentGuides() {
                         <p className="text-gray-600 dark:text-gray-300 mb-4">
                             Complete guide for integrating perfecX Agent with LangChain applications.
                         </p>
-                        <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-6">
-                            <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`from langchain.agents import create_react_agent, AgentExecutor
+                        <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto mb-6">
+                            <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`from langchain.agents import create_react_agent, AgentExecutor
 from langchain.tools import Tool
 from perfecxion_agent import PerfecXAgent, SecurityPolicy
 
@@ -105,8 +105,8 @@ print(f"Tool usage: {metrics.tool_usage}")`}</pre>
                         <p className="text-gray-600 dark:text-gray-300 mb-4">
                             Secure autonomous agents built with AutoGPT.
                         </p>
-                        <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-6">
-                            <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`from autogpt.agents import Agent
+                        <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto mb-6">
+                            <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`from autogpt.agents import Agent
 from autogpt.config import Config
 from perfecxion_agent import PerfecXAgent, MemoryProtection
 
@@ -151,8 +151,8 @@ agent.start_interaction_loop()`}</pre>
                         <p className="text-gray-600 dark:text-gray-300 mb-4">
                             Secure multi-agent systems with CrewAI.
                         </p>
-                        <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                            <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`from crewai import Agent, Crew, Task
+                        <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                            <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`from crewai import Agent, Crew, Task
 from perfecxion_agent import PerfecXAgent, MultiAgentPolicy
 
 # Initialize perfecX Agent
@@ -220,8 +220,8 @@ print(f"Collaboration score: {analysis.collaboration_score}")`}</pre>
                             <p className="text-gray-600 dark:text-gray-300 mb-4">
                                 Protect agent memory from tampering and unauthorized access.
                             </p>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`# Enable comprehensive memory protection
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# Enable comprehensive memory protection
 px_agent.configure_memory_protection({
     "encryption": {
         "enabled": True,
@@ -250,8 +250,8 @@ px_agent.configure_memory_protection({
                             <p className="text-gray-600 dark:text-gray-300 mb-4">
                                 Implement strict controls on tool usage.
                             </p>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`# Create sandboxed tool wrapper
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# Create sandboxed tool wrapper
 @px_agent.sandbox_tool(
     timeout_ms=5000,
     memory_limit_mb=256,
@@ -280,8 +280,8 @@ px_agent.register_tool(
                             <p className="text-gray-600 dark:text-gray-300 mb-4">
                                 Configure behavioral baselines and anomaly thresholds.
                             </p>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`# Configure anomaly detection
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# Configure anomaly detection
 px_agent.configure_anomaly_detection({
     "behavioral_baseline": {
         "training_period_hours": 24,
@@ -318,8 +318,8 @@ px_agent.configure_anomaly_detection({
                         <p className="text-gray-600 dark:text-gray-300 mb-4">
                             Secure customer-facing AI agents handling sensitive data.
                         </p>
-                        <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                            <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`# Customer support bot with PII protection
+                        <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                            <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# Customer support bot with PII protection
 support_agent = px_agent.create_secure_agent(
     base_agent=customer_support_bot,
     config={
@@ -352,8 +352,8 @@ support_agent = px_agent.create_secure_agent(
                         <p className="text-gray-600 dark:text-gray-300 mb-4">
                             Protect code generation agents from producing malicious code.
                         </p>
-                        <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                            <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`# Code generation with security scanning
+                        <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                            <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# Code generation with security scanning
 code_agent = px_agent.create_secure_agent(
     base_agent=code_generator,
     config={
@@ -384,8 +384,8 @@ code_agent = px_agent.create_secure_agent(
                         <p className="text-gray-600 dark:text-gray-300 mb-4">
                             Ensure research agents use reliable sources and avoid hallucinations.
                         </p>
-                        <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                            <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`# Research agent with fact verification
+                        <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                            <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# Research agent with fact verification
 research_agent = px_agent.create_secure_agent(
     base_agent=research_bot,
     config={
@@ -414,8 +414,8 @@ research_agent = px_agent.create_secure_agent(
                     <p className="text-gray-600 dark:text-gray-300 mb-4">
                         Access real-time monitoring data programmatically or through our web dashboard.
                     </p>
-                    <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto mb-6">
-                        <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`# Set up dashboard integration
+                    <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto mb-6">
+                        <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# Set up dashboard integration
 dashboard = px_agent.create_dashboard_client()
 
 # Configure real-time alerts
@@ -471,8 +471,8 @@ dashboard.create_view(
                             <p className="text-gray-600 dark:text-gray-300 mb-3">
                                 Reduce overhead by batching monitoring events.
                             </p>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`# Configure batch processing
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# Configure batch processing
 px_agent.configure_batching({
     "batch_size": 100,
     "flush_interval_ms": 1000,
@@ -489,8 +489,8 @@ px_agent.configure_batching({
                             <p className="text-gray-600 dark:text-gray-300 mb-3">
                                 Monitor only critical operations to reduce overhead.
                             </p>
-                            <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <pre className="text-sm text-gray-100 font-mono whitespace-pre">{`# Selective monitoring configuration
+                            <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# Selective monitoring configuration
 px_agent.configure_monitoring({
     "levels": {
         "tool_execution": "critical_only",
