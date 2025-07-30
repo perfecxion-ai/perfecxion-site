@@ -24,7 +24,7 @@ export default function PerfecxionRedTDocsHub() {
                     perfecX Red-T Documentation
                 </h1>
                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-10">
-                    Everything you need to get started, integrate, and master perfecX Red-T for AI red team testing. (Add your content here)
+                    Everything you need to get started, integrate, and master perfecX Red-T for comprehensive AI red team testing and vulnerability assessment.
                 </p>
 
                 <div className="mb-8">
