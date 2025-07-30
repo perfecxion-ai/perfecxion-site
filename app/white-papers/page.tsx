@@ -23,6 +23,18 @@ interface WhitePaper {
 
 const whitePapers: WhitePaper[] = [
   {
+    id: 'from-data-to-dialogue-llm-training',
+    title: 'From Data to Dialogue: A Deep Dive into the Training of Large Language Models',
+    description: 'Comprehensive guide tracing the complete journey from architectural foundations through massive-scale pre-training to the nuanced art of alignment with human values.',
+    author: 'perfecXion AI Research Team',
+    date: '2025-01-25',
+    category: 'Technical Research',
+    downloadUrl: '/white-papers/from-data-to-dialogue-llm-training-deep-dive.pdf',
+    readTime: '90 min read',
+    featured: true,
+    icon: Brain
+  },
+  {
     id: 'ai-red-team-methodology',
     title: 'AI Red Team Testing Methodology: A Comprehensive Framework',
     description: 'Detailed methodology for conducting AI-specific red team assessments, including attack vector analysis, vulnerability discovery, and remediation strategies.',
@@ -43,7 +55,7 @@ const whitePapers: WhitePaper[] = [
     category: 'Compliance',
     downloadUrl: '/white-papers/ai-compliance-frameworks.pdf',
     readTime: '30 min read',
-    featured: true,
+    featured: false,
     icon: Shield
   },
   {
@@ -98,9 +110,9 @@ const whitePapers: WhitePaper[] = [
 
 const categories = [
   { name: 'All Papers', value: 'all', count: whitePapers.length },
+  { name: 'Technical Research', value: 'Technical Research', count: whitePapers.filter(wp => wp.category === 'Technical Research').length },
   { name: 'Red Team Testing', value: 'Red Team Testing', count: whitePapers.filter(wp => wp.category === 'Red Team Testing').length },
   { name: 'Compliance', value: 'Compliance', count: whitePapers.filter(wp => wp.category === 'Compliance').length },
-  { name: 'Technical Research', value: 'Technical Research', count: whitePapers.filter(wp => wp.category === 'Technical Research').length },
   { name: 'AI Architecture', value: 'AI Architecture', count: whitePapers.filter(wp => wp.category === 'AI Architecture').length },
   { name: 'Supply Chain', value: 'Supply Chain', count: whitePapers.filter(wp => wp.category === 'Supply Chain').length },
 ]
