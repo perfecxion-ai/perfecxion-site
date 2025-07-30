@@ -8,33 +8,33 @@ category: "Technical Research"
 toc: true
 ---
 
-<div className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white p-8 rounded-lg mb-8">
-  <h2 className="text-4xl font-bold mb-4">AI Infrastructure Security</h2>
-  <p className="text-xl mb-6 opacity-90">
+<div class="bg-gradient-to-r from-cyan-600 to-blue-600 text-white p-8 rounded-lg mb-8">
+  <h2 class="text-4xl font-bold mb-4">AI Infrastructure Security</h2>
+  <p class="text-xl mb-6 opacity-90">
     Building fortress-grade security for AI systems from data ingestion to production inference
   </p>
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-    <div className="bg-white/10 backdrop-blur-sm rounded p-4">
-      <div className="text-3xl font-bold">15+</div>
-      <div className="text-sm">Attack Vectors Per Layer</div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+    <div class="bg-white/10 backdrop-blur-sm rounded p-4">
+      <div class="text-3xl font-bold">15+</div>
+      <div class="text-sm">Attack Vectors Per Layer</div>
     </div>
-    <div className="bg-white/10 backdrop-blur-sm rounded p-4">
-      <div className="text-3xl font-bold">$12M</div>
-      <div className="text-sm">Average Cost of AI Breach</div>
+    <div class="bg-white/10 backdrop-blur-sm rounded p-4">
+      <div class="text-3xl font-bold">$12M</div>
+      <div class="text-sm">Average Cost of AI Breach</div>
     </div>
-    <div className="bg-white/10 backdrop-blur-sm rounded p-4">
-      <div className="text-3xl font-bold">400%</div>
-      <div className="text-sm">Increase in AI Infrastructure Attacks</div>
+    <div class="bg-white/10 backdrop-blur-sm rounded p-4">
+      <div class="text-3xl font-bold">400%</div>
+      <div class="text-sm">Increase in AI Infrastructure Attacks</div>
     </div>
   </div>
 </div>
 
-<div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <AlertCircle className="h-6 w-6 text-red-600 dark:text-red-400 mt-1 flex-shrink-0" />
+<div class="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <AlertCircle class="h-6 w-6 text-red-600 dark:text-red-400 mt-1 flex-shrink-0" ></AlertCircle>
     <div>
-      <h3 className="text-lg font-bold text-red-900 dark:text-red-200 mb-3">The Infrastructure Blindspot</h3>
-      <p className="text-red-800 dark:text-red-300 leading-relaxed">
+      <h3 class="text-lg font-bold text-red-900 dark:text-red-200 mb-3">The Infrastructure Blindspot</h3>
+      <p class="text-red-800 dark:text-red-300 leading-relaxed">
         While everyone obsesses over prompt injection and model security, attackers are quietly compromising AI infrastructure. <strong>80% of successful AI attacks exploit infrastructure vulnerabilities, not model weaknesses</strong>. Your ML pipeline is likely your biggest security hole.
       </p>
     </div>
@@ -47,16 +47,16 @@ This isn't a hypothetical nightmare—it's a composite of real incidents from th
 
 The modern AI stack is a complex web of interconnected systems: data lakes, training clusters, model registries, serving infrastructure, monitoring systems, and edge deployments. Each component introduces unique vulnerabilities, and the interactions between them create emergent attack surfaces that traditional security tools can't address. When a single poisoned data point can corrupt months of training, or a compromised inference endpoint can manipulate millions of predictions, infrastructure security isn't just important—it's existential.
 
-<br />
+<br>
 
 ## The AI Infrastructure Attack Surface
 
-<div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <Info className="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
+<div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <Info class="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" ></Info>
     <div>
-      <h3 className="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Understanding the Full Stack</h3>
-      <p className="text-blue-800 dark:text-blue-300">
+      <h3 class="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Understanding the Full Stack</h3>
+      <p class="text-blue-800 dark:text-blue-300">
         AI infrastructure isn't just servers and storage—it's a complex ecosystem of data pipelines, compute resources, model artifacts, and serving systems. Each layer has unique vulnerabilities that attackers actively exploit.
       </p>
     </div>
@@ -65,9 +65,9 @@ The modern AI stack is a complex web of interconnected systems: data lakes, trai
 
 ### Mapping the Attack Surface
 
-<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
-  <div className="text-gray-400 mb-3">🎯 AI Infrastructure Attack Map:</div>
-  <div className="space-y-2">
+<div class="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+  <div class="text-gray-400 mb-3">🎯 AI Infrastructure Attack Map:</div>
+  <div class="space-y-2">
     <div>┌─────────────────────────────────────────────────┐</div>
     <div>│  Data Sources  →  [ATTACK: Data Poisoning]      │</div>
     <div>│       ↓                                         │</div>
@@ -81,7 +81,7 @@ The modern AI stack is a complex web of interconnected systems: data lakes, trai
     <div>│       ↓                                         │</div>
     <div>│  Edge Devices  →  [ATTACK: Physical Access]    │</div>
     <div>└─────────────────────────────────────────────────┘</div>
-    <div className="text-red-400 mt-4">// Each layer = Multiple attack vectors</div>
+    <div class="text-red-400 mt-4">// Each layer = Multiple attack vectors</div>
   </div>
 </div>
 
@@ -89,13 +89,13 @@ The modern AI stack is a complex web of interconnected systems: data lakes, trai
 
 The foundation of AI security starts with data:
 
-<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-  <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
-    <h4 className="font-bold text-lg mb-4 text-red-900 dark:text-red-200 flex items-center gap-2">
-      <Database className="h-5 w-5 text-red-600" />
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+  <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
+    <h4 class="font-bold text-lg mb-4 text-red-900 dark:text-red-200 flex items-center gap-2">
+      <Database class="h-5 w-5 text-red-600" ></Database>
       Data Collection Risks
     </h4>
-    <ul className="space-y-2 text-sm text-red-800 dark:text-red-300">
+    <ul class="space-y-2 text-sm text-red-800 dark:text-red-300">
       <li>• Unvalidated external data sources</li>
       <li>• Compromised data collection agents</li>
       <li>• Injection through user submissions</li>
@@ -104,12 +104,12 @@ The foundation of AI security starts with data:
     </ul>
   </div>
   
-  <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-6">
-    <h4 className="font-bold text-lg mb-4 text-orange-900 dark:text-orange-200 flex items-center gap-2">
-      <Lock className="h-5 w-5 text-orange-600" />
+  <div class="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-6">
+    <h4 class="font-bold text-lg mb-4 text-orange-900 dark:text-orange-200 flex items-center gap-2">
+      <Lock class="h-5 w-5 text-orange-600" ></Lock>
       Storage & Processing Risks
     </h4>
-    <ul className="space-y-2 text-sm text-orange-800 dark:text-orange-300">
+    <ul class="space-y-2 text-sm text-orange-800 dark:text-orange-300">
       <li>• Misconfigured cloud buckets</li>
       <li>• Unencrypted data at rest</li>
       <li>• Weak access controls</li>
@@ -123,12 +123,12 @@ The foundation of AI security starts with data:
 
 Training environments are particularly vulnerable due to their compute-intensive nature:
 
-<div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <Cpu className="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 flex-shrink-0" />
+<div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <Cpu class="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 flex-shrink-0" ></Cpu>
     <div>
-      <h3 className="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">The Training Attack Vector</h3>
-      <div className="space-y-3 text-yellow-800 dark:text-yellow-300">
+      <h3 class="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">The Training Attack Vector</h3>
+      <div class="space-y-3 text-yellow-800 dark:text-yellow-300">
         <p><strong>Supply Chain Attacks:</strong> Malicious dependencies in training frameworks</p>
         <p><strong>Resource Hijacking:</strong> Cryptomining on GPU clusters</p>
         <p><strong>Model Poisoning:</strong> Backdoors inserted during training</p>
@@ -143,28 +143,28 @@ Training environments are particularly vulnerable due to their compute-intensive
 
 Production serving infrastructure faces unique challenges:
 
-<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
-  <div className="text-gray-400 mb-3">⚡ Serving Infrastructure Attack Patterns:</div>
-  <div className="space-y-2">
+<div class="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+  <div class="text-gray-400 mb-3">⚡ Serving Infrastructure Attack Patterns:</div>
+  <div class="space-y-2">
     <div>API Gateway     → Rate limiting bypass, DDoS</div>
     <div>Load Balancer   → Traffic redirection, MitM</div>
     <div>Model Server    → Memory exhaustion, timing attacks</div>
     <div>Cache Layer     → Cache poisoning, data leakage</div>
     <div>Monitoring      → Log injection, metric manipulation</div>
-    <div className="text-yellow-400 mt-4">// Production = Highest impact attacks</div>
+    <div class="text-yellow-400 mt-4">// Production = Highest impact attacks</div>
   </div>
 </div>
 
-<br />
+<br>
 
 ## Securing the Data Pipeline
 
-<div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <Shield className="h-6 w-6 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
+<div class="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <Shield class="h-6 w-6 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" ></Shield>
     <div>
-      <h3 className="text-lg font-bold text-green-900 dark:text-green-200 mb-3">Data: The First Line of Defense</h3>
-      <p className="text-green-800 dark:text-green-300 leading-relaxed">
+      <h3 class="text-lg font-bold text-green-900 dark:text-green-200 mb-3">Data: The First Line of Defense</h3>
+      <p class="text-green-800 dark:text-green-300 leading-relaxed">
         Secure data pipelines are the foundation of AI security. <strong>Every downstream vulnerability is amplified by weak data security</strong>. Building robust data infrastructure security requires multiple layers of protection.
       </p>
     </div>
@@ -175,23 +175,23 @@ Production serving infrastructure faces unique challenges:
 
 Implement comprehensive validation at every entry point:
 
-<div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <CheckCircle className="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
+<div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <CheckCircle class="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" ></CheckCircle>
     <div>
-      <h3 className="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Multi-Stage Validation Pipeline</h3>
-      <div className="bg-gray-900 text-green-400 p-4 rounded font-mono text-sm">
-        <div className="space-y-1">
-          <div className="text-gray-400"># Stage 1: Schema Validation</div>
+      <h3 class="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Multi-Stage Validation Pipeline</h3>
+      <div class="bg-gray-900 text-green-400 p-4 rounded font-mono text-sm">
+        <div class="space-y-1">
+          <div class="text-gray-400"># Stage 1: Schema Validation</div>
           <div>validate_schema(data) → ensure_structure()</div>
           <div></div>
-          <div className="text-gray-400"># Stage 2: Statistical Validation</div>
+          <div class="text-gray-400"># Stage 2: Statistical Validation</div>
           <div>check_distributions(data) → detect_anomalies()</div>
           <div></div>
-          <div className="text-gray-400"># Stage 3: Business Logic Validation</div>
+          <div class="text-gray-400"># Stage 3: Business Logic Validation</div>
           <div>verify_constraints(data) → enforce_rules()</div>
           <div></div>
-          <div className="text-gray-400"># Stage 4: Security Validation</div>
+          <div class="text-gray-400"># Stage 4: Security Validation</div>
           <div>scan_malicious_patterns(data) → quarantine_suspicious()</div>
         </div>
       </div>
@@ -201,37 +201,37 @@ Implement comprehensive validation at every entry point:
 
 ### Encryption and Access Control
 
-<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-  <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-4">
-    <h4 className="font-semibold text-purple-900 dark:text-purple-200 mb-2 flex items-center gap-2">
-      <Lock className="h-4 w-4" />
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+  <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-4">
+    <h4 class="font-semibold text-purple-900 dark:text-purple-200 mb-2 flex items-center gap-2">
+      <Lock class="h-4 w-4" ></Lock>
       Encryption at Rest
     </h4>
-    <ul className="text-sm text-purple-800 dark:text-purple-300 space-y-1">
+    <ul class="text-sm text-purple-800 dark:text-purple-300 space-y-1">
       <li>• AES-256 minimum</li>
       <li>• Key rotation policy</li>
       <li>• Hardware security modules</li>
     </ul>
   </div>
   
-  <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-    <h4 className="font-semibold text-blue-900 dark:text-blue-200 mb-2 flex items-center gap-2">
-      <Shield className="h-4 w-4" />
+  <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+    <h4 class="font-semibold text-blue-900 dark:text-blue-200 mb-2 flex items-center gap-2">
+      <Shield class="h-4 w-4" ></Shield>
       Encryption in Transit
     </h4>
-    <ul className="text-sm text-blue-800 dark:text-blue-300 space-y-1">
+    <ul class="text-sm text-blue-800 dark:text-blue-300 space-y-1">
       <li>• TLS 1.3 everywhere</li>
       <li>• Certificate pinning</li>
       <li>• Perfect forward secrecy</li>
     </ul>
   </div>
   
-  <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
-    <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2 flex items-center gap-2">
-      <Users className="h-4 w-4" />
+  <div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+    <h4 class="font-semibold text-green-900 dark:text-green-200 mb-2 flex items-center gap-2">
+      <Users class="h-4 w-4" ></Users>
       Access Control
     </h4>
-    <ul className="text-sm text-green-800 dark:text-green-300 space-y-1">
+    <ul class="text-sm text-green-800 dark:text-green-300 space-y-1">
       <li>• Zero trust principles</li>
       <li>• Attribute-based access</li>
       <li>• Audit everything</li>
@@ -243,9 +243,9 @@ Implement comprehensive validation at every entry point:
 
 Track every data transformation:
 
-<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
-  <div className="text-gray-400 mb-3">📊 Data Lineage Tracking:</div>
-  <div className="space-y-2">
+<div class="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+  <div class="text-gray-400 mb-3">📊 Data Lineage Tracking:</div>
+  <div class="space-y-2">
     <div>{</div>
     <div>  "data_id": "batch_20240202_001",</div>
     <div>  "source": "sensor_cluster_west",</div>
@@ -258,20 +258,20 @@ Track every data transformation:
     <div>  "integrity_check": "PASS",</div>
     <div>  "signed_by": "data_pipeline_service"</div>
     <div>}</div>
-    <div className="text-blue-400 mt-4">// Every transformation tracked and signed</div>
+    <div class="text-blue-400 mt-4">// Every transformation tracked and signed</div>
   </div>
 </div>
 
-<br />
+<br>
 
 ## Hardening Training Infrastructure
 
-<div className="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <Brain className="h-6 w-6 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" />
+<div class="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <Brain class="h-6 w-6 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" ></Brain>
     <div>
-      <h3 className="text-lg font-bold text-purple-900 dark:text-purple-200 mb-3">Training Security Architecture</h3>
-      <p className="text-purple-800 dark:text-purple-300 leading-relaxed">
+      <h3 class="text-lg font-bold text-purple-900 dark:text-purple-200 mb-3">Training Security Architecture</h3>
+      <p class="text-purple-800 dark:text-purple-300 leading-relaxed">
         Training environments are high-value targets: they have access to sensitive data, consume expensive compute resources, and produce valuable model artifacts. <strong>A compromised training environment can poison every model it produces</strong>.
       </p>
     </div>
@@ -282,46 +282,46 @@ Track every data transformation:
 
 Implement strict isolation between training jobs:
 
-<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-    <h4 className="font-bold text-lg mb-4 text-blue-900 dark:text-blue-200">Container Security</h4>
-    <ul className="space-y-3 text-sm text-blue-800 dark:text-blue-300">
-      <li className="flex items-start gap-2">
-        <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+  <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
+    <h4 class="font-bold text-lg mb-4 text-blue-900 dark:text-blue-200">Container Security</h4>
+    <ul class="space-y-3 text-sm text-blue-800 dark:text-blue-300">
+      <li class="flex items-start gap-2">
+        <CheckCircle class="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" ></CheckCircle>
         <span>Minimal base images (distroless)</span>
       </li>
-      <li className="flex items-start gap-2">
-        <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+      <li class="flex items-start gap-2">
+        <CheckCircle class="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" ></CheckCircle>
         <span>Read-only root filesystems</span>
       </li>
-      <li className="flex items-start gap-2">
-        <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+      <li class="flex items-start gap-2">
+        <CheckCircle class="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" ></CheckCircle>
         <span>No privileged containers</span>
       </li>
-      <li className="flex items-start gap-2">
-        <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+      <li class="flex items-start gap-2">
+        <CheckCircle class="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" ></CheckCircle>
         <span>Network policy enforcement</span>
       </li>
     </ul>
   </div>
   
-  <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-6">
-    <h4 className="font-bold text-lg mb-4 text-purple-900 dark:text-purple-200">Resource Isolation</h4>
-    <ul className="space-y-3 text-sm text-purple-800 dark:text-purple-300">
-      <li className="flex items-start gap-2">
-        <ArrowRight className="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" />
+  <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-6">
+    <h4 class="font-bold text-lg mb-4 text-purple-900 dark:text-purple-200">Resource Isolation</h4>
+    <ul class="space-y-3 text-sm text-purple-800 dark:text-purple-300">
+      <li class="flex items-start gap-2">
+        <ArrowRight class="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" ></ArrowRight>
         <span>GPU/TPU allocation limits</span>
       </li>
-      <li className="flex items-start gap-2">
-        <ArrowRight className="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" />
+      <li class="flex items-start gap-2">
+        <ArrowRight class="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" ></ArrowRight>
         <span>Memory and CPU quotas</span>
       </li>
-      <li className="flex items-start gap-2">
-        <ArrowRight className="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" />
+      <li class="flex items-start gap-2">
+        <ArrowRight class="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" ></ArrowRight>
         <span>Storage access restrictions</span>
       </li>
-      <li className="flex items-start gap-2">
-        <ArrowRight className="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" />
+      <li class="flex items-start gap-2">
+        <ArrowRight class="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" ></ArrowRight>
         <span>Network bandwidth limits</span>
       </li>
     </ul>
@@ -332,20 +332,20 @@ Implement strict isolation between training jobs:
 
 Secure your ML dependencies:
 
-<div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <AlertTriangle className="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 flex-shrink-0" />
+<div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <AlertTriangle class="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 flex-shrink-0" ></AlertTriangle>
     <div>
-      <h3 className="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">Dependency Management</h3>
-      <div className="bg-gray-900 text-green-400 p-4 rounded font-mono text-sm">
-        <div className="space-y-1">
-          <div className="text-gray-400"># requirements-locked.txt with hashes</div>
+      <h3 class="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">Dependency Management</h3>
+      <div class="bg-gray-900 text-green-400 p-4 rounded font-mono text-sm">
+        <div class="space-y-1">
+          <div class="text-gray-400"># requirements-locked.txt with hashes</div>
           <div>tensorflow==2.14.0 \</div>
           <div>  --hash=sha256:abcd1234...</div>
           <div>torch==2.1.0 \</div>
           <div>  --hash=sha256:efgh5678...</div>
           <div></div>
-          <div className="text-gray-400"># Vulnerability scanning in CI/CD</div>
+          <div class="text-gray-400"># Vulnerability scanning in CI/CD</div>
           <div>safety check --policy-file .safety-policy.yml</div>
           <div>trivy fs --severity HIGH,CRITICAL .</div>
         </div>
@@ -358,9 +358,9 @@ Secure your ML dependencies:
 
 Implement comprehensive security controls for training jobs:
 
-<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
-  <div className="text-gray-400 mb-3">🔒 Secure Training Job Configuration:</div>
-  <div className="space-y-2">
+<div class="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+  <div class="text-gray-400 mb-3">🔒 Secure Training Job Configuration:</div>
+  <div class="space-y-2">
     <div>apiVersion: batch/v1</div>
     <div>kind: Job</div>
     <div>metadata:</div>
@@ -381,20 +381,20 @@ Implement comprehensive security controls for training jobs:
     <div>          readOnlyRootFilesystem: true</div>
     <div>          capabilities:</div>
     <div>            drop: ["ALL"]</div>
-    <div className="text-blue-400 mt-4">// Defense in depth at every level</div>
+    <div class="text-blue-400 mt-4">// Defense in depth at every level</div>
   </div>
 </div>
 
-<br />
+<br>
 
 ## Model Registry and Artifact Security
 
-<div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <Database className="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
+<div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <Database class="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" ></Database>
     <div>
-      <h3 className="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Protecting Model Assets</h3>
-      <p className="text-blue-800 dark:text-blue-300">
+      <h3 class="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Protecting Model Assets</h3>
+      <p class="text-blue-800 dark:text-blue-300">
         Trained models are valuable intellectual property and potential attack vectors. Model registries must implement bank-grade security to protect these assets from theft, tampering, and unauthorized access.
       </p>
     </div>
@@ -405,12 +405,12 @@ Implement comprehensive security controls for training jobs:
 
 Implement cryptographic signing for all models:
 
-<div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
+<div class="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <CheckCircle class="h-6 w-6 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" ></CheckCircle>
     <div>
-      <h3 className="text-lg font-bold text-green-900 dark:text-green-200 mb-3">Model Integrity Framework</h3>
-      <div className="space-y-3 text-green-800 dark:text-green-300">
+      <h3 class="text-lg font-bold text-green-900 dark:text-green-200 mb-3">Model Integrity Framework</h3>
+      <div class="space-y-3 text-green-800 dark:text-green-300">
         <p><strong>1. Generate Model Fingerprint:</strong> SHA-256 hash of model weights + metadata</p>
         <p><strong>2. Sign with Private Key:</strong> RSA-4096 or Ed25519 signature</p>
         <p><strong>3. Timestamp with TSA:</strong> RFC 3161 compliant timestamp</p>
@@ -425,9 +425,9 @@ Implement cryptographic signing for all models:
 
 Fine-grained permissions for model artifacts:
 
-<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
-  <div className="text-gray-400 mb-3">🔐 Model Access Control Matrix:</div>
-  <div className="space-y-2">
+<div class="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+  <div class="text-gray-400 mb-3">🔐 Model Access Control Matrix:</div>
+  <div class="space-y-2">
     <div>┌─────────────┬──────┬──────┬────────┬────────┐</div>
     <div>│    Role     │ Read │Write │ Delete │ Deploy │</div>
     <div>├─────────────┼──────┼──────┼────────┼────────┤</div>
@@ -437,20 +437,20 @@ Fine-grained permissions for model artifacts:
     <div>│ Prod System │  ✓   │  ✗   │   ✗    │   ✗    │</div>
     <div>│ Admin       │  ✓   │  ✗   │   ✓    │   ✗    │</div>
     <div>└─────────────┴──────┴──────┴────────┴────────┘</div>
-    <div className="text-yellow-400 mt-4">// Principle of least privilege enforced</div>
+    <div class="text-yellow-400 mt-4">// Principle of least privilege enforced</div>
   </div>
 </div>
 
-<br />
+<br>
 
 ## Securing Model Serving Infrastructure
 
-<div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <Zap className="h-6 w-6 text-red-600 dark:text-red-400 mt-1 flex-shrink-0" />
+<div class="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <Zap class="h-6 w-6 text-red-600 dark:text-red-400 mt-1 flex-shrink-0" ></Zap>
     <div>
-      <h3 className="text-lg font-bold text-red-900 dark:text-red-200 mb-3">Production: Where Security Matters Most</h3>
-      <p className="text-red-800 dark:text-red-300 leading-relaxed">
+      <h3 class="text-lg font-bold text-red-900 dark:text-red-200 mb-3">Production: Where Security Matters Most</h3>
+      <p class="text-red-800 dark:text-red-300 leading-relaxed">
         Production serving infrastructure is where security failures have immediate impact. <strong>A compromised inference endpoint can manipulate millions of predictions, cause financial losses, or expose sensitive data in real-time</strong>.
       </p>
     </div>
@@ -461,13 +461,13 @@ Fine-grained permissions for model artifacts:
 
 Layer multiple security controls:
 
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-  <div className="bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
-    <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2 flex items-center gap-2">
-      <Shield className="h-4 w-4" />
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+  <div class="bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+    <h4 class="font-semibold text-red-900 dark:text-red-200 mb-2 flex items-center gap-2">
+      <Shield class="h-4 w-4" ></Shield>
       Edge Security
     </h4>
-    <ul className="text-xs text-red-800 dark:text-red-300 space-y-1">
+    <ul class="text-xs text-red-800 dark:text-red-300 space-y-1">
       <li>• WAF rules</li>
       <li>• DDoS protection</li>
       <li>• Rate limiting</li>
@@ -475,12 +475,12 @@ Layer multiple security controls:
     </ul>
   </div>
   
-  <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-4">
-    <h4 className="font-semibold text-orange-900 dark:text-orange-200 mb-2 flex items-center gap-2">
-      <Lock className="h-4 w-4" />
+  <div class="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-4">
+    <h4 class="font-semibold text-orange-900 dark:text-orange-200 mb-2 flex items-center gap-2">
+      <Lock class="h-4 w-4" ></Lock>
       API Security
     </h4>
-    <ul className="text-xs text-orange-800 dark:text-orange-300 space-y-1">
+    <ul class="text-xs text-orange-800 dark:text-orange-300 space-y-1">
       <li>• OAuth 2.0/JWT</li>
       <li>• API key rotation</li>
       <li>• Request signing</li>
@@ -488,12 +488,12 @@ Layer multiple security controls:
     </ul>
   </div>
   
-  <div className="bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
-    <h4 className="font-semibold text-yellow-900 dark:text-yellow-200 mb-2 flex items-center gap-2">
-      <Cpu className="h-4 w-4" />
+  <div class="bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
+    <h4 class="font-semibold text-yellow-900 dark:text-yellow-200 mb-2 flex items-center gap-2">
+      <Cpu class="h-4 w-4" ></Cpu>
       Runtime Security
     </h4>
-    <ul className="text-xs text-yellow-800 dark:text-yellow-300 space-y-1">
+    <ul class="text-xs text-yellow-800 dark:text-yellow-300 space-y-1">
       <li>• Sandboxing</li>
       <li>• Memory limits</li>
       <li>• Timeout controls</li>
@@ -501,12 +501,12 @@ Layer multiple security controls:
     </ul>
   </div>
   
-  <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
-    <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2 flex items-center gap-2">
-      <Eye className="h-4 w-4" />
+  <div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+    <h4 class="font-semibold text-green-900 dark:text-green-200 mb-2 flex items-center gap-2">
+      <Eye class="h-4 w-4" ></Eye>
       Monitoring
     </h4>
-    <ul className="text-xs text-green-800 dark:text-green-300 space-y-1">
+    <ul class="text-xs text-green-800 dark:text-green-300 space-y-1">
       <li>• Anomaly detection</li>
       <li>• Performance metrics</li>
       <li>• Security events</li>
@@ -519,9 +519,9 @@ Layer multiple security controls:
 
 Implement security at every stage:
 
-<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
-  <div className="text-gray-400 mb-3">🚀 Secure Inference Flow:</div>
-  <div className="space-y-2">
+<div class="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+  <div class="text-gray-400 mb-3">🚀 Secure Inference Flow:</div>
+  <div class="space-y-2">
     <div>Request → [TLS Termination] → [Auth Check] → [Rate Limit]</div>
     <div>        ↓</div>
     <div>[Input Validation] → [Sanitization] → [Size Check]</div>
@@ -529,18 +529,18 @@ Implement security at every stage:
     <div>[Model Inference] → [Output Validation] → [PII Scrubbing]</div>
     <div>        ↓</div>
     <div>[Response Signing] → [Encryption] → [Audit Log]</div>
-    <div className="text-blue-400 mt-4">// Security checks at every hop</div>
+    <div class="text-blue-400 mt-4">// Security checks at every hop</div>
   </div>
 </div>
 
 ### Advanced Serving Security
 
-<div className="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <Brain className="h-6 w-6 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" />
+<div class="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <Brain class="h-6 w-6 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" ></Brain>
     <div>
-      <h3 className="text-lg font-bold text-purple-900 dark:text-purple-200 mb-3">Next-Generation Serving Security</h3>
-      <div className="space-y-3 text-purple-800 dark:text-purple-300">
+      <h3 class="text-lg font-bold text-purple-900 dark:text-purple-200 mb-3">Next-Generation Serving Security</h3>
+      <div class="space-y-3 text-purple-800 dark:text-purple-300">
         <p><strong>Confidential Computing:</strong> Intel SGX/AMD SEV for inference isolation</p>
         <p><strong>Homomorphic Inference:</strong> Compute on encrypted inputs</p>
         <p><strong>Differential Privacy:</strong> Add noise to protect individual queries</p>
@@ -551,16 +551,16 @@ Implement security at every stage:
   </div>
 </div>
 
-<br />
+<br>
 
 ## Edge Deployment Security
 
-<div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <AlertTriangle className="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 flex-shrink-0" />
+<div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <AlertTriangle class="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 flex-shrink-0" ></AlertTriangle>
     <div>
-      <h3 className="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">The Edge Challenge</h3>
-      <p className="text-yellow-800 dark:text-yellow-300 leading-relaxed">
+      <h3 class="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">The Edge Challenge</h3>
+      <p class="text-yellow-800 dark:text-yellow-300 leading-relaxed">
         Edge AI deployments face unique security challenges: physical access risks, limited computational resources for security, and intermittent connectivity. <strong>Every edge device is a potential entry point into your AI infrastructure</strong>.
       </p>
     </div>
@@ -569,46 +569,46 @@ Implement security at every stage:
 
 ### Edge Security Framework
 
-<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-    <h4 className="font-bold text-lg mb-4 text-blue-900 dark:text-blue-200">Device Security</h4>
-    <ul className="space-y-3 text-sm text-blue-800 dark:text-blue-300">
-      <li className="flex items-start gap-2">
-        <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+  <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
+    <h4 class="font-bold text-lg mb-4 text-blue-900 dark:text-blue-200">Device Security</h4>
+    <ul class="space-y-3 text-sm text-blue-800 dark:text-blue-300">
+      <li class="flex items-start gap-2">
+        <CheckCircle class="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" ></CheckCircle>
         <span>Secure boot with attestation</span>
       </li>
-      <li className="flex items-start gap-2">
-        <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+      <li class="flex items-start gap-2">
+        <CheckCircle class="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" ></CheckCircle>
         <span>Hardware security modules</span>
       </li>
-      <li className="flex items-start gap-2">
-        <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+      <li class="flex items-start gap-2">
+        <CheckCircle class="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" ></CheckCircle>
         <span>Tamper-evident enclosures</span>
       </li>
-      <li className="flex items-start gap-2">
-        <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+      <li class="flex items-start gap-2">
+        <CheckCircle class="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" ></CheckCircle>
         <span>Remote attestation</span>
       </li>
     </ul>
   </div>
   
-  <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
-    <h4 className="font-bold text-lg mb-4 text-green-900 dark:text-green-200">Model Protection</h4>
-    <ul className="space-y-3 text-sm text-green-800 dark:text-green-300">
-      <li className="flex items-start gap-2">
-        <ArrowRight className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+  <div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
+    <h4 class="font-bold text-lg mb-4 text-green-900 dark:text-green-200">Model Protection</h4>
+    <ul class="space-y-3 text-sm text-green-800 dark:text-green-300">
+      <li class="flex items-start gap-2">
+        <ArrowRight class="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" ></ArrowRight>
         <span>Model encryption at rest</span>
       </li>
-      <li className="flex items-start gap-2">
-        <ArrowRight className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+      <li class="flex items-start gap-2">
+        <ArrowRight class="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" ></ArrowRight>
         <span>Obfuscated model formats</span>
       </li>
-      <li className="flex items-start gap-2">
-        <ArrowRight className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+      <li class="flex items-start gap-2">
+        <ArrowRight class="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" ></ArrowRight>
         <span>Runtime model protection</span>
       </li>
-      <li className="flex items-start gap-2">
-        <ArrowRight className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+      <li class="flex items-start gap-2">
+        <ArrowRight class="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" ></ArrowRight>
         <span>Anti-extraction measures</span>
       </li>
     </ul>
@@ -617,28 +617,28 @@ Implement security at every stage:
 
 ### Edge-Specific Threats and Mitigations
 
-<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
-  <div className="text-gray-400 mb-3">⚡ Edge Threat Matrix:</div>
-  <div className="space-y-2">
+<div class="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+  <div class="text-gray-400 mb-3">⚡ Edge Threat Matrix:</div>
+  <div class="space-y-2">
     <div>Physical Access    → Secure enclaves, tamper detection</div>
     <div>Model Extraction   → Watermarking, query limits</div>
     <div>Side Channels      → Noise injection, timing randomization</div>
     <div>Offline Attacks    → Periodic re-attestation required</div>
     <div>Supply Chain       → Signed firmware, secure updates</div>
-    <div className="text-red-400 mt-4">// Edge = Assume compromised environment</div>
+    <div class="text-red-400 mt-4">// Edge = Assume compromised environment</div>
   </div>
 </div>
 
-<br />
+<br>
 
 ## Monitoring and Incident Response
 
-<div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <Eye className="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
+<div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <Eye class="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" ></Eye>
     <div>
-      <h3 className="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Continuous Security Monitoring</h3>
-      <p className="text-blue-800 dark:text-blue-300">
+      <h3 class="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Continuous Security Monitoring</h3>
+      <p class="text-blue-800 dark:text-blue-300">
         AI infrastructure security isn't a one-time setup—it requires continuous monitoring, rapid detection, and automated response. Modern AI systems generate massive telemetry that must be analyzed in real-time for security threats.
       </p>
     </div>
@@ -647,15 +647,15 @@ Implement security at every stage:
 
 ### Multi-Layer Monitoring Strategy
 
-<div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <Layers className="h-6 w-6 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" />
+<div class="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <Layers class="h-6 w-6 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" ></Layers>
     <div>
-      <h3 className="text-lg font-bold text-purple-900 dark:text-purple-200 mb-3">Comprehensive Monitoring Stack</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-purple-800 dark:text-purple-300">
+      <h3 class="text-lg font-bold text-purple-900 dark:text-purple-200 mb-3">Comprehensive Monitoring Stack</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-purple-800 dark:text-purple-300">
         <div>
           <strong>Infrastructure Monitoring:</strong>
-          <ul className="mt-2 space-y-1 text-sm">
+          <ul class="mt-2 space-y-1 text-sm">
             <li>• Resource utilization anomalies</li>
             <li>• Network traffic patterns</li>
             <li>• Storage access patterns</li>
@@ -664,7 +664,7 @@ Implement security at every stage:
         </div>
         <div>
           <strong>Application Monitoring:</strong>
-          <ul className="mt-2 space-y-1 text-sm">
+          <ul class="mt-2 space-y-1 text-sm">
             <li>• Model performance drift</li>
             <li>• Inference latency spikes</li>
             <li>• Error rate changes</li>
@@ -678,9 +678,9 @@ Implement security at every stage:
 
 ### Security Information and Event Management (SIEM)
 
-<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
-  <div className="text-gray-400 mb-3">📊 AI-Specific SIEM Rules:</div>
-  <div className="space-y-2">
+<div class="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+  <div class="text-gray-400 mb-3">📊 AI-Specific SIEM Rules:</div>
+  <div class="space-y-2">
     <div>rule "suspicious_model_access" {</div>
     <div>  condition:</div>
     <div>    event.type == "model_download" AND</div>
@@ -691,18 +691,18 @@ Implement security at every stage:
     <div>    block_user(user.id)</div>
     <div>    snapshot_activity(user.session)</div>
     <div>}</div>
-    <div className="text-yellow-400 mt-4">// Custom rules for AI-specific threats</div>
+    <div class="text-yellow-400 mt-4">// Custom rules for AI-specific threats</div>
   </div>
 </div>
 
 ### Incident Response Playbook
 
-<div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <AlertCircle className="h-6 w-6 text-red-600 dark:text-red-400 mt-1 flex-shrink-0" />
+<div class="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <AlertCircle class="h-6 w-6 text-red-600 dark:text-red-400 mt-1 flex-shrink-0" ></AlertCircle>
     <div>
-      <h3 className="text-lg font-bold text-red-900 dark:text-red-200 mb-3">AI Infrastructure Incident Response</h3>
-      <div className="space-y-3 text-red-800 dark:text-red-300">
+      <h3 class="text-lg font-bold text-red-900 dark:text-red-200 mb-3">AI Infrastructure Incident Response</h3>
+      <div class="space-y-3 text-red-800 dark:text-red-300">
         <p><strong>T+0min:</strong> Automated detection and initial containment</p>
         <p><strong>T+5min:</strong> Human verification and impact assessment</p>
         <p><strong>T+15min:</strong> Isolation of affected components</p>
@@ -714,16 +714,16 @@ Implement security at every stage:
   </div>
 </div>
 
-<br />
+<br>
 
 ## Best Practices and Implementation Guide
 
-<div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
+<div class="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <CheckCircle class="h-6 w-6 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" ></CheckCircle>
     <div>
-      <h3 className="text-lg font-bold text-green-900 dark:text-green-200 mb-3">Implementation Roadmap</h3>
-      <p className="text-green-800 dark:text-green-300 leading-relaxed">
+      <h3 class="text-lg font-bold text-green-900 dark:text-green-200 mb-3">Implementation Roadmap</h3>
+      <p class="text-green-800 dark:text-green-300 leading-relaxed">
         Securing AI infrastructure is a journey, not a destination. <strong>Start with the highest-risk components and progressively enhance security across all layers</strong>.
       </p>
     </div>
@@ -732,9 +732,9 @@ Implement security at every stage:
 
 ### 90-Day Security Sprint
 
-<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
-  <div className="text-gray-400 mb-3">🚀 AI Infrastructure Security Roadmap:</div>
-  <div className="space-y-2">
+<div class="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+  <div class="text-gray-400 mb-3">🚀 AI Infrastructure Security Roadmap:</div>
+  <div class="space-y-2">
     <div>Days 1-30:   Foundation</div>
     <div>├─ Inventory all AI infrastructure components</div>
     <div>├─ Implement basic access controls</div>
@@ -752,7 +752,7 @@ Implement security at every stage:
     <div>├─ Deploy advanced threat detection</div>
     <div>├─ Establish security automation</div>
     <div>└─ Conduct red team exercises</div>
-    <div className="text-blue-400 mt-4">// Iterative improvement continues forever</div>
+    <div class="text-blue-400 mt-4">// Iterative improvement continues forever</div>
   </div>
 </div>
 
@@ -760,38 +760,38 @@ Implement security at every stage:
 
 Track your security posture:
 
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-  <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 text-center">
-    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">< 5min</div>
-    <h4 className="font-semibold text-blue-900 dark:text-blue-200 mt-2">Detection Time</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+  <div class="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 text-center">
+    <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">< 5min</div>
+    <h4 class="font-semibold text-blue-900 dark:text-blue-200 mt-2">Detection Time</h4>
   </div>
   
-  <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 text-center">
-    <div className="text-2xl font-bold text-green-600 dark:text-green-400">100%</div>
-    <h4 className="font-semibold text-green-900 dark:text-green-200 mt-2">Encryption Coverage</h4>
+  <div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 text-center">
+    <div class="text-2xl font-bold text-green-600 dark:text-green-400">100%</div>
+    <h4 class="font-semibold text-green-900 dark:text-green-200 mt-2">Encryption Coverage</h4>
   </div>
   
-  <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-4 text-center">
-    <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">< 1hr</div>
-    <h4 className="font-semibold text-purple-900 dark:text-purple-200 mt-2">Incident Response</h4>
+  <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-4 text-center">
+    <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">< 1hr</div>
+    <h4 class="font-semibold text-purple-900 dark:text-purple-200 mt-2">Incident Response</h4>
   </div>
   
-  <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-4 text-center">
-    <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">0</div>
-    <h4 className="font-semibold text-orange-900 dark:text-orange-200 mt-2">Unpatched Vulns</h4>
+  <div class="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-4 text-center">
+    <div class="text-2xl font-bold text-orange-600 dark:text-orange-400">0</div>
+    <h4 class="font-semibold text-orange-900 dark:text-orange-200 mt-2">Unpatched Vulns</h4>
   </div>
 </div>
 
-<br />
+<br>
 
 ## Conclusion: Infrastructure as the Foundation
 
-<div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
-  <div className="flex items-start gap-3">
-    <Shield className="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
+<div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
+  <div class="flex items-start gap-3">
+    <Shield class="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" ></Shield>
     <div>
-      <h3 className="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Building Unbreakable AI Infrastructure</h3>
-      <p className="text-blue-800 dark:text-blue-300 leading-relaxed">
+      <h3 class="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Building Unbreakable AI Infrastructure</h3>
+      <p class="text-blue-800 dark:text-blue-300 leading-relaxed">
         Secure AI infrastructure isn't optional—it's the foundation upon which all AI security rests. <strong>Organizations that master infrastructure security can deploy AI confidently at scale, while those that don't remain vulnerable to catastrophic breaches</strong>.
       </p>
     </div>
@@ -810,19 +810,19 @@ Key takeaways for securing AI infrastructure:
 
 At perfecXion.ai, we've built our platform understanding that infrastructure security is the bedrock of AI security. Our solutions provide comprehensive protection across the entire AI lifecycle, from securing training pipelines to protecting edge deployments. Because in the age of AI, infrastructure security isn't just about protecting systems—it's about protecting the future of your business.
 
-<div className="mt-12 p-8 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-lg text-center">
-  <h3 className="text-2xl font-bold mb-4">Secure Your AI Infrastructure Today</h3>
-  <p className="text-lg mb-6 max-w-2xl mx-auto">
+<div class="mt-12 p-8 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-lg text-center">
+  <h3 class="text-2xl font-bold mb-4">Secure Your AI Infrastructure Today</h3>
+  <p class="text-lg mb-6 max-w-2xl mx-auto">
     Don't let infrastructure vulnerabilities undermine your AI initiatives. Discover how perfecXion.ai can help you build bulletproof AI infrastructure from the ground up.
   </p>
-  <div className="flex gap-4 justify-center">
-    <a href="/products" className="inline-flex items-center px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+  <div class="flex gap-4 justify-center">
+    <a href="/products" class="inline-flex items-center px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
       Explore Our Solutions
-      <ArrowRight className="ml-2 h-4 w-4" />
+      <ArrowRight class="ml-2 h-4 w-4" ></ArrowRight>
     </a>
-    <a href="/infrastructure-assessment" className="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+    <a href="/infrastructure-assessment" class="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
       Get Infrastructure Assessment
-      <ArrowRight className="ml-2 h-4 w-4" />
+      <ArrowRight class="ml-2 h-4 w-4" ></ArrowRight>
     </a>
   </div>
 </div>

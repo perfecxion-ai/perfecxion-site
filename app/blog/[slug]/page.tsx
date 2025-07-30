@@ -23,7 +23,9 @@ import {
   Target,
   Brain,
   Layers,
-  ShoppingCart
+  ShoppingCart,
+  Building,
+  FileText
 } from 'lucide-react';
 
 // MDX components that can be used in the content
@@ -46,6 +48,8 @@ const mdxComponents = {
   Brain,
   Layers,
   ShoppingCart,
+  Building,
+  FileText,
   // Add any other components you want to use in MDX
 };
 
