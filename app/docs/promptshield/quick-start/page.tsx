@@ -58,8 +58,8 @@ export default function PromptShieldQuickStartPage() {
                             <span className="mr-2">1. 🎮</span>Try the Online Playground
                         </h2>
                         <p className="mb-4 text-gray-600 dark:text-gray-300">The fastest way to understand PromptShield is to try our interactive playground:</p>
-                        <a href="https://playground.promptshield.ai" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-primary-700 dark:text-primary-300 font-semibold hover:underline mb-4">
-                            playground.promptshield.ai <ExternalLink className="ml-2 h-4 w-4" />
+                        <a href="https://playground.perfecxion.ai" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-primary-700 dark:text-primary-300 font-semibold hover:underline mb-4">
+                            playground.perfecxion.ai <ExternalLink className="ml-2 h-4 w-4" />
                         </a>
                         <div className="bg-gray-900 text-gray-100 rounded-lg p-4 font-mono text-sm mt-4">
                             <div className="mb-2 flex items-center"><CheckCircle className="h-4 w-4 text-green-400 mr-2" />✅ Safe: "What is the capital of France?"</div>
@@ -73,7 +73,7 @@ export default function PromptShieldQuickStartPage() {
                             <span className="mr-2">2. 🔑</span>Get Your API Key
                         </h2>
                         <ol className="list-decimal list-inside space-y-2 text-gray-600 dark:text-gray-300">
-                            <li>Sign up at <a href="https://promptshield.ai" target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-400 hover:underline">promptshield.ai</a></li>
+                            <li>Sign up at <a href="https://perfecxion.ai" target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-400 hover:underline">perfecxion.ai</a></li>
                             <li>Navigate to your dashboard</li>
                             <li>Generate a new API key</li>
                             <li>Keep it secure - treat it like a password!</li>

@@ -35,7 +35,7 @@ export default function PromptShieldAPI() {
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-10">
                     <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Base URL</h3>
                     <code className="text-sm font-mono text-gray-700 dark:text-gray-300">
-                        https://api.promptshield.ai/v1
+                        https://api.perfecxion.ai/v1
                     </code>
                 </div>
 
@@ -53,7 +53,7 @@ export default function PromptShieldAPI() {
 X-API-Key: your-api-key
 
 # Example with curl
-curl -X POST "https://api.promptshield.ai/v1/detect" \\
+curl -X POST "https://api.perfecxion.ai/v1/detect" \\
   -H "X-API-Key: your-api-key" \\
   -H "Content-Type: application/json" \\
   -d '{"text": "Your input text here"}'`}</pre>
@@ -179,7 +179,7 @@ curl -X POST "https://api.promptshield.ai/v1/detect" \\
                         <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
                             <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`// Server-Sent Events (SSE) endpoint
 const eventSource = new EventSource(
-  'https://api.promptshield.ai/v1/detect/stream',
+  'https://api.perfecxion.ai/v1/detect/stream',
   {
     headers: {
       'X-API-Key': 'your-api-key'
@@ -332,7 +332,7 @@ eventSource.onmessage = (event) => {
                     </p>
                     <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto mb-6">
                         <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`// JavaScript WebSocket example
-const ws = new WebSocket('wss://api.promptshield.ai/v1/ws');
+const ws = new WebSocket('wss://api.perfecxion.ai/v1/ws');
 
 ws.on('open', () => {
   // Authenticate

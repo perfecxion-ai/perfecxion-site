@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { ChevronRight, Rocket, Shield, Settings, Search, AlertCircle, CheckCircle, ArrowLeft, Zap, Clock, Target, Code, Terminal, FileText, Download, Play } from 'lucide-react'
+import CodeBlock from '@/components/CodeBlock'
 
 export const metadata: Metadata = {
     title: 'Quick Start Guide - Learn AI Security - perfecXion.ai',
@@ -214,9 +215,9 @@ export default function QuickStartPage() {
                             Implement input validation to prevent the most common attacks. This simple step blocks 60% of 
                             typical AI attacks with minimal effort.
                         </p>
-                        <div className="bg-blue-100 dark:bg-blue-900/40 p-4 rounded mb-4">
+                        <div className="mb-4">
                             <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Python Implementation:</h4>
-                            <pre className="text-sm text-blue-800 dark:text-blue-200 overflow-x-auto">
+                            <CodeBlock language="python">
 {`import re
 from typing import Any, Dict
 
@@ -253,7 +254,7 @@ if result["valid"]:
     process_ai_request(result["sanitized_input"])
 else:
     log_security_event(result["reason"])`}
-                            </pre>
+                            </CodeBlock>
                         </div>
                         <div className="text-blue-800 dark:text-blue-200 text-sm">
                             <strong>Impact:</strong> Blocks injection attacks, prevents system manipulation, reduces false positives
@@ -269,9 +270,9 @@ else:
                             Prevent model extraction and denial-of-service attacks by implementing intelligent rate limiting 
                             that adapts to usage patterns.
                         </p>
-                        <div className="bg-green-100 dark:bg-green-900/40 p-4 rounded mb-4">
+                        <div className="mb-4">
                             <h4 className="font-semibold text-green-900 dark:text-green-100 mb-2">FastAPI Implementation:</h4>
-                            <pre className="text-sm text-green-800 dark:text-green-200 overflow-x-auto">
+                            <CodeBlock language="python">
 {`from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import time
@@ -329,7 +330,7 @@ async def rate_limit_middleware(request: Request, call_next):
 async def predict(request: Request):
     # Your AI model endpoint
     return {"status": "success"}`}
-                            </pre>
+                            </CodeBlock>
                         </div>
                         <div className="text-green-800 dark:text-green-200 text-sm">
                             <strong>Impact:</strong> Prevents model extraction, blocks DoS attacks, maintains service availability

@@ -302,7 +302,7 @@ volumes:
                             <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Helm Chart Installation</h3>
                             <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
                                 <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# Add Helm repository
-helm repo add promptshield https://charts.promptshield.ai
+helm repo add promptshield https://charts.perfecxion.ai
 helm repo update
 
 # Install PromptShield
@@ -379,7 +379,7 @@ monitoring:
                             <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
                                 <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# .env file
 PROMPTSHIELD_API_KEY=your-api-key-here
-PROMPTSHIELD_API_URL=https://api.promptshield.ai/v1
+PROMPTSHIELD_API_URL=https://api.perfecxion.ai/v1
 PROMPTSHIELD_LOG_LEVEL=info
 PROMPTSHIELD_CACHE_ENABLED=true
 PROMPTSHIELD_CACHE_TTL=3600
@@ -395,7 +395,7 @@ PROMPTSHIELD_BATCH_SIZE=100`}</pre>
                                 <pre className="text-sm text-gray-900 dark:text-gray-100 font-mono whitespace-pre">{`# promptshield.config.yaml
 api:
   key: \${PROMPTSHIELD_API_KEY}
-  endpoint: https://api.promptshield.ai/v1
+  endpoint: https://api.perfecxion.ai/v1
   timeout: 5s
   retries: 3
 

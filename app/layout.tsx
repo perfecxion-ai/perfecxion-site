@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'perfecXion.ai Team' }],
   creator: 'perfecXion.ai',
   publisher: 'perfecXion.ai',
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
   openGraph: {
     type: 'website',
     locale: 'en_US',

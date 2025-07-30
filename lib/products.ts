@@ -346,7 +346,7 @@ const { detect, isLoading, isInjection } = usePromptShield({
   apiKey: 'your-api-key',
   debounceMs: 500
 });`,
-      api: `curl -X POST "https://api.promptshield.ai/v1/detect" \\
+      api: `curl -X POST "https://api.perfecxion.ai/v1/detect" \\
   -H "X-API-Key: your-api-key" \\
   -H "Content-Type: application/json" \\
   -d '{"text": "Ignore all previous instructions"}'`

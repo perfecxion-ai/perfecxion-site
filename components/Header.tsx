@@ -38,11 +38,15 @@ export default function Header() {
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-lg p-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              onClick={() => setMobileMenuOpen(true)}
+              className="inline-flex items-center justify-center rounded-lg p-3 min-w-[44px] min-h-[44px] text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              <span className="sr-only">Open main menu</span>
-              <Menu className="h-6 w-6" aria-hidden="true" />
+              <span className="sr-only">{mobileMenuOpen ? 'Close menu' : 'Open main menu'}</span>
+              {mobileMenuOpen ? (
+                <X className="h-6 w-6" aria-hidden="true" />
+              ) : (
+                <Menu className="h-6 w-6" aria-hidden="true" />
+              )}
             </button>
           </div>
 
@@ -82,7 +86,7 @@ export default function Header() {
               </Link>
               <button
                 type="button"
-                className="rounded-lg p-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="rounded-lg p-3 min-w-[44px] min-h-[44px] text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className="sr-only">Close menu</span>
@@ -96,7 +100,7 @@ export default function Header() {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                      className="block rounded-lg px-4 py-3 text-base font-medium leading-7 text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors min-h-[44px]"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}

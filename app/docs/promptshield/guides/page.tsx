@@ -523,7 +523,7 @@ except Exception as e:
                         <a href="https://github.com/promptshield/examples" className="text-primary-600 dark:text-primary-400 hover:underline">
                             GitHub Examples Repository →
                         </a>
-                        <a href="https://promptshield.ai/blog" className="text-primary-600 dark:text-primary-400 hover:underline">
+                        <a href="https://perfecxion.ai/blog" className="text-primary-600 dark:text-primary-400 hover:underline">
                             PromptShield Blog →
                         </a>
                         <a href="https://discord.gg/promptshield" className="text-primary-600 dark:text-primary-400 hover:underline">

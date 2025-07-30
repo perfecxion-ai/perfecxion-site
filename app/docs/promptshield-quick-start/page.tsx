@@ -142,12 +142,12 @@ export default function PromptShieldQuickStartPage() {
                                 <div className="flex items-center space-x-3 mb-4">
                                     <Play className="h-6 w-6 text-primary-600 dark:text-primary-400" />
                                     <a
-                                        href="https://playground.promptshield.ai"
+                                        href="https://playground.perfecxion.ai"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-lg font-semibold text-primary-700 dark:text-primary-300 hover:text-primary-800 dark:hover:text-primary-200 flex items-center"
                                     >
-                                        playground.promptshield.ai
+                                        playground.perfecxion.ai
                                         <ExternalLink className="ml-2 h-4 w-4" />
                                     </a>
                                 </div>
@@ -180,7 +180,7 @@ export default function PromptShieldQuickStartPage() {
                                 Get Your API Key
                             </h2>
                             <ol className="list-decimal list-inside space-y-3 text-gray-600 dark:text-gray-300 mb-6">
-                                <li>Sign up at <a href="https://promptshield.ai" target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-400 hover:underline">promptshield.ai</a></li>
+                                <li>Sign up at <a href="https://perfecxion.ai" target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-400 hover:underline">perfecxion.ai</a></li>
                                 <li>Navigate to your dashboard</li>
                                 <li>Generate a new API key</li>
                                 <li>Keep it secure - treat it like a password!</li>
@@ -660,11 +660,11 @@ if result.llm_result:
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-4">
-                                    <a href="mailto:support@promptshield.ai" className="flex items-center space-x-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors">
+                                    <a href="mailto:support@perfecxion.ai" className="flex items-center space-x-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors">
                                         <Mail className="h-5 w-5 text-primary-600 dark:text-primary-400" />
                                         <div>
                                             <h3 className="font-semibold text-gray-900 dark:text-white">Email Support</h3>
-                                            <p className="text-sm text-gray-600 dark:text-gray-400">support@promptshield.ai</p>
+                                            <p className="text-sm text-gray-600 dark:text-gray-400">support@perfecxion.ai</p>
                                         </div>
                                     </a>
                                     <a href="https://discord.gg/promptshield" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors">

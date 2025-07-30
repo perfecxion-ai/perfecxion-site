@@ -65,15 +65,15 @@
 
 /* Code highlighting */
 pre {
-  @apply rounded-lg bg-gray-100 p-4 overflow-x-auto dark:bg-gray-900;
+  @apply rounded-lg bg-gray-900 p-4 overflow-x-auto dark:bg-gray-950 text-gray-100 dark:text-gray-100;
 }
 
 code {
-  @apply rounded bg-gray-100 px-2 py-1 text-sm font-mono dark:bg-gray-800;
+  @apply rounded bg-gray-100 px-2 py-1 text-sm font-mono dark:bg-gray-800 text-gray-900 dark:text-gray-100;
 }
 
 pre code {
-  @apply bg-transparent p-0;
+  @apply bg-transparent p-0 text-gray-100 dark:text-gray-100;
 }
 
 /* Custom scrollbar */
