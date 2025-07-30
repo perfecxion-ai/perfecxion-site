@@ -10,40 +10,23 @@ toc: true
 
 
 
-<div class="bg-gradient-to-r from-amber-600 to-orange-600 text-white p-8 rounded-lg mb-8">
-<h2 class="text-4xl font-bold mb-4">Defensive Prompt Engineering</h2>
-<p class="text-xl mb-6 opacity-90">
+<div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white p-8 rounded-lg mb-8">
+<h2 className="text-4xl font-bold mb-4">Defensive Prompt Engineering</h2>
+<p className="text-xl mb-6 opacity-90">
 Building security into AI systems through intelligent prompt design and defense mechanisms
 </p>
 
 
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+<div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
 
 
 
-<div class="bg-white/10 backdrop-blur-sm rounded p-4">
+<div className="bg-white/10 backdrop-blur-sm rounded p-4">
 
 
 
-<div class="text-3xl font-bold">92%</div>
-
-
-
-
-
-
-
-
-
-<div class="text-sm">Of Prompt Injections Blocked</div>
-
-
-
-
-
-
-</div>
+<div className="text-3xl font-bold">92%</div>
 
 
 
@@ -53,21 +36,7 @@ Building security into AI systems through intelligent prompt design and defense 
 
 
 
-<div class="bg-white/10 backdrop-blur-sm rounded p-4">
-
-
-
-<div class="text-3xl font-bold">10x</div>
-
-
-
-
-
-
-
-
-
-<div class="text-sm">Reduction in Attack Success</div>
+<div className="text-sm">Of Prompt Injections Blocked</div>
 
 
 
@@ -84,21 +53,52 @@ Building security into AI systems through intelligent prompt design and defense 
 
 
 
-<div class="bg-white/10 backdrop-blur-sm rounded p-4">
+<div className="bg-white/10 backdrop-blur-sm rounded p-4">
 
 
 
-<div class="text-3xl font-bold">Zero</div>
-
-
-
-
+<div className="text-3xl font-bold">10x</div>
 
 
 
 
 
-<div class="text-sm">Performance Impact</div>
+
+
+
+
+<div className="text-sm">Reduction in Attack Success</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div className="bg-white/10 backdrop-blur-sm rounded p-4">
+
+
+
+<div className="text-3xl font-bold">Zero</div>
+
+
+
+
+
+
+
+
+
+<div className="text-sm">Performance Impact</div>
 
 
 
@@ -129,18 +129,18 @@ Building security into AI systems through intelligent prompt design and defense 
 
 
 
-<div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<AlertTriangle class="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<AlertTriangle className="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">The Prompt Security Crisis</h3>
-<p class="text-yellow-800 dark:text-yellow-300 leading-relaxed">
+<h3 className="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">The Prompt Security Crisis</h3>
+<p className="text-yellow-800 dark:text-yellow-300 leading-relaxed">
 Most AI security efforts focus on infrastructure and models, but ignore the most direct attack vector: prompts themselves. <strong>Poorly designed prompts are like leaving your front door openno amount of sophisticated security elsewhere can protect you</strong>.
 </p>
 </div>
@@ -171,18 +171,18 @@ Welcome to the world of defensive prompt engineeringwhere security isn't bolted 
 
 
 
-<div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<Info class="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<Info className="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">The Anatomy of Prompt Vulnerabilities</h3>
-<p class="text-blue-800 dark:text-blue-300">
+<h3 className="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">The Anatomy of Prompt Vulnerabilities</h3>
+<p className="text-blue-800 dark:text-blue-300">
 Prompts create a unique attack surface where natural language becomes the attack vector. Unlike traditional code vulnerabilities, prompt attacks exploit the AI's desire to be helpful, its pattern matching capabilities, and its inability to distinguish between legitimate instructions and malicious commands.
 </p>
 </div>
@@ -211,21 +211,21 @@ Not all prompt attacks are created equal. Understanding the spectrum helps build
 
 
 
-<div class="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
 
 
 
-<div class="text-gray-400 mb-3"> Prompt Attack Classification:</div>
-
-
-
-
+<div className="text-gray-400 mb-3"> Prompt Attack Classification:</div>
 
 
 
 
 
-<div class="space-y-2">
+
+
+
+
+<div className="space-y-2">
 
 
 
@@ -239,7 +239,7 @@ Not all prompt attacks are created equal. Understanding the spectrum helps build
 
 
 
-<div> "Ignore previous instructions"</div>
+<div>Ignore previous instructions</div>
 
 
 
@@ -249,7 +249,7 @@ Not all prompt attacks are created equal. Understanding the spectrum helps build
 
 
 
-<div> "Your new role is..."</div>
+<div>Your new role is...</div>
 
 
 
@@ -259,7 +259,7 @@ Not all prompt attacks are created equal. Understanding the spectrum helps build
 
 
 
-<div> Simple but often effective</div>
+<div>Simple but often effective</div>
 
 
 
@@ -289,7 +289,7 @@ Not all prompt attacks are created equal. Understanding the spectrum helps build
 
 
 
-<div> Embedding instructions in user content</div>
+<div>Embedding instructions in user content</div>
 
 
 
@@ -299,7 +299,7 @@ Not all prompt attacks are created equal. Understanding the spectrum helps build
 
 
 
-<div> Using formatting to confuse parsing</div>
+<div>Using formatting to confuse parsing</div>
 
 
 
@@ -309,7 +309,7 @@ Not all prompt attacks are created equal. Understanding the spectrum helps build
 
 
 
-<div> Requires more sophistication</div>
+<div>Requires more sophistication</div>
 
 
 
@@ -419,7 +419,7 @@ Not all prompt attacks are created equal. Understanding the spectrum helps build
 
 
 
-<div class="text-red-400 mt-4">// Defense complexity scales with attack sophistication</div>
+<div className="text-red-400 mt-4">// Defense complexity scales with attack sophistication</div>
 
 
 
@@ -444,16 +444,16 @@ Not all prompt attacks are created equal. Understanding the spectrum helps build
 
 
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
 
 
 
-<div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
-<h4 class="font-bold text-lg mb-4 text-red-900 dark:text-red-200 flex items-center gap-2">
-<XCircle class="h-5 w-5 text-red-600" />
+<div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
+<h4 className="font-bold text-lg mb-4 text-red-900 dark:text-red-200 flex items-center gap-2">
+<XCircle className="h-5 w-5 text-red-600" />
 Vulnerable Patterns
 </h4>
-<ul class="space-y-2 text-sm text-red-800 dark:text-red-300">
+<ul className="space-y-2 text-sm text-red-800 dark:text-red-300">
 <li> Unstructured system prompts</li>
 <li> Direct user input concatenation</li>
 <li> Lack of instruction hierarchy</li>
@@ -470,12 +470,12 @@ Vulnerable Patterns
 
 
 
-<div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
-<h4 class="font-bold text-lg mb-4 text-green-900 dark:text-green-200 flex items-center gap-2">
-<CheckCircle class="h-5 w-5 text-green-600" />
+<div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
+<h4 className="font-bold text-lg mb-4 text-green-900 dark:text-green-200 flex items-center gap-2">
+<CheckCircle className="h-5 w-5 text-green-600" />
 Secure Patterns
 </h4>
-<ul class="space-y-2 text-sm text-green-800 dark:text-green-300">
+<ul className="space-y-2 text-sm text-green-800 dark:text-green-300">
 <li> Structured prompt templates</li>
 <li> Input sanitization layers</li>
 <li> Clear instruction boundaries</li>
@@ -500,18 +500,18 @@ Secure Patterns
 
 
 
-<div class="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<Shield class="h-6 w-6 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<Shield className="h-6 w-6 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-purple-900 dark:text-purple-200 mb-3">Building Secure-by-Design Prompts</h3>
-<p class="text-purple-800 dark:text-purple-300 leading-relaxed">
+<h3 className="text-lg font-bold text-purple-900 dark:text-purple-200 mb-3">Building Secure-by-Design Prompts</h3>
+<p className="text-purple-800 dark:text-purple-300 leading-relaxed">
 Defensive prompt engineering follows architectural principles similar to secure software development. <strong>We create layers of defense, establish clear boundaries, and implement defense in depth at the prompt level</strong>.
 </p>
 </div>
@@ -539,21 +539,21 @@ Defensive prompt engineering follows architectural principles similar to secure 
 
 
 
-<div class="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
 
 
 
-<div class="text-gray-400 mb-3"> Defensive Prompt Stack:</div>
-
-
-
-
+<div className="text-gray-400 mb-3"> Defensive Prompt Stack:</div>
 
 
 
 
 
-<div class="space-y-2">
+
+
+
+
+<div className="space-y-2">
 
 
 
@@ -667,7 +667,7 @@ Defensive prompt engineering follows architectural principles similar to secure 
 
 
 
-<div class="text-blue-400 mt-4">// Each layer provides specific protection</div>
+<div className="text-blue-400 mt-4">// Each layer provides specific protection</div>
 
 
 
@@ -693,29 +693,29 @@ A secure prompt template isolates different types of content:
 
 
 
-<div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<Lock class="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<Lock className="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Secure Prompt Template</h3>
+<h3 className="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Secure Prompt Template</h3>
 
 
 
-<div class="bg-gray-900 text-green-400 p-4 rounded font-mono text-sm">
+<div className="bg-gray-900 text-green-400 p-4 rounded font-mono text-sm">
 
 
 
-<div class="space-y-1">
+<div className="space-y-1">
 
 
 
-<div class="text-gray-400"># System-level instructions (protected)</div>
+<div className="text-gray-400"># System-level instructions (protected)</div>
 
 
 
@@ -795,7 +795,7 @@ A secure prompt template isolates different types of content:
 
 
 
-<div class="text-gray-400"># User input (untrusted)</div>
+<div className="text-gray-400"># User input (untrusted)</div>
 
 
 
@@ -815,7 +815,7 @@ A secure prompt template isolates different types of content:
 
 
 
-<div>User Query: {sanitized_input}</div>
+<div>User Query: \{sanitized_input\}</div>
 
 
 
@@ -825,7 +825,7 @@ A secure prompt template isolates different types of content:
 
 
 
-<div>Context: {validated_context}</div>
+<div>Context: \{validated_context\}</div>
 
 
 
@@ -855,7 +855,7 @@ A secure prompt template isolates different types of content:
 
 
 
-<div class="text-gray-400"># Response format (enforced)</div>
+<div className="text-gray-400"># Response format (enforced)</div>
 
 
 
@@ -885,7 +885,7 @@ A secure prompt template isolates different types of content:
 
 
 
-<div>{"response": "your answer", "confidence": 0.95}</div>
+<div>\{"response": "your answer", "confidence": 0.95\}</div>
 
 
 
@@ -941,16 +941,16 @@ A secure prompt template isolates different types of content:
 
 
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
 
 
 
-<div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-<h4 class="font-semibold text-blue-900 dark:text-blue-200 mb-2 text-center">Delimiter-Based</h4>
+<div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+<h4 className="font-semibold text-blue-900 dark:text-blue-200 mb-2 text-center">Delimiter-Based</h4>
 
 
 
-<div class="bg-gray-800 text-green-400 p-2 rounded text-xs font-mono">
+<div className="bg-gray-800 text-green-400 p-2 rounded text-xs font-mono">
 
 
 
@@ -998,12 +998,12 @@ A secure prompt template isolates different types of content:
 
 
 
-<div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-4">
-<h4 class="font-semibold text-purple-900 dark:text-purple-200 mb-2 text-center">XML-Based</h4>
+<div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-4">
+<h4 className="font-semibold text-purple-900 dark:text-purple-200 mb-2 text-center">XML-Based</h4>
 
 
 
-<div class="bg-gray-800 text-green-400 p-2 rounded text-xs font-mono">
+<div className="bg-gray-800 text-green-400 p-2 rounded text-xs font-mono">
 
 
 
@@ -1051,12 +1051,12 @@ A secure prompt template isolates different types of content:
 
 
 
-<div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
-<h4 class="font-semibold text-green-900 dark:text-green-200 mb-2 text-center">Token-Based</h4>
+<div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+<h4 className="font-semibold text-green-900 dark:text-green-200 mb-2 text-center">Token-Based</h4>
 
 
 
-<div class="bg-gray-800 text-green-400 p-2 rounded text-xs font-mono">
+<div className="bg-gray-800 text-green-400 p-2 rounded text-xs font-mono">
 
 
 
@@ -1112,18 +1112,18 @@ A secure prompt template isolates different types of content:
 
 
 
-<div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<AlertTriangle class="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<AlertTriangle className="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">The First Line of Defense</h3>
-<p class="text-yellow-800 dark:text-yellow-300 leading-relaxed">
+<h3 className="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">The First Line of Defense</h3>
+<p className="text-yellow-800 dark:text-yellow-300 leading-relaxed">
 Just as web applications sanitize SQL inputs, AI systems must sanitize prompt inputs. <strong>The goal isn't to block all user creativity, but to prevent malicious instructions from reaching the AI's core reasoning</strong>.
 </p>
 </div>
@@ -1151,29 +1151,29 @@ Just as web applications sanitize SQL inputs, AI systems must sanitize prompt in
 
 
 
-<div class="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<CheckCircle class="h-6 w-6 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-green-900 dark:text-green-200 mb-3">Input Sanitization Pipeline</h3>
+<h3 className="text-lg font-bold text-green-900 dark:text-green-200 mb-3">Input Sanitization Pipeline</h3>
 
 
 
-<div class="bg-gray-900 text-green-400 p-4 rounded font-mono text-sm">
+<div className="bg-gray-900 text-green-400 p-4 rounded font-mono text-sm">
 
 
 
-<div class="space-y-1">
+<div className="space-y-1">
 
 
 
-<div class="text-gray-400"># Comprehensive input sanitization</div>
+<div className="text-gray-400"># Comprehensive input sanitization</div>
 
 
 
@@ -1399,21 +1399,21 @@ Just as web applications sanitize SQL inputs, AI systems must sanitize prompt in
 
 
 
-<div class="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
 
 
 
-<div class="text-gray-400 mb-3"> Common Injection Patterns:</div>
-
-
-
-
+<div className="text-gray-400 mb-3"> Common Injection Patterns:</div>
 
 
 
 
 
-<div class="space-y-2">
+
+
+
+
+<div className="space-y-2">
 
 
 
@@ -1527,7 +1527,7 @@ Just as web applications sanitize SQL inputs, AI systems must sanitize prompt in
 
 
 
-<div class="text-yellow-400 mt-4"># Patterns updated based on new attack vectors</div>
+<div className="text-yellow-400 mt-4"># Patterns updated based on new attack vectors</div>
 
 
 
@@ -1552,27 +1552,27 @@ Just as web applications sanitize SQL inputs, AI systems must sanitize prompt in
 
 
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
 
 
 
-<div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-6">
-<h4 class="font-bold text-lg mb-4 text-purple-900 dark:text-purple-200">Semantic Analysis</h4>
-<ul class="space-y-3 text-sm text-purple-800 dark:text-purple-300">
-<li class="flex items-start gap-2">
-<Brain class="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" />
+<div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-6">
+<h4 className="font-bold text-lg mb-4 text-purple-900 dark:text-purple-200">Semantic Analysis</h4>
+<ul className="space-y-3 text-sm text-purple-800 dark:text-purple-300">
+<li className="flex items-start gap-2">
+<Brain className="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" />
 <span>Intent classification models</span>
 </li>
-<li class="flex items-start gap-2">
-<Brain class="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<Brain className="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" />
 <span>Embedding-based similarity</span>
 </li>
-<li class="flex items-start gap-2">
-<Brain class="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<Brain className="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" />
 <span>Context coherence analysis</span>
 </li>
-<li class="flex items-start gap-2">
-<Brain class="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<Brain className="h-4 w-4 text-purple-600 mt-0.5 flex-shrink-0" />
 <span>Adversarial prompt detection</span>
 </li>
 </ul>
@@ -1586,23 +1586,23 @@ Just as web applications sanitize SQL inputs, AI systems must sanitize prompt in
 
 
 
-<div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-<h4 class="font-bold text-lg mb-4 text-blue-900 dark:text-blue-200">Format Normalization</h4>
-<ul class="space-y-3 text-sm text-blue-800 dark:text-blue-300">
-<li class="flex items-start gap-2">
-<ArrowRight class="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+<div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
+<h4 className="font-bold text-lg mb-4 text-blue-900 dark:text-blue-200">Format Normalization</h4>
+<ul className="space-y-3 text-sm text-blue-800 dark:text-blue-300">
+<li className="flex items-start gap-2">
+<ArrowRight className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
 <span>Unicode normalization</span>
 </li>
-<li class="flex items-start gap-2">
-<ArrowRight class="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<ArrowRight className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
 <span>Character encoding validation</span>
 </li>
-<li class="flex items-start gap-2">
-<ArrowRight class="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<ArrowRight className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
 <span>Markup language stripping</span>
 </li>
-<li class="flex items-start gap-2">
-<ArrowRight class="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<ArrowRight className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
 <span>Invisible character removal</span>
 </li>
 </ul>
@@ -1624,18 +1624,18 @@ Just as web applications sanitize SQL inputs, AI systems must sanitize prompt in
 
 
 
-<div class="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<AlertCircle class="h-6 w-6 text-red-600 dark:text-red-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<AlertCircle className="h-6 w-6 text-red-600 dark:text-red-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-red-900 dark:text-red-200 mb-3">Establishing Clear Authority</h3>
-<p class="text-red-800 dark:text-red-300 leading-relaxed">
+<h3 className="text-lg font-bold text-red-900 dark:text-red-200 mb-3">Establishing Clear Authority</h3>
+<p className="text-red-800 dark:text-red-300 leading-relaxed">
 AI systems must understand which instructions take precedence. <strong>Without clear hierarchy, any user input can potentially override system-level security instructions</strong>.
 </p>
 </div>
@@ -1663,29 +1663,29 @@ AI systems must understand which instructions take precedence. <strong>Without c
 
 
 
-<div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<Layers class="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<Layers className="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Instruction Priority Framework</h3>
+<h3 className="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Instruction Priority Framework</h3>
 
 
 
-<div class="bg-gray-900 text-green-400 p-4 rounded font-mono text-sm">
+<div className="bg-gray-900 text-green-400 p-4 rounded font-mono text-sm">
 
 
 
-<div class="space-y-1">
+<div className="space-y-1">
 
 
 
-<div class="text-gray-400"># Hierarchical instruction structure</div>
+<div className="text-gray-400"># Hierarchical instruction structure</div>
 
 
 
@@ -1942,16 +1942,16 @@ Make critical instructions harder to override:
 
 
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
 
 
 
-<div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
-<h4 class="font-bold text-lg mb-4 text-green-900 dark:text-green-200">Repetition Strategy</h4>
+<div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
+<h4 className="font-bold text-lg mb-4 text-green-900 dark:text-green-200">Repetition Strategy</h4>
 
 
 
-<div class="bg-gray-800 text-green-400 p-3 rounded text-xs font-mono">
+<div className="bg-gray-800 text-green-400 p-3 rounded text-xs font-mono">
 
 
 
@@ -2009,12 +2009,12 @@ Make critical instructions harder to override:
 
 
 
-<div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-<h4 class="font-bold text-lg mb-4 text-blue-900 dark:text-blue-200">Positive Framing</h4>
+<div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
+<h4 className="font-bold text-lg mb-4 text-blue-900 dark:text-blue-200">Positive Framing</h4>
 
 
 
-<div class="bg-gray-800 text-green-400 p-3 rounded text-xs font-mono">
+<div className="bg-gray-800 text-green-400 p-3 rounded text-xs font-mono">
 
 
 
@@ -2080,18 +2080,18 @@ Make critical instructions harder to override:
 
 
 
-<div class="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<Eye class="h-6 w-6 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<Eye className="h-6 w-6 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-purple-900 dark:text-purple-200 mb-3">The Final Safety Net</h3>
-<p class="text-purple-800 dark:text-purple-300 leading-relaxed">
+<h3 className="text-lg font-bold text-purple-900 dark:text-purple-200 mb-3">The Final Safety Net</h3>
+<p className="text-purple-800 dark:text-purple-300 leading-relaxed">
 Even with perfect prompt design, AI systems can sometimes be manipulated. <strong>Output validation provides the last line of defense, ensuring that responses meet security and quality standards regardless of input manipulation</strong>.
 </p>
 </div>
@@ -2119,29 +2119,29 @@ Even with perfect prompt design, AI systems can sometimes be manipulated. <stron
 
 
 
-<div class="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<CheckCircle class="h-6 w-6 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-green-900 dark:text-green-200 mb-3">Structured Response Validation</h3>
+<h3 className="text-lg font-bold text-green-900 dark:text-green-200 mb-3">Structured Response Validation</h3>
 
 
 
-<div class="bg-gray-900 text-green-400 p-4 rounded font-mono text-sm">
+<div className="bg-gray-900 text-green-400 p-4 rounded font-mono text-sm">
 
 
 
-<div class="space-y-1">
+<div className="space-y-1">
 
 
 
-<div class="text-gray-400"># Response validation pipeline</div>
+<div className="text-gray-400"># Response validation pipeline</div>
 
 
 
@@ -2377,21 +2377,21 @@ Even with perfect prompt design, AI systems can sometimes be manipulated. <stron
 
 
 
-<div class="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
 
 
 
-<div class="text-gray-400 mb-3"> Output Security Filters:</div>
-
-
-
-
+<div className="text-gray-400 mb-3"> Output Security Filters:</div>
 
 
 
 
 
-<div class="space-y-2">
+
+
+
+
+<div className="space-y-2">
 
 
 
@@ -2585,7 +2585,7 @@ Even with perfect prompt design, AI systems can sometimes be manipulated. <stron
 
 
 
-<div class="text-blue-400 mt-4">// Multiple validation stages ensure security</div>
+<div className="text-blue-400 mt-4">// Multiple validation stages ensure security</div>
 
 
 
@@ -2610,18 +2610,18 @@ Even with perfect prompt design, AI systems can sometimes be manipulated. <stron
 
 
 
-<div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<Zap class="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<Zap className="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">Beyond Basic Defenses</h3>
-<p class="text-yellow-800 dark:text-yellow-300 leading-relaxed">
+<h3 className="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">Beyond Basic Defenses</h3>
+<p className="text-yellow-800 dark:text-yellow-300 leading-relaxed">
 As attackers develop more sophisticated techniques, defenses must evolve. <strong>Advanced prompt security employs techniques from cryptography, game theory, and adversarial machine learning</strong>.
 </p>
 </div>
@@ -2649,21 +2649,21 @@ As attackers develop more sophisticated techniques, defenses must evolve. <stron
 
 
 
-<div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<Brain class="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<Brain className="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Self-Supervised Security</h3>
+<h3 className="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Self-Supervised Security</h3>
 
 
 
-<div class="space-y-3 text-blue-800 dark:text-blue-300">
+<div className="space-y-3 text-blue-800 dark:text-blue-300">
 <p><strong>Constitutional Training:</strong> Train models to follow ethical principles even under adversarial conditions</p>
 <p><strong>Self-Critique Loops:</strong> AI evaluates its own responses for security violations before output</p>
 <p><strong>Principle Reinforcement:</strong> Embed security principles directly into model weights</p>
@@ -2700,27 +2700,27 @@ As attackers develop more sophisticated techniques, defenses must evolve. <stron
 
 
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
 
 
 
-<div class="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
-<h4 class="font-bold text-lg mb-4 text-red-900 dark:text-red-200">Red Team Training</h4>
-<ul class="space-y-3 text-sm text-red-800 dark:text-red-300">
-<li class="flex items-start gap-2">
-<Target class="h-4 w-4 text-red-600 mt-0.5 flex-shrink-0" />
+<div className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
+<h4 className="font-bold text-lg mb-4 text-red-900 dark:text-red-200">Red Team Training</h4>
+<ul className="space-y-3 text-sm text-red-800 dark:text-red-300">
+<li className="flex items-start gap-2">
+<Target className="h-4 w-4 text-red-600 mt-0.5 flex-shrink-0" />
 <span>Systematic attack generation</span>
 </li>
-<li class="flex items-start gap-2">
-<Target class="h-4 w-4 text-red-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<Target className="h-4 w-4 text-red-600 mt-0.5 flex-shrink-0" />
 <span>Multi-turn attack sequences</span>
 </li>
-<li class="flex items-start gap-2">
-<Target class="h-4 w-4 text-red-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<Target className="h-4 w-4 text-red-600 mt-0.5 flex-shrink-0" />
 <span>Novel injection techniques</span>
 </li>
-<li class="flex items-start gap-2">
-<Target class="h-4 w-4 text-red-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<Target className="h-4 w-4 text-red-600 mt-0.5 flex-shrink-0" />
 <span>Social engineering scenarios</span>
 </li>
 </ul>
@@ -2734,23 +2734,23 @@ As attackers develop more sophisticated techniques, defenses must evolve. <stron
 
 
 
-<div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
-<h4 class="font-bold text-lg mb-4 text-green-900 dark:text-green-200">Defense Hardening</h4>
-<ul class="space-y-3 text-sm text-green-800 dark:text-green-300">
-<li class="flex items-start gap-2">
-<Shield class="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+<div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
+<h4 className="font-bold text-lg mb-4 text-green-900 dark:text-green-200">Defense Hardening</h4>
+<ul className="space-y-3 text-sm text-green-800 dark:text-green-300">
+<li className="flex items-start gap-2">
+<Shield className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
 <span>Robustness training cycles</span>
 </li>
-<li class="flex items-start gap-2">
-<Shield class="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<Shield className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
 <span>Defense evolution loops</span>
 </li>
-<li class="flex items-start gap-2">
-<Shield class="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<Shield className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
 <span>Adversarial fine-tuning</span>
 </li>
-<li class="flex items-start gap-2">
-<Shield class="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<Shield className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
 <span>Continuous improvement</span>
 </li>
 </ul>
@@ -2772,29 +2772,29 @@ As attackers develop more sophisticated techniques, defenses must evolve. <stron
 
 
 
-<div class="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<Lock class="h-6 w-6 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<Lock className="h-6 w-6 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-purple-900 dark:text-purple-200 mb-3">Cryptographic Defenses</h3>
+<h3 className="text-lg font-bold text-purple-900 dark:text-purple-200 mb-3">Cryptographic Defenses</h3>
 
 
 
-<div class="bg-gray-900 text-green-400 p-4 rounded font-mono text-sm">
+<div className="bg-gray-900 text-green-400 p-4 rounded font-mono text-sm">
 
 
 
-<div class="space-y-1">
+<div className="space-y-1">
 
 
 
-<div class="text-gray-400"># Prompt integrity verification</div>
+<div className="text-gray-400"># Prompt integrity verification</div>
 
 
 
@@ -2924,7 +2924,7 @@ As attackers develop more sophisticated techniques, defenses must evolve. <stron
 
 
 
-<div class="text-gray-400"># Steganographic instruction embedding</div>
+<div className="text-gray-400"># Steganographic instruction embedding</div>
 
 
 
@@ -3010,18 +3010,18 @@ As attackers develop more sophisticated techniques, defenses must evolve. <stron
 
 
 
-<div class="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<CheckCircle class="h-6 w-6 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-green-900 dark:text-green-200 mb-3">Systematic Security Testing</h3>
-<p class="text-green-800 dark:text-green-300 leading-relaxed">
+<h3 className="text-lg font-bold text-green-900 dark:text-green-200 mb-3">Systematic Security Testing</h3>
+<p className="text-green-800 dark:text-green-300 leading-relaxed">
 Defensive prompt engineering requires rigorous testing methodologies. <strong>Security testing must be as systematic and comprehensive as functional testing</strong>.
 </p>
 </div>
@@ -3049,21 +3049,21 @@ Defensive prompt engineering requires rigorous testing methodologies. <strong>Se
 
 
 
-<div class="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
 
 
 
-<div class="text-gray-400 mb-3"> Prompt Security Test Framework:</div>
-
-
-
-
+<div className="text-gray-400 mb-3"> Prompt Security Test Framework:</div>
 
 
 
 
 
-<div class="space-y-2">
+
+
+
+
+<div className="space-y-2">
 
 
 
@@ -3077,7 +3077,7 @@ Defensive prompt engineering requires rigorous testing methodologies. <strong>Se
 
 
 
-<div>    def __init__(self, ai_system):</div>
+<div>    def \_\_init\_\_(self, ai_system):</div>
 
 
 
@@ -3287,7 +3287,7 @@ Defensive prompt engineering requires rigorous testing methodologies. <strong>Se
 
 
 
-<div class="text-blue-400 mt-4"># Automated testing catches regressions</div>
+<div className="text-blue-400 mt-4"># Automated testing catches regressions</div>
 
 
 
@@ -3312,13 +3312,13 @@ Defensive prompt engineering requires rigorous testing methodologies. <strong>Se
 
 
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
 
 
 
-<div class="bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
-<h4 class="font-semibold text-red-900 dark:text-red-200 mb-2 text-center">Attack Generation</h4>
-<ul class="text-sm text-red-800 dark:text-red-300 space-y-1">
+<div className="bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+<h4 className="font-semibold text-red-900 dark:text-red-200 mb-2 text-center">Attack Generation</h4>
+<ul className="text-sm text-red-800 dark:text-red-300 space-y-1">
 <li> Novel injection techniques</li>
 <li> Multi-turn attack chains</li>
 <li> Context manipulation</li>
@@ -3334,9 +3334,9 @@ Defensive prompt engineering requires rigorous testing methodologies. <strong>Se
 
 
 
-<div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-<h4 class="font-semibold text-blue-900 dark:text-blue-200 mb-2 text-center">Defense Evaluation</h4>
-<ul class="text-sm text-blue-800 dark:text-blue-300 space-y-1">
+<div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+<h4 className="font-semibold text-blue-900 dark:text-blue-200 mb-2 text-center">Defense Evaluation</h4>
+<ul className="text-sm text-blue-800 dark:text-blue-300 space-y-1">
 <li> Success rate analysis</li>
 <li> Bypass technique discovery</li>
 <li> False positive assessment</li>
@@ -3352,9 +3352,9 @@ Defensive prompt engineering requires rigorous testing methodologies. <strong>Se
 
 
 
-<div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
-<h4 class="font-semibold text-green-900 dark:text-green-200 mb-2 text-center">Improvement Cycle</h4>
-<ul class="text-sm text-green-800 dark:text-green-300 space-y-1">
+<div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+<h4 className="font-semibold text-green-900 dark:text-green-200 mb-2 text-center">Improvement Cycle</h4>
+<ul className="text-sm text-green-800 dark:text-green-300 space-y-1">
 <li> Vulnerability patching</li>
 <li> Defense enhancement</li>
 <li> Training data update</li>
@@ -3378,18 +3378,18 @@ Defensive prompt engineering requires rigorous testing methodologies. <strong>Se
 
 
 
-<div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<Zap class="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<Zap className="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Balancing Security and Usability</h3>
-<p class="text-blue-800 dark:text-blue-300">
+<h3 className="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">Balancing Security and Usability</h3>
+<p className="text-blue-800 dark:text-blue-300">
 Defensive prompt engineering must not compromise the user experience or system performance. The best security measures are invisible to legitimate users while effectively blocking attackers.
 </p>
 </div>
@@ -3417,27 +3417,27 @@ Defensive prompt engineering must not compromise the user experience or system p
 
 
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
 
 
 
-<div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
-<h4 class="font-bold text-lg mb-4 text-green-900 dark:text-green-200">Efficient Filtering</h4>
-<ul class="space-y-3 text-sm text-green-800 dark:text-green-300">
-<li class="flex items-start gap-2">
-<CheckCircle class="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+<div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
+<h4 className="font-bold text-lg mb-4 text-green-900 dark:text-green-200">Efficient Filtering</h4>
+<ul className="space-y-3 text-sm text-green-800 dark:text-green-300">
+<li className="flex items-start gap-2">
+<CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
 <span>Regex pre-filtering</span>
 </li>
-<li class="flex items-start gap-2">
-<CheckCircle class="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
 <span>Bloom filter screening</span>
 </li>
-<li class="flex items-start gap-2">
-<CheckCircle class="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
 <span>Cached pattern matching</span>
 </li>
-<li class="flex items-start gap-2">
-<CheckCircle class="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
 <span>Parallel processing</span>
 </li>
 </ul>
@@ -3451,23 +3451,23 @@ Defensive prompt engineering must not compromise the user experience or system p
 
 
 
-<div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-<h4 class="font-bold text-lg mb-4 text-blue-900 dark:text-blue-200">Smart Validation</h4>
-<ul class="space-y-3 text-sm text-blue-800 dark:text-blue-300">
-<li class="flex items-start gap-2">
-<ArrowRight class="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+<div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
+<h4 className="font-bold text-lg mb-4 text-blue-900 dark:text-blue-200">Smart Validation</h4>
+<ul className="space-y-3 text-sm text-blue-800 dark:text-blue-300">
+<li className="flex items-start gap-2">
+<ArrowRight className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
 <span>Risk-based analysis depth</span>
 </li>
-<li class="flex items-start gap-2">
-<ArrowRight class="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<ArrowRight className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
 <span>Early termination on safe inputs</span>
 </li>
-<li class="flex items-start gap-2">
-<ArrowRight class="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<ArrowRight className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
 <span>Progressive filtering stages</span>
 </li>
-<li class="flex items-start gap-2">
-<ArrowRight class="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+<li className="flex items-start gap-2">
+<ArrowRight className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
 <span>Lightweight model inference</span>
 </li>
 </ul>
@@ -3489,21 +3489,21 @@ Defensive prompt engineering must not compromise the user experience or system p
 
 
 
-<div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<Users class="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<Users className="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">Security Without Friction</h3>
+<h3 className="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">Security Without Friction</h3>
 
 
 
-<div class="space-y-3 text-yellow-800 dark:text-yellow-300">
+<div className="space-y-3 text-yellow-800 dark:text-yellow-300">
 <p><strong>Transparent Security:</strong> Security measures should be invisible to legitimate users</p>
 <p><strong>Graceful Degradation:</strong> When attacks are detected, provide helpful error messages</p>
 <p><strong>False Positive Minimization:</strong> Ensure legitimate queries aren't blocked</p>
@@ -3540,18 +3540,18 @@ Defensive prompt engineering must not compromise the user experience or system p
 
 
 
-<div class="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<Target class="h-6 w-6 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<Target className="h-6 w-6 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-purple-900 dark:text-purple-200 mb-3">From Theory to Production</h3>
-<p class="text-purple-800 dark:text-purple-300 leading-relaxed">
+<h3 className="text-lg font-bold text-purple-900 dark:text-purple-200 mb-3">From Theory to Production</h3>
+<p className="text-purple-800 dark:text-purple-300 leading-relaxed">
 Implementing defensive prompt engineering in production requires careful planning, systematic rollout, and continuous monitoring. <strong>Success depends on treating prompt security as seriously as any other security discipline</strong>.
 </p>
 </div>
@@ -3579,21 +3579,21 @@ Implementing defensive prompt engineering in production requires careful plannin
 
 
 
-<div class="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
 
 
 
-<div class="text-gray-400 mb-3"> Defensive Prompt Engineering Rollout:</div>
-
-
-
-
+<div className="text-gray-400 mb-3"> Defensive Prompt Engineering Rollout:</div>
 
 
 
 
 
-<div class="space-y-2">
+
+
+
+
+<div className="space-y-2">
 
 
 
@@ -3827,7 +3827,7 @@ Implementing defensive prompt engineering in production requires careful plannin
 
 
 
-<div class="text-blue-400 mt-4">// Iterative improvement is key to long-term success</div>
+<div className="text-blue-400 mt-4">// Iterative improvement is key to long-term success</div>
 
 
 
@@ -3852,22 +3852,22 @@ Implementing defensive prompt engineering in production requires careful plannin
 
 
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
 
 
 
-<div class="bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 text-center">
+<div className="bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 text-center">
 
 
 
-<div class="text-2xl font-bold text-red-600 dark:text-red-400">< 5%</div>
+<div className="text-2xl font-bold text-red-600 dark:text-red-400">< 5%</div>
 
 
 
 
 
 
-<h4 class="font-semibold text-red-900 dark:text-red-200 mt-2">Attack Success Rate</h4>
+<h4 className="font-semibold text-red-900 dark:text-red-200 mt-2">Attack Success Rate</h4>
 </div>
 
 
@@ -3878,18 +3878,18 @@ Implementing defensive prompt engineering in production requires careful plannin
 
 
 
-<div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 text-center">
+<div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 text-center">
 
 
 
-<div class="text-2xl font-bold text-green-600 dark:text-green-400">< 1%</div>
+<div className="text-2xl font-bold text-green-600 dark:text-green-400">< 1%</div>
 
 
 
 
 
 
-<h4 class="font-semibold text-green-900 dark:text-green-200 mt-2">False Positive Rate</h4>
+<h4 className="font-semibold text-green-900 dark:text-green-200 mt-2">False Positive Rate</h4>
 </div>
 
 
@@ -3900,18 +3900,18 @@ Implementing defensive prompt engineering in production requires careful plannin
 
 
 
-<div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 text-center">
+<div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 text-center">
 
 
 
-<div class="text-2xl font-bold text-blue-600 dark:text-blue-400">< 50ms</div>
+<div className="text-2xl font-bold text-blue-600 dark:text-blue-400">< 50ms</div>
 
 
 
 
 
 
-<h4 class="font-semibold text-blue-900 dark:text-blue-200 mt-2">Validation Latency</h4>
+<h4 className="font-semibold text-blue-900 dark:text-blue-200 mt-2">Validation Latency</h4>
 </div>
 
 
@@ -3922,18 +3922,18 @@ Implementing defensive prompt engineering in production requires careful plannin
 
 
 
-<div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-4 text-center">
+<div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-4 text-center">
 
 
 
-<div class="text-2xl font-bold text-purple-600 dark:text-purple-400">100%</div>
+<div className="text-2xl font-bold text-purple-600 dark:text-purple-400">100%</div>
 
 
 
 
 
 
-<h4 class="font-semibold text-purple-900 dark:text-purple-200 mt-2">Coverage Rate</h4>
+<h4 className="font-semibold text-purple-900 dark:text-purple-200 mt-2">Coverage Rate</h4>
 </div>
 
 
@@ -3952,18 +3952,18 @@ Implementing defensive prompt engineering in production requires careful plannin
 
 
 
-<div class="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg">
+<div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg">
 
 
 
-<div class="flex items-start gap-3">
-<Shield class="h-6 w-6 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
+<div className="flex items-start gap-3">
+<Shield className="h-6 w-6 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
 
 
 
 <div>
-<h3 class="text-lg font-bold text-green-900 dark:text-green-200 mb-3">The Future of AI Security</h3>
-<p class="text-green-800 dark:text-green-300 leading-relaxed">
+<h3 className="text-lg font-bold text-green-900 dark:text-green-200 mb-3">The Future of AI Security</h3>
+<p className="text-green-800 dark:text-green-300 leading-relaxed">
 Defensive prompt engineering isn't just about blocking attacksit's about building AI systems that are secure by design, resilient by nature, and intelligent enough to protect themselves. <strong>The future of AI security lies not in adding more layers of protection, but in making the AI itself security-aware</strong>.
 </p>
 </div>
@@ -4000,22 +4000,22 @@ At perfecXion.ai, we've made defensive prompt engineering a core component of ou
 
 
 
-<div class="mt-12 p-8 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-lg text-center">
-<h3 class="text-2xl font-bold mb-4">Build Unbreakable AI Prompts</h3>
-<p class="text-lg mb-6 max-w-2xl mx-auto">
+<div className="mt-12 p-8 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-lg text-center">
+<h3 className="text-2xl font-bold mb-4">Build Unbreakable AI Prompts</h3>
+<p className="text-lg mb-6 max-w-2xl mx-auto">
 Don't let prompt vulnerabilities undermine your AI security. Discover how perfecXion.ai can help you build defensive prompt engineering into your AI systems from day one.
 </p>
 
 
 
-<div class="flex gap-4 justify-center">
-<a href="/products" class="inline-flex items-center px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+<div className="flex gap-4 justify-center">
+<a href="/products" className="inline-flex items-center px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
 Explore Prompt Security Solutions
-<ArrowRight class="ml-2 h-4 w-4" />
+<ArrowRight className="ml-2 h-4 w-4" />
 </a>
-<a href="/prompt-security-assessment" class="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+<a href="/prompt-security-assessment" className="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
 Get Prompt Security Assessment
-<ArrowRight class="ml-2 h-4 w-4" />
+<ArrowRight className="ml-2 h-4 w-4" />
 </a>
 </div>
 

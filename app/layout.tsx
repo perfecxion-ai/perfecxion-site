@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import '../styles/globals.css'
 import Header from '@/components/Header'
@@ -6,6 +6,12 @@ import Footer from '@/components/Footer'
 import { ThemeProvider } from '@/components/ThemeProvider'
 
 const inter = Inter({ subsets: ['latin'] })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://perfecxion.ai'),
@@ -18,7 +24,6 @@ export const metadata: Metadata = {
   authors: [{ name: 'perfecXion.ai Team' }],
   creator: 'perfecXion.ai',
   publisher: 'perfecXion.ai',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
   openGraph: {
     type: 'website',
     locale: 'en_US',
