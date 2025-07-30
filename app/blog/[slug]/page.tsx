@@ -25,7 +25,13 @@ import {
   Layers,
   ShoppingCart,
   Building,
-  FileText
+  FileText,
+  TrendingUp,
+  Wrench,
+  Briefcase,
+  Bell,
+  Cloud,
+  GraduationCap
 } from 'lucide-react';
 
 // MDX components that can be used in the content
@@ -50,6 +56,12 @@ const mdxComponents = {
   ShoppingCart,
   Building,
   FileText,
+  TrendingUp,
+  Wrench,
+  Briefcase,
+  Bell,
+  Cloud,
+  GraduationCap,
   Link,
   // Add any other components you want to use in MDX
 };
