@@ -60,25 +60,174 @@ toc: true
 
 ## The Production Testing Paradox
 
-Testing AI systems in production presents a unique challenge that keeps security teams awake at night. You need the authenticity of real-world conditions to uncover genuine vulnerabilities, yet you must avoid disrupting critical business operations or exposing sensitive data. It's a delicate balance that traditional security testing methodologies weren't designed to handle.
+<div className="bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 border-l-4 border-orange-500 p-6 mb-8 rounded-r-lg">
+  <div className="flex items-start gap-3">
+    <AlertTriangle className="h-6 w-6 text-orange-600 dark:text-orange-400 mt-1 flex-shrink-0" />
+    <div>
+      <h3 className="text-lg font-bold text-orange-900 dark:text-orange-200 mb-3">The Core Challenge</h3>
+      <p className="text-orange-800 dark:text-orange-300 leading-relaxed">
+        Testing AI systems in production presents a unique challenge that keeps security teams awake at night. You need the <strong>authenticity of real-world conditions</strong> to uncover genuine vulnerabilities, yet you must avoid disrupting critical business operations or exposing sensitive data. It's a delicate balance that traditional security testing methodologies weren't designed to handle.
+      </p>
+    </div>
+  </div>
+</div>
 
-The complexity becomes apparent when you consider what production really means for AI systems. Unlike traditional applications with predictable behaviors, AI systems in production are constantly evolving. They're processing unpredictable user inputs, adapting to new patterns, and interacting with a web of integrated systems—all while serving thousands of concurrent users.
+<div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 mb-8 shadow-md">
+  <h4 className="font-bold text-lg mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+    <Cpu className="h-5 w-5 text-blue-500" />
+    Production Reality vs. Testing Environment
+  </h4>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="space-y-3">
+      <h5 className="font-semibold text-red-600 dark:text-red-400">❌ Testing Environment</h5>
+      <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+        <li>• Predictable user behaviors</li>
+        <li>• Controlled attack scenarios</li>
+        <li>• Isolated system components</li>
+        <li>• Static security boundaries</li>
+        <li>• Limited integration complexity</li>
+      </ul>
+    </div>
+    
+    <div className="space-y-3">
+      <h5 className="font-semibold text-green-600 dark:text-green-400">✅ Production Environment</h5>
+      <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+        <li>• Unpredictable user interactions</li>
+        <li>• Evolving attack patterns</li>
+        <li>• Complex system integrations</li>
+        <li>• Dynamic security boundaries</li>
+        <li>• Real-time model adaptation</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-Consider a typical scenario we encounter: An AI system performs flawlessly in testing, passing all security checks and handling crafted attack payloads with ease. Deploy it to production, and within days, users discover ways to manipulate it that no one anticipated. Perhaps they chain together seemingly innocent requests that gradually erode security boundaries, or they exploit the system's helpfulness to extract information it should never reveal.
+<div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
+  <div className="flex items-start gap-3">
+    <Info className="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
+    <div>
+      <h3 className="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">The Complexity Reality</h3>
+      <p className="text-blue-800 dark:text-blue-300 leading-relaxed">
+        The complexity becomes apparent when you consider what production really means for AI systems. Unlike traditional applications with predictable behaviors, AI systems in production are <strong>constantly evolving</strong>. They're processing unpredictable user inputs, adapting to new patterns, and interacting with a web of integrated systems—all while serving thousands of concurrent users.
+      </p>
+    </div>
+  </div>
+</div>
 
-This isn't a failure of testing—it's a recognition that AI systems exist in a fundamentally different paradigm. They're not static targets but dynamic entities whose security posture can shift with every interaction.
+<div className="bg-gray-900 text-green-400 p-6 rounded-lg mb-8 font-mono text-sm">
+  <div className="text-gray-400 mb-3">🔍 Typical Production Scenario:</div>
+  <div className="space-y-2">
+    <div>// AI system passes all security tests in controlled environment</div>
+    <div>// Deploy to production with confidence</div>
+    <div>// Within days, users discover manipulation techniques</div>
+    <div>// Security boundaries erode through creative interactions</div>
+    <div>// System reveals information through "helpful" responses</div>
+  </div>
+</div>
+
+<div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
+  <div className="flex items-start gap-3">
+    <AlertTriangle className="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 flex-shrink-0" />
+    <div>
+      <h3 className="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">The Paradigm Shift</h3>
+      <p className="text-yellow-800 dark:text-yellow-300 leading-relaxed">
+        This isn't a failure of testing—it's a recognition that AI systems exist in a <strong>fundamentally different paradigm</strong>. They're not static targets but dynamic entities whose security posture can shift with every interaction. The challenge lies in adapting our security mindset to match this reality.
+      </p>
+    </div>
+  </div>
+</div>
 
 <br />
 
 ## Evolution of Testing Methodology
 
-Our approach to AI security testing has undergone a dramatic transformation through these thousand-plus assessments. Initially, we applied traditional penetration testing methodologies—examining configurations, testing known vulnerabilities, and documenting findings. We quickly learned that this approach, while necessary, was woefully insufficient for AI systems.
+<div className="bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg">
+  <div className="flex items-start gap-3">
+    <Layers className="h-6 w-6 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" />
+    <div>
+      <h3 className="text-lg font-bold text-purple-900 dark:text-purple-200 mb-3">The Testing Evolution</h3>
+      <p className="text-purple-800 dark:text-purple-300 leading-relaxed">
+        Our approach to AI security testing has undergone a <strong>dramatic transformation</strong> through these thousand-plus assessments. Initially, we applied traditional penetration testing methodologies—examining configurations, testing known vulnerabilities, and documenting findings. We quickly learned that this approach, while necessary, was woefully insufficient for AI systems.
+      </p>
+    </div>
+  </div>
+</div>
 
-The turning point came when we recognized that AI systems don't just process data—they interpret, learn, and make decisions. This requires a fundamentally different security mindset. Instead of looking for specific vulnerabilities, we began examining behavioral patterns and emergent properties.
+<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+  <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
+    <h4 className="font-bold text-lg mb-4 text-red-900 dark:text-red-200 flex items-center gap-2">
+      <XCircle className="h-5 w-5 text-red-600" />
+      Traditional Approach
+    </h4>
+    <ul className="space-y-2 text-sm text-red-800 dark:text-red-300">
+      <li>• Static vulnerability scanning</li>
+      <li>• Known exploit testing</li>
+      <li>• Component isolation</li>
+      <li>• Predictable attack patterns</li>
+      <li>• Binary pass/fail results</li>
+    </ul>
+  </div>
+  
+  <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
+    <h4 className="font-bold text-lg mb-4 text-green-900 dark:text-green-200 flex items-center gap-2">
+      <CheckCircle className="h-5 w-5 text-green-600" />
+      AI-Specific Approach
+    </h4>
+    <ul className="space-y-2 text-sm text-green-800 dark:text-green-300">
+      <li>• Behavioral pattern analysis</li>
+      <li>• Emergent property testing</li>
+      <li>• System integration mapping</li>
+      <li>• Context manipulation testing</li>
+      <li>• Continuous validation</li>
+    </ul>
+  </div>
+</div>
 
-Modern AI systems exist within complex ecosystems. A language model serving customer queries might interface with dozens of backend systems, each with its own security context. The AI becomes a translator between these contexts, and that translation process introduces vulnerabilities that don't exist in any individual component.
+<div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
+  <div className="flex items-start gap-3">
+    <Brain className="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0" />
+    <div>
+      <h3 className="text-lg font-bold text-blue-900 dark:text-blue-200 mb-3">The Paradigm Shift</h3>
+      <p className="text-blue-800 dark:text-blue-300 leading-relaxed">
+        The turning point came when we recognized that AI systems don't just process data—they <strong>interpret, learn, and make decisions</strong>. This requires a fundamentally different security mindset. Instead of looking for specific vulnerabilities, we began examining behavioral patterns and emergent properties.
+      </p>
+    </div>
+  </div>
+</div>
 
-We've developed methodologies that account for this complexity. Rather than testing components in isolation, we examine information flows across the entire system. We look for places where the AI's interpretive nature might bypass traditional security controls or where its training might conflict with security requirements.
+<div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 mb-8 shadow-md">
+  <h4 className="font-bold text-lg mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+    <Network className="h-5 w-5 text-blue-500" />
+    Complex Ecosystem Reality
+  </h4>
+  <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+    Modern AI systems exist within complex ecosystems. A language model serving customer queries might interface with dozens of backend systems, each with its own security context. The AI becomes a translator between these contexts, and that translation process introduces vulnerabilities that don't exist in any individual component.
+  </p>
+  
+  <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">
+    <div className="text-gray-400 mb-2">🔄 Information Flow Example:</div>
+    <div className="space-y-1">
+      <div>User Query → AI Interpretation → Backend System A</div>
+      <div>                ↓</div>
+      <div>            Security Context Translation</div>
+      <div>                ↓</div>
+      <div>            Backend System B → Response</div>
+    </div>
+  </div>
+</div>
+
+<div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
+  <div className="flex items-start gap-3">
+    <Target className="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1 flex-shrink-0" />
+    <div>
+      <h3 className="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">Our Methodology Evolution</h3>
+      <p className="text-yellow-800 dark:text-yellow-300 leading-relaxed">
+        We've developed methodologies that account for this complexity. Rather than testing components in isolation, we examine <strong>information flows across the entire system</strong>. We look for places where the AI's interpretive nature might bypass traditional security controls or where its training might conflict with security requirements.
+      </p>
+    </div>
+  </div>
+</div>
 
 <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 my-8 rounded-r-lg">
   <div className="flex items-start gap-3">
@@ -102,29 +251,138 @@ One of the most consistent findings across our assessments involves the subtle e
 
 Consider how a customer service AI processes queries. It accepts untrusted user input, processes it through its language model, and then uses the interpretation to access backend systems. The AI acts as a bridge between security contexts, but unlike traditional input validation, we can't precisely control how it interprets and transforms information.
 
-This manifests differently across industries:
+<div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 mb-8 shadow-md">
+  <h4 className="font-bold text-lg mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+    <Shield className="h-5 w-5 text-red-500" />
+    Industry-Specific Vulnerability Patterns
+  </h4>
+  
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+      <h5 className="font-semibold text-red-900 dark:text-red-200 mb-3 flex items-center gap-2">
+        <Users className="h-4 w-4" />
+        Healthcare Systems
+      </h5>
+      <p className="text-sm text-red-800 dark:text-red-300">
+        AI assistants inadvertently reveal patient information through inference, bypassing HIPAA protections through seemingly innocent queries.
+      </p>
+    </div>
+    
+    <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+      <h5 className="font-semibold text-blue-900 dark:text-blue-200 mb-3 flex items-center gap-2">
+        <Database className="h-4 w-4" />
+        Financial Services
+      </h5>
+      <p className="text-sm text-blue-800 dark:text-blue-300">
+        Conversational AI can be manipulated to reveal transaction patterns, approval criteria, or internal risk assessment models.
+      </p>
+    </div>
+    
+    <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+      <h5 className="font-semibold text-green-900 dark:text-green-200 mb-3 flex items-center gap-2">
+        <ShoppingCart className="h-4 w-4" />
+        Retail Environments
+      </h5>
+      <p className="text-sm text-green-800 dark:text-green-300">
+        AI systems leak competitive intelligence through helpful responses about pricing strategies, inventory levels, or supplier relationships.
+      </p>
+    </div>
+  </div>
+</div>
 
-- **Healthcare systems** where AI assistants inadvertently reveal patient information through inference
-- **Financial services** where conversational AI can be manipulated to reveal transaction patterns or approval criteria  
-- **Retail environments** where AI systems leak competitive intelligence through helpful responses
-
-The challenge isn't that these systems are poorly designed—it's that they're doing exactly what they were trained to do: be helpful and informative. The vulnerability lies in the gap between intended helpfulness and security requirements.
+<div className="bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-500 p-6 mb-8 rounded-r-lg">
+  <div className="flex items-start gap-3">
+    <AlertTriangle className="h-6 w-6 text-orange-600 dark:text-orange-400 mt-1 flex-shrink-0" />
+    <div>
+      <h3 className="text-lg font-bold text-orange-900 dark:text-orange-200 mb-3">The Core Vulnerability</h3>
+      <p className="text-orange-800 dark:text-orange-300 leading-relaxed">
+        The challenge isn't that these systems are poorly designed—it's that they're doing <strong>exactly what they were trained to do</strong>: be helpful and informative. The vulnerability lies in the gap between intended helpfulness and security requirements.
+      </p>
+    </div>
+  </div>
+</div>
 
 ### Context Window Manipulation
 
-Every AI model operates within a context window—a finite amount of conversation history it can consider. Attackers have become sophisticated in exploiting these limitations to achieve their goals.
+<div className="bg-gradient-to-r from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-indigo-800/20 border-l-4 border-indigo-500 p-6 mb-8 rounded-r-lg">
+  <div className="flex items-start gap-3">
+    <Eye className="h-6 w-6 text-indigo-600 dark:text-indigo-400 mt-1 flex-shrink-0" />
+    <div>
+      <h3 className="text-lg font-bold text-indigo-900 dark:text-indigo-200 mb-3">The Context Window Challenge</h3>
+      <p className="text-indigo-800 dark:text-indigo-300 leading-relaxed">
+        Every AI model operates within a <strong>context window</strong>—a finite amount of conversation history it can consider. Attackers have become sophisticated in exploiting these limitations to achieve their goals.
+      </p>
+    </div>
+  </div>
+</div>
 
-The attack pattern typically unfolds over extended conversations. Attackers begin with legitimate queries, gradually introducing elements that shift the AI's behavioral baseline. By the time they introduce malicious requests, the AI's context is so saturated with seemingly benign interactions that safety mechanisms fail to trigger.
-
-What makes this particularly challenging in production is that legitimate users also need extended conversations. Customer support scenarios, technical troubleshooting, and complex business analysis all require maintaining context over time. Distinguishing between legitimate extended use and context manipulation attacks requires sophisticated behavioral analysis.
+<div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 mb-8 shadow-md">
+  <h4 className="font-bold text-lg mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+    <Target className="h-5 w-5 text-red-500" />
+    Attack Pattern Analysis
+  </h4>
+  
+  <div className="space-y-4">
+    <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">
+      <div className="text-gray-400 mb-2">🔄 Multi-Stage Context Manipulation:</div>
+      <div className="space-y-2">
+        <div>Step 1: Begin with legitimate queries</div>
+        <div>Step 2: Gradually introduce behavioral shifts</div>
+        <div>Step 3: Saturate context with benign interactions</div>
+        <div>Step 4: Introduce malicious requests</div>
+        <div>Step 5: Safety mechanisms fail to trigger</div>
+      </div>
+    </div>
+    
+    <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
+      <h5 className="font-semibold text-yellow-900 dark:text-yellow-200 mb-2">⚠️ The Detection Challenge</h5>
+      <p className="text-sm text-yellow-800 dark:text-yellow-300">
+        What makes this particularly challenging in production is that legitimate users also need extended conversations. Customer support scenarios, technical troubleshooting, and complex business analysis all require maintaining context over time. Distinguishing between legitimate extended use and context manipulation attacks requires sophisticated behavioral analysis.
+      </p>
+    </div>
+  </div>
+</div>
 
 ### Integration Cascade Vulnerabilities
 
-Production AI systems rarely operate in isolation—they're woven into complex webs of integrations. Our assessments consistently reveal that vulnerabilities cascade through these integrations in unexpected ways.
+<div className="bg-gradient-to-r from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 border-l-4 border-red-500 p-6 mb-8 rounded-r-lg">
+  <div className="flex items-start gap-3">
+    <Network className="h-6 w-6 text-red-600 dark:text-red-400 mt-1 flex-shrink-0" />
+    <div>
+      <h3 className="text-lg font-bold text-red-900 dark:text-red-200 mb-3">The Cascade Effect</h3>
+      <p className="text-red-800 dark:text-red-300 leading-relaxed">
+        Production AI systems rarely operate in isolation—they're woven into <strong>complex webs of integrations</strong>. Our assessments consistently reveal that vulnerabilities cascade through these integrations in unexpected ways.
+      </p>
+    </div>
+  </div>
+</div>
 
-A prompt injection in a customer-facing chatbot might seem like a minor issue until you trace its potential impact. That chatbot queries an inventory system, which connects to supply chain APIs, which interface with partner systems. Suddenly, a simple prompt injection becomes a pathway to accessing systems far removed from the original attack surface.
-
-These cascade effects are particularly dangerous because they often bypass traditional security controls. Each system in the chain might be secure in isolation, but the emergent behavior of the integrated whole creates new vulnerabilities.
+<div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 mb-8 shadow-md">
+  <h4 className="font-bold text-lg mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+    <Zap className="h-5 w-5 text-red-500" />
+    Attack Propagation Example
+  </h4>
+  
+  <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm mb-4">
+    <div className="text-gray-400 mb-2">🔗 Integration Cascade Attack:</div>
+    <div className="space-y-2">
+      <div>Customer Chatbot → Inventory System</div>
+      <div>                ↓</div>
+      <div>            Supply Chain APIs</div>
+      <div>                ↓</div>
+      <div>            Partner Systems</div>
+      <div>                ↓</div>
+      <div>            Sensitive Data Access</div>
+    </div>
+  </div>
+  
+  <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+    <h5 className="font-semibold text-red-900 dark:text-red-200 mb-2">🚨 The Security Gap</h5>
+    <p className="text-sm text-red-800 dark:text-red-300">
+      These cascade effects are particularly dangerous because they often bypass traditional security controls. Each system in the chain might be secure in isolation, but the emergent behavior of the integrated whole creates new vulnerabilities.
+    </p>
+  </div>
+</div>
 
 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
   <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-md">
@@ -152,16 +410,71 @@ These cascade effects are particularly dangerous because they often bypass tradi
 
 ## The Human Element in Production
 
-Production environments introduce the most unpredictable variable: human users. Our assessments reveal that the interaction between human creativity and AI capabilities often determines whether theoretical vulnerabilities become actual breaches.
+<div className="bg-gradient-to-r from-pink-50 to-pink-100 dark:from-pink-900/20 dark:to-pink-800/20 border-l-4 border-pink-500 p-6 mb-8 rounded-r-lg">
+  <div className="flex items-start gap-3">
+    <Users className="h-6 w-6 text-pink-600 dark:text-pink-400 mt-1 flex-shrink-0" />
+    <div>
+      <h3 className="text-lg font-bold text-pink-900 dark:text-pink-200 mb-3">The Unpredictable Variable</h3>
+      <p className="text-pink-800 dark:text-pink-300 leading-relaxed">
+        Production environments introduce the most unpredictable variable: <strong>human users</strong>. Our assessments reveal that the interaction between human creativity and AI capabilities often determines whether theoretical vulnerabilities become actual breaches.
+      </p>
+    </div>
+  </div>
+</div>
 
-Users approach AI systems with diverse intents and behaviors:
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+  <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+    <h4 className="font-semibold text-blue-900 dark:text-blue-200 mb-2 flex items-center gap-2">
+      <Eye className="h-4 w-4" />
+      Curious Explorers
+    </h4>
+    <p className="text-sm text-blue-800 dark:text-blue-300">
+      Users who probe boundaries without malicious intent, but may accidentally discover vulnerabilities.
+    </p>
+  </div>
+  
+  <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+    <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2 flex items-center gap-2">
+      <Zap className="h-4 w-4" />
+      Efficiency Seekers
+    </h4>
+    <p className="text-sm text-green-800 dark:text-green-300">
+      Users who develop creative workarounds that bypass security measures for legitimate purposes.
+    </p>
+  </div>
+  
+  <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
+    <h4 className="font-semibold text-yellow-900 dark:text-yellow-200 mb-2 flex items-center gap-2">
+      <AlertTriangle className="h-4 w-4" />
+      Accidental Threats
+    </h4>
+    <p className="text-sm text-yellow-800 dark:text-yellow-300">
+      Users who expose sensitive information while seeking assistance, unaware of security implications.
+    </p>
+  </div>
+  
+  <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+    <h4 className="font-semibold text-red-900 dark:text-red-200 mb-2 flex items-center gap-2">
+      <Target className="h-4 w-4" />
+      Sophisticated Attackers
+    </h4>
+    <p className="text-sm text-red-800 dark:text-red-300">
+      Users who understand AI psychology and exploit it systematically for malicious purposes.
+    </p>
+  </div>
+</div>
 
-- **Curious explorers** who probe boundaries without malicious intent
-- **Efficiency seekers** who develop creative workarounds that bypass security measures
-- **Accidental threats** who expose sensitive information while seeking assistance
-- **Sophisticated attackers** who understand AI psychology and exploit it systematically
-
-The social engineering dimension adds another layer of complexity. Attackers have learned to exploit the conversational nature of AI systems, building rapport over time before attempting exploitation. They understand that AI systems trained to be helpful can be gradually convinced to exceed their intended boundaries.
+<div className="bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-500 p-6 mb-8 rounded-r-lg">
+  <div className="flex items-start gap-3">
+    <AlertCircle className="h-6 w-6 text-orange-600 dark:text-orange-400 mt-1 flex-shrink-0" />
+    <div>
+      <h3 className="text-lg font-bold text-orange-900 dark:text-orange-200 mb-3">The Social Engineering Dimension</h3>
+      <p className="text-orange-800 dark:text-orange-300 leading-relaxed">
+        Attackers have learned to exploit the conversational nature of AI systems, building rapport over time before attempting exploitation. They understand that AI systems trained to be helpful can be gradually convinced to exceed their intended boundaries.
+      </p>
+    </div>
+  </div>
+</div>
 
 ### Privilege Escalation Through Dialogue
 
