@@ -357,7 +357,7 @@ Before diving into specific vectors, understanding the holistic attack surface o
     <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border-l-4 border-yellow-500">
       <h4 className="font-semibold mb-2">1.12 Template Injection</h4>
       <div className="bg-gray-900 text-green-400 p-2 rounded text-xs font-mono mb-2">
-        <div>{{system.prompt}} {{ignore_safety}}</div>
+        <div>{`{{system.prompt}} {{ignore_safety}}`}</div>
       </div>
       <div className="text-sm text-gray-600 dark:text-gray-400">
         Exploits template processing in prompt construction
