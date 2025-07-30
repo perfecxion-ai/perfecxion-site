@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 
@@ -17,6 +18,10 @@ const navigation = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+  
+  // Hide hamburger menu on pages with their own sidebar navigation
+  const hideMobileMenu = pathname.startsWith('/learn') || pathname.startsWith('/docs') || pathname.startsWith('/blog')
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
@@ -35,20 +40,22 @@ export default function Header() {
             </Link>
           </div>
 
-          <div className="flex lg:hidden">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center rounded-lg p-3 min-w-[44px] min-h-[44px] text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              <span className="sr-only">{mobileMenuOpen ? 'Close menu' : 'Open main menu'}</span>
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="h-6 w-6" aria-hidden="true" />
-              )}
-            </button>
-          </div>
+          {!hideMobileMenu && (
+            <div className="flex lg:hidden">
+              <button
+                type="button"
+                className="inline-flex items-center justify-center rounded-lg p-3 min-w-[44px] min-h-[44px] text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                <span className="sr-only">{mobileMenuOpen ? 'Close menu' : 'Open main menu'}</span>
+                {mobileMenuOpen ? (
+                  <X className="h-6 w-6" aria-hidden="true" />
+                ) : (
+                  <Menu className="h-6 w-6" aria-hidden="true" />
+                )}
+              </button>
+            </div>
+          )}
 
           <div className="hidden lg:flex lg:gap-x-8">
             {navigation.map((item) => (

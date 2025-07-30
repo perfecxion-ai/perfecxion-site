@@ -1,89 +1,18 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { ChevronRight, BookOpen, Shield, Zap, Users, Code, Settings, Play } from 'lucide-react'
+import DocsLayoutClient from './DocsLayoutClient'
 
 export const metadata: Metadata = {
   title: 'Documentation - perfecXion.ai',
   description: 'Comprehensive documentation for all perfecXion.ai products.',
 }
 
-const documentationSections = [
-  {
-    title: 'Core Products',
-    items: [
-      { name: 'perfecX Red-T', href: '/docs/perfecxion-red-t', icon: Shield },
-      { name: 'perfecX Agent', href: '/docs/perfecxion-agent', icon: Users },
-      { name: 'perfecX Comply', href: '/docs/perfecxion-comply', icon: BookOpen },
-      { name: 'perfecX G-Rails', href: '/docs/perfecxion-g-rails', icon: Shield },
-    ]
-  },
-  {
-    title: 'Security Tools',
-    items: [
-      { name: 'PromptShield', href: '/docs/promptshield', icon: Shield },
-      { name: 'PromptShield Quick Start', href: '/docs/promptshield-quick-start', icon: Play },
-      { name: 'SafeAI Guard', href: '/docs/safeai-guard', icon: Shield },
-      { name: 'TorScan', href: '/docs/torscan', icon: Zap },
-    ]
-  },
-  {
-    title: 'API Reference',
-    items: [
-      { name: 'REST API', href: '/docs/api/rest', icon: Code },
-      { name: 'SDKs', href: '/docs/api/sdks', icon: Code },
-      { name: 'Webhooks', href: '/docs/api/webhooks', icon: Zap },
-    ]
-  },
-  {
-    title: 'Guides',
-    items: [
-      { name: 'Security Best Practices', href: '/docs/guides/security', icon: Shield },
-      { name: 'Compliance Setup', href: '/docs/guides/compliance', icon: BookOpen },
-      { name: 'Integration Examples', href: '/docs/guides/integrations', icon: Code },
-    ]
-  }
-]
 
 export default function DocumentationPage() {
   return (
-    <div className="bg-white dark:bg-background-dark min-h-screen">
-      <div className="flex">
-        {/* Sidebar */}
-        <div className="w-80 border-r border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 min-h-screen overflow-y-auto">
-          <div className="p-6">
-            <div className="flex items-center space-x-2 mb-6">
-              <BookOpen className="h-6 w-6 text-primary-600 dark:text-primary-400" />
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Documentation</h2>
-            </div>
-
-            <nav className="space-y-8">
-              {documentationSections.map((section) => (
-                <div key={section.title}>
-                  <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
-                    {section.title}
-                  </h3>
-                  <ul className="space-y-1">
-                    {section.items.map((item) => (
-                      <li key={item.name}>
-                        <Link
-                          href={item.href}
-                          className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors"
-                        >
-                          <item.icon className="h-4 w-4" />
-                          <span>{item.name}</span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </nav>
-          </div>
-        </div>
-
-        {/* Main Content */}
-        <div className="flex-1">
-          <div className="max-w-4xl mx-auto px-6 py-12">
+    <DocsLayoutClient>
+      <>
             <div className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-4">
                 Documentation
@@ -191,9 +120,7 @@ export default function DocumentationPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      </>
+    </DocsLayoutClient>
   )
 }
