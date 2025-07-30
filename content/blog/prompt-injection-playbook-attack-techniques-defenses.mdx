@@ -218,7 +218,7 @@ Let's break down the attack anatomy:
 
 <div class="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30 border border-red-200 dark:border-red-800 rounded-xl p-6 my-8">
 <h3 class="text-lg font-semibold mb-4 text-red-800 dark:text-red-200">Prompt Injection Attack Flow</h3>
-`
+```
 User Input       AI System        Output
 "Summarize this      System Prompt:       "I cannot help
 document. Also,      + User Input         with that request
@@ -231,7 +231,7 @@ Attack Vector        Processing           Defense Result
 - Direct Inject      - Prompt Parse       - Blocked
 - Context Manip      - Intent Recog       - Filtered
 - Role Playing       - Safety Check       - Logged
-`
+```
 </div>
 
 
@@ -409,7 +409,7 @@ The first line of defense involves carefully examining and processing user input
 
 <div class="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-950/30 dark:to-blue-950/30 border border-green-200 dark:border-green-800 rounded-xl p-6 my-8">
 <h4 class="text-md font-semibold mb-3 text-green-800 dark:text-green-200">Defense-in-Depth Architecture</h4>
-`
+```
 User Input
 Syntax Validation (malformed requests, encoding attacks)
 Semantic Analysis (instruction detection, role-play attempts)
@@ -417,7 +417,7 @@ Context Validation (delimiter confusion, document poisoning)
 Intent Classification (legitimate vs. manipulation attempts)
 Multi-Language Screening (non-English instructions)
 Final Prompt Assembly (secure instruction hierarchy)
-`
+```
 </div>
 
 
@@ -433,7 +433,7 @@ Final Prompt Assembly (secure instruction hierarchy)
 ### Prompt Architecture Design
 The way you structure your system prompts can dramatically impact vulnerability to injection attacks. Secure prompt design follows principles similar to secure coding practices.
 **Hierarchical Instruction Design:**
-`
+```
 SYSTEM LEVEL (Highest Priority)
 Core Behavioral Guidelines (never override)
 Safety Constraints (absolute boundaries)
@@ -446,7 +446,7 @@ USER LEVEL (Lowest Priority)
 Current User Input (process carefully)
 User Preferences (when safe)
 Dynamic Content (validate thoroughly)
-`
+```
 **Instruction Isolation Techniques:**
 The most effective systems create clear boundaries between different instruction levels, making it impossible for user input to "jump" to higher privilege levels.
 
@@ -662,7 +662,7 @@ Many prompt injection techniques use capabilities that have legitimate uses (rol
 
 <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 border border-blue-200 dark:border-blue-800 rounded-xl p-6 my-8">
 <h4 class="text-md font-semibold mb-3 text-blue-800 dark:text-blue-200">Multi-Stage Detection Architecture</h4>
-`
+```
 Input Analysis
 Preprocessing
 Language Detection
@@ -680,7 +680,7 @@ Response Validation
 Output Compliance Check
 Behavioral Consistency
 Safety Boundary Validation
-`
+```
 </div>
 
 
