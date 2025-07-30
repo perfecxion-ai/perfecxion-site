@@ -50,6 +50,7 @@ const mdxComponents = {
   ShoppingCart,
   Building,
   FileText,
+  Link,
   // Add any other components you want to use in MDX
 };
 
