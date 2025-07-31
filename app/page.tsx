@@ -9,15 +9,15 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40">
           <div className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
             <div className="mt-24 sm:mt-32 lg:mt-16">
-              <a href="#" className="inline-flex space-x-6">
-                <span className="rounded-full bg-primary-500/10 px-3 py-1 text-sm font-semibold leading-6 text-primary-600 ring-1 ring-inset ring-primary-500/20 dark:text-primary-400">
+              <Link href="/products/adapt-ai" className="inline-flex space-x-6 group">
+                <span className="rounded-full bg-primary-500/10 px-3 py-1 text-sm font-semibold leading-6 text-primary-600 ring-1 ring-inset ring-primary-500/20 dark:text-primary-400 group-hover:bg-primary-500/20 transition-colors">
                   What's new
                 </span>
-                <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-600 dark:text-gray-300">
-                  <span>Just shipped v1.0</span>
+                <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-600 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                  <span>Just shipped ADAPT-AI</span>
                   <ArrowRight className="h-4 w-4" />
                 </span>
-              </a>
+              </Link>
             </div>
             <h1 className="mt-10 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
               Secure Your AI Systems with{' '}
@@ -105,6 +105,26 @@ export default function HomePage() {
               <div className="flex flex-col">
                 <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-500">
+                    <Zap className="h-6 w-6 text-white" />
+                  </div>
+                  Advanced AI Attack Testing
+                </dt>
+                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
+                  <p className="flex-auto">
+                    ADAPT-AI delivers state-of-the-art adversarial testing with gradient-based optimization,
+                    multi-modal attacks, and ML-powered adaptation for comprehensive AI security assessment.
+                  </p>
+                  <p className="mt-6">
+                    <Link href="/products/adapt-ai" className="text-sm font-semibold leading-6 text-primary-600 dark:text-primary-400">
+                      Learn more <ArrowRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  </p>
+                </dd>
+              </div>
+
+              <div className="flex flex-col">
+                <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-500">
                     <Shield className="h-6 w-6 text-white" />
                   </div>
                   Red Team Testing
@@ -115,27 +135,7 @@ export default function HomePage() {
                     and weaknesses in your AI systems before they reach production.
                   </p>
                   <p className="mt-6">
-                    <Link href="/products" className="text-sm font-semibold leading-6 text-primary-600 dark:text-primary-400">
-                      Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                    </Link>
-                  </p>
-                </dd>
-              </div>
-
-              <div className="flex flex-col">
-                <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-500">
-                    <Scan className="h-6 w-6 text-white" />
-                  </div>
-                  Agent Monitoring
-                </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
-                  <p className="flex-auto">
-                    perfecX Agent delivers real-time monitoring and analysis of AI agent behavior
-                    to detect anomalous activities and potential security threats.
-                  </p>
-                  <p className="mt-6">
-                    <Link href="/products" className="text-sm font-semibold leading-6 text-primary-600 dark:text-primary-400">
+                    <Link href="/products/perfecxion-red-t" className="text-sm font-semibold leading-6 text-primary-600 dark:text-primary-400">
                       Learn more <ArrowRight className="ml-1 h-4 w-4" />
                     </Link>
                   </p>
@@ -155,7 +155,7 @@ export default function HomePage() {
                     and maintain the highest safety standards through automated monitoring.
                   </p>
                   <p className="mt-6">
-                    <Link href="/products" className="text-sm font-semibold leading-6 text-primary-600 dark:text-primary-400">
+                    <Link href="/products/perfecxion-comply" className="text-sm font-semibold leading-6 text-primary-600 dark:text-primary-400">
                       Learn more <ArrowRight className="ml-1 h-4 w-4" />
                     </Link>
                   </p>

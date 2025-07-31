@@ -4,6 +4,7 @@ import { Github, Twitter, Linkedin, Mail } from 'lucide-react'
 
 const navigation = {
   product: [
+    { name: 'ADAPT-AI', href: '/products/adapt-ai' },
     { name: 'perfecX Red-T', href: '/products/perfecxion-red-t' },
     { name: 'perfecX Agent', href: '/products/perfecxion-agent' },
     { name: 'SafeAI Guard', href: '/products/safeai-guard' },
