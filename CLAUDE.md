@@ -19,6 +19,9 @@ npm start          # Start production server
 # Code Quality
 npm run lint       # Run ESLint
 
+# Sitemap Generation
+node scripts/generate-sitemap.js  # Generate sitemap.xml
+
 # Deployment
 git push origin main  # Triggers automatic deployment via Vercel
 ```
@@ -54,6 +57,8 @@ git push origin main  # Triggers automatic deployment via Vercel
 - Maintain consistent styling using Tailwind utility classes
 - Dark mode support required for all new components (use `dark:` prefix)
 - Product information must be added/modified in `lib/products.ts`, not in individual pages
+- MDX files use frontmatter with title, date, and description fields
+- Blog posts go in `/content/blog/`, learning content in `/content/learning/`
 
 ### Deployment Architecture
 
@@ -61,6 +66,29 @@ git push origin main  # Triggers automatic deployment via Vercel
 - DNS configured through Spaceship registrar
 - SSL certificates automatically provisioned by Vercel
 - Static site generation (SSG) for optimal performance
+
+### Content Organization
+
+- **Blog Posts**: `/content/blog/*.mdx` - Technical articles and security insights
+- **Learning Content**: `/content/learning/*.mdx` - Educational materials
+- **Documentation**: `/app/docs/[product]/` - Product-specific documentation pages
+- **White Papers**: `/public/white-papers/` - PDF downloads and `/app/White Papers/` for web versions
+
+### Product Structure
+
+All products follow a consistent data model defined in `lib/products.ts`:
+- Core fields: id, name, description, features, category, status
+- Optional fields: technicalSpecs, architecture, useCases, integrationExamples, benefits
+- Product pages use dynamic routing: `/products/[product]/page.tsx`
+- Documentation follows pattern: `/docs/[product]/[section]/page.tsx`
+
+### Script Utilities
+
+The `/scripts` directory contains Python and JavaScript utilities for content management:
+- `fix-mdx-*.py` - Various MDX syntax fixing scripts
+- `generate-sitemap.js` - Sitemap generation for SEO
+- `update-blog-dates.py` - Blog date management
+- `generate-white-paper.py` - White paper generation
 
 ## MDX Content Troubleshooting
 

@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import Link from 'next/link';
-import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, Tag, FolderOpen } from 'lucide-react';
 
 export const metadata = {
   title: 'Blog - AI Security Insights',
@@ -17,6 +17,7 @@ interface BlogPostMeta {
   description?: string;
   author?: string;
   tags?: string[];
+  category?: string;
   featured?: boolean;
 }
 
@@ -34,6 +35,7 @@ export default function BlogPage() {
       description: data.description,
       author: data.author,
       tags: data.tags || [],
+      category: data.category,
       featured: data.featured || false,
     };
   });
@@ -96,9 +98,13 @@ export default function BlogPage() {
                   {post.tags && post.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-4">
                       {post.tags.slice(0, 3).map(tag => (
-                        <span key={tag} className="inline-flex items-center rounded-full bg-primary-100 px-2.5 py-0.5 text-xs font-medium text-primary-800 dark:bg-primary-900/20 dark:text-primary-400">
+                        <Link 
+                          key={tag} 
+                          href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                          className="inline-flex items-center rounded-full bg-primary-100 px-2.5 py-0.5 text-xs font-medium text-primary-800 dark:bg-primary-900/20 dark:text-primary-400 hover:bg-primary-200 dark:hover:bg-primary-900/30 transition-colors"
+                        >
                           {tag}
-                        </span>
+                        </Link>
                       ))}
                     </div>
                   )}
@@ -136,6 +142,15 @@ export default function BlogPage() {
                       <span>{post.readTime}</span>
                     </div>
                   )}
+                  {post.category && (
+                    <Link 
+                      href={`/blog/category/${post.category.toLowerCase().replace(/\s+/g, '-')}`}
+                      className="flex items-center gap-1 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                    >
+                      <FolderOpen className="h-4 w-4" />
+                      <span>{post.category}</span>
+                    </Link>
+                  )}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2">
                   {post.title}
@@ -146,9 +161,13 @@ export default function BlogPage() {
                 {post.tags && post.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-4">
                     {post.tags.slice(0, 2).map(tag => (
-                      <span key={tag} className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:bg-gray-800 dark:text-gray-400">
+                      <Link 
+                        key={tag} 
+                        href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                        className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:bg-gray-800 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                      >
                         {tag}
-                      </span>
+                      </Link>
                     ))}
                   </div>
                 )}
