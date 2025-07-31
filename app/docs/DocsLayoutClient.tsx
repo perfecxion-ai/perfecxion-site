@@ -8,6 +8,7 @@ const documentationSections = [
   {
     title: 'Core Products',
     items: [
+      { name: 'ADAPT-AI', href: '/docs/adapt-ai', icon: Zap },
       { name: 'perfecX Red-T', href: '/docs/perfecxion-red-t', icon: Shield },
       { name: 'perfecX Agent', href: '/docs/perfecxion-agent', icon: Users },
       { name: 'perfecX Comply', href: '/docs/perfecxion-comply', icon: BookOpen },

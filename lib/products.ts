@@ -34,6 +34,121 @@ export interface Product {
 
 export const products: Product[] = [
   {
+    id: 'adapt-ai',
+    name: 'ADAPT-AI',
+    description: 'Advanced AI Attack Testing Framework - A comprehensive security testing platform implementing state-of-the-art adversarial AI research techniques with machine learning capabilities for continuous improvement and adaptation.',
+    features: [
+      'Gradient-Based Attack Optimization - Advanced prompt optimization with Adam optimizer, momentum, and gradient clipping for maximum effectiveness',
+      'Multi-Modal Attack Capabilities - Comprehensive testing across text, image, audio, and video with cross-modal attack synchronization',
+      'Machine Learning Integration - Adaptive learning system with pattern recognition, genetic optimization, and reinforcement learning',
+      'Social Engineering Simulation - Authority impersonation, emotional manipulation, and trust-building sequence testing',
+      'Evasion & Anti-Detection - Dynamic obfuscation, fingerprint randomization, and defense mechanism detection',
+      'Enterprise Deployment - Microservices architecture with API gateway, real-time monitoring, and comprehensive security controls'
+    ],
+    category: 'AI Security Testing',
+    status: 'available',
+    technicalSpecs: {
+      responseTime: '< 500ms attack generation',
+      throughput: '1000+ concurrent tests',
+      availability: '99.9% uptime SLA',
+      latency: 'Real-time adaptation'
+    },
+    architecture: {
+      layers: [
+        {
+          name: 'API Layer',
+          description: 'FastAPI-based microservices with authentication, rate limiting, and request routing',
+          detects: ['Service discovery', 'Attack orchestration', 'Real-time monitoring', 'WebSocket updates']
+        },
+        {
+          name: 'Core Domain Layer',
+          description: 'Advanced attack engine with ML algorithms, pattern recognition, and adaptive strategies',
+          detects: ['Gradient attacks', 'Adversarial suffixes', 'Token manipulation', 'Embedding attacks']
+        },
+        {
+          name: 'ML System Layer',
+          description: 'Integrated machine learning with ensemble learning, genetic algorithms, and reinforcement learning',
+          detects: ['Pattern evolution', 'Strategy optimization', 'Real-time adaptation', 'Model improvement']
+        }
+      ]
+    },
+    useCases: [
+      'AI Security Assessments',
+      'Red Team Operations',
+      'Compliance Testing',
+      'ML Model Validation',
+      'Vulnerability Research'
+    ],
+    integrationExamples: {
+      python: `from adapt_ai import AdaptClient
+
+# Initialize ADAPT-AI client
+client = AdaptClient(api_key="your-api-key")
+
+# Run advanced gradient attack
+result = await client.attack.gradient_optimize(
+    target="https://api.example.com/chat",
+    objective="test_jailbreak",
+    iterations=100
+)
+
+# Analyze results with ML
+analysis = await client.ml.analyze_patterns(result)
+print(f"Success rate: {analysis.success_rate}")
+print(f"Detected vulnerabilities: {analysis.vulnerabilities}")`,
+      javascript: `import { AdaptAI } from '@adapt-ai/sdk';
+
+const adapt = new AdaptAI({ apiKey: 'your-api-key' });
+
+// Discover AI endpoints
+const targets = await adapt.discovery.scan({
+  domain: 'example.com',
+  depth: 3
+});
+
+// Execute multi-modal attack
+const result = await adapt.attack.multiModal({
+  target: targets[0],
+  modes: ['text', 'image'],
+  strategy: 'adaptive'
+});`,
+      api: `curl -X POST "https://api.adapt-ai.com/v1/attack" \\
+  -H "Authorization: Bearer your-api-key" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "target": "https://api.example.com/chat",
+    "attack_type": "gradient_optimization",
+    "parameters": {
+      "iterations": 100,
+      "learning_rate": 0.01,
+      "objective": "jailbreak"
+    }
+  }'`
+    },
+    benefits: [
+      {
+        title: 'State-of-the-Art Techniques',
+        description: 'Implements cutting-edge adversarial AI research with continuous updates as new attack vectors emerge',
+        icon: 'Brain'
+      },
+      {
+        title: 'Adaptive Learning',
+        description: 'Machine learning system that improves attack effectiveness over time through pattern recognition',
+        icon: 'TrendingUp'
+      },
+      {
+        title: 'Comprehensive Coverage',
+        description: 'Tests across all modalities including text, image, audio, video, and multi-modal combinations',
+        icon: 'Layers'
+      },
+      {
+        title: 'Enterprise Ready',
+        description: 'Production-grade architecture with monitoring, security controls, and compliance features',
+        icon: 'Building'
+      }
+    ]
+  },
+  {
     id: 'perfecxion-red-t',
     name: 'perfecX Red-T',
     description: 'Advanced red team testing platform for AI systems. Comprehensive adversarial testing to identify vulnerabilities before they become threats with enterprise-grade security assessment capabilities.',
