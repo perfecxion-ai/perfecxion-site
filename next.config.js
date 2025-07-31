@@ -12,6 +12,23 @@ const nextConfig = {
   experimental: {
     mdxRs: true,
   },
+  async headers() {
+    return [
+      {
+        source: '/white-papers/:path*.pdf',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/pdf',
+          },
+          {
+            key: 'Content-Disposition',
+            value: 'attachment',
+          },
+        ],
+      },
+    ]
+  },
 }
 
 module.exports = withMDX(nextConfig)

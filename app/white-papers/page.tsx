@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, FileText, Download, Calendar, User, Eye, BookOpen, Shield, Target, Brain, Database, Network } from 'lucide-react'
+import DownloadButton from './DownloadButton'
 
 export const metadata: Metadata = {
   title: 'White Papers - AI Security Research',
@@ -183,13 +184,9 @@ export default function WhitePapersPage() {
                           <span>{paper.readTime}</span>
                         </div>
                       </div>
-                      <Link
-                        href={paper.downloadUrl}
-                        className="inline-flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium text-sm"
-                      >
-                        <Download className="mr-2 h-4 w-4" />
+                      <DownloadButton href={paper.downloadUrl} variant="primary">
                         Download PDF
-                      </Link>
+                      </DownloadButton>
                     </div>
                   </div>
                 </div>
@@ -249,12 +246,9 @@ export default function WhitePapersPage() {
                         <Eye className="h-3 w-3" />
                         <span>{paper.readTime}</span>
                       </div>
-                      <Link
-                        href={paper.downloadUrl}
-                        className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm"
-                      >
-                        Download <ArrowRight className="ml-1 h-3 w-3" />
-                      </Link>
+                      <DownloadButton href={paper.downloadUrl} variant="link">
+                        Download
+                      </DownloadButton>
                     </div>
                   </div>
                 </div>
