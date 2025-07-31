@@ -8,16 +8,22 @@ const SITE_URL = 'https://perfecxion.ai';
 const staticPages = [
   '',
   '/products',
+  '/products/adapt-ai',
   '/products/perfecxion-red-t',
   '/products/perfecxion-agent',
-  '/products/perfecxion-browse',
+  '/products/safeai-guard',
   '/products/perfecxion-comply',
   '/products/perfecxion-g-rails',
+  '/products/promptshield',
+  '/products/torscan',
   '/blog',
   '/learn',
   '/docs',
   '/about',
-  '/support',
+  '/contact',
+  '/privacy',
+  '/terms',
+  '/white-papers',
 ];
 
 // Generate sitemap XML

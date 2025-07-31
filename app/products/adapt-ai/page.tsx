@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle, Shield, Code, Brain, TrendingUp, Layers, Building, Zap, Target, Users, Eye, BookOpen } from 'lucide-react'
 import { getProduct } from '@/lib/products'
 import { notFound } from 'next/navigation'
+import DemoRequestButton from '@/components/DemoRequestButton'
 
 export const metadata: Metadata = {
   title: 'ADAPT-AI - Advanced AI Attack Testing Framework',
@@ -41,10 +42,11 @@ export default function AdaptAIPage() {
                 {product.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/docs/adapt-ai/quick-start" className="btn-primary">
+                <DemoRequestButton product={product} />
+                <Link href="/docs/adapt-ai/quick-start" className="btn-secondary">
                   Get Started <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
-                <Link href="/docs/adapt-ai" className="btn-secondary">
+                <Link href="/docs/adapt-ai" className="btn-ghost">
                   <Code className="mr-2 h-4 w-4" />
                   View Documentation
                 </Link>

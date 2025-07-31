@@ -1,7 +1,30 @@
+# robots.txt for perfecxion.ai
+
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
+
+# Search engine specific rules
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# AI Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Crawl delay for bots
+User-agent: *
+Crawl-delay: 1
 
 Sitemap: https://perfecxion.ai/sitemap.xml

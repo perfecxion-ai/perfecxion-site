@@ -65,8 +65,66 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'perfecXion.ai',
+    url: 'https://perfecxion.ai',
+    logo: 'https://perfecxion.ai/logo-perfecxion.svg',
+    description: 'Leading AI security and compliance solutions provider',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '123 AI Security Blvd',
+      addressLocality: 'San Francisco',
+      addressRegion: 'CA',
+      postalCode: '94105',
+      addressCountry: 'US'
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+1-555-123-4567',
+      contactType: 'customer service',
+      email: 'contact@perfecxion.ai',
+      availableLanguage: ['English']
+    },
+    sameAs: [
+      'https://twitter.com/perfecxion-ai',
+      'https://www.linkedin.com/company/perfecxion-ai',
+      'https://github.com/perfecxion-ai'
+    ]
+  }
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'perfecXion.ai',
+    url: 'https://perfecxion.ai',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://perfecxion.ai/search?q={search_term_string}'
+      },
+      'query-input': 'required name=search_term_string'
+    }
+  }
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema)
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema)
+          }}
+        />
+      </head>
       <body className={inter.className}>
         <ThemeProvider>
           <div className="min-h-screen flex flex-col">
