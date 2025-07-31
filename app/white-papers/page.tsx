@@ -27,6 +27,18 @@ interface WhitePaper {
 
 const whitePapers: WhitePaper[] = [
   {
+    id: 'what-is-ai-security',
+    title: 'What is AI Security? A Beginner\'s Guide to Protecting Your Most Valuable Intelligence',
+    description: 'An introductory guide to AI security fundamentals, covering the unique threats facing AI systems and practical strategies for protecting artificial intelligence in enterprise environments.',
+    author: 'perfecXion AI Security Team',
+    date: '2025-01-31',
+    category: 'AI Security Fundamentals',
+    downloadUrl: '/white-papers/what-is-ai-security.pdf',
+    readTime: '20 min read',
+    featured: true,
+    icon: Shield
+  },
+  {
     id: 'from-data-to-dialogue-llm-training',
     title: 'From Data to Dialogue: A Deep Dive into the Training of Large Language Models',
     description: 'Comprehensive guide tracing the complete journey from architectural foundations through massive-scale pre-training to the nuanced art of alignment with human values.',
@@ -35,7 +47,7 @@ const whitePapers: WhitePaper[] = [
     category: 'Technical Research',
     downloadUrl: '/white-papers/from-data-to-dialogue-llm-training-deep-dive.pdf',
     readTime: '90 min read',
-    featured: true,
+    featured: false,
     icon: Brain
   },
   {
@@ -114,6 +126,7 @@ const whitePapers: WhitePaper[] = [
 
 const categories = [
   { name: 'All Papers', value: 'all', count: whitePapers.length },
+  { name: 'AI Security Fundamentals', value: 'AI Security Fundamentals', count: whitePapers.filter(wp => wp.category === 'AI Security Fundamentals').length },
   { name: 'Technical Research', value: 'Technical Research', count: whitePapers.filter(wp => wp.category === 'Technical Research').length },
   { name: 'Red Team Testing', value: 'Red Team Testing', count: whitePapers.filter(wp => wp.category === 'Red Team Testing').length },
   { name: 'Compliance', value: 'Compliance', count: whitePapers.filter(wp => wp.category === 'Compliance').length },
