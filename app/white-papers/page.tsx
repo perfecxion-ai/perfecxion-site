@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, FileText, Download, Calendar, User, Eye, BookOpen, Shield, Target, Brain, Database, Network } from 'lucide-react'
 import DownloadButton from './DownloadButton'
+import ComingSoonButton from './ComingSoonButton'
+import fs from 'fs'
+import path from 'path'
 
 export const metadata: Metadata = {
   title: 'White Papers - AI Security Research',
@@ -119,6 +122,16 @@ const categories = [
 ]
 
 export default function WhitePapersPage() {
+  // Check which PDFs actually exist and have content
+  const checkPdfExists = (downloadUrl: string): boolean => {
+    try {
+      const filePath = path.join(process.cwd(), 'public', downloadUrl)
+      const stats = fs.statSync(filePath)
+      return stats.size > 0 // Only return true if file has content
+    } catch {
+      return false
+    }
+  }
   return (
     <main className="bg-white dark:bg-background-dark min-h-screen">
       <div className="max-width container-padding section-padding">
@@ -135,6 +148,15 @@ export default function WhitePapersPage() {
             Deep technical insights and research findings from our AI security experts.
             Download comprehensive white papers covering red teaming, compliance, and emerging threats.
           </p>
+          
+          {/* Notice Banner */}
+          <div className="mt-8 mx-auto max-w-2xl">
+            <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 rounded-lg p-4">
+              <p className="text-sm text-amber-800 dark:text-amber-200">
+                <strong>Note:</strong> Our white papers are currently being finalized. Please check back soon for downloadable PDFs.
+              </p>
+            </div>
+          </div>
         </header>
 
         {/* Featured White Papers */}
@@ -184,9 +206,13 @@ export default function WhitePapersPage() {
                           <span>{paper.readTime}</span>
                         </div>
                       </div>
-                      <DownloadButton href={paper.downloadUrl} variant="primary">
-                        Download PDF
-                      </DownloadButton>
+                      {checkPdfExists(paper.downloadUrl) ? (
+                        <DownloadButton href={paper.downloadUrl} variant="primary">
+                          Download PDF
+                        </DownloadButton>
+                      ) : (
+                        <ComingSoonButton variant="primary" />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -246,9 +272,13 @@ export default function WhitePapersPage() {
                         <Eye className="h-3 w-3" />
                         <span>{paper.readTime}</span>
                       </div>
-                      <DownloadButton href={paper.downloadUrl} variant="link">
-                        Download
-                      </DownloadButton>
+                      {checkPdfExists(paper.downloadUrl) ? (
+                        <DownloadButton href={paper.downloadUrl} variant="link">
+                          Download
+                        </DownloadButton>
+                      ) : (
+                        <ComingSoonButton variant="link" />
+                      )}
                     </div>
                   </div>
                 </div>
