@@ -47,7 +47,7 @@ const whitePapers: WhitePaper[] = [
     category: 'Technical Research',
     downloadUrl: '/white-papers/from-data-to-dialogue-llm-training-deep-dive.pdf',
     readTime: '90 min read',
-    featured: false,
+    featured: true,
     icon: Brain
   },
   {
