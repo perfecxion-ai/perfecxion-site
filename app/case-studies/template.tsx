@@ -261,7 +261,7 @@ export default function CaseStudyTemplate() {
                 Download Full Case Study
               </Button>
               <Button 
-                variant="default" 
+                variant="outline" 
                 size="lg"
                 className="bg-white text-gray-900 hover:bg-gray-100"
               >

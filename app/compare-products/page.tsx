@@ -5,8 +5,35 @@ import { Container } from '@/components/ui/container'
 import { SectionHeader } from '@/components/ui/section-header'
 import { Check, X } from 'lucide-react'
 
+type ProductFeatures = {
+  'Real-time Threat Detection': boolean
+  'Model Vulnerability Scanning': boolean
+  'Automated Response': boolean
+  'Compliance Monitoring': boolean
+  'Supply Chain Analysis': boolean
+  'Data Protection': boolean
+  'API Security': boolean
+  'Custom Integrations': boolean
+  'Advanced Analytics': boolean
+  '24/7 Monitoring': boolean
+  'Incident Response': boolean
+  'Risk Scoring': boolean
+  'Multi-cloud Support': boolean
+  'On-premise Deployment': boolean
+  'SLA Guarantee': string
+}
+
+type Product = {
+  id: string
+  name: string
+  tagline: string
+  price: string
+  category: string
+  features: ProductFeatures
+}
+
 export default function CompareProductsPage() {
-  const products = [
+  const products: Product[] = [
     {
       id: 'sentinel',
       name: 'AI Sentinel',
@@ -106,7 +133,7 @@ export default function CompareProductsPage() {
   ]
 
   const [selectedProducts, setSelectedProducts] = useState<string[]>(['sentinel', 'modelguard'])
-  const allFeatures = [...new Set(products.flatMap(p => Object.keys(p.features)))]
+  const allFeatures = Array.from(new Set(products.flatMap(p => Object.keys(p.features))))
 
   const toggleProduct = (productId: string) => {
     setSelectedProducts(prev => {
@@ -179,14 +206,14 @@ export default function CompareProductsPage() {
                       <td className="p-4 font-medium">{feature}</td>
                       {selectedProductsData.map(product => (
                         <td key={product.id} className="p-4 text-center">
-                          {typeof product.features[feature] === 'boolean' ? (
-                            product.features[feature] ? (
+                          {typeof product.features[feature as keyof ProductFeatures] === 'boolean' ? (
+                            product.features[feature as keyof ProductFeatures] ? (
                               <Check className="w-5 h-5 text-green-500 mx-auto" />
                             ) : (
                               <X className="w-5 h-5 text-gray-300 mx-auto" />
                             )
                           ) : (
-                            <span className="text-sm font-medium">{product.features[feature] || '-'}</span>
+                            <span className="text-sm font-medium">{product.features[feature as keyof ProductFeatures] || '-'}</span>
                           )}
                         </td>
                       ))}

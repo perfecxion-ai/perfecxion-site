@@ -280,7 +280,7 @@ export default function ROICalculatorPage() {
                 <Button variant="secondary" size="lg">
                   Download Full Report
                 </Button>
-                <Button variant="default" size="lg" className="bg-white text-gray-900 hover:bg-gray-100">
+                <Button variant="outline" size="lg" className="bg-white text-gray-900 hover:bg-gray-100">
                   Schedule Demo
                 </Button>
               </div>

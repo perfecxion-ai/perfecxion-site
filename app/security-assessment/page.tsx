@@ -340,7 +340,7 @@ export default function SecurityAssessmentPage() {
                     Download Full Report
                   </Button>
                   <Button 
-                    variant="default" 
+                    variant="outline" 
                     size="lg"
                     className="bg-white text-gray-900 hover:bg-gray-100"
                   >
