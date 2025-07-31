@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { ChevronRight, BookOpen, Shield, Zap, Users, Code, Settings, Play } from 'lucide-react'
-import DocsLayoutClient from './DocsLayoutClient'
 
 export const metadata: Metadata = {
   title: 'Documentation - perfecXion.ai',
@@ -11,8 +10,7 @@ export const metadata: Metadata = {
 
 export default function DocumentationPage() {
   return (
-    <DocsLayoutClient>
-      <>
+    <>
             <div className="mb-8">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-4">
                 Documentation
@@ -157,6 +155,5 @@ export default function DocumentationPage() {
               </div>
             </div>
       </>
-    </DocsLayoutClient>
   )
 }
