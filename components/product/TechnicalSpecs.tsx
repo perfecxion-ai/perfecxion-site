@@ -152,12 +152,14 @@ export function TechnicalSpecs({ product, additionalSpecs }: TechnicalSpecsProps
           {/* Additional Specifications */}
           {additionalSpecs && (
             <div className="grid md:grid-cols-2 gap-8">
-              {Object.entries(additionalSpecs).reduce((acc, [key, spec]) => {
-                const category = spec.category || 'General'
-                if (!acc[category]) acc[category] = []
-                acc[category].push({ key, ...spec })
-                return acc
-              }, {} as { [category: string]: Array<{ key: string; value: string; description?: string }> }).map(([category, categorySpecs]) => (
+              {Object.entries(
+                Object.entries(additionalSpecs).reduce((acc, [key, spec]) => {
+                  const category = spec.category || 'General'
+                  if (!acc[category]) acc[category] = []
+                  acc[category].push({ key, ...spec })
+                  return acc
+                }, {} as { [category: string]: Array<{ key: string; value: string; description?: string }> })
+              ).map(([category, categorySpecs]) => (
                 <Card key={category}>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
