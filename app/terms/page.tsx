@@ -46,8 +46,10 @@ export default function TermsOfServicePage() {
             <li><a href="#payment" className="text-primary-600 dark:text-primary-400 hover:underline">6. Payment Terms</a></li>
             <li><a href="#warranties" className="text-primary-600 dark:text-primary-400 hover:underline">7. Warranties and Disclaimers</a></li>
             <li><a href="#limitation" className="text-primary-600 dark:text-primary-400 hover:underline">8. Limitation of Liability</a></li>
-            <li><a href="#termination" className="text-primary-600 dark:text-primary-400 hover:underline">9. Termination</a></li>
-            <li><a href="#governing-law" className="text-primary-600 dark:text-primary-400 hover:underline">10. Governing Law</a></li>
+            <li><a href="#data-processing" className="text-primary-600 dark:text-primary-400 hover:underline">9. Data Processing and Privacy</a></li>
+            <li><a href="#security-testing" className="text-primary-600 dark:text-primary-400 hover:underline">10. Security Testing Terms</a></li>
+            <li><a href="#termination" className="text-primary-600 dark:text-primary-400 hover:underline">11. Termination</a></li>
+            <li><a href="#governing-law" className="text-primary-600 dark:text-primary-400 hover:underline">12. Governing Law</a></li>
           </ul>
         </nav>
 
@@ -102,6 +104,21 @@ export default function TermsOfServicePage() {
               We reserve the right to modify, suspend, or discontinue any aspect of our Services at any time. 
               We will provide reasonable notice for material changes that adversely affect your use of the Services.
             </p>
+
+            <h3 className="text-xl font-semibold mt-6 mb-4">Service Level Agreement</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Enterprise customers may be eligible for Service Level Agreements (SLAs) as specified in their 
+              subscription plan. SLA terms, including uptime guarantees and support response times, are documented 
+              separately in your service agreement.
+            </p>
+
+            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6 mt-6">
+              <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2">AI/ML Specific Terms</h4>
+              <p className="text-green-800 dark:text-green-300 text-sm">
+                Our AI services operate based on machine learning models that continuously improve. Results may vary 
+                and should be validated by security professionals. We do not guarantee 100% detection of all security threats.
+              </p>
+            </div>
           </section>
 
           <section id="use-license" className="mb-12">
@@ -174,10 +191,22 @@ export default function TermsOfServicePage() {
               to our intellectual property except as expressly stated.
             </p>
 
+            <h3 className="text-xl font-semibold mt-6 mb-4">AI Models and Algorithms</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Our proprietary AI models, machine learning algorithms, and security detection patterns are trade secrets 
+              and confidential information. You may not attempt to extract, reverse engineer, or replicate our AI systems.
+            </p>
+
             <h3 className="text-xl font-semibold mt-6 mb-4">Your Data</h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
               You retain all rights to your data. By using our Services, you grant us a limited license to process 
               your data solely to provide the Services and as described in our Privacy Policy.
+            </p>
+
+            <h3 className="text-xl font-semibold mt-6 mb-4">Security Findings</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Security vulnerabilities and findings discovered through our Services belong to you. However, we may use 
+              anonymized and aggregated threat intelligence to improve our Services and protect other customers.
             </p>
 
             <h3 className="text-xl font-semibold mt-6 mb-4">Feedback</h3>
@@ -255,16 +284,89 @@ export default function TermsOfServicePage() {
               in the twelve months preceding the claim.
             </p>
 
+            <h3 className="text-xl font-semibold mt-6 mb-4">Security Testing Disclaimer</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              perfecXion.ai is not liable for any damages resulting from security testing activities, including but not 
+              limited to system downtime, data corruption, or business interruption. You are solely responsible for 
+              obtaining proper authorization and backing up systems before testing.
+            </p>
+
+            <h3 className="text-xl font-semibold mt-6 mb-4">Professional Liability</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Our Services are tools to assist security professionals. We do not provide professional security consulting 
+              services. You should engage qualified security professionals to interpret and act on our findings.
+            </p>
+
             <h3 className="text-xl font-semibold mt-6 mb-4">Indemnification</h3>
             <p className="text-gray-600 dark:text-gray-300">
               You agree to indemnify and hold harmless perfecXion.ai from any claims, damages, or expenses 
-              arising from your violation of these Terms or misuse of our Services.
+              arising from your violation of these Terms or misuse of our Services, including unauthorized security testing.
             </p>
+          </section>
+
+          <section id="data-processing" className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              9. Data Processing and Privacy
+            </h2>
+            
+            <h3 className="text-xl font-semibold mb-4">Data Processing Agreement</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              For enterprise customers processing personal data, we offer a Data Processing Agreement (DPA) that 
+              governs our processing of personal data on your behalf. The DPA includes appropriate technical and 
+              organizational measures to protect personal data.
+            </p>
+
+            <h3 className="text-xl font-semibold mt-6 mb-4">Privacy Compliance</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              We comply with applicable data protection laws including GDPR and CCPA. Our detailed privacy practices 
+              are described in our <Link href="/privacy" className="text-primary-600 dark:text-primary-400 hover:underline">Privacy Policy</Link>.
+            </p>
+
+            <h3 className="text-xl font-semibold mt-6 mb-4">Data Retention</h3>
+            <p className="text-gray-600 dark:text-gray-300">
+              We retain your data only as long as necessary to provide our Services and comply with legal obligations. 
+              You may request deletion of your data at any time, subject to our retention requirements.
+            </p>
+          </section>
+
+          <section id="security-testing" className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              10. Security Testing Terms
+            </h2>
+            
+            <h3 className="text-xl font-semibold mb-4">Authorized Testing Only</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              You represent and warrant that you have full authorization to conduct security testing on any systems 
+              tested using our Services. Unauthorized testing may violate computer fraud and abuse laws.
+            </p>
+
+            <h3 className="text-xl font-semibold mt-6 mb-4">Testing Limitations</h3>
+            <ul className="space-y-2 text-gray-600 dark:text-gray-300 mb-4">
+              <li>• Do not test systems you do not own or lack permission to test</li>
+              <li>• Avoid testing that could cause service disruption or data loss</li>
+              <li>• Do not use our Services to exploit discovered vulnerabilities</li>
+              <li>• Report critical vulnerabilities through responsible disclosure</li>
+              <li>• Comply with all applicable laws and regulations</li>
+            </ul>
+
+            <h3 className="text-xl font-semibold mt-6 mb-4">AI Model Limitations</h3>
+            <p className="text-gray-600 dark:text-gray-300">
+              Our AI models are trained on diverse datasets but may not detect all security issues. False positives 
+              and false negatives are possible. Always validate findings with manual review and additional testing.
+            </p>
+
+            <div className="bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-6 mt-6">
+              <h4 className="font-semibold text-purple-900 dark:text-purple-200 mb-2">Responsible Disclosure</h4>
+              <p className="text-purple-800 dark:text-purple-300 text-sm">
+                If you discover vulnerabilities in third-party systems, follow responsible disclosure practices. 
+                We support coordinated vulnerability disclosure and will assist in reporting critical findings.
+              </p>
+            </div>
           </section>
 
           <section id="termination" className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              9. Termination
+              11. Termination
             </h2>
             
             <h3 className="text-xl font-semibold mb-4">Termination by Either Party</h3>
@@ -289,7 +391,7 @@ export default function TermsOfServicePage() {
           <section id="governing-law" className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
               <Gavel className="h-6 w-6 text-primary-600 dark:text-primary-400" />
-              10. Governing Law
+              12. Governing Law
             </h2>
             
             <h3 className="text-xl font-semibold mb-4">Applicable Law</h3>

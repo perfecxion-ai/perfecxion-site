@@ -12,6 +12,14 @@ const nextConfig = {
   experimental: {
     mdxRs: true,
   },
+  webpack: (config, { isServer }) => {
+    // Exclude repos directory from compilation
+    config.watchOptions = {
+      ...config.watchOptions,
+      ignored: ['**/repos/**', '**/node_modules/**']
+    }
+    return config
+  },
   images: {
     domains: ['perfecxion.ai'],
     formats: ['image/avif', 'image/webp'],

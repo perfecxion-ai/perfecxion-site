@@ -1,5 +1,9 @@
 import Link from 'next/link'
 import { ArrowRight, Shield, Scan, CheckCircle, Star, Zap, Users, Lock, Eye, Brain } from 'lucide-react'
+import ComplianceBadges, { TrustSignals } from '@/components/ComplianceBadges'
+import CTAWrapper, { CTAPresets } from '@/components/cta/CTAWrapper'
+import PrimaryCTA from '@/components/cta/PrimaryCTA'
+import SecondaryCTA from '@/components/cta/SecondaryCTA'
 
 export default function HomePage() {
   return (
@@ -29,13 +33,13 @@ export default function HomePage() {
               Comprehensive AI security and compliance solutions. From red teaming to guardrails,
               we help you build trustworthy AI systems that meet the highest security standards.
             </p>
-            <div className="mt-10 flex items-center gap-x-6">
-              <Link href="/products" className="btn-primary">
-                Explore Products<ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-              <Link href="/learn" className="btn-ghost">
-                Learn more <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+            <div className="mt-10">
+              <CTAWrapper
+                {...CTAPresets.securityAssessment}
+                primarySize="lg"
+                secondarySize="lg"
+                trackingPrefix="homepage-hero"
+              />
             </div>
           </div>
           <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
@@ -115,9 +119,13 @@ export default function HomePage() {
                     multi-modal attacks, and ML-powered adaptation for comprehensive AI security assessment.
                   </p>
                   <p className="mt-6">
-                    <Link href="/products/adapt-ai" className="text-sm font-semibold leading-6 text-primary-600 dark:text-primary-400">
-                      Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                    </Link>
+                    <SecondaryCTA
+                      text="Learn more"
+                      href="/products/adapt-ai"
+                      icon="arrow"
+                      variant="link"
+                      trackingId="homepage-feature-adapt-ai"
+                    />
                   </p>
                 </dd>
               </div>
@@ -135,9 +143,13 @@ export default function HomePage() {
                     and weaknesses in your AI systems before they reach production.
                   </p>
                   <p className="mt-6">
-                    <Link href="/products/perfecxion-red-t" className="text-sm font-semibold leading-6 text-primary-600 dark:text-primary-400">
-                      Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                    </Link>
+                    <SecondaryCTA
+                      text="Learn more"
+                      href="/products/perfecxion-red-t"
+                      icon="arrow"
+                      variant="link"
+                      trackingId="homepage-feature-red-t"
+                    />
                   </p>
                 </dd>
               </div>
@@ -155,13 +167,45 @@ export default function HomePage() {
                     and maintain the highest safety standards through automated monitoring.
                   </p>
                   <p className="mt-6">
-                    <Link href="/products/perfecxion-comply" className="text-sm font-semibold leading-6 text-primary-600 dark:text-primary-400">
-                      Learn more <ArrowRight className="ml-1 h-4 w-4" />
-                    </Link>
+                    <SecondaryCTA
+                      text="Learn more"
+                      href="/products/perfecxion-comply"
+                      icon="arrow"
+                      variant="link"
+                      trackingId="homepage-feature-comply"
+                    />
                   </p>
                 </dd>
               </div>
             </dl>
+          </div>
+        </div>
+      </div>
+
+      {/* Trust & Compliance Section */}
+      <div className="bg-gray-50 dark:bg-gray-900/50">
+        <div className="max-width container-padding section-padding">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+              Enterprise-Grade Security & Compliance
+            </h2>
+            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Built with security at the core, certified by industry standards
+            </p>
+          </div>
+          
+          <div className="mb-12">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6 text-center">
+              Compliance Certifications
+            </h3>
+            <ComplianceBadges variant="detailed" />
+          </div>
+          
+          <div className="pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6 text-center">
+              Security Features
+            </h3>
+            <TrustSignals />
           </div>
         </div>
       </div>
@@ -174,13 +218,29 @@ export default function HomePage() {
               Ready to Secure Your AI?
             </h2>
 
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link href="/about" className="bg-white text-primary-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-colors">
-                Start Your Security Assessment
-              </Link>
-              <Link href="/docs" className="text-white hover:text-primary-100 px-6 py-3 rounded-lg font-medium transition-colors">
-                View Documentation
-              </Link>
+            <p className="mt-6 text-lg text-white/90">
+              Get a comprehensive security audit of your AI systems and implementation roadmap.
+            </p>
+            <div className="mt-10">
+              <CTAWrapper
+                primary={{
+                  text: 'Book Security Assessment',
+                  href: '/assessment',
+                  icon: 'calendar',
+                  variant: 'default',
+                }}
+                secondary={{
+                  text: 'Contact Sales',
+                  href: '/contact/sales',
+                  icon: 'arrow',
+                  variant: 'ghost',
+                }}
+                align="center"
+                primarySize="xl"
+                secondarySize="lg"
+                trackingPrefix="homepage-cta"
+                className="[&_button]:!bg-white [&_button]:!text-primary-600 [&_button:hover]:!bg-gray-100 [&_a:nth-child(2)]:!text-white [&_a:nth-child(2):hover]:!text-primary-100"
+              />
             </div>
           </div>
         </div>

@@ -35,6 +35,8 @@ const navigation = {
     { name: 'About', href: '/about' },
     { name: 'Privacy Policy', href: '/privacy' },
     { name: 'Terms of Service', href: '/terms' },
+    { name: 'Privacy Preferences', href: '/privacy-preferences' },
+    { name: 'Legal Contact', href: '/legal/contact' },
     // Careers link removed - page shows "Coming Soon"
     // TODO: Re-add when careers page has job listings
     // { name: 'Careers', href: '/careers' },
