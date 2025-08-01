@@ -4,8 +4,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Search } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
+import SearchBar from './search/SearchBar'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -19,6 +20,7 @@ const navigation = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
   const pathname = usePathname()
   
   // Hide hamburger menu on pages with their own sidebar navigation
@@ -71,6 +73,12 @@ export default function Header() {
           </div>
 
           <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
+            <div className="relative">
+              <SearchBar 
+                className="w-64 xl:w-80"
+                placeholder="Search..."
+              />
+            </div>
             <ThemeToggle />
           </div>
         </div>

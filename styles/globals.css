@@ -139,3 +139,175 @@ pre code {
 .animate-pulse-slow {
   animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+/* Mobile Optimizations */
+@layer base {
+  /* Ensure minimum touch target sizes */
+  button, a, input, select, textarea {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  /* Prevent double-tap zoom on iOS */
+  button, a {
+    touch-action: manipulation;
+  }
+  
+  /* Better mobile text sizing */
+  @media (max-width: 640px) {
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+  }
+  
+  /* Smooth scrolling with touch momentum */
+  .overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Safe area insets for notched devices */
+  .safe-area-inset-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Mobile-specific components */
+@layer components {
+  /* Mobile tap highlight */
+  .tap-highlight {
+    @apply transition-all duration-150 active:scale-95 active:opacity-70;
+  }
+  
+  /* Mobile menu transitions */
+  .mobile-menu-transition {
+    @apply transform transition-transform duration-300 ease-in-out;
+  }
+  
+  /* Mobile card optimizations */
+  @media (max-width: 640px) {
+    .card {
+      @apply p-4;
+    }
+    
+    .section-padding {
+      @apply py-12;
+    }
+  }
+  
+  /* Horizontal scroll indicators */
+  .scroll-indicator {
+    @apply relative;
+  }
+  
+  .scroll-indicator::after {
+    content: '';
+    @apply absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white dark:from-gray-900 to-transparent pointer-events-none;
+  }
+  
+  /* Mobile search optimizations */
+  .search-mobile {
+    @apply text-base; /* Prevent zoom on iOS */
+  }
+}
+
+/* Mobile code block styling */
+@media (max-width: 640px) {
+  pre {
+    @apply text-xs p-3;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  code {
+    @apply text-xs;
+  }
+  
+  /* Code block scroll shadow */
+  .code-scroll-shadow {
+    position: relative;
+  }
+  
+  .code-scroll-shadow::before,
+  .code-scroll-shadow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .code-scroll-shadow::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(17, 24, 39, 1) 0%, rgba(17, 24, 39, 0) 100%);
+  }
+  
+  .code-scroll-shadow::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(17, 24, 39, 1) 0%, rgba(17, 24, 39, 0) 100%);
+  }
+}
+
+/* Touch gesture feedback */
+.touch-feedback {
+  @apply transition-all duration-150;
+}
+
+.touch-feedback:active {
+  @apply scale-95 opacity-80;
+}
+
+/* Mobile loading states */
+@keyframes skeleton-loading {
+  0% {
+    background-color: rgba(156, 163, 175, 0.2);
+  }
+  50% {
+    background-color: rgba(156, 163, 175, 0.3);
+  }
+  100% {
+    background-color: rgba(156, 163, 175, 0.2);
+  }
+}
+
+.skeleton {
+  animation: skeleton-loading 1.5s infinite ease-in-out;
+}
+
+/* Pull to refresh styles */
+.pull-to-refresh {
+  @apply transition-transform duration-300 ease-out;
+}
+
+/* Mobile performance optimizations */
+@media (max-width: 1024px) {
+  /* Disable hover effects on touch devices */
+  @media (hover: none) {
+    .card:hover {
+      @apply shadow-sm;
+    }
+    
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-ghost:hover {
+      @apply bg-current;
+    }
+  }
+  
+  /* Optimize animations for mobile */
+  * {
+    animation-duration: 0.3s !important;
+  }
+  
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}

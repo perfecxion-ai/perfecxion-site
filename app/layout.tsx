@@ -6,6 +6,10 @@ import Footer from '@/components/Footer'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { CookieConsentProvider } from '@/lib/contexts/CookieConsentContext'
 import CookieConsentBanner from '@/components/CookieConsentBanner'
+import { SearchProvider } from '@/components/search/SearchProvider'
+import MobileNav from '@/components/mobile/MobileNav'
+import TabNavigation from '@/components/mobile/TabNavigation'
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -126,19 +130,41 @@ export default function RootLayout({
             __html: JSON.stringify(websiteSchema)
           }}
         />
+        <Script
+          id="mobile-optimizations"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Initialize mobile optimizations
+              if (typeof window !== 'undefined') {
+                import('/lib/mobile-performance.js').then(module => {
+                  module.initMobileOptimizations();
+                }).catch(console.error);
+              }
+            `
+          }}
+        />
       </head>
       <body className={inter.className}>
         <ThemeProvider>
-          <CookieConsentProvider>
-            <div className="min-h-screen flex flex-col">
-              <Header />
-              <main className="flex-1">
-                {children}
-              </main>
-              <Footer />
-              <CookieConsentBanner />
-            </div>
-          </CookieConsentProvider>
+          <SearchProvider>
+            <CookieConsentProvider>
+              <div className="min-h-screen flex flex-col">
+                <div className="hidden lg:block">
+                  <Header />
+                </div>
+                <div className="lg:hidden">
+                  <MobileNav />
+                </div>
+                <main className="flex-1 pb-20 lg:pb-0">
+                  {children}
+                </main>
+                <Footer />
+                <TabNavigation />
+                <CookieConsentBanner />
+              </div>
+            </CookieConsentProvider>
+          </SearchProvider>
         </ThemeProvider>
       </body>
     </html>
