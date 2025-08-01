@@ -16,7 +16,8 @@ import {
   Lock,
   Users,
   BarChart3,
-  Settings
+  Settings,
+  CheckCircle
 } from "lucide-react"
 import { Product } from "@/lib/products"
 
@@ -309,6 +310,183 @@ function ComponentDetailsPlaceholder({ product }: { product: Product }) {
         </div>
       </CardContent>
     </Card>
+  )
+}
+
+// Missing architecture components
+function AgentMonitoringArchitecture({ product }: { product: Product }) {
+  return (
+    <div className="space-y-8">
+      <div className="text-center">
+        <div className="inline-flex items-center gap-4 p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
+          <Users className="h-8 w-8 text-blue-600" />
+          <span className="font-semibold">AI Agents & Multi-Agent Systems</span>
+        </div>
+        <ArrowDown className="mx-auto mt-4 h-6 w-6 text-gray-400" />
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-6">
+        <div className="text-center">
+          <div className="p-6 border-2 border-purple-200 dark:border-purple-800 rounded-lg bg-purple-50 dark:bg-purple-950">
+            <Monitor className="h-12 w-12 text-purple-600 mx-auto mb-3" />
+            <h3 className="font-semibold mb-2">Real-time Monitoring</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Behavioral analysis and anomaly detection
+            </p>
+          </div>
+        </div>
+        <div className="text-center">
+          <div className="p-6 border-2 border-green-200 dark:border-green-800 rounded-lg bg-green-50 dark:bg-green-950">
+            <Shield className="h-12 w-12 text-green-600 mx-auto mb-3" />
+            <h3 className="font-semibold mb-2">Security Controls</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Policy enforcement and access control
+            </p>
+          </div>
+        </div>
+        <div className="text-center">
+          <div className="p-6 border-2 border-orange-200 dark:border-orange-800 rounded-lg bg-orange-50 dark:bg-orange-950">
+            <BarChart3 className="h-12 w-12 text-orange-600 mx-auto mb-3" />
+            <h3 className="font-semibold mb-2">Analytics</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Performance metrics and insights
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function ComplianceArchitecture({ product }: { product: Product }) {
+  return (
+    <div className="space-y-8">
+      <div className="text-center">
+        <div className="inline-flex items-center gap-4 p-4 bg-blue-50 dark:bg-blue-950 rounded-lg">
+          <Shield className="h-8 w-8 text-blue-600" />
+          <span className="font-semibold">AI Governance & Compliance</span>
+        </div>
+        <ArrowDown className="mx-auto mt-4 h-6 w-6 text-gray-400" />
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-6">
+        <div className="text-center">
+          <div className="p-6 border-2 border-blue-200 dark:border-blue-800 rounded-lg bg-blue-50 dark:bg-blue-950">
+            <Database className="h-12 w-12 text-blue-600 mx-auto mb-3" />
+            <h3 className="font-semibold mb-2">Asset Management</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              AI model discovery and cataloging
+            </p>
+          </div>
+        </div>
+        <div className="text-center">
+          <div className="p-6 border-2 border-green-200 dark:border-green-800 rounded-lg bg-green-50 dark:bg-green-950">
+            <CheckCircle className="h-12 w-12 text-green-600 mx-auto mb-3" />
+            <h3 className="font-semibold mb-2">Risk Assessment</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Automated compliance monitoring
+            </p>
+          </div>
+        </div>
+        <div className="text-center">
+          <div className="p-6 border-2 border-purple-200 dark:border-purple-800 rounded-lg bg-purple-50 dark:bg-purple-950">
+            <BarChart3 className="h-12 w-12 text-purple-600 mx-auto mb-3" />
+            <h3 className="font-semibold mb-2">Reporting</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Compliance reports and audit trails
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function DarkWebArchitecture({ product }: { product: Product }) {
+  return (
+    <div className="space-y-8">
+      <div className="text-center">
+        <div className="inline-flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
+          <Globe className="h-8 w-8 text-gray-600" />
+          <span className="font-semibold">Dark Web Intelligence Platform</span>
+        </div>
+        <ArrowDown className="mx-auto mt-4 h-6 w-6 text-gray-400" />
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-6">
+        <div className="text-center">
+          <div className="p-6 border-2 border-red-200 dark:border-red-800 rounded-lg bg-red-50 dark:bg-red-950">
+            <Shield className="h-12 w-12 text-red-600 mx-auto mb-3" />
+            <h3 className="font-semibold mb-2">Tor Crawler</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Secure .onion site crawling
+            </p>
+          </div>
+        </div>
+        <div className="text-center">
+          <div className="p-6 border-2 border-yellow-200 dark:border-yellow-800 rounded-lg bg-yellow-50 dark:bg-yellow-950">
+            <Database className="h-12 w-12 text-yellow-600 mx-auto mb-3" />
+            <h3 className="font-semibold mb-2">Elasticsearch</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Full-text search and indexing
+            </p>
+          </div>
+        </div>
+        <div className="text-center">
+          <div className="p-6 border-2 border-blue-200 dark:border-blue-800 rounded-lg bg-blue-50 dark:bg-blue-950">
+            <BarChart3 className="h-12 w-12 text-blue-600 mx-auto mb-3" />
+            <h3 className="font-semibold mb-2">Threat Intel</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              MISP and OpenCTI integration
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function GuardrailArchitecture({ product }: { product: Product }) {
+  return (
+    <div className="space-y-8">
+      <div className="text-center">
+        <div className="inline-flex items-center gap-4 p-4 bg-green-50 dark:bg-green-950 rounded-lg">
+          <Shield className="h-8 w-8 text-green-600" />
+          <span className="font-semibold">AI Safety & Guardrails</span>
+        </div>
+        <ArrowDown className="mx-auto mt-4 h-6 w-6 text-gray-400" />
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-6">
+        <div className="text-center">
+          <div className="p-6 border-2 border-green-200 dark:border-green-800 rounded-lg bg-green-50 dark:bg-green-950">
+            <CheckCircle className="h-12 w-12 text-green-600 mx-auto mb-3" />
+            <h3 className="font-semibold mb-2">Safety Testing</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Comprehensive guardrail effectiveness testing
+            </p>
+          </div>
+        </div>
+        <div className="text-center">
+          <div className="p-6 border-2 border-blue-200 dark:border-blue-800 rounded-lg bg-blue-50 dark:bg-blue-950">
+            <Monitor className="h-12 w-12 text-blue-600 mx-auto mb-3" />
+            <h3 className="font-semibold mb-2">Monitoring</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Real-time safety mechanism validation
+            </p>
+          </div>
+        </div>
+        <div className="text-center">
+          <div className="p-6 border-2 border-purple-200 dark:border-purple-800 rounded-lg bg-purple-50 dark:bg-purple-950">
+            <Settings className="h-12 w-12 text-purple-600 mx-auto mb-3" />
+            <h3 className="font-semibold mb-2">Configuration</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Custom guardrail management
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
