@@ -2,6 +2,16 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Github, Twitter, Linkedin, Mail } from 'lucide-react'
 
+/**
+ * Footer Navigation Configuration
+ * 
+ * IMPORTANT: Navigation links are maintained here for consistency
+ * - Product links point to existing product pages
+ * - Support link removed until content is ready (was showing placeholder)
+ * - Privacy and Terms links use existing pages
+ * 
+ * Last updated: 2025-01-31
+ */
 const navigation = {
   product: [
     { name: 'ADAPT-AI', href: '/products/adapt-ai' },
@@ -17,19 +27,38 @@ const navigation = {
     { name: 'Documentation', href: '/docs' },
     { name: 'Learn', href: '/learn' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Support', href: '/support' },
+    // Support link removed - page shows placeholder content
+    // TODO: Re-add when support page has real content
+    // { name: 'Support', href: '/support' },
   ],
   company: [
     { name: 'About', href: '/about' },
     { name: 'Privacy Policy', href: '/privacy' },
     { name: 'Terms of Service', href: '/terms' },
+    // Careers link removed - page shows "Coming Soon"
+    // TODO: Re-add when careers page has job listings
+    // { name: 'Careers', href: '/careers' },
   ],
 }
 
+/**
+ * Social Media Links
+ * 
+ * IMPORTANT: Only showing email link as social profiles don't exist yet
+ * GitHub, Twitter, LinkedIn links removed to prevent 404 errors
+ * 
+ * TODO: Add social links back when profiles are created:
+ * - GitHub: Create organization at github.com/perfecxion-ai
+ * - Twitter/X: Create company profile
+ * - LinkedIn: Create company page
+ * 
+ * Last updated: 2025-01-31
+ */
 const socialLinks = [
-  { name: 'GitHub', href: 'https://github.com/perfecxion-ai', icon: Github },
-  { name: 'Twitter', href: 'https://twitter.com/perfecxion-ai', icon: Twitter },
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/perfecxion-ai?trk=blended-typeahead', icon: Linkedin },
+  // Social media links temporarily removed - profiles don't exist
+  // { name: 'GitHub', href: 'https://github.com/perfecxion-ai', icon: Github },
+  // { name: 'Twitter', href: 'https://twitter.com/perfecxion-ai', icon: Twitter },
+  // { name: 'LinkedIn', href: 'https://www.linkedin.com/company/perfecxion-ai', icon: Linkedin },
   { name: 'Email', href: 'mailto:contact@perfecxion.ai', icon: Mail },
 ]
 
