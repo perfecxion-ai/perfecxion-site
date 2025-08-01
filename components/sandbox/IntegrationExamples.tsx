@@ -577,12 +577,12 @@ services:
     build:
       context: .
       args:
-        PERFECXION_API_KEY: ${PERFECXION_API_KEY}
+        PERFECXION_API_KEY: \${PERFECXION_API_KEY}
     image: secure-model:latest
     ports:
       - "8080:8080"
     environment:
-      - PERFECXION_API_KEY=${PERFECXION_API_KEY}
+      - PERFECXION_API_KEY=\${PERFECXION_API_KEY}
       - MODEL_PATH=/app/model/
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
@@ -603,7 +603,7 @@ services:
   security-monitor:
     image: perfecxion/monitor:latest
     environment:
-      - PERFECXION_API_KEY=${PERFECXION_API_KEY}
+      - PERFECXION_API_KEY=\${PERFECXION_API_KEY}
       - TARGET_SERVICE=model-server:8080
     depends_on:
       - model-server
@@ -657,7 +657,7 @@ export default function IntegrationExamples() {
     }
   }
 
-  const categories = [...new Set(INTEGRATIONS.map(i => i.category))]
+  const categories = Array.from(new Set(INTEGRATIONS.map(i => i.category)))
 
   return (
     <div className="space-y-6">
@@ -846,7 +846,7 @@ export default function IntegrationExamples() {
                   </h3>
                   <div className="relative">
                     <button
-                      onClick={() => handleCopy(selectedIntegration.code.testing, 'testing')}
+                      onClick={() => handleCopy(selectedIntegration.code.testing!, 'testing')}
                       className="absolute top-4 right-4 z-10 px-3 py-1.5 bg-gray-800 text-gray-300 rounded hover:bg-gray-700 transition-colors flex items-center gap-2"
                     >
                       {copiedCode === 'testing' ? (

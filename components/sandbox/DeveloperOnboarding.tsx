@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronRight, CheckCircle, Clock, Code, Terminal, BookOpen, Zap, ArrowRight } from 'lucide-react'
+import { ChevronRight, CheckCircle, Clock, Code, Terminal, BookOpen, Zap, ArrowRight, Shield } from 'lucide-react'
 import ResponsiveCodeBlock from '@/components/code/ResponsiveCodeBlock'
 
 interface OnboardingStep {
@@ -19,7 +19,7 @@ export default function DeveloperOnboarding() {
   const [selectedLanguage, setSelectedLanguage] = useState('python')
 
   const handleStepComplete = (stepId: string) => {
-    setCompletedSteps(prev => new Set([...prev, stepId]))
+    setCompletedSteps(prev => new Set(Array.from(prev).concat([stepId])))
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1)
     }

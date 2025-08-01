@@ -1,7 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
-
 interface HamburgerMenuProps {
   isOpen: boolean
   onClick: () => void
@@ -16,29 +14,20 @@ export default function HamburgerMenu({ isOpen, onClick }: HamburgerMenuProps) {
       aria-expanded={isOpen}
     >
       <div className="relative w-6 h-6">
-        <motion.span
-          animate={{
-            rotate: isOpen ? 45 : 0,
-            y: isOpen ? 8 : 0
-          }}
-          transition={{ duration: 0.2 }}
-          className="absolute left-0 top-0 w-full h-0.5 bg-current origin-center"
+        <span
+          className={`absolute left-0 top-0 w-full h-0.5 bg-current origin-center transition-all duration-200 ${
+            isOpen ? 'rotate-45 translate-y-2' : ''
+          }`}
         />
-        <motion.span
-          animate={{
-            opacity: isOpen ? 0 : 1,
-            scaleX: isOpen ? 0 : 1
-          }}
-          transition={{ duration: 0.2 }}
-          className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-0.5 bg-current"
+        <span
+          className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-0.5 bg-current transition-all duration-200 ${
+            isOpen ? 'opacity-0 scale-x-0' : ''
+          }`}
         />
-        <motion.span
-          animate={{
-            rotate: isOpen ? -45 : 0,
-            y: isOpen ? -8 : 0
-          }}
-          transition={{ duration: 0.2 }}
-          className="absolute left-0 bottom-0 w-full h-0.5 bg-current origin-center"
+        <span
+          className={`absolute left-0 bottom-0 w-full h-0.5 bg-current origin-center transition-all duration-200 ${
+            isOpen ? '-rotate-45 -translate-y-2' : ''
+          }`}
         />
       </div>
     </button>

@@ -122,7 +122,7 @@ const API_ENDPOINTS: Endpoint[] = [
   }
 ]
 
-const CATEGORIES = [...new Set(API_ENDPOINTS.map(e => e.category))]
+const CATEGORIES = Array.from(new Set(API_ENDPOINTS.map(e => e.category)))
 
 interface EndpointExplorerProps {
   apiKey: string

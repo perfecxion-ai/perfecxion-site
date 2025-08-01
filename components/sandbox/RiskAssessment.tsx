@@ -236,7 +236,7 @@ export default function RiskAssessment() {
     const score = calculateFinalScore()
     const riskLevel = getRiskLevel(score)
     
-    const recommendations = []
+    const recommendations: string[] = []
     
     // Generate recommendations based on responses
     responses.forEach(response => {
