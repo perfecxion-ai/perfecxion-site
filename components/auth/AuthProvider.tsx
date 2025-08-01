@@ -186,8 +186,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
       // Update stored user data
       AuthStorage.setUser(updatedUser)
       setUser(updatedUser)
-      
-      return updatedUser
     } catch (error) {
       console.error('Profile update error:', error)
       throw error
