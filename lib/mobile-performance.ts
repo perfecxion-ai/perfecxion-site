@@ -103,12 +103,12 @@ export function requestIdleCallbackShim(
   
   // Fallback for browsers without requestIdleCallback
   const start = Date.now()
-  return window.setTimeout(() => {
+  return (window as any).setTimeout(() => {
     callback({
       didTimeout: false,
       timeRemaining: () => Math.max(0, 50 - (Date.now() - start))
-    })
-  }, 1) as unknown as number
+    } as IdleDeadline)
+  }, 1)
 }
 
 // Cancel idle callback with fallback
@@ -184,7 +184,7 @@ export function optimizeMobileInputs() {
       inputElement.autocomplete = 'tel'
       inputElement.inputMode = 'tel'
     } else if (inputElement.type === 'url') {
-      inputElement.autocomplete = 'url'
+      inputElement.setAttribute('autocomplete', 'url')
       inputElement.inputMode = 'url'
     } else if (inputElement.type === 'number') {
       inputElement.inputMode = 'numeric'

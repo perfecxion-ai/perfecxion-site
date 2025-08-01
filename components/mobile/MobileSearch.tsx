@@ -55,7 +55,7 @@ export default function MobileSearch({ onClose }: MobileSearchProps) {
         title: 'ADAPT-AI Security Platform',
         description: 'Advanced AI threat detection and response system',
         url: '/products/adapt-ai',
-        type: 'product',
+        type: 'product' as const,
         category: 'Products'
       },
       {
@@ -63,7 +63,7 @@ export default function MobileSearch({ onClose }: MobileSearchProps) {
         title: 'Getting Started with perfecXion',
         description: 'Learn how to integrate our security solutions',
         url: '/docs/quick-start',
-        type: 'docs',
+        type: 'docs' as const,
         category: 'Documentation'
       },
       {
@@ -71,7 +71,7 @@ export default function MobileSearch({ onClose }: MobileSearchProps) {
         title: 'AI Security Best Practices',
         description: 'Essential guidelines for securing AI systems',
         url: '/blog/ai-security-best-practices',
-        type: 'blog',
+        type: 'blog' as const,
         date: '2024-01-15'
       }
     ].filter(result => 

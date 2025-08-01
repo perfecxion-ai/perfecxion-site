@@ -99,7 +99,7 @@ export default function CodeToolbar({ code, language, filename, onFullscreen }: 
           <Download className="h-4 w-4" />
         </button>
 
-        {navigator.share && (
+        {typeof navigator !== 'undefined' && 'share' in navigator && (
           <button
             onClick={handleShare}
             className="p-2 rounded text-gray-400 hover:text-white hover:bg-gray-700 dark:hover:bg-gray-800 transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center lg:hidden"

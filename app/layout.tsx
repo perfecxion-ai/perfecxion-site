@@ -9,6 +9,7 @@ import CookieConsentBanner from '@/components/CookieConsentBanner'
 import { SearchProvider } from '@/components/search/SearchProvider'
 import MobileNav from '@/components/mobile/MobileNav'
 import TabNavigation from '@/components/mobile/TabNavigation'
+import MobileOptimizationsInit from '@/components/MobileOptimizationsInit'
 import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -137,9 +138,10 @@ export default function RootLayout({
             __html: `
               // Initialize mobile optimizations
               if (typeof window !== 'undefined') {
-                import('/lib/mobile-performance.js').then(module => {
-                  module.initMobileOptimizations();
-                }).catch(console.error);
+                // Import will be handled by Next.js bundler
+                window.addEventListener('DOMContentLoaded', () => {
+                  // Mobile optimizations will be initialized through components
+                });
               }
             `
           }}
@@ -162,6 +164,7 @@ export default function RootLayout({
                 <Footer />
                 <TabNavigation />
                 <CookieConsentBanner />
+                <MobileOptimizationsInit />
               </div>
             </CookieConsentProvider>
           </SearchProvider>
