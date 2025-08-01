@@ -181,7 +181,7 @@ export default function ContentModeration({ showReportsOnly = false }: ContentMo
       moderatorId: user?.id || 'current-moderator',
       targetType: contentType,
       targetId: contentId,
-      action: action === 'remove' ? 'delete' : action === 'warn' ? 'warn' : 'lock',
+      action: action === 'remove' ? 'delete' : action === 'warn' ? 'warn' : 'suspend',
       reason: `Content ${action} by moderator`,
       createdAt: new Date()
     }
