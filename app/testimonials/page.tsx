@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Star, Quote, Building, User, CheckCircle, ArrowRight } from 'lucide-react'
+import { Star, Quote, Building, User, CheckCircle, ArrowRight, Shield, Users } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Customer Testimonials - perfecXion.ai',
@@ -127,7 +127,7 @@ export default function TestimonialsPage() {
             {testimonials.map((testimonial) => (
               <div key={testimonial.id} className="bg-gray-50 dark:bg-gray-900/50 rounded-xl p-8 relative">
                 <Quote className="absolute top-4 right-4 h-8 w-8 text-gray-200 dark:text-gray-700" />
-                
+
                 {/* Rating */}
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
@@ -177,24 +177,53 @@ export default function TestimonialsPage() {
           </div>
         </section>
 
-        {/* Industry Logos */}
+        {/* Trust Indicators */}
         <section className="mb-20">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            Trusted by Leading Organizations
+            Building Trust in AI Security
           </h2>
           <div className="bg-gray-50 dark:bg-gray-900/50 rounded-xl p-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="flex items-center justify-center">
-                  <div className="h-12 w-32 bg-gray-200 dark:bg-gray-700 rounded flex items-center justify-center">
-                    <Building className="h-6 w-6 text-gray-400 dark:text-gray-500" />
-                  </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-primary-100 dark:bg-primary-900/20">
+                  <Shield className="h-8 w-8 text-primary-600 dark:text-primary-400" />
                 </div>
-              ))}
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  Security-First Approach
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  Built by security experts with deep experience in AI and cybersecurity
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-purple-100 dark:bg-purple-900/20">
+                  <Users className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  Expert Team
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  Industry veterans from leading technology and security companies
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-green-100 dark:bg-green-900/20">
+                  <CheckCircle className="h-8 w-8 text-green-600 dark:text-green-400" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  Proven Methodology
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  Battle-tested approaches to AI security and compliance
+                </p>
+              </div>
             </div>
-            <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-8">
-              * Customer logos coming soon
-            </p>
+            <div className="mt-8 text-center">
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                We're working with select organizations to validate our approach and build case studies.
+                Contact us to learn more about our methodology and early adopter program.
+              </p>
+            </div>
           </div>
         </section>
 

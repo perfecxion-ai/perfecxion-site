@@ -36,7 +36,7 @@ export default function AboutPage() {
                 Our Mission
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                To democratize AI security by providing enterprise-grade protection tools that are accessible, 
+                To democratize AI security by providing enterprise-grade protection tools that are accessible,
                 comprehensive, and continuously evolving to meet new threats.
               </p>
             </div>
@@ -46,7 +46,7 @@ export default function AboutPage() {
                 Our Vision
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                A world where AI systems are inherently secure, trustworthy, and aligned with human values, 
+                A world where AI systems are inherently secure, trustworthy, and aligned with human values,
                 enabling innovation without compromising safety or privacy.
               </p>
             </div>
@@ -56,7 +56,7 @@ export default function AboutPage() {
                 Our Values
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                Security first, transparency always. We believe in responsible AI development, continuous 
+                Security first, transparency always. We believe in responsible AI development, continuous
                 innovation, and building trust through proven results.
               </p>
             </div>
@@ -68,19 +68,19 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">Our Story</h2>
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-              Founded in 2024 by a team of AI security researchers and enterprise software veterans, 
-              perfecXion.ai emerged from a simple observation: as AI systems became more powerful and 
+              Founded in 2024 by a team of AI security researchers and enterprise software veterans,
+              perfecXion.ai emerged from a simple observation: as AI systems became more powerful and
               pervasive, the security tools to protect them hadn't kept pace.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-              Our founders witnessed firsthand the vulnerabilities in AI systems at major tech companies 
-              and realized that traditional security approaches weren't sufficient for the unique challenges 
-              posed by artificial intelligence. From prompt injection attacks to model extraction, the 
+              Our founders witnessed firsthand the vulnerabilities in AI systems at major tech companies
+              and realized that traditional security approaches weren't sufficient for the unique challenges
+              posed by artificial intelligence. From prompt injection attacks to model extraction, the
               threat landscape was evolving faster than defenses.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Today, we're proud to offer the most comprehensive suite of AI security tools in the market, 
-              protecting everything from chatbots to autonomous agents. Our platform combines cutting-edge 
+              Today, we're proud to offer the most comprehensive suite of AI security tools in the market,
+              protecting everything from chatbots to autonomous agents. Our platform combines cutting-edge
               research with practical, enterprise-ready solutions that scale with your needs.
             </p>
           </div>
@@ -137,92 +137,32 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Leadership Team */}
+        {/* Team Section */}
         <section className="mb-20">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">Leadership Team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* CEO */}
-            <div className="bg-gray-50 dark:bg-gray-900/50 rounded-xl p-8 text-center">
-              <div className="mx-auto mb-4 h-32 w-32 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center">
-                <Users className="h-16 w-16 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                [CEO Name]
-              </h3>
-              <p className="text-primary-600 dark:text-primary-400 font-medium mb-4">
-                Chief Executive Officer
-              </p>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
-                Former Head of AI Security at [Major Tech Company]. 15+ years in cybersecurity and AI.
-              </p>
-            </div>
-
-            {/* CTO */}
-            <div className="bg-gray-50 dark:bg-gray-900/50 rounded-xl p-8 text-center">
-              <div className="mx-auto mb-4 h-32 w-32 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
-                <Brain className="h-16 w-16 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                [CTO Name]
-              </h3>
-              <p className="text-purple-600 dark:text-purple-400 font-medium mb-4">
-                Chief Technology Officer
-              </p>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
-                AI researcher and author of influential papers on adversarial AI. PhD in Machine Learning.
-              </p>
-            </div>
-
-            {/* Head of Security */}
-            <div className="bg-gray-50 dark:bg-gray-900/50 rounded-xl p-8 text-center">
-              <div className="mx-auto mb-4 h-32 w-32 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
-                <Shield className="h-16 w-16 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                [Security Lead Name]
-              </h3>
-              <p className="text-green-600 dark:text-green-400 font-medium mb-4">
-                Head of Security Research
-              </p>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
-                Former Red Team Lead at [Security Company]. Expert in AI attack vectors and defenses.
-              </p>
-            </div>
-          </div>
-          <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-8">
-            * Placeholder profiles - actual team information coming soon
-          </p>
-        </section>
-
-        {/* Investors & Partners */}
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">Backed By Industry Leaders</h2>
-          <div className="bg-gray-50 dark:bg-gray-900/50 rounded-xl p-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-              <div className="text-center">
-                <div className="h-20 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-500 dark:text-gray-400 text-sm">Investor Logo</span>
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="h-20 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-500 dark:text-gray-400 text-sm">Partner Logo</span>
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="h-20 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-500 dark:text-gray-400 text-sm">Investor Logo</span>
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="h-20 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-500 dark:text-gray-400 text-sm">Partner Logo</span>
-                </div>
-              </div>
-            </div>
-            <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-8">
-              Trusted by leading investors and technology partners
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">Our Team</h2>
+          <div className="text-center max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+              We're a team of AI security experts, researchers, and engineers with deep experience
+              in protecting AI systems at scale. Our backgrounds span leading technology companies,
+              security research institutions, and government agencies.
             </p>
+            <div className="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-xl p-8">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                Join Our Mission
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-6">
+                We're growing our team of AI security professionals. If you're passionate about
+                protecting AI systems and want to work on cutting-edge security challenges,
+                we'd love to hear from you.
+              </p>
+              <Link
+                href="/careers"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors"
+              >
+                View Open Positions
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -263,16 +203,16 @@ export default function AboutPage() {
                 <MapPin className="h-6 w-6 text-primary-600 dark:text-primary-400" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">New York</h3>
-              <p className="text-gray-600 dark:text-gray-300">Coming Soon</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">East Coast Office</p>
+              <p className="text-gray-600 dark:text-gray-300">East Coast Office</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Remote team members</p>
             </div>
             <div className="text-center">
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-50 dark:bg-primary-900/20">
                 <MapPin className="h-6 w-6 text-primary-600 dark:text-primary-400" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">London</h3>
-              <p className="text-gray-600 dark:text-gray-300">Coming Soon</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">European Office</p>
+              <p className="text-gray-600 dark:text-gray-300">European Office</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Remote team members</p>
             </div>
           </div>
         </section>
