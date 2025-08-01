@@ -612,19 +612,19 @@ export default function LaunchReadinessChecker() {
 
   const getCheckStats = () => {
     const results = Array.from(checkResults.values())
+    const criticalChecks = readinessChecks.filter(c => c.critical)
+    const criticalResults = results.filter(r => r.critical)
+    
     const stats = {
       total: readinessChecks.length,
       checked: results.length,
       passed: results.filter(r => r.status === 'passed').length,
       failed: results.filter(r => r.status === 'failed').length,
       warnings: results.filter(r => r.status === 'warning').length,
-      pending: readinessChecks.length - results.length
+      pending: readinessChecks.length - results.length,
+      criticalPassed: criticalResults.filter(r => r.status === 'passed').length,
+      criticalTotal: criticalChecks.length
     }
-    
-    const criticalChecks = readinessChecks.filter(c => c.critical)
-    const criticalResults = results.filter(r => r.critical)
-    stats.criticalPassed = criticalResults.filter(r => r.status === 'passed').length
-    stats.criticalTotal = criticalChecks.length
     
     return stats
   }

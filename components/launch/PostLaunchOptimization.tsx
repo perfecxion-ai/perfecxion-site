@@ -264,7 +264,7 @@ export default function PostLaunchOptimization() {
       frequency: 8,
       source: 'support',
       sentiment: 'negative',
-      status: 'in-progress'
+      status: 'reviewing'
     },
     {
       id: 'feedback-3',

@@ -383,7 +383,7 @@ export default function DeploymentValidator() {
   }
 
   const executeStage = async (stage: DeploymentStage): Promise<DeploymentStage> => {
-    const updatedStage = { ...stage, status: 'running' as const, startTime: new Date() }
+    const updatedStage = { ...stage, status: 'running' as DeploymentStage['status'], startTime: new Date() }
     const updatedTasks: DeploymentTask[] = []
 
     for (const task of stage.tasks) {

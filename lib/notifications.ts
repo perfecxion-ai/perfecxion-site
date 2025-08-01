@@ -359,11 +359,7 @@ export class NotificationManager {
           data: {
             notificationId: notification.id,
             actionUrl: notification.actionUrl
-          },
-          actions: notification.actionUrl ? [{
-            action: 'view',
-            title: notification.actionText || 'View'
-          }] : undefined
+          }
         })
       } catch (error) {
         console.error('Push notification failed:', error)

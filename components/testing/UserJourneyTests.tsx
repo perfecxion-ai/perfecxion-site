@@ -9,7 +9,7 @@ import {
   XCircle,
   Clock,
   User,
-  Route,
+  Navigation,
   Target,
   AlertTriangle,
   TrendingUp,
@@ -348,7 +348,7 @@ export default function UserJourneyTests({ config = { baseUrl: 'https://perfecxi
                         </p>
                       </div>
                       {journey.criticalPath && (
-                        <AlertTriangle className="w-4 h-4 text-orange-500 ml-2" title="Critical Path" />
+                        <AlertTriangle className="w-4 h-4 text-orange-500 ml-2" />
                       )}
                     </div>
                     
@@ -473,7 +473,7 @@ export default function UserJourneyTests({ config = { baseUrl: 'https://perfecxi
                               {scenario.priority}
                             </span>
                             {scenario.tags.includes('critical-path') && (
-                              <Route className="w-4 h-4 text-orange-500" title="Critical Path" />
+                              <Navigation className="w-4 h-4 text-orange-500" />
                             )}
                           </div>
                           
@@ -584,7 +584,7 @@ export default function UserJourneyTests({ config = { baseUrl: 'https://perfecxi
 
               {filteredScenarios.length === 0 && (
                 <div className="p-12 text-center">
-                  <Route className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                  <Navigation className="w-16 h-16 text-gray-400 mx-auto mb-4" />
                   <h3 className="text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">
                     No Test Scenarios Found
                   </h3>

@@ -349,7 +349,7 @@ export default function AccessibilityTests() {
     }
   }
 
-  const generateAccessibilityTestResult = (test: AccessibilityTest) => {
+  const generateAccessibilityTestResult = (test: AccessibilityTest): { status: AccessibilityTestResult['status'], violations: AccessibilityViolation[], score: number } => {
     // Simulate different test outcomes based on test type
     const passRate = test.testMethod === 'automated' ? 0.8 : 0.9 // Automated tests catch more issues
     const shouldPass = Math.random() < passRate

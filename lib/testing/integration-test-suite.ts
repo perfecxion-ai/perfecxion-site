@@ -691,7 +691,8 @@ export class IntegrationTestSuite {
       const promises = scenarios.map(scenario => this.runScenario(scenario.id))
       const parallelResults = await Promise.allSettled(promises)
       
-      parallelResults.forEach((result, index) => {
+      for (let index = 0; index < parallelResults.length; index++) {
+        const result = parallelResults[index]
         if (result.status === 'fulfilled') {
           results.push(result.value)
         } else {
@@ -729,7 +730,7 @@ export class IntegrationTestSuite {
             }
           })
         }
-      })
+      }
     } else {
       // Sequential execution
       for (const scenario of scenarios) {
