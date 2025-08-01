@@ -355,7 +355,7 @@ export default function ContentModeration({ showReportsOnly = false }: ContentMo
                           {report.status}
                         </span>
                         {report.reason === 'harassment' && (
-                          <AlertTriangle className="w-5 h-5 text-red-600" title="High Priority" />
+                          <AlertTriangle className="w-5 h-5 text-red-600" />
                         )}
                       </div>
                       
