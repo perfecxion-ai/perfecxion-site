@@ -25,10 +25,13 @@ import {
   RefreshCw,
   Award,
   TrendingUp,
+  TrendingDown,
+  Activity,
   AlertCircle,
   Lightbulb,
   Settings,
-  ChevronRight
+  ChevronRight,
+  Package
 } from 'lucide-react'
 
 interface SupportAgent {

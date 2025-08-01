@@ -25,7 +25,8 @@ import {
   Settings,
   Play,
   Pause,
-  RefreshCw
+  RefreshCw,
+  Type
 } from 'lucide-react'
 
 interface PerformanceMetric {
