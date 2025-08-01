@@ -44,7 +44,7 @@ export default function ForumInterface({ categorySlug, searchQuery = '' }: Forum
         categoryId: 'technical',
         authorId: 'user1',
         title: 'Advanced Prompt Injection Techniques in Production Systems',
-        content: 'I've been researching advanced prompt injection techniques...',
+        content: 'I\'ve been researching advanced prompt injection techniques...',
         contentHtml: '<p>I\'ve been researching advanced prompt injection techniques...</p>',
         tags: ['prompt-injection', 'security', 'production'],
         isPinned: true,
