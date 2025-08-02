@@ -7,7 +7,6 @@ import { usePathname } from 'next/navigation'
 import { Menu, X, Search } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 import SearchBar from './search/SearchBar'
-import { useTheme } from 'next-themes'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -23,7 +22,6 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const pathname = usePathname()
-  const { theme } = useTheme()
   
   // Hide hamburger menu on pages with their own sidebar navigation
   const hideMobileMenu = pathname.startsWith('/learn') || pathname.startsWith('/docs') || pathname.startsWith('/blog') || pathname.startsWith('/white-papers')

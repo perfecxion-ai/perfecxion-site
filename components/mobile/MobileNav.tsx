@@ -7,7 +7,6 @@ import { usePathname } from 'next/navigation'
 import { Menu, X, ChevronDown, Search, Calendar } from 'lucide-react'
 import ThemeToggle from '../ThemeToggle'
 import MobileSearch from './MobileSearch'
-import { useTheme } from 'next-themes'
 
 interface NavItem {
   name: string
@@ -61,7 +60,6 @@ export default function MobileNav() {
   const [expandedItems, setExpandedItems] = useState<string[]>([])
   const [searchOpen, setSearchOpen] = useState(false)
   const pathname = usePathname()
-  const { theme } = useTheme()
 
   // Close menu on route change
   useEffect(() => {
