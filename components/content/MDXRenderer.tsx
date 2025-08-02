@@ -165,6 +165,87 @@ function getDefaultContent(slug: string): string {
       
       <h2>Detection and Mitigation</h2>
       <p>Learn how to implement comprehensive defenses in our guide on <a href="/learn/building-ai-security-programs">Building AI Security Programs</a>.</p>
+      
+      <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e5e7eb;">
+      
+      <h2>Comprehensive AI Security White Paper</h2>
+      <div style="margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(251, 146, 60, 0.1)); border-radius: 12px; border: 1px solid rgba(239, 68, 68, 0.2);">
+        <h3 style="color: #dc2626; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 700;">AI Security White Paper: Complete Attack Taxonomy and Defense Strategies</h3>
+        
+        <p style="margin-bottom: 1.5rem; color: #374151;">
+          Download our comprehensive AI Security White Paper that provides an in-depth analysis of all AI attack types and effective defense mechanisms. This technical guide covers:
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+          <ul style="margin: 0; padding: 0; list-style: none;">
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Complete AI attack taxonomy</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Adversarial attack techniques</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Data poisoning methodologies</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Model extraction attacks</span>
+            </li>
+          </ul>
+          <ul style="margin: 0; padding: 0; list-style: none;">
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Prompt injection vulnerabilities</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Defense mechanisms and strategies</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Real-world attack case studies</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Implementation best practices</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+          <a href="/white-papers/ai-security-white-paper.pdf" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background-color: #dc2626; color: white; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background-color 0.2s;" download>
+            <svg style="width: 1.25rem; height: 1.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            Download AI Security White Paper
+          </a>
+        </div>
+        
+        <div style="padding: 1rem; background-color: rgba(239, 68, 68, 0.1); border-radius: 8px;">
+          <p style="margin: 0; font-size: 0.875rem; color: #b91c1c; font-style: italic;">
+            This comprehensive technical white paper provides security professionals with detailed analysis of AI attack vectors and proven defense strategies used by leading organizations.
+          </p>
+        </div>
+      </div>
     `,
     'building-ai-security-programs': `
       <h1>Building AI Security Programs</h1>
@@ -230,6 +311,87 @@ function getDefaultContent(slug: string): string {
         <li>AI Risk Analysts</li>
         <li>AI Security Researchers</li>
       </ul>
+      
+      <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e5e7eb;">
+      
+      <h2>Comprehensive White Paper</h2>
+      <div style="margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1)); border-radius: 12px; border: 1px solid rgba(59, 130, 246, 0.2);">
+        <h3 style="color: #2563eb; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 700;">Building AI Security Programs for Enterprise Organizations</h3>
+        
+        <p style="margin-bottom: 1.5rem; color: #374151;">
+          Get our 60-minute deep dive into building enterprise AI security programs. This comprehensive white paper provides technical practitioners and CISOs with:
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+          <ul style="margin: 0; padding: 0; list-style: none;">
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Detailed framework analysis (NIST, SAIF, MIT Sloan, DASF)</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Phased implementation roadmap (18-24 months)</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Team structure and budget guidance</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Technical security controls implementation</span>
+            </li>
+          </ul>
+          <ul style="margin: 0; padding: 0; list-style: none;">
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>MLOps security architecture patterns</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Real-world case studies and lessons</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Future threat landscape analysis</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>ROI metrics and success indicators</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+          <a href="/white-papers/building-ai-security-programs.pdf" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background-color: #2563eb; color: white; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background-color 0.2s;" download>
+            <svg style="width: 1.25rem; height: 1.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            Download PDF (60 min read)
+          </a>
+        </div>
+        
+        <div style="padding: 1rem; background-color: rgba(59, 130, 246, 0.1); border-radius: 8px;">
+          <p style="margin: 0; font-size: 0.875rem; color: #1d4ed8; font-style: italic;">
+            This white paper provides actionable guidance for building comprehensive AI security programs through phased implementation, addressing unique AI risks that traditional security approaches cannot handle. Based on real-world implementations achieving 60-80% reduction in security incidents.
+          </p>
+        </div>
+      </div>
       
       <h2>Next Steps</h2>
       <p>Learn about regulatory requirements in our <a href="/learn/compliance-for-ai-systems">Compliance for AI Systems</a> guide.</p>
@@ -297,6 +459,87 @@ function getDefaultContent(slug: string): string {
         <li>Internal audit framework</li>
         <li>Third-party assessments</li>
       </ul>
+      
+      <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e5e7eb;">
+      
+      <h2>Comprehensive Regulatory White Paper</h2>
+      <div style="margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(147, 51, 234, 0.1)); border-radius: 12px; border: 1px solid rgba(99, 102, 241, 0.2);">
+        <h3 style="color: #6366f1; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 700;">Navigating the Global AI Regulatory Maze: A Strategic Playbook</h3>
+        
+        <p style="margin-bottom: 1.5rem; color: #374151;">
+          Download our comprehensive white paper designed specifically for CISOs, AI developers, and technology leaders. This strategic playbook provides in-depth analysis of:
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+          <ul style="margin: 0; padding: 0; list-style: none;">
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>EU AI Act comprehensive analysis</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>NIST AI RMF implementation guide</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>GDPR implications for AI systems</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Global regulatory comparison</span>
+            </li>
+          </ul>
+          <ul style="margin: 0; padding: 0; list-style: none;">
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Compliance strategy frameworks</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Technical implementation guidance</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Risk management approaches</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Future-proofing strategies</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+          <a href="/white-papers/ai-regulatory-compliance.pdf" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background-color: #6366f1; color: white; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background-color 0.2s;" download>
+            <svg style="width: 1.25rem; height: 1.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            Download PDF (30 min read)
+          </a>
+        </div>
+        
+        <div style="padding: 1rem; background-color: rgba(99, 102, 241, 0.1); border-radius: 8px;">
+          <p style="margin: 0; font-size: 0.875rem; color: #4338ca; font-style: italic;">
+            This white paper provides strategic guidance for navigating the complex global AI regulatory landscape, including practical implementation strategies and compliance frameworks. Last updated: January 2025.
+          </p>
+        </div>
+      </div>
       
       <h2>Next Steps</h2>
       <p>Prepare for security incidents with our <a href="/learn/incident-response-for-ai">Incident Response for AI</a> guide.</p>
@@ -380,6 +623,87 @@ function getDefaultContent(slug: string): string {
         <li>Team competency development</li>
         <li>Regular drill execution</li>
       </ul>
+      
+      <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e5e7eb;">
+      
+      <h2>Comprehensive White Paper</h2>
+      <div style="margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1)); border-radius: 12px; border: 1px solid rgba(6, 182, 212, 0.2);">
+        <h3 style="color: #0891b2; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 700;">AI-Specific Incident Response: A Comprehensive Guide</h3>
+        
+        <p style="margin-bottom: 1.5rem; color: #374151;">
+          Download our comprehensive white paper that covers advanced incident response strategies specifically designed for AI systems. This 45-minute read provides technical practitioners and CISOs with:
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+          <ul style="margin: 0; padding: 0; list-style: none;">
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>AI threat landscape analysis</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Specialized forensic techniques</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Recovery strategies for ML systems</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Real-world case studies</span>
+            </li>
+          </ul>
+          <ul style="margin: 0; padding: 0; list-style: none;">
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Deployment-specific considerations</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Regulatory compliance guidance</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Implementation roadmap</span>
+            </li>
+            <li style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem;">
+              <svg style="width: 1rem; height: 1rem; color: #10b981; margin-top: 0.125rem; flex-shrink: 0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Technology recommendations</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+          <a href="/white-papers/ai-incident-response.pdf" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background-color: #0891b2; color: white; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background-color 0.2s;" download>
+            <svg style="width: 1.25rem; height: 1.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            Download PDF (45 min read)
+          </a>
+        </div>
+        
+        <div style="padding: 1rem; background-color: rgba(6, 182, 212, 0.1); border-radius: 8px;">
+          <p style="margin: 0; font-size: 0.875rem; color: #0c7a8a; font-style: italic;">
+            This white paper represents the latest research and best practices in AI incident response, compiled by the perfecXion.ai security team. Last updated: January 2025.
+          </p>
+        </div>
+      </div>
       
       <p>Congratulations on completing the AI Security 101 learning path! You now have a comprehensive understanding of AI security fundamentals, threats, implementation strategies, compliance requirements, and incident response procedures.</p>
     `
