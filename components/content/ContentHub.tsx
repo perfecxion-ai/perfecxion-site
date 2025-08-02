@@ -1,11 +1,11 @@
 'use client'
 
 import { useState, useEffect, useMemo } from 'react'
-import { Search, Filter, Grid, List, BookOpen, FileText, Newspaper, Star, Clock, User, Tag, ChevronDown } from 'lucide-react'
+import Link from 'next/link'
+import { Search, Filter, Grid, List, BookOpen, FileText, Newspaper, Star, Clock, User, Tag, ChevronRight, ArrowRight, Shield, Brain, Target, Lock, Eye, Code, AlertTriangle } from 'lucide-react'
 import { ContentFilter, SearchResult, ContentCategory, ContentTag, LearningPath } from '@/lib/content-types'
 import { contentManager } from '@/lib/content-manager'
 import ContentCard from './ContentCard'
-// ContentFilter component removed - using simple filter
 import LearningPathCard from './LearningPathCard'
 
 interface ContentHubProps {
@@ -14,10 +14,10 @@ interface ContentHubProps {
   featuredOnly?: boolean
 }
 
-export default function ContentHub({ 
-  initialView = 'grid', 
+export default function ContentHub({
+  initialView = 'grid',
   showFilters = true,
-  featuredOnly = false 
+  featuredOnly = false
 }: ContentHubProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [filters, setFilters] = useState<ContentFilter>({
@@ -41,7 +41,7 @@ export default function ContentHub({
         setCategories(contentManager.getCategories())
         setTags(contentManager.getTags())
         setLearningPaths(contentManager.getLearningPaths())
-        
+
         if (featuredOnly) {
           const featured = contentManager.getFeaturedContent()
           setResults(featured.map(content => ({
@@ -57,7 +57,7 @@ export default function ContentHub({
         setIsLoading(false)
       }
     }
-    
+
     loadData()
   }, [featuredOnly])
 
@@ -126,22 +126,160 @@ export default function ContentHub({
     switch (type) {
       case 'learning': return 'Learning'
       case 'blog': return 'Blog Posts'
-      
+
       default: return type
     }
+  }
+
+  const getPathIcon = (pathId: string) => {
+    const iconMap: Record<string, React.ReactNode> = {
+      'ai-security-101': <Shield className="h-8 w-8 text-blue-600" />,
+      'red-team-testing': <Target className="h-8 w-8 text-red-600" />,
+      'agent-monitoring': <Eye className="h-8 w-8 text-green-600" />,
+      'compliance-governance': <Lock className="h-8 w-8 text-purple-600" />,
+      'integration-patterns': <Code className="h-8 w-8 text-orange-600" />,
+      'performance-optimization': <Brain className="h-8 w-8 text-indigo-600" />
+    }
+    return iconMap[pathId] || <BookOpen className="h-8 w-8 text-gray-600" />
+  }
+
+  const getPathColor = (pathId: string) => {
+    const colorMap: Record<string, string> = {
+      'ai-security-101': 'from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 border-blue-200 dark:border-blue-800',
+      'red-team-testing': 'from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 border-red-200 dark:border-red-800',
+      'agent-monitoring': 'from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 border-green-200 dark:border-green-800',
+      'compliance-governance': 'from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 border-purple-200 dark:border-purple-800',
+      'integration-patterns': 'from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 border-orange-200 dark:border-orange-800',
+      'performance-optimization': 'from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-indigo-800/20 border-indigo-200 dark:border-indigo-800'
+    }
+    return colorMap[pathId] || 'from-gray-50 to-gray-100 dark:from-gray-900/20 dark:to-gray-800/20 border-gray-200 dark:border-gray-800'
+  }
+
+  const getPathLink = (pathId: string) => {
+    const linkMap: Record<string, string> = {
+      'ai-security-101': '/learn/trad-vs-ai',
+      'red-team-testing': '/learn/red-team',
+      'agent-monitoring': '/learn/agent-monitoring',
+      'compliance-governance': '/learn/compliance',
+      'integration-patterns': '/learn/integrations',
+      'performance-optimization': '/learn/optimization'
+    }
+    return linkMap[pathId] || '/learn'
   }
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-          Resource Center
+      <div className="mb-12">
+        <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
+          Learn AI Security
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl">
-          Explore our comprehensive collection of AI security resources, from beginner guides to advanced research papers.
+        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-4xl">
+          Master AI security with our comprehensive learning resources, tutorials, and best practices.
+          Explore our AI Security 101 series, whitepapers, and interactive learning paths designed to
+          help you build robust, secure AI systems.
         </p>
       </div>
+
+      {/* Learning Paths - Enhanced Design */}
+      {!searchQuery && !Object.keys(filters).some(key => filters[key as keyof ContentFilter] && key !== 'sortBy' && key !== 'sortOrder') && (
+        <div className="mb-16">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+              Learning Paths
+            </h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Structured learning journeys for comprehensive AI security mastery
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {learningPaths.map(path => (
+              <Link key={path.id} href={getPathLink(path.id)} className="group">
+                <div className={`bg-gradient-to-br ${getPathColor(path.id)} border rounded-xl p-8 h-full transition-all duration-300 group-hover:shadow-lg group-hover:scale-[1.02]`}>
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="flex items-center gap-3">
+                      {getPathIcon(path.id)}
+                      <div>
+                        <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${path.difficulty === 'beginner' ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400' :
+                            path.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400' :
+                              'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'
+                          }`}>
+                          {path.difficulty}
+                        </span>
+                        {path.featured && (
+                          <Star className="h-4 w-4 text-yellow-500 fill-current ml-2" />
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
+                      <Clock className="h-4 w-4" />
+                      {path.estimatedDuration}
+                    </div>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                    {path.title}
+                  </h3>
+
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                    {path.description}
+                  </p>
+
+                  {/* Learning Outcomes */}
+                  <div className="mb-6">
+                    <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+                      What you'll learn:
+                    </p>
+                    <div className="space-y-2">
+                      {path.outcomes.slice(0, 3).map((outcome, index) => (
+                        <div key={index} className="flex items-start gap-2">
+                          <div className="w-1.5 h-1.5 bg-primary-600 rounded-full mt-2 flex-shrink-0" />
+                          <span className="text-sm text-gray-600 dark:text-gray-400">
+                            {outcome}
+                          </span>
+                        </div>
+                      ))}
+                      {path.outcomes.length > 3 && (
+                        <p className="text-sm text-gray-500 dark:text-gray-500 ml-3.5">
+                          +{path.outcomes.length - 3} more outcomes
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Prerequisites */}
+                  {path.prerequisites && path.prerequisites.length > 0 && (
+                    <div className="mb-6">
+                      <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        Prerequisites:
+                      </p>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                        {path.prerequisites.join(', ')}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Progress/Stats */}
+                  <div className="flex items-center justify-between pt-6 border-t border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                      <div className="flex items-center gap-1">
+                        <BookOpen className="h-4 w-4" />
+                        <span>{path.sections.length} sections</span>
+                      </div>
+                    </div>
+
+                    <div className="inline-flex items-center text-sm font-medium text-primary-600 dark:text-primary-400 group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors">
+                      Start Learning
+                      <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Search and Controls */}
       <div className="mb-8 space-y-4">
@@ -167,10 +305,10 @@ export default function ContentHub({
               >
                 <Filter className="h-4 w-4 mr-2" />
                 Filters
-                <ChevronDown className={`h-4 w-4 ml-2 transform transition-transform ${showFiltersPanel ? 'rotate-180' : ''}`} />
+                <ChevronRight className={`h-4 w-4 ml-2 transform transition-transform ${showFiltersPanel ? 'rotate-90' : ''}`} />
               </button>
             )}
-            
+
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-600 dark:text-gray-400">
                 {results.length} results
@@ -189,19 +327,19 @@ export default function ContentHub({
           <div className="flex items-center gap-2">
             <button
               onClick={() => setView('grid')}
-              className={`p-2 rounded-lg ${view === 'grid' 
-                ? 'bg-primary-100 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400' 
+              className={`p-2 rounded-lg ${view === 'grid'
+                ? 'bg-primary-100 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400'
                 : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
-              }`}
+                }`}
             >
               <Grid className="h-4 w-4" />
             </button>
             <button
               onClick={() => setView('list')}
-              className={`p-2 rounded-lg ${view === 'list' 
-                ? 'bg-primary-100 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400' 
+              className={`p-2 rounded-lg ${view === 'list'
+                ? 'bg-primary-100 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400'
                 : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
-              }`}
+                }`}
             >
               <List className="h-4 w-4" />
             </button>
@@ -218,20 +356,6 @@ export default function ContentHub({
           </div>
         )}
       </div>
-
-      {/* Learning Paths */}
-      {!searchQuery && !Object.keys(filters).some(key => filters[key as keyof ContentFilter] && key !== 'sortBy' && key !== 'sortOrder') && (
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-            Learning Paths
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {learningPaths.map(path => (
-              <LearningPathCard key={path.id} path={path} />
-            ))}
-          </div>
-        </div>
-      )}
 
       {/* Results */}
       {isLoading ? (
@@ -261,8 +385,8 @@ export default function ContentHub({
                   ({typeResults.length})
                 </span>
               </div>
-              
-              <div className={view === 'grid' 
+
+              <div className={view === 'grid'
                 ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
                 : 'space-y-4'
               }>

@@ -213,8 +213,8 @@ class ContentManager {
     this.contentIndex.learningPaths = [
       {
         id: 'ai-security-101',
-        title: 'AI Security 101',
-        description: 'Complete beginner to intermediate journey in AI security',
+        title: 'AI Security Fundamentals',
+        description: 'Complete beginner to intermediate journey in AI security fundamentals, covering traditional vs AI security, understanding AI threats, and building robust defenses.',
         difficulty: 'beginner',
         estimatedDuration: '8 hours',
         category: 'fundamentals',
@@ -223,7 +223,8 @@ class ContentManager {
         outcomes: [
           'Understand AI security fundamentals',
           'Identify common vulnerabilities',
-          'Implement basic security measures'
+          'Implement basic security measures',
+          'Recognize AI-specific threats'
         ],
         sections: [
           {
@@ -231,7 +232,142 @@ class ContentManager {
             title: 'AI Security Foundations',
             description: 'Core concepts and terminology',
             order: 1,
-            content: ['understanding-ai-vulnerabilities', 'threat-landscape'],
+            content: ['trad-vs-ai', 'ai-threats'],
+            estimatedMinutes: 120,
+            required: true
+          }
+        ]
+      },
+      {
+        id: 'red-team-testing',
+        title: 'Red Team Testing',
+        description: 'Advanced offensive security testing for AI systems. Learn to think like an attacker and identify vulnerabilities before they can be exploited.',
+        difficulty: 'intermediate',
+        estimatedDuration: '12 hours',
+        category: 'red-teaming',
+        featured: true,
+        prerequisites: ['AI Security Fundamentals', 'Basic penetration testing knowledge'],
+        outcomes: [
+          'Conduct AI system penetration testing',
+          'Identify model vulnerabilities',
+          'Execute adversarial attacks',
+          'Develop defense strategies'
+        ],
+        sections: [
+          {
+            id: 'red-team-basics',
+            title: 'Red Team Fundamentals',
+            description: 'Introduction to AI red teaming',
+            order: 1,
+            content: ['red-team-basics'],
+            estimatedMinutes: 90,
+            required: true
+          }
+        ]
+      },
+      {
+        id: 'agent-monitoring',
+        title: 'Agent Monitoring',
+        description: 'Comprehensive monitoring and observability for AI agents and autonomous systems. Detect anomalies, track behavior, and ensure safe operation.',
+        difficulty: 'intermediate',
+        estimatedDuration: '10 hours',
+        category: 'monitoring',
+        featured: true,
+        prerequisites: ['AI Security Fundamentals'],
+        outcomes: [
+          'Monitor AI agent behavior',
+          'Detect anomalous activities',
+          'Implement safety controls',
+          'Track performance metrics'
+        ],
+        sections: [
+          {
+            id: 'monitoring-basics',
+            title: 'Monitoring Fundamentals',
+            description: 'Core monitoring concepts',
+            order: 1,
+            content: ['agent-monitoring'],
+            estimatedMinutes: 120,
+            required: true
+          }
+        ]
+      },
+      {
+        id: 'compliance-governance',
+        title: 'Compliance & Governance',
+        description: 'Navigate the complex landscape of AI regulations, compliance requirements, and governance frameworks. Ensure your AI systems meet legal and ethical standards.',
+        difficulty: 'intermediate',
+        estimatedDuration: '6 hours',
+        category: 'compliance',
+        featured: true,
+        prerequisites: ['AI Security Fundamentals'],
+        outcomes: [
+          'Understand AI regulations',
+          'Implement compliance frameworks',
+          'Establish governance policies',
+          'Conduct risk assessments'
+        ],
+        sections: [
+          {
+            id: 'compliance-basics',
+            title: 'Compliance Fundamentals',
+            description: 'Core compliance concepts',
+            order: 1,
+            content: ['compliance-basics'],
+            estimatedMinutes: 90,
+            required: true
+          }
+        ]
+      },
+      {
+        id: 'integration-patterns',
+        title: 'Integration Patterns',
+        description: 'Secure integration patterns for AI systems. Learn best practices for connecting AI components, APIs, and services while maintaining security.',
+        difficulty: 'advanced',
+        estimatedDuration: '8 hours',
+        category: 'implementation',
+        featured: false,
+        prerequisites: ['AI Security Fundamentals', 'Software development experience'],
+        outcomes: [
+          'Design secure AI architectures',
+          'Implement secure APIs',
+          'Integrate AI components safely',
+          'Handle data flow securely'
+        ],
+        sections: [
+          {
+            id: 'integration-basics',
+            title: 'Integration Fundamentals',
+            description: 'Core integration concepts',
+            order: 1,
+            content: ['integration-basics'],
+            estimatedMinutes: 120,
+            required: true
+          }
+        ]
+      },
+      {
+        id: 'performance-optimization',
+        title: 'Performance Optimization',
+        description: 'Optimize AI system performance while maintaining security. Balance speed, accuracy, and security requirements for production deployments.',
+        difficulty: 'advanced',
+        estimatedDuration: '10 hours',
+        category: 'optimization',
+        featured: false,
+        prerequisites: ['AI Security Fundamentals', 'Performance engineering basics'],
+        outcomes: [
+          'Optimize AI system performance',
+          'Balance security and speed',
+          'Implement efficient monitoring',
+          'Scale AI systems securely'
+        ],
+        sections: [
+          {
+            id: 'optimization-basics',
+            title: 'Optimization Fundamentals',
+            description: 'Core optimization concepts',
+            order: 1,
+            content: ['optimization-basics'],
             estimatedMinutes: 120,
             required: true
           }
@@ -308,7 +444,8 @@ class ContentManager {
       'compliance': 'FileText',
       'monitoring': 'Eye',
       'implementation': 'Code',
-      'threats': 'AlertTriangle'
+      'threats': 'AlertTriangle',
+      'optimization': 'Zap'
     }
     return iconMap[category] || 'BookOpen'
   }
@@ -320,7 +457,8 @@ class ContentManager {
       'compliance': 'green',
       'monitoring': 'purple',
       'implementation': 'orange',
-      'threats': 'yellow'
+      'threats': 'yellow',
+      'optimization': 'indigo'
     }
     return colorMap[category] || 'gray'
   }
