@@ -105,6 +105,8 @@ export default function ContentHub({
   const resultsByType = useMemo(() => {
     return results.reduce((acc, result) => {
       const type = result.content.type
+      // Filter out blog posts from the learning center
+      if (type === 'blog') return acc
       if (!acc[type]) acc[type] = []
       acc[type].push(result)
       return acc
