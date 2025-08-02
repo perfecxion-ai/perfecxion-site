@@ -75,6 +75,18 @@ export default function DocumentationPage() {
                       </div>
                     </div>
                   </Link>
+                  <Link
+                    href="/docs/adapt-ai"
+                    className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <Zap className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+                      <div>
+                        <h3 className="font-semibold text-gray-900 dark:text-white">Adapt AI</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Adaptive AI security platform</p>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
               </div>
 

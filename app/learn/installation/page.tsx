@@ -277,7 +277,7 @@ python main.py`}
 security:
   api_keys:
     - name: "production-key"
-      key: "${PERFECXION_API_KEY}"
+      key: "${process.env.PERFECXION_API_KEY}"
       permissions: ["read", "write", "admin"]
   
   authentication:
