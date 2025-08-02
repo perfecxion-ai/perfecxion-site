@@ -2009,7 +2009,87 @@ class IncidentDashboardAPI:
         </div>
       </section>
 
-      {/* Section 8: Resources */}
+      {/* Section 8: White Paper */}
+      <section className="mb-16 p-8 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl border border-cyan-700">
+        <h2 className="text-3xl font-semibold mb-6 flex items-center gap-3">
+          <FileText className="w-8 h-8 text-cyan-400" />
+          Comprehensive White Paper
+        </h2>
+        
+        <div className="space-y-6 text-gray-300">
+          <div className="bg-gray-900/50 rounded-lg p-6 border border-gray-700">
+            <h3 className="text-xl font-semibold mb-4 text-cyan-400">AI-Specific Incident Response: A Comprehensive Guide</h3>
+            <p className="mb-4">
+              Download our comprehensive white paper that covers advanced incident response strategies specifically designed for AI systems. This 45-minute read provides technical practitioners and CISOs with:
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-4 mb-6">
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  <span>AI threat landscape analysis</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  <span>Specialized forensic techniques</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  <span>Recovery strategies for ML systems</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  <span>Real-world case studies</span>
+                </li>
+              </ul>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  <span>Deployment-specific considerations</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  <span>Regulatory compliance guidance</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  <span>Implementation roadmap</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  <span>Technology recommendations</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a 
+                href="/white-papers/ai-incident-response.pdf" 
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-cyan-600 hover:bg-cyan-700 rounded-lg transition-colors font-semibold"
+                download
+              >
+                <FileText className="w-5 h-5" />
+                Download PDF (45 min read)
+              </a>
+              <a 
+                href="/content/white-papers/ai-incident-response" 
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
+              >
+                <Eye className="w-5 h-5" />
+                Read Online Version
+              </a>
+            </div>
+          </div>
+          
+          <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
+            <p className="text-sm text-gray-400 italic">
+              This white paper represents the latest research and best practices in AI incident response, compiled by the perfecXion.ai security team. Last updated: January 2025.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 9: Tools and Resources */}
       <section className="mb-16 p-8 bg-gray-800/50 rounded-xl border border-gray-700">
         <h2 className="text-3xl font-semibold mb-6 flex items-center gap-3">
           <Package className="w-8 h-8 text-cyan-400" />

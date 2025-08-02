@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Shield, FileText, Scale, Globe, Lock, CheckCircle, AlertCircle, Info, BookOpen, Briefcase, Users, ClipboardCheck, FileCheck, Database, Key } from 'lucide-react'
+import { ArrowRight, Shield, FileText, Scale, Globe, Lock, CheckCircle, AlertCircle, Info, BookOpen, Briefcase, Users, ClipboardCheck, FileCheck, Database, Key, Download, Eye } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Compliance & Governance - AI Security Learning Center | perfecXion.ai',
@@ -372,6 +372,88 @@ class GDPRComplianceChecker:
                 Maintain comprehensive documentation and audit trails for all AI systems and decisions.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* White Paper Section */}
+      <section className="mb-12 p-8 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 dark:from-indigo-500/20 dark:to-purple-500/20 rounded-xl border border-indigo-300 dark:border-indigo-700">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+          <FileText className="h-8 w-8 text-indigo-600 dark:text-indigo-400" />
+          Comprehensive Regulatory White Paper
+        </h2>
+        
+        <div className="space-y-6">
+          <div className="bg-white/50 dark:bg-gray-900/50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 text-indigo-900 dark:text-indigo-100">
+              Navigating the Global AI Regulatory Maze: A Strategic Playbook
+            </h3>
+            <p className="text-gray-700 dark:text-gray-300 mb-4">
+              Download our comprehensive white paper designed specifically for CISOs, AI developers, and technology leaders. This strategic playbook provides in-depth analysis of:
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-4 mb-6">
+              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span>EU AI Act comprehensive analysis</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span>NIST AI RMF implementation guide</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span>GDPR implications for AI systems</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span>Global regulatory comparison</span>
+                </li>
+              </ul>
+              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span>Compliance strategy frameworks</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span>Technical implementation guidance</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span>Risk management approaches</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span>Future-proofing strategies</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a 
+                href="/white-papers/ai-regulatory-compliance.pdf" 
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors font-semibold"
+                download
+              >
+                <Download className="h-5 w-5" />
+                Download PDF (30 min read)
+              </a>
+              <a 
+                href="/content/white-papers/ai-regulatory-compliance" 
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
+              >
+                <Eye className="h-5 w-5" />
+                Read Online Version
+              </a>
+            </div>
+          </div>
+          
+          <div className="bg-white/30 dark:bg-gray-900/30 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+            <p className="text-sm text-gray-600 dark:text-gray-400 italic">
+              This white paper provides strategic guidance for navigating the complex global AI regulatory landscape, including practical implementation strategies and compliance frameworks. Last updated: January 2025.
+            </p>
           </div>
         </div>
       </section>
