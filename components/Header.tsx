@@ -22,7 +22,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const pathname = usePathname()
-  
+
   // Hide hamburger menu on pages with their own sidebar navigation
   const hideMobileMenu = pathname.startsWith('/learn') || pathname.startsWith('/docs') || pathname.startsWith('/blog') || pathname.startsWith('/white-papers')
 
@@ -37,9 +37,9 @@ export default function Header() {
                 alt="perfecXion.ai"
                 width={400}
                 height={100}
-                className="h-20 w-auto transition-transform group-hover:scale-105"
+                className="h-24 w-auto transition-transform group-hover:scale-105"
                 priority
-                style={{ maxWidth: '300px' }}
+                style={{ maxWidth: '400px' }}
               />
             </Link>
           </div>
@@ -75,7 +75,7 @@ export default function Header() {
 
           <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
             <div className="relative">
-              <SearchBar 
+              <SearchBar
                 className="w-64 xl:w-80"
                 placeholder="Search..."
               />
@@ -97,9 +97,9 @@ export default function Header() {
                   alt="perfecXion.ai"
                   width={400}
                   height={100}
-                  className="h-20 w-auto"
+                  className="h-24 w-auto"
                   priority
-                  style={{ maxWidth: '300px' }}
+                  style={{ maxWidth: '400px' }}
                 />
               </Link>
               <button

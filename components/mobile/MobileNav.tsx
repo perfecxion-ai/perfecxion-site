@@ -98,9 +98,9 @@ export default function MobileNav() {
               alt="perfecXion.ai"
               width={280}
               height={70}
-              className="h-14 w-auto"
+              className="h-16 w-auto"
               priority
-              style={{ maxWidth: '200px' }}
+              style={{ maxWidth: '250px' }}
             />
           </Link>
 
@@ -132,7 +132,7 @@ export default function MobileNav() {
       {isOpen && (
         <div className="lg:hidden fixed inset-0 z-40">
           {/* Backdrop */}
-          <div 
+          <div
             className="fixed inset-0 bg-black/20 backdrop-blur-sm"
             onClick={() => setIsOpen(false)}
           />
@@ -166,9 +166,8 @@ export default function MobileNav() {
                         >
                           <span>{item.name}</span>
                           <ChevronDown
-                            className={`h-5 w-5 transition-transform ${
-                              expandedItems.includes(item.name) ? 'rotate-180' : ''
-                            }`}
+                            className={`h-5 w-5 transition-transform ${expandedItems.includes(item.name) ? 'rotate-180' : ''
+                              }`}
                           />
                         </button>
                         {expandedItems.includes(item.name) && (
