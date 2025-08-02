@@ -546,83 +546,428 @@ function getDefaultContent(slug: string): string {
     `,
     'incident-response-for-ai': `
       <h1>Incident Response for AI</h1>
-      <p>AI security incidents require specialized response procedures that differ significantly from traditional cybersecurity incidents.</p>
+      
+      <h2>Executive Summary</h2>
+      <p>AI security incidents require specialized response procedures that differ significantly from traditional cybersecurity incidents. The unique nature of AI systems—including their learning capabilities, data dependencies, and decision-making autonomy—creates novel challenges for incident detection, containment, and recovery.</p>
+      
+      <p>This comprehensive guide provides incident response teams, security operations centers, and AI practitioners with frameworks, procedures, and tools for effectively managing AI security incidents from detection through lessons learned.</p>
+      
+      <p><strong>Critical Success Factors:</strong></p>
+      <ul>
+        <li>Early detection through AI-specific monitoring</li>
+        <li>Rapid containment to prevent learning from attacks</li>
+        <li>Forensic analysis of model behavior and data integrity</li>
+        <li>Recovery strategies that preserve model effectiveness</li>
+      </ul>
       
       <h2>AI-Specific Incident Types</h2>
       
-      <h3>Training-Time Incidents</h3>
+      <h3>Classification Framework</h3>
+      
+      <h4>Training-Time Incidents</h4>
+      
+      <h5>1. Data Poisoning Attacks</h5>
       <ul>
-        <li><strong>Data Poisoning:</strong> Degraded performance, biased outcomes</li>
-        <li><strong>Supply Chain Compromises:</strong> Unauthorized model modifications</li>
-        <li><strong>IP Theft:</strong> Unauthorized access to training processes</li>
+        <li><strong>Symptoms:</strong> Degraded model performance, biased outcomes, unexpected behaviors</li>
+        <li><strong>Detection Indicators:</strong> Statistical anomalies in training data, performance drift</li>
+        <li><strong>Criticality:</strong> High - Can permanently compromise model integrity</li>
+        <li><strong>Response Time:</strong> Immediate (stop training, isolate data)</li>
       </ul>
       
-      <h3>Inference-Time Incidents</h3>
+      <h5>2. Model Supply Chain Compromises</h5>
       <ul>
-        <li><strong>Adversarial Attacks:</strong> Confident incorrect predictions</li>
-        <li><strong>Prompt Injection:</strong> Inappropriate responses, info disclosure</li>
-        <li><strong>Model Extraction:</strong> High-volume systematic queries</li>
+        <li><strong>Symptoms:</strong> Unauthorized model modifications, backdoor behaviors</li>
+        <li><strong>Detection Indicators:</strong> Model hash mismatches, unexpected model outputs</li>
+        <li><strong>Criticality:</strong> Critical - Affects model trustworthiness</li>
+        <li><strong>Response Time:</strong> Immediate (isolate model, verify integrity)</li>
       </ul>
       
-      <h3>Operational Incidents</h3>
+      <h5>3. Intellectual Property Theft</h5>
       <ul>
-        <li><strong>Model Drift:</strong> Declining accuracy over time</li>
-        <li><strong>Privacy Violations:</strong> Personal data exposure</li>
-        <li><strong>Bias Incidents:</strong> Discriminatory outcomes</li>
+        <li><strong>Symptoms:</strong> Unauthorized access to training processes, model architectures</li>
+        <li><strong>Detection Indicators:</strong> Unusual access patterns, data exfiltration alerts</li>
+        <li><strong>Criticality:</strong> Medium-High - Business impact depends on IP value</li>
+        <li><strong>Response Time:</strong> Within 1 hour (contain access, assess scope)</li>
+      </ul>
+      
+      <h4>Inference-Time Incidents</h4>
+      
+      <h5>1. Adversarial Attacks</h5>
+      <ul>
+        <li><strong>Symptoms:</strong> Confident incorrect predictions, systematic failures</li>
+        <li><strong>Detection Indicators:</strong> Input pattern anomalies, confidence score distributions</li>
+        <li><strong>Criticality:</strong> High - Immediate operational impact</li>
+        <li><strong>Response Time:</strong> Real-time to 15 minutes (automated response preferred)</li>
+      </ul>
+      
+      <h5>2. Prompt Injection Attacks</h5>
+      <ul>
+        <li><strong>Symptoms:</strong> Inappropriate responses, system information disclosure</li>
+        <li><strong>Detection Indicators:</strong> Policy violations, unexpected output patterns</li>
+        <li><strong>Criticality:</strong> Medium-High - Privacy and safety implications</li>
+        <li><strong>Response Time:</strong> Within 5 minutes (immediate containment)</li>
+      </ul>
+      
+      <h5>3. Model Extraction Attacks</h5>
+      <ul>
+        <li><strong>Symptoms:</strong> High-volume queries, systematic probing patterns</li>
+        <li><strong>Detection Indicators:</strong> Query rate anomalies, coverage analysis</li>
+        <li><strong>Criticality:</strong> Medium - IP theft and attack enablement</li>
+        <li><strong>Response Time:</strong> Within 30 minutes (rate limiting, access restriction)</li>
+      </ul>
+      
+      <h4>Operational Incidents</h4>
+      
+      <h5>1. Model Drift and Performance Degradation</h5>
+      <ul>
+        <li><strong>Symptoms:</strong> Declining accuracy, increased error rates</li>
+        <li><strong>Detection Indicators:</strong> Performance metric violations, distribution shifts</li>
+        <li><strong>Criticality:</strong> Medium - Gradual business impact</li>
+        <li><strong>Response Time:</strong> Within 24 hours (investigate and remediate)</li>
+      </ul>
+      
+      <h5>2. Privacy Violations</h5>
+      <ul>
+        <li><strong>Symptoms:</strong> Personal data exposure, re-identification risks</li>
+        <li><strong>Detection Indicators:</strong> Privacy metric violations, audit findings</li>
+        <li><strong>Criticality:</strong> High - Regulatory and reputational impact</li>
+        <li><strong>Response Time:</strong> Within 1 hour (contain and assess)</li>
+      </ul>
+      
+      <h5>3. Bias and Fairness Incidents</h5>
+      <ul>
+        <li><strong>Symptoms:</strong> Discriminatory outcomes, fairness metric violations</li>
+        <li><strong>Detection Indicators:</strong> Demographic parity violations, disparate impact</li>
+        <li><strong>Criticality:</strong> High - Legal and ethical implications</li>
+        <li><strong>Response Time:</strong> Within 2 hours (assess and mitigate)</li>
+      </ul>
+      
+      <h2>Detection and Monitoring</h2>
+      
+      <h3>AI-Specific Monitoring Framework</h3>
+      
+      <h4>Real-Time Detection Systems</h4>
+      <p>Implementing continuous monitoring systems that can detect anomalies specific to AI systems requires specialized approaches:</p>
+      
+      <ul>
+        <li><strong>Adversarial Input Detection:</strong> Real-time analysis of input patterns for adversarial characteristics</li>
+        <li><strong>Data Drift Detection:</strong> Monitoring for changes in data distribution that could indicate poisoning</li>
+        <li><strong>Performance Anomaly Detection:</strong> Tracking model accuracy and confidence score distributions</li>
+        <li><strong>Privacy Violation Detection:</strong> Automated scanning for personal information exposure</li>
+        <li><strong>Bias Detection:</strong> Continuous monitoring for fairness metric violations</li>
+      </ul>
+      
+      <h4>Multi-Layer Detection Strategy</h4>
+      
+      <h5>1. Input Layer Monitoring</h5>
+      <ul>
+        <li>Adversarial pattern detection</li>
+        <li>Prompt injection detection</li>
+        <li>Data quality validation</li>
+        <li>Policy compliance checking</li>
+      </ul>
+      
+      <h5>2. Model Behavior Monitoring</h5>
+      <ul>
+        <li>Confidence distribution analysis</li>
+        <li>Prediction pattern analysis</li>
+        <li>Output diversity monitoring</li>
+        <li>Response consistency tracking</li>
+      </ul>
+      
+      <h5>3. Output Layer Monitoring</h5>
+      <ul>
+        <li>Content policy violation detection</li>
+        <li>Personal information detection</li>
+        <li>Toxicity detection</li>
+        <li>Bias detection</li>
+        <li>Misinformation detection</li>
       </ul>
       
       <h2>Response Procedures</h2>
       
-      <h3>Phase 1: Initial Response (0-30 minutes)</h3>
+      <h3>Incident Response Workflow</h3>
+      
+      <h4>Phase 1: Initial Response (0-30 minutes)</h4>
+      
+      <p><strong>Immediate Actions Framework:</strong></p>
       <ol>
-        <li>Incident validation and classification</li>
-        <li>Immediate containment actions</li>
-        <li>Stakeholder notification</li>
-        <li>Evidence preservation</li>
-        <li>Response team activation</li>
+        <li><strong>Incident Validation and Classification:</strong> Verify the incident is legitimate and classify by type and severity</li>
+        <li><strong>Immediate Containment:</strong> Execute rapid containment actions to prevent further damage</li>
+        <li><strong>Stakeholder Notification:</strong> Alert relevant stakeholders and decision makers</li>
+        <li><strong>Evidence Preservation:</strong> Secure logs, model states, and other forensic evidence</li>
+        <li><strong>Response Team Activation:</strong> Assemble the appropriate incident response team</li>
       </ol>
       
-      <h3>Phase 2: Investigation (30 minutes - 4 hours)</h3>
-      <ol>
-        <li>Timeline reconstruction</li>
-        <li>Impact assessment</li>
-        <li>Root cause analysis</li>
-        <li>Attack vector analysis</li>
-        <li>Scope determination</li>
-      </ol>
+      <p><strong>AI-Specific Containment Actions:</strong></p>
       
-      <h3>Phase 3: Recovery (4-24 hours)</h3>
-      <ol>
-        <li>System restoration</li>
-        <li>Data remediation</li>
-        <li>Model recovery/replacement</li>
-        <li>Security hardening</li>
-        <li>Validation testing</li>
-      </ol>
-      
-      <h2>AI-Specific Containment Actions</h2>
+      <h5>1. Model Isolation</h5>
       <ul>
-        <li>Model isolation and backup activation</li>
-        <li>Data pipeline quarantine</li>
-        <li>API gateway controls</li>
-        <li>Enhanced monitoring deployment</li>
+        <li>Stop serving predictions from compromised models</li>
+        <li>Preserve model state for forensic analysis</li>
+        <li>Activate backup models if available</li>
+        <li>Update monitoring to track bypass attempts</li>
+      </ul>
+      
+      <h5>2. Data Pipeline Isolation</h5>
+      <ul>
+        <li>Stop data ingestion from compromised sources</li>
+        <li>Quarantine suspicious data</li>
+        <li>Preserve pipeline state for investigation</li>
+        <li>Activate alternative data sources</li>
+      </ul>
+      
+      <h5>3. API Gateway Controls</h5>
+      <ul>
+        <li>Implement enhanced input validation</li>
+        <li>Reduce rate limits</li>
+        <li>Enable challenge-response mechanisms</li>
+        <li>Implement query limiting per user</li>
+        <li>Add noise to responses if needed</li>
+        <li>Enable detailed logging</li>
+      </ul>
+      
+      <h4>Phase 2: Investigation and Analysis (30 minutes - 4 hours)</h4>
+      
+      <p><strong>Forensic Analysis Framework:</strong></p>
+      <ol>
+        <li><strong>Timeline Reconstruction:</strong> Build chronological sequence of events leading to incident</li>
+        <li><strong>Impact Assessment:</strong> Evaluate business, technical, and regulatory impact</li>
+        <li><strong>Root Cause Analysis:</strong> Identify underlying vulnerabilities and failure points</li>
+        <li><strong>Attack Vector Analysis:</strong> Understand how the attack was executed</li>
+        <li><strong>Scope Determination:</strong> Assess full extent of compromise and potential damage</li>
+      </ol>
+      
+      <p><strong>Specialized Analysis Techniques:</strong></p>
+      
+      <h5>1. Model Behavior Analysis</h5>
+      <ul>
+        <li>Compare prediction distributions against baselines</li>
+        <li>Analyze confidence score patterns for anomalies</li>
+        <li>Scan for backdoor triggers and suspicious behaviors</li>
+        <li>Evaluate model performance across different data segments</li>
+      </ul>
+      
+      <h5>2. Data Integrity Analysis</h5>
+      <ul>
+        <li>Statistical anomaly detection in training data</li>
+        <li>Label consistency verification</li>
+        <li>Data provenance validation</li>
+        <li>Cross-reference with known poisoning techniques</li>
+      </ul>
+      
+      <h4>Phase 3: Recovery and Remediation (4-24 hours)</h4>
+      
+      <p><strong>Recovery Strategy Framework:</strong></p>
+      <ol>
+        <li><strong>System Restoration:</strong> Restore affected systems to operational state</li>
+        <li><strong>Data Remediation:</strong> Clean and validate data integrity</li>
+        <li><strong>Model Retraining/Replacement:</strong> Deploy clean models or retrain with sanitized data</li>
+        <li><strong>Security Hardening:</strong> Implement additional controls to prevent recurrence</li>
+        <li><strong>Validation Testing:</strong> Comprehensive testing before returning to production</li>
+      </ol>
+      
+      <p><strong>Model Recovery Strategies:</strong></p>
+      
+      <h5>1. Clean Model Restoration</h5>
+      <ul>
+        <li>Identify last known good model version</li>
+        <li>Validate model integrity through comprehensive testing</li>
+        <li>Deploy clean model with updated monitoring</li>
+        <li>Verify functionality meets performance requirements</li>
+      </ul>
+      
+      <h5>2. Data Sanitization and Retraining</h5>
+      <ul>
+        <li>Remove contaminated samples from training data</li>
+        <li>Validate data quality meets standards</li>
+        <li>Initiate retraining with enhanced security measures</li>
+        <li>Monitor retraining process for anomalies</li>
+      </ul>
+      
+      <h2>Communication and Reporting</h2>
+      
+      <h3>Stakeholder Communication Framework</h3>
+      
+      <h4>Internal Communications</h4>
+      <ul>
+        <li><strong>Executive Briefing:</strong> High-level summary of incident type, business impact, and response status</li>
+        <li><strong>Technical Updates:</strong> Detailed technical information for engineering teams</li>
+        <li><strong>Legal and Compliance:</strong> Regulatory implications and notification requirements</li>
+        <li><strong>Customer Support:</strong> Customer-facing communications and support guidance</li>
+      </ul>
+      
+      <h4>External Communications</h4>
+      <ul>
+        <li><strong>Regulatory Notifications:</strong> GDPR breach notifications, SEC disclosures, industry-specific reports</li>
+        <li><strong>Customer Communications:</strong> Transparent disclosure and mitigation steps</li>
+        <li><strong>Media Relations:</strong> Coordinated public response when necessary</li>
+        <li><strong>Vendor Notifications:</strong> Supply chain and partnership impacts</li>
+      </ul>
+      
+      <h3>Documentation and Evidence Management</h3>
+      
+      <h4>Evidence Chain of Custody</h4>
+      <ul>
+        <li>System logs and monitoring data</li>
+        <li>Model artifacts and snapshots</li>
+        <li>Data samples and integrity proofs</li>
+        <li>Network traces and access logs</li>
+        <li>User interactions and query patterns</li>
       </ul>
       
       <h2>Post-Incident Activities</h2>
+      
+      <h3>Lessons Learned Process</h3>
+      
+      <h4>Post-Incident Review Framework</h4>
+      <ol>
+        <li><strong>Timeline Analysis:</strong> Evaluate detection time, response effectiveness, and resolution speed</li>
+        <li><strong>Effectiveness Assessment:</strong> Measure response team performance and process efficiency</li>
+        <li><strong>Process Gaps:</strong> Identify weaknesses in procedures and tools</li>
+        <li><strong>Tool Limitations:</strong> Assess technology gaps and enhancement needs</li>
+        <li><strong>Training Needs:</strong> Identify skills gaps and training requirements</li>
+        <li><strong>Improvement Recommendations:</strong> Develop actionable improvement plan</li>
+      </ol>
+      
+      <h3>Continuous Improvement Implementation</h3>
+      
+      <h4>Improvement Action Tracking</h4>
       <ul>
-        <li>Lessons learned process</li>
-        <li>Improvement action tracking</li>
-        <li>Threat intelligence integration</li>
-        <li>Continuous improvement</li>
+        <li>Create action plans with ownership and timelines</li>
+        <li>Track implementation progress against milestones</li>
+        <li>Measure effectiveness of implemented improvements</li>
+        <li>Share lessons learned across the organization</li>
+      </ul>
+      
+      <h3>Threat Intelligence Integration</h3>
+      
+      <h4>Incident Intelligence Sharing</h4>
+      <ul>
+        <li>Extract attack indicators and patterns</li>
+        <li>Identify vulnerabilities and attack techniques</li>
+        <li>Share anonymized intelligence with community</li>
+        <li>Update detection rules and baselines</li>
+        <li>Enhance threat models with new intelligence</li>
+      </ul>
+      
+      <h2>Tools and Technologies</h2>
+      
+      <h3>Incident Response Technology Stack</h3>
+      
+      <h4>Detection and Monitoring Tools</h4>
+      
+      <h5>1. AI-Specific Security Tools</h5>
+      <ul>
+        <li><strong>perfecXion ADAPT-AI:</strong> Advanced threat detection for AI systems</li>
+        <li><strong>Adversarial Robustness Toolbox:</strong> Attack simulation and detection</li>
+        <li><strong>MLSploit:</strong> ML security testing platform</li>
+        <li><strong>Seldon Alibi:</strong> Model explanation and monitoring</li>
+      </ul>
+      
+      <h5>2. Traditional Security Tools Enhanced for AI</h5>
+      <ul>
+        <li><strong>Splunk MLTK:</strong> Machine learning for security analytics</li>
+        <li><strong>Elastic Security:</strong> Log analysis and correlation</li>
+        <li><strong>IBM QRadar:</strong> Security information and event management</li>
+        <li><strong>Phantom:</strong> Security orchestration and automated response</li>
+      </ul>
+      
+      <h5>3. Forensic Analysis Tools</h5>
+      <ul>
+        <li>Model forensic analysis frameworks</li>
+        <li>Data lineage tracking systems</li>
+        <li>Adversarial attack reconstruction tools</li>
+        <li>Privacy breach analysis platforms</li>
+      </ul>
+      
+      <h3>Communication and Collaboration Tools</h3>
+      
+      <h4>Incident War Room Setup</h4>
+      <ul>
+        <li><strong>Communication:</strong> Secure messaging, video conferencing, status page updates, customer communication</li>
+        <li><strong>Collaboration:</strong> Incident tracking, document sharing, real-time collaboration, decision logging</li>
+        <li><strong>Technical:</strong> Screen sharing, command and control interfaces, monitoring dashboards, evidence collection</li>
       </ul>
       
       <h2>Training and Preparedness</h2>
+      
+      <h3>Incident Response Team Training</h3>
+      
+      <h4>Core Competencies for AI Incident Response</h4>
+      
+      <h5>Technical Skills</h5>
+      <ol>
+        <li><strong>AI/ML System Architecture Understanding:</strong> Model development lifecycle, training and inference processes, data pipeline architectures, deployment patterns</li>
+        <li><strong>AI Security Threat Landscape:</strong> Attack methodologies, vulnerability identification, threat actor capabilities, emerging attack trends</li>
+        <li><strong>Forensic Analysis Techniques:</strong> Model behavior analysis, data integrity verification, attack vector reconstruction, evidence collection</li>
+      </ol>
+      
+      <h4>Training Program Structure</h4>
       <ul>
-        <li>AI-specific incident response training</li>
-        <li>Tabletop exercises and simulations</li>
-        <li>Team competency development</li>
-        <li>Regular drill execution</li>
+        <li><strong>Beginner Level:</strong> 40 hours over 5 days covering AI fundamentals, threat landscape, detection techniques, response procedures</li>
+        <li><strong>Intermediate Level:</strong> 60 hours over 8 days including all modules plus hands-on exercises</li>
+        <li><strong>Advanced Level:</strong> 80 hours over 10 days with advanced forensics, threat hunting, and complex scenario response</li>
       </ul>
+      
+      <h3>Tabletop Exercises and Simulations</h3>
+      
+      <h4>AI-Specific Incident Scenarios</h4>
+      
+      <h5>1. Scenario 1: Large Language Model Jailbreak</h5>
+      <ul>
+        <li>Attackers bypass safety controls in customer-facing chatbot</li>
+        <li>Model generates harmful content violating company policies</li>
+        <li>Response requires immediate containment and investigation</li>
+      </ul>
+      
+      <h5>2. Scenario 2: Healthcare AI Backdoor Attack</h5>
+      <ul>
+        <li>Medical imaging AI compromised with backdoor trigger</li>
+        <li>False negatives in cancer detection when trigger present</li>
+        <li>Patient safety implications and regulatory reporting required</li>
+      </ul>
+      
+      <h5>3. Scenario 3: Financial AI Model Extraction</h5>
+      <ul>
+        <li>Sophisticated attackers extract proprietary credit scoring model</li>
+        <li>IP theft with potential competitive advantage loss</li>
+        <li>Securities law implications for public company</li>
+      </ul>
+      
+      <h2>Metrics and Continuous Improvement</h2>
+      
+      <h3>Incident Response Performance Metrics</h3>
+      
+      <h4>Key Performance Indicators (KPIs)</h4>
+      
+      <h5>Response Time Metrics</h5>
+      <ul>
+        <li><strong>Mean Time to Detection (MTTD):</strong> Average time from incident occurrence to detection</li>
+        <li><strong>Mean Time to Acknowledgment (MTTA):</strong> Average time from detection to team acknowledgment</li>
+        <li><strong>Mean Time to Containment (MTTC):</strong> Average time from detection to successful containment</li>
+        <li><strong>Mean Time to Resolution (MTTR):</strong> Average time from detection to full resolution</li>
+      </ul>
+      
+      <h5>Business Impact Metrics</h5>
+      <ul>
+        <li><strong>Availability Impact:</strong> System downtime and service degradation</li>
+        <li><strong>Performance Impact:</strong> Model accuracy and response time degradation</li>
+        <li><strong>Financial Impact:</strong> Revenue loss and recovery costs</li>
+        <li><strong>Reputation Impact:</strong> Customer trust and brand perception effects</li>
+      </ul>
+      
+      <h3>Maturity Assessment Framework</h3>
+      
+      <h4>Incident Response Maturity Levels</h4>
+      
+      <ol>
+        <li><strong>Initial (Level 1):</strong> Reactive incident handling, ad-hoc processes, limited AI knowledge, manual response</li>
+        <li><strong>Developing (Level 2):</strong> Documented procedures, basic AI detection, trained team, structured communication</li>
+        <li><strong>Defined (Level 3):</strong> Comprehensive AI framework, automated detection, regular training, business integration</li>
+        <li><strong>Managed (Level 4):</strong> Quantitative management, predictive detection, optimized processes, industry collaboration</li>
+        <li><strong>Optimizing (Level 5):</strong> Continuous improvement culture, innovation in techniques, thought leadership, ecosystem-wide mitigation</li>
+      </ol>
       
       <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e5e7eb;">
       
@@ -705,7 +1050,71 @@ function getDefaultContent(slug: string): string {
         </div>
       </div>
       
-      <p>Congratulations on completing the AI Security 101 learning path! You now have a comprehensive understanding of AI security fundamentals, threats, implementation strategies, compliance requirements, and incident response procedures.</p>
+      <h2>Next Steps and Resources</h2>
+      
+      <h3>Implementation Roadmap</h3>
+      
+      <h4>Phase 1: Foundation (Months 1-3)</h4>
+      <ul>
+        <li>Establish AI incident response team</li>
+        <li>Develop AI-specific incident procedures</li>
+        <li>Implement basic detection capabilities</li>
+        <li>Conduct initial team training</li>
+      </ul>
+      
+      <h4>Phase 2: Enhancement (Months 4-8)</h4>
+      <ul>
+        <li>Deploy advanced monitoring systems</li>
+        <li>Integrate with existing security tools</li>
+        <li>Conduct tabletop exercises</li>
+        <li>Establish external partnerships</li>
+      </ul>
+      
+      <h4>Phase 3: Optimization (Months 9-12)</h4>
+      <ul>
+        <li>Implement automated response capabilities</li>
+        <li>Develop threat intelligence program</li>
+        <li>Achieve industry certification</li>
+        <li>Lead community initiatives</li>
+      </ul>
+      
+      <h3>Professional Development Resources</h3>
+      
+      <h4>Industry Certifications</h4>
+      <ul>
+        <li>Certified AI Security Incident Responder (CAISIR)</li>
+        <li>AI Risk Management Professional (AIRMP)</li>
+        <li>Machine Learning Security Specialist (MLSS)</li>
+        <li>Digital Forensics Certified Examiner (DFCE)</li>
+      </ul>
+      
+      <h4>Training Resources</h4>
+      <ul>
+        <li>SANS AI Security Training</li>
+        <li>NIST AI Risk Management Framework Courses</li>
+        <li>Industry conference workshops</li>
+        <li>Vendor-specific training programs</li>
+      </ul>
+      
+      <h3>Community and Collaboration</h3>
+      
+      <h4>Industry Organizations</h4>
+      <ul>
+        <li>AI Security Alliance</li>
+        <li>Cloud Security Alliance AI Working Group</li>
+        <li>IEEE AI Ethics Standards Committee</li>
+        <li>OWASP Machine Learning Security Project</li>
+      </ul>
+      
+      <h4>Threat Intelligence Sharing</h4>
+      <ul>
+        <li>AI Incident Sharing Consortium</li>
+        <li>Industry-specific threat sharing groups</li>
+        <li>Government threat intelligence programs</li>
+        <li>Vendor security communities</li>
+      </ul>
+      
+      <p>Ready to implement comprehensive AI incident response capabilities? This framework provides the foundation for protecting your organization against the evolving landscape of AI security threats while ensuring rapid recovery and continuous improvement.</p>
     `
   }
 
