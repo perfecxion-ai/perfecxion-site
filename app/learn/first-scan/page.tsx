@@ -1,895 +1,504 @@
-'use client'
-
-import { useState } from 'react'
+import { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Terminal, Shield, AlertTriangle, CheckCircle, XCircle, Info, Zap, Target, FileSearch, Code, GitBranch, Activity, BarChart3, Filter, Download, Play, Pause, RefreshCw } from 'lucide-react'
+import { ChevronRight, Target, Shield, AlertTriangle, CheckCircle, XCircle, Info, Zap, FileSearch, Code, GitBranch, Activity, BarChart3, Filter, Download, Play, Pause, RefreshCw, ArrowRight, FileText, Clock, Eye, TrendingUp, Users, Settings } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Your First Security Scan - Learn AI Security - perfecXion.ai',
+  description: 'Step-by-step guide to running your first AI security scan and understanding the results. Learn to identify threats and vulnerabilities in your AI systems.',
+  keywords: 'AI security scan, first scan, security testing, vulnerability assessment, threat detection, AI security analysis',
+}
 
 export default function FirstScanPage() {
-  const [activeTab, setActiveTab] = useState('preparation')
-  const [scanStatus, setScanStatus] = useState<'idle' | 'running' | 'complete'>('idle')
-  const [selectedScanType, setSelectedScanType] = useState('quick')
-  const [expandedResult, setExpandedResult] = useState<string | null>(null)
-
-  const startScan = () => {
-    setScanStatus('running')
-    setTimeout(() => {
-      setScanStatus('complete')
-    }, 3000)
-  }
-
-  const toggleResult = (result: string) => {
-    setExpandedResult(expandedResult === result ? null : result)
-  }
-
-  const mockScanResults = {
-    critical: 2,
-    high: 5,
-    medium: 12,
-    low: 8,
-    info: 15,
-    totalScanned: 156,
-    timeElapsed: '2m 34s',
-    threats: [
-      {
-        id: '1',
-        severity: 'critical',
-        type: 'Prompt Injection',
-        location: 'chat-api/v2/completions',
-        description: 'Unfiltered user input passed directly to LLM',
-        impact: 'Attackers can manipulate AI behavior and access restricted functions',
-        recommendation: 'Implement input validation and prompt sanitization'
-      },
-      {
-        id: '2',
-        severity: 'critical',
-        type: 'Model Access Control',
-        location: 'models/gpt-4/inference',
-        description: 'Missing authentication on model endpoint',
-        impact: 'Unauthorized access to proprietary AI models',
-        recommendation: 'Add API key validation and rate limiting'
-      },
-      {
-        id: '3',
-        severity: 'high',
-        type: 'Data Leakage',
-        location: 'training/datasets/customer-data.json',
-        description: 'Sensitive PII found in training data',
-        impact: 'Model may expose customer information',
-        recommendation: 'Sanitize training data and implement privacy filters'
-      },
-      {
-        id: '4',
-        severity: 'high',
-        type: 'Adversarial Input',
-        location: 'image-classifier/predict',
-        description: 'Model vulnerable to adversarial examples',
-        impact: 'Attackers can cause misclassification',
-        recommendation: 'Add adversarial example detection'
-      },
-      {
-        id: '5',
-        severity: 'medium',
-        type: 'Rate Limiting',
-        location: 'api/v1/*',
-        description: 'No rate limiting on API endpoints',
-        impact: 'Potential for abuse and DoS attacks',
-        recommendation: 'Implement rate limiting per API key'
-      }
-    ]
-  }
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white">
-        <div className="absolute inset-0 bg-grid-white/[0.2] bg-[size:50px_50px]" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">
-              Your First Security Scan
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
-              Step-by-step guide to running your first AI security scan and understanding the results
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-                <Target className="h-5 w-5" />
-                <span>Guided Scanning</span>
+    <div className="max-w-6xl mx-auto px-6 py-12">
+      {/* Breadcrumb */}
+      <nav className="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+        <ol className="list-none p-0 inline-flex">
+          <li className="flex items-center">
+            <Link href="/learn" className="hover:underline text-primary-600 dark:text-primary-400">Learn</Link>
+            <span className="mx-2">/</span>
+          </li>
+          <li className="text-gray-700 dark:text-gray-300">Your First Security Scan</li>
+        </ol>
+      </nav>
+
+      {/* Header */}
+      <div className="mb-12">
+        <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-6 flex items-center">
+          <Target className="h-10 w-10 text-primary-600 mr-4" />
+          Your First Security Scan
+        </h1>
+        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-4xl">
+          Step-by-step guide to running your first AI security scan and understanding the results. 
+          Learn to identify threats, vulnerabilities, and security gaps in your AI systems with 
+          confidence and actionable insights.
+        </p>
+      </div>
+
+      {/* Scan Statistics */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
+        <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg text-center">
+          <Clock className="h-8 w-8 text-blue-600 mx-auto mb-2" />
+          <div className="text-2xl font-bold text-blue-900 dark:text-blue-100">2 min</div>
+          <div className="text-sm text-blue-700 dark:text-blue-300">Average Scan Time</div>
+        </div>
+        <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg text-center">
+          <Shield className="h-8 w-8 text-green-600 mx-auto mb-2" />
+          <div className="text-2xl font-bold text-green-900 dark:text-green-100">95%</div>
+          <div className="text-sm text-green-700 dark:text-green-300">Threat Detection Rate</div>
+        </div>
+        <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg text-center">
+          <Eye className="h-8 w-8 text-purple-600 mx-auto mb-2" />
+          <div className="text-2xl font-bold text-purple-900 dark:text-purple-100">150+</div>
+          <div className="text-sm text-purple-700 dark:text-purple-300">Checks Performed</div>
+        </div>
+        <div className="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg text-center">
+          <Zap className="h-8 w-8 text-orange-600 mx-auto mb-2" />
+          <div className="text-2xl font-bold text-orange-900 dark:text-orange-100">Real-time</div>
+          <div className="text-sm text-orange-700 dark:text-orange-300">Results & Alerts</div>
+        </div>
+      </div>
+
+      {/* Table of Contents */}
+      <div className="mb-12 bg-gray-50 dark:bg-gray-900/50 rounded-lg p-6">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Table of Contents</h2>
+        <ul className="space-y-2 text-sm">
+          <li><a href="#preparation" className="text-primary-600 dark:text-primary-400 hover:underline">Preparation: Before Your First Scan</a></li>
+          <li><a href="#scan-types" className="text-primary-600 dark:text-primary-400 hover:underline">Scan Types: Choosing the Right Approach</a></li>
+          <li><a href="#running-scan" className="text-primary-600 dark:text-primary-400 hover:underline">Running Your Scan: Step-by-Step</a></li>
+          <li><a href="#understanding-results" className="text-primary-600 dark:text-primary-400 hover:underline">Understanding Results: Interpreting Findings</a></li>
+          <li><a href="#remediation" className="text-primary-600 dark:text-primary-400 hover:underline">Remediation: Fixing Issues</a></li>
+          <li><a href="#best-practices" className="text-primary-600 dark:text-primary-400 hover:underline">Best Practices: Ongoing Scanning</a></li>
+          <li><a href="#next-steps" className="text-primary-600 dark:text-primary-400 hover:underline">Next Steps: Advanced Scanning</a></li>
+        </ul>
+      </div>
+
+      {/* Preparation */}
+      <section id="preparation" className="mb-12">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+          <CheckCircle className="h-6 w-6 text-green-500 mr-3" />
+          Preparation: Before Your First Scan
+        </h2>
+        <div className="prose prose-gray dark:prose-invert max-w-none">
+          <p className="text-lg leading-relaxed mb-6">
+            Before running your first security scan, it's essential to prepare your environment and understand 
+            what you're scanning. This preparation ensures accurate results and helps you interpret findings effectively.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Settings className="h-6 w-6 text-blue-600 mr-3" />
+                System Preparation
+              </h3>
+              <ul className="space-y-3 text-gray-600 dark:text-gray-400">
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                  <span>Ensure perfecXion is properly installed and configured</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                  <span>Verify API keys and authentication are working</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                  <span>Identify target systems and applications to scan</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                  <span>Review network connectivity and firewall rules</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Users className="h-6 w-6 text-green-600 mr-3" />
+                Team Preparation
+              </h3>
+              <ul className="space-y-3 text-gray-600 dark:text-gray-400">
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                  <span>Notify stakeholders about scheduled scanning</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                  <span>Prepare incident response procedures</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                  <span>Set up communication channels for alerts</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
+                  <span>Review previous security assessments</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Scan Types */}
+      <section id="scan-types" className="mb-12">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+          <FileSearch className="h-6 w-6 text-blue-500 mr-3" />
+          Scan Types: Choosing the Right Approach
+        </h2>
+        <div className="prose prose-gray dark:prose-invert max-w-none">
+          <p className="text-lg leading-relaxed mb-6">
+            perfecXion offers multiple scan types to address different security needs. Understanding 
+            each type helps you choose the most appropriate approach for your environment.
+          </p>
+
+          <div className="space-y-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Zap className="h-6 w-6 text-green-600 mr-3" />
+                Quick Scan
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Fast, automated scan that checks for common vulnerabilities and misconfigurations. 
+                Ideal for regular monitoring and initial assessments.
+              </p>
+              
+              <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-4">
+                <h4 className="font-semibold text-green-900 dark:text-green-100 mb-2">Quick Scan Features</h4>
+                <ul className="text-green-800 dark:text-green-200 text-sm space-y-1">
+                  <li>• Duration: 2-5 minutes</li>
+                  <li>• Coverage: Common vulnerabilities</li>
+                  <li>• Resource usage: Low</li>
+                  <li>• Frequency: Daily/Weekly</li>
+                </ul>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-                <Shield className="h-5 w-5" />
-                <span>Real-time Analysis</span>
+
+              <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Quick Scan Command</h4>
+                <pre className="text-sm text-gray-800 dark:text-gray-200 overflow-x-auto">
+{`curl -X POST https://api.perfecxion.ai/v1/scan \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "scan_type": "quick",
+    "target": "your-ai-system",
+    "options": {
+      "include_prompt_injection": true,
+      "include_model_security": true,
+      "include_data_validation": true
+    }
+  }'`}
+                </pre>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-                <BarChart3 className="h-5 w-5" />
-                <span>Actionable Results</span>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Shield className="h-6 w-6 text-blue-600 mr-3" />
+                Comprehensive Scan
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Thorough security assessment that examines all aspects of your AI system, including 
+                deep analysis of models, data flows, and integration points.
+              </p>
+              
+              <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-4">
+                <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Comprehensive Scan Features</h4>
+                <ul className="text-blue-800 dark:text-blue-200 text-sm space-y-1">
+                  <li>• Duration: 15-30 minutes</li>
+                  <li>• Coverage: Full system analysis</li>
+                  <li>• Resource usage: Medium</li>
+                  <li>• Frequency: Monthly/Quarterly</li>
+                </ul>
+              </div>
+
+              <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Comprehensive Scan Command</h4>
+                <pre className="text-sm text-gray-800 dark:text-gray-200 overflow-x-auto">
+{`curl -X POST https://api.perfecxion.ai/v1/scan \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "scan_type": "comprehensive",
+    "target": "your-ai-system",
+    "options": {
+      "include_prompt_injection": true,
+      "include_model_security": true,
+      "include_data_validation": true,
+      "include_behavioral_analysis": true,
+      "include_compliance_check": true,
+      "include_performance_analysis": true
+    }
+  }'`}
+                </pre>
+              </div>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Target className="h-6 w-6 text-red-600 mr-3" />
+                Targeted Scan
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Focused scan on specific components or vulnerabilities. Useful for testing specific 
+                security controls or investigating particular concerns.
+              </p>
+              
+              <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg mb-4">
+                <h4 className="font-semibold text-red-900 dark:text-red-100 mb-2">Targeted Scan Features</h4>
+                <ul className="text-red-800 dark:text-red-200 text-sm space-y-1">
+                  <li>• Duration: 5-15 minutes</li>
+                  <li>• Coverage: Specific components</li>
+                  <li>• Resource usage: Variable</li>
+                  <li>• Frequency: As needed</li>
+                </ul>
+              </div>
+
+              <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Targeted Scan Example</h4>
+                <pre className="text-sm text-gray-800 dark:text-gray-200 overflow-x-auto">
+{`curl -X POST https://api.perfecxion.ai/v1/scan \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "scan_type": "targeted",
+    "target": "your-ai-system",
+    "focus_areas": ["prompt_injection", "data_leakage"],
+    "options": {
+      "custom_prompts": ["Ignore previous instructions"],
+      "sensitivity_level": "high"
+    }
+  }'`}
+                </pre>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Navigation Tabs */}
-      <div className="sticky top-0 z-10 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex space-x-8 overflow-x-auto py-4">
-            {[
-              { id: 'preparation', label: 'Preparation', icon: FileSearch },
-              { id: 'scanning', label: 'Running Scan', icon: Activity },
-              { id: 'results', label: 'Understanding Results', icon: BarChart3 },
-              { id: 'remediation', label: 'Remediation', icon: Shield },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 pb-4 border-b-2 whitespace-nowrap transition-all ${
-                  activeTab === tab.id
-                    ? 'border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400'
-                    : 'border-transparent text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
-                }`}
-              >
-                <tab.icon className="h-5 w-5" />
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* Running Scan */}
+      <section id="running-scan" className="mb-12">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+          <Play className="h-6 w-6 text-green-500 mr-3" />
+          Running Your Scan: Step-by-Step
+        </h2>
+        <div className="prose prose-gray dark:prose-invert max-w-none">
+          <p className="text-lg leading-relaxed mb-6">
+            Follow these steps to run your first security scan. We'll start with a quick scan to 
+            get you familiar with the process and results.
+          </p>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Preparation Section */}
-        {activeTab === 'preparation' && (
-          <div className="space-y-8">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                Before You Start
-              </h2>
-              
-              <div className="space-y-6">
-                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-                  <div className="flex items-start gap-3">
-                    <Info className="h-6 w-6 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">
-                        What You'll Need
-                      </h3>
-                      <ul className="space-y-2 text-blue-800 dark:text-blue-200">
-                        <li>• API endpoints or application URLs to scan</li>
-                        <li>• API keys or authentication credentials</li>
-                        <li>• List of AI models and their configurations</li>
-                        <li>• Access to application logs (optional but recommended)</li>
-                        <li>• 15-30 minutes for initial scan and review</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+          <div className="space-y-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Code className="h-6 w-6 text-blue-600 mr-3" />
+                Step 1: Prepare Your Environment
+              </h3>
+              <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg mb-4">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">API Setup</h4>
+                <pre className="text-sm text-gray-800 dark:text-gray-200 overflow-x-auto">
+{`# Set your API key
+export PERFECXION_API_KEY="your-api-key-here"
 
-                <div>
-                  <h3 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
-                    Step 1: Define Scan Scope
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">
-                    Identify what you want to scan. Start with a focused scope for your first scan:
-                  </p>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-                      <h4 className="font-medium text-gray-900 dark:text-white mb-2">API Endpoints</h4>
-                      <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
-                        <li>• Chat completion endpoints</li>
-                        <li>• Model inference APIs</li>
-                        <li>• Training data upload endpoints</li>
-                        <li>• Fine-tuning APIs</li>
-                      </ul>
-                    </div>
-                    <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-                      <h4 className="font-medium text-gray-900 dark:text-white mb-2">AI Components</h4>
-                      <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
-                        <li>• Language models (GPT, BERT, etc.)</li>
-                        <li>• Image classifiers</li>
-                        <li>• Voice recognition systems</li>
-                        <li>• Recommendation engines</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+# Test connectivity
+curl -X GET https://api.perfecxion.ai/v1/health \\
+  -H "Authorization: Bearer $PERFECXION_API_KEY"`}
+                </pre>
+              </div>
+            </div>
 
-                <div>
-                  <h3 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
-                    Step 2: Gather Information
-                  </h3>
-                  <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                    <pre className="text-sm text-gray-100">
-{`# Create a scan configuration file
-cat > first-scan-config.yaml << EOF
-scan:
-  name: "Initial AI Security Assessment"
-  type: "comprehensive"
-  
-targets:
-  - type: "api"
-    url: "https://api.example.com/v1/chat/completions"
-    auth:
-      type: "bearer"
-      token: "$API_KEY"
-      
-  - type: "model"
-    name: "gpt-4-custom"
-    endpoint: "https://models.example.com/inference"
-    
-  - type: "dataset"
-    path: "s3://ml-datasets/training-data/"
-    
-security_checks:
-  - prompt_injection
-  - model_extraction
-  - data_poisoning
-  - adversarial_robustness
-  - access_control
-  - rate_limiting
-  
-output:
-  format: "json"
-  report: "first-scan-report.html"
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Target className="h-6 w-6 text-green-600 mr-3" />
+                Step 2: Define Your Target
+              </h3>
+              <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg mb-4">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Target Configuration</h4>
+                <pre className="text-sm text-gray-800 dark:text-gray-200 overflow-x-auto">
+{`# Define your target system
+TARGET_SYSTEM="your-ai-application"
+API_ENDPOINT="https://your-api.example.com"
+MODEL_ENDPOINT="https://your-models.example.com"
+
+# Create target configuration
+cat > target-config.json << EOF
+{
+  "name": "$TARGET_SYSTEM",
+  "endpoints": {
+    "api": "$API_ENDPOINT",
+    "models": "$MODEL_ENDPOINT"
+  },
+  "scan_options": {
+    "timeout": 300,
+    "max_concurrent": 10
+  }
+}
 EOF`}
-                    </pre>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
-                    Step 3: Set Up Test Environment
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">
-                    For your first scan, we recommend using a test or staging environment:
-                  </p>
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-                      <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5" />
-                      <div>
-                        <p className="font-medium text-amber-900 dark:text-amber-100">Important</p>
-                        <p className="text-sm text-amber-800 dark:text-amber-200 mt-1">
-                          Never run your first scan on production systems. Some security tests may trigger rate limits or alerts.
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                      <pre className="text-sm text-gray-100">
-{`# Clone your production config for testing
-cp production.env test-scan.env
-
-# Update endpoints to point to test environment
-sed -i 's/api.example.com/test-api.example.com/g' test-scan.env
-
-# Verify test environment is isolated
-curl -I https://test-api.example.com/health`}
-                      </pre>
-                    </div>
-                  </div>
-                </div>
+                </pre>
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                Choose Scan Type
-              </h2>
-              
-              <div className="grid md:grid-cols-3 gap-4">
-                {[
-                  {
-                    id: 'quick',
-                    name: 'Quick Scan',
-                    duration: '5-10 minutes',
-                    description: 'Basic security checks for common vulnerabilities',
-                    checks: ['Prompt injection', 'Basic access control', 'Input validation', 'Error handling'],
-                    recommended: true
-                  },
-                  {
-                    id: 'comprehensive',
-                    name: 'Comprehensive Scan',
-                    duration: '30-60 minutes',
-                    description: 'Deep analysis of all security aspects',
-                    checks: ['All quick scan checks', 'Model robustness', 'Data leakage', 'Advanced threats'],
-                    recommended: false
-                  },
-                  {
-                    id: 'custom',
-                    name: 'Custom Scan',
-                    duration: 'Varies',
-                    description: 'Select specific security checks to run',
-                    checks: ['Choose from 50+ security tests', 'Configure test parameters', 'Focus on specific risks'],
-                    recommended: false
-                  }
-                ].map((scanType) => (
-                  <button
-                    key={scanType.id}
-                    onClick={() => setSelectedScanType(scanType.id)}
-                    className={`relative p-6 rounded-lg border-2 text-left transition-all ${
-                      selectedScanType === scanType.id
-                        ? 'border-blue-600 bg-blue-50 dark:bg-blue-900/20 dark:border-blue-400'
-                        : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
-                    }`}
-                  >
-                    {scanType.recommended && (
-                      <div className="absolute -top-3 -right-3 bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded-full">
-                        Recommended
-                      </div>
-                    )}
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{scanType.name}</h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{scanType.duration}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{scanType.description}</p>
-                    <ul className="space-y-1">
-                      {scanType.checks.map((check, index) => (
-                        <li key={index} className="text-sm text-gray-600 dark:text-gray-400 flex items-start gap-2">
-                          <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                          {check}
-                        </li>
-                      ))}
-                    </ul>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Play className="h-6 w-6 text-purple-600 mr-3" />
+                Step 3: Execute the Scan
+              </h3>
+              <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg mb-4">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Run Quick Scan</h4>
+                <pre className="text-sm text-gray-800 dark:text-gray-200 overflow-x-auto">
+{`# Start the scan
+SCAN_ID=$(curl -X POST https://api.perfecxion.ai/v1/scan \\
+  -H "Authorization: Bearer $PERFECXION_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d @target-config.json \\
+  | jq -r '.scan_id')
 
-        {/* Scanning Section */}
-        {activeTab === 'scanning' && (
-          <div className="space-y-8">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                Running Your First Scan
-              </h2>
-
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
-                    Method 1: Web Dashboard
-                  </h3>
-                  <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
-                    <ol className="space-y-4">
-                      <li className="flex gap-4">
-                        <span className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold">1</span>
-                        <div>
-                          <p className="font-medium text-gray-900 dark:text-white">Navigate to Scan Dashboard</p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Go to https://dashboard.perfecxion.ai/scans/new</p>
-                        </div>
-                      </li>
-                      <li className="flex gap-4">
-                        <span className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold">2</span>
-                        <div>
-                          <p className="font-medium text-gray-900 dark:text-white">Select Scan Type</p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Choose "Quick Scan" for your first assessment</p>
-                        </div>
-                      </li>
-                      <li className="flex gap-4">
-                        <span className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold">3</span>
-                        <div>
-                          <p className="font-medium text-gray-900 dark:text-white">Enter Target Details</p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Provide API endpoints and authentication details</p>
-                        </div>
-                      </li>
-                      <li className="flex gap-4">
-                        <span className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold">4</span>
-                        <div>
-                          <p className="font-medium text-gray-900 dark:text-white">Start Scan</p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Click "Start Scan" and monitor progress in real-time</p>
-                        </div>
-                      </li>
-                    </ol>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
-                    Method 2: Command Line
-                  </h3>
-                  <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                    <pre className="text-sm text-gray-100">
-{`# Run a quick scan using the CLI
-perfecxion scan --type quick --config first-scan-config.yaml
+echo "Scan started with ID: $SCAN_ID"
 
 # Monitor scan progress
-perfecxion scan status --follow
+curl -X GET https://api.perfecxion.ai/v1/scan/$SCAN_ID/status \\
+  -H "Authorization: Bearer $PERFECXION_API_KEY"`}
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-# Example output:
-[2024-01-15 10:23:45] Starting AI Security Scan...
-[2024-01-15 10:23:46] ✓ Loaded configuration
-[2024-01-15 10:23:47] ✓ Authenticated with API
-[2024-01-15 10:23:48] Scanning 5 endpoints...
-[2024-01-15 10:23:52] [1/5] Testing /v1/chat/completions...
-[2024-01-15 10:23:55] ⚠ Found: Potential prompt injection vulnerability
-[2024-01-15 10:23:58] [2/5] Testing /v1/models/list...
-[2024-01-15 10:24:02] ✓ Passed all security checks
-[2024-01-15 10:24:05] [3/5] Testing /v1/fine-tune...
-[2024-01-15 10:24:09] ⚠ Found: Missing rate limiting
-[2024-01-15 10:24:12] [4/5] Testing /v1/embeddings...
-[2024-01-15 10:24:15] ✓ Passed all security checks
-[2024-01-15 10:24:18] [5/5] Testing /v1/images/generate...
-[2024-01-15 10:24:22] ⚠ Found: Insufficient input validation
+      {/* Understanding Results */}
+      <section id="understanding-results" className="mb-12">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+          <BarChart3 className="h-6 w-6 text-blue-500 mr-3" />
+          Understanding Results: Interpreting Findings
+        </h2>
+        <div className="prose prose-gray dark:prose-invert max-w-none">
+          <p className="text-lg leading-relaxed mb-6">
+            Understanding scan results is crucial for effective security management. Learn to interpret 
+            findings and prioritize remediation efforts based on risk levels.
+          </p>
 
-Scan completed in 37 seconds
-Found 3 issues (0 critical, 2 high, 1 medium)`}
-                    </pre>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
-                    Method 3: API Integration
-                  </h3>
-                  <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                    <pre className="text-sm text-gray-100">
-{`# Start a scan via API
-curl -X POST https://api.perfecxion.ai/v1/scans \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "name": "First Security Scan",
-    "type": "quick",
-    "targets": [
-      {
-        "type": "api",
-        "url": "https://api.example.com/v1/chat/completions",
-        "auth": {
-          "type": "bearer",
-          "token": "YOUR_APP_API_KEY"
-        }
-      }
-    ],
-    "notifications": {
-      "email": "security@example.com",
-      "webhook": "https://hooks.example.com/security"
-    }
-  }'
-
-# Response:
-{
-  "scan_id": "scan_abc123",
-  "status": "running",
-  "created_at": "2024-01-15T10:23:45Z",
-  "estimated_completion": "2024-01-15T10:28:00Z",
-  "progress_url": "https://api.perfecxion.ai/v1/scans/scan_abc123/progress"
+          <div className="space-y-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <AlertTriangle className="h-6 w-6 text-red-600 mr-3" />
+                Critical Findings
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Critical vulnerabilities require immediate attention. These pose the highest risk to your AI system.
+              </p>
+              
+              <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg mb-4">
+                <h4 className="font-semibold text-red-900 dark:text-red-100 mb-2">Example Critical Finding</h4>
+                <pre className="text-sm text-red-800 dark:text-red-200 overflow-x-auto">
+{`{
+  "severity": "critical",
+  "type": "prompt_injection",
+  "location": "chat-api/v2/completions",
+  "description": "Unfiltered user input passed directly to LLM",
+  "impact": "Attackers can manipulate AI behavior and access restricted functions",
+  "recommendation": "Implement input validation and prompt sanitization",
+  "risk_score": 0.95,
+  "cve_id": "CVE-2024-XXXX"
 }`}
-                    </pre>
-                  </div>
-                </div>
+                </pre>
               </div>
             </div>
 
-            {/* Live Scan Demo */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                Live Scan Demo
-              </h2>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Info className="h-6 w-6 text-yellow-600 mr-3" />
+                High Priority Findings
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                High priority issues should be addressed promptly but may not require immediate action.
+              </p>
               
-              <div className="space-y-6">
-                <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white">Demo Scan - E-commerce AI Assistant</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Scanning chat API and recommendation engine</p>
-                  </div>
-                  <button
-                    onClick={startScan}
-                    disabled={scanStatus === 'running'}
-                    className={`px-6 py-2 rounded-lg font-medium transition-all ${
-                      scanStatus === 'idle'
-                        ? 'bg-blue-600 text-white hover:bg-blue-700'
-                        : scanStatus === 'running'
-                        ? 'bg-gray-400 text-white cursor-not-allowed'
-                        : 'bg-green-600 text-white'
-                    }`}
-                  >
-                    {scanStatus === 'idle' && (
-                      <span className="flex items-center gap-2">
-                        <Play className="h-4 w-4" />
-                        Start Scan
-                      </span>
-                    )}
-                    {scanStatus === 'running' && (
-                      <span className="flex items-center gap-2">
-                        <RefreshCw className="h-4 w-4 animate-spin" />
-                        Scanning...
-                      </span>
-                    )}
-                    {scanStatus === 'complete' && (
-                      <span className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4" />
-                        Complete
-                      </span>
-                    )}
-                  </button>
-                </div>
-
-                {scanStatus !== 'idle' && (
-                  <div className="space-y-4">
-                    <div className="bg-gray-900 rounded-lg p-4 h-64 overflow-y-auto">
-                      <div className="space-y-2 font-mono text-sm">
-                        <div className="text-gray-400">[2024-01-15 10:23:45] Initializing security scan...</div>
-                        <div className="text-green-400">[2024-01-15 10:23:46] ✓ Connected to target system</div>
-                        <div className="text-green-400">[2024-01-15 10:23:47] ✓ Authentication successful</div>
-                        <div className="text-gray-400">[2024-01-15 10:23:48] Analyzing 5 API endpoints...</div>
-                        <div className="text-yellow-400">[2024-01-15 10:23:52] ⚠ Testing prompt injection resistance...</div>
-                        <div className="text-red-400">[2024-01-15 10:23:55] ✗ CRITICAL: Unfiltered user input in /chat/completions</div>
-                        <div className="text-yellow-400">[2024-01-15 10:23:58] ⚠ Testing model access controls...</div>
-                        <div className="text-red-400">[2024-01-15 10:24:01] ✗ CRITICAL: Missing authentication on /models/inference</div>
-                        <div className="text-green-400">[2024-01-15 10:24:04] ✓ Rate limiting properly configured</div>
-                        <div className="text-yellow-400">[2024-01-15 10:24:07] ⚠ Checking for data leakage...</div>
-                        <div className="text-orange-400">[2024-01-15 10:24:10] ! HIGH: PII found in training data</div>
-                        {scanStatus === 'complete' && (
-                          <>
-                            <div className="text-gray-400">[2024-01-15 10:24:13] Generating security report...</div>
-                            <div className="text-green-400">[2024-01-15 10:24:15] ✓ Scan completed successfully</div>
-                            <div className="text-white mt-2">Found 42 security issues: 2 Critical, 5 High, 12 Medium, 8 Low, 15 Info</div>
-                          </>
-                        )}
-                      </div>
-                    </div>
-
-                    {scanStatus === 'complete' && (
-                      <div className="flex items-center justify-between p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
-                        <div className="flex items-center gap-3">
-                          <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />
-                          <div>
-                            <p className="font-medium text-green-900 dark:text-green-100">Scan Complete</p>
-                            <p className="text-sm text-green-800 dark:text-green-200">View detailed results in the Results tab</p>
-                          </div>
-                        </div>
-                        <button
-                          onClick={() => setActiveTab('results')}
-                          className="text-green-600 dark:text-green-400 font-medium hover:underline"
-                        >
-                          View Results →
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                )}
+              <div className="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg mb-4">
+                <h4 className="font-semibold text-yellow-900 dark:text-yellow-100 mb-2">Example High Priority Finding</h4>
+                <pre className="text-sm text-yellow-800 dark:text-yellow-200 overflow-x-auto">
+{`{
+  "severity": "high",
+  "type": "data_leakage",
+  "location": "training/datasets/customer-data.json",
+  "description": "Sensitive PII found in training data",
+  "impact": "Model may expose customer information",
+  "recommendation": "Sanitize training data and implement privacy filters",
+  "risk_score": 0.78
+}`}
+                </pre>
               </div>
             </div>
 
-            {/* What Happens During a Scan */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                What Happens During a Scan?
-              </h2>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <CheckCircle className="h-6 w-6 text-green-600 mr-3" />
+                Scan Summary
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Review the overall scan results to understand your security posture.
+              </p>
               
-              <div className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
-                      Phase 1: Discovery
-                    </h3>
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600 dark:text-gray-400">Identify all AI components and endpoints</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600 dark:text-gray-400">Map model architectures and data flows</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600 dark:text-gray-400">Detect authentication mechanisms</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
-                      Phase 2: Analysis
-                    </h3>
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600 dark:text-gray-400">Test for prompt injection vulnerabilities</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600 dark:text-gray-400">Check model robustness and defenses</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600 dark:text-gray-400">Evaluate data privacy controls</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
-                      Phase 3: Testing
-                    </h3>
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600 dark:text-gray-400">Execute security test cases</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600 dark:text-gray-400">Simulate attack scenarios</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600 dark:text-gray-400">Verify security controls</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
-                      Phase 4: Reporting
-                    </h3>
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600 dark:text-gray-400">Compile findings and risk scores</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600 dark:text-gray-400">Generate remediation recommendations</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600 dark:text-gray-400">Create actionable security report</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+              <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-4">
+                <h4 className="font-semibold text-green-900 dark:text-green-100 mb-2">Example Scan Summary</h4>
+                <pre className="text-sm text-green-800 dark:text-green-200 overflow-x-auto">
+{`{
+  "scan_id": "scan_12345",
+  "status": "completed",
+  "duration": "2m 34s",
+  "total_findings": 27,
+  "severity_breakdown": {
+    "critical": 2,
+    "high": 5,
+    "medium": 12,
+    "low": 8
+  },
+  "risk_score": 0.65,
+  "recommendations": [
+    "Implement input validation",
+    "Add rate limiting",
+    "Update security policies"
+  ]
+}`}
+                </pre>
               </div>
             </div>
           </div>
-        )}
+        </div>
+      </section>
 
-        {/* Results Section */}
-        {activeTab === 'results' && (
-          <div className="space-y-8">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                Understanding Your Scan Results
-              </h2>
+      {/* Remediation */}
+      <section id="remediation" className="mb-12">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+          <Shield className="h-6 w-6 text-blue-500 mr-3" />
+          Remediation: Fixing Issues
+        </h2>
+        <div className="prose prose-gray dark:prose-invert max-w-none">
+          <p className="text-lg leading-relaxed mb-6">
+            Once you identify security issues, it's important to plan and execute a remediation strategy. 
+            This section provides guidance on prioritizing and implementing fixes.
+          </p>
 
-              {/* Summary Dashboard */}
-              <div className="grid md:grid-cols-4 gap-4 mb-8">
-                <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-4 border border-red-200 dark:border-red-800">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-red-700 dark:text-red-300 font-medium">Critical</span>
-                    <XCircle className="h-5 w-5 text-red-600 dark:text-red-400" />
-                  </div>
-                  <p className="text-3xl font-bold text-red-900 dark:text-red-100">{mockScanResults.critical}</p>
-                </div>
-                
-                <div className="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-4 border border-orange-200 dark:border-orange-800">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-orange-700 dark:text-orange-300 font-medium">High</span>
-                    <AlertTriangle className="h-5 w-5 text-orange-600 dark:text-orange-400" />
-                  </div>
-                  <p className="text-3xl font-bold text-orange-900 dark:text-orange-100">{mockScanResults.high}</p>
-                </div>
-                
-                <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4 border border-yellow-200 dark:border-yellow-800">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-yellow-700 dark:text-yellow-300 font-medium">Medium</span>
-                    <Info className="h-5 w-5 text-yellow-600 dark:text-yellow-400" />
-                  </div>
-                  <p className="text-3xl font-bold text-yellow-900 dark:text-yellow-100">{mockScanResults.medium}</p>
-                </div>
-                
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-blue-700 dark:text-blue-300 font-medium">Low</span>
-                    <Info className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  <p className="text-3xl font-bold text-blue-900 dark:text-blue-100">{mockScanResults.low}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <div className="flex items-center gap-6">
-                  <div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Total Scanned</p>
-                    <p className="font-semibold text-gray-900 dark:text-white">{mockScanResults.totalScanned} items</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Time Elapsed</p>
-                    <p className="font-semibold text-gray-900 dark:text-white">{mockScanResults.timeElapsed}</p>
-                  </div>
-                </div>
-                <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                  <Download className="h-4 w-4" />
-                  Export Report
-                </button>
-              </div>
-
-              {/* Detailed Findings */}
-              <div className="space-y-4">
-                <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
-                  Security Findings
-                </h3>
-                
-                {mockScanResults.threats.map((threat) => (
-                  <div
-                    key={threat.id}
-                    className={`border rounded-lg overflow-hidden ${
-                      threat.severity === 'critical'
-                        ? 'border-red-300 dark:border-red-700'
-                        : threat.severity === 'high'
-                        ? 'border-orange-300 dark:border-orange-700'
-                        : 'border-yellow-300 dark:border-yellow-700'
-                    }`}
-                  >
-                    <button
-                      onClick={() => toggleResult(threat.id)}
-                      className="w-full p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className={`px-3 py-1 rounded-full text-sm font-medium ${
-                          threat.severity === 'critical'
-                            ? 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-200'
-                            : threat.severity === 'high'
-                            ? 'bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-200'
-                            : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-200'
-                        }`}>
-                          {threat.severity.toUpperCase()}
-                        </div>
-                        <div className="text-left">
-                          <h4 className="font-semibold text-gray-900 dark:text-white">{threat.type}</h4>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">{threat.location}</p>
-                        </div>
-                      </div>
-                      <ArrowRight className={`h-5 w-5 text-gray-400 transition-transform ${
-                        expandedResult === threat.id ? 'rotate-90' : ''
-                      }`} />
-                    </button>
-                    
-                    {expandedResult === threat.id && (
-                      <div className="px-4 pb-4 border-t border-gray-200 dark:border-gray-700">
-                        <div className="pt-4 space-y-4">
-                          <div>
-                            <h5 className="font-medium text-gray-900 dark:text-white mb-2">Description</h5>
-                            <p className="text-gray-600 dark:text-gray-400">{threat.description}</p>
-                          </div>
-                          
-                          <div>
-                            <h5 className="font-medium text-gray-900 dark:text-white mb-2">Impact</h5>
-                            <p className="text-gray-600 dark:text-gray-400">{threat.impact}</p>
-                          </div>
-                          
-                          <div>
-                            <h5 className="font-medium text-gray-900 dark:text-white mb-2">Recommendation</h5>
-                            <p className="text-gray-600 dark:text-gray-400">{threat.recommendation}</p>
-                          </div>
-                          
-                          <div className="flex gap-3 pt-2">
-                            <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm">
-                              View Details
-                            </button>
-                            <button className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm text-gray-700 dark:text-gray-300">
-                              Create Ticket
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Understanding Severity Levels */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                Understanding Severity Levels
-              </h2>
+          <div className="space-y-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Info className="h-6 w-6 text-blue-600 mr-3" />
+                Prioritization Strategy
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Address vulnerabilities based on severity, exploitability, and business impact. Start with critical issues that could lead to immediate compromise.
+              </p>
               
-              <div className="space-y-4">
-                <div className="flex gap-4 p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
-                  <XCircle className="h-6 w-6 text-red-600 dark:text-red-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-red-900 dark:text-red-100 mb-1">Critical</h3>
-                    <p className="text-red-800 dark:text-red-200">
-                      Immediate action required. These vulnerabilities pose an immediate threat and could lead to system compromise, data breaches, or complete AI system manipulation.
-                    </p>
-                    <p className="text-sm text-red-700 dark:text-red-300 mt-2">
-                      <strong>Examples:</strong> Unfiltered prompt injection, exposed model weights, missing authentication
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex gap-4 p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-                  <AlertTriangle className="h-6 w-6 text-orange-600 dark:text-orange-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-orange-900 dark:text-orange-100 mb-1">High</h3>
-                    <p className="text-orange-800 dark:text-orange-200">
-                      Should be addressed soon. These issues represent significant security risks that could be exploited with moderate effort.
-                    </p>
-                    <p className="text-sm text-orange-700 dark:text-orange-300 mt-2">
-                      <strong>Examples:</strong> Weak input validation, data leakage risks, inadequate rate limiting
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex gap-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
-                  <Info className="h-6 w-6 text-yellow-600 dark:text-yellow-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-yellow-900 dark:text-yellow-100 mb-1">Medium</h3>
-                    <p className="text-yellow-800 dark:text-yellow-200">
-                      Should be included in regular security updates. These represent potential vulnerabilities that require specific conditions to exploit.
-                    </p>
-                    <p className="text-sm text-yellow-700 dark:text-yellow-300 mt-2">
-                      <strong>Examples:</strong> Verbose error messages, weak logging, outdated dependencies
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex gap-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                  <Info className="h-6 w-6 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-1">Low</h3>
-                    <p className="text-blue-800 dark:text-blue-200">
-                      Best practice improvements. These are minor issues that improve overall security posture but pose minimal immediate risk.
-                    </p>
-                    <p className="text-sm text-blue-700 dark:text-blue-300 mt-2">
-                      <strong>Examples:</strong> Missing security headers, suboptimal configurations, informational findings
-                    </p>
-                  </div>
-                </div>
+              <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-4">
+                <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Immediate Actions (Critical Issues)</h4>
+                <ul className="text-blue-800 dark:text-blue-200 text-sm space-y-1">
+                  <li>• Fix prompt injection vulnerability</li>
+                  <li>• Add authentication to model endpoint</li>
+                  <li>• Patch critical vulnerabilities</li>
+                </ul>
               </div>
-            </div>
-          </div>
-        )}
 
-        {/* Remediation Section */}
-        {activeTab === 'remediation' && (
-          <div className="space-y-8">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                Remediation Planning
-              </h2>
-
-              <div className="space-y-6">
-                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-                  <div className="flex items-start gap-3">
-                    <Info className="h-6 w-6 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">
-                        Prioritization Strategy
-                      </h3>
-                      <p className="text-blue-800 dark:text-blue-200">
-                        Address vulnerabilities based on severity, exploitability, and business impact. Start with critical issues that could lead to immediate compromise.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
-                    Immediate Actions (Critical Issues)
-                  </h3>
-                  
-                  <div className="space-y-4">
-                    <div className="bg-white dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-600">
-                      <div className="flex items-start justify-between mb-4">
-                        <div>
-                          <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
-                            Fix Prompt Injection Vulnerability
-                          </h4>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">
-                            Location: /chat-api/v2/completions
-                          </p>
-                        </div>
-                        <span className="px-3 py-1 bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-200 rounded-full text-sm font-medium">
-                          Critical
-                        </span>
-                      </div>
-                      
-                      <div className="space-y-3">
-                        <div>
-                          <p className="font-medium text-gray-700 dark:text-gray-300 mb-2">Quick Fix:</p>
-                          <div className="bg-gray-900 rounded-lg p-3 overflow-x-auto">
-                            <pre className="text-sm text-gray-100">
+              <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Quick Fix for Prompt Injection</h4>
+                <pre className="text-sm text-gray-800 dark:text-gray-200 overflow-x-auto">
 {`# Add input validation before sending to LLM
 def sanitize_prompt(user_input):
     # Remove system instructions
@@ -904,42 +513,12 @@ def sanitize_prompt(user_input):
             raise SecurityException("Potential prompt injection detected")
     
     return user_input`}
-                            </pre>
-                          </div>
-                        </div>
-                        
-                        <div>
-                          <p className="font-medium text-gray-700 dark:text-gray-300 mb-2">Long-term Solution:</p>
-                          <ul className="space-y-1 text-gray-600 dark:text-gray-400">
-                            <li>• Implement comprehensive prompt filtering library</li>
-                            <li>• Use prompt templates with strict variable substitution</li>
-                            <li>• Add context isolation between user and system prompts</li>
-                            <li>• Deploy real-time prompt injection detection</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
+                </pre>
+              </div>
 
-                    <div className="bg-white dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-600">
-                      <div className="flex items-start justify-between mb-4">
-                        <div>
-                          <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
-                            Add Authentication to Model Endpoint
-                          </h4>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">
-                            Location: /models/gpt-4/inference
-                          </p>
-                        </div>
-                        <span className="px-3 py-1 bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-200 rounded-full text-sm font-medium">
-                          Critical
-                        </span>
-                      </div>
-                      
-                      <div className="space-y-3">
-                        <div>
-                          <p className="font-medium text-gray-700 dark:text-gray-300 mb-2">Quick Fix:</p>
-                          <div className="bg-gray-900 rounded-lg p-3 overflow-x-auto">
-                            <pre className="text-sm text-gray-100">
+              <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg mt-4">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Quick Fix for Model Authentication</h4>
+                <pre className="text-sm text-gray-800 dark:text-gray-200 overflow-x-auto">
 {`# Add API key validation middleware
 @app.before_request
 def validate_api_key():
@@ -954,83 +533,74 @@ limiter = Limiter(
     key_func=lambda: request.headers.get('X-API-Key'),
     default_limits=["100 per hour", "10 per minute"]
 )`}
-                            </pre>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
-                    Remediation Roadmap
-                  </h3>
-                  
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                      <div className="flex-shrink-0 w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center font-bold">
-                        1
-                      </div>
-                      <div className="flex-grow">
-                        <h4 className="font-semibold text-gray-900 dark:text-white">Week 1: Critical Issues</h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                          Fix prompt injection, add authentication, patch critical vulnerabilities
-                        </p>
-                      </div>
-                      <CheckCircle className="h-5 w-5 text-gray-400" />
-                    </div>
-                    
-                    <div className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                      <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold">
-                        2
-                      </div>
-                      <div className="flex-grow">
-                        <h4 className="font-semibold text-gray-900 dark:text-white">Week 2-3: High Priority</h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                          Implement input validation, fix data leakage, add monitoring
-                        </p>
-                      </div>
-                      <CheckCircle className="h-5 w-5 text-gray-400" />
-                    </div>
-                    
-                    <div className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                      <div className="flex-shrink-0 w-12 h-12 bg-yellow-600 text-white rounded-full flex items-center justify-center font-bold">
-                        3
-                      </div>
-                      <div className="flex-grow">
-                        <h4 className="font-semibold text-gray-900 dark:text-white">Month 2: Medium Priority</h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                          Enhance logging, update dependencies, improve error handling
-                        </p>
-                      </div>
-                      <CheckCircle className="h-5 w-5 text-gray-400" />
-                    </div>
-                    
-                    <div className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                      <div className="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
-                        4
-                      </div>
-                      <div className="flex-grow">
-                        <h4 className="font-semibold text-gray-900 dark:text-white">Ongoing: Best Practices</h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                          Regular security scans, updates, and continuous monitoring
-                        </p>
-                      </div>
-                      <CheckCircle className="h-5 w-5 text-gray-400" />
-                    </div>
-                  </div>
-                </div>
+                </pre>
               </div>
             </div>
 
-            {/* Resources and Next Steps */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                Resources and Next Steps
-              </h2>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <TrendingUp className="h-6 w-6 text-purple-600 mr-3" />
+                Remediation Roadmap
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Plan your remediation efforts over time to ensure a secure and resilient AI system.
+              </p>
               
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Week 1: Critical Issues</h4>
+                <ul className="text-gray-800 dark:text-gray-200 text-sm space-y-1">
+                  <li>• Fix prompt injection, add authentication, patch critical vulnerabilities</li>
+                </ul>
+              </div>
+
+              <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg mt-4">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Week 2-3: High Priority</h4>
+                <ul className="text-gray-800 dark:text-gray-200 text-sm space-y-1">
+                  <li>• Implement input validation, fix data leakage, add monitoring</li>
+                </ul>
+              </div>
+
+              <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg mt-4">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Month 2: Medium Priority</h4>
+                <ul className="text-gray-800 dark:text-gray-200 text-sm space-y-1">
+                  <li>• Enhance logging, update dependencies, improve error handling</li>
+                </ul>
+              </div>
+
+              <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg mt-4">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Ongoing: Best Practices</h4>
+                <ul className="text-gray-800 dark:text-gray-200 text-sm space-y-1">
+                  <li>• Regular security scans, updates, and continuous monitoring</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Best Practices */}
+      <section id="best-practices" className="mb-12">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+          <Users className="h-6 w-6 text-green-500 mr-3" />
+          Best Practices: Ongoing Scanning
+        </h2>
+        <div className="prose prose-gray dark:prose-invert max-w-none">
+          <p className="text-lg leading-relaxed mb-6">
+            Security is an ongoing process. Regularly scanning and improving your security posture 
+            is essential to maintain a robust AI system.
+          </p>
+
+          <div className="space-y-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <FileText className="h-6 w-6 text-blue-600 mr-3" />
+                Resources and Next Steps
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Set up automated scanning to catch vulnerabilities before they reach production.
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Link href="/learn/prompt-injection" className="block group">
                   <div className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-lg transition-all">
                     <Shield className="h-8 w-8 text-blue-600 dark:text-blue-400 mb-3" />
@@ -1077,7 +647,19 @@ limiter = Limiter(
               </div>
             </div>
           </div>
-        )}
+        </div>
+      </section>
+
+      {/* Navigation */}
+      <div className="flex justify-between items-center pt-8 border-t border-gray-200 dark:border-gray-700">
+        <Link href="/learn/installation" className="flex items-center text-primary-600 dark:text-primary-400 hover:underline">
+          <ArrowRight className="h-4 w-4 mr-2 rotate-180" />
+          Installation Guide
+        </Link>
+        <Link href="/learn/security-best-practices" className="flex items-center text-primary-600 dark:text-primary-400 hover:underline">
+          Security Best Practices
+          <ArrowRight className="h-4 w-4 ml-2" />
+        </Link>
       </div>
     </div>
   )
