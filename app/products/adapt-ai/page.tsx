@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function AdaptAIPage() {
   const product = getProduct('adapt-ai')
-  
+
   if (!product) {
     notFound()
   }
@@ -41,6 +41,20 @@ export default function AdaptAIPage() {
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                 {product.description}
               </p>
+              <div className="flex flex-wrap gap-2 mb-8">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400">
+                  10+ Attack Categories
+                </span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400">
+                  Multi-Modal Support
+                </span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400">
+                  ML-Powered Learning
+                </span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400">
+                  Enterprise Ready
+                </span>
+              </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <DemoRequestButton product={product} />
                 <Link href="/docs/adapt-ai/quick-start" className="btn-secondary">
@@ -56,21 +70,24 @@ export default function AdaptAIPage() {
               <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-secondary-500 blur-3xl opacity-20"></div>
               <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 shadow-2xl">
                 <pre className="text-sm text-gray-300 overflow-x-auto">
-{`# Initialize ADAPT-AI
+                  {`# Initialize ADAPT-AI
 from adapt_ai import AdaptClient
 
 client = AdaptClient(api_key="your-api-key")
 
-# Run advanced security test
-result = await client.attack.gradient_optimize(
+# Run comprehensive attack suite
+result = await client.attack.comprehensive({
     target="https://api.example.com/chat",
-    objective="test_jailbreak",
-    iterations=100
-)
+    techniques=["gradient", "multimodal", "social_engineering"],
+    evasion=True,
+    ml_analysis=True
+})
 
 # ML-powered analysis
 analysis = await client.ml.analyze_patterns(result)
-print(f"Vulnerabilities: {analysis.vulnerabilities}")`}
+print(f"Success rate: {analysis.success_rate}")
+print(f"Vulnerabilities: {analysis.vulnerabilities}")
+print(f"Recommended defenses: {analysis.defenses}")`}
                 </pre>
               </div>
             </div>
@@ -116,6 +133,76 @@ print(f"Vulnerabilities: {analysis.vulnerabilities}")`}
         </div>
       </section>
 
+      {/* Advanced Attack Techniques */}
+      <section className="section-padding">
+        <div className="max-width container-padding">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              State-of-the-Art Attack Techniques
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              10+ advanced attack categories implementing cutting-edge adversarial AI research
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg p-6 border border-blue-200 dark:border-blue-700">
+              <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-3">Gradient-Based Attacks</h3>
+              <ul className="text-sm text-blue-800 dark:text-blue-200 space-y-1">
+                <li>• Adam optimizer with momentum</li>
+                <li>• Gradient clipping & adaptive learning</li>
+                <li>• Adversarial suffix generation</li>
+                <li>• Token-level manipulation</li>
+              </ul>
+            </div>
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg p-6 border border-purple-200 dark:border-purple-700">
+              <h3 className="text-lg font-semibold text-purple-900 dark:text-purple-100 mb-3">Multi-Modal Attacks</h3>
+              <ul className="text-sm text-purple-800 dark:text-purple-200 space-y-1">
+                <li>• Image + text prompt injection</li>
+                <li>• Audio manipulation & steganography</li>
+                <li>• Video content attacks</li>
+                <li>• File upload exploitation</li>
+              </ul>
+            </div>
+            <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg p-6 border border-green-200 dark:border-green-700">
+              <h3 className="text-lg font-semibold text-green-900 dark:text-green-100 mb-3">Social Engineering</h3>
+              <ul className="text-sm text-green-800 dark:text-green-200 space-y-1">
+                <li>• Authority figure impersonation</li>
+                <li>• Emotional manipulation techniques</li>
+                <li>• Trust building sequences</li>
+                <li>• Consensus pressure tactics</li>
+              </ul>
+            </div>
+            <div className="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-lg p-6 border border-red-200 dark:border-red-700">
+              <h3 className="text-lg font-semibold text-red-900 dark:text-red-100 mb-3">Evasion Techniques</h3>
+              <ul className="text-sm text-red-800 dark:text-red-200 space-y-1">
+                <li>• Dynamic obfuscation</li>
+                <li>• Fingerprint randomization</li>
+                <li>• Real-time strategy adaptation</li>
+                <li>• Defense mechanism detection</li>
+              </ul>
+            </div>
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-lg p-6 border border-orange-200 dark:border-orange-700">
+              <h3 className="text-lg font-semibold text-orange-900 dark:text-orange-100 mb-3">ML Learning System</h3>
+              <ul className="text-sm text-orange-800 dark:text-orange-200 space-y-1">
+                <li>• Ensemble learning algorithms</li>
+                <li>• Reinforcement learning</li>
+                <li>• Genetic optimization</li>
+                <li>• Real-time pattern evolution</li>
+              </ul>
+            </div>
+            <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-indigo-800/20 rounded-lg p-6 border border-indigo-200 dark:border-indigo-700">
+              <h3 className="text-lg font-semibold text-indigo-900 dark:text-indigo-100 mb-3">Enterprise Features</h3>
+              <ul className="text-sm text-indigo-800 dark:text-indigo-200 space-y-1">
+                <li>• Docker & Kubernetes support</li>
+                <li>• PostgreSQL & Redis</li>
+                <li>• Comprehensive monitoring</li>
+                <li>• Production-ready architecture</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Architecture */}
       {product.architecture && (
         <section className="section-padding">
@@ -151,9 +238,79 @@ print(f"Vulnerabilities: {analysis.vulnerabilities}")`}
         </section>
       )}
 
+      {/* Technical Specifications */}
+      {product.technicalSpecs && (
+        <section className="section-padding bg-gray-50 dark:bg-gray-900/50">
+          <div className="max-width container-padding">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                Technical Specifications
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                Enterprise-grade performance and capabilities for production environments
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm">
+                <div className="flex items-center space-x-3 mb-3">
+                  <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
+                    <Zap className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Performance</h3>
+                </div>
+                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <div><span className="font-medium">Response Time:</span> {product.technicalSpecs.responseTime}</div>
+                  <div><span className="font-medium">Throughput:</span> {product.technicalSpecs.throughput}</div>
+                  <div><span className="font-medium">Latency:</span> {product.technicalSpecs.latency}</div>
+                </div>
+              </div>
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm">
+                <div className="flex items-center space-x-3 mb-3">
+                  <div className="w-10 h-10 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
+                    <Shield className="h-5 w-5 text-green-600 dark:text-green-400" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Reliability</h3>
+                </div>
+                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <div><span className="font-medium">Availability:</span> {product.technicalSpecs.availability}</div>
+                  <div><span className="font-medium">Attack Categories:</span> {product.technicalSpecs.attackCategories}</div>
+                  <div><span className="font-medium">Multi-Modal:</span> {product.technicalSpecs.multiModalSupport}</div>
+                </div>
+              </div>
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm">
+                <div className="flex items-center space-x-3 mb-3">
+                  <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center">
+                    <Brain className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">ML Capabilities</h3>
+                </div>
+                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <div><span className="font-medium">Learning:</span> {product.technicalSpecs.mlCapabilities}</div>
+                  <div><span className="font-medium">Real-time:</span> Pattern evolution</div>
+                  <div><span className="font-medium">Adaptation:</span> Strategy optimization</div>
+                </div>
+              </div>
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm">
+                <div className="flex items-center space-x-3 mb-3">
+                  <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center">
+                    <Building className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Enterprise</h3>
+                </div>
+                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <div><span className="font-medium">Infrastructure:</span> {product.technicalSpecs.enterpriseFeatures}</div>
+                  <div><span className="font-medium">Monitoring:</span> Comprehensive</div>
+                  <div><span className="font-medium">Security:</span> Production-ready</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Benefits */}
       {product.benefits && (
-        <section className="section-padding bg-gray-50 dark:bg-gray-900/50">
+        <section className="section-padding">
           <div className="max-width container-padding">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
@@ -180,6 +337,34 @@ print(f"Vulnerabilities: {analysis.vulnerabilities}")`}
                   </div>
                 )
               })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Use Cases */}
+      {product.useCases && (
+        <section className="section-padding bg-gray-50 dark:bg-gray-900/50">
+          <div className="max-width container-padding">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                Comprehensive Use Cases
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                ADAPT-AI serves diverse security testing needs across industries
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {product.useCases.map((useCase, index) => (
+                <div key={index} className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="flex items-center space-x-3 mb-3">
+                    <div className="w-8 h-8 bg-primary-100 dark:bg-primary-900/20 rounded-lg flex items-center justify-center">
+                      <Target className="h-4 w-4 text-primary-600 dark:text-primary-400" />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">{useCase}</h3>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

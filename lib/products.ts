@@ -10,6 +10,10 @@ export interface Product {
     throughput: string
     availability: string
     latency: string
+    attackCategories?: string
+    multiModalSupport?: string
+    mlCapabilities?: string
+    enterpriseFeatures?: string
   }
   architecture?: {
     layers: {
@@ -38,12 +42,12 @@ export const products: Product[] = [
     name: 'ADAPT-AI',
     description: 'Advanced AI Attack Testing Framework - A comprehensive security testing platform implementing state-of-the-art adversarial AI research techniques with machine learning capabilities for continuous improvement and adaptation.',
     features: [
-      'Gradient-Based Attack Optimization - Advanced prompt optimization with Adam optimizer, momentum, and gradient clipping for maximum effectiveness',
-      'Multi-Modal Attack Capabilities - Comprehensive testing across text, image, audio, and video with cross-modal attack synchronization',
-      'Machine Learning Integration - Adaptive learning system with pattern recognition, genetic optimization, and reinforcement learning',
-      'Social Engineering Simulation - Authority impersonation, emotional manipulation, and trust-building sequence testing',
-      'Evasion & Anti-Detection - Dynamic obfuscation, fingerprint randomization, and defense mechanism detection',
-      'Enterprise Deployment - Microservices architecture with API gateway, real-time monitoring, and comprehensive security controls'
+      'Advanced Gradient Optimization - State-of-the-art gradient-based attacks with Adam optimizer, momentum, and adaptive learning rates for maximum effectiveness',
+      'Comprehensive Multi-Modal Attacks - Cross-modal attack synchronization across text, image, audio, video, and file uploads with steganographic techniques',
+      'Sophisticated Social Engineering - 10+ psychological manipulation techniques including authority impersonation, emotional manipulation, and trust-building sequences',
+      'Advanced Evasion Techniques - 9 evasion categories including dynamic obfuscation, fingerprint randomization, and real-time strategy adaptation',
+      'ML-Powered Learning System - Ensemble learning with reinforcement learning, genetic optimization, and real-time pattern evolution',
+      'Enterprise-Grade Architecture - Production-ready microservices with PostgreSQL, Redis, Docker, and comprehensive monitoring'
     ],
     category: 'AI Security Testing',
     status: 'available',
@@ -51,24 +55,33 @@ export const products: Product[] = [
       responseTime: '< 500ms attack generation',
       throughput: '1000+ concurrent tests',
       availability: '99.9% uptime SLA',
-      latency: 'Real-time adaptation'
+      latency: 'Real-time adaptation',
+      attackCategories: '10+ advanced techniques',
+      multiModalSupport: 'Text, Image, Audio, Video, Files',
+      mlCapabilities: 'Ensemble learning, RL, Genetic optimization',
+      enterpriseFeatures: 'Docker, Kubernetes, PostgreSQL, Redis'
     },
     architecture: {
       layers: [
         {
-          name: 'API Layer',
-          description: 'FastAPI-based microservices with authentication, rate limiting, and request routing',
-          detects: ['Service discovery', 'Attack orchestration', 'Real-time monitoring', 'WebSocket updates']
+          name: 'API Gateway Layer',
+          description: 'FastAPI-based microservices with authentication, rate limiting, and comprehensive request routing',
+          detects: ['Service discovery', 'Attack orchestration', 'Real-time monitoring', 'WebSocket updates', 'Load balancing']
         },
         {
-          name: 'Core Domain Layer',
-          description: 'Advanced attack engine with ML algorithms, pattern recognition, and adaptive strategies',
-          detects: ['Gradient attacks', 'Adversarial suffixes', 'Token manipulation', 'Embedding attacks']
+          name: 'Core Attack Engine',
+          description: 'Advanced attack engine with 10+ attack categories, ML algorithms, and adaptive strategies',
+          detects: ['Gradient attacks', 'Multi-modal attacks', 'Social engineering', 'Evasion techniques', 'Real-time adaptation']
         },
         {
-          name: 'ML System Layer',
-          description: 'Integrated machine learning with ensemble learning, genetic algorithms, and reinforcement learning',
-          detects: ['Pattern evolution', 'Strategy optimization', 'Real-time adaptation', 'Model improvement']
+          name: 'ML Learning System',
+          description: 'Comprehensive ML system with ensemble learning, reinforcement learning, and genetic optimization',
+          detects: ['Pattern evolution', 'Strategy optimization', 'Real-time adaptation', 'Model improvement', 'A/B testing']
+        },
+        {
+          name: 'Enterprise Infrastructure',
+          description: 'Production-ready infrastructure with PostgreSQL, Redis, Docker, and comprehensive monitoring',
+          detects: ['Database management', 'Caching optimization', 'Container orchestration', 'Performance monitoring', 'Security controls']
         }
       ]
     },
@@ -77,7 +90,12 @@ export const products: Product[] = [
       'Red Team Operations',
       'Compliance Testing',
       'ML Model Validation',
-      'Vulnerability Research'
+      'Vulnerability Research',
+      'Multi-Modal Security Testing',
+      'Social Engineering Simulation',
+      'Evasion Technique Testing',
+      'Enterprise Security Audits',
+      'AI System Hardening'
     ],
     integrationExamples: {
       python: `from adapt_ai import AdaptClient
@@ -85,17 +103,27 @@ export const products: Product[] = [
 # Initialize ADAPT-AI client
 client = AdaptClient(api_key="your-api-key")
 
-# Run advanced gradient attack
+# Run advanced gradient optimization attack
 result = await client.attack.gradient_optimize(
     target="https://api.example.com/chat",
     objective="test_jailbreak",
-    iterations=100
+    iterations=100,
+    learning_rate=0.01,
+    momentum=0.9
 )
+
+# Execute multi-modal attack
+multimodal_result = await client.attack.multimodal({
+    target: "https://api.example.com/vision",
+    modes: ['text', 'image', 'audio'],
+    strategy: 'adaptive'
+})
 
 # Analyze results with ML
 analysis = await client.ml.analyze_patterns(result)
 print(f"Success rate: {analysis.success_rate}")
-print(f"Detected vulnerabilities: {analysis.vulnerabilities}")`,
+print(f"Detected vulnerabilities: {analysis.vulnerabilities}")
+print(f"Recommended defenses: {analysis.defenses}")`,
       javascript: `import { AdaptAI } from '@adapt-ai/sdk';
 
 const adapt = new AdaptAI({ apiKey: 'your-api-key' });
@@ -106,44 +134,48 @@ const targets = await adapt.discovery.scan({
   depth: 3
 });
 
-// Execute multi-modal attack
-const result = await adapt.attack.multiModal({
+// Execute comprehensive attack suite
+const result = await adapt.attack.comprehensive({
   target: targets[0],
-  modes: ['text', 'image'],
-  strategy: 'adaptive'
+  techniques: ['gradient', 'multimodal', 'social_engineering'],
+  evasion: true,
+  ml_analysis: true
 });`,
       api: `curl -X POST "https://api.adapt-ai.com/v1/attack" \\
   -H "Authorization: Bearer your-api-key" \\
   -H "Content-Type: application/json" \\
   -d '{
     "target": "https://api.example.com/chat",
-    "attack_type": "gradient_optimization",
+    "attack_type": "comprehensive",
+    "techniques": ["gradient_optimization", "multimodal", "social_engineering"],
     "parameters": {
       "iterations": 100,
       "learning_rate": 0.01,
-      "objective": "jailbreak"
+      "momentum": 0.9,
+      "evasion": true,
+      "ml_analysis": true
     }
   }'`
     },
     benefits: [
       {
         title: 'State-of-the-Art Techniques',
-        description: 'Implements cutting-edge adversarial AI research with continuous updates as new attack vectors emerge',
+        description: 'Implements 10+ cutting-edge adversarial AI research techniques with continuous updates as new attack vectors emerge',
         icon: 'Brain'
       },
       {
-        title: 'Adaptive Learning',
-        description: 'Machine learning system that improves attack effectiveness over time through pattern recognition',
-        icon: 'TrendingUp'
-      },
-      {
-        title: 'Comprehensive Coverage',
-        description: 'Tests across all modalities including text, image, audio, video, and multi-modal combinations',
+        title: 'Comprehensive Multi-Modal Coverage',
+        description: 'Tests across all modalities including text, image, audio, video, and file uploads with cross-modal synchronization',
         icon: 'Layers'
       },
       {
-        title: 'Enterprise Ready',
-        description: 'Production-grade architecture with monitoring, security controls, and compliance features',
+        title: 'Advanced ML Learning System',
+        description: 'Ensemble learning with reinforcement learning, genetic optimization, and real-time pattern evolution',
+        icon: 'TrendingUp'
+      },
+      {
+        title: 'Enterprise-Grade Architecture',
+        description: 'Production-ready microservices with PostgreSQL, Redis, Docker, and comprehensive monitoring',
         icon: 'Building'
       }
     ]
