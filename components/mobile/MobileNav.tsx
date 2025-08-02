@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation'
 import { Menu, X, ChevronDown, Search, Calendar } from 'lucide-react'
 import ThemeToggle from '../ThemeToggle'
 import MobileSearch from './MobileSearch'
+import { useTheme } from 'next-themes'
 
 interface NavItem {
   name: string
@@ -60,6 +61,7 @@ export default function MobileNav() {
   const [expandedItems, setExpandedItems] = useState<string[]>([])
   const [searchOpen, setSearchOpen] = useState(false)
   const pathname = usePathname()
+  const { theme } = useTheme()
 
   // Close menu on route change
   useEffect(() => {
@@ -93,14 +95,16 @@ export default function MobileNav() {
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
         <div className="flex items-center justify-between px-4 py-3">
           <Link href="/" className="flex items-center">
-            <Image
-              src="/logo-perfecxion.svg"
-              alt="perfecXion.ai"
-              width={140}
-              height={35}
-              className="h-7 w-auto"
-              priority
-            />
+            <div className="relative h-7 w-[140px]">
+              <Image
+                src="/logos/logo-dark.png"
+                alt="perfecXion.ai"
+                width={140}
+                height={35}
+                className="h-7 w-auto object-contain"
+                priority
+              />
+            </div>
           </Link>
 
           <div className="flex items-center gap-2">

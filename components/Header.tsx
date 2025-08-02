@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation'
 import { Menu, X, Search } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 import SearchBar from './search/SearchBar'
+import { useTheme } from 'next-themes'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -22,6 +23,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const pathname = usePathname()
+  const { theme } = useTheme()
   
   // Hide hamburger menu on pages with their own sidebar navigation
   const hideMobileMenu = pathname.startsWith('/learn') || pathname.startsWith('/docs') || pathname.startsWith('/blog') || pathname.startsWith('/white-papers')
@@ -32,14 +34,16 @@ export default function Header() {
         <div className="flex items-center justify-between">
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5 flex items-center group">
-              <Image
-                src="/logo-perfecxion.svg"
-                alt="perfecXion.ai"
-                width={200}
-                height={50}
-                className="h-10 w-auto transition-transform group-hover:scale-105"
-                priority
-              />
+              <div className="relative h-10 w-[200px]">
+                <Image
+                  src="/logos/logo-dark.png"
+                  alt="perfecXion.ai"
+                  width={200}
+                  height={50}
+                  className="h-10 w-auto transition-transform group-hover:scale-105 object-contain"
+                  priority
+                />
+              </div>
             </Link>
           </div>
 
@@ -91,14 +95,16 @@ export default function Header() {
           <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white dark:bg-gray-900 px-6 py-6 sm:max-w-sm border-l border-gray-200 dark:border-gray-800">
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5 flex items-center">
-                <Image
-                  src="/logo-perfecxion.svg"
-                  alt="perfecXion.ai"
-                  width={200}
-                  height={50}
-                  className="h-10 w-auto"
-                  priority
-                />
+                <div className="relative h-10 w-[200px]">
+                  <Image
+                    src="/logos/logo-dark.png"
+                    alt="perfecXion.ai"
+                    width={200}
+                    height={50}
+                    className="h-10 w-auto object-contain"
+                    priority
+                  />
+                </div>
               </Link>
               <button
                 type="button"
