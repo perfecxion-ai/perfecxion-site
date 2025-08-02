@@ -53,9 +53,9 @@ const whitePapers: WhitePaper[] = [
   {
     id: 'from-data-to-dialogue-llm-training',
     title: 'From Data to Dialogue: A Deep Dive into the Training of Large Language Models',
-    description: 'Comprehensive guide tracing the complete journey from architectural foundations through massive-scale pre-training to the nuanced art of alignment with human values.',
+    description: 'Comprehensive guide to LLM training pipeline, covering data collection, model architecture, distributed training, security considerations, and deployment strategies for large-scale language models.',
     author: 'perfecXion AI Research Team',
-    date: '2025-01-25',
+    date: '2025-02-01',
     category: 'Technical Research',
     downloadUrl: '/white-papers/from-data-to-dialogue-llm-training-deep-dive.pdf',
     readTime: '90 min read',

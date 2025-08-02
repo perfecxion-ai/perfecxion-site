@@ -33,7 +33,7 @@ export default function Header() {
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5 flex items-center group">
               <Image
-                src="/logos/logo.svg"
+                src="/logo-perfecxion.svg"
                 alt="perfecXion.ai"
                 width={200}
                 height={50}
@@ -92,7 +92,7 @@ export default function Header() {
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5 flex items-center">
                 <Image
-                  src="/logos/logo.svg"
+                  src="/logo-perfecxion.svg"
                   alt="perfecXion.ai"
                   width={200}
                   height={50}
