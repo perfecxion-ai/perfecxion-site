@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Play, Pause, RotateCcw, ChevronRight, Shield, AlertTriangle, CheckCircle, BookOpen } from 'lucide-react'
-import ResponsiveCodeBlock from '@/components/code/ResponsiveCodeBlock'
+// ResponsiveCodeBlock removed - using simple code display
 import { ThreatScenario, SimulationStep } from '@/lib/assessment-types'
 import { threatScenarios } from '@/lib/threat-scenarios'
 
@@ -259,11 +259,9 @@ export default function ThreatSimulator() {
                   {step.action && (
                     <div className="mb-4">
                       <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Action:</h4>
-                      <ResponsiveCodeBlock
-                        code={step.action}
-                        language="python"
-                        showLineNumbers={false}
-                      />
+                      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+                        <code>{step.action}</code>
+                      </pre>
                     </div>
                   )}
                   

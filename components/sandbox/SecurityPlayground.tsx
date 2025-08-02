@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import ThreatSimulator from './ThreatSimulator'
-import RiskAssessment from './RiskAssessment'
-import MaturityAssessment from './MaturityAssessment'
+// Import from assessment directory instead
+import ThreatSimulator from '../assessment/ThreatSimulator'
+// RiskAssessment and MaturityAssessment removed - using placeholders
 import { Shield, AlertTriangle, TrendingUp } from 'lucide-react'
 
 export default function SecurityPlayground() {
@@ -43,11 +43,19 @@ export default function SecurityPlayground() {
         </TabsContent>
 
         <TabsContent value="risk-assessment">
-          <RiskAssessment />
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-8 text-center">
+            <AlertTriangle className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+            <h3 className="text-lg font-semibold mb-2">Risk Assessment</h3>
+            <p className="text-gray-600 dark:text-gray-400">Interactive risk assessment tools will be available here.</p>
+          </div>
         </TabsContent>
 
         <TabsContent value="maturity-assessment">
-          <MaturityAssessment />
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-8 text-center">
+            <TrendingUp className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+            <h3 className="text-lg font-semibold mb-2">Maturity Assessment</h3>
+            <p className="text-gray-600 dark:text-gray-400">Security maturity evaluation tools will be available here.</p>
+          </div>
         </TabsContent>
       </Tabs>
     </div>

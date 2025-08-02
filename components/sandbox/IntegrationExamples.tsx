@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Cloud, Server, GitBranch, Package, Workflow, Zap, CheckCircle, Copy, Check, Clock, Shield } from 'lucide-react'
-import ResponsiveCodeBlock from '@/components/code/ResponsiveCodeBlock'
+// ResponsiveCodeBlock removed - using simple code display
 
 interface Integration {
   id: string
@@ -799,11 +799,9 @@ export default function IntegrationExamples() {
                         </>
                       )}
                     </button>
-                    <ResponsiveCodeBlock
-                      code={selectedIntegration.code.setup}
-                      language="yaml"
-                      showLineNumbers
-                    />
+                    <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+                      <code>{selectedIntegration.code.setup}</code>
+                    </pre>
                   </div>
                 </div>
               )}
@@ -830,11 +828,9 @@ export default function IntegrationExamples() {
                         </>
                       )}
                     </button>
-                    <ResponsiveCodeBlock
-                      code={selectedIntegration.code.implementation}
-                      language="python"
-                      showLineNumbers
-                    />
+                    <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+                      <code>{selectedIntegration.code.implementation}</code>
+                    </pre>
                   </div>
                 </div>
               )}
@@ -861,11 +857,9 @@ export default function IntegrationExamples() {
                         </>
                       )}
                     </button>
-                    <ResponsiveCodeBlock
-                      code={selectedIntegration.code.testing}
-                      language="bash"
-                      showLineNumbers
-                    />
+                    <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+                      <code>{selectedIntegration.code.testing}</code>
+                    </pre>
                   </div>
                 </div>
               )}

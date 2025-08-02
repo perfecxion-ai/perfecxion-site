@@ -1,15 +1,65 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Settings, RefreshCw, Download, Calendar, Filter } from 'lucide-react'
-import KPIGrid from './KPIGrid'
-import RealTimeMetrics from './RealTimeMetrics'
-import VulnerabilityHeatmap from './VulnerabilityHeatmap'
-import TrendAnalysisChart from './TrendAnalysisChart'
-import AttackTimelineChart from './AttackTimelineChart'
-import DashboardWidget from './DashboardWidget'
-import InteractiveFilters from './InteractiveFilters'
+import { Settings, RefreshCw, Download, Calendar, Filter, BarChart3, Shield, AlertTriangle } from 'lucide-react'
 import { SecurityMetrics, TimePeriod, AnalyticsFilters } from '@/lib/analytics-types'
+
+// Simple placeholder components
+const KPIGrid = ({ metrics }: { metrics: SecurityMetrics }) => (
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm text-gray-600 dark:text-gray-400">Threat Detection Rate</p>
+          <p className="text-2xl font-bold text-gray-900 dark:text-white">{metrics.threatDetectionRate.toFixed(1)}%</p>
+        </div>
+        <Shield className="w-8 h-8 text-green-500" />
+      </div>
+    </div>
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm text-gray-600 dark:text-gray-400">Active Threats</p>
+          <p className="text-2xl font-bold text-gray-900 dark:text-white">{metrics.activeThreats}</p>
+        </div>
+        <AlertTriangle className="w-8 h-8 text-red-500" />
+      </div>
+    </div>
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm text-gray-600 dark:text-gray-400">Compliance Score</p>
+          <p className="text-2xl font-bold text-gray-900 dark:text-white">{metrics.complianceScore.toFixed(1)}%</p>
+        </div>
+        <BarChart3 className="w-8 h-8 text-blue-500" />
+      </div>
+    </div>
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm text-gray-600 dark:text-gray-400">System Uptime</p>
+          <p className="text-2xl font-bold text-gray-900 dark:text-white">{metrics.systemUptime.toFixed(1)}%</p>
+        </div>
+        <Shield className="w-8 h-8 text-green-500" />
+      </div>
+    </div>
+  </div>
+)
+
+const DashboardWidget = ({ title, description, children, fullWidth }: { 
+  title: string; 
+  description: string; 
+  children: React.ReactNode; 
+  fullWidth?: boolean 
+}) => (
+  <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm ${fullWidth ? 'col-span-full' : ''}`}>
+    <div className="border-b border-gray-200 dark:border-gray-700 p-4">
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
+      <p className="text-sm text-gray-600 dark:text-gray-400">{description}</p>
+    </div>
+    {children}
+  </div>
+)
 
 export default function AnalyticsDashboard() {
   const [timeRange, setTimeRange] = useState<TimePeriod>('24h')
@@ -134,37 +184,43 @@ export default function AnalyticsDashboard() {
 
       {/* Interactive Filters */}
       {showFilters && (
-        <InteractiveFilters
-          filters={filters}
-          onFiltersChange={setFilters}
-          onClose={() => setShowFilters(false)}
-        />
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Filters</h3>
+          <p className="text-gray-600 dark:text-gray-400">Advanced filtering options will be available here.</p>
+          <button 
+            onClick={() => setShowFilters(false)}
+            className="mt-4 px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+          >
+            Close
+          </button>
+        </div>
       )}
 
       {/* KPI Grid */}
-      <KPIGrid metrics={securityMetrics} timeRange={timeRange} />
+      <KPIGrid metrics={securityMetrics} />
 
-      {/* Real-time Metrics */}
-      <RealTimeMetrics timeRange={timeRange} />
-
-      {/* Main Charts Grid */}
+      {/* Placeholder for charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Vulnerability Heatmap */}
         <DashboardWidget
           title="Vulnerability Heat Map"
           description="System vulnerability distribution by severity"
           fullWidth={false}
         >
-          <VulnerabilityHeatmap timeRange={timeRange} filters={filters} />
+          <div className="p-8 text-center text-gray-500 dark:text-gray-400">
+            <BarChart3 className="w-16 h-16 mx-auto mb-4 opacity-50" />
+            <p>Vulnerability heatmap visualization</p>
+          </div>
         </DashboardWidget>
 
-        {/* Trend Analysis */}
         <DashboardWidget
           title="Security Trends"
           description="Key security metrics over time"
           fullWidth={false}
         >
-          <TrendAnalysisChart timeRange={timeRange} filters={filters} />
+          <div className="p-8 text-center text-gray-500 dark:text-gray-400">
+            <BarChart3 className="w-16 h-16 mx-auto mb-4 opacity-50" />
+            <p>Trend analysis chart</p>
+          </div>
         </DashboardWidget>
       </div>
 
@@ -174,7 +230,10 @@ export default function AnalyticsDashboard() {
         description="Chronological view of security events and incidents"
         fullWidth={true}
       >
-        <AttackTimelineChart timeRange={timeRange} filters={filters} />
+        <div className="p-8 text-center text-gray-500 dark:text-gray-400">
+          <BarChart3 className="w-16 h-16 mx-auto mb-4 opacity-50" />
+          <p>Attack timeline visualization</p>
+        </div>
       </DashboardWidget>
 
       {/* Additional Widgets Grid */}

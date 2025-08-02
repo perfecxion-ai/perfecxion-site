@@ -5,7 +5,7 @@ import { Search, Filter, Grid, List, BookOpen, FileText, Newspaper, Star, Clock,
 import { ContentFilter, SearchResult, ContentCategory, ContentTag, LearningPath } from '@/lib/content-types'
 import { contentManager } from '@/lib/content-manager'
 import ContentCard from './ContentCard'
-import { default as FilterComponent } from './ContentFilter'
+// ContentFilter component removed - using simple filter
 import LearningPathCard from './LearningPathCard'
 
 interface ContentHubProps {
@@ -211,12 +211,10 @@ export default function ContentHub({
         {/* Filters Panel */}
         {showFiltersPanel && (
           <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6">
-            <FilterComponent
-              filters={filters}
-              categories={categories}
-              tags={tags}
-              onChange={handleFilterChange}
-            />
+            <div className="space-y-4">
+              <h3 className="font-semibold text-gray-900 dark:text-white">Filters</h3>
+              <p className="text-gray-600 dark:text-gray-400">Advanced filtering options will be available here.</p>
+            </div>
           </div>
         )}
       </div>

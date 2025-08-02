@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, ChevronDown, Search, Calendar } from 'lucide-react'
 import ThemeToggle from '../ThemeToggle'
-import MobileSearch from './MobileSearch'
+// MobileSearch component removed - using simple search
 
 interface NavItem {
   name: string
@@ -221,7 +221,29 @@ export default function MobileNav() {
       )}
 
       {/* Search overlay */}
-      {searchOpen && <MobileSearch onClose={() => setSearchOpen(false)} />}
+      {searchOpen && (
+        <div className="fixed inset-0 bg-white dark:bg-gray-900 z-50 lg:hidden">
+          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+            <div className="flex items-center gap-3">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                autoFocus
+              />
+              <button
+                onClick={() => setSearchOpen(false)}
+                className="p-2 text-gray-600 dark:text-gray-400"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+          <div className="p-4">
+            <p className="text-gray-600 dark:text-gray-400">Search functionality will be available here.</p>
+          </div>
+        </div>
+      )}
 
       {/* Spacer to prevent content from going under fixed header */}
       <div className="lg:hidden h-[60px]" />

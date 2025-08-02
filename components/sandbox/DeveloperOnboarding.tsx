@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { ChevronRight, CheckCircle, Clock, Code, Terminal, BookOpen, Zap, ArrowRight, Shield } from 'lucide-react'
-import ResponsiveCodeBlock from '@/components/code/ResponsiveCodeBlock'
+// ResponsiveCodeBlock removed - using simple code display
 
 interface OnboardingStep {
   id: string
@@ -211,11 +211,9 @@ curl -X POST https://api.perfecxion.ai/v1/scan/model \\
               ))}
             </div>
 
-            <ResponsiveCodeBlock
-              code={quickStartCode[selectedLanguage as keyof typeof quickStartCode]}
-              language={selectedLanguage === 'curl' ? 'bash' : selectedLanguage}
-              showLineNumbers
-            />
+            <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+              <code>{quickStartCode[selectedLanguage as keyof typeof quickStartCode]}</code>
+            </pre>
           </div>
 
           <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6">

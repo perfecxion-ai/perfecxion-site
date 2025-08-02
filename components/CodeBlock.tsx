@@ -1,8 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Copy, Check } from 'lucide-react'
-import ResponsiveCodeBlock from './mobile/ResponsiveCodeBlock'
 
 interface CodeBlockProps {
   children: string
@@ -12,18 +11,7 @@ interface CodeBlockProps {
 }
 
 export default function CodeBlock({ children, language = 'text', filename, className = '' }: CodeBlockProps) {
-  const [isMobile, setIsMobile] = useState(false)
   const [copied, setCopied] = useState(false)
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024)
-    }
-    
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(children)
@@ -31,24 +19,14 @@ export default function CodeBlock({ children, language = 'text', filename, class
     setTimeout(() => setCopied(false), 2000)
   }
 
-  // Use responsive code block on mobile
-  if (isMobile) {
-    return (
-      <ResponsiveCodeBlock
-        language={language}
-        filename={filename}
-        showLineNumbers={true}
-        className={className}
-      >
-        {children}
-      </ResponsiveCodeBlock>
-    )
-  }
-
-  // Desktop version
   return (
     <div className="relative group">
-      <pre className={`bg-gray-900 dark:bg-gray-950 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm leading-relaxed ${className}`}>
+      {filename && (
+        <div className="bg-gray-800 text-gray-300 px-4 py-2 text-sm font-mono rounded-t-lg border-b border-gray-700">
+          {filename}
+        </div>
+      )}
+      <pre className={`bg-gray-900 dark:bg-gray-950 text-gray-100 p-4 ${filename ? 'rounded-b-lg' : 'rounded-lg'} overflow-x-auto text-sm leading-relaxed ${className}`}>
         <code className="font-mono">{children}</code>
       </pre>
       <button

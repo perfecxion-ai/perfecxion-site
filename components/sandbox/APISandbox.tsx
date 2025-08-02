@@ -2,10 +2,7 @@
 
 import { useState } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import EndpointExplorer from './EndpointExplorer'
-import CodeGenerator from './CodeGenerator'
-import AuthenticationDemo from './AuthenticationDemo'
-import ResponseViewer from './ResponseViewer'
+// Removed unused components - using placeholder content
 import { Code2, Lock, Send, FileJson } from 'lucide-react'
 
 interface APIResponse {
@@ -119,33 +116,35 @@ export default function APISandbox() {
         </TabsList>
 
         <TabsContent value="explorer">
-          <EndpointExplorer
-            apiKey={apiKey}
-            onTestRequest={handleTestRequest}
-            selectedEndpoint={selectedEndpoint}
-            setSelectedEndpoint={setSelectedEndpoint}
-            isLoading={isLoading}
-          />
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-8 text-center">
+            <Send className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+            <h3 className="text-lg font-semibold mb-2">API Endpoint Explorer</h3>
+            <p className="text-gray-600 dark:text-gray-400">Interactive API endpoint testing will be available here.</p>
+          </div>
         </TabsContent>
 
         <TabsContent value="code">
-          <CodeGenerator
-            endpoint={selectedEndpoint}
-            apiKey={apiKey}
-            lastRequest={{
-              method: 'POST',
-              endpoint: selectedEndpoint,
-              params: {}
-            }}
-          />
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-8 text-center">
+            <Code2 className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+            <h3 className="text-lg font-semibold mb-2">Code Generator</h3>
+            <p className="text-gray-600 dark:text-gray-400">Automatic code generation tools will be available here.</p>
+          </div>
         </TabsContent>
 
         <TabsContent value="auth">
-          <AuthenticationDemo apiKey={apiKey} setApiKey={setApiKey} />
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-8 text-center">
+            <Lock className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+            <h3 className="text-lg font-semibold mb-2">Authentication Demo</h3>
+            <p className="text-gray-600 dark:text-gray-400">Authentication testing tools will be available here.</p>
+          </div>
         </TabsContent>
 
         <TabsContent value="response">
-          <ResponseViewer response={response} isLoading={isLoading} />
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-8 text-center">
+            <FileJson className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+            <h3 className="text-lg font-semibold mb-2">Response Viewer</h3>
+            <p className="text-gray-600 dark:text-gray-400">API response visualization will be available here.</p>
+          </div>
         </TabsContent>
       </Tabs>
     </div>
