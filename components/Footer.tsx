@@ -71,19 +71,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <div className="flex items-center">
-                <Image
-                  src="/logos/logo.svg"
-                  alt="perfecXion.ai"
-                  width={200}
-                  height={50}
-                  className="h-12 w-auto"
-                  priority
-                />
-                <span className="ml-3 text-xl font-bold text-gray-900 dark:text-white">
-                  perfecXion.ai
-                </span>
-              </div>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                perfecXion.ai
+              </h2>
             </div>
             <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
               Leading AI security and compliance solutions for the modern enterprise.
