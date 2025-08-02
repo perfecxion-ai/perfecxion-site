@@ -1,13 +1,74 @@
-# Securing Agentic AI: The New Frontier in Cybersecurity
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document http://www.reportlab.com
+1 0 obj
+<<
+/F1 2 0 R /F2 3 0 R
+>>
+endobj
+2 0 obj
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
+endobj
+3 0 obj
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
+endobj
+4 0 obj
+<<
+/Contents 8 0 R /MediaBox [ 0 0 612 792 ] /Parent 7 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
 
-## Executive Summary
+>> 
+  /Type /Page
+>>
+endobj
+5 0 obj
+<<
+/PageMode /UseNone /Pages 7 0 R /Type /Catalog
+>>
+endobj
+6 0 obj
+<<
+/Author (\(anonymous\)) /CreationDate (D:20250801211012-04'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20250801211012-04'00') /Producer (ReportLab PDF Library - www.reportlab.com) 
+  /Subject (\(unspecified\)) /Title (\(anonymous\)) /Trapped /False
+>>
+endobj
+7 0 obj
+<<
+/Count 1 /Kids [ 4 0 R ] /Type /Pages
+>>
+endobj
+8 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 1077
+>>
+stream
+Gat=)_/A!e'YNTZhD&fu?H\TS-b!pH!!*kk(/_>l`?&^_8RbDV.S1rVhfgL%9%%Hs=9Jn=RX?o0B&60I/,U[Kn%:"D,GX/b&k^`>'pPN;Pd3O<@s7D@,!"Jlg<oUD?H1Zu4*0KeSg?b#op2m%A_*+4@[ZmM(>5dUf@q=[c6Q[ZE8EWe9"HV-"I7I'r=*<QdjKU=4(iQQNg0@!Z>YuP-qQ>?<K`kY^H_/>q6!+FT!'].mFCe(lFO_4b$XZ0QM+o2C&`SWDR,[PXI%+kcTi$+Om/RACZ,I5UU\D_m\XXg?auS*%h(*lSJOG.e;.m`O=b+N"c5N1njae3p>i`'luDA`:sg11C4$S]I&2]#<@NDL+GEDjP$AA>rOIt^<S&de#YZFq#[n/WcIOg7djucE/Es4_lG++(O=K)h'%h;+_5"7`9>OMYf1kc+=-NqHgTUbq#e.Vg>MI`pj.'k(L`m'>5"Be$@EH(N5k0LdOU^U);l)>3E-]DD4@4Eq[lUGla2(sXdMV8rmH=A,P/o/m0JNegc-LIZes)*.XsUd\`d)YC%;(kDQlVl-E)sD-fX:uVk:G!k9DUZ2Q['maAlI]$VoEM+hHE`8Gk>P&_,DtFZ%7Rm&C3#-K!e1Z,Jcurg]&!>oEZ=CGU&rgYj5.X:k*upn/'e;0+CfeJXem&:a'7E4NA0U+6R(rKF7$?02229r\&7sdbflQZ`'.?<JYj7eFtm#knolRk^*e/F#p-9OGsqC-ARPC$NPgc(<=+rL\Vm]D&[RJ>M;Sj7`:GRik_HPHa4I!5<nnnFk,Z[GD_<Q:P+FPFBclmEJS%G4MXssXDZ<ufNNP'ig48P\Hj3ZLnb7bYC%=m3Q:1XM!l:f7q<@Q`,M89Ln"Yp4H"kH>7a'o`j@_,>"gXGL079K-JbfD;M3df[F7W5o?U\M#+33Qq;T_oO`AK20;T?73+<Ess./5X*F"ZjB);PO.&Y$n0o;-l@n>oWUa-t7Ra"%L^c24@:n=FdjBPh.]dp=MqRF?2(.%fpi=7Bj[T_*#R7*WU'P5$[UK[U7_?@TA_j=qT;L+A6;ft*i9m3"r\tt<,oZC>4~>endstream
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000073 00000 n 
+0000000114 00000 n 
+0000000221 00000 n 
+0000000333 00000 n 
+0000000526 00000 n 
+0000000594 00000 n 
+0000000877 00000 n 
+0000000936 00000 n 
+trailer
+<<
+/ID 
+[<18a88259c97b52a322863b1f70fb64b8><18a88259c97b52a322863b1f70fb64b8>]
+% ReportLab generated PDF document -- digest (http://www.reportlab.com)
 
-The emergence of agentic AI systems represents a fundamental shift in cybersecurity that demands immediate attention from security leaders. Unlike traditional AI that responds to prompts, agentic AI operates autonomously, making thousands of decisions per second while orchestrating multiple tools and APIs to achieve complex, long-term objectives. This autonomy introduces unprecedented security challenges that traditional cybersecurity frameworks cannot address.
-
-This white paper provides CISOs and security teams with a comprehensive framework for securing agentic AI systems. We examine the unique threat landscape, present a practical defense playbook, and outline governance strategies that balance security with operational effectiveness. The stakes are high: a compromised agentic AI system can act as a persistent, highly capable insider threat with perfect recall and superhuman speed.
-
-[Full content as provided in the draft above]
-
----
-
-**Note: This is a placeholder file. The actual PDF should be generated from the complete white paper content provided above.** 
+/Info 6 0 R
+/Root 5 0 R
+/Size 9
+>>
+startxref
+2104
+%%EOF

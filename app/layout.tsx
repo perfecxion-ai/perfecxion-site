@@ -31,6 +31,19 @@ export const metadata: Metadata = {
   authors: [{ name: 'perfecXion.ai Team' }],
   creator: 'perfecXion.ai',
   publisher: 'perfecXion.ai',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/logos/icon.png', type: 'image/png', sizes: '512x512' },
+      { url: '/logos/icon.svg', type: 'image/svg+xml' }
+    ],
+    apple: '/logos/icon.png',
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/logos/icon.png',
+    },
+  },
+  manifest: '/site.webmanifest',
   openGraph: {
     type: 'website',
     locale: 'en_US',

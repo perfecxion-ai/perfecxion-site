@@ -72,11 +72,11 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="mb-6">
               <Image
-                src="/logo-perfecxion.svg"
+                src="/logos/logo.svg"
                 alt="perfecXion.ai"
-                width={160}
-                height={40}
-                className="h-8 w-auto"
+                width={200}
+                height={50}
+                className="h-10 w-auto"
               />
             </div>
             <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
