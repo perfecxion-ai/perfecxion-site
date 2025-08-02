@@ -27,18 +27,6 @@ interface WhitePaper {
 
 const whitePapers: WhitePaper[] = [
   {
-    id: 'securing-agentic-ai',
-    title: 'Securing Agentic AI: The New Frontier in Cybersecurity',
-    description: 'Comprehensive guide to securing autonomous AI systems that operate independently, make decisions, and orchestrate tools. Covers the unique threat landscape, defense strategies, and governance frameworks for agentic AI security.',
-    author: 'perfecXion AI Security Team',
-    date: '2025-02-01',
-    category: 'AI Security Fundamentals',
-    downloadUrl: '/white-papers/securing-agentic-ai.pdf',
-    readTime: '45 min read',
-    featured: true,
-    icon: Shield
-  },
-  {
     id: 'what-is-ai-security',
     title: 'What is AI Security? A Beginner\'s Guide to Protecting Your Most Valuable Intelligence',
     description: 'An introductory guide to AI security fundamentals, covering the unique threats facing AI systems and practical strategies for protecting artificial intelligence in enterprise environments.',
@@ -51,18 +39,6 @@ const whitePapers: WhitePaper[] = [
     icon: Shield
   },
   {
-    id: 'from-data-to-dialogue-llm-training',
-    title: 'From Data to Dialogue: A Deep Dive into the Training of Large Language Models',
-    description: 'Comprehensive guide to LLM training pipeline, covering data collection, model architecture, distributed training, security considerations, and deployment strategies for large-scale language models.',
-    author: 'perfecXion AI Research Team',
-    date: '2025-02-01',
-    category: 'Technical Research',
-    downloadUrl: '/white-papers/from-data-to-dialogue-llm-training-deep-dive.pdf',
-    readTime: '90 min read',
-    featured: true,
-    icon: Brain
-  },
-  {
     id: 'ai-red-team-methodology',
     title: 'AI Red Team Testing Methodology: A Comprehensive Framework',
     description: 'Comprehensive guide to AI-specific red team testing, covering unique attack vectors, methodology frameworks, vulnerability discovery techniques, and practical exploitation strategies for AI systems.',
@@ -73,18 +49,6 @@ const whitePapers: WhitePaper[] = [
     readTime: '60 min read',
     featured: true,
     icon: Target
-  },
-  {
-    id: 'ai-compliance-frameworks',
-    title: 'AI Compliance Frameworks: Navigating Regulatory Requirements',
-    description: 'Comprehensive guide to navigating AI regulatory requirements, covering NIST AI RMF, ISO 42001, EU AI Act, and industry-specific compliance frameworks for healthcare, finance, and critical infrastructure.',
-    author: 'perfecXion Compliance Team',
-    date: '2025-02-01',
-    category: 'Compliance',
-    downloadUrl: '/white-papers/ai-compliance-frameworks.pdf',
-    readTime: '45 min read',
-    featured: true,
-    icon: Shield
   },
   {
     id: 'prompt-injection-defense',
@@ -109,30 +73,6 @@ const whitePapers: WhitePaper[] = [
     readTime: '50 min read',
     featured: true,
     icon: Network
-  },
-  {
-    id: 'model-extraction-attacks',
-    title: 'Model Extraction Attacks: Detection and Prevention',
-    description: 'Comprehensive guide to detecting and preventing model extraction attacks, covering query-based extraction, membership inference, model inversion, and robust defense mechanisms for protecting AI models.',
-    author: 'Dr. Michael Rodriguez, ML Security Expert',
-    date: '2025-02-01',
-    category: 'Technical Research',
-    downloadUrl: '/white-papers/model-extraction-attacks.pdf',
-    readTime: '45 min read',
-    featured: true,
-    icon: Database
-  },
-  {
-    id: 'ai-supply-chain-security',
-    title: 'AI Supply Chain Security: Protecting the Development Pipeline',
-    description: 'Comprehensive guide to securing AI development pipelines, covering dependency management, model provenance, training data security, infrastructure protection, and supply chain attack prevention with practical implementation strategies.',
-    author: 'perfecXion Security Team',
-    date: '2025-02-01',
-    category: 'Supply Chain',
-    downloadUrl: '/white-papers/ai-supply-chain-security.pdf',
-    readTime: '55 min read',
-    featured: true,
-    icon: Shield
   }
 ]
 
@@ -141,9 +81,7 @@ const categories = [
   { name: 'AI Security Fundamentals', value: 'AI Security Fundamentals', count: whitePapers.filter(wp => wp.category === 'AI Security Fundamentals').length },
   { name: 'Technical Research', value: 'Technical Research', count: whitePapers.filter(wp => wp.category === 'Technical Research').length },
   { name: 'Red Team Testing', value: 'Red Team Testing', count: whitePapers.filter(wp => wp.category === 'Red Team Testing').length },
-  { name: 'Compliance', value: 'Compliance', count: whitePapers.filter(wp => wp.category === 'Compliance').length },
   { name: 'AI Architecture', value: 'AI Architecture', count: whitePapers.filter(wp => wp.category === 'AI Architecture').length },
-  { name: 'Supply Chain', value: 'Supply Chain', count: whitePapers.filter(wp => wp.category === 'Supply Chain').length },
 ]
 
 export default function WhitePapersPage() {

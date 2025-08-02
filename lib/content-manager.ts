@@ -1,9 +1,9 @@
-import { 
-  ContentIndex, 
-  ContentFilter, 
-  SearchResult, 
-  LearningContent, 
-  BlogContent, 
+import {
+  ContentIndex,
+  ContentFilter,
+  SearchResult,
+  LearningContent,
+  BlogContent,
   WhitePaperContent,
   ContentRecommendation,
   LearningPath,
@@ -229,44 +229,6 @@ class ContentManager {
       },
       {
         type: 'whitepaper',
-        title: 'AI Agent Security Framework',
-        description: 'Comprehensive security framework for protecting AI agents and multi-agent systems in production environments',
-        publishedAt: '2024-02-15',
-        readingTime: 55,
-        difficulty: 'intermediate',
-        category: 'implementation',
-        tags: ['ai-agents', 'security-framework', 'multi-agent', 'production'],
-        slug: 'ai-agent-security',
-        pdfUrl: '/white-papers/ai-agent-security.pdf',
-        fileSize: '3.2 MB',
-        pageCount: 35,
-        gated: true,
-        featured: true,
-        summary: 'Deep dive into securing AI agents, covering architecture, monitoring, and risk management strategies',
-        keyTopics: ['Agent Architecture', 'Security Monitoring', 'Risk Assessment', 'Incident Response'],
-        targetAudience: ['AI Engineers', 'Security Architects', 'DevOps Teams']
-      },
-      {
-        type: 'whitepaper',
-        title: 'AI Compliance Frameworks',
-        description: 'Navigate regulatory requirements and compliance frameworks for AI systems across global jurisdictions',
-        publishedAt: '2024-03-10',
-        readingTime: 50,
-        difficulty: 'intermediate',
-        category: 'compliance',
-        tags: ['compliance', 'regulation', 'eu-ai-act', 'nist', 'governance'],
-        slug: 'ai-compliance-frameworks',
-        pdfUrl: '/white-papers/ai-compliance-frameworks.pdf',
-        fileSize: '2.8 MB',
-        pageCount: 32,
-        gated: true,
-        featured: true,
-        summary: 'Comprehensive guide to AI compliance including EU AI Act, NIST AI RMF, and industry-specific requirements',
-        keyTopics: ['EU AI Act', 'NIST AI RMF', 'Compliance Automation', 'Audit Procedures'],
-        targetAudience: ['Compliance Officers', 'Legal Teams', 'Risk Managers', 'CISOs']
-      },
-      {
-        type: 'whitepaper',
         title: 'AI Red Team Methodology',
         description: 'Advanced methodologies and techniques for red team testing of AI systems and models',
         publishedAt: '2024-04-05',
@@ -282,42 +244,6 @@ class ContentManager {
         summary: 'Comprehensive methodology for conducting red team exercises against AI systems',
         keyTopics: ['Attack Methodologies', 'Testing Frameworks', 'Adversarial Techniques', 'Assessment Metrics'],
         targetAudience: ['Security Researchers', 'Red Team Operators', 'Penetration Testers']
-      },
-      {
-        type: 'whitepaper',
-        title: 'AI Supply Chain Security',
-        description: 'Securing AI models and components throughout the development and deployment supply chain',
-        publishedAt: '2024-05-20',
-        readingTime: 45,
-        difficulty: 'intermediate',
-        category: 'supply-chain',
-        tags: ['supply-chain', 'model-security', 'third-party-risk', 'vendor-management'],
-        slug: 'ai-supply-chain-security',
-        pdfUrl: '/white-papers/ai-supply-chain-security.pdf',
-        fileSize: '2.9 MB',
-        pageCount: 30,
-        gated: true,
-        summary: 'Framework for securing AI supply chains from model development to deployment',
-        keyTopics: ['Supply Chain Risks', 'Model Provenance', 'Vendor Assessment', 'Security Controls'],
-        targetAudience: ['Security Teams', 'Procurement Teams', 'AI Engineers', 'Risk Managers']
-      },
-      {
-        type: 'whitepaper',
-        title: 'Model Extraction Attacks: Detection and Prevention',
-        description: 'Advanced techniques for detecting and preventing model extraction attacks against proprietary AI systems',
-        publishedAt: '2024-06-12',
-        readingTime: 40,
-        difficulty: 'advanced',
-        category: 'threats',
-        tags: ['model-extraction', 'ip-protection', 'attack-detection', 'adversarial'],
-        slug: 'model-extraction-attacks',
-        pdfUrl: '/white-papers/model-extraction-attacks.pdf',
-        fileSize: '2.6 MB',
-        pageCount: 25,
-        gated: true,
-        summary: 'Deep dive into model extraction attack techniques and comprehensive defense strategies',
-        keyTopics: ['Extraction Techniques', 'Detection Methods', 'Prevention Strategies', 'IP Protection'],
-        targetAudience: ['AI Researchers', 'Security Engineers', 'Data Scientists', 'IP Attorneys']
       },
       {
         type: 'whitepaper',
@@ -340,23 +266,22 @@ class ContentManager {
       },
       {
         type: 'whitepaper',
-        title: 'From Data to Dialogue: Training Large Language Models',
-        description: 'Deep dive into LLM training processes, security considerations, and best practices for safe model development',
-        publishedAt: '2024-08-15',
-        readingTime: 75,
-        difficulty: 'advanced',
-        category: 'training',
-        tags: ['llm-training', 'model-development', 'security', 'best-practices'],
-        slug: 'from-data-to-dialogue-llm-training-deep-dive',
-        pdfUrl: '/white-papers/from-data-to-dialogue-llm-training-deep-dive.pdf',
-        webUrl: '/White Papers/page',
-        fileSize: '5.2 MB',
-        pageCount: 58,
+        title: 'AI Agent Security Framework',
+        description: 'Comprehensive security framework for protecting AI agents and multi-agent systems in production environments',
+        publishedAt: '2024-02-15',
+        readingTime: 55,
+        difficulty: 'intermediate',
+        category: 'implementation',
+        tags: ['ai-agents', 'security-framework', 'multi-agent', 'production'],
+        slug: 'ai-agent-security',
+        pdfUrl: '/white-papers/ai-agent-security.pdf',
+        fileSize: '3.2 MB',
+        pageCount: 35,
         gated: true,
         featured: true,
-        summary: 'Comprehensive guide to secure LLM training including data preparation, model architecture, and safety measures',
-        keyTopics: ['Training Methodologies', 'Data Security', 'Model Architecture', 'Safety Measures'],
-        targetAudience: ['ML Engineers', 'Data Scientists', 'AI Researchers', 'Security Teams']
+        summary: 'Deep dive into securing AI agents, covering architecture, monitoring, and risk management strategies',
+        keyTopics: ['Agent Architecture', 'Security Monitoring', 'Risk Assessment', 'Incident Response'],
+        targetAudience: ['AI Engineers', 'Security Architects', 'DevOps Teams']
       }
     ]
   }
@@ -407,7 +332,7 @@ class ContentManager {
         ...content.tags.map(tag => tag.toLowerCase()),
         content.category.toLowerCase()
       ]
-      
+
       this.searchIndex.set(content.slug, searchTerms)
     })
   }
@@ -426,7 +351,7 @@ class ContentManager {
     allContent.forEach(content => {
       // Count categories
       categoryMap.set(content.category, (categoryMap.get(content.category) || 0) + 1)
-      
+
       // Count tags
       content.tags.forEach(tag => {
         tagMap.set(tag, (tagMap.get(tag) || 0) + 1)
@@ -483,7 +408,7 @@ class ContentManager {
 
     // Get content based on type filter
     let contentToSearch: (LearningContent | BlogContent | WhitePaperContent)[] = []
-    
+
     if (!filters.type || filters.type === 'all') {
       contentToSearch = [
         ...this.contentIndex.learning,
@@ -515,19 +440,19 @@ class ContentManager {
           score += 10
           highlights.push(content.title)
         }
-        
+
         // Description match
         if (content.description.toLowerCase().includes(term)) {
           score += 5
           highlights.push(content.description.substring(0, 100) + '...')
         }
-        
+
         // Tag match
         if (content.tags.some(tag => tag.toLowerCase().includes(term))) {
           score += 3
           highlights.push(`Tag: ${content.tags.find(tag => tag.toLowerCase().includes(term))}`)
         }
-        
+
         // Category match
         if (content.category.toLowerCase().includes(term)) {
           score += 2
@@ -548,7 +473,7 @@ class ContentManager {
     // Sort by score and apply sorting preferences
     results.sort((a, b) => {
       if (filters.sortBy === 'title') {
-        return filters.sortOrder === 'desc' 
+        return filters.sortOrder === 'desc'
           ? b.content.title.localeCompare(a.content.title)
           : a.content.title.localeCompare(b.content.title)
       }
@@ -569,7 +494,7 @@ class ContentManager {
     if (!currentContent) return []
 
     const recommendations: ContentRecommendation[] = []
-    
+
     // Similar topic recommendations
     const similarContent = this.findSimilarContent(currentContent)
     similarContent.forEach(content => {
@@ -584,7 +509,7 @@ class ContentManager {
     if (currentContent.difficulty === 'beginner') {
       const intermediateContent = this.getContentByDifficulty('intermediate')
         .filter(content => content.category === currentContent.category)
-      
+
       intermediateContent.forEach(content => {
         recommendations.push({
           contentId: content.slug,
@@ -665,7 +590,7 @@ class ContentManager {
       ...this.contentIndex.blog,
       ...this.contentIndex.whitepapers
     ]
-    
+
     return allContent
       .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
       .slice(0, limit)
