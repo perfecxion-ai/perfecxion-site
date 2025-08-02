@@ -27,6 +27,18 @@ interface WhitePaper {
 
 const whitePapers: WhitePaper[] = [
   {
+    id: 'securing-agentic-ai',
+    title: 'Securing Agentic AI: The New Frontier in Cybersecurity',
+    description: 'Comprehensive guide to securing autonomous AI systems that operate independently, make decisions, and orchestrate tools. Covers the unique threat landscape, defense strategies, and governance frameworks for agentic AI security.',
+    author: 'perfecXion AI Security Team',
+    date: '2025-02-01',
+    category: 'AI Security Fundamentals',
+    downloadUrl: '/white-papers/securing-agentic-ai.pdf',
+    readTime: '45 min read',
+    featured: true,
+    icon: Shield
+  },
+  {
     id: 'what-is-ai-security',
     title: 'What is AI Security? A Beginner\'s Guide to Protecting Your Most Valuable Intelligence',
     description: 'An introductory guide to AI security fundamentals, covering the unique threats facing AI systems and practical strategies for protecting artificial intelligence in enterprise environments.',
@@ -53,12 +65,12 @@ const whitePapers: WhitePaper[] = [
   {
     id: 'ai-red-team-methodology',
     title: 'AI Red Team Testing Methodology: A Comprehensive Framework',
-    description: 'Detailed methodology for conducting AI-specific red team assessments, including attack vector analysis, vulnerability discovery, and remediation strategies.',
+    description: 'Comprehensive guide to AI-specific red team testing, covering unique attack vectors, methodology frameworks, vulnerability discovery techniques, and practical exploitation strategies for AI systems.',
     author: 'perfecXion Security Research Team',
-    date: '2025-01-15',
+    date: '2025-02-01',
     category: 'Red Team Testing',
     downloadUrl: '/white-papers/ai-red-team-methodology.pdf',
-    readTime: '45 min read',
+    readTime: '60 min read',
     featured: true,
     icon: Target
   },
@@ -161,7 +173,7 @@ export default function WhitePapersPage() {
             Deep technical insights and research findings from our AI security experts.
             Download comprehensive white papers covering red teaming, compliance, and emerging threats.
           </p>
-          
+
           {/* Notice Banner */}
           <div className="mt-8 mx-auto max-w-2xl">
             <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 rounded-lg p-4">
@@ -242,7 +254,7 @@ export default function WhitePapersPage() {
             </h2>
             <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700"></div>
           </div>
-          
+
           {/* Category Filter */}
           <div className="flex flex-wrap gap-2 mb-8">
             {categories.map((category) => (
