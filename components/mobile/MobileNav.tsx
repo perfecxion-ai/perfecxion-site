@@ -96,9 +96,9 @@ export default function MobileNav() {
             <Image
               src="/logos/new-logo.png"
               alt="perfecXion.ai"
-              width={140}
-              height={35}
-              className="h-7 w-auto"
+              width={200}
+              height={50}
+              className="h-12 w-auto"
               priority
             />
           </Link>

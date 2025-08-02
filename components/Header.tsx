@@ -35,9 +35,9 @@ export default function Header() {
               <Image
                 src="/logos/new-logo.png"
                 alt="perfecXion.ai"
-                width={200}
-                height={50}
-                className="h-10 w-auto transition-transform group-hover:scale-105"
+                width={300}
+                height={75}
+                className="h-16 w-auto transition-transform group-hover:scale-105"
                 priority
               />
             </Link>
@@ -94,9 +94,9 @@ export default function Header() {
                 <Image
                   src="/logos/new-logo.png"
                   alt="perfecXion.ai"
-                  width={200}
-                  height={50}
-                  className="h-10 w-auto"
+                  width={300}
+                  height={75}
+                  className="h-16 w-auto"
                   priority
                 />
               </Link>
