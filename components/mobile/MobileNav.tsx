@@ -42,7 +42,6 @@ const navigation: NavItem[] = [
     children: [
       { name: 'Documentation', href: '/docs' },
       { name: 'Blog', href: '/blog' },
-      { name: 'White Papers', href: '/white-papers' },
       { name: 'Learn', href: '/learn' },
     ],
   },

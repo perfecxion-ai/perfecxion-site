@@ -37,7 +37,7 @@ export default function SearchFilters({
     { value: 'product', label: 'Products' },
     { value: 'blog', label: 'Blog Posts' },
     { value: 'docs', label: 'Documentation' },
-    { value: 'whitepaper', label: 'White Papers' },
+    
     { value: 'learn', label: 'Learning Resources' },
     { value: 'page', label: 'Pages' }
   ]

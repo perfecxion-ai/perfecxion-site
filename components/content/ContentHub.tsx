@@ -124,7 +124,7 @@ export default function ContentHub({
     switch (type) {
       case 'learning': return 'Learning'
       case 'blog': return 'Blog Posts'
-      case 'whitepaper': return 'White Papers'
+      
       default: return type
     }
   }

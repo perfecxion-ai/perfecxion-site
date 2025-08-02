@@ -33,7 +33,7 @@ function SearchContent() {
               What are you looking for?
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
-              Search for products, documentation, blog posts, white papers, and more.
+              Search for products, documentation, blog posts, and more.
             </p>
           </div>
         )}

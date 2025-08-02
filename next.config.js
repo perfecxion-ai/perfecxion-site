@@ -29,19 +29,7 @@ const nextConfig = {
   poweredByHeader: false,
   async headers() {
     return [
-      {
-        source: '/white-papers/:path*.pdf',
-        headers: [
-          {
-            key: 'Content-Type',
-            value: 'application/pdf',
-          },
-          {
-            key: 'Content-Disposition',
-            value: 'attachment',
-          },
-        ],
-      },
+
       {
         source: '/:path*',
         headers: [

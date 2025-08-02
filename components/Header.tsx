@@ -12,7 +12,6 @@ const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Products', href: '/products' },
   { name: 'Learn', href: '/learn' },
-  { name: 'White Papers', href: '/white-papers' },
   { name: 'Blog', href: '/blog' },
   { name: 'Docs', href: '/docs' },
   { name: 'About', href: '/about' },
@@ -24,7 +23,7 @@ export default function Header() {
   const pathname = usePathname()
 
   // Hide hamburger menu on pages with their own sidebar navigation
-  const hideMobileMenu = pathname.startsWith('/learn') || pathname.startsWith('/docs') || pathname.startsWith('/blog') || pathname.startsWith('/white-papers')
+  const hideMobileMenu = pathname.startsWith('/learn') || pathname.startsWith('/docs') || pathname.startsWith('/blog')
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">

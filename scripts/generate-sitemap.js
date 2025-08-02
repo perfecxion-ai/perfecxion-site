@@ -23,7 +23,7 @@ const staticPages = [
   '/contact',
   '/privacy',
   '/terms',
-  '/white-papers',
+
 ];
 
 // Generate sitemap XML

@@ -94,7 +94,7 @@ export default function ContentFilter({ filters, categories, tags, onChange }: C
             { value: 'all', label: 'All Content' },
             { value: 'learning', label: 'Learning Resources' },
             { value: 'blog', label: 'Blog Posts' },
-            { value: 'whitepaper', label: 'White Papers' }
+    
           ].map(option => (
             <label key={option.value} className="flex items-center">
               <input
