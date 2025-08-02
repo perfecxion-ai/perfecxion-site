@@ -96,10 +96,11 @@ export default function MobileNav() {
             <Image
               src="/logos/new-logo.png"
               alt="perfecXion.ai"
-              width={200}
-              height={50}
-              className="h-12 w-auto"
+              width={280}
+              height={70}
+              className="h-14 w-auto"
               priority
+              style={{ maxWidth: '200px' }}
             />
           </Link>
 

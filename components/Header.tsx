@@ -35,10 +35,11 @@ export default function Header() {
               <Image
                 src="/logos/new-logo.png"
                 alt="perfecXion.ai"
-                width={300}
-                height={75}
-                className="h-16 w-auto transition-transform group-hover:scale-105"
+                width={400}
+                height={100}
+                className="h-20 w-auto transition-transform group-hover:scale-105"
                 priority
+                style={{ maxWidth: '300px' }}
               />
             </Link>
           </div>
@@ -94,10 +95,11 @@ export default function Header() {
                 <Image
                   src="/logos/new-logo.png"
                   alt="perfecXion.ai"
-                  width={300}
-                  height={75}
-                  className="h-16 w-auto"
+                  width={400}
+                  height={100}
+                  className="h-20 w-auto"
                   priority
+                  style={{ maxWidth: '300px' }}
                 />
               </Link>
               <button
