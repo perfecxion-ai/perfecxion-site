@@ -36,7 +36,8 @@ import {
   Calendar,
   Clock,
   User,
-  Tag
+  Tag,
+  Star
 } from 'lucide-react';
 import MermaidDiagram from '@/components/MermaidDiagram';
 import MermaidCodeBlock from '@/components/MermaidCodeBlock';
@@ -133,6 +134,14 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   const cleanContent = cleanMdxContent(content);
   const headings = data.toc ? getHeadings(cleanContent) : [];
 
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+  }
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Navigation */}
@@ -162,6 +171,12 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             }`}>
               {data.category}
             </span>
+            {data.featured && (
+              <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400">
+                <Star className="h-3 w-3 mr-1" />
+                Featured
+              </span>
+            )}
           </div>
         )}
         
@@ -177,16 +192,12 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 dark:text-gray-400 mb-6">
           <div className="flex items-center gap-1">
             <Calendar className="h-4 w-4" />
-            {new Date(data.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            })}
+            {formatDate(data.date)}
           </div>
           {data.readTime && (
             <div className="flex items-center gap-1">
               <Clock className="h-4 w-4" />
-              {data.readTime} min read
+              {data.readTime}
             </div>
           )}
           {data.author && (
@@ -213,10 +224,10 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         )}
       </div>
 
-              {/* Content */}
-        <div className="prose prose-lg dark:prose-invert max-w-none">
-          <MDXRemote source={cleanContent} components={mdxComponents} />
-        </div>
+      {/* Content */}
+      <div className="prose prose-lg dark:prose-invert max-w-none">
+        <MDXRemote source={cleanContent} components={mdxComponents} />
       </div>
+    </div>
   );
 }
