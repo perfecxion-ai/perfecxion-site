@@ -104,28 +104,30 @@ Intelligence agencies estimate that cryptographically relevant quantum computers
 
 <div class="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/30 dark:to-blue-950/30 border border-purple-200 dark:border-purple-800 rounded-xl p-6 my-8">
 <h3 class="text-lg font-semibold mb-4 text-purple-800 dark:text-purple-200">Quantum Threat Timeline</h3>
-```
-Quantum Computing Evolution
-**2025-2027: Near-term Quantum Advantage**
-Limited quantum supremacy in specific domains
-Quantum machine learning proof-of-concepts
-Early quantum-resistant crypto deployment
-Quantum key distribution for critical systems
-**2028-2032: Practical Quantum Computing**
-Fault-tolerant quantum computers (1000+ logical qubits)
-Quantum algorithms for AI/ML optimization
-Breaking of RSA-2048 and ECC-256
-Quantum-enhanced cyberattacks
-**2033-2037: Quantum Computing Maturity**
-Large-scale quantum computers (10,000+ logical qubits)
-Quantum AI systems with unprecedented capabilities
-Complete cryptographic transition required
-Quantum vs. quantum security arms race
-2038+: Post-Quantum Era
-Ubiquitous quantum computing
-Quantum-native AI architectures
-New security paradigms emerge
-Classical cryptography obsolete
+
+```mermaid
+timeline
+    title Quantum Computing Evolution
+    2025-2027 : Near-term Quantum Advantage
+        : Limited quantum supremacy in specific domains
+        : Quantum machine learning proof-of-concepts
+        : Early quantum-resistant crypto deployment
+        : Quantum key distribution for critical systems
+    2028-2032 : Practical Quantum Computing
+        : Fault-tolerant quantum computers (1000+ logical qubits)
+        : Quantum algorithms for AI/ML optimization
+        : Breaking of RSA-2048 and ECC-256
+        : Quantum-enhanced cyberattacks
+    2033-2037 : Quantum Computing Maturity
+        : Large-scale quantum computers (10,000+ logical qubits)
+        : Quantum AI systems with unprecedented capabilities
+        : Complete cryptographic transition required
+        : Quantum vs. quantum security arms race
+    2038+ : Post-Quantum Era
+        : Ubiquitous quantum computing
+        : Quantum-native AI architectures
+        : New security paradigms emerge
+        : Classical cryptography obsolete
 ```
 </div>
 
@@ -284,28 +286,70 @@ The integration of AI with neural interfaces raises fundamental questions about 
 
 <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 border border-blue-200 dark:border-blue-800 rounded-xl p-6 my-8">
 <h4 class="text-md font-semibold mb-3 text-blue-800 dark:text-blue-200">Neural Interface Security Framework</h4>
-```
-Neural-AI Security Layers
-Physical Layer
-Neural implant security (tamper resistance, encryption)
-Signal integrity protection (interference, spoofing)
-Biocompatibility monitoring (safety, rejection)
-Physical access controls (surgical, maintenance)
-Data Layer
-Neural signal encryption (end-to-end protection)
-Biometric template protection (irreversible hashing)
-Data minimization (purpose limitation)
-Retention controls (automatic deletion)
-Processing Layer
-Secure neural decoding (privacy-preserving ML)
-Intent validation (user confirmation)
-Anomaly detection (malicious manipulation)
-Real-time monitoring (health, performance)
-Application Layer
-Access controls (neural authentication)
-Consent management (dynamic, granular)
-Audit logging (neural activity, decisions)
-Emergency overrides (safety, autonomy)
+
+```mermaid
+graph TB
+    subgraph "Neural-AI Security Layers"
+        subgraph "Application Layer"
+            A1[Access controls<br/>neural authentication]
+            A2[Consent management<br/>dynamic, granular]
+            A3[Audit logging<br/>neural activity, decisions]
+            A4[Emergency overrides<br/>safety, autonomy]
+        end
+        
+        subgraph "Processing Layer"
+            P1[Secure neural decoding<br/>privacy-preserving ML]
+            P2[Intent validation<br/>user confirmation]
+            P3[Anomaly detection<br/>malicious manipulation]
+            P4[Real-time monitoring<br/>health, performance]
+        end
+        
+        subgraph "Data Layer"
+            D1[Neural signal encryption<br/>end-to-end protection]
+            D2[Biometric template protection<br/>irreversible hashing]
+            D3[Data minimization<br/>purpose limitation]
+            D4[Retention controls<br/>automatic deletion]
+        end
+        
+        subgraph "Physical Layer"
+            PH1[Neural implant security<br/>tamper resistance, encryption]
+            PH2[Signal integrity protection<br/>interference, spoofing]
+            PH3[Biocompatibility monitoring<br/>safety, rejection]
+            PH4[Physical access controls<br/>surgical, maintenance]
+        end
+    end
+    
+    A1 --> P1
+    A2 --> P2
+    A3 --> P3
+    A4 --> P4
+    
+    P1 --> D1
+    P2 --> D2
+    P3 --> D3
+    P4 --> D4
+    
+    D1 --> PH1
+    D2 --> PH2
+    D3 --> PH3
+    D4 --> PH4
+    
+    style A1 fill:#e3f2fd
+    style A2 fill:#e3f2fd
+    style A3 fill:#e3f2fd
+    style A4 fill:#e3f2fd
+    style P1 fill:#f3e5f5
+    style P2 fill:#f3e5f5
+    style P3 fill:#f3e5f5
+    style P4 fill:#f3e5f5
+    style D1 fill:#e8f5e8
+    style D2 fill:#e8f5e8
+    style D3 fill:#e8f5e8
+    style D4 fill:#e8f5e8
+    style PH1 fill:#fff3e0
+    style PH2 fill:#fff3e0
+    style PH3 fill:#fff3e0
+    style PH4 fill:#fff3e0
 ```
 </div>
 

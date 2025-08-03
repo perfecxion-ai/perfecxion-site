@@ -38,6 +38,20 @@ import {
   User,
   Tag
 } from 'lucide-react';
+import MermaidDiagram from '@/components/MermaidDiagram';
+import MermaidCodeBlock from '@/components/MermaidCodeBlock';
+
+// Custom pre component to handle Mermaid diagrams
+const Pre = ({ children, ...props }: any) => {
+  const child = children?.props?.children
+  const className = children?.props?.className || ''
+  
+  if (className.includes('language-mermaid')) {
+    return <MermaidCodeBlock>{child}</MermaidCodeBlock>
+  }
+  
+  return <pre {...props}>{children}</pre>
+}
 
 // MDX components that can be used in the content
 const mdxComponents = {
@@ -68,6 +82,8 @@ const mdxComponents = {
   Cloud,
   GraduationCap,
   Link,
+  MermaidDiagram,
+  pre: Pre,
   // Add any other components you want to use in MDX
 };
 

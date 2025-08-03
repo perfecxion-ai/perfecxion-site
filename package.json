@@ -21,6 +21,7 @@
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.263.1",
+    "mermaid": "^11.9.0",
     "next": "14.2.5",
     "next-mdx-remote": "^5.0.0",
     "react": "^18.3.1",
