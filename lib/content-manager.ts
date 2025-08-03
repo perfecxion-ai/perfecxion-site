@@ -441,42 +441,42 @@ class ContentManager {
         slug: 'future-ai-security-emerging-threats-defenses',
         featured: true
       },
-                {
-            type: 'blog',
-            title: 'The Future of AI Security: Preparing for Next-Generation Threats',
-            description: 'Look beyond today\'s AI security challenges to prepare for quantum computing, AGI risks, brain-computer interfaces, and nation-state AI warfare. Learn how leading organizations are building defenses for threats that haven\'t been invented yet.',
-            publishedAt: '2025-06-04',
-            readingTime: 30,
-            difficulty: 'advanced',
-            category: 'Strategic Vision',
-            tags: ['AI Security', 'Future Threats', 'Quantum Computing', 'AGI Security', 'Emerging Technologies', 'Strategic Planning'],
-            slug: 'future-ai-security-preparing-next-generation-threats',
-            featured: true
-          },
-          {
-            type: 'blog',
-            title: 'Securing AI Systems: Enterprise Frameworks for AI Security Protection',
-            description: 'Comprehensive guide to protecting AI systems from threats like data poisoning, adversarial attacks, and supply chain vulnerabilities. Learn enterprise-grade security frameworks and architectural patterns for defending AI systems.',
-            publishedAt: '2025-01-15',
-            readingTime: 25,
-            difficulty: 'intermediate',
-            category: 'AI Security',
-            tags: ['AI Security', 'Enterprise Security', 'Data Poisoning', 'Adversarial Attacks', 'Supply Chain Security', 'MLSecOps'],
-            slug: 'securing-ai-systems-enterprise-frameworks',
-            featured: true
-          },
-          {
-            type: 'blog',
-            title: 'AI-Powered Security Automation: Transforming Enterprise Cybersecurity Operations',
-            description: 'Examine how to use AI to automate security processes including threat detection, incident response, vulnerability management, and compliance. Learn scalable frameworks for AI-driven security transformation.',
-            publishedAt: '2025-01-10',
-            readingTime: 20,
-            difficulty: 'intermediate',
-            category: 'Security Automation',
-            tags: ['AI Security', 'Security Automation', 'Threat Detection', 'Incident Response', 'Vulnerability Management', 'Compliance'],
-            slug: 'ai-powered-security-automation-transforming-enterprise-cybersecurity',
-            featured: true
-          }
+      {
+        type: 'blog',
+        title: 'The Future of AI Security: Preparing for Next-Generation Threats',
+        description: 'Look beyond today\'s AI security challenges to prepare for quantum computing, AGI risks, brain-computer interfaces, and nation-state AI warfare. Learn how leading organizations are building defenses for threats that haven\'t been invented yet.',
+        publishedAt: '2025-06-04',
+        readingTime: 30,
+        difficulty: 'advanced',
+        category: 'Strategic Vision',
+        tags: ['AI Security', 'Future Threats', 'Quantum Computing', 'AGI Security', 'Emerging Technologies', 'Strategic Planning'],
+        slug: 'future-ai-security-preparing-next-generation-threats',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Securing AI Systems: Enterprise Frameworks for AI Security Protection',
+        description: 'Comprehensive guide to protecting AI systems from threats like data poisoning, adversarial attacks, and supply chain vulnerabilities. Learn enterprise-grade security frameworks and architectural patterns for defending AI systems.',
+        publishedAt: '2025-01-15',
+        readingTime: 25,
+        difficulty: 'intermediate',
+        category: 'AI Security',
+        tags: ['AI Security', 'Enterprise Security', 'Data Poisoning', 'Adversarial Attacks', 'Supply Chain Security', 'MLSecOps'],
+        slug: 'securing-ai-systems-enterprise-frameworks',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'AI-Powered Security Automation: Transforming Enterprise Cybersecurity Operations',
+        description: 'Examine how to use AI to automate security processes including threat detection, incident response, vulnerability management, and compliance. Learn scalable frameworks for AI-driven security transformation.',
+        publishedAt: '2025-01-10',
+        readingTime: 20,
+        difficulty: 'intermediate',
+        category: 'Security Automation',
+        tags: ['AI Security', 'Security Automation', 'Threat Detection', 'Incident Response', 'Vulnerability Management', 'Compliance'],
+        slug: 'ai-powered-security-automation-transforming-enterprise-cybersecurity',
+        featured: true
+      }
     ]
   }
 

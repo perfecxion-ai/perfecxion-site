@@ -68,7 +68,7 @@ export default function ContentHub({
     if (!featuredOnly) {
       performSearch()
     }
-  }, [searchQuery, filters])
+  }, [searchQuery, filters, contentType])
 
   const performSearch = () => {
     setIsLoading(true)
@@ -78,7 +78,14 @@ export default function ContentHub({
         setResults(searchResults)
       } else {
         // Show recent content when no search/filters
-        const recent = contentManager.getRecentContent(20)
+        let recent
+        if (contentType === 'blog') {
+          recent = contentManager.getContentByType('blog')
+        } else if (contentType === 'learning') {
+          recent = contentManager.getContentByType('learning')
+        } else {
+          recent = contentManager.getRecentContent(20)
+        }
         setResults(recent.map(content => ({
           content,
           score: 1,
@@ -115,7 +122,7 @@ export default function ContentHub({
       acc[type].push(result)
       return acc
     }, {} as Record<string, SearchResult[]>)
-  }, [results])
+  }, [results, contentType])
 
   const getTypeIcon = (type: string) => {
     switch (type) {
