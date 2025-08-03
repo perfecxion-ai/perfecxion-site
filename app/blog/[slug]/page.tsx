@@ -167,6 +167,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               data.category.toLowerCase() === 'research' ? 'bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400' :
               data.category.toLowerCase() === 'security automation' ? 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/20 dark:text-indigo-400' :
               data.category.toLowerCase() === 'strategic vision' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400' :
+              data.category.toLowerCase() === 'zero-day ai vulnerabilities' ? 'bg-pink-100 text-pink-800 dark:bg-pink-900/20 dark:text-pink-400' :
               'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300'
             }`}>
               {data.category}

@@ -488,6 +488,18 @@ class ContentManager {
         tags: ['AI Security', 'Production Deployment', 'MLSecOps', 'CISO Guide', 'Threat Modeling', 'Governance', 'Zero Trust', 'Monitoring'],
         slug: 'secure-ai-deployment-production-best-practices',
         featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Zero-Day AI Vulnerabilities: Detection and Response',
+        description: 'How to detect and respond to zero-day vulnerabilities in AI systems.',
+        publishedAt: '2025-01-25',
+        readingTime: 35,
+        difficulty: 'advanced',
+        category: 'Zero-Day AI Vulnerabilities',
+        tags: ['AI Security', 'Zero-Day Vulnerabilities', 'Detection', 'Response', 'Threat Intelligence', 'Incident Response', 'AI Governance', 'Security Frameworks'],
+        slug: 'zero-day-ai-vulnerabilities-detection-response',
+        featured: true
       }
     ]
   }
