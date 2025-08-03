@@ -60,21 +60,24 @@ Current vulnerability management systems face fundamental inadequacies when addr
     icon="Database"
     title="CVE System Limitations" 
     color="red"
-  >The Common Vulnerability Exposure system cannot effectively catalog behavioral flaws. A prompt injection vulnerability cannot be assigned a CVE identifier because it's not a replicable code flaw but a behavioral manipulation technique.
+  >
+    The Common Vulnerability Exposure system cannot effectively catalog behavioral flaws. A prompt injection vulnerability cannot be assigned a CVE identifier because it's not a replicable code flaw but a behavioral manipulation technique.
   </FeatureCard>
   
   <FeatureCard 
     icon="TrendingUp"
     title="Market Implications" 
     color="orange"
-  >This creates dangerous blind spots where AI-specific exploits develop in unregulated, opaque markets. The same "gray" and "black" markets that exist for traditional zero-days are now emerging for AI-specific exploits.
+  >
+    This creates dangerous blind spots where AI-specific exploits develop in unregulated, opaque markets. The same "gray" and "black" markets that exist for traditional zero-days are now emerging for AI-specific exploits.
   </FeatureCard>
   
   <FeatureCard 
     icon="Briefcase"
     title="Legal and Insurance Challenges" 
     color="purple"
-  >The ambiguity of AI failures creates profound challenges for existing frameworks. Determining whether harm resulted from malicious attack, non-malicious hallucination, or biased data becomes nearly impossible.
+  >
+    The ambiguity of AI failures creates profound challenges for existing frameworks. Determining whether harm resulted from malicious attack, non-malicious hallucination, or biased data becomes nearly impossible.
   </FeatureCard>
 </FeatureGrid>
 
@@ -96,13 +99,16 @@ Research demonstrates that as little as **0.1% poisoned data** can create effect
 
 **Technical Definition**: Intentional injection of malicious, mislabeled, or biased data into training datasets to degrade performance, introduce biases, or create hidden backdoors.
 
-<FeatureGrid><FeatureCard title="Upstream Corruption" color="blue">Manipulating data sources before ingestion into training pipelines
+<FeatureGrid><FeatureCard title="Upstream Corruption" color="blue">
+    Manipulating data sources before ingestion into training pipelines
   </FeatureCard>
   
-  <FeatureCard title="Training-Time Injection" color="green">Introducing poisoned data during model training phases
+  <FeatureCard title="Training-Time Injection" color="green">
+    Introducing poisoned data during model training phases
   </FeatureCard>
   
-  <FeatureCard title="Backdoor Implantation" color="red">Creating hidden triggers that activate malicious behavior
+  <FeatureCard title="Backdoor Implantation" color="red">
+    Creating hidden triggers that activate malicious behavior
   </FeatureCard>
 </FeatureGrid>
 
@@ -145,7 +151,8 @@ Prompt injection is ranked as the **#1 risk** in the OWASP LLM Top 10, affecting
   icon="Cpu"
   title="GPUHammer Attack" 
   color="red"
->Demonstrated bit-flips in NVIDIA A6000 GPUs, reducing AI model accuracy from **80% to less than 1%**. This hardware-level vulnerability shows how attacks can bypass software monitoring entirely.
+>
+  Demonstrated bit-flips in NVIDIA A6000 GPUs, reducing AI model accuracy from **80% to less than 1%**. This hardware-level vulnerability shows how attacks can bypass software monitoring entirely.
 </FeatureCard>
 
 **Medical Applications**: Research demonstrates that subtle image modifications can cause medical imaging systems to misclassify conditions with **100% confidence** while remaining imperceptible to human radiologists.
@@ -156,21 +163,24 @@ Prompt injection is ranked as the **#1 risk** in the OWASP LLM Top 10, affecting
     icon="Code"
     title="Model Extraction" 
     color="blue"
-  >Reverse-engineering through systematic input-output analysis
+  >
+    Reverse-engineering through systematic input-output analysis
   </FeatureCard>
   
   <FeatureCard 
     icon="Database"
     title="Model Inversion" 
     color="green"
-  >Reconstructing sensitive training data from model outputs
+  >
+    Reconstructing sensitive training data from model outputs
   </FeatureCard>
   
   <FeatureCard 
     icon="Users"
     title="Membership Inference" 
     color="purple"
-  >Determining if specific data was used in training
+  >
+    Determining if specific data was used in training
   </FeatureCard>
 </FeatureGrid>
 
@@ -200,28 +210,32 @@ The foundational approach through four core functions:
     icon="Building"
     title="GOVERN" 
     color="blue"
-  >Establish AI governance structures, risk management policies, and organizational accountability. Create cross-functional teams including security, data science, legal, and compliance stakeholders.
+  >
+    Establish AI governance structures, risk management policies, and organizational accountability. Create cross-functional teams including security, data science, legal, and compliance stakeholders.
   </FeatureCard>
   
   <FeatureCard 
     icon="Network"
     title="MAP" 
     color="green"
-  >Systematically identify and categorize AI risks across the organization. Maintain comprehensive AI asset inventories and threat model documentation.
+  >
+    Systematically identify and categorize AI risks across the organization. Maintain comprehensive AI asset inventories and threat model documentation.
   </FeatureCard>
   
   <FeatureCard 
     icon="BarChart3"
     title="MEASURE" 
     color="orange"
-  >Implement continuous monitoring and measurement of AI system performance, security metrics, and risk indicators.
+  >
+    Implement continuous monitoring and measurement of AI system performance, security metrics, and risk indicators.
   </FeatureCard>
   
   <FeatureCard 
     icon="Settings"
     title="MANAGE" 
     color="purple"
-  >Execute risk treatment strategies, incident response procedures, and continuous improvement processes.
+  >
+    Execute risk treatment strategies, incident response procedures, and continuous improvement processes.
   </FeatureCard>
 </FeatureGrid>
 
@@ -255,13 +269,16 @@ Implement the 200+ page guidance covering AI security matrices, periodic tables 
 
 ### Regulatory Compliance: EU AI Act and Emerging Standards
 
-<FeatureGrid><FeatureCard title="Mandatory Requirements" color="red">High-risk AI systems must demonstrate "high level of robustness, cybersecurity and accuracy"
+<FeatureGrid><FeatureCard title="Mandatory Requirements" color="red">
+    High-risk AI systems must demonstrate "high level of robustness, cybersecurity and accuracy"
   </FeatureCard>
   
-  <FeatureCard title="Documentation Standards" color="blue">Comprehensive risk assessments, technical documentation, and post-deployment monitoring
+  <FeatureCard title="Documentation Standards" color="blue">
+    Comprehensive risk assessments, technical documentation, and post-deployment monitoring
   </FeatureCard>
   
-  <FeatureCard title="Audit Requirements" color="green">Regular third-party assessments and compliance reporting
+  <FeatureCard title="Audit Requirements" color="green">
+    Regular third-party assessments and compliance reporting
   </FeatureCard>
 </FeatureGrid>
 
@@ -294,21 +311,24 @@ Design systems assuming that AI models can be compromised and implement continuo
     icon="Brain"
     title="Pattern Recognition at Scale" 
     color="blue"
-  >Deploy AI-powered security platforms to analyze massive datasets in real-time, identifying subtle patterns indicative of attacks that human analysts cannot detect.
+  >
+    Deploy AI-powered security platforms to analyze massive datasets in real-time, identifying subtle patterns indicative of attacks that human analysts cannot detect.
   </FeatureCard>
   
   <FeatureCard 
     icon="TrendingUp"
     title="Predictive Analytics" 
     color="green"
-  >Use Natural Language Processing to scan open-source intelligence, dark web forums, and code repositories for emerging threat intelligence.
+  >
+    Use Natural Language Processing to scan open-source intelligence, dark web forums, and code repositories for emerging threat intelligence.
   </FeatureCard>
   
   <FeatureCard 
     icon="Target"
     title="Automated Threat Hunting" 
     color="orange"
-  >Implement AI-driven systems to proactively search for indicators of compromise across the digital environment.
+  >
+    Implement AI-driven systems to proactively search for indicators of compromise across the digital environment.
   </FeatureCard>
 </FeatureGrid>
 
@@ -363,13 +383,16 @@ Test against all major attack vectors including prompt injection, data poisoning
 
 ### 1. Preparation Phase
 
-<FeatureGrid><FeatureCard title="Cross-Functional Teams" color="blue">Assemble teams including data scientists, ML engineers, legal counsel, and PR professionals
+<FeatureGrid><FeatureCard title="Cross-Functional Teams" color="blue">
+    Assemble teams including data scientists, ML engineers, legal counsel, and PR professionals
   </FeatureCard>
   
-  <FeatureCard title="Asset Inventory" color="green">Create comprehensive AI system inventories with detailed asset tracking
+  <FeatureCard title="Asset Inventory" color="green">
+    Create comprehensive AI system inventories with detailed asset tracking
   </FeatureCard>
   
-  <FeatureCard title="Incident Playbooks" color="orange">Develop AI-specific incident playbooks for common scenarios
+  <FeatureCard title="Incident Playbooks" color="orange">
+    Develop AI-specific incident playbooks for common scenarios
   </FeatureCard>
 </FeatureGrid>
 
@@ -405,7 +428,8 @@ Implement real-time monitoring with automated alerting for performance degradati
   icon="TrendingUp"
   title="Continuous Improvement" 
   color="green"
->Document lessons learned, update threat models, enhance detection capabilities, and refine incident response procedures based on real-world experiences.
+>
+  Document lessons learned, update threat models, enhance detection capabilities, and refine incident response procedures based on real-world experiences.
 </FeatureCard>
 
 ---
@@ -458,7 +482,8 @@ The era of AI zero-day vulnerabilities demands a fundamental reimagining of secu
   icon="Shield"
   title="Take Action Today" 
   color="blue"
->The window for establishing robust AI security is closing rapidly. Organizations must act now to protect their AI investments, maintain customer trust, and ensure regulatory compliance. The future belongs to those who recognize that AI security is not an option—it's an existential necessity.
+>
+  The window for establishing robust AI security is closing rapidly. Organizations must act now to protect their AI investments, maintain customer trust, and ensure regulatory compliance. The future belongs to those who recognize that AI security is not an option—it's an existential necessity.
 </FeatureCard>
 
 ---
