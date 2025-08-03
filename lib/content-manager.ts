@@ -476,6 +476,18 @@ class ContentManager {
         tags: ['AI Security', 'Security Automation', 'Threat Detection', 'Incident Response', 'Vulnerability Management', 'Compliance'],
         slug: 'ai-powered-security-automation-transforming-enterprise-cybersecurity',
         featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Secure AI Deployment: Production Best Practices',
+        description: 'A comprehensive CISO\'s guide to deploying AI systems securely in production environments. Learn MLSecOps principles, threat modeling, and governance frameworks for resilient AI security.',
+        publishedAt: '2025-01-20',
+        readingTime: 30,
+        difficulty: 'advanced',
+        category: 'Best Practices',
+        tags: ['AI Security', 'Production Deployment', 'MLSecOps', 'CISO Guide', 'Threat Modeling', 'Governance', 'Zero Trust', 'Monitoring'],
+        slug: 'secure-ai-deployment-production-best-practices',
+        featured: true
       }
     ]
   }

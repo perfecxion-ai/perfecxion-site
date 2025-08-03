@@ -186,7 +186,7 @@ export default function ContentHub({
           {contentType === 'blog' ? 'Blog' : 'Learn AI Security'}
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-400 max-w-4xl">
-          {contentType === 'blog' 
+          {contentType === 'blog'
             ? 'Latest insights, news, and updates from the perfecXion.ai team. Explore our expert analysis, case studies, and industry trends in AI security.'
             : 'Master AI security with our comprehensive learning resources, tutorials, and best practices. Explore our AI Security 101 series, whitepapers, and interactive learning paths designed to help you build robust, secure AI systems.'
           }
@@ -214,8 +214,8 @@ export default function ContentHub({
                       {getPathIcon(path.id)}
                       <div>
                         <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${path.difficulty === 'beginner' ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400' :
-                            path.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400' :
-                              'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'
+                          path.difficulty === 'intermediate' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400' :
+                            'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'
                           }`}>
                           {path.difficulty}
                         </span>
