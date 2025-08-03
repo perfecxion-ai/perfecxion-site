@@ -39,7 +39,7 @@ import {
   Tag,
   Star
 } from 'lucide-react';
-import { mdxComponents } from '@/components/mdx/MDXComponents';
+// Remove MDXComponents import - we'll use inline components instead
 
 function getHeadings(content: string) {
   // Extract h2/h3 headings for TOC
@@ -216,7 +216,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         prose-blockquote:border-l-4 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-600 prose-blockquote:pl-4 prose-blockquote:italic
         prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
         prose-pre:bg-gray-900 prose-pre:text-gray-100">
-        <MDXRemote source={cleanContent} components={mdxComponents} />
+        <MDXRemote source={cleanContent} />
       </div>
 
       {/* Navigation */}
