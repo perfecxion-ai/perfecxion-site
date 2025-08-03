@@ -76,11 +76,11 @@ export default function ContentHub({
       if (searchQuery.trim() || Object.keys(filters).some(key => filters[key as keyof ContentFilter])) {
         const searchResults = contentManager.search(searchQuery, filters)
         // Filter results based on contentType
-        const filteredResults = contentType === 'blog' 
+        const filteredResults = contentType === 'blog'
           ? searchResults.filter(result => result.content.type === 'blog')
           : contentType === 'learning'
-          ? searchResults.filter(result => result.content.type === 'learning')
-          : searchResults
+            ? searchResults.filter(result => result.content.type === 'learning')
+            : searchResults
         setResults(filteredResults)
       } else {
         // Show recent content when no search/filters
@@ -203,7 +203,7 @@ export default function ContentHub({
       </div>
 
       {/* Learning Paths - Enhanced Design */}
-      {contentType !== 'blog' && !searchQuery && !Object.keys(filters).some(key => filters[key as keyof ContentFilter] && key !== 'sortBy' && key !== 'sortOrder') && (
+      {contentType === 'learning' && !searchQuery && !Object.keys(filters).some(key => filters[key as keyof ContentFilter] && key !== 'sortBy' && key !== 'sortOrder') && (
         <div className="mb-16">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">

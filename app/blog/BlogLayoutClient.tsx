@@ -63,15 +63,15 @@ export default function BlogLayoutClient({
 
             <div className="flex">
                 {/* Sidebar - Desktop */}
-                <div className="hidden lg:block w-80 bg-gray-50 dark:bg-gray-900/50 border-r border-gray-200 dark:border-gray-800 min-h-screen overflow-y-auto">
-                    <SidebarContent onLinkClick={() => {}} />
+                <div className="hidden lg:block w-80 bg-gray-50 dark:bg-gray-900/50 border-r border-gray-200 dark:border-gray-800 min-h-screen p-6 overflow-y-auto">
+                    <SidebarContent onLinkClick={() => { }} />
                 </div>
 
                 {/* Sidebar - Mobile */}
                 {sidebarOpen && (
                     <div className="lg:hidden fixed inset-0 z-40 flex">
                         <div className="fixed inset-0 bg-gray-900/20 backdrop-blur-sm" onClick={() => setSidebarOpen(false)}></div>
-                        <div className="relative flex w-full max-w-xs flex-col bg-gray-50 dark:bg-gray-900/95 border-r border-gray-200 dark:border-gray-800 overflow-y-auto">
+                        <div className="relative flex w-full max-w-xs flex-col bg-gray-50 dark:bg-gray-900/95 border-r border-gray-200 dark:border-gray-800 p-6 overflow-y-auto">
                             <SidebarContent onLinkClick={() => setSidebarOpen(false)} />
                         </div>
                     </div>
@@ -79,7 +79,7 @@ export default function BlogLayoutClient({
 
                 {/* Main Content */}
                 <div className="flex-1">
-                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
                         {children}
                     </div>
                 </div>
@@ -90,10 +90,10 @@ export default function BlogLayoutClient({
 
 function SidebarContent({ onLinkClick }: { onLinkClick: () => void }) {
     return (
-        <div className="p-6">
+        <>
             <div className="mb-8">
-                <Link 
-                    href="/blog" 
+                <Link
+                    href="/blog"
                     className="flex items-center space-x-2 text-lg font-semibold text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                     onClick={onLinkClick}
                 >
@@ -203,6 +203,6 @@ function SidebarContent({ onLinkClick }: { onLinkClick: () => void }) {
                     </button>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
