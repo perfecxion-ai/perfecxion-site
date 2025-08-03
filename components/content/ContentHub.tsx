@@ -121,11 +121,21 @@ export default function ContentHub({
     return results.reduce((acc, result) => {
       const type = result.content.type
       // For blog page, only show blog content
-      if (contentType === 'blog' && type !== 'blog') return acc
+      if (contentType === 'blog') {
+        if (type === 'blog') {
+          if (!acc[type]) acc[type] = []
+          acc[type].push(result)
+        }
+      }
       // For learning page, only show learning content
-      if (contentType === 'learning' && type !== 'learning') return acc
+      else if (contentType === 'learning') {
+        if (type === 'learning') {
+          if (!acc[type]) acc[type] = []
+          acc[type].push(result)
+        }
+      }
       // For all content, show everything
-      if (contentType === 'all') {
+      else if (contentType === 'all') {
         if (!acc[type]) acc[type] = []
         acc[type].push(result)
       }
