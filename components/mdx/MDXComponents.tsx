@@ -84,7 +84,7 @@ export const FeatureGrid = ({ children }: { children: React.ReactNode }) => (
 )
 
 // Feature Card Component
-export const FeatureCard = ({ icon, title, children, color = 'blue' }: { icon?: React.ReactNode, title: string, children: React.ReactNode, color?: string }) => {
+export const FeatureCard = ({ icon, title, children, color = 'blue' }: { icon?: React.ReactNode, title: string, children: React.ReactNode, color?: 'blue' | 'green' | 'purple' | 'orange' | 'red' | 'yellow' }) => {
   const colorStyles = {
     blue: 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800',
     green: 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800',
@@ -95,7 +95,7 @@ export const FeatureCard = ({ icon, title, children, color = 'blue' }: { icon?: 
   }
 
   return (
-    <div className={`${colorStyles[color] || colorStyles.blue} border rounded-lg p-6 h-full`}>
+    <div className={`${colorStyles[color]} border rounded-lg p-6 h-full`}>
       {icon && <div className="mb-4">{icon}</div>}
       <h3 className="font-semibold text-lg mb-3">{title}</h3>
       <div className="prose-sm dark:prose-invert max-w-none">{children}</div>
@@ -201,83 +201,83 @@ const Pre = ({ children, ...props }: any) => {
 }
 
 // Enhanced table component
-const Table = ({ children }: { children: React.ReactNode }) => (
+const Table = ({ children, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
   <div className="overflow-x-auto my-8">
-    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700" {...props}>
       {children}
     </table>
   </div>
 )
 
-const THead = ({ children }: { children: React.ReactNode }) => (
-  <thead className="bg-gray-50 dark:bg-gray-800">{children}</thead>
+const THead = ({ children, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) => (
+  <thead className="bg-gray-50 dark:bg-gray-800" {...props}>{children}</thead>
 )
 
-const TBody = ({ children }: { children: React.ReactNode }) => (
-  <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">{children}</tbody>
+const TBody = ({ children, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) => (
+  <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700" {...props}>{children}</tbody>
 )
 
-const TR = ({ children, ...props }: { children: React.ReactNode }) => (
+const TR = ({ children, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
   <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50" {...props}>{children}</tr>
 )
 
-const TH = ({ children, ...props }: { children: React.ReactNode }) => (
+const TH = ({ children, ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) => (
   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider" {...props}>
     {children}
   </th>
 )
 
-const TD = ({ children, ...props }: { children: React.ReactNode }) => (
+const TD = ({ children, ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) => (
   <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100" {...props}>{children}</td>
 )
 
 // Enhanced heading components
-const H1 = ({ children, ...props }: { children: React.ReactNode }) => (
+const H1 = ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-6 mt-8" {...props}>
     {children}
   </h1>
 )
 
-const H2 = ({ children, ...props }: { children: React.ReactNode }) => (
+const H2 = ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white mb-4 mt-8" {...props}>
     {children}
   </h2>
 )
 
-const H3 = ({ children, ...props }: { children: React.ReactNode }) => (
+const H3 = ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h3 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white mb-3 mt-6" {...props}>
     {children}
   </h3>
 )
 
-const H4 = ({ children, ...props }: { children: React.ReactNode }) => (
+const H4 = ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 mt-4" {...props}>
     {children}
   </h4>
 )
 
 // Enhanced list components
-const UL = ({ children, ...props }: { children: React.ReactNode }) => (
+const UL = ({ children, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
   <ul className="space-y-2 my-4" {...props}>{children}</ul>
 )
 
-const OL = ({ children, ...props }: { children: React.ReactNode }) => (
+const OL = ({ children, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
   <ol className="space-y-2 my-4 list-decimal list-inside" {...props}>{children}</ol>
 )
 
-const LI = ({ children, ...props }: { children: React.ReactNode }) => (
+const LI = ({ children, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
   <li className="text-gray-700 dark:text-gray-300" {...props}>
     <span className="text-gray-900 dark:text-gray-100">{children}</span>
   </li>
 )
 
 // Enhanced paragraph
-const P = ({ children, ...props }: { children: React.ReactNode }) => (
+const P = ({ children, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
   <p className="text-gray-700 dark:text-gray-300 leading-relaxed my-4" {...props}>{children}</p>
 )
 
 // Enhanced blockquote
-const Blockquote = ({ children, ...props }: { children: React.ReactNode }) => (
+const Blockquote = ({ children, ...props }: React.HTMLAttributes<HTMLQuoteElement>) => (
   <blockquote className="border-l-4 border-gray-300 dark:border-gray-600 pl-4 my-6 italic text-gray-700 dark:text-gray-300" {...props}>
     {children}
   </blockquote>
