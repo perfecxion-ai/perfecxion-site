@@ -39,54 +39,7 @@ import {
   Tag,
   Star
 } from 'lucide-react';
-import MermaidDiagram from '@/components/MermaidDiagram';
-import MermaidCodeBlock from '@/components/MermaidCodeBlock';
-
-// Custom pre component to handle Mermaid diagrams
-const Pre = ({ children, ...props }: any) => {
-  const child = children?.props?.children
-  const className = children?.props?.className || ''
-
-  if (className.includes('language-mermaid')) {
-    return <MermaidCodeBlock>{child}</MermaidCodeBlock>
-  }
-
-  return <pre {...props}>{children}</pre>
-}
-
-// MDX components that can be used in the content
-const mdxComponents = {
-  Shield,
-  AlertTriangle,
-  Lock,
-  Eye,
-  Cpu,
-  Database,
-  Network,
-  Users,
-  CheckCircle,
-  XCircle,
-  ArrowRight,
-  Info,
-  AlertCircle,
-  Zap,
-  Target,
-  Brain,
-  Layers,
-  ShoppingCart,
-  Building,
-  FileText,
-  TrendingUp,
-  Wrench,
-  Briefcase,
-  Bell,
-  Cloud,
-  GraduationCap,
-  Link,
-  MermaidDiagram,
-  pre: Pre,
-  // Add any other components you want to use in MDX
-};
+import { mdxComponents } from '@/components/mdx/MDXComponents';
 
 function getHeadings(content: string) {
   // Extract h2/h3 headings for TOC
@@ -244,7 +197,25 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       )}
 
       {/* Content */}
-      <div className="prose prose-lg dark:prose-invert max-w-none">
+      <div className="prose prose-lg dark:prose-invert max-w-none 
+        prose-headings:font-bold prose-headings:tracking-tight
+        prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8
+        prose-h2:text-3xl prose-h2:mb-4 prose-h2:mt-8
+        prose-h3:text-2xl prose-h3:mb-3 prose-h3:mt-6
+        prose-h4:text-xl prose-h4:mb-2 prose-h4:mt-4
+        prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed
+        prose-strong:text-gray-900 dark:prose-strong:text-gray-100
+        prose-ul:space-y-2 prose-ol:space-y-2
+        prose-li:text-gray-700 dark:prose-li:text-gray-300
+        prose-table:overflow-hidden prose-table:rounded-lg
+        prose-thead:bg-gray-50 dark:prose-thead:bg-gray-800
+        prose-tbody:bg-white dark:prose-tbody:bg-gray-900
+        prose-tr:border-gray-200 dark:prose-tr:border-gray-700
+        prose-th:px-6 prose-th:py-3 prose-th:text-left prose-th:text-xs prose-th:font-medium prose-th:text-gray-500 dark:prose-th:text-gray-400 prose-th:uppercase prose-th:tracking-wider
+        prose-td:px-6 prose-td:py-4 prose-td:text-sm
+        prose-blockquote:border-l-4 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-600 prose-blockquote:pl-4 prose-blockquote:italic
+        prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+        prose-pre:bg-gray-900 prose-pre:text-gray-100">
         <MDXRemote source={cleanContent} components={mdxComponents} />
       </div>
 
