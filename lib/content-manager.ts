@@ -186,19 +186,259 @@ class ContentManager {
   }
 
   private async loadBlogContent() {
-    // This would load from MDX files in content/blog/
-    // Using existing blog posts as reference
+    // For now, we'll use a static list of blog posts
+    // In a real implementation, this would load from MDX files
     this.contentIndex.blog = [
       {
         type: 'blog',
-        title: 'AI Red Team Testing: Complete Guide',
-        description: 'Comprehensive guide to red team testing for AI systems',
+        title: 'The Hidden Risks of Agentic AI: Why Traditional Monitoring Fails',
+        description: 'Discover why autonomous AI agents break every security monitoring assumption and learn how to detect threats in systems that think for themselves.',
+        publishedAt: '2025-07-02',
+        readingTime: 20,
+        difficulty: 'intermediate',
+        category: 'AI Security',
+        tags: ['ai-security', 'agentic-ai', 'monitoring', 'threat-detection'],
+        slug: 'hidden-risks-agentic-ai-monitoring-fails',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: '50 Attack Vectors: AI Red Team Guide',
+        description: 'Comprehensive guide to red team testing for AI systems with 50 different attack vectors.',
         publishedAt: '2024-01-10',
         readingTime: 15,
         difficulty: 'intermediate',
-        category: 'red-teaming',
-        tags: ['red-team', 'testing', 'security-assessment'],
-        slug: 'ai-red-team-testing-complete-guide',
+        category: 'Threat Analysis',
+        tags: ['red-team', 'testing', 'security-assessment', 'attack-vectors'],
+        slug: '50-attack-vectors-ai-red-team-guide',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Advanced Prompt Engineering: Security Defense Through Design',
+        description: 'Learn advanced techniques for secure prompt engineering and defensive design patterns.',
+        publishedAt: '2024-01-15',
+        readingTime: 12,
+        difficulty: 'advanced',
+        category: 'Best Practices',
+        tags: ['prompt-engineering', 'security', 'defense', 'design-patterns'],
+        slug: 'advanced-prompt-engineering-security-defense-through-design',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'AI Architecture Security: Building Defensible Systems',
+        description: 'Comprehensive guide to securing AI system architecture from the ground up.',
+        publishedAt: '2024-01-20',
+        readingTime: 18,
+        difficulty: 'intermediate',
+        category: 'AI Security',
+        tags: ['architecture', 'security', 'ai-systems', 'design'],
+        slug: 'ai-arch-security',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Neural Network Security: Beyond Traditional Defenses',
+        description: 'Exploring the unique security challenges of neural networks and advanced defense strategies.',
+        publishedAt: '2024-01-25',
+        readingTime: 14,
+        difficulty: 'advanced',
+        category: 'Research',
+        tags: ['neural-networks', 'security', 'research', 'advanced-defense'],
+        slug: 'neural-network-security-beyond-traditional-defenses',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'LLM Security: Protecting Language Models in Production',
+        description: 'Best practices for securing large language models in production environments.',
+        publishedAt: '2024-02-01',
+        readingTime: 16,
+        difficulty: 'intermediate',
+        category: 'AI Security',
+        tags: ['llm-security', 'production', 'best-practices', 'language-models'],
+        slug: 'llm-security-protecting-language-models-production',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Prompt Injection: The Silent Threat to AI Systems',
+        description: 'Understanding prompt injection attacks and how to defend against them.',
+        publishedAt: '2024-02-05',
+        readingTime: 10,
+        difficulty: 'intermediate',
+        category: 'Threat Analysis',
+        tags: ['prompt-injection', 'threats', 'security', 'defense'],
+        slug: 'prompt-injection-silent-threat-ai-systems',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'OWASP Top 10 for AI: Critical Security Vulnerabilities',
+        description: 'The OWASP Top 10 vulnerabilities specific to AI and machine learning systems.',
+        publishedAt: '2024-02-10',
+        readingTime: 12,
+        difficulty: 'intermediate',
+        category: 'Best Practices',
+        tags: ['owasp', 'vulnerabilities', 'ai-security', 'top-10'],
+        slug: 'owasp-top-10-ai-critical-security-vulnerabilities',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Machine Learning Security: From Theory to Practice',
+        description: 'Practical approaches to securing machine learning systems in real-world scenarios.',
+        publishedAt: '2024-02-15',
+        readingTime: 15,
+        difficulty: 'advanced',
+        category: 'AI Security',
+        tags: ['machine-learning', 'security', 'practice', 'real-world'],
+        slug: 'machine-learning-security-theory-practice',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'AI Incident Response: When Things Go Wrong',
+        description: 'Comprehensive guide to responding to AI security incidents and breaches.',
+        publishedAt: '2024-02-20',
+        readingTime: 14,
+        difficulty: 'intermediate',
+        category: 'Best Practices',
+        tags: ['incident-response', 'ai-security', 'breaches', 'response'],
+        slug: 'ai-incident-response-when-things-go-wrong',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'Adversarial Machine Learning: Attack and Defense',
+        description: 'Understanding adversarial attacks on machine learning systems and defense strategies.',
+        publishedAt: '2024-02-25',
+        readingTime: 16,
+        difficulty: 'advanced',
+        category: 'Research',
+        tags: ['adversarial-ml', 'attacks', 'defense', 'research'],
+        slug: 'adversarial-machine-learning-attack-defense',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'AI Model Poisoning: Detection and Prevention',
+        description: 'How to detect and prevent model poisoning attacks in AI systems.',
+        publishedAt: '2024-03-01',
+        readingTime: 13,
+        difficulty: 'intermediate',
+        category: 'Threat Analysis',
+        tags: ['model-poisoning', 'detection', 'prevention', 'ai-security'],
+        slug: 'ai-model-poisoning-detection-prevention',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'Secure AI Development: Best Practices for Teams',
+        description: 'Best practices for developing secure AI systems in team environments.',
+        publishedAt: '2024-03-05',
+        readingTime: 11,
+        difficulty: 'intermediate',
+        category: 'Best Practices',
+        tags: ['development', 'teams', 'best-practices', 'ai-security'],
+        slug: 'secure-ai-development-best-practices-teams',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'AI Security Testing: Comprehensive Assessment Methods',
+        description: 'Methods and tools for comprehensive security testing of AI systems.',
+        publishedAt: '2024-03-10',
+        readingTime: 15,
+        difficulty: 'intermediate',
+        category: 'AI Security',
+        tags: ['security-testing', 'assessment', 'methods', 'tools'],
+        slug: 'ai-security-testing-comprehensive-assessment-methods',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'Privacy-Preserving AI: Techniques and Implementation',
+        description: 'Techniques for building AI systems that preserve user privacy.',
+        publishedAt: '2024-03-15',
+        readingTime: 14,
+        difficulty: 'advanced',
+        category: 'Research',
+        tags: ['privacy', 'ai-systems', 'techniques', 'implementation'],
+        slug: 'privacy-preserving-ai-techniques-implementation',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'AI Security Compliance: Navigating Regulatory Requirements',
+        description: 'Understanding and implementing AI security compliance requirements.',
+        publishedAt: '2024-03-20',
+        readingTime: 12,
+        difficulty: 'intermediate',
+        category: 'Best Practices',
+        tags: ['compliance', 'regulatory', 'ai-security', 'requirements'],
+        slug: 'ai-security-compliance-navigating-regulatory-requirements',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'Zero-Day AI Vulnerabilities: Detection and Response',
+        description: 'How to detect and respond to zero-day vulnerabilities in AI systems.',
+        publishedAt: '2024-03-25',
+        readingTime: 13,
+        difficulty: 'advanced',
+        category: 'Threat Analysis',
+        tags: ['zero-day', 'vulnerabilities', 'detection', 'response'],
+        slug: 'zero-day-ai-vulnerabilities-detection-response',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'AI Security Metrics: Measuring What Matters',
+        description: 'Key metrics for measuring AI security effectiveness and risk.',
+        publishedAt: '2024-03-30',
+        readingTime: 10,
+        difficulty: 'intermediate',
+        category: 'AI Security',
+        tags: ['metrics', 'measurement', 'security', 'risk'],
+        slug: 'ai-security-metrics-measuring-what-matters',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'Secure AI Deployment: Production Best Practices',
+        description: 'Best practices for securely deploying AI systems to production.',
+        publishedAt: '2024-04-01',
+        readingTime: 14,
+        difficulty: 'intermediate',
+        category: 'Best Practices',
+        tags: ['deployment', 'production', 'best-practices', 'ai-security'],
+        slug: 'secure-ai-deployment-production-best-practices',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'AI Security Automation: Scaling Protection',
+        description: 'How to automate AI security processes for better scalability.',
+        publishedAt: '2024-04-05',
+        readingTime: 11,
+        difficulty: 'intermediate',
+        category: 'AI Security',
+        tags: ['automation', 'scaling', 'security', 'processes'],
+        slug: 'ai-security-automation-scaling-protection',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'Future of AI Security: Emerging Threats and Defenses',
+        description: 'Exploring emerging threats and defense strategies in AI security.',
+        publishedAt: '2024-04-10',
+        readingTime: 16,
+        difficulty: 'advanced',
+        category: 'Research',
+        tags: ['future', 'emerging-threats', 'defenses', 'research'],
+        slug: 'future-ai-security-emerging-threats-defenses',
         featured: true
       }
     ]
