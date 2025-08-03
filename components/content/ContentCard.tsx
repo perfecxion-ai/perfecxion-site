@@ -22,15 +22,17 @@ export default function ContentCard({ content, view, highlights = [], showType =
   }
 
   const getCategoryColor = (category: string) => {
-    switch (category?.toLowerCase()) {
-      case 'ai security': return 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400'
-      case 'threat analysis': return 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'
-      case 'best practices': return 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400'
-      case 'product updates': return 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400'
-      case 'research': return 'bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400'
-      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300'
-    }
+  switch (category?.toLowerCase()) {
+    case 'ai security': return 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400'
+    case 'threat analysis': return 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'
+    case 'best practices': return 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400'
+    case 'product updates': return 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400'
+    case 'research': return 'bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400'
+    case 'security automation': return 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/20 dark:text-indigo-400'
+    case 'strategic vision': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400'
+    default: return 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300'
   }
+}
 
   const getTypeIcon = () => {
     switch (content.type) {
