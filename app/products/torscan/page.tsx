@@ -27,8 +27,12 @@ import {
     Settings,
     Code,
     Users,
-    Building
+    Building,
+    Award
 } from 'lucide-react'
+import { getProduct } from '@/lib/products'
+import { notFound } from 'next/navigation'
+import DemoRequestButton from '@/components/DemoRequestButton'
 
 export const metadata: Metadata = {
     title: 'TorScan - Advanced Dark Web Intelligence Platform',
@@ -36,6 +40,12 @@ export const metadata: Metadata = {
 }
 
 export default function TorScanPage() {
+    const product = getProduct('torscan')
+    
+    if (!product) {
+        notFound()
+    }
+
     const keyFeatures = [
         {
             title: 'Tor-Enabled Web Crawler',
@@ -208,7 +218,7 @@ export default function TorScanPage() {
                     </div>
 
                     <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-                        TorScan
+                        {product.name}
                     </h1>
 
                     <p className="text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
@@ -216,16 +226,33 @@ export default function TorScanPage() {
                     </p>
 
                     <p className="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto">
-                        Production-ready dark web scanner with advanced search capabilities, authentication, and enterprise-grade security features for monitoring and analyzing .onion sites.
+                        {product.description}
                     </p>
 
+                    <div className="flex flex-wrap gap-2 mb-8 justify-center">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400">
+                            ML-Powered Intelligence
+                        </span>
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400">
+                            Advanced Tor Crawler
+                        </span>
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400">
+                            Threat Intelligence
+                        </span>
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400">
+                            Enterprise Ready
+                        </span>
+                    </div>
+
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href="/contact" className="btn-primary">
-                            Get Started
-                        </Link>
+                        <DemoRequestButton product={product} />
                         <Link href="#demo" className="btn-secondary">
                             <Play className="mr-2 h-4 w-4" />
                             View Demo
+                        </Link>
+                        <Link href="/docs/torscan" className="btn-secondary">
+                            <Code className="mr-2 h-4 w-4" />
+                            Documentation
                         </Link>
                     </div>
                 </div>
@@ -272,19 +299,60 @@ export default function TorScanPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {keyFeatures.map((feature, index) => (
-                            <div key={index} className="text-center p-6">
-                                <div className={`w-16 h-16 bg-${feature.color}-100 dark:bg-${feature.color}-900/20 rounded-full flex items-center justify-center mx-auto mb-4`}>
-                                    <feature.icon className={`h-8 w-8 text-${feature.color}-600`} />
+                        {product.features.map((feature, index) => {
+                            const [title, description] = feature.split(' - ')
+                            return (
+                                <div key={index} className="text-center p-6">
+                                    <div className="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <Eye className="h-8 w-8 text-red-600" />
+                                    </div>
+                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                                        {title}
+                                    </h3>
+                                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                                        {description}
+                                    </p>
                                 </div>
-                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                                    {feature.title}
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                    {feature.description}
-                                </p>
-                            </div>
-                        ))}
+                            )
+                        })}
+                    </div>
+                </div>
+
+                {/* ML Intelligence Section */}
+                <div className="mb-20">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                            ML-Powered Intelligence
+                        </h2>
+                        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                            Advanced machine learning capabilities for comprehensive threat detection and analysis
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Anomaly Detection</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Multi-algorithm approach with Isolation Forest, One-Class SVM, and Autoencoders for real-time threat detection</p>
+                        </div>
+                        <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Pattern Recognition</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">NLP-based malicious content detection with entity extraction for emails, URLs, and crypto addresses</p>
+                        </div>
+                        <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Predictive Analytics</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">24-hour ahead threat prediction with confidence intervals and trend analysis</p>
+                        </div>
+                        <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Risk Assessment</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Multi-factor risk scoring with threat likelihood and business impact evaluation</p>
+                        </div>
+                        <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Automated Response</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">8 response types with workflow orchestration and policy-based automation</p>
+                        </div>
+                        <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Model Management</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Complete lifecycle management with versioning, drift detection, and automated retraining</p>
+                        </div>
                     </div>
                 </div>
 
@@ -330,57 +398,148 @@ export default function TorScanPage() {
                     </div>
                 </div>
 
-                {/* Use Cases */}
-                <div className="mb-20">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                            Use Cases
-                        </h2>
-                        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                            Comprehensive dark web intelligence for various security scenarios
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {useCases.map((useCase, index) => (
-                            <div key={index} className="p-6 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700">
-                                <useCase.icon className="h-8 w-8 text-primary-600 mb-4" />
-                                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                                    {useCase.title}
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                    {useCase.description}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
                 {/* Technical Specifications */}
-                <div className="mb-20">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                            Technical Specifications
-                        </h2>
-                        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                            Enterprise-grade architecture designed for scalability and security
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {technicalSpecs.map((spec, index) => (
-                            <div key={index} className="text-center p-6">
-                                <spec.icon className="h-8 w-8 text-primary-600 mx-auto mb-4" />
-                                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                                    {spec.title}
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                    {spec.description}
-                                </p>
+                {product.technicalSpecs && (
+                    <div className="mb-20">
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                                Technical Specifications
+                            </h2>
+                            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                                Enterprise-grade architecture designed for scalability and security
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                                <div className="flex items-center space-x-3 mb-3">
+                                    <div className="w-10 h-10 bg-red-100 dark:bg-red-900/20 rounded-lg flex items-center justify-center">
+                                        <Zap className="h-5 w-5 text-red-600 dark:text-red-400" />
+                                    </div>
+                                    <h3 className="font-semibold text-gray-900 dark:text-white">Performance</h3>
+                                </div>
+                                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <div><span className="font-medium">Response Time:</span> {product.technicalSpecs.responseTime}</div>
+                                    <div><span className="font-medium">Throughput:</span> {product.technicalSpecs.throughput}</div>
+                                    <div><span className="font-medium">Latency:</span> {product.technicalSpecs.latency}</div>
+                                </div>
                             </div>
-                        ))}
+                            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                                <div className="flex items-center space-x-3 mb-3">
+                                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
+                                        <Brain className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                                    </div>
+                                    <h3 className="font-semibold text-gray-900 dark:text-white">ML Capabilities</h3>
+                                </div>
+                                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <div><span className="font-medium">Intelligence:</span> {product.technicalSpecs.mlCapabilities}</div>
+                                    <div><span className="font-medium">Real-time:</span> Anomaly detection</div>
+                                    <div><span className="font-medium">Predictive:</span> Threat forecasting</div>
+                                </div>
+                            </div>
+                            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                                <div className="flex items-center space-x-3 mb-3">
+                                    <div className="w-10 h-10 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
+                                        <Target className="h-5 w-5 text-green-600 dark:text-green-400" />
+                                    </div>
+                                    <h3 className="font-semibold text-gray-900 dark:text-white">Threat Intelligence</h3>
+                                </div>
+                                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <div><span className="font-medium">Platforms:</span> {product.technicalSpecs.threatIntelligence}</div>
+                                    <div><span className="font-medium">Search:</span> {product.technicalSpecs.searchCapabilities}</div>
+                                    <div><span className="font-medium">Deployment:</span> {product.technicalSpecs.deploymentOptions}</div>
+                                </div>
+                            </div>
+                            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                                <div className="flex items-center space-x-3 mb-3">
+                                    <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center">
+                                        <Building className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                                    </div>
+                                    <h3 className="font-semibold text-gray-900 dark:text-white">Enterprise</h3>
+                                </div>
+                                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <div><span className="font-medium">Availability:</span> {product.technicalSpecs.availability}</div>
+                                    <div><span className="font-medium">Security:</span> Authentication & audit</div>
+                                    <div><span className="font-medium">Scalability:</span> Multi-cloud ready</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                )}
+
+                {/* Use Cases */}
+                {product.useCases && (
+                    <div className="mb-20">
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                                Use Cases
+                            </h2>
+                            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                                Comprehensive dark web intelligence for various security scenarios
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {product.useCases.map((useCase, index) => (
+                                <div key={index} className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                                    <div className="flex items-center space-x-3 mb-3">
+                                        <div className="w-8 h-8 bg-red-100 dark:bg-red-900/20 rounded-lg flex items-center justify-center">
+                                            <Target className="h-4 w-4 text-red-600 dark:text-red-400" />
+                                        </div>
+                                        <h3 className="font-semibold text-gray-900 dark:text-white">{useCase}</h3>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {/* Integration Examples */}
+                {product.integrationExamples && (
+                    <div className="mb-20">
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                                Quick Integration
+                            </h2>
+                            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                                Get started with TorScan in minutes using our SDKs and REST API
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                            <div className="space-y-4">
+                                <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+                                    <Code className="h-5 w-5" />
+                                    Python SDK
+                                </h3>
+                                <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                    <pre className="text-sm text-gray-300">
+                                        <code>{product.integrationExamples.python}</code>
+                                    </pre>
+                                </div>
+                            </div>
+                            <div className="space-y-4">
+                                <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+                                    <Code className="h-5 w-5" />
+                                    JavaScript SDK
+                                </h3>
+                                <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                    <pre className="text-sm text-gray-300">
+                                        <code>{product.integrationExamples.javascript}</code>
+                                    </pre>
+                                </div>
+                            </div>
+                            <div className="space-y-4">
+                                <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+                                    <Code className="h-5 w-5" />
+                                    REST API
+                                </h3>
+                                <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                    <pre className="text-sm text-gray-300">
+                                        <code>{product.integrationExamples.api}</code>
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
 
                 {/* Integrations */}
                 <div className="mb-20">
@@ -418,52 +577,44 @@ export default function TorScanPage() {
                     </div>
                 </div>
 
-                {/* Why Choose TorScan */}
-                <div className="mb-20">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                            Why Choose TorScan?
-                        </h2>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="text-center p-6">
-                            <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Eye className="h-8 w-8 text-blue-600" />
-                            </div>
-                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                                Comprehensive Monitoring
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                Advanced crawling capabilities with circuit rotation and secure Tor integration for complete dark web visibility.
+                {/* Benefits */}
+                {product.benefits && (
+                    <div className="mb-20">
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                                Why Choose TorScan?
+                            </h2>
+                            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                                Industry-leading capabilities for comprehensive dark web intelligence
                             </p>
                         </div>
 
-                        <div className="text-center p-6">
-                            <div className="w-16 h-16 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Shield className="h-8 w-8 text-green-600" />
-                            </div>
-                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                                Enterprise Security
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                Production-ready security features including authentication, rate limiting, and comprehensive audit logging.
-                            </p>
-                        </div>
-
-                        <div className="text-center p-6">
-                            <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Brain className="h-8 w-8 text-purple-600" />
-                            </div>
-                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                                Threat Intelligence
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                Seamless integration with MISP and OpenCTI for automatic IOC extraction and threat correlation.
-                            </p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {product.benefits.map((benefit, index) => {
+                                const iconMap = {
+                                    'Brain': Brain,
+                                    'Eye': Eye,
+                                    'Shield': Shield,
+                                    'Target': Target
+                                }
+                                const Icon = iconMap[benefit.icon as keyof typeof iconMap] || Eye
+                                return (
+                                    <div key={index} className="text-center">
+                                        <div className="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                            <Icon className="h-8 w-8 text-red-600 dark:text-red-400" />
+                                        </div>
+                                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                                            {benefit.title}
+                                        </h3>
+                                        <p className="text-gray-600 dark:text-gray-400">
+                                            {benefit.description}
+                                        </p>
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
-                </div>
+                )}
 
                 {/* CTA Section */}
                 <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-2xl p-12 text-center text-white">

@@ -16,6 +16,8 @@ export interface Product {
     enterpriseFeatures?: string
     complianceFrameworks?: string
     deploymentOptions?: string
+    threatIntelligence?: string
+    searchCapabilities?: string
   }
   architecture?: {
     layers: {
@@ -624,12 +626,12 @@ const { detect, isLoading, isInjection } = usePromptShield({
     name: 'TorScan',
     description: 'Advanced Dark Web Intelligence Platform. A production-ready dark web scanner with advanced search capabilities, authentication, and enterprise-grade security features for monitoring and analyzing .onion sites.',
     features: [
-      'Tor-Enabled Web Crawler - Secure crawling of .onion sites with circuit rotation',
-      'Advanced Pattern Matching - Regex-based search with custom patterns and intelligent threat detection',
-      'Elasticsearch Integration - Full-text search with fuzzy matching, aggregations, and real-time indexing',
-      'Threat Intelligence - MISP and OpenCTI integration with automatic IOC extraction and correlation',
-      'Scheduled Scans - Automated recurring scans with cron, interval, and date scheduling',
-      'Plugin System - Extensible architecture with hot-reload capabilities for custom functionality'
+      'Advanced Tor-Enabled Crawler - Secure crawling with circuit rotation, anonymous crawling, and real-time monitoring',
+      'ML-Powered Threat Detection - Machine learning anomaly detection, pattern recognition, and predictive analytics',
+      'Comprehensive Threat Intelligence - MISP and OpenCTI integration with automatic IOC extraction and correlation',
+      'Advanced Search & Analytics - Full-text search with fuzzy matching, aggregations, and real-time indexing',
+      'Enterprise Security & Authentication - Production-ready security with rate limiting, audit logging, and user management',
+      'Extensible Plugin System - Hot-reload capabilities with custom crawlers, matchers, exporters, and notifiers'
     ],
     category: 'Dark Web Intelligence',
     status: 'coming-soon',
@@ -637,34 +639,113 @@ const { detect, isLoading, isInjection } = usePromptShield({
       responseTime: 'Real-time monitoring',
       throughput: 'Scalable crawling',
       availability: '99.9% uptime',
-      latency: 'Low-latency processing'
+      latency: 'Low-latency processing',
+      mlCapabilities: 'Anomaly detection, Pattern recognition, Predictive analytics',
+      threatIntelligence: 'MISP, OpenCTI, IOC extraction, Threat correlation',
+      searchCapabilities: 'Full-text search, Fuzzy matching, Aggregations, Real-time indexing',
+      deploymentOptions: 'Docker, Kubernetes, Multi-cloud, On-premise'
+    },
+    architecture: {
+      layers: [
+        {
+          name: 'Web Interface Layer',
+          description: 'Flask-based web dashboard with real-time updates, progress tracking, and user authentication',
+          detects: ['User authentication', 'Real-time monitoring', 'Progress tracking', 'Dashboard analytics', 'Export functionality']
+        },
+        {
+          name: 'Processing Engine',
+          description: 'Celery-based asynchronous processing with background task management and distributed scanning',
+          detects: ['Async processing', 'Background tasks', 'Distributed scanning', 'Task management', 'Queue management']
+        },
+        {
+          name: 'ML Intelligence Layer',
+          description: 'Advanced machine learning system with anomaly detection, pattern recognition, and predictive analytics',
+          detects: ['Anomaly detection', 'Pattern recognition', 'Predictive analytics', 'Risk assessment', 'Automated response']
+        },
+        {
+          name: 'Data Storage Layer',
+          description: 'MongoDB for persistent storage with Elasticsearch for search and analytics',
+          detects: ['Data persistence', 'Search indexing', 'Analytics storage', 'Historical tracking', 'Export capabilities']
+        }
+      ]
     },
     useCases: [
       'Security Operations',
       'Threat Intelligence',
       'Compliance & Risk',
-      'Incident Response'
+      'Incident Response',
+      'Dark Web Monitoring',
+      'IOC Extraction & Correlation',
+      'Predictive Threat Analysis',
+      'Automated Response Workflows',
+      'Regulatory Compliance',
+      'Security Research'
     ],
+    integrationExamples: {
+      python: `from torscan import TorScan
+
+# Initialize TorScan
+scanner = TorScan(api_key="your-api-key")
+
+# Start comprehensive dark web scan
+scan_result = await scanner.scan_comprehensive({
+    targets: ["example.onion", "market.onion"],
+    patterns: ["email@example.com", "CompanyName"],
+    ml_analysis: True,
+    threat_correlation: True
+})
+
+# Get ML-powered threat analysis
+threat_analysis = await scanner.analyze_threats(scan_result.id)
+print(f"Anomalies detected: {threat_analysis.anomalies}")
+print(f"Risk score: {threat_analysis.risk_score}")`,
+      javascript: `import { TorScan } from '@torscan/sdk';
+
+const scanner = new TorScan({ apiKey: 'your-api-key' });
+
+// Run ML-powered dark web scan
+const result = await scanner.scanComprehensive({
+  targets: ['example.onion', 'market.onion'],
+  patterns: ['email@example.com', 'CompanyName'],
+  mlAnalysis: true,
+  threatCorrelation: true
+});
+
+// Get predictive threat analysis
+const threatAnalysis = await scanner.analyzeThreats(result.id);
+console.log('Anomalies:', threatAnalysis.anomalies);
+console.log('Risk Score:', threatAnalysis.riskScore);`,
+      api: `curl -X POST "https://api.torscan.com/v1/scan" \\
+  -H "Authorization: Bearer your-api-key" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "targets": ["example.onion", "market.onion"],
+    "patterns": ["email@example.com", "CompanyName"],
+    "ml_analysis": true,
+    "threat_correlation": true,
+    "predictive_analytics": true
+  }'`
+    },
     benefits: [
       {
+        title: 'ML-Powered Intelligence',
+        description: 'Advanced machine learning with anomaly detection, pattern recognition, and predictive analytics',
+        icon: 'Brain'
+      },
+      {
         title: 'Comprehensive Monitoring',
-        description: 'Advanced crawling capabilities with circuit rotation and secure Tor integration',
+        description: 'Advanced crawling capabilities with circuit rotation and secure Tor integration for complete dark web visibility',
         icon: 'Eye'
       },
       {
         title: 'Enterprise Security',
-        description: 'Production-ready security features including authentication and audit logging',
+        description: 'Production-ready security features including authentication, rate limiting, and comprehensive audit logging',
         icon: 'Shield'
       },
       {
         title: 'Threat Intelligence',
-        description: 'Seamless integration with MISP and OpenCTI for automatic IOC extraction',
-        icon: 'Brain'
-      },
-      {
-        title: 'Scalable Architecture',
-        description: 'Microservices-based architecture with Docker containerization',
-        icon: 'Server'
+        description: 'Seamless integration with MISP and OpenCTI for automatic IOC extraction and threat correlation',
+        icon: 'Target'
       }
     ]
   }
