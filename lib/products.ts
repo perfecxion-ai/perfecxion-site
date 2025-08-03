@@ -14,6 +14,8 @@ export interface Product {
     multiModalSupport?: string
     mlCapabilities?: string
     enterpriseFeatures?: string
+    complianceFrameworks?: string
+    deploymentOptions?: string
   }
   architecture?: {
     layers: {
@@ -185,47 +187,128 @@ const result = await adapt.attack.comprehensive({
     name: 'perfecX Red-T',
     description: 'Advanced red team testing platform for AI systems. Comprehensive adversarial testing to identify vulnerabilities before they become threats with enterprise-grade security assessment capabilities.',
     features: [
-      'Automated Attack Simulations - Comprehensive automated red team attack simulations with multi-vector vulnerability scanning',
-      'Multi-Vector Scanning - Advanced pattern matching and intelligent threat detection across multiple attack vectors',
-      'Comprehensive Reporting - Detailed security reports with actionable insights and vulnerability trend analysis',
-      'CI/CD Integration - Seamless integration with CI/CD pipelines for continuous security assessment',
-      'Custom Attack Scenarios - Create and execute custom attack scenarios tailored to your specific AI systems',
-      'Real-Time Assessment - Real-time threat assessment with live monitoring and instant vulnerability detection'
+      'OWASP Top 10 LLM Coverage - Complete implementation of OWASP Top 10 for Large Language Models with 10+ vulnerability categories',
+      'Advanced Attack Techniques - State-of-the-art techniques including TAP, PAIR, AutoDAN, GPTFuzz, CodeChameleon, and DeepInception',
+      'Enterprise-Grade Architecture - Multi-model support, distributed testing, CI/CD integration, and comprehensive compliance reporting',
+      'Comprehensive Security Testing - Prompt injection, data poisoning, model manipulation, supply chain attacks, and adversarial examples',
+      'Real-Time Monitoring & Analytics - Live threat detection, vulnerability scoring, and executive dashboards with SLA monitoring',
+      'Enterprise Deployment Ready - Docker/Kubernetes support, multi-cloud deployment, and air-gap capable architecture'
     ],
     category: 'Red Team Testing',
     status: 'coming-soon',
     technicalSpecs: {
       responseTime: 'Real-time testing',
-      throughput: 'Batch processing',
-      availability: '99.9% uptime',
-      latency: 'Low-latency execution'
+      throughput: 'Distributed multi-node processing',
+      availability: '99.9% uptime SLA',
+      latency: 'Low-latency execution',
+      attackCategories: '10+ advanced techniques',
+      multiModalSupport: 'OpenAI, Anthropic, Google, Azure, AWS, Custom APIs',
+      complianceFrameworks: 'SOC2, ISO27001, GDPR, CCPA, NIST AI RMF',
+      deploymentOptions: 'Docker, Kubernetes, Multi-cloud, On-premise'
+    },
+    architecture: {
+      layers: [
+        {
+          name: 'API Gateway Layer',
+          description: 'Enterprise-grade API gateway with authentication, versioning, and SLA monitoring',
+          detects: ['API authentication', 'Request transformation', 'SLA compliance', 'Rate limiting', 'Version management']
+        },
+        {
+          name: 'Core Testing Engine',
+          description: 'Advanced security testing engine with OWASP Top 10 LLM implementation and custom plugins',
+          detects: ['OWASP vulnerabilities', 'Custom attack techniques', 'Multi-model testing', 'Plugin management', 'Real-time assessment']
+        },
+        {
+          name: 'Enterprise Integration Layer',
+          description: 'Comprehensive enterprise features including SSO, licensing, and compliance reporting',
+          detects: ['SSO integration', 'License management', 'Compliance reporting', 'Audit logging', 'Executive dashboards']
+        },
+        {
+          name: 'Deployment Infrastructure',
+          description: 'Production-ready infrastructure with Docker, Kubernetes, and multi-cloud support',
+          detects: ['Container orchestration', 'Multi-cloud deployment', 'High availability', 'Security controls', 'Monitoring']
+        }
+      ]
     },
     useCases: [
-      'Security Research',
-      'AI Model Assessment',
-      'Compliance Testing',
-      'Red Team Operations'
+      'Enterprise AI Security Assessment',
+      'OWASP Top 10 LLM Compliance',
+      'Red Team Operations',
+      'AI Model Validation',
+      'Supply Chain Security Testing',
+      'Compliance Reporting Automation',
+      'CI/CD Security Integration',
+      'Executive Security Dashboards',
+      'Multi-Model Security Testing',
+      'Custom Security Plugin Development'
     ],
+    integrationExamples: {
+      python: `from airt import SecurityTester, OWASPProfile
+
+# Initialize with enterprise config
+tester = SecurityTester.from_config("enterprise-config.yaml")
+
+# Run comprehensive OWASP Top 10 assessment
+results = tester.run_assessment(
+    target_model="gpt-4",
+    profile=OWASPProfile.ENTERPRISE,
+    techniques=["TAP", "PAIR", "AutoDAN"],
+    parallel=True
+)
+
+# Generate executive report
+report = results.generate_report(format="pdf", template="executive")`,
+      javascript: `import { SecurityTester } from '@perfecxion/red-t';
+
+const tester = new SecurityTester({
+  config: 'enterprise-config.yaml',
+  apiKey: 'your-api-key'
+});
+
+// Run comprehensive security assessment
+const results = await tester.runAssessment({
+  targetModel: 'gpt-4',
+  profile: 'OWASP_ENTERPRISE',
+  techniques: ['TAP', 'PAIR', 'AutoDAN'],
+  parallel: true
+});
+
+// Generate compliance report
+const report = await results.generateReport({
+  format: 'pdf',
+  template: 'executive'
+});`,
+      api: `curl -X POST "https://api.perfecxion.ai/v1/assessment" \\
+  -H "Authorization: Bearer your-api-key" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "target_model": "gpt-4",
+    "profile": "OWASP_ENTERPRISE",
+    "techniques": ["TAP", "PAIR", "AutoDAN"],
+    "parallel": true,
+    "generate_report": true
+  }'`
+    },
     benefits: [
       {
-        title: 'Comprehensive Coverage',
-        description: 'Advanced testing capabilities covering all major AI security vulnerabilities and attack patterns',
+        title: 'OWASP Top 10 LLM Coverage',
+        description: 'Complete implementation of OWASP Top 10 for Large Language Models with 10+ vulnerability categories',
         icon: 'Shield'
       },
       {
-        title: 'Enterprise Architecture',
-        description: 'Robust, scalable architecture designed for enterprise red team testing',
+        title: 'Advanced Attack Techniques',
+        description: 'State-of-the-art techniques including TAP, PAIR, AutoDAN, GPTFuzz, CodeChameleon, and DeepInception',
+        icon: 'Zap'
+      },
+      {
+        title: 'Enterprise-Grade Architecture',
+        description: 'Multi-model support, distributed testing, CI/CD integration, and comprehensive compliance reporting',
         icon: 'Server'
       },
       {
-        title: 'Real-Time Assessment',
-        description: 'Live monitoring and instant vulnerability detection with comprehensive reporting',
-        icon: 'BarChart3'
-      },
-      {
-        title: 'Team Collaboration',
-        description: 'Multi-user support with role-based access control and shared testing sessions',
-        icon: 'Users'
+        title: 'Compliance Ready',
+        description: 'SOC2, ISO27001, GDPR, CCPA, and NIST AI RMF compliance with automated reporting',
+        icon: 'FileText'
       }
     ]
   },

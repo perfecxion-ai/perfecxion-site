@@ -1,6 +1,9 @@
 import { Metadata } from 'next'
-import { Shield, Zap, Code, BarChart3, TestTube, GitBranch, FileText, Users, Lock, ArrowRight, CheckCircle, AlertTriangle, Clock, Database, Cpu } from 'lucide-react'
+import { Shield, Zap, Code, BarChart3, TestTube, GitBranch, FileText, Users, Lock, ArrowRight, CheckCircle, AlertTriangle, Clock, Database, Cpu, Brain, Target, Building, Award } from 'lucide-react'
 import Link from 'next/link'
+import { getProduct } from '@/lib/products'
+import { notFound } from 'next/navigation'
+import DemoRequestButton from '@/components/DemoRequestButton'
 
 export const metadata: Metadata = {
     title: 'perfecX Red-T - Advanced Red Team Testing Platform for AI Systems',
@@ -8,6 +11,12 @@ export const metadata: Metadata = {
 }
 
 export default function PerfecXionRedTPage() {
+    const product = getProduct('perfecxion-red-t')
+    
+    if (!product) {
+        notFound()
+    }
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
             {/* Hero Section */}
@@ -21,30 +30,45 @@ export default function PerfecXionRedTPage() {
                         </div>
 
                         <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl lg:text-7xl">
-                            perfecX Red-T
+                            {product.name}
                             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600">
                                 AI Security Platform
                             </span>
                         </h1>
 
                         <p className="mt-6 text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
-                            Advanced red team testing platform for AI systems. Comprehensive adversarial testing to identify
-                            vulnerabilities before they become threats with enterprise-grade security assessment capabilities.
+                            {product.description}
                         </p>
 
+                        <div className="flex flex-wrap gap-2 mt-8 justify-center">
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400">
+                                OWASP Top 10 LLM
+                            </span>
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400">
+                                10+ Attack Techniques
+                            </span>
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400">
+                                Enterprise Ready
+                            </span>
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400">
+                                SOC2 Compliant
+                            </span>
+                        </div>
+
                         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-                            <Link
-                                href="#get-started"
-                                className="inline-flex items-center justify-center rounded-lg bg-red-600 px-8 py-4 text-lg font-semibold text-white shadow-lg hover:bg-red-700 transition-colors"
-                            >
-                                Start Testing
-                                <ArrowRight className="ml-2 h-5 w-5" />
-                            </Link>
+                            <DemoRequestButton product={product} />
                             <Link
                                 href="#architecture"
                                 className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-8 py-4 text-lg font-semibold text-gray-700 shadow-lg hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 transition-colors"
                             >
                                 View Architecture
+                            </Link>
+                            <Link
+                                href="/docs/perfecxion-red-t"
+                                className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-8 py-4 text-lg font-semibold text-gray-700 shadow-lg hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 transition-colors"
+                            >
+                                <Code className="mr-2 h-5 w-5" />
+                                Documentation
                             </Link>
                         </div>
                     </div>
@@ -64,174 +88,171 @@ export default function PerfecXionRedTPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-xl p-8 border border-red-200 dark:border-red-800">
-                            <div className="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center mb-6">
-                                <GitBranch className="h-6 w-6 text-red-600 dark:text-red-400" />
-                            </div>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                                Automated Attack Simulations
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                Comprehensive automated red team attack simulations with multi-vector vulnerability scanning.
-                            </p>
-                        </div>
-
-                        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl p-8 border border-blue-200 dark:border-blue-800">
-                            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
-                                <Zap className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-                            </div>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                                Multi-Vector Scanning
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                Advanced pattern matching and intelligent threat detection across multiple attack vectors.
-                            </p>
-                        </div>
-
-                        <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-8 border border-green-200 dark:border-green-800">
-                            <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mb-6">
-                                <BarChart3 className="h-6 w-6 text-green-600 dark:text-green-400" />
-                            </div>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                                Comprehensive Reporting
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                Detailed security reports with actionable insights and vulnerability trend analysis.
-                            </p>
-                        </div>
-
-                        <div className="bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20 rounded-xl p-8 border border-purple-200 dark:border-purple-800">
-                            <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mb-6">
-                                <Shield className="h-6 w-6 text-purple-600 dark:text-purple-400" />
-                            </div>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                                CI/CD Integration
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                Seamless integration with CI/CD pipelines for continuous security assessment.
-                            </p>
-                        </div>
-
-                        <div className="bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 rounded-xl p-8 border border-yellow-200 dark:border-yellow-800">
-                            <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg flex items-center justify-center mb-6">
-                                <Cpu className="h-6 w-6 text-yellow-600 dark:text-yellow-400" />
-                            </div>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                                Custom Attack Scenarios
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                Create and execute custom attack scenarios tailored to your specific AI systems.
-                            </p>
-                        </div>
-
-                        <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-xl p-8 border border-indigo-200 dark:border-indigo-800">
-                            <div className="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center mb-6">
-                                <TestTube className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
-                            </div>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                                Real-Time Assessment
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                Real-time threat assessment with live monitoring and instant vulnerability detection.
-                            </p>
-                        </div>
+                        {product.features.map((feature, index) => {
+                            const [title, description] = feature.split(' - ')
+                            return (
+                                <div key={index} className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-xl p-8 border border-red-200 dark:border-red-800">
+                                    <div className="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center mb-6">
+                                        <Shield className="h-6 w-6 text-red-600 dark:text-red-400" />
+                                    </div>
+                                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                                        {title}
+                                    </h3>
+                                    <p className="text-gray-600 dark:text-gray-300">
+                                        {description}
+                                    </p>
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
             </section>
 
-            {/* Architecture Section */}
-            <section id="architecture" className="py-20 bg-gray-50 dark:bg-gray-800">
+            {/* Advanced Attack Techniques */}
+            <section className="py-20 bg-gray-50 dark:bg-gray-800">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
-                            Three Core Architectural Pillars
+                            Advanced Attack Techniques
                         </h2>
                         <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
-                            Built around a robust, scalable architecture designed for enterprise red team testing.
+                            State-of-the-art adversarial attack methods implementing cutting-edge research
                         </p>
                     </div>
-
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                        <div className="bg-white dark:bg-gray-900 rounded-xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
-                            <div className="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-xl flex items-center justify-center mb-6">
-                                <Code className="h-8 w-8 text-red-600 dark:text-red-400" />
-                            </div>
-                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                                Attack Simulation Engine
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 mb-6">
-                                Advanced attack simulation engine with extensible architecture for custom vulnerability tests and security assessments.
-                            </p>
-                            <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                                <li className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                                    Automated attack scenarios
-                                </li>
-                                <li className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                                    Custom test development
-                                </li>
-                                <li className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                                    Dynamic threat modeling
-                                </li>
-                            </ul>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">TAP (Tree of Attacks with Pruning)</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Advanced tree-based attack generation with intelligent pruning for maximum effectiveness</p>
                         </div>
-
-                        <div className="bg-white dark:bg-gray-900 rounded-xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
-                            <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mb-6">
-                                <Zap className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-                            </div>
-                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                                Multi-Vector Scanner
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 mb-6">
-                                Unified interface for different AI model providers with seamless integration across multiple attack vectors.
-                            </p>
-                            <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                                <li className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                                    Prompt injection testing
-                                </li>
-                                <li className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                                    Social engineering attacks
-                                </li>
-                                <li className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                                    Model manipulation
-                                </li>
-                            </ul>
+                        <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">PAIR (Prompt Automatic Iterative Refinement)</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Automated prompt refinement for sophisticated injection attacks</p>
                         </div>
-
-                        <div className="bg-white dark:bg-gray-900 rounded-xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
-                            <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center mb-6">
-                                <BarChart3 className="h-8 w-8 text-green-600 dark:text-green-400" />
-                            </div>
-                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                                Threat Assessment Engine
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 mb-6">
-                                Orchestrates attack workflows and manages results with comprehensive reporting and analysis capabilities.
-                            </p>
-                            <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                                <li className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                                    Real-time threat detection
-                                </li>
-                                <li className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                                    Vulnerability scoring
-                                </li>
-                                <li className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                                    Risk assessment reports
-                                </li>
-                            </ul>
+                        <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">AutoDAN</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Gradient-based attack optimization with advanced evasion techniques</p>
+                        </div>
+                        <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">GPTFuzz</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Intelligent fuzzing techniques for discovering novel vulnerabilities</p>
+                        </div>
+                        <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">CodeChameleon</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Code injection testing with polymorphic payload generation</p>
+                        </div>
+                        <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">DeepInception</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Multi-layer attack techniques for complex model manipulation</p>
                         </div>
                     </div>
                 </div>
             </section>
+
+            {/* Technical Specifications */}
+            {product.technicalSpecs && (
+                <section className="py-20 bg-gray-50 dark:bg-gray-800">
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+                                Technical Specifications
+                            </h2>
+                            <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
+                                Enterprise-grade performance and capabilities for production environments
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                                <div className="flex items-center space-x-3 mb-3">
+                                    <div className="w-10 h-10 bg-red-100 dark:bg-red-900/20 rounded-lg flex items-center justify-center">
+                                        <Zap className="h-5 w-5 text-red-600 dark:text-red-400" />
+                                    </div>
+                                    <h3 className="font-semibold text-gray-900 dark:text-white">Performance</h3>
+                                </div>
+                                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <div><span className="font-medium">Response Time:</span> {product.technicalSpecs.responseTime}</div>
+                                    <div><span className="font-medium">Throughput:</span> {product.technicalSpecs.throughput}</div>
+                                    <div><span className="font-medium">Latency:</span> {product.technicalSpecs.latency}</div>
+                                </div>
+                            </div>
+                            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                                <div className="flex items-center space-x-3 mb-3">
+                                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
+                                        <Shield className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                                    </div>
+                                    <h3 className="font-semibold text-gray-900 dark:text-white">Security</h3>
+                                </div>
+                                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <div><span className="font-medium">Availability:</span> {product.technicalSpecs.availability}</div>
+                                    <div><span className="font-medium">Attack Techniques:</span> {product.technicalSpecs.attackCategories}</div>
+                                    <div><span className="font-medium">Model Support:</span> {product.technicalSpecs.multiModalSupport}</div>
+                                </div>
+                            </div>
+                            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                                <div className="flex items-center space-x-3 mb-3">
+                                    <div className="w-10 h-10 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
+                                        <Award className="h-5 w-5 text-green-600 dark:text-green-400" />
+                                    </div>
+                                    <h3 className="font-semibold text-gray-900 dark:text-white">Compliance</h3>
+                                </div>
+                                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <div><span className="font-medium">Frameworks:</span> {product.technicalSpecs.complianceFrameworks}</div>
+                                    <div><span className="font-medium">Certifications:</span> SOC2, ISO27001</div>
+                                    <div><span className="font-medium">Standards:</span> OWASP Top 10 LLM</div>
+                                </div>
+                            </div>
+                            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                                <div className="flex items-center space-x-3 mb-3">
+                                    <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center">
+                                        <Building className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                                    </div>
+                                    <h3 className="font-semibold text-gray-900 dark:text-white">Deployment</h3>
+                                </div>
+                                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <div><span className="font-medium">Options:</span> {product.technicalSpecs.deploymentOptions}</div>
+                                    <div><span className="font-medium">Infrastructure:</span> Multi-cloud ready</div>
+                                    <div><span className="font-medium">Security:</span> Air-gap capable</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            {/* Architecture Section */}
+            {product.architecture && (
+                <section id="architecture" className="py-20 bg-white dark:bg-gray-900">
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+                                Four-Layer Enterprise Architecture
+                            </h2>
+                            <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
+                                Built around a robust, scalable architecture designed for enterprise red team testing.
+                            </p>
+                        </div>
+
+                        <div className="space-y-8">
+                            {product.architecture.layers.map((layer, index) => (
+                                <div key={index} className="bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-lg p-8 border border-gray-200 dark:border-gray-700">
+                                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                                        {layer.name}
+                                    </h3>
+                                    <p className="text-gray-600 dark:text-gray-400 mb-4">
+                                        {layer.description}
+                                    </p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {layer.detects.map((capability, idx) => (
+                                            <span key={idx} className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400">
+                                                {capability}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
 
             {/* Vulnerability Categories */}
             <section className="py-20 bg-white dark:bg-gray-900">
@@ -315,186 +336,128 @@ export default function PerfecXionRedTPage() {
                 </div>
             </section>
 
-            {/* Quick Start Section */}
-            <section id="get-started" className="py-20 bg-gray-50 dark:bg-gray-800">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
-                            Get Started in Minutes
-                        </h2>
-                        <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
-                            Simple setup and configuration for immediate red team testing capabilities.
-                        </p>
-                    </div>
-
-                    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-                        <div className="p-8">
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                                <div>
-                                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                                        Installation & Setup
-                                    </h3>
-
-                                    <div className="space-y-4">
-                                        <div className="flex items-start space-x-3">
-                                            <div className="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                                                <span className="text-green-600 dark:text-green-400 text-sm font-semibold">1</span>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-semibold text-gray-900 dark:text-white">Deploy Platform</h4>
-                                                <code className="block mt-1 text-sm bg-gray-100 dark:bg-gray-800 p-2 rounded">
-                                                    docker-compose up -d
-                                                </code>
-                                            </div>
+            {/* Use Cases */}
+            {product.useCases && (
+                <section className="py-20 bg-gray-50 dark:bg-gray-800">
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+                                Comprehensive Use Cases
+                            </h2>
+                            <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
+                                perfecX Red-T serves diverse security testing needs across industries
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {product.useCases.map((useCase, index) => (
+                                <div key={index} className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                                    <div className="flex items-center space-x-3 mb-3">
+                                        <div className="w-8 h-8 bg-red-100 dark:bg-red-900/20 rounded-lg flex items-center justify-center">
+                                            <Target className="h-4 w-4 text-red-600 dark:text-red-400" />
                                         </div>
-
-                                        <div className="flex items-start space-x-3">
-                                            <div className="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                                                <span className="text-green-600 dark:text-green-400 text-sm font-semibold">2</span>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-semibold text-gray-900 dark:text-white">Configure Targets</h4>
-                                                <code className="block mt-1 text-sm bg-gray-100 dark:bg-gray-800 p-2 rounded">
-                                                    perfecx-red-t configure --targets
-                                                </code>
-                                            </div>
-                                        </div>
-
-                                        <div className="flex items-start space-x-3">
-                                            <div className="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                                                <span className="text-green-600 dark:text-green-400 text-sm font-semibold">3</span>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-semibold text-gray-900 dark:text-white">Start Testing</h4>
-                                                <code className="block mt-1 text-sm bg-gray-100 dark:bg-gray-800 p-2 rounded">
-                                                    perfecx-red-t run --comprehensive
-                                                </code>
-                                            </div>
-                                        </div>
+                                        <h3 className="font-semibold text-gray-900 dark:text-white">{useCase}</h3>
                                     </div>
                                 </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
 
-                                <div>
-                                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                                        Basic Usage
-                                    </h3>
-
-                                    <div className="space-y-4">
-                                        <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                                            <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Run Attack Simulation</h4>
-                                            <code className="text-sm text-gray-600 dark:text-gray-400">
-                                                perfecx-red-t attack --vector prompt-injection
-                                            </code>
-                                        </div>
-
-                                        <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                                            <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Generate Security Report</h4>
-                                            <code className="text-sm text-gray-600 dark:text-gray-400">
-                                                perfecx-red-t report --format pdf --output security-assessment.pdf
-                                            </code>
-                                        </div>
-
-                                        <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                                            <h4 className="font-semibold text-gray-900 dark:text-white mb-2">CI/CD Integration</h4>
-                                            <code className="text-sm text-gray-600 dark:text-gray-400">
-                                                perfecx-red-t ci --threshold high --fail-on-vulnerabilities
-                                            </code>
-                                        </div>
-                                    </div>
+            {/* Integration Examples */}
+            {product.integrationExamples && (
+                <section className="py-20 bg-white dark:bg-gray-900">
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+                                Quick Integration
+                            </h2>
+                            <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
+                                Get started with perfecX Red-T in minutes using our SDKs and REST API
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                            <div className="space-y-4">
+                                <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+                                    <Code className="h-5 w-5" />
+                                    Python SDK
+                                </h3>
+                                <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                    <pre className="text-sm text-gray-300">
+                                        <code>{product.integrationExamples.python}</code>
+                                    </pre>
+                                </div>
+                            </div>
+                            <div className="space-y-4">
+                                <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+                                    <Code className="h-5 w-5" />
+                                    JavaScript SDK
+                                </h3>
+                                <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                    <pre className="text-sm text-gray-300">
+                                        <code>{product.integrationExamples.javascript}</code>
+                                    </pre>
+                                </div>
+                            </div>
+                            <div className="space-y-4">
+                                <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+                                    <Code className="h-5 w-5" />
+                                    REST API
+                                </h3>
+                                <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                    <pre className="text-sm text-gray-300">
+                                        <code>{product.integrationExamples.api}</code>
+                                    </pre>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            )}
 
-            {/* Enterprise Features */}
-            <section className="py-20 bg-white dark:bg-gray-900">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
-                            Enterprise-Grade Features
-                        </h2>
-                        <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
-                            Built for security teams and organizations requiring comprehensive red team testing capabilities.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mx-auto mb-6">
-                                <Users className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-                            </div>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                                Team Collaboration
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                Multi-user support with role-based access control and shared testing sessions.
+            {/* Benefits */}
+            {product.benefits && (
+                <section className="py-20 bg-white dark:bg-gray-900">
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+                                Why Choose perfecX Red-T?
+                            </h2>
+                            <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
+                                Industry-leading capabilities for comprehensive AI security testing
                             </p>
                         </div>
 
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center mx-auto mb-6">
-                                <FileText className="h-8 w-8 text-green-600 dark:text-green-400" />
-                            </div>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                                Compliance Reporting
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                Generate detailed reports for SOC2, ISO 27001, and other compliance requirements.
-                            </p>
-                        </div>
-
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center mx-auto mb-6">
-                                <Lock className="h-8 w-8 text-purple-600 dark:text-purple-400" />
-                            </div>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                                Security Controls
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                Built-in rate limiting, audit logging, and ethical testing safeguards.
-                            </p>
-                        </div>
-
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center mx-auto mb-6">
-                                <Database className="h-8 w-8 text-orange-600 dark:text-orange-400" />
-                            </div>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                                Audit Logging
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                Complete activity tracking and audit trails for all red team operations.
-                            </p>
-                        </div>
-
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-xl flex items-center justify-center mx-auto mb-6">
-                                <BarChart3 className="h-8 w-8 text-red-600 dark:text-red-400" />
-                            </div>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                                Advanced Analytics
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                Detailed metrics, vulnerability trends, and attack pattern analysis.
-                            </p>
-                        </div>
-
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center mx-auto mb-6">
-                                <Zap className="h-8 w-8 text-indigo-600 dark:text-indigo-400" />
-                            </div>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                                API Integration
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                RESTful API with webhooks, batch testing, and enterprise integrations.
-                            </p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {product.benefits.map((benefit, index) => {
+                                const iconMap = {
+                                    'Shield': Shield,
+                                    'Zap': Zap,
+                                    'Server': Building,
+                                    'FileText': FileText,
+                                    'Brain': Brain,
+                                    'Target': Target,
+                                    'Award': Award
+                                }
+                                const Icon = iconMap[benefit.icon as keyof typeof iconMap] || Shield
+                                return (
+                                    <div key={index} className="text-center">
+                                        <div className="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                            <Icon className="h-8 w-8 text-red-600 dark:text-red-400" />
+                                        </div>
+                                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                                            {benefit.title}
+                                        </h3>
+                                        <p className="text-gray-600 dark:text-gray-400">
+                                            {benefit.description}
+                                        </p>
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            )}
 
             {/* CTA Section */}
             <section className="py-20 bg-gradient-to-r from-red-600 to-orange-600">
