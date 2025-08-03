@@ -31,7 +31,12 @@ import {
   Briefcase,
   Bell,
   Cloud,
-  GraduationCap
+  GraduationCap,
+  ChevronLeft,
+  Calendar,
+  Clock,
+  User,
+  Tag
 } from 'lucide-react';
 
 // MDX components that can be used in the content
@@ -113,48 +118,87 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   const headings = data.toc ? getHeadings(cleanContent) : [];
 
   return (
-    <article className="relative w-full">
-      <header className="mb-10">
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6 leading-tight">
-          {data.title}
-        </h1>
-        <div className="flex flex-wrap items-center gap-4 text-gray-500 dark:text-gray-400 text-sm font-medium mb-4">
-          <span>{data.date}</span>
-          {data.author && <span>· {data.author}</span>}
-          {data.readTime && <span>· {data.readTime}</span>}
-          {data.category && (
-            <span className="bg-primary-100 dark:bg-primary-900/20 text-primary-800 dark:text-primary-200 px-2 py-0.5 rounded text-xs font-semibold">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Navigation */}
+      <div className="mb-8">
+        <Link
+          href="/blog"
+          className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+        >
+          <ChevronLeft className="h-4 w-4 mr-1" />
+          Back to Blog
+        </Link>
+      </div>
+
+      {/* Header */}
+      <div className="mb-8">
+        {data.category && (
+          <div className="flex items-center gap-3 mb-4">
+            <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
+              data.category.toLowerCase() === 'ai security' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400' :
+              data.category.toLowerCase() === 'threat analysis' ? 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400' :
+              data.category.toLowerCase() === 'best practices' ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400' :
+              data.category.toLowerCase() === 'product updates' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400' :
+              data.category.toLowerCase() === 'research' ? 'bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400' :
+              'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300'
+            }`}>
               {data.category}
             </span>
+          </div>
+        )}
+        
+        <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-4">
+          {data.title}
+        </h1>
+        
+        <p className="text-xl text-gray-600 dark:text-gray-400 mb-6">
+          {data.description}
+        </p>
+
+        {/* Meta Information */}
+        <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 dark:text-gray-400 mb-6">
+          <div className="flex items-center gap-1">
+            <Calendar className="h-4 w-4" />
+            {new Date(data.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </div>
+          {data.readTime && (
+            <div className="flex items-center gap-1">
+              <Clock className="h-4 w-4" />
+              {data.readTime} min read
+            </div>
+          )}
+          {data.author && (
+            <div className="flex items-center gap-1">
+              <User className="h-4 w-4" />
+              {data.author}
+            </div>
           )}
         </div>
-        {data.description && (
-          <div className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">{data.description}</div>
-        )}
-      </header>
 
-      <div className="flex gap-8">
-        {headings.length > 0 && (
-          <nav className="hidden xl:block w-56 flex-shrink-0 sticky top-24 self-start">
-            <div className="text-xs uppercase tracking-wider text-gray-400 mb-4">On this page</div>
-            <ul className="space-y-2">
-              {headings.map(h => (
-                <li key={h.id}>
-                  <a
-                    href={`#${h.id}`}
-                    className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-sm block py-1"
-                  >
-                    {h.text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+        {/* Tags */}
+        {data.tags && data.tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-8">
+            {data.tags.map((tag: string) => (
+              <span
+                key={tag}
+                className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
+              >
+                <Tag className="h-3 w-3 mr-1" />
+                {tag}
+              </span>
+            ))}
+          </div>
         )}
-        <div className="prose prose-lg dark:prose-invert max-w-none w-full overflow-x-hidden">
+      </div>
+
+              {/* Content */}
+        <div className="prose prose-lg dark:prose-invert max-w-none">
           <MDXRemote source={cleanContent} components={mdxComponents} />
         </div>
       </div>
-    </article>
   );
 }

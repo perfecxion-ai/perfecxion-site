@@ -12,12 +12,14 @@ interface ContentHubProps {
   initialView?: 'grid' | 'list'
   showFilters?: boolean
   featuredOnly?: boolean
+  contentType?: 'all' | 'blog' | 'learning'
 }
 
 export default function ContentHub({
   initialView = 'grid',
   showFilters = true,
-  featuredOnly = false
+  featuredOnly = false,
+  contentType = 'all'
 }: ContentHubProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [filters, setFilters] = useState<ContentFilter>({
@@ -105,8 +107,10 @@ export default function ContentHub({
   const resultsByType = useMemo(() => {
     return results.reduce((acc, result) => {
       const type = result.content.type
-      // Filter out blog posts from the learning center
-      if (type === 'blog') return acc
+      // Filter content based on contentType prop
+      if (contentType === 'blog' && type !== 'blog') return acc
+      if (contentType === 'learning' && type !== 'learning') return acc
+      if (contentType === 'all' && type === 'blog') return acc // Keep blog filtering for learning center
       if (!acc[type]) acc[type] = []
       acc[type].push(result)
       return acc
@@ -172,17 +176,18 @@ export default function ContentHub({
       {/* Header */}
       <div className="mb-12">
         <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
-          Learn AI Security
+          {contentType === 'blog' ? 'Blog' : 'Learn AI Security'}
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-400 max-w-4xl">
-          Master AI security with our comprehensive learning resources, tutorials, and best practices.
-          Explore our AI Security 101 series, whitepapers, and interactive learning paths designed to
-          help you build robust, secure AI systems.
+          {contentType === 'blog' 
+            ? 'Latest insights, news, and updates from the perfecXion.ai team. Explore our expert analysis, case studies, and industry trends in AI security.'
+            : 'Master AI security with our comprehensive learning resources, tutorials, and best practices. Explore our AI Security 101 series, whitepapers, and interactive learning paths designed to help you build robust, secure AI systems.'
+          }
         </p>
       </div>
 
       {/* Learning Paths - Enhanced Design */}
-      {!searchQuery && !Object.keys(filters).some(key => filters[key as keyof ContentFilter] && key !== 'sortBy' && key !== 'sortOrder') && (
+      {contentType !== 'blog' && !searchQuery && !Object.keys(filters).some(key => filters[key as keyof ContentFilter] && key !== 'sortBy' && key !== 'sortOrder') && (
         <div className="mb-16">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
