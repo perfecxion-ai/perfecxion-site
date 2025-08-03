@@ -26,6 +26,8 @@ export interface Product {
       aiProviders?: string
       automationLevel?: string
       auditCapabilities?: string
+      discoveryCapabilities?: string
+      dataProtection?: string
     }
   architecture?: {
     layers: {
@@ -327,12 +329,12 @@ const report = await results.generateReport({
     name: 'perfecX Agent',
     description: 'AI Agent & Multi-Agent System Security Platform. Secure autonomous AI agents and multi-agent systems with real-time monitoring, behavioral analysis, and policy enforcement.',
     features: [
-      'Real-Time Agent Monitoring - Continuous behavioral analysis and anomaly detection',
-      'Multi-Agent Security - Protect agent-to-agent communications and prevent coordinated attacks',
-      'Memory Protection - Cryptographic memory signing and integrity verification',
-      'Policy Enforcement - Rule-based security controls and dynamic permission management',
-      'Framework Integration - Seamless integration with LangChain, AutoGPT, CrewAI, and Semantic Kernel',
-      'Enterprise Scale - Monitor thousands of agents with 99.9% uptime and sub-second response times'
+      'Comprehensive AI Agent Discovery - Network scanning, code analysis, cloud infrastructure scanning with multi-provider support',
+      'Advanced Security Testing - 70+ prompt injection payloads, OWASP LLM Top 10 coverage, access control assessment',
+      'Data Privacy Protection - PII detection, data leakage prevention, privacy violation testing with 7 PII types',
+      'Enterprise Risk Assessment - CVSS-inspired scoring, business impact analysis, prioritized remediation recommendations',
+      'Multi-Interface Platform - Web dashboard, CLI tool, REST API, comprehensive reporting in multiple formats',
+      'Enterprise Authentication - JWT-based authentication with RBAC, audit logging, and secure token management'
     ],
     category: 'Agent Monitoring',
     status: 'coming-soon',
@@ -340,33 +342,138 @@ const report = await results.generateReport({
       responseTime: '< 50ms agent registration',
       throughput: '1000+ concurrent agents',
       availability: '99.9% uptime SLA',
-      latency: '< 100ms behavioral analysis'
+      latency: '< 100ms behavioral analysis',
+      securityTests: '70+ prompt injection payloads across 7 categories',
+      discoveryCapabilities: 'Network, code, cloud infrastructure scanning',
+      dataProtection: '7 PII types detection, privacy violation testing',
+      enterpriseFeatures: 'JWT authentication, RBAC, audit logging, compliance mapping'
+    },
+    architecture: {
+      layers: [
+        {
+          name: 'Discovery Engine',
+          description: 'Comprehensive AI agent discovery with network scanning, code analysis, and cloud infrastructure scanning',
+          detects: ['Network scanning', 'Code repository analysis', 'Cloud infrastructure scanning', 'Traffic analysis', 'Multi-provider support']
+        },
+        {
+          name: 'Security Testing Framework',
+          description: 'Advanced security testing with 70+ prompt injection payloads and OWASP LLM Top 10 coverage',
+          detects: ['Prompt injection testing', 'Access control assessment', 'Data privacy evaluation', 'Vulnerability scoring', 'Confidence levels']
+        },
+        {
+          name: 'Risk Assessment Engine',
+          description: 'CVSS-inspired scoring with business impact analysis and prioritized remediation recommendations',
+          detects: ['Risk scoring', 'Business impact analysis', 'Compliance mapping', 'Temporal risk factors', 'Executive reporting']
+        },
+        {
+          name: 'Enterprise Platform',
+          description: 'Multi-interface platform with web dashboard, CLI tool, REST API, and comprehensive reporting',
+          detects: ['Web dashboard', 'CLI automation', 'REST API integration', 'Comprehensive reporting', 'Enterprise authentication']
+        }
+      ]
     },
     useCases: [
-      'Enterprise AI Operations',
-      'Multi-Agent Workflows',
-      'AI Development Teams',
-      'Production AI Systems'
+      'Enterprise AI Infrastructure Security',
+      'AI Agent Vulnerability Assessment',
+      'Compliance & Governance Initiatives',
+      'Proactive Security Assessments',
+      'Multi-Cloud AI Agent Discovery',
+      'Data Privacy & PII Protection',
+      'Risk Management & Reporting',
+      'AI Development Security Testing',
+      'Production AI System Monitoring',
+      'Executive Security Dashboards'
     ],
+    integrationExamples: {
+      python: `from src.discovery.discovery_engine import DiscoveryEngine, DiscoveryScope
+from src.security.security_engine import SecurityTestEngine
+from src.risk.risk_assessor import RiskAssessment
+
+async def scan_ai_agents():
+    # Initialize engines
+    discovery = DiscoveryEngine()
+    security = SecurityTestEngine()
+    risk_assessor = RiskAssessment()
+    
+    # Define scan scope
+    scope = DiscoveryScope(
+        include_network=True,
+        network_ranges=["192.168.1.0/24"],
+        domains=["company.com"]
+    )
+    
+    # Discover AI agents
+    agents = await discovery.discover_agents(scope)
+    print(f"Found {len(agents)} AI agents")
+    
+    # Test security
+    security_results = await security.test_agents(agents)
+    
+    # Assess risks
+    risk_assessments = await risk_assessor.assess_risks(security_results)
+    
+    return risk_assessments`,
+      javascript: `import { DiscoveryEngine, SecurityTestEngine, RiskAssessment } from '@perfecxion/agent';
+
+const discovery = new DiscoveryEngine();
+const security = new SecurityTestEngine();
+const riskAssessor = new RiskAssessment();
+
+// Configure scan scope
+const scope = {
+    includeNetwork: true,
+    networkRanges: ['192.168.1.0/24'],
+    domains: ['company.com']
+};
+
+// Run comprehensive AI agent security assessment
+const results = await discovery.discoverAgents(scope)
+    .then(agents => security.testAgents(agents))
+    .then(results => riskAssessor.assessRisks(results));
+
+console.log('Found ' + results.agents.length + ' agents with ' + results.vulnerabilities.length + ' vulnerabilities');`,
+      api: `curl -X POST "https://api.perfecxion.ai/v1/agent/scan" \\
+  -H "Authorization: Bearer your-api-key" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "scope": {
+      "include_network": true,
+      "network_ranges": ["192.168.1.0/24"],
+      "domains": ["company.com"]
+    },
+    "security_tests": ["prompt_injection", "access_control", "data_privacy"],
+    "risk_assessment": true
+  }'`
+    },
     benefits: [
       {
-        title: 'Comprehensive Security',
-        description: 'Multi-layered security architecture protecting against memory poisoning, tool misuse, and goal hijacking',
+        title: 'Comprehensive AI Agent Discovery',
+        description: 'Network scanning, code analysis, cloud infrastructure scanning with multi-provider support',
+        icon: 'Search'
+      },
+      {
+        title: 'Advanced Security Testing',
+        description: '70+ prompt injection payloads, OWASP LLM Top 10 coverage, access control assessment',
         icon: 'Shield'
       },
       {
-        title: 'Real-Time Monitoring',
-        description: 'Continuous behavioral analysis with sub-second threat detection and response',
-        icon: 'Activity'
+        title: 'Data Privacy Protection',
+        description: 'PII detection, data leakage prevention, privacy violation testing with 7 PII types',
+        icon: 'Lock'
       },
       {
-        title: 'Framework Agnostic',
-        description: 'Seamless integration with popular AI agent frameworks and custom solutions',
-        icon: 'Cpu'
+        title: 'Enterprise Risk Assessment',
+        description: 'CVSS-inspired scoring, business impact analysis, prioritized remediation recommendations',
+        icon: 'Target'
       },
       {
-        title: 'Enterprise Ready',
-        description: 'Built for scale with hierarchical identity management and role-based access control',
+        title: 'Multi-Interface Platform',
+        description: 'Web dashboard, CLI tool, REST API, comprehensive reporting in multiple formats',
+        icon: 'Server'
+      },
+      {
+        title: 'Enterprise Authentication',
+        description: 'JWT-based authentication with RBAC, audit logging, and secure token management',
         icon: 'Building'
       }
     ]
