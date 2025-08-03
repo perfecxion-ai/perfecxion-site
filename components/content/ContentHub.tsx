@@ -75,7 +75,13 @@ export default function ContentHub({
     try {
       if (searchQuery.trim() || Object.keys(filters).some(key => filters[key as keyof ContentFilter])) {
         const searchResults = contentManager.search(searchQuery, filters)
-        setResults(searchResults)
+        // Filter results based on contentType
+        const filteredResults = contentType === 'blog' 
+          ? searchResults.filter(result => result.content.type === 'blog')
+          : contentType === 'learning'
+          ? searchResults.filter(result => result.content.type === 'learning')
+          : searchResults
+        setResults(filteredResults)
       } else {
         // Show recent content when no search/filters
         let recent
@@ -114,12 +120,15 @@ export default function ContentHub({
   const resultsByType = useMemo(() => {
     return results.reduce((acc, result) => {
       const type = result.content.type
-      // Filter content based on contentType prop
+      // For blog page, only show blog content
       if (contentType === 'blog' && type !== 'blog') return acc
+      // For learning page, only show learning content
       if (contentType === 'learning' && type !== 'learning') return acc
-      if (contentType === 'all' && type === 'blog') return acc // Keep blog filtering for learning center
-      if (!acc[type]) acc[type] = []
-      acc[type].push(result)
+      // For all content, show everything
+      if (contentType === 'all') {
+        if (!acc[type]) acc[type] = []
+        acc[type].push(result)
+      }
       return acc
     }, {} as Record<string, SearchResult[]>)
   }, [results, contentType])
