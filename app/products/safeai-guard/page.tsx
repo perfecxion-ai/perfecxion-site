@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import React from 'react'
 import {
     ArrowLeft,
     Shield,
@@ -27,8 +28,10 @@ import {
     Smartphone,
     Monitor,
     Bell,
-    Building
+    Building,
+    Activity
 } from 'lucide-react'
+import { getProduct } from '@/lib/products'
 
 export const metadata: Metadata = {
     title: 'SafeAI Guard - Advanced AI Safety for Children',
@@ -36,154 +39,11 @@ export const metadata: Metadata = {
 }
 
 export default function SafeAIGuardPage() {
-    const keyFeatures = [
-        {
-            title: 'Real-Time Content Filtering',
-            description: 'Advanced pattern recognition and context-aware analysis during AI conversations',
-            icon: Eye,
-            color: 'blue'
-        },
-        {
-            title: 'Sophisticated Threat Detection',
-            description: 'Detects grooming patterns, manipulation tactics, and inappropriate content',
-            icon: Shield,
-            color: 'red'
-        },
-        {
-            title: 'Educational Enhancement',
-            description: 'Transforms filtered content into learning opportunities and digital citizenship lessons',
-            icon: BookOpen,
-            color: 'green'
-        },
-        {
-            title: 'Parent Approval Workflows',
-            description: 'Instant notifications and quick approval options for borderline content',
-            icon: Users,
-            color: 'purple'
-        },
-        {
-            title: 'Comprehensive Monitoring',
-            description: 'Detailed analytics and activity tracking with real-time dashboards',
-            icon: BarChart3,
-            color: 'yellow'
-        },
-        {
-            title: 'Privacy-First Architecture',
-            description: 'Local processing with no data transmission and COPPA/GDPR compliance',
-            icon: Lock,
-            color: 'indigo'
-        }
-    ]
-
-    const supportedPlatforms = [
-        {
-            name: 'ChatGPT',
-            description: 'OpenAI\'s conversational AI platform',
-            icon: Brain,
-            status: 'Supported'
-        },
-        {
-            name: 'Claude',
-            description: 'Anthropic\'s AI assistant',
-            icon: Brain,
-            status: 'Supported'
-        },
-        {
-            name: 'Google Gemini',
-            description: 'Google\'s AI chatbot and assistant',
-            icon: Brain,
-            status: 'Supported'
-        },
-        {
-            name: 'Perplexity AI',
-            description: 'AI-powered search and research platform',
-            icon: Search,
-            status: 'Supported'
-        },
-        {
-            name: 'You.com',
-            description: 'AI search and chat platform',
-            icon: Search,
-            status: 'Supported'
-        }
-    ]
-
-    const protectionLayers = [
-        {
-            title: 'Input Analysis',
-            description: 'Advanced pattern recognition and context-aware semantic analysis before messages are sent',
-            icon: Eye,
-            features: ['Pattern recognition', 'Context-aware analysis', 'Age-appropriate scoring', 'Grooming detection']
-        },
-        {
-            title: 'Response Filtering',
-            description: 'Real-time monitoring of AI responses with content sanitization and educational alternatives',
-            icon: Shield,
-            features: ['Inappropriate content removal', 'Educational suggestions', 'Conversation preservation', 'Learning identification']
-        },
-        {
-            title: 'Parent Communication',
-            description: 'Instant notifications and approval workflows for borderline content detection',
-            icon: Bell,
-            features: ['Instant notifications', 'Content analysis', 'Quick approval options', 'Time-limited overrides']
-        }
-    ]
-
-    const useCases = [
-        {
-            title: 'Homeschooling Families',
-            description: 'Safely integrate AI tutoring into curriculum with monitored educational interactions',
-            icon: BookOpen
-        },
-        {
-            title: 'Tech-Savvy Parents',
-            description: 'Granular controls and detailed analytics for different children and ages',
-            icon: Users
-        },
-        {
-            title: 'Educational Institutions',
-            description: 'School-wide deployment with centralized management and compliance',
-            icon: Building
-        },
-        {
-            title: 'Modern Families',
-            description: 'Comprehensive protection for children using AI in daily life',
-            icon: Heart
-        }
-    ]
-
-    const safetyFeatures = [
-        {
-            title: 'Grooming Pattern Detection',
-            description: 'Advanced detection of predatory communication tactics',
-            icon: AlertTriangle
-        },
-        {
-            title: 'Emotional Manipulation Recognition',
-            description: 'Identification of attempts to exploit trust or emotions',
-            icon: Heart
-        },
-        {
-            title: 'Inappropriate Content Filtering',
-            description: 'Age-appropriate filtering for romantic or sexual content',
-            icon: Shield
-        },
-        {
-            title: 'Misinformation Detection',
-            description: 'Identification of misleading or false information',
-            icon: AlertTriangle
-        },
-        {
-            title: 'Self-Harm Content Detection',
-            description: 'Detection of content promoting dangerous behaviors',
-            icon: AlertTriangle
-        },
-        {
-            title: 'Educational Redirection',
-            description: 'Convert inappropriate requests into learning opportunities',
-            icon: BookOpen
-        }
-    ]
+    const product = getProduct('safeai-guard')
+    
+    if (!product) {
+        return <div>Product not found</div>
+    }
 
     return (
         <div className="bg-white dark:bg-background-dark min-h-screen">
@@ -206,16 +66,31 @@ export default function SafeAIGuardPage() {
                     </div>
 
                     <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-                        SafeAI Guard
+                        {product.name}
                     </h1>
 
                     <p className="text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
                         Advanced AI Safety for the Next Generation
                     </p>
 
-                    <p className="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto">
-                        Protecting children in the age of artificial intelligence with enterprise-grade browser extension for safe AI interactions.
+                    <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
+                        {product.description}
                     </p>
+
+                    <div className="flex flex-wrap gap-2 mb-8 justify-center">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400">
+                            8+ Content Categories
+                        </span>
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400">
+                            Real-Time Monitoring
+                        </span>
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400">
+                            6+ AI Platforms
+                        </span>
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400">
+                            Privacy First
+                        </span>
+                    </div>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link href="/contact" className="btn-primary">
@@ -270,21 +145,205 @@ export default function SafeAIGuardPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {keyFeatures.map((feature, index) => (
-                            <div key={index} className="text-center p-6">
-                                <div className={`w-16 h-16 bg-${feature.color}-100 dark:bg-${feature.color}-900/20 rounded-full flex items-center justify-center mx-auto mb-4`}>
-                                    <feature.icon className={`h-8 w-8 text-${feature.color}-600`} />
+                        {product.features.map((feature, index) => {
+                            const [title, description] = feature.split(' - ')
+                            const icons = [Shield, Target, Activity, Globe, Bell, Lock]
+                            const bgColors = [
+                                'bg-blue-100 dark:bg-blue-900/20',
+                                'bg-green-100 dark:bg-green-900/20',
+                                'bg-red-100 dark:bg-red-900/20',
+                                'bg-purple-100 dark:bg-purple-900/20',
+                                'bg-yellow-100 dark:bg-yellow-900/20',
+                                'bg-indigo-100 dark:bg-indigo-900/20'
+                            ]
+                            const textColors = [
+                                'text-blue-600',
+                                'text-green-600',
+                                'text-red-600',
+                                'text-purple-600',
+                                'text-yellow-600',
+                                'text-indigo-600'
+                            ]
+                            
+                            return (
+                                <div key={index} className="text-center p-6">
+                                    <div className={`w-16 h-16 ${bgColors[index]} rounded-full flex items-center justify-center mx-auto mb-4`}>
+                                        {React.createElement(icons[index], { className: `h-8 w-8 ${textColors[index]}` })}
+                                    </div>
+                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                                        {title}
+                                    </h3>
+                                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                                        {description}
+                                    </p>
                                 </div>
-                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                                    {feature.title}
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                    {feature.description}
-                                </p>
-                            </div>
-                        ))}
+                            )
+                        })}
                     </div>
                 </div>
+
+                {/* Technical Specifications */}
+                {product.technicalSpecs && (
+                    <div className="mb-20">
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                                Technical Specifications
+                            </h2>
+                            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                                Enterprise-grade performance and safety capabilities
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                                <div className="flex items-center space-x-3 mb-3">
+                                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
+                                        <Shield className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                                    </div>
+                                    <h3 className="font-semibold text-gray-900 dark:text-white">Content Filtering</h3>
+                                </div>
+                                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <div><span className="font-medium">Categories:</span> {product.technicalSpecs.contentCategories}</div>
+                                    <div><span className="font-medium">Response Time:</span> {product.technicalSpecs.responseTime}</div>
+                                    <div><span className="font-medium">Throughput:</span> {product.technicalSpecs.throughput}</div>
+                                </div>
+                            </div>
+                            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                                <div className="flex items-center space-x-3 mb-3">
+                                    <div className="w-10 h-10 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
+                                        <Target className="h-5 w-5 text-green-600 dark:text-green-400" />
+                                    </div>
+                                    <h3 className="font-semibold text-gray-900 dark:text-white">Threat Detection</h3>
+                                </div>
+                                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <div><span className="font-medium">Detection:</span> {product.technicalSpecs.threatDetection}</div>
+                                    <div><span className="font-medium">Availability:</span> {product.technicalSpecs.availability}</div>
+                                    <div><span className="font-medium">Latency:</span> {product.technicalSpecs.latency}</div>
+                                </div>
+                            </div>
+                            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                                <div className="flex items-center space-x-3 mb-3">
+                                    <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center">
+                                        <Globe className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                                    </div>
+                                    <h3 className="font-semibold text-gray-900 dark:text-white">Platform Support</h3>
+                                </div>
+                                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <div><span className="font-medium">Platforms:</span> {product.technicalSpecs.platformSupport}</div>
+                                    <div><span className="font-medium">Real-time:</span> Streaming modification</div>
+                                    <div><span className="font-medium">Integration:</span> Browser extension</div>
+                                </div>
+                            </div>
+                            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                                <div className="flex items-center space-x-3 mb-3">
+                                    <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center">
+                                        <Lock className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                                    </div>
+                                    <h3 className="font-semibold text-gray-900 dark:text-white">Privacy & Compliance</h3>
+                                </div>
+                                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <div><span className="font-medium">Compliance:</span> {product.technicalSpecs.privacyCompliance}</div>
+                                    <div><span className="font-medium">Processing:</span> Local only</div>
+                                    <div><span className="font-medium">Encryption:</span> Bank-level</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* Architecture */}
+                {product.architecture && (
+                    <div className="mb-20">
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                                Multi-Layer Protection System
+                            </h2>
+                            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                                Comprehensive safety through intelligent analysis and filtering
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                            {product.architecture.layers.map((layer, index) => {
+                                const icons = [Shield, Activity, Bell, Globe]
+                                const bgColors = [
+                                    'bg-blue-100 dark:bg-blue-900/30',
+                                    'bg-green-100 dark:bg-green-900/30',
+                                    'bg-red-100 dark:bg-red-900/30',
+                                    'bg-purple-100 dark:bg-purple-900/30'
+                                ]
+                                const iconColors = [
+                                    'text-blue-600 dark:text-blue-400',
+                                    'text-green-600 dark:text-green-400',
+                                    'text-red-600 dark:text-red-400',
+                                    'text-purple-600 dark:text-purple-400'
+                                ]
+                                
+                                return (
+                                    <div key={index} className="bg-white dark:bg-gray-900 rounded-xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+                                        <div className={`w-16 h-16 ${bgColors[index]} rounded-xl flex items-center justify-center mb-6`}>
+                                            {React.createElement(icons[index], { className: `h-8 w-8 ${iconColors[index]}` })}
+                                        </div>
+                                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                                            {layer.name}
+                                        </h3>
+                                        <p className="text-gray-600 dark:text-gray-300 mb-6">
+                                            {layer.description}
+                                        </p>
+                                        <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                            {layer.detects.map((detect, detectIndex) => (
+                                                <li key={detectIndex} className="flex items-center">
+                                                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                                                    {detect}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                )}
+
+                {/* Integration Examples */}
+                {product.integrationExamples && (
+                    <div className="mb-20">
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                                Integration Examples
+                            </h2>
+                            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                                SafeAI Guard operates as a browser extension with local processing
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            {/* JavaScript */}
+                            <div className="bg-gray-900 dark:bg-gray-800 rounded-xl p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-lg font-semibold text-white">Browser Extension</h3>
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-xs text-gray-400">JavaScript</span>
+                                    </div>
+                                </div>
+                                <pre className="text-sm text-gray-300 overflow-x-auto">
+                                    <code>{product.integrationExamples.javascript}</code>
+                                </pre>
+                            </div>
+
+                            {/* API */}
+                            <div className="bg-gray-900 dark:bg-gray-800 rounded-xl p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-lg font-semibold text-white">Extension Manifest</h3>
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-xs text-gray-400">JSON</span>
+                                    </div>
+                                </div>
+                                <pre className="text-sm text-gray-300 overflow-x-auto">
+                                    <code>{product.integrationExamples.api}</code>
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                )}
 
                 {/* Supported Platforms */}
                 <div className="mb-20">
@@ -298,90 +357,76 @@ export default function SafeAIGuardPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {supportedPlatforms.map((platform, index) => (
-                            <div key={index} className="p-6 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700">
-                                <div className="flex items-center justify-between mb-4">
-                                    <platform.icon className="h-8 w-8 text-primary-600" />
-                                    <span className="text-xs bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400 px-2 py-1 rounded-full">
-                                        {platform.status}
-                                    </span>
-                                </div>
-                                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                                    {platform.name}
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                    {platform.description}
-                                </p>
+                        <div className="p-6 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700">
+                            <div className="flex items-center justify-between mb-4">
+                                <Brain className="h-8 w-8 text-primary-600" />
+                                <span className="text-xs bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400 px-2 py-1 rounded-full">
+                                    Supported
+                                </span>
                             </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Protection Layers */}
-                <div className="mb-20">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                            Multi-Layer Protection System
-                        </h2>
-                        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                            Comprehensive safety through intelligent analysis and filtering
-                        </p>
-                    </div>
-
-                    <div className="space-y-8">
-                        {protectionLayers.map((layer, index) => (
-                            <div key={index} className="bg-gray-50 dark:bg-gray-900/50 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
-                                <div className="flex items-start gap-6">
-                                    <div className="flex-shrink-0">
-                                        <div className="w-16 h-16 bg-primary-100 dark:bg-primary-900/20 rounded-full flex items-center justify-center">
-                                            <layer.icon className="h-8 w-8 text-primary-600" />
-                                        </div>
-                                    </div>
-                                    <div className="flex-1">
-                                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                                            {layer.title}
-                                        </h3>
-                                        <p className="text-gray-600 dark:text-gray-300 mb-4">
-                                            {layer.description}
-                                        </p>
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                            {layer.features.map((feature, featureIndex) => (
-                                                <div key={featureIndex} className="flex items-center text-sm text-gray-700 dark:text-gray-300">
-                                                    <CheckCircle className="h-4 w-4 text-green-600 mr-2" />
-                                                    {feature}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
+                            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                                ChatGPT
+                            </h3>
+                            <p className="text-gray-600 dark:text-gray-300 text-sm">
+                                OpenAI's conversational AI platform
+                            </p>
+                        </div>
+                        <div className="p-6 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700">
+                            <div className="flex items-center justify-between mb-4">
+                                <Brain className="h-8 w-8 text-primary-600" />
+                                <span className="text-xs bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400 px-2 py-1 rounded-full">
+                                    Supported
+                                </span>
                             </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Safety Features */}
-                <div className="mb-20">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                            Advanced Safety Features
-                        </h2>
-                        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                            Sophisticated threat detection and educational enhancement
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {safetyFeatures.map((feature, index) => (
-                            <div key={index} className="p-6 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700">
-                                <feature.icon className="h-8 w-8 text-primary-600 mb-4" />
-                                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                                    {feature.title}
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                    {feature.description}
-                                </p>
+                            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                                Claude
+                            </h3>
+                            <p className="text-gray-600 dark:text-gray-300 text-sm">
+                                Anthropic's AI assistant
+                            </p>
+                        </div>
+                        <div className="p-6 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700">
+                            <div className="flex items-center justify-between mb-4">
+                                <Brain className="h-8 w-8 text-primary-600" />
+                                <span className="text-xs bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400 px-2 py-1 rounded-full">
+                                    Supported
+                                </span>
                             </div>
-                        ))}
+                            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                                Google Gemini
+                            </h3>
+                            <p className="text-gray-600 dark:text-gray-300 text-sm">
+                                Google's AI chatbot and assistant
+                            </p>
+                        </div>
+                        <div className="p-6 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700">
+                            <div className="flex items-center justify-between mb-4">
+                                <Search className="h-8 w-8 text-primary-600" />
+                                <span className="text-xs bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400 px-2 py-1 rounded-full">
+                                    Supported
+                                </span>
+                            </div>
+                            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                                Perplexity AI
+                            </h3>
+                            <p className="text-gray-600 dark:text-gray-300 text-sm">
+                                AI-powered search and research platform
+                            </p>
+                        </div>
+                        <div className="p-6 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700">
+                            <div className="flex items-center justify-between mb-4">
+                                <Search className="h-8 w-8 text-primary-600" />
+                                <span className="text-xs bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400 px-2 py-1 rounded-full">
+                                    Supported
+                                </span>
+                            </div>
+                            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                                You.com
+                            </h3>
+                            <p className="text-gray-600 dark:text-gray-300 text-sm">
+                                AI search and chat platform
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -396,16 +441,15 @@ export default function SafeAIGuardPage() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {useCases.map((useCase, index) => (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {product.useCases?.map((useCase, index) => (
                             <div key={index} className="p-6 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-200 dark:border-gray-700">
-                                <useCase.icon className="h-8 w-8 text-primary-600 mb-4" />
+                                <div className="w-8 h-8 bg-primary-100 dark:bg-primary-900/20 rounded-lg flex items-center justify-center mb-4">
+                                    <CheckCircle className="h-4 w-4 text-primary-600" />
+                                </div>
                                 <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                                    {useCase.title}
+                                    {useCase}
                                 </h3>
-                                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                    {useCase.description}
-                                </p>
                             </div>
                         ))}
                     </div>
@@ -420,41 +464,22 @@ export default function SafeAIGuardPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="text-center p-6">
-                            <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Brain className="h-8 w-8 text-blue-600" />
+                        {product.benefits?.map((benefit, index) => (
+                            <div key={index} className="text-center p-6">
+                                <div className={`w-16 h-16 bg-${index === 0 ? 'blue' : index === 1 ? 'green' : 'purple'}-100 dark:bg-${index === 0 ? 'blue' : index === 1 ? 'green' : 'purple'}-900/20 rounded-full flex items-center justify-center mx-auto mb-4`}>
+                                    {React.createElement(
+                                        index === 0 ? Shield : index === 1 ? BookOpen : Lock,
+                                        { className: `h-8 w-8 text-${index === 0 ? 'blue' : index === 1 ? 'green' : 'purple'}-600` }
+                                    )}
+                                </div>
+                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                                    {benefit.title}
+                                </h3>
+                                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                                    {benefit.description}
+                                </p>
                             </div>
-                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                                Beyond Basic Blocking
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                Advanced AI technology that understands context, intent, and nuance—providing sophisticated protection that adapts to real conversations.
-                            </p>
-                        </div>
-
-                        <div className="text-center p-6">
-                            <div className="w-16 h-16 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <BookOpen className="h-8 w-8 text-green-600" />
-                            </div>
-                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                                Educational Focus
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                Empowers children to learn safely by guiding them toward appropriate AI interactions and teaching digital citizenship through positive reinforcement.
-                            </p>
-                        </div>
-
-                        <div className="text-center p-6">
-                            <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Lock className="h-8 w-8 text-purple-600" />
-                            </div>
-                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                                Enterprise-Grade Security
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                Local processing with bank-level encryption, COPPA & GDPR compliance, and regular security audits for maximum privacy and protection.
-                            </p>
-                        </div>
+                        ))}
                     </div>
                 </div>
 
