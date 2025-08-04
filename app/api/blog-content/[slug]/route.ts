@@ -4,76 +4,12 @@ import path from 'path'
 import matter from 'gray-matter'
 import { marked } from 'marked'
 
-// Configure marked for better formatting
+// Configure marked with default settings
 marked.setOptions({
   gfm: true,
   breaks: true,
   pedantic: false
 })
-
-// Custom renderer for marked to match learn page styling
-const renderer = new marked.Renderer()
-
-// Override heading rendering to match learn pages
-renderer.heading = function({ tokens, depth }) {
-  const text = this.parser.parseInline(tokens)
-  const tag = `h${depth}`
-  return `<${tag}>${text}</${tag}>\n`
-}
-
-// Override table rendering to match learn pages
-renderer.table = function({ header, rows }) {
-  let headerHtml = ''
-  if (header) {
-    const headerCells = header.map(cell => {
-      const cellText = this.parser.parseInline(cell.tokens)
-      return `<th style="border: 1px solid #d1d5db; padding: 0.5rem; text-align: left;">${cellText}</th>`
-    }).join('')
-    headerHtml = `<thead><tr style="background-color: #f3f4f6;">${headerCells}</tr></thead>`
-  }
-  
-  const bodyHtml = rows.map(row => {
-    const cells = row.map(cell => {
-      const cellText = this.parser.parseInline(cell.tokens)
-      return `<td style="border: 1px solid #d1d5db; padding: 0.5rem;">${cellText}</td>`
-    }).join('')
-    return `<tr>${cells}</tr>`
-  }).join('')
-  
-  return `<table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
-    ${headerHtml}
-    <tbody>${bodyHtml}</tbody>
-  </table>\n`
-}
-
-// Override code block rendering
-renderer.code = function({ text, lang }) {
-  return `<pre style="background-color: #f3f4f6; dark:background-color: #1f2937; padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0;"><code>${text}</code></pre>\n`
-}
-
-// Override blockquote rendering
-renderer.blockquote = function({ tokens }) {
-  const text = this.parser.parse(tokens)
-  return `<blockquote style="border-left: 4px solid #3b82f6; padding-left: 1rem; margin: 1rem 0; color: #4b5563; dark:color: #9ca3af;">${text}</blockquote>\n`
-}
-
-// Override list rendering
-renderer.list = function({ items, ordered }) {
-  const tag = ordered ? 'ol' : 'ul'
-  const itemsHtml = items.map(item => {
-    const text = this.parser.parse(item.tokens)
-    return `<li>${text}</li>`
-  }).join('')
-  return `<${tag}>${itemsHtml}</${tag}>\n`
-}
-
-// Override paragraph rendering
-renderer.paragraph = function({ tokens }) {
-  const text = this.parser.parseInline(tokens)
-  return `<p>${text}</p>\n`
-}
-
-marked.setOptions({ renderer })
 
 // Function to convert custom components to HTML
 function preprocessMDX(content: string): string {
@@ -188,7 +124,41 @@ export async function GET(
     // Convert MDX to HTML
     const htmlContent = await marked.parse(processedContent)
     
-    return NextResponse.json({ content: htmlContent })
+    // Wrap content in a properly styled container to ensure proper formatting
+    const wrappedContent = `
+      <div class="blog-content">
+        ${htmlContent}
+      </div>
+      <style>
+        .blog-content h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; margin-top: 2rem; }
+        .blog-content h2 { font-size: 2rem; font-weight: 600; margin-bottom: 0.75rem; margin-top: 1.5rem; }
+        .blog-content h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; margin-top: 1rem; }
+        .blog-content h4 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; margin-top: 1rem; }
+        .blog-content p { margin-bottom: 1rem; line-height: 1.7; }
+        .blog-content ul, .blog-content ol { margin-bottom: 1rem; padding-left: 2rem; }
+        .blog-content li { margin-bottom: 0.5rem; }
+        .blog-content pre { background-color: #f3f4f6; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1rem; }
+        .blog-content code { background-color: #f3f4f6; padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-size: 0.875rem; }
+        .blog-content pre code { background-color: transparent; padding: 0; }
+        .blog-content blockquote { border-left: 4px solid #3b82f6; padding-left: 1rem; margin: 1rem 0; color: #4b5563; }
+        .blog-content strong { font-weight: 600; }
+        .blog-content em { font-style: italic; }
+        .blog-content hr { border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+        .blog-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .blog-content th, .blog-content td { border: 1px solid #d1d5db; padding: 0.5rem; text-align: left; }
+        .blog-content th { background-color: #f3f4f6; font-weight: 600; }
+        @media (prefers-color-scheme: dark) {
+          .blog-content pre { background-color: #1f2937; }
+          .blog-content code { background-color: #1f2937; }
+          .blog-content blockquote { color: #9ca3af; }
+          .blog-content hr { border-color: #374151; }
+          .blog-content th, .blog-content td { border-color: #374151; }
+          .blog-content th { background-color: #1f2937; }
+        }
+      </style>
+    `
+    
+    return NextResponse.json({ content: wrappedContent })
   } catch (error) {
     console.error('Error loading blog content:', error)
     return NextResponse.json({ error: 'Failed to load blog content' }, { status: 500 })
