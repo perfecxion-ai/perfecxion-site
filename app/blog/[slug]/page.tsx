@@ -2,8 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import matter from 'gray-matter';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -66,9 +64,31 @@ function cleanMdxContent(content: string, isMdx: boolean = false): string {
     cleaned = cleaned.replace(/^\s*[\r\n]\s*[\r\n]/gm, '\n\n');
     return cleaned.trim();
   }
+
+  // For regular markdown files, convert to HTML using a simple approach
+  let html = content
+    // Convert headers
+    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+    // Convert bold text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    // Convert italic text
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    // Convert links
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 underline">$1</a>')
+    // Convert unordered lists
+    .replace(/^\- (.*$)/gim, '<li>$1</li>')
+    // Convert ordered lists
+    .replace(/^\d+\. (.*$)/gim, '<li>$1</li>')
+    // Convert paragraphs (lines that don't start with HTML tags)
+    .replace(/^([^<].*)$/gm, '<p>$1</p>')
+    // Clean up empty paragraphs
+    .replace(/<p><\/p>/g, '')
+    // Clean up multiple line breaks
+    .replace(/\n\n+/g, '\n\n');
   
-  // For regular markdown files, just return the content as-is
-  return content;
+  return html;
 }
 
 export async function generateStaticParams() {
@@ -307,15 +327,10 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
       {/* Content */}
       <BlogPostContent>
-        <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8 prose-h2:text-3xl prose-h2:mb-4 prose-h2:mt-8 prose-h3:text-2xl prose-h3:mb-3 prose-h3:mt-6 prose-h4:text-xl prose-h4:mb-2 prose-h4:mt-4 prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-strong:text-gray-900 dark:prose-strong:text-gray-100 prose-ul:space-y-2 prose-ol:space-y-2 prose-li:text-gray-700 dark:prose-li:text-gray-300">
-          {postPath.endsWith('.mdx') ? (
-            <MDXRemote source={cleanContent} components={mdxComponents} />
-          ) : (
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {content}
-            </ReactMarkdown>
-          )}
-        </div>
+        <div 
+          className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8 prose-h2:text-3xl prose-h2:mb-4 prose-h2:mt-8 prose-h3:text-2xl prose-h3:mb-3 prose-h3:mt-6 prose-h4:text-xl prose-h4:mb-2 prose-h4:mt-4 prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-strong:text-gray-900 dark:prose-strong:text-gray-100 prose-ul:space-y-2 prose-ol:space-y-2 prose-li:text-gray-700 dark:prose-li:text-gray-300"
+          dangerouslySetInnerHTML={{ __html: cleanContent }}
+        />
       </BlogPostContent>
 
       {/* Navigation */}
