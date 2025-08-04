@@ -1,4 +1,5 @@
 ---
+
 title: "Zero-Day AI Vulnerabilities: Detection and Response"
 description: "How to detect and respond to zero-day vulnerabilities in AI systems."
 date: "2025-01-25"
@@ -32,15 +33,15 @@ Unlike traditional software vulnerabilities that are static, code-based errors, 
 
 ## The Fundamental Paradigm Shift: From Code Flaws to Behavioral Vulnerabilities
 
-<SectionHeader 
+<SectionHeader
   icon="Brain"
-  title="Traditional vs. AI Vulnerabilities" 
+  title="Traditional vs. AI Vulnerabilities"
   subtitle="Understanding the new threat landscape"
 />
 
 The distinction between traditional and AI vulnerabilities represents a fundamental shift in how we conceptualize cybersecurity:
 
-<ComparisonTable 
+<ComparisonTable
   headers={["Attribute", "Traditional Software Vulnerability", "AI System Vulnerability"]}
   rows={[
     ["Nature of Flaw", "Static, code-based error (e.g., buffer overflow)", "Dynamic, behavioral, emergent property"],
@@ -56,27 +57,16 @@ The distinction between traditional and AI vulnerabilities represents a fundamen
 
 Current vulnerability management systems face fundamental inadequacies when addressing AI threats:
 
-<FeatureGrid><FeatureCard 
-    icon="Database"
-    title="CVE System Limitations" 
-    color="red"
-  >
+<FeatureGrid>
+  <FeatureCard icon="Database" title="CVE System Limitations" color="red" >
     The Common Vulnerability Exposure system cannot effectively catalog behavioral flaws. A prompt injection vulnerability cannot be assigned a CVE identifier because it's not a replicable code flaw but a behavioral manipulation technique.
   </FeatureCard>
-  
-  <FeatureCard 
-    icon="TrendingUp"
-    title="Market Implications" 
-    color="orange"
-  >
+
+  <FeatureCard icon="TrendingUp" title="Market Implications" color="orange" >
     This creates dangerous blind spots where AI-specific exploits develop in unregulated, opaque markets. The same "gray" and "black" markets that exist for traditional zero-days are now emerging for AI-specific exploits.
   </FeatureCard>
-  
-  <FeatureCard 
-    icon="Briefcase"
-    title="Legal and Insurance Challenges" 
-    color="purple"
-  >
+
+  <FeatureCard icon="Briefcase" title="Legal and Insurance Challenges" color="purple" >
     The ambiguity of AI failures creates profound challenges for existing frameworks. Determining whether harm resulted from malicious attack, non-malicious hallucination, or biased data becomes nearly impossible.
   </FeatureCard>
 </FeatureGrid>
@@ -85,9 +75,9 @@ Current vulnerability management systems face fundamental inadequacies when addr
 
 ## Comprehensive Threat Taxonomy: Understanding the AI Attack Landscape
 
-<SectionHeader 
+<SectionHeader
   icon="Target"
-  title="AI Attack Vectors" 
+  title="AI Attack Vectors"
   subtitle="A detailed analysis of emerging threats"
 />
 
@@ -99,15 +89,16 @@ Research demonstrates that as little as **0.1% poisoned data** can create effect
 
 **Technical Definition**: Intentional injection of malicious, mislabeled, or biased data into training datasets to degrade performance, introduce biases, or create hidden backdoors.
 
-<FeatureGrid><FeatureCard title="Upstream Corruption" color="blue">
+<FeatureGrid>
+  <FeatureCard title="Upstream Corruption" color="blue" >
     Manipulating data sources before ingestion into training pipelines
   </FeatureCard>
-  
-  <FeatureCard title="Training-Time Injection" color="green">
+
+  <FeatureCard title="Training-Time Injection" color="green" >
     Introducing poisoned data during model training phases
   </FeatureCard>
-  
-  <FeatureCard title="Backdoor Implantation" color="red">
+
+  <FeatureCard title="Backdoor Implantation" color="red" >
     Creating hidden triggers that activate malicious behavior
   </FeatureCard>
 </FeatureGrid>
@@ -123,20 +114,20 @@ Prompt injection is ranked as the **#1 risk** in the OWASP LLM Top 10, affecting
 <p><strong>Attack Variants</strong></p>
 
 <Timeline items={[
-  { 
-    date: "Direct Injection", 
-    title: "User-Initiated Attacks", 
-    description: "User directly inputs malicious commands to override system instructions" 
+  {
+    date: "Direct Injection",
+    title: "User-Initiated Attacks",
+    description: "User directly inputs malicious commands to override system instructions"
   },
-  { 
-    date: "Indirect Injection", 
-    title: "Hidden Payload Attacks", 
-    description: "Malicious instructions hidden in external data sources like websites or documents" 
+  {
+    date: "Indirect Injection",
+    title: "Hidden Payload Attacks",
+    description: "Malicious instructions hidden in external data sources like websites or documents"
   },
-  { 
-    date: "Multi-Modal Attacks", 
-    title: "Cross-Domain Exploitation", 
-    description: "Exploiting different input modalities (text, image, audio) for sophisticated attacks" 
+  {
+    date: "Multi-Modal Attacks",
+    title: "Cross-Domain Exploitation",
+    description: "Exploiting different input modalities (text, image, audio) for sophisticated attacks"
   }
 ]} />
 
@@ -147,39 +138,24 @@ Prompt injection is ranked as the **#1 risk** in the OWASP LLM Top 10, affecting
 
 ### 3. Adversarial Evasion: Exploiting Perception Gaps
 
-<FeatureCard 
-  icon="Cpu"
-  title="GPUHammer Attack" 
-  color="red"
->
-  Demonstrated bit-flips in NVIDIA A6000 GPUs, reducing AI model accuracy from **80% to less than 1%**. This hardware-level vulnerability shows how attacks can bypass software monitoring entirely.
-</FeatureCard>
+<FeatureCard icon="Cpu" title="GPUHammer Attack" color="red" >
+    Demonstrated bit-flips in NVIDIA A6000 GPUs, reducing AI model accuracy from **80% to less than 1%**. This hardware-level vulnerability shows how attacks can bypass software monitoring entirely.
+  </FeatureCard>
 
 **Medical Applications**: Research demonstrates that subtle image modifications can cause medical imaging systems to misclassify conditions with **100% confidence** while remaining imperceptible to human radiologists.
 
 ### 4. Model Theft and Intellectual Property Extraction
 
-<FeatureGrid><FeatureCard 
-    icon="Code"
-    title="Model Extraction" 
-    color="blue"
-  >
+<FeatureGrid>
+  <FeatureCard icon="Code" title="Model Extraction" color="blue" >
     Reverse-engineering through systematic input-output analysis
   </FeatureCard>
-  
-  <FeatureCard 
-    icon="Database"
-    title="Model Inversion" 
-    color="green"
-  >
+
+  <FeatureCard icon="Database" title="Model Inversion" color="green" >
     Reconstructing sensitive training data from model outputs
   </FeatureCard>
-  
-  <FeatureCard 
-    icon="Users"
-    title="Membership Inference" 
-    color="purple"
-  >
+
+  <FeatureCard icon="Users" title="Membership Inference" color="purple" >
     Determining if specific data was used in training
   </FeatureCard>
 </FeatureGrid>
@@ -196,9 +172,9 @@ The 2025 emergence of **"slopsquatting"**—malicious packages named after AI-ha
 
 ## Strategic Framework Implementation: Governing Standards and Compliance
 
-<SectionHeader 
+<SectionHeader
   icon="Shield"
-  title="Compliance Frameworks" 
+  title="Compliance Frameworks"
   subtitle="Essential standards for AI security governance"
 />
 
@@ -206,35 +182,20 @@ The 2025 emergence of **"slopsquatting"**—malicious packages named after AI-ha
 
 The foundational approach through four core functions:
 
-<FeatureGrid><FeatureCard 
-    icon="Building"
-    title="GOVERN" 
-    color="blue"
-  >
+<FeatureGrid>
+  <FeatureCard icon="Building" title="GOVERN" color="blue" >
     Establish AI governance structures, risk management policies, and organizational accountability. Create cross-functional teams including security, data science, legal, and compliance stakeholders.
   </FeatureCard>
-  
-  <FeatureCard 
-    icon="Network"
-    title="MAP" 
-    color="green"
-  >
+
+  <FeatureCard icon="Network" title="MAP" color="green" >
     Systematically identify and categorize AI risks across the organization. Maintain comprehensive AI asset inventories and threat model documentation.
   </FeatureCard>
-  
-  <FeatureCard 
-    icon="BarChart3"
-    title="MEASURE" 
-    color="orange"
-  >
+
+  <FeatureCard icon="BarChart3" title="MEASURE" color="orange" >
     Implement continuous monitoring and measurement of AI system performance, security metrics, and risk indicators.
   </FeatureCard>
-  
-  <FeatureCard 
-    icon="Settings"
-    title="MANAGE" 
-    color="purple"
-  >
+
+  <FeatureCard icon="Settings" title="MANAGE" color="purple" >
     Execute risk treatment strategies, incident response procedures, and continuous improvement processes.
   </FeatureCard>
 </FeatureGrid>
@@ -244,20 +205,20 @@ The foundational approach through four core functions:
 Leverage the proven ATT&CK methodology adapted for AI environments:
 
 <Timeline items={[
-  { 
-    date: "Tactical Understanding", 
-    title: "Document Adversarial Tactics", 
-    description: "Map 14 categories of attacks specific to AI systems" 
+  {
+    date: "Tactical Understanding",
+    title: "Document Adversarial Tactics",
+    description: "Map 14 categories of attacks specific to AI systems"
   },
-  { 
-    date: "Threat Modeling", 
-    title: "Structured Analysis", 
-    description: "Use proven approaches to understand attack vectors and defensive gaps" 
+  {
+    date: "Threat Modeling",
+    title: "Structured Analysis",
+    description: "Use proven approaches to understand attack vectors and defensive gaps"
   },
-  { 
-    date: "Detection Engineering", 
-    title: "Capability Mapping", 
-    description: "Map detection capabilities to specific attack techniques" 
+  {
+    date: "Detection Engineering",
+    title: "Capability Mapping",
+    description: "Map detection capabilities to specific attack techniques"
   }
 ]} />
 
@@ -269,15 +230,16 @@ Implement the 200+ page guidance covering AI security matrices, periodic tables 
 
 ### Regulatory Compliance: EU AI Act and Emerging Standards
 
-<FeatureGrid><FeatureCard title="Mandatory Requirements" color="red">
+<FeatureGrid>
+  <FeatureCard title="Mandatory Requirements" color="red" >
     High-risk AI systems must demonstrate "high level of robustness, cybersecurity and accuracy"
   </FeatureCard>
-  
-  <FeatureCard title="Documentation Standards" color="blue">
+
+  <FeatureCard title="Documentation Standards" color="blue" >
     Comprehensive risk assessments, technical documentation, and post-deployment monitoring
   </FeatureCard>
-  
-  <FeatureCard title="Audit Requirements" color="green">
+
+  <FeatureCard title="Audit Requirements" color="green" >
     Regular third-party assessments and compliance reporting
   </FeatureCard>
 </FeatureGrid>
@@ -286,9 +248,9 @@ Implement the 200+ page guidance covering AI security matrices, periodic tables 
 
 ## Proactive Defense Architecture: Continuous Behavioral Monitoring
 
-<SectionHeader 
+<SectionHeader
   icon="Eye"
-  title="Defense in Depth" 
+  title="Defense in Depth"
   subtitle="Building resilient AI security systems"
 />
 
@@ -307,27 +269,16 @@ Design systems assuming that AI models can be compromised and implement continuo
 
 ### AI-Powered Detection Systems
 
-<FeatureGrid><FeatureCard 
-    icon="Brain"
-    title="Pattern Recognition at Scale" 
-    color="blue"
-  >
+<FeatureGrid>
+  <FeatureCard icon="Brain" title="Pattern Recognition at Scale" color="blue" >
     Deploy AI-powered security platforms to analyze massive datasets in real-time, identifying subtle patterns indicative of attacks that human analysts cannot detect.
   </FeatureCard>
-  
-  <FeatureCard 
-    icon="TrendingUp"
-    title="Predictive Analytics" 
-    color="green"
-  >
+
+  <FeatureCard icon="TrendingUp" title="Predictive Analytics" color="green" >
     Use Natural Language Processing to scan open-source intelligence, dark web forums, and code repositories for emerging threat intelligence.
   </FeatureCard>
-  
-  <FeatureCard 
-    icon="Target"
-    title="Automated Threat Hunting" 
-    color="orange"
-  >
+
+  <FeatureCard icon="Target" title="Automated Threat Hunting" color="orange" >
     Implement AI-driven systems to proactively search for indicators of compromise across the digital environment.
   </FeatureCard>
 </FeatureGrid>
@@ -345,53 +296,58 @@ Design systems assuming that AI models can be compromised and implement continuo
 
 ## AI Red Teaming: The Gold Standard for Proactive Security
 
-<SectionHeader 
+<SectionHeader
   icon="Target"
-  title="Systematic Adversarial Testing" 
+  title="Systematic Adversarial Testing"
   subtitle="Proactive vulnerability discovery through red teaming"
 />
 
 ### Implementation Framework
 
 <Timeline items={[
-  { 
-    date: "Phase 1", 
-    title: "Automated Testing", 
-    description: "Use tools like PyRIT to generate high-volume known attack patterns for baseline vulnerability assessment" 
+  {
+    date: "Phase 1",
+    title: "Automated Testing",
+    description: "Use tools like PyRIT to generate high-volume known attack patterns for baseline vulnerability assessment"
   },
-  { 
-    date: "Phase 2", 
-    title: "Manual Expert Testing", 
-    description: "Leverage human creativity and domain expertise to develop novel attacks that automated tools might miss" 
+  {
+    date: "Phase 2",
+    title: "Manual Expert Testing",
+    description: "Leverage human creativity and domain expertise to develop novel attacks that automated tools might miss"
   },
-  { 
-    date: "Phase 3", 
-    title: "Continuous Validation", 
-    description: "Integrate red teaming into CI/CD pipelines for ongoing security validation throughout the development lifecycle" 
+  {
+    date: "Phase 3",
+    title: "Continuous Validation",
+    description: "Integrate red teaming into CI/CD pipelines for ongoing security validation throughout the development lifecycle"
   }
-]} /><AlertBox type="success" title="Comprehensive Coverage">
+]} />
+
+<AlertBox type="success" title="Comprehensive Coverage">
 Test against all major attack vectors including prompt injection, data poisoning, adversarial evasion, and model extraction to ensure complete security validation.
-</AlertBox>---
+</AlertBox>
+
+---
 
 ## Incident Response: AI-Specific Crisis Management
 
-<SectionHeader 
+<SectionHeader
   icon="Bell"
-  title="AI Incident Response Framework" 
+  title="AI Incident Response Framework"
   subtitle="Adapted from NIST for AI-specific scenarios"
 />
 
 ### 1. Preparation Phase
 
-<FeatureGrid><FeatureCard title="Cross-Functional Teams" color="blue">
+<FeatureGrid>
+  <FeatureCard title="Cross-Functional Teams" color="blue" >
     Assemble teams including data scientists, ML engineers, legal counsel, and PR professionals
   </FeatureCard>
-  
-  <FeatureCard title="Asset Inventory" color="green">
+
+  <FeatureCard title="Asset Inventory" color="green" >
     Create comprehensive AI system inventories with detailed asset tracking
   </FeatureCard>
-  
-  <FeatureCard title="Incident Playbooks" color="orange">
+
+  <FeatureCard title="Incident Playbooks" color="orange" >
     Develop AI-specific incident playbooks for common scenarios
   </FeatureCard>
 </FeatureGrid>
@@ -405,61 +361,59 @@ Implement real-time monitoring with automated alerting for performance degradati
 ### 3. Containment & Eradication
 
 <Timeline items={[
-  { 
-    date: "Immediate Response", 
-    title: "Circuit Breaker Activation", 
-    description: "Implement automated circuit breakers to halt suspicious operations" 
+  {
+    date: "Immediate Response",
+    title: "Circuit Breaker Activation",
+    description: "Implement automated circuit breakers to halt suspicious operations"
   },
-  { 
-    date: "Isolation", 
-    title: "Model Quarantine", 
-    description: "Move compromised models to isolated environments for analysis" 
+  {
+    date: "Isolation",
+    title: "Model Quarantine",
+    description: "Move compromised models to isolated environments for analysis"
   },
-  { 
-    date: "Remediation", 
-    title: "Clean Model Deployment", 
-    description: "Deploy validated clean models from secure repositories" 
+  {
+    date: "Remediation",
+    title: "Clean Model Deployment",
+    description: "Deploy validated clean models from secure repositories"
   }
 ]} />
 
 ### 4. Recovery & Post-Incident Analysis
 
-<FeatureCard 
-  icon="TrendingUp"
-  title="Continuous Improvement" 
-  color="green"
->
-  Document lessons learned, update threat models, enhance detection capabilities, and refine incident response procedures based on real-world experiences.
-</FeatureCard>
+<FeatureCard icon="TrendingUp" title="Continuous Improvement" color="green" >
+    Document lessons learned, update threat models, enhance detection capabilities, and refine incident response procedures based on real-world experiences.
+  </FeatureCard>
 
 ---
 
 ## Strategic Roadmap: Building AI Security Maturity
 
-<SectionHeader 
+<SectionHeader
   icon="TrendingUp"
-  title="Implementation Timeline" 
+  title="Implementation Timeline"
   subtitle="A phased approach to AI security excellence"
-/><Timeline items={[
-  { 
-    date: "Q1 2025", 
-    title: "Foundation Building", 
-    description: "Establish governance framework, conduct initial risk assessments, implement basic monitoring" 
+/>
+
+<Timeline items={[
+  {
+    date: "Q1 2025",
+    title: "Foundation Building",
+    description: "Establish governance framework, conduct initial risk assessments, implement basic monitoring"
   },
-  { 
-    date: "Q2 2025", 
-    title: "Detection Enhancement", 
-    description: "Deploy AI-powered monitoring, implement behavioral baselines, initiate red teaming" 
+  {
+    date: "Q2 2025",
+    title: "Detection Enhancement",
+    description: "Deploy AI-powered monitoring, implement behavioral baselines, initiate red teaming"
   },
-  { 
-    date: "Q3 2025", 
-    title: "Advanced Capabilities", 
-    description: "Integrate predictive analytics, enhance incident response, achieve compliance certification" 
+  {
+    date: "Q3 2025",
+    title: "Advanced Capabilities",
+    description: "Integrate predictive analytics, enhance incident response, achieve compliance certification"
   },
-  { 
-    date: "Q4 2025", 
-    title: "Continuous Evolution", 
-    description: "Establish threat intelligence sharing, implement automated response, achieve security maturity" 
+  {
+    date: "Q4 2025",
+    title: "Continuous Evolution",
+    description: "Establish threat intelligence sharing, implement automated response, achieve security maturity"
   }
 ]} />
 
@@ -478,13 +432,9 @@ The era of AI zero-day vulnerabilities demands a fundamental reimagining of secu
 3. **Build Security Culture**: Make AI security everyone's responsibility, not just the security team's
 4. **Prepare for the Unknown**: Design systems resilient to threats that don't yet exist
 
-<FeatureCard 
-  icon="Shield"
-  title="Take Action Today" 
-  color="blue"
->
-  The window for establishing robust AI security is closing rapidly. Organizations must act now to protect their AI investments, maintain customer trust, and ensure regulatory compliance. The future belongs to those who recognize that AI security is not an option—it's an existential necessity.
-</FeatureCard>
+<FeatureCard icon="Shield" title="Take Action Today" color="blue" >
+    The window for establishing robust AI security is closing rapidly. Organizations must act now to protect their AI investments, maintain customer trust, and ensure regulatory compliance. The future belongs to those who recognize that AI security is not an option—it's an existential necessity.
+  </FeatureCard>
 
 ---
 
