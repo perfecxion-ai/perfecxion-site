@@ -1,0 +1,20 @@
+⏺ Current Blog Mappings
+
+  Each blog "bubble" (card) on the blog listing page maps to a URL like /blog/{slug}. Here are all the current blog posts:
+
+  1. prompt-injection-silent-threat-ai-systems → /blog/prompt-injection-silent-threat-ai-systems
+  2. hidden-risks-agentic-ai-monitoring-fails → /blog/hidden-risks-agentic-ai-monitoring-fails
+  3. 50-attack-vectors-ai-red-team-guide → /blog/50-attack-vectors-ai-red-team-guide
+  4. ai-governance-at-scale-enterprise-strategies-responsible-ai → /blog/ai-governance-at-scale-enterprise-strategies-responsible-ai
+  5. ai-guardrails-that-actually-work-beyond-basic-content-filtering → /blog/ai-guardrails-that-actually-work-beyond-basic-content-filtering
+
+  ... and so on for all 31 blog entries.
+
+  Quick Summary
+
+  - To add a new blog: Create MDX file → Add to content-manager.ts → Add to blog page handler
+  - Blog cards ("bubbles") are generated from the entries in content-manager.ts
+  - Each blog card links to /blog/{slug} where slug matches the filename
+  - Content is loaded from MDX files in /content/blog/ directory
+
+  The blog system uses a hybrid approach where metadata is stored in TypeScript files for fast listing/searching, while actual content is stored in MDX files for easy editing.

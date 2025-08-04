@@ -8,9 +8,7 @@ import { marked } from 'marked'
 marked.setOptions({
   gfm: true,
   breaks: true,
-  pedantic: false,
-  smartLists: true,
-  smartypants: true
+  pedantic: false
 })
 
 // Custom renderer for marked to match learn page styling
