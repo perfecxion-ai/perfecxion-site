@@ -330,7 +330,17 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             <MDXRemote source={cleanContent} components={mdxComponents} />
           ) : (
             <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8 prose-h2:text-3xl prose-h2:mb-4 prose-h2:mt-8 prose-h3:text-2xl prose-h3:mb-3 prose-h3:mt-6 prose-h4:text-xl prose-h4:mb-2 prose-h4:mt-4 prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-strong:text-gray-900 dark:prose-strong:text-gray-100 prose-ul:space-y-2 prose-ol:space-y-2 prose-li:text-gray-700 dark:prose-li:text-gray-300">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              <ReactMarkdown remarkPlugins={[remarkGfm]} components={{
+                h1: ({children}) => <h1 className="text-4xl font-bold mb-6 mt-8">{children}</h1>,
+                h2: ({children}) => <h2 className="text-3xl font-bold mb-4 mt-8">{children}</h2>,
+                h3: ({children}) => <h3 className="text-2xl font-bold mb-3 mt-6">{children}</h3>,
+                h4: ({children}) => <h4 className="text-xl font-bold mb-2 mt-4">{children}</h4>,
+                p: ({children}) => <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">{children}</p>,
+                strong: ({children}) => <strong className="text-gray-900 dark:text-gray-100 font-bold">{children}</strong>,
+                ul: ({children}) => <ul className="space-y-2 mb-4">{children}</ul>,
+                ol: ({children}) => <ol className="space-y-2 mb-4">{children}</ol>,
+                li: ({children}) => <li className="text-gray-700 dark:text-gray-300">{children}</li>
+              }}>
                 {cleanContent}
               </ReactMarkdown>
             </div>
