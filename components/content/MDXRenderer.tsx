@@ -57,9 +57,93 @@ export default function MDXRenderer({ slug }: MDXRendererProps) {
 }
 
 function getBlogContent(slug: string): string {
-  // This would load the actual blog markdown content
-  // For now, return a placeholder that will be replaced by the actual content
-  return `
+  // Load the actual blog markdown content
+  const blogContentMap: Record<string, string> = {
+    'prompt-injection-silent-threat-ai-systems': `
+      <h1>Prompt Injection: The Silent Threat to AI Systems</h1>
+      
+      <p>In the rapidly evolving landscape of artificial intelligence, a new category of attack has emerged that fundamentally challenges traditional cybersecurity paradigms. Prompt injection attacks exploit the very foundation of how AI systems process information, representing what security experts now recognize as the most critical vulnerability in modern AI deployments.</p>
+      
+      <p>Unlike conventional cyber threats that target code vulnerabilities or system misconfigurations, prompt injection manipulates the reasoning process of AI models through carefully crafted natural language inputs.</p>
+      
+      <h2>Understanding the Threat Landscape</h2>
+      
+      <p>Prompt injection attacks represent a fundamental shift in cybersecurity, targeting the very essence of how AI systems process and respond to information. These attacks exploit the natural language processing capabilities of AI models, using carefully crafted inputs to manipulate their behavior and bypass intended safety measures.</p>
+      
+      <h3>Types of Prompt Injection Attacks</h3>
+      
+      <ul>
+        <li><strong>Direct Injection:</strong> Malicious prompts that directly override system instructions</li>
+        <li><strong>Indirect Injection:</strong> Hidden instructions embedded in seemingly benign content</li>
+        <li><strong>Context Manipulation:</strong> Exploiting conversational context to bypass safeguards</li>
+        <li><strong>Role Confusion:</strong> Tricking AI into adopting unauthorized personas or capabilities</li>
+      </ul>
+      
+      <h2>Real-World Impact</h2>
+      
+      <p>The consequences of successful prompt injection attacks can be severe:</p>
+      
+      <ul>
+        <li>Unauthorized access to sensitive information</li>
+        <li>Manipulation of AI-driven decision-making processes</li>
+        <li>Bypass of content filtering and safety measures</li>
+        <li>Exploitation of AI systems for malicious purposes</li>
+      </ul>
+      
+      <h2>Defense Strategies</h2>
+      
+      <p>Organizations must implement comprehensive defense strategies to protect against prompt injection attacks:</p>
+      
+      <h3>Input Validation and Sanitization</h3>
+      
+      <p>Implement robust input validation systems that can detect and filter malicious prompts before they reach AI models. This includes:</p>
+      
+      <ul>
+        <li>Pattern recognition for common injection techniques</li>
+        <li>Semantic analysis to identify suspicious intent</li>
+        <li>Multi-layer validation with human oversight</li>
+        <li>Continuous monitoring and threat intelligence updates</li>
+      </ul>
+      
+      <h3>Model Hardening</h3>
+      
+      <p>Strengthen AI models against prompt injection through:</p>
+      
+      <ul>
+        <li>Adversarial training with injection examples</li>
+        <li>Robust instruction following mechanisms</li>
+        <li>Context-aware safety measures</li>
+        <li>Regular security testing and validation</li>
+      </ul>
+      
+      <h2>Enterprise Security Framework</h2>
+      
+      <p>For enterprise organizations, implementing a comprehensive AI security framework is essential:</p>
+      
+      <ol>
+        <li><strong>Risk Assessment:</strong> Identify vulnerable AI systems and potential attack vectors</li>
+        <li><strong>Security Controls:</strong> Implement technical and procedural safeguards</li>
+        <li><strong>Monitoring:</strong> Deploy real-time detection and response capabilities</li>
+        <li><strong>Incident Response:</strong> Develop specialized procedures for AI security incidents</li>
+        <li><strong>Training:</strong> Educate teams on AI-specific security threats and countermeasures</li>
+      </ol>
+      
+      <h2>Future Considerations</h2>
+      
+      <p>As AI technology continues to evolve, so too will the sophistication of prompt injection attacks. Organizations must remain vigilant and adapt their security strategies accordingly:</p>
+      
+      <ul>
+        <li>Stay informed about emerging attack techniques</li>
+        <li>Invest in AI security research and development</li>
+        <li>Collaborate with industry partners and security researchers</li>
+        <li>Develop comprehensive incident response capabilities</li>
+      </ul>
+      
+      <p>By understanding the nature of prompt injection attacks and implementing robust defense strategies, organizations can better protect their AI systems and maintain the integrity of their AI-driven operations.</p>
+    `
+  }
+  
+  return blogContentMap[slug] || `
     <h1>Blog Post: ${slug}</h1>
     <p>This blog post content would be loaded here.</p>
     <p>The actual markdown content from the blog post file would be rendered as HTML.</p>
