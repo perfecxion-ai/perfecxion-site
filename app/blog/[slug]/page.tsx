@@ -1,8 +1,11 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import dynamic from 'next/dynamic'
-import { ChevronLeft, ChevronRight, Clock, User, Calendar, Tag, BookOpen, CheckCircle, Star } from 'lucide-react'
+import { ChevronLeft, Clock, User, Calendar, Tag } from 'lucide-react'
 import Link from 'next/link'
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
 
 // Dynamically import blog content renderer
 const BlogContentRenderer = dynamic(() => import('@/components/content/BlogContentRenderer'), {
@@ -22,26 +25,42 @@ interface PageProps {
   }
 }
 
-// This would typically come from a content management system or MDX files
+// Load blog metadata from MDX files
 const getContentBySlug = async (slug: string) => {
-  const contentMap: Record<string, any> = {
-    'prompt-injection-silent-threat-ai-systems': {
-      title: 'Prompt Injection: The Silent Threat to AI Systems - Complete Security Guide',
-      description: 'Comprehensive guide to understanding and defending against prompt injection attacks, the #1 security risk in AI systems. Learn detection techniques, defense strategies, and enterprise security frameworks to protect your AI infrastructure from sophisticated attacks.',
-      publishedAt: '2025-08-01',
-      readingTime: 28,
-      difficulty: 'advanced',
-      category: 'AI Security',
-      tags: ['AI Security', 'Prompt Injection', 'LLM Security', 'Cybersecurity', 'Enterprise Security', 'OWASP Top 10', 'Machine Learning Security'],
+  try {
+    // Try .mdx extension first
+    let filePath = path.join(process.cwd(), 'content', 'blog', `${slug}.mdx`)
+    
+    if (!fs.existsSync(filePath)) {
+      // Try .md extension
+      filePath = path.join(process.cwd(), 'content', 'blog', `${slug}.md`)
+      if (!fs.existsSync(filePath)) {
+        return null
+      }
+    }
+
+    const fileContent = fs.readFileSync(filePath, 'utf-8')
+    const { data } = matter(fileContent)
+
+    // Map the frontmatter to expected format
+    return {
+      title: data.title || 'Untitled Post',
+      description: data.description || '',
+      publishedAt: data.date || new Date().toISOString(),
+      readingTime: parseInt(data.readTime?.replace(/\D/g, '') || '10'),
+      difficulty: data.difficulty || 'intermediate',
+      category: data.category || 'AI Security',
+      tags: data.tags || [],
       author: {
-        name: 'perfecXion Security Team',
+        name: data.author || 'perfecXion Security Team',
         role: 'AI Security Experts'
       },
-      content: 'prompt-injection-silent-threat-ai-systems'
+      content: slug
     }
+  } catch (error) {
+    console.error(`Error loading blog content for slug: ${slug}`, error)
+    return null
   }
-
-  return contentMap[slug] || null
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -154,9 +173,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       </div>
 
       {/* Content */}
-      <div className="prose prose-lg dark:prose-invert max-w-none">
-        <BlogContentRenderer slug={params.slug} />
-      </div>
+      <BlogContentRenderer slug={params.slug} />
     </div>
   )
 }
