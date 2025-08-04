@@ -5,6 +5,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import matter from 'gray-matter';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import BlogPostContent from '@/components/blog/BlogPostContent';
 import {
   Shield,
   AlertTriangle,
@@ -71,14 +72,26 @@ function cleanMdxContent(content: string): string {
 export async function generateStaticParams() {
   const postsDir = path.join(process.cwd(), 'content/blog');
   const files = fs.readdirSync(postsDir);
-  return files.filter(f => f.endsWith('.mdx')).map(file => ({ slug: file.replace(/\.mdx$/, '') }));
+  return files
+    .filter(f => f.endsWith('.mdx') || f.endsWith('.md'))
+    .map(file => ({ slug: file.replace(/\.(mdx|md)$/, '') }));
 }
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
-  const postPath = path.join(process.cwd(), 'content/blog', `${slug}.mdx`);
-
-  if (!fs.existsSync(postPath)) return notFound();
+  
+  // Check for both .mdx and .md files
+  const mdxPath = path.join(process.cwd(), 'content/blog', `${slug}.mdx`);
+  const mdPath = path.join(process.cwd(), 'content/blog', `${slug}.md`);
+  
+  let postPath: string;
+  if (fs.existsSync(mdxPath)) {
+    postPath = mdxPath;
+  } else if (fs.existsSync(mdPath)) {
+    postPath = mdPath;
+  } else {
+    return notFound();
+  }
 
   const source = fs.readFileSync(postPath, 'utf8');
   const { content, data } = matter(source);
@@ -197,7 +210,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       )}
 
       {/* Content */}
-      <div className="prose prose-lg dark:prose-invert max-w-none 
+      <BlogPostContent>
+        <div className="prose prose-lg dark:prose-invert max-w-none 
         prose-headings:font-bold prose-headings:tracking-tight
         prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8
         prose-h2:text-3xl prose-h2:mb-4 prose-h2:mt-8
@@ -216,8 +230,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         prose-blockquote:border-l-4 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-600 prose-blockquote:pl-4 prose-blockquote:italic
         prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
         prose-pre:bg-gray-900 prose-pre:text-gray-100">
-        <MDXRemote source={cleanContent} components={mdxComponents} />
-      </div>
+          <MDXRemote source={cleanContent} components={mdxComponents} />
+        </div>
+      </BlogPostContent>
 
       {/* Navigation */}
       <div className="flex items-center justify-between pt-8 border-t border-gray-200 dark:border-gray-700 mt-12">
