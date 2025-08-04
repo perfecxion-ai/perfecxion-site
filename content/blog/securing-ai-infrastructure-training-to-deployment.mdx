@@ -105,8 +105,6 @@ Data Collection Risks
 <li>• API endpoint exploitation</li>
 <li>• Sensor/IoT device tampering</li>
 </ul>
-</div>
-
 <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-6">
 <h4 className="font-bold text-lg mb-4 text-orange-900 dark:text-orange-200 flex items-center gap-2">
 
@@ -121,7 +119,7 @@ Storage & Processing Risks
 <li>• ETL process manipulation</li>
 </ul>
 </div>
-### Layer 2: Training Infrastructure Vulnerabilities
+<strong>Layer 2: Training Infrastructure Vulnerabilities</strong>
 Training environments are particularly vulnerable due to their compute-intensive nature:
 
 <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg">
@@ -134,14 +132,14 @@ Training environments are particularly vulnerable due to their compute-intensive
 <h3 className="text-lg font-bold text-yellow-900 dark:text-yellow-200 mb-3">The Training Attack Vector</h3>
 
 <div className="space-y-3 text-yellow-800 dark:text-yellow-300">
-  <li><strong>Supply Chain Attacks:</strong> Malicious dependencies in training frameworks</li>
-  <li>><strong>Resource Hijacking:</strong> Cryptomining on GPU clusters</li>
-  <li><strong>Model Poisoning:</strong> Backdoors inserted during training</li>
-  <li><strong>Hyperparameter Tampering:</strong> Subtle changes that degrade performance</li>
-  <li><strong>Checkpoint Manipulation:</strong> Corrupting saved training states</li>
+  <br><strong>Supply Chain Attacks:</strong> Malicious dependencies in training frameworks</br>
+  <br><strong>Resource Hijacking:</strong> Cryptomining on GPU clusters</br>
+  <br><strong>Model Poisoning:</strong> Backdoors inserted during training</br>
+  <br><strong>Hyperparameter Tampering:</strong> Subtle changes that degrade performance</br>
+  <br><strong>Checkpoint Manipulation:</strong> Corrupting saved training states</br>
 </div>
 
-### Layer 3: Model Serving Vulnerabilities
+<strong>Layer 3: Model Serving Vulnerabilities</strong>
 Production serving infrastructure faces unique challenges:
 
 ```
@@ -155,7 +153,6 @@ Production serving infrastructure faces unique challenges:
 
  // Production = Highest impact attacks
 ```
-
 ## Securing the Data Pipeline
 
 <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg">
