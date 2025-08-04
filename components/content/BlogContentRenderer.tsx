@@ -10,34 +10,83 @@ export default function BlogContentRenderer({ content }: BlogContentRendererProp
     const [html, setHtml] = useState<string>('')
 
     useEffect(() => {
-        // Convert the markdown content to HTML using a simple, reliable approach
+        // Simple, reliable markdown to HTML conversion
         const convertMarkdownToHtml = (markdown: string) => {
-            let html = markdown
-                // Convert headers
-                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-                // Convert bold text
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                // Convert italic text
-                .replace(/\*(.*?)\*/g, '<em>$1</em>')
-                // Convert links
-                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 underline">$1</a>')
-                // Convert unordered lists
-                .replace(/^\- (.*$)/gim, '<li>$1</li>')
-                // Convert ordered lists
-                .replace(/^\d+\. (.*$)/gim, '<li>$1</li>')
-                // Convert paragraphs (lines that don't start with HTML tags)
-                .replace(/^([^<].*)$/gm, '<p>$1</p>')
-                // Clean up empty paragraphs
-                .replace(/<p><\/p>/g, '')
-                // Clean up multiple line breaks
-                .replace(/\n\n+/g, '\n\n')
-                // Wrap lists in ul/ol tags
-                .replace(/(<li>.*<\/li>)/g, '<ul>$1</ul>')
-                // Clean up multiple ul tags
-                .replace(/<\/ul>\s*<ul>/g, '')
-
+            // Split content into lines
+            const lines = markdown.split('\n')
+            let html = ''
+            let inList = false
+            
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim()
+                
+                if (!line) {
+                    // Empty line - close any open list and add paragraph break
+                    if (inList) {
+                        html += '</ul>\n'
+                        inList = false
+                    }
+                    html += '\n'
+                    continue
+                }
+                
+                // Headers
+                if (line.startsWith('### ')) {
+                    if (inList) {
+                        html += '</ul>\n'
+                        inList = false
+                    }
+                    html += `<h3>${line.substring(4)}</h3>\n`
+                } else if (line.startsWith('## ')) {
+                    if (inList) {
+                        html += '</ul>\n'
+                        inList = false
+                    }
+                    html += `<h2>${line.substring(3)}</h2>\n`
+                } else if (line.startsWith('# ')) {
+                    if (inList) {
+                        html += '</ul>\n'
+                        inList = false
+                    }
+                    html += `<h1>${line.substring(2)}</h1>\n`
+                }
+                // Lists
+                else if (line.startsWith('- ') || line.startsWith('* ')) {
+                    if (!inList) {
+                        html += '<ul>\n'
+                        inList = true
+                    }
+                    html += `<li>${line.substring(2)}</li>\n`
+                }
+                // Numbered lists
+                else if (/^\d+\. /.test(line)) {
+                    if (!inList) {
+                        html += '<ol>\n'
+                        inList = true
+                    }
+                    html += `<li>${line.replace(/^\d+\. /, '')}</li>\n`
+                }
+                // Regular paragraphs
+                else {
+                    if (inList) {
+                        html += '</ul>\n'
+                        inList = false
+                    }
+                    // Convert markdown formatting within the line
+                    let processedLine = line
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 underline">$1</a>')
+                    
+                    html += `<p>${processedLine}</p>\n`
+                }
+            }
+            
+            // Close any open list
+            if (inList) {
+                html += '</ul>\n'
+            }
+            
             return html
         }
 
