@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import matter from 'gray-matter';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -56,18 +58,17 @@ function getHeadings(content: string) {
   return headings;
 }
 
-function cleanMdxContent(content: string): string {
-  // Remove import statements
-  let cleaned = content.replace(/^import.*from.*lucide-react.*$/gm, '');
-
-  // Preserve line breaks and paragraph spacing
-  // Only remove completely empty lines, but preserve single line breaks
-  cleaned = cleaned.replace(/^\s*[\r\n]\s*[\r\n]/gm, '\n\n');
-
-  // Ensure proper spacing
-  cleaned = cleaned.trim();
-
-  return cleaned;
+function cleanMdxContent(content: string, isMdx: boolean = false): string {
+  if (isMdx) {
+    // Remove import statements for MDX files
+    let cleaned = content.replace(/^import.*from.*lucide-react.*$/gm, '');
+    // Preserve line breaks and paragraph spacing
+    cleaned = cleaned.replace(/^\s*[\r\n]\s*[\r\n]/gm, '\n\n');
+    return cleaned.trim();
+  }
+  
+  // For regular markdown files, just return the content as-is
+  return content;
 }
 
 export async function generateStaticParams() {
@@ -154,7 +155,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   const { content, data } = matter(source);
 
   // Clean the content to remove problematic elements
-  const cleanContent = cleanMdxContent(content);
+  const isMdx = postPath.endsWith('.mdx');
+  const cleanContent = cleanMdxContent(content, isMdx);
   const headings = data.toc ? getHeadings(cleanContent) : [];
 
   const formatDate = (dateString: string) => {
@@ -324,7 +326,16 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         prose-blockquote:border-l-4 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-600 prose-blockquote:pl-4 prose-blockquote:italic
         prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
         prose-pre:bg-gray-900 prose-pre:text-gray-100">
-          <MDXRemote source={cleanContent} components={mdxComponents} />
+          {postPath.endsWith('.mdx') ? (
+            <MDXRemote source={cleanContent} components={mdxComponents} />
+          ) : (
+            <ReactMarkdown 
+              remarkPlugins={[remarkGfm]}
+              className="prose prose-lg dark:prose-invert max-w-none"
+            >
+              {cleanContent}
+            </ReactMarkdown>
+          )}
         </div>
       </BlogPostContent>
 
