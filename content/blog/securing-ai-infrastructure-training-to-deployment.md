@@ -55,7 +55,6 @@ The modern AI stack is a complex web of interconnected systems: data lakes, trai
 <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
 
 <div className="flex items-start gap-3">
-
 <Info className="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0"></Info>
 
 <div>
@@ -84,7 +83,7 @@ AI infrastructure isn't just servers and storageit's a complex ecosystem of data
                                                 
     Edge Devices    [ATTACK: Physical Access]    
 
- // Each layer = Multiple attack vectors
+    Each layer = Multiple attack vectors
 ```
 
 ### Layer 1: Data Infrastructure Vulnerabilities
@@ -99,25 +98,27 @@ The foundation of AI security starts with data:
 Data Collection Risks
 </h4>
 <ul className="space-y-2 text-sm text-red-800 dark:text-red-300">
-<li>• Unvalidated external data sources</li>
-<li>• Compromised data collection agents</li>
-<li>• Injection through user submissions</li>
-<li>• API endpoint exploitation</li>
-<li>• Sensor/IoT device tampering</li>
+<li>Unvalidated external data sources</li>
+<li>Compromised data collection agents</li>
+<li>Injection through user submissions</li>
+<li>API endpoint exploitation</li>
+<li>Sensor/IoT device tampering</li>
 </ul>
 <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-6">
 <h4 className="font-bold text-lg mb-4 text-orange-900 dark:text-orange-200 flex items-center gap-2">
+
 
 <Lock className="h-5 w-5 text-orange-600"></Lock>
 Storage & Processing Risks
 </h4>
 <ul className="space-y-2 text-sm text-orange-800 dark:text-orange-300">
-<li>• Misconfigured cloud buckets</li>
-<li>• Unencrypted data at rest</li>
-<li>• Weak access controls</li>
-<li>• Pipeline injection attacks</li>
-<li>• ETL process manipulation</li>
+<li>Misconfigured cloud buckets</li>
+<li>Unencrypted data at rest</li>
+<li>Weak access controls</li>
+<li>Pipeline injection attacks</li>
+<li>ETL process manipulation</li>
 </ul>
+
 </div>
 <strong>Layer 2: Training Infrastructure Vulnerabilities</strong>
 Training environments are particularly vulnerable due to their compute-intensive nature:
@@ -151,7 +152,7 @@ Production serving infrastructure faces unique challenges:
   Cache Layer      Cache poisoning, data leakage
   Monitoring       Log injection, metric manipulation
 
- // Production = Highest impact attacks
+  Production = Highest impact attacks
 ```
 ## Securing the Data Pipeline
 
@@ -211,14 +212,12 @@ quarantine_suspicious()
 
 ### Encryption and Access Control
 
-<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
 
 <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-4">
 <h4 className="font-semibold text-purple-900 dark:text-purple-200 mb-2 flex items-center gap-2">
-
 <Lock className="h-4 w-4"></Lock>
-Encryption at Rest
-</h4>
+Encryption at Rest</h4>
+
 <ul className="text-sm text-purple-800 dark:text-purple-300 space-y-1">
 <li> AES-256 minimum</li>
 <li> Key rotation policy</li>
@@ -228,10 +227,9 @@ Encryption at Rest
 
 <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
 <h4 className="font-semibold text-blue-900 dark:text-blue-200 mb-2 flex items-center gap-2">
-
 <Shield className="h-4 w-4"></Shield>
-Encryption in Transit
-</h4>
+Encryption in Transit</h4>
+
 <ul className="text-sm text-blue-800 dark:text-blue-300 space-y-1">
 <li> TLS 1.3 everywhere</li>
 <li> Certificate pinning</li>
@@ -242,8 +240,7 @@ Encryption in Transit
 <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
 <h4 className="font-semibold text-green-900 dark:text-green-200 mb-2 flex items-center gap-2">
 
-<Users className="h-4 w-4"></Users>Access Control
-</h4>
+<Users className="h-4 w-4"></Users>Access Control</h4>
 <ul className="text-sm text-green-800 dark:text-green-300 space-y-1">
 <li> Zero trust principles</li>
 <li> Attribute-based access</li>
