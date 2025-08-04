@@ -142,54 +142,47 @@ function preprocessMDX(content: string): string {
   content = content.replace(/<(Shield|AlertTriangle|Target|Clock|User|Calendar|Tag|BookOpen|CheckCircle|ChevronLeft|ChevronRight|Brain|Database|TrendingUp|Briefcase|Info|Bell)[^>]*\/>/g, '')
   content = content.replace(/icon="[^"]*"/g, '')
   
-  // Process styled divs more carefully
-  // Handle gradient background divs
-  content = content.replace(/<div\s+className="bg-gradient-to-[^"]*"[^>]*>([\s\S]*?)<\/div>/g, (match, innerContent) => {
-    return `<div style="background: linear-gradient(135deg, #fef3c7 0%, #fee2e2 100%); padding: 1.5rem; border-radius: 0.75rem; margin: 2rem 0;">
+  // First, remove any standalone closing div tags that might be orphaned
+  content = content.replace(/^\s*<\/div>\s*$/gm, '')
+  
+  // Process styled divs more carefully - use non-greedy matching and handle nested structures
+  // Handle the header gradient div at the beginning
+  content = content.replace(/<div className="bg-gradient-to-r from-primary-600[^>]*>([\s\S]*?)^<\/div>/gm, (match, innerContent) => {
+    return `<div style="background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%); padding: 2rem; border-radius: 0.5rem; color: white; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
       ${innerContent}
     </div>`
+  })
+  
+  // Handle gradient background divs
+  content = content.replace(/<div\s+className="bg-gradient-to-[^"]*"[^>]*>/g, (match) => {
+    return `<div style="background: linear-gradient(135deg, #fef3c7 0%, #fee2e2 100%); padding: 1.5rem; border-radius: 0.75rem; margin: 2rem 0;">`
   })
   
   // Handle yellow/orange/blue alert boxes
-  content = content.replace(/<div\s+className="bg-yellow-50[^"]*"[^>]*>([\s\S]*?)<\/div>/g, (match, innerContent) => {
-    return `<div style="background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 1.5rem; border-radius: 0 0.5rem 0.5rem 0; margin: 2rem 0;">
-      ${innerContent}
-    </div>`
-  })
+  content = content.replace(/<div\s+className="bg-yellow-50[^"]*"[^>]*>/g, 
+    `<div style="background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 1.5rem; border-radius: 0 0.5rem 0.5rem 0; margin: 2rem 0;">`)
   
-  content = content.replace(/<div\s+className="bg-blue-50[^"]*"[^>]*>([\s\S]*?)<\/div>/g, (match, innerContent) => {
-    return `<div style="background-color: #dbeafe; border-left: 4px solid #3b82f6; padding: 1.5rem; border-radius: 0 0.5rem 0.5rem 0; margin: 2rem 0;">
-      ${innerContent}
-    </div>`
-  })
+  content = content.replace(/<div\s+className="bg-blue-50[^"]*"[^>]*>/g,
+    `<div style="background-color: #dbeafe; border-left: 4px solid #3b82f6; padding: 1.5rem; border-radius: 0 0.5rem 0.5rem 0; margin: 2rem 0;">`)
   
   // Handle flex containers
-  content = content.replace(/<div\s+className="flex[^"]*"[^>]*>([\s\S]*?)<\/div>/g, (match, innerContent) => {
-    return `<div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-      ${innerContent}
-    </div>`
-  })
+  content = content.replace(/<div\s+className="flex[^"]*"[^>]*>/g,
+    `<div style="display: flex; align-items: flex-start; gap: 0.75rem;">`)
   
   // Handle grid containers
-  content = content.replace(/<div\s+className="grid[^"]*"[^>]*>([\s\S]*?)<\/div>/g, (match, innerContent) => {
-    return `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-      ${innerContent}
-    </div>`
-  })
+  content = content.replace(/<div\s+className="grid[^"]*"[^>]*>/g,
+    `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">`)
   
   // Handle space-y divs
-  content = content.replace(/<div\s+className="space-y-[^"]*"[^>]*>([\s\S]*?)<\/div>/g, (match, innerContent) => {
-    return `<div style="display: flex; flex-direction: column; gap: 1rem;">
-      ${innerContent}
-    </div>`
-  })
+  content = content.replace(/<div\s+className="space-y-[^"]*"[^>]*>/g,
+    `<div style="display: flex; flex-direction: column; gap: 1rem;">`)
   
   // Handle white/gray background cards
-  content = content.replace(/<div\s+className="bg-white[^"]*"[^>]*>([\s\S]*?)<\/div>/g, (match, innerContent) => {
-    return `<div style="background-color: #ffffff; padding: 1rem; border-radius: 0.5rem; border: 1px solid #e5e7eb;">
-      ${innerContent}
-    </div>`
-  })
+  content = content.replace(/<div\s+className="bg-white[^"]*"[^>]*>/g,
+    `<div style="background-color: #ffffff; padding: 1rem; border-radius: 0.5rem; border: 1px solid #e5e7eb;">`)
+  
+  // Clean up any remaining div with className (just convert to plain div)
+  content = content.replace(/<div\s+className="[^"]*"[^>]*>/g, '<div>')
   
   // Clean up any remaining h3, h4, h5 with className
   content = content.replace(/<h([1-6])\s+className="[^"]*"[^>]*>/g, '<h$1>')
