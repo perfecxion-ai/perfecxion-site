@@ -77,6 +77,62 @@ export async function generateStaticParams() {
     .map(file => ({ slug: file.replace(/\.(mdx|md)$/, '') }));
 }
 
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const { slug } = params;
+  
+  // Try both .mdx and .md files
+  const mdxPath = path.join(process.cwd(), 'content/blog', `${slug}.mdx`);
+  const mdPath = path.join(process.cwd(), 'content/blog', `${slug}.md`);
+  
+  let postPath: string;
+  if (fs.existsSync(mdxPath)) {
+    postPath = mdxPath;
+  } else if (fs.existsSync(mdPath)) {
+    postPath = mdPath;
+  } else {
+    return {
+      title: 'Post Not Found',
+      description: 'The requested blog post could not be found.',
+    };
+  }
+
+  const source = fs.readFileSync(postPath, 'utf8');
+  const { data } = matter(source);
+  
+  return {
+    title: data.title,
+    description: data.description,
+    authors: data.author ? [{ name: data.author }] : [{ name: 'perfecXion Team' }],
+    keywords: data.tags || [],
+    openGraph: {
+      title: data.title,
+      description: data.description,
+      type: 'article',
+      publishedTime: data.date,
+      modifiedTime: data.lastModified || data.date,
+      authors: [data.author || 'perfecXion Team'],
+      tags: data.tags || [],
+      images: [
+        {
+          url: data.image || '/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: data.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: data.title,
+      description: data.description,
+      images: [data.image || '/og-image.png'],
+    },
+    alternates: {
+      canonical: `https://perfecxion.ai/blog/${slug}`,
+    },
+  };
+}
+
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
   
@@ -108,8 +164,45 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     })
   }
 
+  // Generate JSON-LD structured data for SEO
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: data.title,
+    description: data.description,
+    author: {
+      '@type': 'Person',
+      name: data.author || 'perfecXion Team',
+    },
+    datePublished: data.date,
+    dateModified: data.lastModified || data.date,
+    publisher: {
+      '@type': 'Organization',
+      name: 'perfecXion.ai',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://perfecxion.ai/logo-perfecxion.svg',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://perfecxion.ai/blog/${slug}`,
+    },
+    image: {
+      '@type': 'ImageObject',
+      url: data.image || 'https://perfecxion.ai/og-image.png',
+    },
+    keywords: data.tags ? data.tags.join(', ') : '',
+  }
+
   return (
     <>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
         <ol className="list-none p-0 inline-flex">
