@@ -15,51 +15,61 @@ marked.setOptions({
 const renderer = new marked.Renderer()
 
 // Override heading rendering to match learn pages
-renderer.heading = function(text, level) {
-  const tag = `h${level}`
+renderer.heading = function({ tokens, depth }) {
+  const text = this.parser.parseInline(tokens)
+  const tag = `h${depth}`
   return `<${tag}>${text}</${tag}>\n`
 }
 
 // Override table rendering to match learn pages
-renderer.table = function(header, body) {
+renderer.table = function({ header, rows }) {
+  let headerHtml = ''
+  if (header) {
+    const headerCells = header.map(cell => {
+      const cellText = this.parser.parseInline(cell.tokens)
+      return `<th style="border: 1px solid #d1d5db; padding: 0.5rem; text-align: left;">${cellText}</th>`
+    }).join('')
+    headerHtml = `<thead><tr style="background-color: #f3f4f6;">${headerCells}</tr></thead>`
+  }
+  
+  const bodyHtml = rows.map(row => {
+    const cells = row.map(cell => {
+      const cellText = this.parser.parseInline(cell.tokens)
+      return `<td style="border: 1px solid #d1d5db; padding: 0.5rem;">${cellText}</td>`
+    }).join('')
+    return `<tr>${cells}</tr>`
+  }).join('')
+  
   return `<table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
-    <thead>
-      ${header}
-    </thead>
-    <tbody>
-      ${body}
-    </tbody>
+    ${headerHtml}
+    <tbody>${bodyHtml}</tbody>
   </table>\n`
 }
 
-renderer.tablerow = function(content) {
-  return `<tr style="background-color: #f3f4f6;">\n${content}</tr>\n`
-}
-
-renderer.tablecell = function(content, flags) {
-  const type = flags.header ? 'th' : 'td'
-  const style = 'border: 1px solid #d1d5db; padding: 0.5rem; text-align: left;'
-  return `<${type} style="${style}">${content}</${type}>\n`
-}
-
 // Override code block rendering
-renderer.code = function(code, language) {
-  return `<pre style="background-color: #f3f4f6; dark:background-color: #1f2937; padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0;"><code>${code}</code></pre>\n`
+renderer.code = function({ text, lang }) {
+  return `<pre style="background-color: #f3f4f6; dark:background-color: #1f2937; padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0;"><code>${text}</code></pre>\n`
 }
 
 // Override blockquote rendering
-renderer.blockquote = function(quote) {
-  return `<blockquote style="border-left: 4px solid #3b82f6; padding-left: 1rem; margin: 1rem 0; color: #4b5563; dark:color: #9ca3af;">${quote}</blockquote>\n`
+renderer.blockquote = function({ tokens }) {
+  const text = this.parser.parse(tokens)
+  return `<blockquote style="border-left: 4px solid #3b82f6; padding-left: 1rem; margin: 1rem 0; color: #4b5563; dark:color: #9ca3af;">${text}</blockquote>\n`
 }
 
 // Override list rendering
-renderer.list = function(body, ordered) {
+renderer.list = function({ items, ordered }) {
   const tag = ordered ? 'ol' : 'ul'
-  return `<${tag}>${body}</${tag}>\n`
+  const itemsHtml = items.map(item => {
+    const text = this.parser.parse(item.tokens)
+    return `<li>${text}</li>`
+  }).join('')
+  return `<${tag}>${itemsHtml}</${tag}>\n`
 }
 
 // Override paragraph rendering
-renderer.paragraph = function(text) {
+renderer.paragraph = function({ tokens }) {
+  const text = this.parser.parseInline(tokens)
   return `<p>${text}</p>\n`
 }
 
