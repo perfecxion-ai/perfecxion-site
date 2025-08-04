@@ -13,11 +13,18 @@ marked.setOptions({
 
 // Function to convert custom components to HTML
 function preprocessMDX(content: string): string {
+  // First, handle code blocks with ``` to preserve them
+  const codeBlocks: string[] = []
+  let codeBlockIndex = 0
+  content = content.replace(/```[\s\S]*?```/g, (match) => {
+    codeBlocks.push(match)
+    return `__CODE_BLOCK_${codeBlockIndex++}__`
+  })
   // Convert AlertBox to styled HTML
   content = content.replace(/<AlertBox[^>]*type="([^"]*)"[^>]*title="([^"]*)"[^>]*>([\s\S]*?)<\/AlertBox>/g, 
     (match, type, title, text) => {
-      const color = type === 'danger' ? '#dc2626' : type === 'warning' ? '#f59e0b' : '#3b82f6'
-      const bg = type === 'danger' ? '#fee2e2' : type === 'warning' ? '#fef3c7' : '#dbeafe'
+      const color = type === 'danger' ? '#dc2626' : type === 'warning' ? '#f59e0b' : type === 'success' ? '#10b981' : '#3b82f6'
+      const bg = type === 'danger' ? '#fee2e2' : type === 'warning' ? '#fef3c7' : type === 'success' ? '#d1fae5' : '#dbeafe'
       return `<div style="padding: 1.5rem; margin: 2rem 0; border-radius: 8px; border-left: 4px solid ${color}; background-color: ${bg};">
         <p style="font-weight: 600; color: ${color}; margin-bottom: 0.5rem;">${title}</p>
         <div style="margin: 0; color: #374151;">${text.trim()}</div>
@@ -101,12 +108,95 @@ function preprocessMDX(content: string): string {
     </div>`
   })
   
+  // Convert Timeline component
+  content = content.replace(/<Timeline[^>]*items=\{(\[[\s\S]*?\])\}[^>]*\/>/g, (match, itemsArray) => {
+    try {
+      const items = eval(itemsArray)
+      const timelineHtml = items.map((item: any, index: number) => `
+        <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+          <div style="flex-shrink: 0;">
+            <div style="width: 2rem; height: 2rem; background-color: #3b82f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">
+              ${index + 1}
+            </div>
+            ${index < items.length - 1 ? '<div style="width: 2px; height: 3rem; background-color: #e5e7eb; margin-left: 1rem;"></div>' : ''}
+          </div>
+          <div style="flex-grow: 1; padding-bottom: 1rem;">
+            <div style="font-weight: 600; color: #3b82f6; margin-bottom: 0.25rem;">${item.date}</div>
+            <h4 style="font-weight: 600; margin-bottom: 0.5rem;">${item.title}</h4>
+            <p style="color: #6b7280; margin: 0;">${item.description}</p>
+          </div>
+        </div>
+      `).join('')
+      
+      return `<div style="margin: 2rem 0;">
+        ${timelineHtml}
+      </div>`
+    } catch (e) {
+      console.error('Failed to parse Timeline:', e)
+      return ''
+    }
+  })
+  
   // Remove remaining JSX/React components more selectively
-  content = content.replace(/<(Shield|AlertTriangle|Target|Clock|User|Calendar|Tag|BookOpen|CheckCircle|ChevronLeft|ChevronRight|Brain|Database|TrendingUp|Briefcase)[^>]*\/>/g, '')
+  content = content.replace(/<(Shield|AlertTriangle|Target|Clock|User|Calendar|Tag|BookOpen|CheckCircle|ChevronLeft|ChevronRight|Brain|Database|TrendingUp|Briefcase|Info|Bell)[^>]*><\/\1>/g, '')
+  content = content.replace(/<(Shield|AlertTriangle|Target|Clock|User|Calendar|Tag|BookOpen|CheckCircle|ChevronLeft|ChevronRight|Brain|Database|TrendingUp|Briefcase|Info|Bell)[^>]*\/>/g, '')
   content = content.replace(/icon="[^"]*"/g, '')
   
-  // Remove div elements with className but preserve their content
-  content = content.replace(/<div\s+className="[^"]*"[^>]*>([\s\S]*?)<\/div>/g, '<div>$1</div>')
+  // Process styled divs more carefully
+  // Handle gradient background divs
+  content = content.replace(/<div\s+className="bg-gradient-to-[^"]*"[^>]*>([\s\S]*?)<\/div>/g, (match, innerContent) => {
+    return `<div style="background: linear-gradient(135deg, #fef3c7 0%, #fee2e2 100%); padding: 1.5rem; border-radius: 0.75rem; margin: 2rem 0;">
+      ${innerContent}
+    </div>`
+  })
+  
+  // Handle yellow/orange/blue alert boxes
+  content = content.replace(/<div\s+className="bg-yellow-50[^"]*"[^>]*>([\s\S]*?)<\/div>/g, (match, innerContent) => {
+    return `<div style="background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 1.5rem; border-radius: 0 0.5rem 0.5rem 0; margin: 2rem 0;">
+      ${innerContent}
+    </div>`
+  })
+  
+  content = content.replace(/<div\s+className="bg-blue-50[^"]*"[^>]*>([\s\S]*?)<\/div>/g, (match, innerContent) => {
+    return `<div style="background-color: #dbeafe; border-left: 4px solid #3b82f6; padding: 1.5rem; border-radius: 0 0.5rem 0.5rem 0; margin: 2rem 0;">
+      ${innerContent}
+    </div>`
+  })
+  
+  // Handle flex containers
+  content = content.replace(/<div\s+className="flex[^"]*"[^>]*>([\s\S]*?)<\/div>/g, (match, innerContent) => {
+    return `<div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+      ${innerContent}
+    </div>`
+  })
+  
+  // Handle grid containers
+  content = content.replace(/<div\s+className="grid[^"]*"[^>]*>([\s\S]*?)<\/div>/g, (match, innerContent) => {
+    return `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+      ${innerContent}
+    </div>`
+  })
+  
+  // Handle space-y divs
+  content = content.replace(/<div\s+className="space-y-[^"]*"[^>]*>([\s\S]*?)<\/div>/g, (match, innerContent) => {
+    return `<div style="display: flex; flex-direction: column; gap: 1rem;">
+      ${innerContent}
+    </div>`
+  })
+  
+  // Handle white/gray background cards
+  content = content.replace(/<div\s+className="bg-white[^"]*"[^>]*>([\s\S]*?)<\/div>/g, (match, innerContent) => {
+    return `<div style="background-color: #ffffff; padding: 1rem; border-radius: 0.5rem; border: 1px solid #e5e7eb;">
+      ${innerContent}
+    </div>`
+  })
+  
+  // Clean up any remaining h3, h4, h5 with className
+  content = content.replace(/<h([1-6])\s+className="[^"]*"[^>]*>/g, '<h$1>')
+  content = content.replace(/<p\s+className="[^"]*"[^>]*>/g, '<p>')
+  
+  // Remove any remaining className attributes
+  content = content.replace(/\s+className="[^"]*"/g, '')
   
   // Convert Mermaid diagrams
   let diagramId = 0
@@ -123,6 +213,11 @@ ${diagram.trim()}
     return `<div id="mermaid-${diagramId}" class="mermaid" style="background-color: #f3f4f6; padding: 1rem; border-radius: 8px; margin: 2rem 0; text-align: center;">
 ${diagram.trim()}
     </div>`
+  })
+  
+  // Restore code blocks
+  content = content.replace(/__CODE_BLOCK_(\d+)__/g, (match, index) => {
+    return codeBlocks[parseInt(index)]
   })
   
   return content
