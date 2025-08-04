@@ -60,8 +60,9 @@ function cleanMdxContent(content: string): string {
   // Remove import statements
   let cleaned = content.replace(/^import.*from.*lucide-react.*$/gm, '');
 
-  // Remove any empty lines that might cause issues
-  cleaned = cleaned.replace(/^\s*[\r\n]/gm, '');
+  // Preserve line breaks and paragraph spacing
+  // Only remove completely empty lines, but preserve single line breaks
+  cleaned = cleaned.replace(/^\s*[\r\n]\s*[\r\n]/gm, '\n\n');
 
   // Ensure proper spacing
   cleaned = cleaned.trim();
@@ -79,11 +80,11 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const { slug } = params;
-  
+
   // Try both .mdx and .md files
   const mdxPath = path.join(process.cwd(), 'content/blog', `${slug}.mdx`);
   const mdPath = path.join(process.cwd(), 'content/blog', `${slug}.md`);
-  
+
   let postPath: string;
   if (fs.existsSync(mdxPath)) {
     postPath = mdxPath;
@@ -98,7 +99,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
   const source = fs.readFileSync(postPath, 'utf8');
   const { data } = matter(source);
-  
+
   return {
     title: data.title,
     description: data.description,
@@ -135,11 +136,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
-  
+
   // Check for both .mdx and .md files
   const mdxPath = path.join(process.cwd(), 'content/blog', `${slug}.mdx`);
   const mdPath = path.join(process.cwd(), 'content/blog', `${slug}.md`);
-  
+
   let postPath: string;
   if (fs.existsSync(mdxPath)) {
     postPath = mdxPath;
@@ -202,7 +203,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      
+
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
         <ol className="list-none p-0 inline-flex">
@@ -219,14 +220,14 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         {data.category && (
           <div className="flex items-center gap-3 mb-4">
             <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${data.category.toLowerCase() === 'ai security' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400' :
-                data.category.toLowerCase() === 'threat analysis' ? 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400' :
-                  data.category.toLowerCase() === 'best practices' ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400' :
-                    data.category.toLowerCase() === 'product updates' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400' :
-                      data.category.toLowerCase() === 'research' ? 'bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400' :
-                        data.category.toLowerCase() === 'security automation' ? 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/20 dark:text-indigo-400' :
-                          data.category.toLowerCase() === 'strategic vision' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400' :
-                            data.category.toLowerCase() === 'zero-day ai vulnerabilities' ? 'bg-pink-100 text-pink-800 dark:bg-pink-900/20 dark:text-pink-400' :
-                              'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300'
+              data.category.toLowerCase() === 'threat analysis' ? 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400' :
+                data.category.toLowerCase() === 'best practices' ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400' :
+                  data.category.toLowerCase() === 'product updates' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400' :
+                    data.category.toLowerCase() === 'research' ? 'bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400' :
+                      data.category.toLowerCase() === 'security automation' ? 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/20 dark:text-indigo-400' :
+                        data.category.toLowerCase() === 'strategic vision' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400' :
+                          data.category.toLowerCase() === 'zero-day ai vulnerabilities' ? 'bg-pink-100 text-pink-800 dark:bg-pink-900/20 dark:text-pink-400' :
+                            'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300'
               }`}>
               {data.category}
             </span>

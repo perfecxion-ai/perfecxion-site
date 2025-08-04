@@ -263,15 +263,15 @@ class ContentManager {
       },
       {
         type: 'blog',
-        title: 'Prompt Injection: The Silent Threat to AI Systems',
-        description: 'Understanding prompt injection attacks and how to defend against them.',
-        publishedAt: '2024-02-05',
-        readingTime: 10,
+        title: 'Prompt Injection: The Silent Threat to AI Systems - Complete Security Guide',
+        description: 'Comprehensive guide to understanding and defending against prompt injection attacks, the #1 security risk in AI systems. Learn detection techniques, defense strategies, and enterprise security frameworks to protect your AI infrastructure from sophisticated attacks.',
+        publishedAt: '2025-08-01',
+        readingTime: 28,
         difficulty: 'intermediate',
-        category: 'Threat Analysis',
-        tags: ['prompt-injection', 'threats', 'security', 'defense'],
+        category: 'AI Security',
+        tags: ['AI Security', 'Prompt Injection', 'LLM Security', 'Cybersecurity', 'Enterprise Security', 'OWASP Top 10', 'Machine Learning Security'],
         slug: 'prompt-injection-silent-threat-ai-systems',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
