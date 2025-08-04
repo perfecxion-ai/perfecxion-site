@@ -13,6 +13,17 @@ marked.setOptions({
 
 // Function to convert custom components to HTML
 function preprocessMDX(content: string): string {
+  // Remove all JSX/React component imports and className attributes
+  content = content.replace(/<[A-Z][a-zA-Z]*\s+className="[^"]*"\s*(?:\/)?>/g, '')
+  content = content.replace(/className="[^"]*"/g, '')
+  
+  // Convert div elements with className to regular divs with inline styles
+  content = content.replace(/<div\s+className="[^"]*"[^>]*>/g, '<div>')
+  
+  // Remove icon components (Shield, AlertTriangle, etc.)
+  content = content.replace(/<(Shield|AlertTriangle|Target|Clock|User|Calendar|Tag|BookOpen|CheckCircle|ChevronLeft|ChevronRight)[^>]*><\/\1>/g, '')
+  content = content.replace(/<(Shield|AlertTriangle|Target|Clock|User|Calendar|Tag|BookOpen|CheckCircle|ChevronLeft|ChevronRight)[^>]*\/>/g, '')
+  
   // Convert AlertBox to styled HTML
   content = content.replace(/<AlertBox[^>]*type="([^"]*)"[^>]*title="([^"]*)"[^>]*>([\s\S]*?)<\/AlertBox>/g, 
     (match, type, title, text) => {
@@ -76,6 +87,23 @@ function preprocessMDX(content: string): string {
       }
     })
   
+  // Convert Mermaid diagrams to a placeholder
+  content = content.replace(/```mermaid\n([\s\S]*?)```/g, (match, diagram) => {
+    // For now, just display the diagram as a code block with a note
+    return `<div style="background-color: #f3f4f6; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+      <p style="font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">Diagram:</p>
+      <pre style="background-color: transparent; padding: 0;"><code>${diagram.trim()}</code></pre>
+    </div>`
+  })
+  
+  // Handle the "text" code blocks that contain mermaid diagrams
+  content = content.replace(/text\s*\n\s*graph TD([\s\S]*?)(?=\n\n|\n[A-Z]|$)/g, (match, diagram) => {
+    return `<div style="background-color: #f3f4f6; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+      <p style="font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">System Architecture Diagram:</p>
+      <pre style="background-color: transparent; padding: 0; overflow-x: auto;"><code>graph TD${diagram}</code></pre>
+    </div>`
+  })
+  
   // Remove any remaining unhandled custom components
   content = content.replace(/<[A-Z][a-zA-Z]*[^>]*\/>/g, '')
   content = content.replace(/<[A-Z][a-zA-Z]*[^>]*>[\s\S]*?<\/[A-Z][a-zA-Z]*>/g, '')
@@ -137,9 +165,9 @@ export async function GET(
         .blog-content p { margin-bottom: 1rem; line-height: 1.7; }
         .blog-content ul, .blog-content ol { margin-bottom: 1rem; padding-left: 2rem; }
         .blog-content li { margin-bottom: 0.5rem; }
-        .blog-content pre { background-color: #f3f4f6; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1rem; }
-        .blog-content code { background-color: #f3f4f6; padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-size: 0.875rem; }
-        .blog-content pre code { background-color: transparent; padding: 0; }
+        .blog-content pre { background-color: #f3f4f6; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1rem; color: #1f2937; }
+        .blog-content code { background-color: #f3f4f6; padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-size: 0.875rem; color: #1f2937; }
+        .blog-content pre code { background-color: transparent; padding: 0; color: inherit; }
         .blog-content blockquote { border-left: 4px solid #3b82f6; padding-left: 1rem; margin: 1rem 0; color: #4b5563; }
         .blog-content strong { font-weight: 600; }
         .blog-content em { font-style: italic; }
@@ -148,8 +176,9 @@ export async function GET(
         .blog-content th, .blog-content td { border: 1px solid #d1d5db; padding: 0.5rem; text-align: left; }
         .blog-content th { background-color: #f3f4f6; font-weight: 600; }
         @media (prefers-color-scheme: dark) {
-          .blog-content pre { background-color: #1f2937; }
-          .blog-content code { background-color: #1f2937; }
+          .blog-content pre { background-color: #1f2937; color: #e5e7eb; }
+          .blog-content code { background-color: #1f2937; color: #e5e7eb; }
+          .blog-content pre code { color: inherit; }
           .blog-content blockquote { color: #9ca3af; }
           .blog-content hr { border-color: #374151; }
           .blog-content th, .blog-content td { border-color: #374151; }

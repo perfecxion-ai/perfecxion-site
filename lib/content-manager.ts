@@ -198,7 +198,7 @@ class ContentManager {
         category: 'AI Security',
         tags: [],
         slug: 'welcome',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -210,7 +210,7 @@ class ContentManager {
         category: 'Technical Research',
         tags: [],
         slug: 'securing-ai-infrastructure-training-to-deployment',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -222,7 +222,7 @@ class ContentManager {
         category: 'Industry Applications',
         tags: ["Critical Infrastructure","AI Security","SCADA Systems","Industrial AI","Cyber-Physical Security","National Security"],
         slug: 'securing-ai-critical-infrastructure-lessons-from-field',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -234,7 +234,7 @@ class ContentManager {
         category: 'Technical Research',
         tags: ["AI Security","Prompt Injection","Red Team Testing","LLM Security","Attack Prevention","AI Defense"],
         slug: 'prompt-injection-playbook-attack-techniques-defenses',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -246,7 +246,7 @@ class ContentManager {
         category: 'Compliance & Governance',
         tags: [],
         slug: 'navigating-ai-compliance-framework-security-standards',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -282,7 +282,7 @@ class ContentManager {
         category: 'Cloud Security',
         tags: [],
         slug: 'multi-cloud-ai-security-strategies-hybrid-deployments',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -294,7 +294,7 @@ class ContentManager {
         category: 'AI Security',
         tags: ["Multi-Agent Systems","AI Orchestration","Agent Security","Distributed AI","Collaboration Security"],
         slug: 'multi-agent-systems-security-safe-ai-collaboration',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -318,7 +318,7 @@ class ContentManager {
         category: 'Industry Applications',
         tags: ["Healthcare AI","HIPAA Compliance","Patient Safety","Medical AI Security","PHI Protection","Healthcare Cybersecurity"],
         slug: 'healthcare-ai-security-protecting-patient-data-safety',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -342,7 +342,7 @@ class ContentManager {
         category: 'AI Evolution',
         tags: [],
         slug: 'from-chatbots-to-autonomous-agents-evolution-ai-security',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -354,7 +354,7 @@ class ContentManager {
         category: 'Compliance & Governance',
         tags: [],
         slug: 'executives-guide-ai-risk-management-liability',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -366,7 +366,7 @@ class ContentManager {
         category: 'Implementation Guides',
         tags: ["AI Security Program","Enterprise Security","Startup Security","Security Maturity","Organizational Development","Strategic Planning"],
         slug: 'building-mature-ai-security-program-startup-to-enterprise',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -378,7 +378,7 @@ class ContentManager {
         category: 'Industry Applications',
         tags: ["Financial Services","AI Security","Regulatory Compliance","Banking AI","FinTech Security","Risk Management"],
         slug: 'ai-security-financial-services-regulatory-requirements',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -390,7 +390,7 @@ class ContentManager {
         category: 'AI Security',
         tags: ["Red Team","Production Security","AI Testing","Security Assessment","Enterprise AI"],
         slug: 'ai-red-team-testing-production-lessons',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -414,7 +414,7 @@ class ContentManager {
         category: 'AI Safety & Guardrails',
         tags: [],
         slug: 'ai-guardrails-that-actually-work-beyond-basic-content-filtering',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -426,7 +426,7 @@ class ContentManager {
         category: 'Governance & Strategy',
         tags: [],
         slug: 'ai-governance-at-scale-enterprise-strategies-responsible-ai',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -474,7 +474,7 @@ class ContentManager {
         category: 'Prompt Security',
         tags: [],
         slug: 'advanced-prompt-engineering-security-defense-through-design',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -534,7 +534,7 @@ class ContentManager {
         category: 'Research',
         tags: ["neural-networks","security","research","advanced-defense","ai-security","machine-learning","cybersecurity"],
         slug: 'neural-network-security-beyond-traditional-defenses',
-        featured: false
+        featured: true
       },
       {
         type: 'blog',
@@ -722,7 +722,7 @@ class ContentManager {
         difficulty: 'advanced',
         estimatedDuration: '8 hours',
         category: 'implementation',
-        featured: false,
+        featured: true,
         prerequisites: ['AI Security Fundamentals', 'Software development experience'],
         outcomes: [
           'Design secure AI architectures',
@@ -749,7 +749,7 @@ class ContentManager {
         difficulty: 'advanced',
         estimatedDuration: '10 hours',
         category: 'optimization',
-        featured: false,
+        featured: true,
         prerequisites: ['AI Security Fundamentals', 'Performance engineering basics'],
         outcomes: [
           'Optimize AI system performance',
@@ -1038,7 +1038,14 @@ class ContentManager {
   }
 
   public getContentByType(type: 'learning' | 'blog' | 'whitepaper'): (LearningContent | BlogContent | WhitePaperContent)[] {
-    return this.contentIndex[type === 'whitepaper' ? 'whitepapers' : type] || []
+    const content = this.contentIndex[type === 'whitepaper' ? 'whitepapers' : type] || []
+    // Sort blog content by date (newest first)
+    if (type === 'blog') {
+      return [...content].sort((a, b) => 
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      )
+    }
+    return content
   }
 
   public getRecentContent(limit: number = 10): (LearningContent | BlogContent | WhitePaperContent)[] {
