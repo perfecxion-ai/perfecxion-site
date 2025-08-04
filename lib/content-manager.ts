@@ -186,9 +186,20 @@ class ContentManager {
   }
 
   private async loadBlogContent() {
-    // For now, we'll use a static list of blog posts
-    // In a real implementation, this would load from MDX files
+    // Load all blog posts
     this.contentIndex.blog = [
+      {
+        type: 'blog',
+        title: 'Prompt Injection: The Silent Threat to AI Systems - Complete Security Guide',
+        description: 'Comprehensive guide to understanding and defending against prompt injection attacks, the #1 security risk in AI systems. Learn detection techniques, defense strategies, and enterprise security frameworks to protect your AI infrastructure from sophisticated attacks.',
+        publishedAt: '2025-08-01',
+        readingTime: 28,
+        difficulty: 'advanced',
+        category: 'AI Security',
+        tags: ['AI Security', 'Prompt Injection', 'LLM Security', 'Cybersecurity', 'Enterprise Security', 'OWASP Top 10', 'Machine Learning Security'],
+        slug: 'prompt-injection-silent-threat-ai-systems',
+        featured: true
+      },
       {
         type: 'blog',
         title: 'The Hidden Risks of Agentic AI: Why Traditional Monitoring Fails',
@@ -499,6 +510,234 @@ class ContentManager {
         category: 'Zero-Day AI Vulnerabilities',
         tags: ['AI Security', 'Zero-Day Vulnerabilities', 'Detection', 'Response', 'Threat Intelligence', 'Incident Response', 'AI Governance', 'Security Frameworks'],
         slug: 'zero-day-ai-vulnerabilities-detection-response',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'AI Governance at Scale: Enterprise Strategies for Responsible AI',
+        description: 'Learn how to implement comprehensive AI governance frameworks that scale across large organizations while maintaining security and compliance.',
+        publishedAt: '2024-03-15',
+        readingTime: 25,
+        difficulty: 'advanced',
+        category: 'AI Governance',
+        tags: ['ai-governance', 'enterprise', 'responsible-ai', 'compliance', 'strategy'],
+        slug: 'ai-governance-at-scale-enterprise-strategies-responsible-ai',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'AI Guardrails That Actually Work: Beyond Basic Content Filtering',
+        description: 'Discover advanced guardrail techniques that go beyond simple content filtering to ensure AI systems operate safely and within intended boundaries.',
+        publishedAt: '2024-03-20',
+        readingTime: 22,
+        difficulty: 'intermediate',
+        category: 'AI Security',
+        tags: ['ai-guardrails', 'content-filtering', 'security', 'safety', 'implementation'],
+        slug: 'ai-guardrails-that-actually-work-beyond-basic-content-filtering',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'AI Red Team Testing: Complete Guide',
+        description: 'Comprehensive guide to conducting effective red team exercises for AI systems, including methodologies, tools, and real-world scenarios.',
+        publishedAt: '2024-03-25',
+        readingTime: 30,
+        difficulty: 'advanced',
+        category: 'Red Team Testing',
+        tags: ['red-team', 'testing', 'ai-security', 'methodology', 'assessment'],
+        slug: 'ai-red-team-testing-complete-guide',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'AI Red Team Testing: Production Lessons',
+        description: 'Real-world lessons learned from conducting AI red team exercises in production environments.',
+        publishedAt: '2024-03-28',
+        readingTime: 20,
+        difficulty: 'intermediate',
+        category: 'Red Team Testing',
+        tags: ['red-team', 'production', 'lessons-learned', 'ai-security', 'testing'],
+        slug: 'ai-red-team-testing-production-lessons',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'AI Security for Financial Services: Regulatory Requirements',
+        description: 'Navigate the complex regulatory landscape for AI in financial services, including compliance requirements and security frameworks.',
+        publishedAt: '2024-04-01',
+        readingTime: 28,
+        difficulty: 'advanced',
+        category: 'Compliance',
+        tags: ['financial-services', 'regulatory', 'compliance', 'ai-security', 'governance'],
+        slug: 'ai-security-financial-services-regulatory-requirements',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Building Mature AI Security Programs: From Startup to Enterprise',
+        description: 'Step-by-step guide to building and scaling AI security programs as organizations grow from startup to enterprise.',
+        publishedAt: '2024-04-05',
+        readingTime: 32,
+        difficulty: 'intermediate',
+        category: 'AI Security Programs',
+        tags: ['security-program', 'maturity', 'enterprise', 'scaling', 'startup'],
+        slug: 'building-mature-ai-security-program-startup-to-enterprise',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Data Poisoning Attacks: Detection and Prevention',
+        description: 'Understanding data poisoning attacks on AI systems and implementing effective detection and prevention strategies.',
+        publishedAt: '2024-04-10',
+        readingTime: 24,
+        difficulty: 'advanced',
+        category: 'Attack Vectors',
+        tags: ['data-poisoning', 'attacks', 'detection', 'prevention', 'ai-security'],
+        slug: 'data-poisoning-attacks',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Executive Guide to AI Risk Management and Liability',
+        description: 'Essential guide for executives on managing AI-related risks, understanding liability, and implementing governance frameworks.',
+        publishedAt: '2024-04-15',
+        readingTime: 18,
+        difficulty: 'intermediate',
+        category: 'Executive Guide',
+        tags: ['executive', 'risk-management', 'liability', 'governance', 'leadership'],
+        slug: 'executives-guide-ai-risk-management-liability',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'From Chatbots to Autonomous Agents: Evolution of AI Security',
+        description: 'Trace the evolution of AI security challenges from simple chatbots to complex autonomous agents.',
+        publishedAt: '2024-04-20',
+        readingTime: 26,
+        difficulty: 'intermediate',
+        category: 'AI Evolution',
+        tags: ['chatbots', 'autonomous-agents', 'evolution', 'ai-security', 'history'],
+        slug: 'from-chatbots-to-autonomous-agents-evolution-ai-security',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'Healthcare AI Security: Protecting Patient Data and Safety',
+        description: 'Critical security considerations for AI in healthcare, focusing on patient data protection and safety requirements.',
+        publishedAt: '2024-04-25',
+        readingTime: 30,
+        difficulty: 'advanced',
+        category: 'Healthcare',
+        tags: ['healthcare', 'patient-safety', 'data-protection', 'ai-security', 'compliance'],
+        slug: 'healthcare-ai-security-protecting-patient-data-safety',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Multi-Agent Systems Security: Safe AI Collaboration',
+        description: 'Security challenges and solutions for multi-agent AI systems working collaboratively.',
+        publishedAt: '2024-04-30',
+        readingTime: 28,
+        difficulty: 'advanced',
+        category: 'Multi-Agent Systems',
+        tags: ['multi-agent', 'collaboration', 'ai-security', 'distributed-systems', 'safety'],
+        slug: 'multi-agent-systems-security-safe-ai-collaboration',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Multi-Cloud AI Security: Strategies for Hybrid Deployments',
+        description: 'Comprehensive strategies for securing AI workloads across multiple cloud providers and hybrid environments.',
+        publishedAt: '2024-05-05',
+        readingTime: 25,
+        difficulty: 'advanced',
+        category: 'Cloud Security',
+        tags: ['multi-cloud', 'hybrid-deployment', 'cloud-security', 'ai-infrastructure', 'strategy'],
+        slug: 'multi-cloud-ai-security-strategies-hybrid-deployments',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'Navigating AI Compliance: Framework for Security Standards',
+        description: 'Navigate the complex landscape of AI compliance frameworks and security standards across industries.',
+        publishedAt: '2024-05-10',
+        readingTime: 27,
+        difficulty: 'intermediate',
+        category: 'Compliance',
+        tags: ['compliance', 'frameworks', 'security-standards', 'ai-governance', 'regulation'],
+        slug: 'navigating-ai-compliance-framework-security-standards',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Prompt Injection Playbook: Attack Techniques and Defenses',
+        description: 'Detailed playbook covering prompt injection attack techniques and defensive strategies.',
+        publishedAt: '2024-05-15',
+        readingTime: 32,
+        difficulty: 'advanced',
+        category: 'Attack Vectors',
+        tags: ['prompt-injection', 'attacks', 'defenses', 'playbook', 'security-techniques'],
+        slug: 'prompt-injection-playbook-attack-techniques-defenses',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Securing AI Critical Infrastructure: Lessons from the Field',
+        description: 'Real-world lessons and best practices for securing AI systems in critical infrastructure.',
+        publishedAt: '2024-05-20',
+        readingTime: 30,
+        difficulty: 'advanced',
+        category: 'Critical Infrastructure',
+        tags: ['critical-infrastructure', 'lessons-learned', 'ai-security', 'field-experience', 'best-practices'],
+        slug: 'securing-ai-critical-infrastructure-lessons-from-field',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Securing AI Infrastructure: From Training to Deployment',
+        description: 'End-to-end security guide for AI infrastructure covering the entire lifecycle from training to deployment.',
+        publishedAt: '2024-05-25',
+        readingTime: 35,
+        difficulty: 'advanced',
+        category: 'Infrastructure Security',
+        tags: ['infrastructure', 'training', 'deployment', 'lifecycle', 'ai-security'],
+        slug: 'securing-ai-infrastructure-training-to-deployment',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'The Agentic Leap: Understanding and Building Modern AI Agents',
+        description: 'Deep dive into the architecture, capabilities, and security considerations of modern autonomous AI agents.',
+        publishedAt: '2024-05-30',
+        readingTime: 28,
+        difficulty: 'advanced',
+        category: 'AI Agents',
+        tags: ['ai-agents', 'autonomous-systems', 'architecture', 'modern-ai', 'development'],
+        slug: 'the-agentic-leap-understanding-and-building-modern-ai-agents',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Welcome to the AI Security Blog',
+        description: 'Introduction to our AI security blog and what you can expect from our content.',
+        publishedAt: '2024-01-01',
+        readingTime: 5,
+        difficulty: 'beginner',
+        category: 'Announcements',
+        tags: ['welcome', 'introduction', 'blog', 'ai-security'],
+        slug: 'welcome',
+        featured: false
+      },
+      {
+        type: 'blog',
+        title: 'Zero Trust Architecture for AI Systems: Implementation Guide',
+        description: 'Comprehensive guide to implementing zero trust architecture principles for AI systems.',
+        publishedAt: '2024-06-05',
+        readingTime: 30,
+        difficulty: 'advanced',
+        category: 'Architecture',
+        tags: ['zero-trust', 'architecture', 'implementation', 'ai-security', 'guide'],
+        slug: 'zero-trust-architecture-ai-systems-implementation-guide',
         featured: true
       }
     ]

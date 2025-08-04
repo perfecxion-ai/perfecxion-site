@@ -4,8 +4,8 @@ import dynamic from 'next/dynamic'
 import { ChevronLeft, ChevronRight, Clock, User, Calendar, Tag, BookOpen, CheckCircle, Star } from 'lucide-react'
 import Link from 'next/link'
 
-// Dynamically import MDX content
-const MDXContent = dynamic(() => import('@/components/content/MDXRenderer'), {
+// Dynamically import blog content renderer
+const BlogContentRenderer = dynamic(() => import('@/components/content/BlogContentRenderer'), {
   ssr: false,
   loading: () => (
     <div className="animate-pulse">
@@ -155,7 +155,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       {/* Content */}
       <div className="prose prose-lg dark:prose-invert max-w-none">
-        <MDXContent slug={content.content} />
+        <BlogContentRenderer slug={params.slug} />
       </div>
     </div>
   )
