@@ -2,11 +2,23 @@ import fs from 'fs';
 import path from 'path';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { marked } from 'marked';
+import dynamic from 'next/dynamic';
 import matter from 'gray-matter';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import BlogPostContent from '@/components/blog/BlogPostContent';
+
+// Dynamically import MDX content
+const MDXContent = dynamic(() => import('@/components/content/MDXRenderer'), {
+  ssr: false,
+  loading: () => (
+    <div className="animate-pulse">
+      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-4"></div>
+      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2 mb-4"></div>
+      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6 mb-4"></div>
+    </div>
+  )
+});
 import {
   Shield,
   AlertTriangle,
@@ -66,8 +78,22 @@ function cleanMdxContent(content: string, isMdx: boolean = false): string {
     return cleaned.trim();
   }
   
-  // For regular markdown files, just return the content as-is
-  return content;
+  // For regular markdown files, convert to HTML using a simple approach
+  let html = content
+    // Convert headers
+    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+    // Convert bold text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    // Convert paragraphs
+    .replace(/^([^<].*)$/gm, '<p>$1</p>')
+    // Clean up empty paragraphs
+    .replace(/<p><\/p>/g, '')
+    // Clean up multiple line breaks
+    .replace(/\n\n+/g, '\n\n');
+  
+  return html;
 }
 
 export async function generateStaticParams() {
@@ -306,34 +332,10 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
       {/* Content */}
       <BlogPostContent>
-        <div className="prose prose-lg dark:prose-invert max-w-none 
-        prose-headings:font-bold prose-headings:tracking-tight
-        prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8
-        prose-h2:text-3xl prose-h2:mb-4 prose-h2:mt-8
-        prose-h3:text-2xl prose-h3:mb-3 prose-h3:mt-6
-        prose-h4:text-xl prose-h4:mb-2 prose-h4:mt-4
-        prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed
-        prose-strong:text-gray-900 dark:prose-strong:text-gray-100
-        prose-ul:space-y-2 prose-ol:space-y-2
-        prose-li:text-gray-700 dark:prose-li:text-gray-300
-        prose-table:overflow-hidden prose-table:rounded-lg
-        prose-thead:bg-gray-50 dark:prose-thead:bg-gray-800
-        prose-tbody:bg-white dark:prose-tbody:bg-gray-900
-        prose-tr:border-gray-200 dark:prose-tr:border-gray-700
-        prose-th:px-6 prose-th:py-3 prose-th:text-left prose-th:text-xs prose-th:font-medium prose-th:text-gray-500 dark:prose-th:text-gray-400 prose-th:uppercase prose-th:tracking-wider
-        prose-td:px-6 prose-td:py-4 prose-td:text-sm
-        prose-blockquote:border-l-4 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-600 prose-blockquote:pl-4 prose-blockquote:italic
-        prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-        prose-pre:bg-gray-900 prose-pre:text-gray-100">
-          {postPath.endsWith('.mdx') ? (
-            <MDXRemote source={cleanContent} components={mdxComponents} />
-          ) : (
-            <div 
-              className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8 prose-h2:text-3xl prose-h2:mb-4 prose-h2:mt-8 prose-h3:text-2xl prose-h3:mb-3 prose-h3:mt-6 prose-h4:text-xl prose-h4:mb-2 prose-h4:mt-4 prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-strong:text-gray-900 dark:prose-strong:text-gray-100 prose-ul:space-y-2 prose-ol:space-y-2 prose-li:text-gray-700 dark:prose-li:text-gray-300"
-              dangerouslySetInnerHTML={{ __html: marked(cleanContent) }}
-            />
-          )}
-        </div>
+        <div 
+          className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8 prose-h2:text-3xl prose-h2:mb-4 prose-h2:mt-8 prose-h3:text-2xl prose-h3:mb-3 prose-h3:mt-6 prose-h4:text-xl prose-h4:mb-2 prose-h4:mt-4 prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-strong:text-gray-900 dark:prose-strong:text-gray-100 prose-ul:space-y-2 prose-ol:space-y-2 prose-li:text-gray-700 dark:prose-li:text-gray-300"
+          dangerouslySetInnerHTML={{ __html: cleanContent }}
+        />
       </BlogPostContent>
 
       {/* Navigation */}

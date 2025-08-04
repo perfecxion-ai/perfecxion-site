@@ -56,7 +56,23 @@ export default function MDXRenderer({ slug }: MDXRendererProps) {
   )
 }
 
+function getBlogContent(slug: string): string {
+  // This would load the actual blog markdown content
+  // For now, return a placeholder that will be replaced by the actual content
+  return `
+    <h1>Blog Post: ${slug}</h1>
+    <p>This blog post content would be loaded here.</p>
+    <p>The actual markdown content from the blog post file would be rendered as HTML.</p>
+  `;
+}
+
 function getDefaultContent(slug: string): string {
+  // Check if this is a blog post
+  if (slug.includes('-')) {
+    // This is likely a blog post, try to load the markdown content
+    return getBlogContent(slug);
+  }
+  
   const contentMap: Record<string, string> = {
     'getting-started': `
       <h1>Getting Started with AI Security: A Comprehensive Guide for Technical Practitioners and Business Leaders</h1>
