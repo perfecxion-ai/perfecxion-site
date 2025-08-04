@@ -538,6 +538,18 @@ class ContentManager {
       },
       {
         type: 'blog',
+        title: 'Understanding AI Vulnerabilities',
+        description: 'Comprehensive guide to AI security fundamentals and common vulnerabilities that threaten AI systems in production.',
+        publishedAt: '2024-01-25',
+        readingTime: 25,
+        difficulty: 'beginner',
+        category: 'Security',
+        tags: ["ai-security","vulnerabilities","basics","threat-landscape"],
+        slug: 'test-learn-page-rendering',
+        featured: true
+      },
+      {
+        type: 'blog',
         title: 'OWASP Top 10 for AI: Critical Security Vulnerabilities',
         description: 'The OWASP Top 10 vulnerabilities specific to AI and machine learning systems.',
         publishedAt: '2024-02-10',
