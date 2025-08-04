@@ -329,12 +329,11 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           {postPath.endsWith('.mdx') ? (
             <MDXRemote source={cleanContent} components={mdxComponents} />
           ) : (
-            <ReactMarkdown 
-              remarkPlugins={[remarkGfm]}
-              className="prose prose-lg dark:prose-invert max-w-none"
-            >
-              {cleanContent}
-            </ReactMarkdown>
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {cleanContent}
+              </ReactMarkdown>
+            </div>
           )}
         </div>
       </BlogPostContent>
