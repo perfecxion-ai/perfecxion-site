@@ -27,21 +27,21 @@ class ContentManager {
     this.initializeContentIndex()
   }
 
-  private async initializeContentIndex() {
+  private initializeContentIndex() {
     try {
-      // Load and index all content
-      await this.loadLearningContent()
-      await this.loadBlogContent()
-      await this.loadWhitePapers()
-      await this.loadLearningPaths()
-      await this.buildSearchIndex()
-      await this.generateCategoriesAndTags()
+      // Load and index all content synchronously
+      this.loadLearningContent()
+      this.loadBlogContent()
+      this.loadWhitePapers()
+      this.loadLearningPaths()
+      this.buildSearchIndex()
+      this.generateCategoriesAndTags()
     } catch (error) {
       console.error('Failed to initialize content index:', error)
     }
   }
 
-  private async loadLearningContent() {
+  private loadLearningContent() {
     // Load actual learning content
     this.contentIndex.learning = [
       {
@@ -185,7 +185,7 @@ class ContentManager {
     ]
   }
 
-  private async loadBlogContent() {
+  private loadBlogContent() {
     // Load all blog posts from MDX files
     this.contentIndex.blog = [
       {
@@ -612,7 +612,7 @@ class ContentManager {
 
   }
 
-  private async loadWhitePapers() {
+  private loadWhitePapers() {
     // Load actual whitepaper metadata
     this.contentIndex.whitepapers = [
       {
@@ -713,7 +713,7 @@ class ContentManager {
     ]
   }
 
-  private async loadLearningPaths() {
+  private loadLearningPaths() {
     this.contentIndex.learningPaths = [
       {
         id: 'ai-security-101',
@@ -880,7 +880,7 @@ class ContentManager {
     ]
   }
 
-  private async buildSearchIndex() {
+  private buildSearchIndex() {
     // Build search index for fast content discovery
     const allContent = [
       ...this.contentIndex.learning,
@@ -900,7 +900,7 @@ class ContentManager {
     })
   }
 
-  private async generateCategoriesAndTags() {
+  private generateCategoriesAndTags() {
     // Generate categories from content
     const categoryMap = new Map<string, number>()
     const tagMap = new Map<string, number>()

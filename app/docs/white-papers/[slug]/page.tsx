@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { ChevronLeft, Clock, User, Calendar, Tag, Download, FileText, ExternalLink } from 'lucide-react'
+import { ChevronLeft, Clock, User, Calendar, Tag, Download, FileText, ExternalLink, Home, BookOpen } from 'lucide-react'
 import Link from 'next/link'
 import { contentManager } from '@/lib/content-manager'
 import { WhitePaperContent } from '@/lib/content-types'
@@ -61,16 +61,24 @@ export default async function WhitePaperPage({ params }: PageProps) {
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
             <div className="max-w-4xl mx-auto px-4 py-8">
-                {/* Back Navigation */}
-                <div className="mb-8">
-                    <Link
-                        href="/white-papers"
-                        className="inline-flex items-center text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-                    >
-                        <ChevronLeft className="h-4 w-4 mr-1" />
-                        Back to White Papers & Reference Architectures
+                {/* Breadcrumb Navigation */}
+                <nav className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400 mb-8">
+                    <Link href="/" className="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+                        <Home className="h-4 w-4 mr-1" />
+                        Home
                     </Link>
-                </div>
+                    <ChevronLeft className="h-4 w-4" />
+                    <Link href="/docs" className="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+                        <BookOpen className="h-4 w-4 mr-1" />
+                        Documentation
+                    </Link>
+                    <ChevronLeft className="h-4 w-4" />
+                    <Link href="/docs/white-papers" className="hover:text-primary-600 dark:hover:text-primary-400">
+                        White Papers
+                    </Link>
+                    <ChevronLeft className="h-4 w-4" />
+                    <span className="text-gray-700 dark:text-gray-300">{content.title}</span>
+                </nav>
 
                 {/* Header */}
                 <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-8 mb-8">
@@ -211,18 +219,18 @@ export default async function WhitePaperPage({ params }: PageProps) {
                     <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Related Resources</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <Link
+                            href="/docs"
+                            className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                        >
+                            <h3 className="font-medium text-gray-900 dark:text-white mb-2">Documentation</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Complete technical documentation and guides</p>
+                        </Link>
+                        <Link
                             href="/blog"
                             className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                         >
                             <h3 className="font-medium text-gray-900 dark:text-white mb-2">AI Security Blog</h3>
                             <p className="text-sm text-gray-600 dark:text-gray-400">Latest insights and technical articles</p>
-                        </Link>
-                        <Link
-                            href="/learn"
-                            className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-                        >
-                            <h3 className="font-medium text-gray-900 dark:text-white mb-2">Learning Resources</h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">Comprehensive learning paths and guides</p>
                         </Link>
                     </div>
                 </div>

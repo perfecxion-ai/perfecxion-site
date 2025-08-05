@@ -12,8 +12,8 @@ const ContentHub = dynamic(() => import('@/components/content/ContentHub'), {
 })
 
 export const metadata: Metadata = {
-    title: 'White Papers & Reference Architectures - AI Security Resources',
-    description: 'Comprehensive white papers and reference architectures for AI security implementation, compliance, and enterprise deployment.',
+    title: 'White Papers - AI Security Documentation',
+    description: 'Comprehensive white papers on AI security implementation, compliance, and enterprise deployment strategies.',
 }
 
 export default function WhitePapersPage() {

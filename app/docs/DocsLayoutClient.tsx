@@ -2,37 +2,43 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { ChevronRight, BookOpen, Shield, Zap, Users, Code, Settings, Play, Menu, X } from 'lucide-react'
+import { ChevronRight, BookOpen, Shield, Zap, Users, Code, Settings, Play, Menu, X, FileText, Layout } from 'lucide-react'
 
 const documentationSections = [
-  {
-    title: 'Core Products',
-    items: [
-      { name: 'ADAPT-AI', href: '/docs/adapt-ai', icon: Zap },
-      { name: 'perfecX Red-T', href: '/docs/perfecxion-red-t', icon: Shield },
-      { name: 'perfecX Agent', href: '/docs/perfecxion-agent', icon: Users },
-      { name: 'perfecX Comply', href: '/docs/perfecxion-comply', icon: BookOpen },
-      { name: 'perfecX G-Rails', href: '/docs/perfecxion-g-rails', icon: Shield },
-    ]
-  },
-  {
-    title: 'Security Tools',
-    items: [
-      { name: 'PromptShield', href: '/docs/promptshield', icon: Shield },
-      { name: 'PromptShield Quick Start', href: '/docs/promptshield-quick-start', icon: Play },
-      { name: 'SafeAI Guard', href: '/docs/safeai-guard', icon: Shield },
-      { name: 'TorScan', href: '/docs/torscan', icon: Zap },
-    ]
-  },
-  {
-    title: 'API Reference',
-    items: [
-      { name: 'REST API', href: '/docs/api/rest', icon: Code },
-      { name: 'SDKs', href: '/docs/api/sdks', icon: Code },
-      { name: 'Webhooks', href: '/docs/api/webhooks', icon: Zap },
-    ]
-  },
-
+    {
+        title: 'Core Products',
+        items: [
+            { name: 'ADAPT-AI', href: '/docs/adapt-ai', icon: Zap },
+            { name: 'perfecX Red-T', href: '/docs/perfecxion-red-t', icon: Shield },
+            { name: 'perfecX Agent', href: '/docs/perfecxion-agent', icon: Users },
+            { name: 'perfecX Comply', href: '/docs/perfecxion-comply', icon: BookOpen },
+            { name: 'perfecX G-Rails', href: '/docs/perfecxion-g-rails', icon: Shield },
+        ]
+    },
+    {
+        title: 'Security Tools',
+        items: [
+            { name: 'PromptShield', href: '/docs/promptshield', icon: Shield },
+            { name: 'PromptShield Quick Start', href: '/docs/promptshield-quick-start', icon: Play },
+            { name: 'SafeAI Guard', href: '/docs/safeai-guard', icon: Shield },
+            { name: 'TorScan', href: '/docs/torscan', icon: Zap },
+        ]
+    },
+    {
+        title: 'API Reference',
+        items: [
+            { name: 'REST API', href: '/docs/api/rest', icon: Code },
+            { name: 'SDKs', href: '/docs/api/sdks', icon: Code },
+            { name: 'Webhooks', href: '/docs/api/webhooks', icon: Zap },
+        ]
+    },
+    {
+        title: 'Resources',
+        items: [
+            { name: 'White Papers', href: '/docs/white-papers', icon: FileText },
+            { name: 'Reference Architectures', href: '/docs/reference-architectures', icon: Layout },
+        ]
+    },
 ]
 
 export default function DocsLayoutClient({
@@ -63,7 +69,7 @@ export default function DocsLayoutClient({
             <div className="flex">
                 {/* Sidebar - Desktop */}
                 <div className="hidden lg:block w-80 border-r border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 min-h-screen overflow-y-auto">
-                    <SidebarContent onLinkClick={() => {}} />
+                    <SidebarContent onLinkClick={() => { }} />
                 </div>
 
                 {/* Sidebar - Mobile */}
@@ -90,7 +96,7 @@ export default function DocsLayoutClient({
 function SidebarContent({ onLinkClick }: { onLinkClick: () => void }) {
     return (
         <div className="p-6">
-            <Link 
+            <Link
                 href="/docs"
                 className="flex items-center space-x-2 mb-6 group"
                 onClick={onLinkClick}
