@@ -18,3 +18,18 @@
   - Content is loaded from MDX files in /content/blog/ directory
 
   The blog system uses a hybrid approach where metadata is stored in TypeScript files for fast listing/searching, while actual content is stored in MDX files for easy editing.
+
+
+   How It Works:
+
+Blog Card Display: The blog will now appear as a card on /blog page
+Direct Access: Users can visit /blog/agentic-ai-complete-guide directly
+Content Loading: The page handler automatically loads your MDX content from /content/blog/agentic-ai-complete-guide.mdx
+Metadata: SEO metadata is automatically generated from your MDX frontmatter
+
+
+The System Architecture:
+Content Storage: Your MDX file in /content/blog/
+Metadata Management: Blog cards defined in lib/content-manager.ts
+Routing: Next.js dynamic route /blog/[slug] handles individual blog pages
+Display: ContentHub component renders blog cards on the listing page

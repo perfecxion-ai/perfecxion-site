@@ -220,7 +220,7 @@ class ContentManager {
         readingTime: 28,
         difficulty: 'intermediate',
         category: 'Industry Applications',
-        tags: ["Critical Infrastructure","AI Security","SCADA Systems","Industrial AI","Cyber-Physical Security","National Security"],
+        tags: ["Critical Infrastructure", "AI Security", "SCADA Systems", "Industrial AI", "Cyber-Physical Security", "National Security"],
         slug: 'securing-ai-critical-infrastructure-lessons-from-field',
         featured: true
       },
@@ -232,7 +232,7 @@ class ContentManager {
         readingTime: 22,
         difficulty: 'intermediate',
         category: 'Technical Research',
-        tags: ["AI Security","Prompt Injection","Red Team Testing","LLM Security","Attack Prevention","AI Defense"],
+        tags: ["AI Security", "Prompt Injection", "Red Team Testing", "LLM Security", "Attack Prevention", "AI Defense"],
         slug: 'prompt-injection-playbook-attack-techniques-defenses',
         featured: true
       },
@@ -256,7 +256,7 @@ class ContentManager {
         readingTime: 15,
         difficulty: 'intermediate',
         category: 'security',
-        tags: ["data-poisoning","ai-security","ml-security","training-attacks","backdoors","defense-strategies"],
+        tags: ["data-poisoning", "ai-security", "ml-security", "training-attacks", "backdoors", "defense-strategies"],
         slug: 'data-poisoning-attacks',
         featured: true
       },
@@ -268,7 +268,7 @@ class ContentManager {
         readingTime: 28,
         difficulty: 'intermediate',
         category: 'AI Security',
-        tags: ["AI Security","Prompt Injection","LLM Security","Cybersecurity","Enterprise Security","OWASP Top 10","Machine Learning Security"],
+        tags: ["AI Security", "Prompt Injection", "LLM Security", "Cybersecurity", "Enterprise Security", "OWASP Top 10", "Machine Learning Security"],
         slug: 'prompt-injection-silent-threat-ai-systems',
         featured: true
       },
@@ -292,7 +292,7 @@ class ContentManager {
         readingTime: 22,
         difficulty: 'intermediate',
         category: 'AI Security',
-        tags: ["Multi-Agent Systems","AI Orchestration","Agent Security","Distributed AI","Collaboration Security"],
+        tags: ["Multi-Agent Systems", "AI Orchestration", "Agent Security", "Distributed AI", "Collaboration Security"],
         slug: 'multi-agent-systems-security-safe-ai-collaboration',
         featured: true
       },
@@ -304,7 +304,7 @@ class ContentManager {
         readingTime: 20,
         difficulty: 'intermediate',
         category: 'AI Security',
-        tags: ["Agentic AI","Security Monitoring","Autonomous Systems","AI Detection","Enterprise Security"],
+        tags: ["Agentic AI", "Security Monitoring", "Autonomous Systems", "AI Detection", "Enterprise Security"],
         slug: 'hidden-risks-agentic-ai-monitoring-fails',
         featured: true
       },
@@ -316,7 +316,7 @@ class ContentManager {
         readingTime: 26,
         difficulty: 'intermediate',
         category: 'Industry Applications',
-        tags: ["Healthcare AI","HIPAA Compliance","Patient Safety","Medical AI Security","PHI Protection","Healthcare Cybersecurity"],
+        tags: ["Healthcare AI", "HIPAA Compliance", "Patient Safety", "Medical AI Security", "PHI Protection", "Healthcare Cybersecurity"],
         slug: 'healthcare-ai-security-protecting-patient-data-safety',
         featured: true
       },
@@ -328,7 +328,7 @@ class ContentManager {
         readingTime: 30,
         difficulty: 'intermediate',
         category: 'Strategic Vision',
-        tags: ["AI Security","Future Threats","Quantum Computing","AGI Security","Emerging Technologies","Strategic Planning"],
+        tags: ["AI Security", "Future Threats", "Quantum Computing", "AGI Security", "Emerging Technologies", "Strategic Planning"],
         slug: 'future-ai-security-preparing-next-generation-threats',
         featured: true
       },
@@ -364,7 +364,7 @@ class ContentManager {
         readingTime: 32,
         difficulty: 'intermediate',
         category: 'Implementation Guides',
-        tags: ["AI Security Program","Enterprise Security","Startup Security","Security Maturity","Organizational Development","Strategic Planning"],
+        tags: ["AI Security Program", "Enterprise Security", "Startup Security", "Security Maturity", "Organizational Development", "Strategic Planning"],
         slug: 'building-mature-ai-security-program-startup-to-enterprise',
         featured: true
       },
@@ -376,7 +376,7 @@ class ContentManager {
         readingTime: 24,
         difficulty: 'intermediate',
         category: 'Industry Applications',
-        tags: ["Financial Services","AI Security","Regulatory Compliance","Banking AI","FinTech Security","Risk Management"],
+        tags: ["Financial Services", "AI Security", "Regulatory Compliance", "Banking AI", "FinTech Security", "Risk Management"],
         slug: 'ai-security-financial-services-regulatory-requirements',
         featured: true
       },
@@ -388,7 +388,7 @@ class ContentManager {
         readingTime: 18,
         difficulty: 'intermediate',
         category: 'AI Security',
-        tags: ["Red Team","Production Security","AI Testing","Security Assessment","Enterprise AI"],
+        tags: ["Red Team", "Production Security", "AI Testing", "Security Assessment", "Enterprise AI"],
         slug: 'ai-red-team-testing-production-lessons',
         featured: true
       },
@@ -400,7 +400,7 @@ class ContentManager {
         readingTime: 22,
         difficulty: 'intermediate',
         category: 'Red Team Testing',
-        tags: ["AI Security","Red Team Testing","LLM Security","Penetration Testing","AI Vulnerabilities"],
+        tags: ["AI Security", "Red Team Testing", "LLM Security", "Penetration Testing", "AI Vulnerabilities"],
         slug: 'ai-red-team-testing-complete-guide',
         featured: true
       },
@@ -436,7 +436,7 @@ class ContentManager {
         readingTime: 35,
         difficulty: 'intermediate',
         category: 'Zero-Day AI Vulnerabilities',
-        tags: ["AI Security","Zero-Day Vulnerabilities","Detection","Response","Threat Intelligence","Incident Response","AI Governance","Security Frameworks"],
+        tags: ["AI Security", "Zero-Day Vulnerabilities", "Detection", "Response", "Threat Intelligence", "Incident Response", "AI Governance", "Security Frameworks"],
         slug: 'zero-day-ai-vulnerabilities-detection-response',
         featured: true
       },
@@ -448,7 +448,7 @@ class ContentManager {
         readingTime: 20,
         difficulty: 'intermediate',
         category: 'AI Security',
-        tags: ["Zero Trust","AI Security","Architecture","Implementation","Security Frameworks","AI Governance","Network Security","Access Control"],
+        tags: ["Zero Trust", "AI Security", "Architecture", "Implementation", "Security Frameworks", "AI Governance", "Network Security", "Access Control"],
         slug: 'zero-trust-architecture-ai-systems-implementation-guide',
         featured: true
       },
@@ -460,7 +460,7 @@ class ContentManager {
         readingTime: 30,
         difficulty: 'intermediate',
         category: 'Best Practices',
-        tags: ["AI Security","Production Deployment","MLSecOps","CISO Guide","Threat Modeling","Governance","Zero Trust","Monitoring"],
+        tags: ["AI Security", "Production Deployment", "MLSecOps", "CISO Guide", "Threat Modeling", "Governance", "Zero Trust", "Monitoring"],
         slug: 'secure-ai-deployment-production-best-practices',
         featured: true
       },
@@ -484,7 +484,7 @@ class ContentManager {
         readingTime: 25,
         difficulty: 'intermediate',
         category: 'AI Security',
-        tags: ["AI Security","Enterprise Security","Data Poisoning","Adversarial Attacks","Supply Chain Security","MLSecOps"],
+        tags: ["AI Security", "Enterprise Security", "Data Poisoning", "Adversarial Attacks", "Supply Chain Security", "MLSecOps"],
         slug: 'securing-ai-systems-enterprise-frameworks',
         featured: true
       },
@@ -496,7 +496,7 @@ class ContentManager {
         readingTime: 20,
         difficulty: 'intermediate',
         category: 'Security Automation',
-        tags: ["AI Security","Security Automation","Threat Detection","Incident Response","Vulnerability Management","Compliance"],
+        tags: ["AI Security", "Security Automation", "Threat Detection", "Incident Response", "Vulnerability Management", "Compliance"],
         slug: 'ai-powered-security-automation-transforming-enterprise-cybersecurity',
         featured: true
       },
@@ -508,7 +508,7 @@ class ContentManager {
         readingTime: 28,
         difficulty: 'intermediate',
         category: 'Red Team Testing',
-        tags: ["AI Attack Vectors","Prompt Injection","LLM Security","AI Vulnerabilities","Red Team Testing"],
+        tags: ["AI Attack Vectors", "Prompt Injection", "LLM Security", "AI Vulnerabilities", "Red Team Testing"],
         slug: '50-attack-vectors-ai-red-team-guide',
         featured: true
       },
@@ -520,7 +520,7 @@ class ContentManager {
         readingTime: 16,
         difficulty: 'intermediate',
         category: 'Research',
-        tags: ["future","emerging-threats","defenses","research"],
+        tags: ["future", "emerging-threats", "defenses", "research"],
         slug: 'future-ai-security-emerging-threats-defenses',
         featured: true
       },
@@ -532,7 +532,7 @@ class ContentManager {
         readingTime: 14,
         difficulty: 'advanced',
         category: 'Research',
-        tags: ["neural-networks","security","research","advanced-defense","ai-security","machine-learning","cybersecurity"],
+        tags: ["neural-networks", "security", "research", "advanced-defense", "ai-security", "machine-learning", "cybersecurity"],
         slug: 'neural-network-security-beyond-traditional-defenses',
         featured: true
       },
@@ -544,7 +544,7 @@ class ContentManager {
         readingTime: 25,
         difficulty: 'beginner',
         category: 'Security',
-        tags: ["ai-security","vulnerabilities","basics","threat-landscape"],
+        tags: ["ai-security", "vulnerabilities", "basics", "threat-landscape"],
         slug: 'test-learn-page-rendering',
         featured: true
       },
@@ -556,7 +556,7 @@ class ContentManager {
         readingTime: 12,
         difficulty: 'intermediate',
         category: 'Best Practices',
-        tags: ["owasp","vulnerabilities","ai-security","top-10"],
+        tags: ["owasp", "vulnerabilities", "ai-security", "top-10"],
         slug: 'owasp-top-10-ai-critical-security-vulnerabilities',
         featured: true
       },
@@ -568,7 +568,7 @@ class ContentManager {
         readingTime: 16,
         difficulty: 'intermediate',
         category: 'AI Security',
-        tags: ["llm-security","production","best-practices","language-models"],
+        tags: ["llm-security", "production", "best-practices", "language-models"],
         slug: 'llm-security-protecting-language-models-production',
         featured: true
       },
@@ -580,7 +580,7 @@ class ContentManager {
         readingTime: 60,
         difficulty: 'intermediate',
         category: 'AI Architecture',
-        tags: ["ai-architecture","neural-networks","transformers","ai-security","llm-security","system-design"],
+        tags: ["ai-architecture", "neural-networks", "transformers", "ai-security", "llm-security", "system-design"],
         slug: 'ai-arch-security',
         featured: true
       },
@@ -592,8 +592,20 @@ class ContentManager {
         readingTime: 45,
         difficulty: 'intermediate',
         category: 'implementation',
-        tags: ["ai-agents","llm","rag","multi-agent-systems","langchain","implementation"],
+        tags: ["ai-agents", "llm", "rag", "multi-agent-systems", "langchain", "implementation"],
         slug: 'the-agentic-leap-understanding-and-building-modern-ai-agents',
+        featured: true
+      },
+      {
+        type: 'blog',
+        title: 'The Agentic AI Revolution: An Executive Report on Architecture, Implementation, and Security',
+        description: 'A comprehensive guide to understanding, implementing, and securing AI agents in the modern enterprise - from basic concepts to multi-agent systems and advanced security frameworks.',
+        publishedAt: '2025-05-21',
+        readingTime: 45,
+        difficulty: 'intermediate',
+        category: 'AI Architecture',
+        tags: ["agentic-ai", "ai-architecture", "multi-agent-systems", "ai-security", "enterprise-ai", "autonomous-systems"],
+        slug: 'agentic-ai-complete-guide',
         featured: true
       }
     ]
@@ -1041,7 +1053,7 @@ class ContentManager {
     const content = this.contentIndex[type === 'whitepaper' ? 'whitepapers' : type] || []
     // Sort blog content by date (newest first)
     if (type === 'blog') {
-      return [...content].sort((a, b) => 
+      return [...content].sort((a, b) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
       )
     }
