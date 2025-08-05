@@ -614,7 +614,103 @@ class ContentManager {
 
   private async loadWhitePapers() {
     // Load actual whitepaper metadata
-    this.contentIndex.whitepapers = []
+    this.contentIndex.whitepapers = [
+      {
+        type: 'whitepaper',
+        title: 'AI-Specific Incident Response: A Comprehensive Guide for Technical Practitioners',
+        description: 'Master AI-specific incident response with comprehensive guidance on detection, forensics, and recovery strategies for machine learning systems. Essential for security teams and CISOs navigating the evolving AI threat landscape.',
+        publishedAt: '2025-01-15',
+        readingTime: 45,
+        difficulty: 'advanced',
+        category: 'Incident Response',
+        tags: ["AI Security", "Incident Response", "Forensics", "Machine Learning", "Recovery", "CISO", "Enterprise Security"],
+        slug: 'ai-incident-response',
+        featured: true,
+        pdfUrl: '/white-papers/ai-incident-response.pdf',
+        fileSize: '2.1 MB',
+        pageCount: 45,
+        gated: false,
+        summary: 'Comprehensive framework for AI-specific incident response procedures, forensic techniques, and recovery strategies.',
+        keyTopics: ['AI Incident Detection', 'Forensic Analysis', 'Recovery Procedures', 'Regulatory Compliance'],
+        targetAudience: ['Security Teams', 'CISOs', 'Technical Practitioners', 'Enterprise Security']
+      },
+      {
+        type: 'whitepaper',
+        title: 'AI Regulatory Compliance: A Framework for 15+ Security Standards',
+        description: 'Master the complex landscape of AI compliance with a unified framework that addresses GDPR, CCPA, SOC 2, ISO 27001, NIST, and emerging AI-specific regulations.',
+        publishedAt: '2025-01-10',
+        readingTime: 35,
+        difficulty: 'intermediate',
+        category: 'Compliance & Governance',
+        tags: ["AI Compliance", "GDPR", "CCPA", "SOC 2", "ISO 27001", "NIST", "Regulatory Framework"],
+        slug: 'ai-regulatory-compliance',
+        featured: true,
+        pdfUrl: '/white-papers/ai-regulatory-compliance.pdf',
+        fileSize: '1.8 MB',
+        pageCount: 38,
+        gated: false,
+        summary: 'Unified framework for navigating AI compliance across multiple regulatory standards and industry requirements.',
+        keyTopics: ['Regulatory Compliance', 'AI Governance', 'Risk Management', 'Audit Preparation'],
+        targetAudience: ['Compliance Officers', 'Legal Teams', 'CISOs', 'Enterprise Leaders']
+      },
+      {
+        type: 'whitepaper',
+        title: 'Building AI Security Programs: From Startup to Enterprise',
+        description: 'A comprehensive roadmap for scaling AI security from early-stage startups to enterprise organizations. Learn the essential phases, key milestones, and proven strategies for building world-class AI security programs.',
+        publishedAt: '2025-01-05',
+        readingTime: 40,
+        difficulty: 'intermediate',
+        category: 'Implementation Guides',
+        tags: ["AI Security Program", "Enterprise Security", "Startup Security", "Security Maturity", "Organizational Development"],
+        slug: 'building-ai-security-programs',
+        featured: true,
+        pdfUrl: '/white-papers/building-ai-security-programs.pdf',
+        fileSize: '2.3 MB',
+        pageCount: 42,
+        gated: false,
+        summary: 'Comprehensive roadmap for building and scaling AI security programs across organizational maturity levels.',
+        keyTopics: ['Program Development', 'Maturity Assessment', 'Resource Planning', 'Implementation Strategy'],
+        targetAudience: ['Security Leaders', 'CISOs', 'Startup Founders', 'Enterprise Architects']
+      },
+      {
+        type: 'whitepaper',
+        title: 'AI Attack Surface Analysis: Reference Architecture for Enterprise Security',
+        description: 'Comprehensive reference architecture for analyzing and securing AI attack surfaces in enterprise environments. Includes threat modeling, vulnerability assessment, and defense-in-depth strategies.',
+        publishedAt: '2025-01-20',
+        readingTime: 50,
+        difficulty: 'advanced',
+        category: 'Reference Architecture',
+        tags: ["Attack Surface Analysis", "Reference Architecture", "Threat Modeling", "Enterprise Security", "AI Defense"],
+        slug: 'ai-attack-surface-analysis-reference-architecture',
+        featured: true,
+        pdfUrl: '/white-papers/ai-attack-surface-guide.pdf',
+        fileSize: '2.5 MB',
+        pageCount: 48,
+        gated: false,
+        summary: 'Reference architecture for comprehensive AI attack surface analysis and defense strategies.',
+        keyTopics: ['Attack Surface Mapping', 'Threat Modeling', 'Defense Architecture', 'Risk Assessment'],
+        targetAudience: ['Security Architects', 'CISOs', 'Enterprise Security Teams', 'Technical Leaders']
+      },
+      {
+        type: 'whitepaper',
+        title: 'Multi-Agent System Security: Reference Architecture for Autonomous AI',
+        description: 'Reference architecture for securing multi-agent AI systems with comprehensive security controls, monitoring, and governance frameworks for autonomous AI collaboration.',
+        publishedAt: '2025-01-25',
+        readingTime: 55,
+        difficulty: 'advanced',
+        category: 'Reference Architecture',
+        tags: ["Multi-Agent Systems", "Autonomous AI", "Reference Architecture", "Agent Security", "AI Orchestration"],
+        slug: 'multi-agent-system-security-reference-architecture',
+        featured: true,
+        pdfUrl: '/white-papers/multi-agent-security-architecture.pdf',
+        fileSize: '2.8 MB',
+        pageCount: 52,
+        gated: false,
+        summary: 'Comprehensive reference architecture for securing multi-agent AI systems and autonomous AI collaboration.',
+        keyTopics: ['Agent Security', 'Multi-Agent Architecture', 'Autonomous Systems', 'AI Governance'],
+        targetAudience: ['AI Architects', 'Security Engineers', 'System Designers', 'Technical Leaders']
+      }
+    ]
   }
 
   private async loadLearningPaths() {
@@ -853,9 +949,27 @@ class ContentManager {
       'monitoring': 'Eye',
       'implementation': 'Code',
       'threats': 'AlertTriangle',
-      'optimization': 'Zap'
+      'optimization': 'Zap',
+      'incident response': 'AlertTriangle',
+      'compliance & governance': 'FileText',
+      'implementation guides': 'Code',
+      'reference architecture': 'Layout',
+      'ai architecture': 'Cpu',
+      'ai security': 'Shield',
+      'technical research': 'Search',
+      'industry applications': 'Building',
+      'strategic vision': 'Target',
+      'cloud security': 'Cloud',
+      'ai safety & guardrails': 'Shield',
+      'governance & strategy': 'FileText',
+      'zero-day ai vulnerabilities': 'AlertTriangle',
+      'best practices': 'CheckCircle',
+      'prompt security': 'MessageSquare',
+      'security automation': 'Zap',
+      'red team testing': 'Target',
+      'research': 'Search'
     }
-    return iconMap[category] || 'BookOpen'
+    return iconMap[category.toLowerCase()] || 'BookOpen'
   }
 
   private getCategoryColor(category: string): string {
@@ -866,9 +980,27 @@ class ContentManager {
       'monitoring': 'purple',
       'implementation': 'orange',
       'threats': 'yellow',
-      'optimization': 'indigo'
+      'optimization': 'indigo',
+      'incident response': 'red',
+      'compliance & governance': 'green',
+      'implementation guides': 'orange',
+      'reference architecture': 'purple',
+      'ai architecture': 'blue',
+      'ai security': 'red',
+      'technical research': 'indigo',
+      'industry applications': 'green',
+      'strategic vision': 'yellow',
+      'cloud security': 'blue',
+      'ai safety & guardrails': 'red',
+      'governance & strategy': 'green',
+      'zero-day ai vulnerabilities': 'red',
+      'best practices': 'green',
+      'prompt security': 'orange',
+      'security automation': 'indigo',
+      'red team testing': 'red',
+      'research': 'indigo'
     }
-    return colorMap[category] || 'gray'
+    return colorMap[category.toLowerCase()] || 'gray'
   }
 
   public search(query: string, filters: ContentFilter = {}): SearchResult[] {
@@ -991,7 +1123,7 @@ class ContentManager {
     return recommendations.slice(0, 6) // Return top 6 recommendations
   }
 
-  private findContentById(id: string): LearningContent | BlogContent | WhitePaperContent | null {
+  public findContentById(id: string): LearningContent | BlogContent | WhitePaperContent | null {
     const allContent = [
       ...this.contentIndex.learning,
       ...this.contentIndex.blog,

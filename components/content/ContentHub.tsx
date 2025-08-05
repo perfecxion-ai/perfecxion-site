@@ -12,7 +12,7 @@ interface ContentHubProps {
   initialView?: 'grid' | 'list'
   showFilters?: boolean
   featuredOnly?: boolean
-  contentType?: 'all' | 'blog' | 'learning'
+  contentType?: 'all' | 'blog' | 'learning' | 'whitepaper'
 }
 
 export default function ContentHub({
@@ -80,7 +80,9 @@ export default function ContentHub({
           ? searchResults.filter(result => result.content.type === 'blog')
           : contentType === 'learning'
             ? searchResults.filter(result => result.content.type === 'learning')
-            : searchResults
+            : contentType === 'whitepaper'
+              ? searchResults.filter(result => result.content.type === 'whitepaper')
+              : searchResults
         setResults(filteredResults)
       } else {
         // Show recent content when no search/filters
@@ -89,6 +91,8 @@ export default function ContentHub({
           recent = contentManager.getContentByType('blog')
         } else if (contentType === 'learning') {
           recent = contentManager.getContentByType('learning')
+        } else if (contentType === 'whitepaper') {
+          recent = contentManager.getContentByType('whitepaper')
         } else {
           recent = contentManager.getRecentContent(20)
         }
