@@ -190,6 +190,18 @@ class ContentManager {
     this.contentIndex.blog = [
       {
         type: 'blog',
+        title: 'AI and HIPAA: The Complete Compliance Guide for Healthcare Organizations',
+        description: 'Master the complex intersection of AI technology and HIPAA compliance with this comprehensive guide. Learn practical frameworks for building robust compliance programs, navigating regulatory requirements, and implementing technical safeguards for healthcare AI systems.',
+        publishedAt: '2025-01-15',
+        readingTime: 45,
+        difficulty: 'intermediate',
+        category: 'Compliance & Governance',
+        tags: ["HIPAA Compliance", "Healthcare AI", "AI Security", "Regulatory Compliance", "Patient Privacy", "Healthcare Cybersecurity", "AI Governance", "Medical AI"],
+        slug: 'ai-and-hipaa-compliance-guide',
+        featured: true
+      },
+      {
+        type: 'blog',
         title: 'Welcome to perfecXion.ai',
         description: 'Introducing our comprehensive AI security platform',
         publishedAt: '2025-10-08',
