@@ -226,7 +226,7 @@ export default function ContentHub({
         <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
           {contentType === 'blog' ? 'Blog' : contentType === 'whitepaper' ? 'White Papers & Reference Architectures' : 'Learn AI Security'}
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-4xl">
+        <p className="text-lg text-gray-700 dark:text-gray-300 max-w-4xl">
           {contentType === 'blog'
             ? 'Latest insights, news, and updates from the perfecXion.ai team. Explore our expert analysis, case studies, and industry trends in AI security.'
             : contentType === 'whitepaper'
@@ -365,7 +365,7 @@ export default function ContentHub({
             )}
 
             <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-600 dark:text-gray-400">
+              <span className="text-sm text-gray-700 dark:text-gray-300">
                 {results.length} results
               </span>
               {(Object.keys(filters).some(key => filters[key as keyof ContentFilter] && key !== 'sortBy' && key !== 'sortOrder') || searchQuery) && (
@@ -423,7 +423,7 @@ export default function ContentHub({
           <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
             No results found
           </h3>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-gray-700 dark:text-gray-300">
             Try adjusting your search terms or filters
           </p>
         </div>

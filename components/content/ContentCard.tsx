@@ -21,7 +21,7 @@ export default function ContentCard({ content, view, highlights = [], showType =
     }
   }
 
-    const getCategoryColor = (category: string) => {
+  const getCategoryColor = (category: string) => {
     switch (category?.toLowerCase()) {
       case 'ai security': return 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400'
       case 'threat analysis': return 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'
@@ -98,18 +98,18 @@ export default function ContentCard({ content, view, highlights = [], showType =
                 <Star className="h-4 w-4 text-yellow-500 fill-current" />
               )}
             </div>
-            
+
             <Link href={getContentUrl()} className="group">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2">
                 {content.title}
                 {isExternal && <ExternalLink className="inline h-4 w-4 ml-2" />}
               </h3>
             </Link>
-            
-            <p className="text-gray-600 dark:text-gray-400 text-sm mb-3 line-clamp-2">
+
+            <p className="text-gray-700 dark:text-gray-300 text-sm mb-3 line-clamp-2">
               {content.description}
             </p>
-            
+
             {highlights.length > 0 && (
               <div className="mb-3">
                 <p className="text-xs text-gray-500 dark:text-gray-500 mb-1">Matches:</p>
@@ -120,8 +120,8 @@ export default function ContentCard({ content, view, highlights = [], showType =
                 ))}
               </div>
             )}
-            
-            <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+
+            <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
               <div className="flex items-center gap-1">
                 <Calendar className="h-4 w-4" />
                 {formatDate(content.publishedAt)}
@@ -138,7 +138,7 @@ export default function ContentCard({ content, view, highlights = [], showType =
               )}
             </div>
           </div>
-          
+
           <div className="ml-6 flex-shrink-0">
             <div className="flex flex-wrap gap-1 max-w-48">
               {content.tags.slice(0, 3).map(tag => (
@@ -188,18 +188,18 @@ export default function ContentCard({ content, view, highlights = [], showType =
             <Star className="h-4 w-4 text-yellow-500 fill-current flex-shrink-0" />
           )}
         </div>
-        
+
         <Link href={getContentUrl()} className="group">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2 line-clamp-2">
             {content.title}
             {isExternal && <ExternalLink className="inline h-4 w-4 ml-2" />}
           </h3>
         </Link>
-        
-        <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">
+
+        <p className="text-gray-700 dark:text-gray-300 text-sm mb-4 line-clamp-3">
           {content.description}
         </p>
-        
+
         {highlights.length > 0 && (
           <div className="mb-4">
             <p className="text-xs text-gray-500 dark:text-gray-500 mb-1">Matches:</p>
@@ -210,7 +210,7 @@ export default function ContentCard({ content, view, highlights = [], showType =
             ))}
           </div>
         )}
-        
+
         <div className="flex flex-wrap gap-1 mb-4">
           {content.tags.slice(0, 3).map(tag => (
             <span
@@ -226,8 +226,8 @@ export default function ContentCard({ content, view, highlights = [], showType =
             </span>
           )}
         </div>
-        
-        <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 pt-4 border-t border-gray-200 dark:border-gray-700">
+
+        <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 pt-4 border-t border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-1">
             <Calendar className="h-4 w-4" />
             {formatDate(content.publishedAt)}
