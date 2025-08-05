@@ -24,17 +24,23 @@ LLMs present unique security challenges that differ fundamentally from tradition
 
 **Prompt Injection Attacks**
 - Attackers manipulate prompts to override system instructions
+
 - Can lead to unauthorized access and data leakage
+
 - Difficult to detect and prevent
 
 **Data Leakage**
 - LLMs may inadvertently reveal training data
+
 - Can expose sensitive information and trade secrets
+
 - Privacy and compliance implications
 
 **Adversarial Examples**
 - Specially crafted inputs designed to fool LLMs
+
 - Can cause incorrect or harmful outputs
+
 - May bypass safety measures
 
 ## Production Security Framework
@@ -75,8 +81,11 @@ def validate_llm_input(user_input: str) -> bool:
 Sanitize all inputs before processing:
 
 - Remove potentially dangerous characters
+
 - Normalize input format
+
 - Apply content filtering
+
 - Implement rate limiting
 
 ### 2. Output Filtering and Validation
@@ -98,8 +107,11 @@ def classify_output(output: str) -> dict:
 **Output Validation**
 
 - Validate all LLM outputs before delivery
+
 - Implement content filtering
+
 - Use multiple validation layers
+
 - Monitor for unusual outputs
 
 ### 3. Access Control and Authentication
@@ -128,8 +140,11 @@ def authenticate_llm_request(request: dict) -> bool:
 **Authorization Controls**
 
 - Implement role-based access control (RBAC)
+
 - Use least privilege principles
+
 - Regular access reviews
+
 - Monitor for unusual access patterns
 
 ### 4. Model Security
@@ -155,8 +170,11 @@ def harden_llm_model(model: LLMModel) -> LLMModel:
 **Model Monitoring**
 
 - Monitor model behavior continuously
+
 - Detect drift and anomalies
+
 - Track performance metrics
+
 - Alert on suspicious activity
 
 ### 5. Data Protection
@@ -182,8 +200,11 @@ def protect_training_data(data: List[str]) -> List[str]:
 **Data Governance**
 
 - Implement data classification
+
 - Use encryption for sensitive data
+
 - Regular data audits
+
 - Compliance monitoring
 
 ## Implementation Best Practices
@@ -217,8 +238,11 @@ Implement multiple security layers:
 **Network Security**
 
 - Use private networks for LLM services
+
 - Implement network segmentation
+
 - Use secure communication protocols
+
 - Regular network monitoring
 
 ### 2. Monitoring and Alerting
@@ -246,9 +270,13 @@ def monitor_llm_interaction(interaction: dict):
 **Key Metrics to Monitor**
 
 - Request volume and patterns
+
 - Response times and errors
+
 - Content classification results
+
 - Security event frequency
+
 - User behavior patterns
 
 ### 3. Incident Response
@@ -267,8 +295,11 @@ Develop procedures for LLM security incidents:
 **Response Playbook**
 
 - Define roles and responsibilities
+
 - Establish communication procedures
+
 - Create escalation paths
+
 - Document response procedures
 
 ### 4. Compliance and Governance
@@ -278,15 +309,21 @@ Develop procedures for LLM security incidents:
 Ensure compliance with relevant regulations:
 
 - **GDPR**: Data protection and privacy
+
 - **CCPA**: California privacy requirements
+
 - **HIPAA**: Healthcare data protection
+
 - **SOX**: Financial data security
 
 **Governance Framework**
 
 - Establish security policies
+
 - Regular security assessments
+
 - Third-party audits
+
 - Continuous improvement
 
 ## Advanced Security Techniques
@@ -362,8 +399,11 @@ def apply_differential_privacy(data: List[str],
 Test LLM security thoroughly:
 
 - **Prompt Injection Testing**: Attempt to inject malicious prompts
+
 - **Output Validation Testing**: Test output filtering effectiveness
+
 - **Access Control Testing**: Verify authentication and authorization
+
 - **Data Leakage Testing**: Check for sensitive information disclosure
 
 ### 2. Red Teaming
@@ -407,8 +447,11 @@ def run_security_tests(llm_service: LLMService):
 Establish SOC capabilities for LLMs:
 
 - **24/7 Monitoring**: Continuous security monitoring
+
 - **Incident Response**: Rapid response to security incidents
+
 - **Threat Intelligence**: Stay current with LLM threats
+
 - **Security Analytics**: Advanced analytics for threat detection
 
 ### 2. Security Training
@@ -418,8 +461,11 @@ Establish SOC capabilities for LLMs:
 Train teams on LLM security:
 
 - **Technical Training**: LLM security concepts and techniques
+
 - **Operational Training**: Security procedures and processes
+
 - **Awareness Training**: Security awareness for all staff
+
 - **Regular Updates**: Keep training current with threats
 
 ### 3. Vendor Management
@@ -429,8 +475,11 @@ Train teams on LLM security:
 Manage security for LLM vendors:
 
 - **Security Assessments**: Regular vendor security assessments
+
 - **Contract Requirements**: Include security requirements in contracts
+
 - **Monitoring**: Monitor vendor security posture
+
 - **Incident Response**: Coordinate incident response with vendors
 
 ## Conclusion
@@ -440,9 +489,13 @@ Securing LLMs in production requires a comprehensive approach that addresses uni
 **Key Success Factors:**
 
 - **Proactive Approach**: Implement security from the beginning
+
 - **Continuous Monitoring**: Monitor LLM systems continuously
+
 - **Regular Testing**: Test security controls regularly
+
 - **Team Training**: Train teams on LLM security
+
 - **Vendor Management**: Manage vendor security effectively
 
 By following these best practices, organizations can significantly reduce the risk of LLM-related security incidents and protect their AI investments while maintaining operational effectiveness.

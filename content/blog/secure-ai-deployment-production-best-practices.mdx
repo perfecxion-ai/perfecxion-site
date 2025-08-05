@@ -33,6 +33,7 @@ While AI-powered defense is a game-changer, enabling security teams to reduce th
 Threat actors are already leveraging AI to accelerate the speed and sophistication of cyberattacks:
 
 - **Breakout times** for network intrusions are now often under an hour
+
 - **Generative AI tools** allow adversaries to craft highly convincing:
   - Phishing emails
   - Deepfake videos
@@ -69,7 +70,9 @@ Adversarial machine learning (AML) is a category of attacks that target the core
 A data poisoning attack can be thought of as contaminating a model's "food source"its training datato corrupt its future behavior. By injecting maliciously labeled or crafted data into the training set, an attacker can:
 
 - **Manipulate the model** to learn incorrect patterns
+
 - **Create backdoors** for future exploitation
+
 - **Degrade its overall performance** systematically
 
 These attacks can be highly effective even when modifying a tiny fraction of the dataset, with research indicating that **altering as little as 0.1% of the data can be sufficient**.
@@ -132,7 +135,9 @@ These vulnerabilities are especially prevalent in **"overfitting" models**, whic
 The consequences are severe, ranging from:
 
 - **Exposure of personally identifiable information (PII)**
+
 - **Corporate trade secrets** and intellectual property
+
 - **Violations of data privacy regulations** like GDPR
 
 The copyright lawsuit filed by The New York Times against OpenAI, which demonstrated how ChatGPT could be prompted to reproduce near-verbatim excerpts of its articles, serves as a high-profile example of how model outputs can reveal training data.
@@ -148,7 +153,9 @@ This collection of input-output pairs is then used as a training dataset to buil
 The impact of model theft is primarily economic and strategic:
 
 - **Loss of valuable intellectual property** and competitive advantage
+
 - **Economic damage** as competitors could replicate a state-of-the-art model without investing in costly research
+
 - **Security vulnerability** as stolen models can be analyzed offline to find other weaknesses
 
 ### 2.3 Application and System-Level Vulnerabilities
@@ -162,6 +169,7 @@ A fundamental tension exists between the need for model transparency and the dem
 However, this transparency can be a double-edged sword:
 
 - **White-box attacks** (full model knowledge) are significantly more effective than **black-box attacks** (API access only)
+
 - **Security through obscurity** is not a viable long-term strategy
 
 This "Transparency Paradox" implies that a mature AI security posture must assume that adversaries will gain some knowledge of the model and, therefore, must be built on robust defenses that do not rely on secrecy.
@@ -212,27 +220,27 @@ flowchart TD
         A[Data Sources] --> B[Data Management]
         B --> C[Model Development]
 
-        A1[ Data Integrity Checks<br/> Data Provenance Tracking<br/> Encryption At Rest & In Transit<br/> Access Control RBAC<br/> Privacy-Enhancing Technologies]
+        A1[ Data Integrity Checks Data Provenance Tracking Encryption At Rest & In Transit Access Control RBAC Privacy-Enhancing Technologies]
 
-        C1[ Secure Coding Practices<br/> Dependency Scanning SCA<br/> Secure & Isolated Environments<br/> Threat Modeling]
+        C1[ Secure Coding Practices Dependency Scanning SCA Secure & Isolated Environments Threat Modeling]
     end
 
     subgraph "Phase 2: Hardened Training & Validation"
         C --> D[Model Training]
         D --> E[Model Validation]
 
-        D1[ Secure Training Infrastructure<br/> Private Network Endpoints<br/> IAM Controls<br/> Artifact Encryption]
+        D1[ Secure Training Infrastructure Private Network Endpoints IAM Controls Artifact Encryption]
 
-        E1[ Robustness Testing<br/> Adversarial Training<br/> Bias & Fairness Audits<br/> Integrity Verification]
+        E1[ Robustness Testing Adversarial Training Bias & Fairness Audits Integrity Verification]
     end
 
     subgraph "Phase 3: Protected Deployment & Inference"
         E --> F[Model Deployment]
         F --> G[Model Serving]
 
-        F1[ Hardened Production Infrastructure<br/> Zero Trust Architecture<br/> Safe Deployment Patterns]
+        F1[ Hardened Production Infrastructure Zero Trust Architecture Safe Deployment Patterns]
 
-        G1[ Secure API Endpoints<br/> Authentication & Authorization<br/> Input Validation & Sanitization<br/> Rate Limiting]
+        G1[ Secure API Endpoints Authentication & Authorization Input Validation & Sanitization Rate Limiting]
     end
 
     subgraph "Continuous Loop: Production Monitoring"
@@ -240,7 +248,7 @@ flowchart TD
         H --> I[Analysis & Response]
         I --> A
 
-        H1[ Performance & Drift Monitoring<br/> Anomaly Detection<br/> Threat Hunting<br/> Incident Response]
+        H1[ Performance & Drift Monitoring Anomaly Detection Threat Hunting Incident Response]
     end
 
     A1 -.-> B
@@ -272,13 +280,17 @@ Data is the lifeblood of AI, and trusting it is the "cornerstone of successful A
 Organizations must implement rigorous data validation techniques to detect:
 
 - **Anomalies** in data patterns
+
 - **Duplicates** that could skew training
+
 - **Inconsistencies** before they enter the training set
 
 **Data Provenance**: Maintaining detailed records of data sources and transformations is invaluable for:
 
 - **Auditing** compliance requirements
+
 - **Debugging** model issues
+
 - **Recovering from security events** like poisoning attacks
 
 ##### Data Security and Privacy
@@ -288,6 +300,7 @@ All sensitive data must be treated as "crown jewels" and protected accordingly:
 **Encryption Requirements**
 
 - **At rest**: Strong encryption for data in storage
+
 - **In transit**: Secure protocols for data moving across networks
 
 **Access Controls**
@@ -319,7 +332,9 @@ The code and dependencies that constitute an AI application must be developed wi
 Standard software security principles are fully applicable to ML code:
 
 - **Rigorous input validation** to prevent injection attacks
+
 - **Proper error handling** to avoid leaking system information
+
 - **Adherence to the principle of least privilege**
 
 ##### Supply Chain Security
@@ -327,6 +342,7 @@ Standard software security principles are fully applicable to ML code:
 Modern AI development relies heavily on open-source libraries (e.g., TensorFlow, PyTorch) and pre-trained models. This supply chain is a significant attack vector. Organizations must:
 
 - **Integrate Software Composition Analysis (SCA) tools** into development pipelines
+
 - **Automatically scan for and flag known vulnerabilities** in all third-party dependencies
 
 ##### Isolated Environments
@@ -334,7 +350,9 @@ Modern AI development relies heavily on open-source libraries (e.g., TensorFlow,
 To prevent security issues in development from affecting production, teams should use separate, containerized environments for:
 
 - **Development** environments for experimentation
+
 - **Testing** environments for validation
+
 - **Production** environments for deployment
 
 This practice ensures reproducibility and isolates potentially vulnerable experimental code from critical systems.
@@ -352,7 +370,9 @@ The environment where models are trained must be treated as a secure, production
 Training clusters should be protected with:
 
 - **Network isolation** using private endpoints to prevent direct exposure to the public internet
+
 - **Strict Identity and Access Management (IAM) policies** to control access to training data and computation resources
+
 - **Continuous monitoring** for suspicious activity
 
 ##### Model Artifact and Registry Security
@@ -360,6 +380,7 @@ Training clusters should be protected with:
 The outputs of the training processthe model artifacts (weights, architecture) and metadataare valuable intellectual property. They should be stored in a secure model registry with:
 
 - **Encryption** for all stored artifacts
+
 - **Granular access controls** to prevent unauthorized access or tampering
 
 #### Robust Model Validation and Testing
@@ -371,7 +392,9 @@ Model validation must extend beyond traditional performance metrics like accurac
 Models should be subjected to robustness testing, which evaluates their performance on:
 
 - **Noisy inputs** that simulate real-world conditions
+
 - **Out-of-distribution data** to test generalization
+
 - **Unexpected inputs** to simulate real-world conditions
 
 **Adversarial Training**: A key defensive technique where the model is intentionally trained on a diet of adversarial examples. This process makes the model more resilient to evasion attacks by teaching it to correctly classify inputs that are designed to be misleading.
@@ -381,7 +404,9 @@ Models should be subjected to robustness testing, which evaluates their performa
 As part of a responsible AI program, models must be audited for fairness and unintended biases. This helps prevent discriminatory outcomes that can create:
 
 - **Legal risks** from regulatory violations
+
 - **Reputational damage** from biased decisions
+
 - **Security vulnerabilities** from exploited biases
 
 ### 3.3 Phase 3: Protected Deployment and Inference
@@ -397,13 +422,17 @@ The principles of infrastructure security must be rigorously applied to the serv
 A Zero Trust model should be implemented, operating on the principle of **"never trust, always verify."** This means:
 
 - **No user or service is trusted by default**
+
 - **Every request to access a resource must be authenticated and authorized**
+
 - **Regardless of its origin**
 
 Implementation includes:
 
 - **Private endpoints** for secure access
+
 - **Network security groups** for segmentation
+
 - **Firewalls** to segment the network and limit lateral movement
 
 ##### Secure Inference Endpoints
@@ -413,6 +442,7 @@ The model's API is its primary interface with the outside world and a critical p
 **Authentication**
 
 - **API keys** for service-to-service communication
+
 - **OAuth 2.0** for user authentication
 
 **Authorization**
@@ -422,6 +452,7 @@ The model's API is its primary interface with the outside world and a critical p
 **Input Protection**
 
 - **Rigorous input validation** to block malicious payloads
+
 - **Rate limiting** to defend against denial-of-service (DoS) and model extraction attacks
 
 **Network Security**
@@ -437,6 +468,7 @@ Instead of a high-risk "big bang" release, organizations should adopt progressiv
 This strategy involves maintaining two identical, parallel production environments:
 
 - **"Blue"**: The current live version
+
 - **"Green"**: The new version
 
 **Process**:
@@ -481,8 +513,11 @@ The **MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Syst
 ATLAS organizes attacks into logical stages:
 
 - **Reconnaissance**: Gathering information about an ML system
+
 - **Initial Access**: e.g., via ML Supply Chain Compromise
+
 - **ML Model Access**: Gaining access to model functionality
+
 - **Impact**: Achieving the adversary's objectives
 
 ##### Practical Applications
@@ -490,7 +525,9 @@ ATLAS organizes attacks into logical stages:
 Organizations can use ATLAS to:
 
 - **Conduct structured threat modeling exercises**
+
 - **Guide red teaming engagements**
+
 - **Prioritize defensive investments** against the most likely and impactful threats
 
 #### Risk Management with NIST AI RMF
@@ -504,8 +541,11 @@ The **NIST AI Risk Management Framework (AI RMF)** provides a comprehensive, vol
 This is a cross-cutting function focused on cultivating a culture of risk management. It involves:
 
 - **Establishing policies** for AI governance
+
 - **Defining roles and responsibilities** for stakeholders
+
 - **Ensuring legal compliance** with regulations
+
 - **Promoting transparency** in AI decision-making
 
 **2. MAP**
@@ -536,7 +576,9 @@ Explainable AI (XAI) refers to the methods and techniques that make the decision
 
 The ability to interpret a model's reasoning is essential for:
 - **Debugging**: Understanding why a model made a particular decision
+
 - **Identifying biases** that could be exploited by attackers
+
 - **Root cause analysis** after a security incident
 
 ##### Legal and Regulatory Importance
@@ -545,7 +587,9 @@ In the event of a harmful model decision or a successful adversarial attack, the
 
 A "black box" model that cannot provide a rationale for its actions creates a significant liability. XAI is the technical prerequisite for:
 - Any meaningful audit trail
+
 - Accountability structure
+
 - Legal defensibility
 
 This transforms XAI from an ethical "nice-to-have" into a **foundational component of risk management**.
@@ -562,14 +606,18 @@ Models can degrade over time as the real-world data they encounter "drifts" away
 
 Monitoring systems should log all inputs and outputs (in compliance with privacy regulations) and use anomaly detection to flag:
 - Suspicious query patterns
+
 - Potential prompt injection attempts
+
 - Outputs that suggest data leakage
 
 ##### Incident Response
 
 Organizations must develop and regularly test an incident response plan specifically tailored to AI-related incidents. Responders must be trained to handle scenarios like:
 - Data poisoning discovery
+
 - Widespread evasion attack
+
 - Model inversion breach
 
 ---
@@ -589,7 +637,9 @@ The following actionable recommendations synthesize the best practices detailed 
 **Transition from perimeter defense to embedded security**
 
 - **Integrate security controls, reviews, and automated testing** into every stage of the MLOps pipeline
+
 - **Frame security as a continuous process**, not a final gate
+
 - **Cover the full spectrum**: data ingestion  development  training  deployment  ongoing monitoring
 
 #### 2. Threat Model for AI-Specific Risks
@@ -597,6 +647,7 @@ The following actionable recommendations synthesize the best practices detailed 
 **Recognize that AI systems have a unique attack surface**
 
 - **Use frameworks like MITRE ATLAS** to proactively identify, understand, and prioritize defenses
+
 - **Focus on AI-specific threats**:
   - **Data poisoning** attacks
   - **Model evasion** techniques
@@ -609,8 +660,11 @@ The following actionable recommendations synthesize the best practices detailed 
 **Treat every component as a potential attack vector**
 
 - **Training data**: Implement rigorous validation and provenance tracking
+
 - **Dependencies**: Integrate automated vulnerability scanning (SCA) for all code and dependencies
+
 - **Third-party models**: Establish secure processes for vetting and importing model artifacts
+
 - **Maintain visibility**: Create and maintain a Software Bill of Materials (SBOM) for all AI assets
 
 #### 4. Implement a Zero Trust Architecture for Production
@@ -618,8 +672,11 @@ The following actionable recommendations synthesize the best practices detailed 
 **Assume that the production environment is hostile**
 
 - **Principle of least privilege**: Enforce minimal necessary access
+
 - **Network segmentation**: Use private endpoints to minimize exposure
+
 - **Strong authentication**: Require robust authentication and authorization for every model API interaction
+
 - **Continuous verification**: Never trust, always verify
 
 #### 5. Invest in Monitoring and Explainability
@@ -627,7 +684,9 @@ The following actionable recommendations synthesize the best practices detailed 
 **Deploy comprehensive real-time monitoring**
 
 - **Performance monitoring**: Detect drift and degradation
+
 - **Security monitoring**: Identify anomalous inputs and potential attacks
+
 - **Explainable AI**: Treat XAI as a critical security capability that enables:
   - **Effective debugging** of model decisions
   - **Root cause analysis** after incidents
@@ -639,8 +698,11 @@ The following actionable recommendations synthesize the best practices detailed 
 **Move beyond ad-hoc security measures**
 
 - **Implement structured risk management** using the NIST AI Risk Management Framework (AI RMF)
+
 - **Systematically govern, map, measure, and manage** AI risks
+
 - **Align with organizational objectives**: Ensure security practices are consistent, measurable, and adaptable
+
 - **Stay current**: Adapt to the evolving technological and regulatory landscape
 
 ### The Path Forward
