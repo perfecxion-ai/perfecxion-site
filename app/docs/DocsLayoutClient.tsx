@@ -25,18 +25,18 @@ const documentationSections = [
         ]
     },
     {
+        title: 'Resources',
+        items: [
+            { name: 'White Papers', href: '/docs/white-papers', icon: FileText },
+            { name: 'Reference Architectures', href: '/docs/reference-architectures', icon: Layout },
+        ]
+    },
+    {
         title: 'API Reference',
         items: [
             { name: 'REST API', href: '/docs/api/rest', icon: Code },
             { name: 'SDKs', href: '/docs/api/sdks', icon: Code },
             { name: 'Webhooks', href: '/docs/api/webhooks', icon: Zap },
-        ]
-    },
-    {
-        title: 'Resources',
-        items: [
-            { name: 'White Papers', href: '/docs/white-papers', icon: FileText },
-            { name: 'Reference Architectures', href: '/docs/reference-architectures', icon: Layout },
         ]
     },
 ]

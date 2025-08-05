@@ -23,7 +23,7 @@ export default function ContentHub({
 }: ContentHubProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [filters, setFilters] = useState<ContentFilter>({
-    type: 'all',
+    type: contentType || 'all',
     sortBy: 'date',
     sortOrder: 'desc'
   })
@@ -63,12 +63,17 @@ export default function ContentHub({
     loadData()
   }, [featuredOnly])
 
+  // Sync filters.type with contentType
+  useEffect(() => {
+    setFilters(f => ({ ...f, type: contentType || 'all' }))
+  }, [contentType])
+
   // Perform search when query or filters change
   useEffect(() => {
     if (!featuredOnly) {
       performSearch()
     }
-  }, [searchQuery, filters, contentType])
+  }, [searchQuery, filters, contentType, featuredOnly])
 
   const performSearch = () => {
     setIsLoading(true)
@@ -84,6 +89,7 @@ export default function ContentHub({
               ? searchResults.filter(result => result.content.type === 'whitepaper')
               : searchResults
         setResults(filteredResults)
+        console.log('ContentHub: Search found', filteredResults.length, 'results for contentType:', contentType)
       } else {
         // Show recent content when no search/filters
         let recent
@@ -96,12 +102,17 @@ export default function ContentHub({
         } else {
           recent = contentManager.getRecentContent(20)
         }
-        setResults(recent.map(content => ({
+
+        // Convert content to search results format
+        const searchResults = recent.map(content => ({
           content,
           score: 1,
           highlights: [],
           matchType: 'title' as const
-        })))
+        }))
+
+        setResults(searchResults)
+        console.log('ContentHub: Loaded', recent.length, 'items for contentType:', contentType)
       }
     } finally {
       setIsLoading(false)
@@ -138,6 +149,13 @@ export default function ContentHub({
           acc[type].push(result)
         }
       }
+      // For whitepaper page, only show whitepaper content
+      else if (contentType === 'whitepaper') {
+        if (type === 'whitepaper') {
+          if (!acc[type]) acc[type] = []
+          acc[type].push(result)
+        }
+      }
       // For all content, show everything
       else if (contentType === 'all') {
         if (!acc[type]) acc[type] = []
@@ -160,7 +178,7 @@ export default function ContentHub({
     switch (type) {
       case 'learning': return 'Learning'
       case 'blog': return 'Blog Posts'
-
+      case 'whitepaper': return 'White Papers'
       default: return type
     }
   }
@@ -206,12 +224,14 @@ export default function ContentHub({
       {/* Header */}
       <div className="mb-12">
         <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
-          {contentType === 'blog' ? 'Blog' : 'Learn AI Security'}
+          {contentType === 'blog' ? 'Blog' : contentType === 'whitepaper' ? 'White Papers & Reference Architectures' : 'Learn AI Security'}
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-400 max-w-4xl">
           {contentType === 'blog'
             ? 'Latest insights, news, and updates from the perfecXion.ai team. Explore our expert analysis, case studies, and industry trends in AI security.'
-            : 'Master AI security with our comprehensive learning resources, tutorials, and best practices. Explore our AI Security 101 series, whitepapers, and interactive learning paths designed to help you build robust, secure AI systems.'
+            : contentType === 'whitepaper'
+              ? 'Comprehensive white papers and reference architectures for AI security implementation, compliance, and enterprise deployment strategies.'
+              : 'Master AI security with our comprehensive learning resources, tutorials, and best practices. Explore our AI Security 101 series, whitepapers, and interactive learning paths designed to help you build robust, secure AI systems.'
           }
         </p>
       </div>
