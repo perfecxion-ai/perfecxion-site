@@ -19,7 +19,7 @@ export default function HomePage() {
                   Innovation
                 </span>
                 <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-600 dark:text-gray-300">
-                  <span>3 Patents Pending</span>
+                  <span>Research & Development</span>
                 </span>
               </div>
             </div>
@@ -27,8 +27,8 @@ export default function HomePage() {
               Pioneering AI Security Innovation
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              Our research team is at the forefront of AI security, developing cutting-edge technologies 
-              that will revolutionize how organizations protect their AI systems. With multiple patents 
+              Our research team is at the forefront of AI security, developing cutting-edge technologies
+              that will revolutionize how organizations protect their AI systems. With multiple patents
               pending, we're building the future of AI security.
             </p>
             <div className="mt-10">
@@ -42,7 +42,7 @@ export default function HomePage() {
           </div>
           <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
             <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
-              <div className="rounded-2xl overflow-hidden shadow-2xl relative">
+              <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/images/homepage.png"
                   alt="AI Security Innovation - Research and Development"
@@ -51,9 +51,6 @@ export default function HomePage() {
                   className="w-full h-auto"
                   priority
                 />
-                <div className="absolute top-4 right-4 bg-primary-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-                  3 Patents Pending
-                </div>
               </div>
             </div>
           </div>
