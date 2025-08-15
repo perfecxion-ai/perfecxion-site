@@ -16,20 +16,22 @@ export default function HomePage() {
             <div className="mt-24 sm:mt-32 lg:mt-16">
               <div className="inline-flex space-x-6 group">
                 <span className="rounded-full bg-primary-500/10 px-3 py-1 text-sm font-semibold leading-6 text-primary-600 ring-1 ring-inset ring-primary-500/20 dark:text-primary-400">
-                  Innovation
+                  Coming Soon
                 </span>
                 <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-600 dark:text-gray-300">
-                  <span>3 Patents Pending</span>
+                  <span>AI Security Platform</span>
                 </span>
               </div>
             </div>
             <h1 className="mt-10 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-              Pioneering AI Security Innovation
+              Secure Your AI Systems with{' '}
+              <span className="gradient-text">
+                perfec<span className="text-primary-400 font-black">X</span>ion
+              </span>
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              Our research team is at the forefront of AI security, developing cutting-edge technologies 
-              that will revolutionize how organizations protect their AI systems. With multiple patents 
-              pending, we're building the future of AI security.
+              Comprehensive AI security and compliance solutions. From red teaming to guardrails,
+              we help you build trustworthy AI systems that meet the highest security standards.
             </p>
             <div className="mt-10">
               <CTAWrapper
@@ -42,17 +44,18 @@ export default function HomePage() {
           </div>
           <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
             <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
-              <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/homepage.png"
-                  alt="AI Security Innovation - Research and Development"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto"
-                  priority
-                />
-                <div className="absolute -bottom-4 -right-4 bg-primary-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-                  3 Patents Pending
+              <div className="rounded-md bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 dark:bg-gray-100/5 dark:ring-gray-100/10 lg:rounded-lg">
+                <div className="rounded-md bg-white p-6 shadow-2xl ring-1 ring-gray-900/10 dark:bg-gray-900 dark:ring-gray-100/10 lg:rounded-lg">
+                  <div className="flex items-center space-x-2">
+                    <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                  </div>
+                  <div className="mt-4 space-y-2">
+                    <div className="h-4 w-3/4 rounded bg-gray-200 dark:bg-gray-700"></div>
+                    <div className="h-4 w-1/2 rounded bg-gray-200 dark:bg-gray-700"></div>
+                    <div className="h-4 w-5/6 rounded bg-gray-200 dark:bg-gray-700"></div>
+                  </div>
                 </div>
               </div>
             </div>
