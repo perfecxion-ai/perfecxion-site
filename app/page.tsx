@@ -16,22 +16,20 @@ export default function HomePage() {
             <div className="mt-24 sm:mt-32 lg:mt-16">
               <div className="inline-flex space-x-6 group">
                 <span className="rounded-full bg-primary-500/10 px-3 py-1 text-sm font-semibold leading-6 text-primary-600 ring-1 ring-inset ring-primary-500/20 dark:text-primary-400">
-                  Coming Soon
+                  Innovation
                 </span>
                 <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-600 dark:text-gray-300">
-                  <span>AI Security Platform</span>
+                  <span>3 Patents Pending</span>
                 </span>
               </div>
             </div>
             <h1 className="mt-10 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-              Secure Your AI Systems with{' '}
-              <span className="gradient-text">
-                perfec<span className="text-primary-400 font-black">X</span>ion
-              </span>
+              Pioneering AI Security Innovation
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              Comprehensive AI security and compliance solutions. From red teaming to guardrails,
-              we help you build trustworthy AI systems that meet the highest security standards.
+              Our research team is at the forefront of AI security, developing cutting-edge technologies 
+              that will revolutionize how organizations protect their AI systems. With multiple patents 
+              pending, we're building the future of AI security.
             </p>
             <div className="mt-10">
               <CTAWrapper
@@ -44,7 +42,7 @@ export default function HomePage() {
           </div>
           <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
             <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
-              <div className="rounded-2xl overflow-hidden shadow-2xl">
+              <div className="rounded-2xl overflow-hidden shadow-2xl relative">
                 <Image
                   src="/images/homepage.png"
                   alt="AI Security Innovation - Research and Development"
@@ -53,7 +51,7 @@ export default function HomePage() {
                   className="w-full h-auto"
                   priority
                 />
-                <div className="absolute -bottom-4 -right-4 bg-primary-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                <div className="absolute top-4 right-4 bg-primary-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
                   3 Patents Pending
                 </div>
               </div>
