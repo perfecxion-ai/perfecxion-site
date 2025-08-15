@@ -4,6 +4,7 @@ import ComplianceBadges, { TrustSignals } from '@/components/ComplianceBadges'
 import CTAWrapper, { CTAPresets } from '@/components/cta/CTAWrapper'
 import PrimaryCTA from '@/components/cta/PrimaryCTA'
 import SecondaryCTA from '@/components/cta/SecondaryCTA'
+import Image from 'next/image'
 
 export default function HomePage() {
   return (
@@ -65,7 +66,7 @@ export default function HomePage() {
       {/* Stats Section */}
       <div className="bg-gray-50 dark:bg-gray-900/50 py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+          <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-4">
             <div className="mx-auto flex max-w-xs flex-col gap-y-4">
               <dt className="text-base leading-7 text-gray-600 dark:text-gray-400">Security frameworks</dt>
               <dd className="order-first text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
@@ -86,6 +87,13 @@ export default function HomePage() {
                 10+
               </dd>
               <dd className="text-base leading-7 text-gray-600 dark:text-gray-400">major AI platforms</dd>
+            </div>
+            <div className="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt className="text-base leading-7 text-gray-600 dark:text-gray-400">Patents</dt>
+              <dd className="order-first text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+                3
+              </dd>
+              <dd className="text-base leading-7 text-gray-600 dark:text-gray-400">pending approval</dd>
             </div>
           </dl>
         </div>
@@ -177,6 +185,52 @@ export default function HomePage() {
                 </dd>
               </div>
             </dl>
+          </div>
+        </div>
+      </div>
+
+      {/* Innovation Showcase Section */}
+      <div className="section-padding">
+        <div className="max-width container-padding">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl mb-6">
+                Pioneering AI Security Innovation
+              </h2>
+              <p className="text-lg leading-8 text-gray-600 dark:text-gray-300 mb-6">
+                Our research team is at the forefront of AI security, developing cutting-edge technologies 
+                that will revolutionize how organizations protect their AI systems. With multiple patents 
+                pending, we're building the future of AI security.
+              </p>
+              <p className="text-lg leading-8 text-gray-600 dark:text-gray-300 mb-8">
+                From advanced threat detection algorithms to novel compliance frameworks, our innovations 
+                are setting new standards in the industry and providing our customers with unprecedented 
+                protection for their AI investments.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/learn" className="btn-primary">
+                  Explore Our Research
+                </Link>
+                <Link href="/contact" className="btn-secondary">
+                  Learn About Patents
+                </Link>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/homepage.png"
+                  alt="AI Security Innovation - Research and Development"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto"
+                  priority
+                />
+              </div>
+              <div className="absolute -bottom-4 -right-4 bg-primary-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                3 Patents Pending
+              </div>
+            </div>
           </div>
         </div>
       </div>
