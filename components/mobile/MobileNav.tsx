@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, ChevronDown, Search, Calendar } from 'lucide-react'
-import ThemeToggle from '../ThemeToggle'
+
 // MobileSearch component removed - using simple search
 
 interface NavItem {
@@ -186,13 +186,7 @@ export default function MobileNav() {
                 </Link>
               </div>
 
-              {/* Theme toggle */}
-              <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
-                <div className="flex items-center justify-between px-4">
-                  <span className="text-sm text-gray-600 dark:text-gray-400">Theme</span>
-                  <ThemeToggle />
-                </div>
-              </div>
+
             </div>
           </div>
         </div>

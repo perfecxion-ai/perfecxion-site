@@ -23,21 +23,21 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 
 export function ThemeProvider({
   children,
-  defaultTheme = 'light',
+  defaultTheme = 'dark',
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme)
+  const [theme, setTheme] = useState<Theme>('dark')
 
   useEffect(() => {
     const root = window.document.documentElement
     root.classList.remove('light', 'dark')
-    root.classList.add(theme)
-  }, [theme])
+    root.classList.add('dark')
+  }, [])
 
   const value = {
-    theme,
-    setTheme: (theme: Theme) => {
-      setTheme(theme)
+    theme: 'dark',
+    setTheme: () => {
+      // No-op - theme is always dark
     },
   }
 

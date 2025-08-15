@@ -11,13 +11,13 @@
   }
 
   body {
-    @apply bg-background-light dark:bg-background-dark text-text-primary dark:text-text-primary-dark transition-colors duration-200;
+    @apply bg-background-dark text-text-primary-dark;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   * {
-    @apply border-border-light dark:border-border-dark;
+    @apply border-border-dark;
   }
 }
 

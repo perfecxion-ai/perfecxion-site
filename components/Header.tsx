@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Search } from 'lucide-react'
-import ThemeToggle from './ThemeToggle'
+
 import SearchBar from './search/SearchBar'
 
 const navigation = [
@@ -78,7 +78,7 @@ export default function Header() {
                 placeholder="Search..."
               />
             </div>
-            <ThemeToggle />
+
           </div>
         </div>
       </nav>
@@ -123,9 +123,7 @@ export default function Header() {
                     </Link>
                   ))}
                 </div>
-                <div className="py-6 flex items-center justify-center">
-                  <ThemeToggle />
-                </div>
+
               </div>
             </div>
           </div>
