@@ -16,22 +16,20 @@ export default function HomePage() {
             <div className="mt-24 sm:mt-32 lg:mt-16">
               <div className="inline-flex space-x-6 group">
                 <span className="rounded-full bg-primary-500/10 px-3 py-1 text-sm font-semibold leading-6 text-primary-600 ring-1 ring-inset ring-primary-500/20 dark:text-primary-400">
-                  Coming Soon
+                  Innovation
                 </span>
                 <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-600 dark:text-gray-300">
-                  <span>AI Security Platform</span>
+                  <span>3 Patents Pending</span>
                 </span>
               </div>
             </div>
             <h1 className="mt-10 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-              Secure Your AI Systems with{' '}
-              <span className="gradient-text">
-                perfec<span className="text-primary-400 font-black">X</span>ion
-              </span>
+              Pioneering AI Security Innovation
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              Comprehensive AI security and compliance solutions. From red teaming to guardrails,
-              we help you build trustworthy AI systems that meet the highest security standards.
+              Our research team is at the forefront of AI security, developing cutting-edge technologies 
+              that will revolutionize how organizations protect their AI systems. With multiple patents 
+              pending, we're building the future of AI security.
             </p>
             <div className="mt-10">
               <CTAWrapper
@@ -185,52 +183,6 @@ export default function HomePage() {
                 </dd>
               </div>
             </dl>
-          </div>
-        </div>
-      </div>
-
-      {/* Innovation Showcase Section */}
-      <div className="section-padding">
-        <div className="max-width container-padding">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl mb-6">
-                Pioneering AI Security Innovation
-              </h2>
-              <p className="text-lg leading-8 text-gray-600 dark:text-gray-300 mb-6">
-                Our research team is at the forefront of AI security, developing cutting-edge technologies 
-                that will revolutionize how organizations protect their AI systems. With multiple patents 
-                pending, we're building the future of AI security.
-              </p>
-              <p className="text-lg leading-8 text-gray-600 dark:text-gray-300 mb-8">
-                From advanced threat detection algorithms to novel compliance frameworks, our innovations 
-                are setting new standards in the industry and providing our customers with unprecedented 
-                protection for their AI investments.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/learn" className="btn-primary">
-                  Explore Our Research
-                </Link>
-                <Link href="/contact" className="btn-secondary">
-                  Learn About Patents
-                </Link>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/homepage.png"
-                  alt="AI Security Innovation - Research and Development"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto"
-                  priority
-                />
-              </div>
-              <div className="absolute -bottom-4 -right-4 bg-primary-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-                3 Patents Pending
-              </div>
-            </div>
           </div>
         </div>
       </div>
