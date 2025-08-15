@@ -13,16 +13,6 @@ import { Github, Twitter, Linkedin, Mail } from 'lucide-react'
  * Last updated: 2025-01-31
  */
 const navigation = {
-  product: [
-    { name: 'ADAPT-AI', href: '/products/adapt-ai' },
-    { name: 'perfecX Red-T', href: '/products/perfecxion-red-t' },
-    { name: 'perfecX Agent', href: '/products/perfecxion-agent' },
-    { name: 'SafeAI Guard', href: '/products/safeai-guard' },
-    { name: 'perfecX Comply', href: '/products/perfecxion-comply' },
-    { name: 'perfecX G-Rails', href: '/products/perfecxion-g-rails' },
-    { name: 'PromptShield', href: '/products/promptshield' },
-    { name: 'TorScan', href: '/products/torscan' },
-  ],
   resources: [
     { name: 'Documentation', href: '/docs' },
     { name: 'Learn', href: '/learn' },
@@ -100,16 +90,7 @@ export default function Footer() {
               Products
             </h3>
             <ul className="space-y-3">
-              {navigation.product.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
+              {/* Removed product links */}
             </ul>
           </div>
 

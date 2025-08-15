@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowLeft, Home, Sparkles, BookOpen, Users } from 'lucide-react';
+import { ArrowLeft, Home, Sparkles, BookOpen, Users, FileText } from 'lucide-react';
 
 export default function NotFound() {
     return (
@@ -32,16 +32,16 @@ export default function NotFound() {
                             <div className="text-sm text-gray-500 dark:text-gray-400">Learn about our AI security platform</div>
                         </Link>
 
-                        <Link href="/products" className="group block p-6 border border-gray-200 dark:border-gray-800 rounded-xl hover:shadow-lg transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600">
-                            <Sparkles className="w-8 h-8 mb-4 text-primary-600 group-hover:text-primary-700 dark:text-primary-400 dark:group-hover:text-primary-300 mx-auto" />
-                            <div className="font-semibold mb-2 text-gray-900 dark:text-white">Products</div>
-                            <div className="text-sm text-gray-500 dark:text-gray-400">View our AI security solutions</div>
+                        <Link href="/learn" className="group block p-6 border border-gray-200 dark:border-gray-800 rounded-xl hover:shadow-lg transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600">
+                            <BookOpen className="w-8 h-8 mb-4 text-primary-600 group-hover:text-primary-700 dark:text-primary-400 dark:group-hover:text-primary-300 mx-auto" />
+                            <div className="font-semibold mb-2 text-gray-900 dark:text-white">Learning Center</div>
+                            <div className="text-sm text-gray-500 dark:text-gray-400">AI security guides and best practices</div>
                         </Link>
 
                         <Link href="/docs" className="group block p-6 border border-gray-200 dark:border-gray-800 rounded-xl hover:shadow-lg transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600">
-                            <BookOpen className="w-8 h-8 mb-4 text-primary-600 group-hover:text-primary-700 dark:text-primary-400 dark:group-hover:text-primary-300 mx-auto" />
+                            <FileText className="w-8 h-8 mb-4 text-primary-600 group-hover:text-primary-700 dark:text-primary-400 dark:group-hover:text-primary-300 mx-auto" />
                             <div className="font-semibold mb-2 text-gray-900 dark:text-white">Documentation</div>
-                            <div className="text-sm text-gray-500 dark:text-gray-400">Technical guides and API docs</div>
+                            <div className="text-sm text-gray-500 dark:text-gray-400">White papers and technical resources</div>
                         </Link>
 
                         <Link href="/blog" className="group block p-6 border border-gray-200 dark:border-gray-800 rounded-xl hover:shadow-lg transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600">

@@ -237,8 +237,8 @@ export default function TestimonialsPage() {
               Start securing your AI systems today with our comprehensive security platform
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/products" className="btn-primary">
-                Explore Our Products <ArrowRight className="ml-2 h-4 w-4" />
+              <Link href="/learn" className="btn-primary">
+                Start Learning
               </Link>
               <Link href="/case-studies" className="btn-secondary">
                 Read Case Studies

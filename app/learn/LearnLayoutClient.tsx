@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { ChevronRight, BookOpen, Shield, Zap, Users, Code, Settings, Play, Target, Lock, AlertTriangle, CheckCircle, Brain, Database, Eye, BarChart3, Menu, X } from 'lucide-react'
+import { ChevronRight, BookOpen, Shield, Zap, Users, Code, Settings, Play, Target, Lock, AlertTriangle, CheckCircle, Brain, Database, Eye, BarChart3, Menu, X, FileText } from 'lucide-react'
 
 const sidebarSections = [
     {
@@ -63,7 +63,7 @@ export default function LearnLayoutClient({
             <div className="flex">
                 {/* Sidebar - Desktop */}
                 <div className="hidden lg:block w-80 bg-gray-50 dark:bg-gray-900/50 border-r border-gray-200 dark:border-gray-800 min-h-screen p-6 overflow-y-auto">
-                    <SidebarContent onLinkClick={() => {}} />
+                    <SidebarContent onLinkClick={() => { }} />
                 </div>
 
                 {/* Sidebar - Mobile */}
@@ -91,8 +91,8 @@ function SidebarContent({ onLinkClick }: { onLinkClick: () => void }) {
     return (
         <>
             <div className="mb-8">
-                <Link 
-                    href="/learn" 
+                <Link
+                    href="/learn"
                     className="flex items-center space-x-2 text-lg font-semibold text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                     onClick={onLinkClick}
                 >
@@ -126,7 +126,7 @@ function SidebarContent({ onLinkClick }: { onLinkClick: () => void }) {
             </nav>
 
             {/* Quick Links */}
-            <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
                 <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
                     RESOURCES
                 </h3>
@@ -143,22 +143,12 @@ function SidebarContent({ onLinkClick }: { onLinkClick: () => void }) {
                     </li>
                     <li>
                         <Link
-                            href="/products"
+                            href="/blog"
                             className="flex items-center space-x-3 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors"
                             onClick={onLinkClick}
                         >
-                            <Shield className="h-4 w-4" />
-                            <span>Products</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href="/contact"
-                            className="flex items-center space-x-3 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors"
-                            onClick={onLinkClick}
-                        >
-                            <Users className="h-4 w-4" />
-                            <span>Get Support</span>
+                            <FileText className="h-4 w-4" />
+                            <span>Blog & Insights</span>
                         </Link>
                     </li>
                 </ul>

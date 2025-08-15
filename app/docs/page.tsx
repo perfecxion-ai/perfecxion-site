@@ -1,171 +1,142 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { ChevronRight, BookOpen, Shield, Zap, Users, Code, Settings, Play } from 'lucide-react'
+import { Shield, FileText, Layout, BookOpen, Clock, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Documentation - perfecXion.ai',
-  description: 'Comprehensive documentation for all perfecXion.ai products.',
+  title: 'Documentation & Resources',
+  description: 'Access white papers, reference architectures, and technical resources for AI security.',
 }
-
 
 export default function DocumentationPage() {
   return (
     <>
-            <div className="mb-8">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-4">
-                Documentation
-              </h1>
-              <p className="text-lg text-gray-600 dark:text-gray-400">
-                Comprehensive guides and API references for all perfecXion.ai products.
-              </p>
-            </div>
+      <div className="max-width container-padding section-padding">
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-4">
+            Documentation & Resources
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-400">
+            Access our comprehensive collection of white papers, reference architectures, and technical resources for AI security.
+          </p>
+        </div>
 
-            {/* Product Categories */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                  Core Products
-                </h2>
-                <div className="space-y-4">
-                  <Link
-                    href="/docs/perfecxion-red-t"
-                    className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <Shield className="h-5 w-5 text-primary-600 dark:text-primary-400" />
-                      <div>
-                        <h3 className="font-semibold text-gray-900 dark:text-white">perfecX Red-T</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Advanced red team testing platform</p>
-                      </div>
-                    </div>
-                  </Link>
-                  <Link
-                    href="/docs/perfecxion-agent"
-                    className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <Users className="h-5 w-5 text-primary-600 dark:text-primary-400" />
-                      <div>
-                        <h3 className="font-semibold text-gray-900 dark:text-white">perfecX Agent</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">AI agent monitoring & security</p>
-                      </div>
-                    </div>
-                  </Link>
-                  <Link
-                    href="/docs/perfecxion-comply"
-                    className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <Shield className="h-5 w-5 text-primary-600 dark:text-primary-400" />
-                      <div>
-                        <h3 className="font-semibold text-gray-900 dark:text-white">perfecX Comply</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">AI governance & compliance</p>
-                      </div>
-                    </div>
-                  </Link>
-                  <Link
-                    href="/docs/perfecxion-g-rails"
-                    className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <Shield className="h-5 w-5 text-primary-600 dark:text-primary-400" />
-                      <div>
-                        <h3 className="font-semibold text-gray-900 dark:text-white">perfecX G-Rails</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">AI safety & guardrails</p>
-                      </div>
-                    </div>
-                  </Link>
-                  <Link
-                    href="/docs/adapt-ai"
-                    className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <Zap className="h-5 w-5 text-primary-600 dark:text-primary-400" />
-                      <div>
-                        <h3 className="font-semibold text-gray-900 dark:text-white">Adapt AI</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Adaptive AI security platform</p>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                  Security Tools
-                </h2>
-                <div className="space-y-4">
-                  <Link
-                    href="/docs/promptshield"
-                    className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <Shield className="h-5 w-5 text-primary-600 dark:text-primary-400" />
-                      <div>
-                        <h3 className="font-semibold text-gray-900 dark:text-white">PromptShield</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Prompt injection detection</p>
-                      </div>
-                    </div>
-                  </Link>
-                  <Link
-                    href="/docs/safeai-guard"
-                    className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <Shield className="h-5 w-5 text-primary-600 dark:text-primary-400" />
-                      <div>
-                        <h3 className="font-semibold text-gray-900 dark:text-white">SafeAI Guard</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">AI safety for children</p>
-                      </div>
-                    </div>
-                  </Link>
-                  <Link
-                    href="/docs/torscan"
-                    className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <Shield className="h-5 w-5 text-primary-600 dark:text-primary-400" />
-                      <div>
-                        <h3 className="font-semibold text-gray-900 dark:text-white">TorScan</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Dark web intelligence platform</p>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* API Reference */}
-            <div className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                API Reference
+        {/* Coming Soon Notice */}
+        <div className="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-2xl p-8 mb-12">
+          <div className="flex items-start space-x-4">
+            <Clock className="h-8 w-8 text-primary-600 dark:text-primary-400 mt-1 flex-shrink-0" />
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                Product Documentation Coming Soon
               </h2>
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <Link
-                    href="/docs/api/rest"
-                    className="flex items-center space-x-3 p-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                  >
-                    <Code className="h-5 w-5 text-primary-600 dark:text-primary-400" />
-                    <span className="font-medium text-gray-900 dark:text-white">REST API</span>
-                  </Link>
-                  <Link
-                    href="/docs/api/sdks"
-                    className="flex items-center space-x-3 p-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                  >
-                    <Code className="h-5 w-5 text-primary-600 dark:text-primary-400" />
-                    <span className="font-medium text-gray-900 dark:text-white">SDKs</span>
-                  </Link>
-                  <Link
-                    href="/docs/api/webhooks"
-                    className="flex items-center space-x-3 p-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                  >
-                    <Zap className="h-5 w-5 text-primary-600 dark:text-primary-400" />
-                    <span className="font-medium text-gray-900 dark:text-white">Webhooks</span>
-                  </Link>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
+                Our product documentation is currently in development. In the meantime, explore our white papers,
+                reference architectures, and learning resources to understand AI security best practices.
+              </p>
+              <Link href="/learn" className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium">
+                Explore Learning Resources <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Available Resources */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              White Papers
+            </h2>
+            <div className="space-y-4">
+              <Link
+                href="/docs/white-papers"
+                className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
+              >
+                <div className="flex items-center space-x-3">
+                  <FileText className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+                  <div>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">White Papers</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">In-depth research and analysis on AI security topics</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              Reference Architectures
+            </h2>
+            <div className="space-y-4">
+              <Link
+                href="/docs/reference-architectures"
+                className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
+              >
+                <div className="flex items-center space-x-3">
+                  <Layout className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+                  <div>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">Reference Architectures</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Security patterns and architectural guidance</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Learning Resources */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            Learning Resources
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Link
+              href="/learn"
+              className="group block p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
+            >
+              <div className="flex items-center space-x-3">
+                <BookOpen className="h-6 w-6 text-primary-600 dark:text-primary-400 group-hover:text-primary-700 dark:group-hover:text-primary-300" />
+                <div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">Learning Center</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Comprehensive guides on AI security fundamentals and advanced topics</p>
                 </div>
               </div>
+            </Link>
+
+            <Link
+              href="/blog"
+              className="group block p-6 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
+            >
+              <div className="flex items-center space-x-3">
+                <FileText className="h-6 w-6 text-primary-600 dark:text-primary-400 group-hover:text-primary-700 dark:group-hover:text-primary-300" />
+                <div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">Blog & Insights</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Latest research, threat analysis, and industry insights</p>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center">
+          <div className="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-2xl p-12 max-w-4xl mx-auto">
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              Ready to Learn More?
+            </h3>
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+              Dive deep into AI security with our comprehensive learning resources.
+              From fundamentals to advanced techniques, we've got you covered.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/learn" className="btn-primary">
+                Start Learning <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+              <Link href="/contact" className="btn-secondary">
+                Contact Us
+              </Link>
             </div>
-      </>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }

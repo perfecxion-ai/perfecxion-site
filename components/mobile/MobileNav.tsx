@@ -16,28 +16,6 @@ interface NavItem {
 
 const navigation: NavItem[] = [
   {
-    name: 'Products',
-    children: [
-      { name: 'ADAPT-AI', href: '/products/adapt-ai' },
-      { name: 'SafeAI Guard', href: '/products/safeai-guard' },
-      { name: 'PromptShield', href: '/products/promptshield' },
-      { name: 'TorScan', href: '/products/torscan' },
-      { name: 'perfecXion Agent', href: '/products/perfecxion-agent' },
-      { name: 'perfecXion Comply', href: '/products/perfecxion-comply' },
-      { name: 'perfecXion G-Rails', href: '/products/perfecxion-g-rails' },
-      { name: 'perfecXion Red-T', href: '/products/perfecxion-red-t' },
-      { name: 'All Products', href: '/products' },
-    ],
-  },
-  {
-    name: 'Solutions',
-    children: [
-      { name: 'Enterprise', href: '/products#enterprise' },
-      { name: 'Developer Tools', href: '/products#developer-tools' },
-      { name: 'Compliance', href: '/compliance/audit-logs' },
-    ],
-  },
-  {
     name: 'Resources',
     children: [
       { name: 'Documentation', href: '/docs' },

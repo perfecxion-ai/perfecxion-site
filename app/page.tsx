@@ -13,15 +13,14 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40">
           <div className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
             <div className="mt-24 sm:mt-32 lg:mt-16">
-              <Link href="/products/adapt-ai" className="inline-flex space-x-6 group">
-                <span className="rounded-full bg-primary-500/10 px-3 py-1 text-sm font-semibold leading-6 text-primary-600 ring-1 ring-inset ring-primary-500/20 dark:text-primary-400 group-hover:bg-primary-500/20 transition-colors">
-                  What's new
+              <div className="inline-flex space-x-6 group">
+                <span className="rounded-full bg-primary-500/10 px-3 py-1 text-sm font-semibold leading-6 text-primary-600 ring-1 ring-inset ring-primary-500/20 dark:text-primary-400">
+                  Coming Soon
                 </span>
-                <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-600 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                  <span>Just shipped ADAPT-AI</span>
-                  <ArrowRight className="h-4 w-4" />
+                <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-600 dark:text-gray-300">
+                  <span>AI Security Platform</span>
                 </span>
-              </Link>
+              </div>
             </div>
             <h1 className="mt-10 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
               Secure Your AI Systems with{' '}
@@ -115,16 +114,16 @@ export default function HomePage() {
                 </dt>
                 <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
                   <p className="flex-auto">
-                    ADAPT-AI delivers state-of-the-art adversarial testing with gradient-based optimization,
+                    Our platform will deliver state-of-the-art adversarial testing with gradient-based optimization,
                     multi-modal attacks, and ML-powered adaptation for comprehensive AI security assessment.
                   </p>
                   <p className="mt-6">
                     <SecondaryCTA
                       text="Learn more"
-                      href="/products/adapt-ai"
+                      href="/learn/ai-threats"
                       icon="arrow"
                       variant="link"
-                      trackingId="homepage-feature-adapt-ai"
+                      trackingId="homepage-feature-ai-threats"
                     />
                   </p>
                 </dd>
@@ -139,16 +138,16 @@ export default function HomePage() {
                 </dt>
                 <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
                   <p className="flex-auto">
-                    perfecX Red-T provides comprehensive adversarial testing to identify vulnerabilities
+                    Our red team testing platform will provide comprehensive adversarial testing to identify vulnerabilities
                     and weaknesses in your AI systems before they reach production.
                   </p>
                   <p className="mt-6">
                     <SecondaryCTA
                       text="Learn more"
-                      href="/products/perfecxion-red-t"
+                      href="/learn/red-team"
                       icon="arrow"
                       variant="link"
-                      trackingId="homepage-feature-red-t"
+                      trackingId="homepage-feature-red-team"
                     />
                   </p>
                 </dd>
@@ -163,16 +162,16 @@ export default function HomePage() {
                 </dt>
                 <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
                   <p className="flex-auto">
-                    perfecX Comply and G-Rails ensure your AI systems meet all regulatory requirements
+                    Our compliance and safety tools will ensure your AI systems meet all regulatory requirements
                     and maintain the highest safety standards through automated monitoring.
                   </p>
                   <p className="mt-6">
                     <SecondaryCTA
                       text="Learn more"
-                      href="/products/perfecxion-comply"
+                      href="/learn/compliance"
                       icon="arrow"
                       variant="link"
-                      trackingId="homepage-feature-comply"
+                      trackingId="homepage-feature-compliance"
                     />
                   </p>
                 </dd>
@@ -193,14 +192,14 @@ export default function HomePage() {
               Built with security at the core, certified by industry standards
             </p>
           </div>
-          
+
           <div className="mb-12">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6 text-center">
               Compliance Certifications
             </h3>
             <ComplianceBadges variant="detailed" />
           </div>
-          
+
           <div className="pt-8 border-t border-gray-200 dark:border-gray-700">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6 text-center">
               Security Features

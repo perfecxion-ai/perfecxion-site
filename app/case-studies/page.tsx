@@ -324,9 +324,8 @@ export default function CaseStudiesPage() {
               <Link href="/contact" className="btn-primary">
                 Start Your Journey <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
-              <Link href="/products" className="btn-secondary">
-                <Zap className="mr-2 h-4 w-4" />
-                Explore Products
+              <Link href="/learn" className="btn-secondary">
+                Explore Learning Resources
               </Link>
             </div>
           </div>

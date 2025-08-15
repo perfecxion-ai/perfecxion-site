@@ -12,7 +12,6 @@ interface TabItem {
 
 const tabs: TabItem[] = [
   { name: 'Home', href: '/', icon: Home },
-  { name: 'Products', href: '/products', icon: Package },
   { name: 'Learn', href: '/learn', icon: BookOpen },
   { name: 'Blog', href: '/blog', icon: FileText },
   { name: 'Search', href: '/search', icon: Search },
@@ -40,14 +39,14 @@ export default function TabNavigation() {
               className={`
                 flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-lg
                 transition-all duration-200 min-w-[64px] min-h-[56px]
-                ${active 
-                  ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20' 
+                ${active
+                  ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20'
                   : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                 }
               `}
             >
-              <Icon 
-                className={`h-5 w-5 transition-transform ${active ? 'scale-110' : ''}`} 
+              <Icon
+                className={`h-5 w-5 transition-transform ${active ? 'scale-110' : ''}`}
                 strokeWidth={active ? 2.5 : 2}
               />
               <span className={`text-xs font-medium ${active ? 'font-semibold' : ''}`}>

@@ -2,28 +2,9 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { ChevronRight, BookOpen, Shield, Zap, Users, Code, Settings, Play, Menu, X, FileText, Layout } from 'lucide-react'
+import { ChevronRight, BookOpen, FileText, Layout, Menu, X, Clock } from 'lucide-react'
 
 const documentationSections = [
-    {
-        title: 'Core Products',
-        items: [
-            { name: 'ADAPT-AI', href: '/docs/adapt-ai', icon: Zap },
-            { name: 'perfecX Red-T', href: '/docs/perfecxion-red-t', icon: Shield },
-            { name: 'perfecX Agent', href: '/docs/perfecxion-agent', icon: Users },
-            { name: 'perfecX Comply', href: '/docs/perfecxion-comply', icon: BookOpen },
-            { name: 'perfecX G-Rails', href: '/docs/perfecxion-g-rails', icon: Shield },
-        ]
-    },
-    {
-        title: 'Security Tools',
-        items: [
-            { name: 'PromptShield', href: '/docs/promptshield', icon: Shield },
-            { name: 'PromptShield Quick Start', href: '/docs/promptshield-quick-start', icon: Play },
-            { name: 'SafeAI Guard', href: '/docs/safeai-guard', icon: Shield },
-            { name: 'TorScan', href: '/docs/torscan', icon: Zap },
-        ]
-    },
     {
         title: 'Resources',
         items: [
@@ -32,11 +13,10 @@ const documentationSections = [
         ]
     },
     {
-        title: 'API Reference',
+        title: 'Coming Soon',
         items: [
-            { name: 'REST API', href: '/docs/api/rest', icon: Code },
-            { name: 'SDKs', href: '/docs/api/sdks', icon: Code },
-            { name: 'Webhooks', href: '/docs/api/webhooks', icon: Zap },
+            { name: 'Product Documentation', href: '#', icon: BookOpen, disabled: true },
+            { name: 'API Reference', href: '#', icon: FileText, disabled: true },
         ]
     },
 ]
@@ -105,6 +85,17 @@ function SidebarContent({ onLinkClick }: { onLinkClick: () => void }) {
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">Documentation</h2>
             </Link>
 
+            {/* Coming Soon Notice */}
+            <div className="bg-primary-50 dark:bg-primary-900/20 rounded-lg p-4 mb-6">
+                <div className="flex items-center space-x-2 mb-2">
+                    <Clock className="h-4 w-4 text-primary-600 dark:text-primary-400" />
+                    <span className="text-sm font-medium text-primary-700 dark:text-primary-300">Coming Soon</span>
+                </div>
+                <p className="text-xs text-primary-600 dark:text-primary-400">
+                    Product documentation is in development. Explore our resources below.
+                </p>
+            </div>
+
             <nav className="space-y-8">
                 {documentationSections.map((section) => (
                     <div key={section.title}>
@@ -114,20 +105,57 @@ function SidebarContent({ onLinkClick }: { onLinkClick: () => void }) {
                         <ul className="space-y-1">
                             {section.items.map((item) => (
                                 <li key={item.name}>
-                                    <Link
-                                        href={item.href}
-                                        className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors"
-                                        onClick={onLinkClick}
-                                    >
-                                        <item.icon className="h-4 w-4" />
-                                        <span>{item.name}</span>
-                                    </Link>
+                                    {item.disabled ? (
+                                        <div className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-400 dark:text-gray-500 cursor-not-allowed">
+                                            <item.icon className="h-4 w-4" />
+                                            <span>{item.name}</span>
+                                            <span className="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded">Soon</span>
+                                        </div>
+                                    ) : (
+                                        <Link
+                                            href={item.href}
+                                            className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors"
+                                            onClick={onLinkClick}
+                                        >
+                                            <item.icon className="h-4 w-4" />
+                                            <span>{item.name}</span>
+                                        </Link>
+                                    )}
                                 </li>
                             ))}
                         </ul>
                     </div>
                 ))}
             </nav>
+
+            {/* Quick Links */}
+            <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
+                    Quick Links
+                </h3>
+                <ul className="space-y-1">
+                    <li>
+                        <Link
+                            href="/learn"
+                            className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors"
+                            onClick={onLinkClick}
+                        >
+                            <BookOpen className="h-4 w-4" />
+                            <span>Learning Center</span>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            href="/blog"
+                            className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors"
+                            onClick={onLinkClick}
+                        >
+                            <FileText className="h-4 w-4" />
+                            <span>Blog & Insights</span>
+                        </Link>
+                    </li>
+                </ul>
+            </div>
         </div>
     )
 }

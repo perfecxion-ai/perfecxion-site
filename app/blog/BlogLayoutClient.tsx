@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { ChevronRight, BookOpen, Shield, Zap, Users, Code, Settings, Play, Target, Lock, AlertTriangle, CheckCircle, Brain, Database, Eye, BarChart3, Calendar, Clock, Tag, Search, Filter, Menu, X } from 'lucide-react'
+import { ChevronRight, BookOpen, Shield, Zap, Users, Code, Settings, Play, Target, Lock, AlertTriangle, CheckCircle, Brain, Database, Eye, BarChart3, Calendar, Clock, Tag, Search, Filter, Menu, X, FileText } from 'lucide-react'
 
 const sidebarSections = [
     {
@@ -151,7 +151,7 @@ function SidebarContent({ onLinkClick }: { onLinkClick: () => void }) {
                             onClick={onLinkClick}
                         >
                             <BookOpen className="h-4 w-4" />
-                            <span>Learn</span>
+                            <span>Learning Center</span>
                         </Link>
                     </li>
                     <li>
@@ -160,18 +160,8 @@ function SidebarContent({ onLinkClick }: { onLinkClick: () => void }) {
                             className="flex items-center space-x-3 px-3 py-2 text-sm text-gray-800 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors"
                             onClick={onLinkClick}
                         >
-                            <Shield className="h-4 w-4" />
+                            <FileText className="h-4 w-4" />
                             <span>Documentation</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href="/products"
-                            className="flex items-center space-x-3 px-3 py-2 text-sm text-gray-800 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors"
-                            onClick={onLinkClick}
-                        >
-                            <Zap className="h-4 w-4" />
-                            <span>Products</span>
                         </Link>
                     </li>
                     <li>
