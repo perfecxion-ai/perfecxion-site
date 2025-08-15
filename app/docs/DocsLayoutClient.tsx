@@ -4,7 +4,19 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { ChevronRight, BookOpen, FileText, Layout, Menu, X, Clock } from 'lucide-react'
 
-const documentationSections = [
+interface NavItem {
+    name: string
+    href: string
+    icon: any
+    disabled?: boolean
+}
+
+interface DocumentationSection {
+    title: string
+    items: NavItem[]
+}
+
+const documentationSections: DocumentationSection[] = [
     {
         title: 'Resources',
         items: [
