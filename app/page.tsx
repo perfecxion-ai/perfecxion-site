@@ -44,18 +44,17 @@ export default function HomePage() {
           </div>
           <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
             <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
-              <div className="rounded-md bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 dark:bg-gray-100/5 dark:ring-gray-100/10 lg:rounded-lg">
-                <div className="rounded-md bg-white p-6 shadow-2xl ring-1 ring-gray-900/10 dark:bg-gray-900 dark:ring-gray-100/10 lg:rounded-lg">
-                  <div className="flex items-center space-x-2">
-                    <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                    <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
-                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
-                  </div>
-                  <div className="mt-4 space-y-2">
-                    <div className="h-4 w-3/4 rounded bg-gray-200 dark:bg-gray-700"></div>
-                    <div className="h-4 w-1/2 rounded bg-gray-200 dark:bg-gray-700"></div>
-                    <div className="h-4 w-5/6 rounded bg-gray-200 dark:bg-gray-700"></div>
-                  </div>
+              <div className="rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/homepage.png"
+                  alt="AI Security Innovation - Research and Development"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto"
+                  priority
+                />
+                <div className="absolute -bottom-4 -right-4 bg-primary-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                  3 Patents Pending
                 </div>
               </div>
             </div>
