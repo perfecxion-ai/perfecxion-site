@@ -71,7 +71,7 @@ export default function MobileNav() {
         <div className="flex items-center justify-between px-4 py-3">
           <Link href="/" className="flex items-center">
             <Image
-              src="/logos/new-logo.png"
+              src="/logos/perfecxion-shield.png"
               alt="perfecXion.ai"
               width={280}
               height={70}

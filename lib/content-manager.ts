@@ -608,6 +608,18 @@ class ContentManager {
         tags: ["agentic-ai", "ai-architecture", "multi-agent-systems", "ai-security", "enterprise-ai", "autonomous-systems"],
         slug: 'agentic-ai-complete-guide',
         featured: true
+      },
+      {
+        type: 'blog',
+        title: 'Making Sense of Data Anonymization in AI',
+        description: 'Explore the critical balance between data utility and privacy protection in AI systems, understanding anonymization techniques, global regulations, and emerging privacy-preserving technologies.',
+        publishedAt: '2025-01-15',
+        readingTime: 8,
+        difficulty: 'intermediate',
+        category: 'Privacy & Compliance',
+        tags: ["Data Privacy", "Anonymization", "GDPR", "CCPA", "HIPAA", "AI Ethics", "Data Protection"],
+        slug: 'making-sense-data-anonymization-ai',
+        featured: false
       }
     ]
 
