@@ -80,7 +80,9 @@ export default function BlogLayoutClient({
                 {/* Main Content */}
                 <div className="flex-1">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-                        {children}
+                        <div className="bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-6">
+                            {children}
+                        </div>
                     </div>
                 </div>
             </div>

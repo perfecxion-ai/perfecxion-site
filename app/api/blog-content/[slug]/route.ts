@@ -223,6 +223,10 @@ function wrapContent(htmlContent: string): string {
       .blog-content {
         color: #1f2937;
         line-height: 1.75;
+        background-color: #f8fafc;
+        padding: 2rem;
+        border-radius: 1rem;
+        border: 1px solid #e2e8f0;
       }
       .blog-content h1 { 
         font-size: 2.5rem; 
@@ -267,20 +271,20 @@ function wrapContent(htmlContent: string): string {
         line-height: 1.75;
       }
       .blog-content pre { 
-        background-color: #f3f4f6; 
+        background-color: #1e293b; 
         padding: 1rem; 
         border-radius: 0.5rem; 
         overflow-x: auto; 
         margin-bottom: 1.25rem; 
-        color: #1f2937;
-        border: 1px solid #e5e7eb;
+        color: #e2e8f0;
+        border: 1px solid #334155;
       }
       .blog-content code { 
-        background-color: #f3f4f6; 
+        background-color: #e2e8f0; 
         padding: 0.125rem 0.25rem; 
         border-radius: 0.25rem; 
         font-size: 0.875rem; 
-        color: #1f2937;
+        color: #1e293b;
         font-family: 'Menlo', 'Monaco', 'Consolas', monospace;
       }
       .blog-content pre code { 
@@ -294,6 +298,9 @@ function wrapContent(htmlContent: string): string {
         margin: 1.25rem 0; 
         color: #4b5563; 
         font-style: italic;
+        background-color: #f1f5f9;
+        padding: 1rem;
+        border-radius: 0.5rem;
       }
       .blog-content strong { 
         font-weight: 600; 
@@ -303,7 +310,7 @@ function wrapContent(htmlContent: string): string {
         font-style: italic; 
       }
       .blog-content hr { 
-        border-top: 1px solid #e5e7eb; 
+        border-top: 1px solid #e2e8f0; 
         margin: 2rem 0; 
       }
       .blog-content table { 
@@ -312,42 +319,18 @@ function wrapContent(htmlContent: string): string {
         margin: 1.25rem 0; 
       }
       .blog-content th, .blog-content td { 
-        border: 1px solid #d1d5db; 
+        border: 1px solid #cbd5e1; 
         padding: 0.75rem; 
         text-align: left; 
       }
       .blog-content th { 
-        background-color: #f3f4f6; 
+        background-color: #f1f5f9; 
         font-weight: 600; 
         color: #111827;
       }
       .blog-content .mermaid { 
         max-width: 100%; 
         overflow-x: auto; 
-      }
-      @media (prefers-color-scheme: dark) {
-        .blog-content { color: #e5e7eb; }
-        .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 { color: #f9fafb; }
-        .blog-content p, .blog-content li, .blog-content ul, .blog-content ol { color: #d1d5db; }
-        .blog-content strong { color: #f3f4f6; }
-        .blog-content pre { 
-          background-color: #1f2937; 
-          color: #e5e7eb; 
-          border-color: #374151;
-        }
-        .blog-content code { 
-          background-color: #1f2937; 
-          color: #e5e7eb; 
-        }
-        .blog-content pre code { color: inherit; }
-        .blog-content blockquote { color: #9ca3af; }
-        .blog-content hr { border-color: #374151; }
-        .blog-content th, .blog-content td { border-color: #374151; }
-        .blog-content th { 
-          background-color: #1f2937; 
-          color: #f3f4f6;
-        }
-        .blog-content .mermaid { background-color: #1f2937; }
       }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
