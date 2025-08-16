@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Mail, Phone, MapPin, ArrowRight, Shield, Target, Brain, Users, Award, Globe, Zap, Building } from 'lucide-react'
+import { MapPin, Shield, Target, Brain, Award, Globe, Zap, Building } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'About Us - perfecXion.ai',
@@ -137,83 +137,17 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Team Section */}
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">Our Team</h2>
-          <div className="text-center max-w-3xl mx-auto">
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-              We're a team of AI security experts, researchers, and engineers with deep experience
-              in protecting AI systems at scale. Our backgrounds span leading technology companies,
-              security research institutions, and government agencies.
-            </p>
-            <div className="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-xl p-8">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                Join Our Mission
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
-                We're growing our team of AI security professionals. If you're passionate about
-                protecting AI systems and want to work on cutting-edge security challenges,
-                we'd love to hear from you.
-              </p>
-              <Link
-                href="/careers"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors"
-              >
-                View Open Positions
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </section>
 
-        {/* Contact CTA */}
-        <section>
-          <div className="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-2xl p-12 text-center">
-            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              Join Us in Securing AI's Future
-            </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-              Whether you're looking to protect your AI systems or join our mission, we'd love to hear from you.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="btn-primary">
-                Get in Touch <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-              <Link href="/careers" className="btn-secondary">
-                View Open Positions
-              </Link>
-            </div>
-          </div>
-        </section>
 
-        {/* Office Locations */}
+        {/* Office Location */}
         <section className="mt-20">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">Our Offices</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-50 dark:bg-primary-900/20">
-                <MapPin className="h-6 w-6 text-primary-600 dark:text-primary-400" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">San Francisco</h3>
-              <p className="text-gray-600 dark:text-gray-300">123 AI Security Blvd<br />San Francisco, CA 94105</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Headquarters</p>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">Our Office</h2>
+          <div className="text-center">
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-50 dark:bg-primary-900/20">
+              <MapPin className="h-6 w-6 text-primary-600 dark:text-primary-400" />
             </div>
-            <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-50 dark:bg-primary-900/20">
-                <MapPin className="h-6 w-6 text-primary-600 dark:text-primary-400" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">New York</h3>
-              <p className="text-gray-600 dark:text-gray-300">East Coast Office</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Remote team members</p>
-            </div>
-            <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-50 dark:bg-primary-900/20">
-                <MapPin className="h-6 w-6 text-primary-600 dark:text-primary-400" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">London</h3>
-              <p className="text-gray-600 dark:text-gray-300">European Office</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Remote team members</p>
-            </div>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">San Francisco</h3>
+            <p className="text-gray-600 dark:text-gray-300">San Francisco, CA</p>
           </div>
         </section>
       </div>
