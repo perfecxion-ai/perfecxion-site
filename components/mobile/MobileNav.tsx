@@ -15,21 +15,9 @@ interface NavItem {
 }
 
 const navigation: NavItem[] = [
-  {
-    name: 'Resources',
-    children: [
-      { name: 'Documentation', href: '/docs' },
-      { name: 'Blog', href: '/blog' },
-      { name: 'Learn', href: '/learn' },
-    ],
-  },
-  {
-    name: 'Company',
-    children: [
-      { name: 'About', href: '/about' },
-      { name: 'Contact', href: '/contact' },
-    ],
-  },
+  { name: 'Home', href: '/' },
+  { name: 'Knowledge Hub', href: '/knowledge' },
+  { name: 'About', href: '/about' },
 ]
 
 export default function MobileNav() {

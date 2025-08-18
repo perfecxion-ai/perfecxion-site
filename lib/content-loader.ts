@@ -196,13 +196,21 @@ export async function loadAllContent(): Promise<ContentItem[]> {
   )
   contentItems.push(...learningContent)
   
-  // Load knowledge content (new structure)
-  const knowledgeContent = await loadContentFromDirectory(
-    path.join(process.cwd(), 'content', 'knowledge'),
+  // Load white papers
+  const whitepaperContent = await loadContentFromDirectory(
+    path.join(process.cwd(), 'content', 'white-papers'),
     '/knowledge',
-    'article'
+    'whitepaper'
   )
-  contentItems.push(...knowledgeContent)
+  contentItems.push(...whitepaperContent)
+  
+  // Note: knowledge directory doesn't exist yet
+  // const knowledgeContent = await loadContentFromDirectory(
+  //   path.join(process.cwd(), 'content', 'knowledge'),
+  //   '/knowledge',
+  //   'article'
+  // )
+  // contentItems.push(...knowledgeContent)
   
   // Sort by date (newest first)
   contentItems.sort((a, b) => {
