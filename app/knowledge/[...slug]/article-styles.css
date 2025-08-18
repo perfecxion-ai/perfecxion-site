@@ -1,5 +1,34 @@
 /* Clean, minimal article styling for knowledge base articles */
 
+/* Ensure proper paragraph spacing */
+.prose p {
+  margin-bottom: 1.5rem !important;
+  line-height: 1.7 !important;
+}
+
+.prose p + p {
+  margin-top: 1.5rem !important;
+}
+
+/* Improve spacing for other elements */
+.prose ul, .prose ol {
+  margin-bottom: 1.5rem !important;
+  margin-top: 1rem !important;
+}
+
+.prose li {
+  margin-bottom: 0.5rem !important;
+}
+
+.prose h2, .prose h3, .prose h4 {
+  margin-top: 2.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.prose h2:first-child, .prose h3:first-child, .prose h4:first-child {
+  margin-top: 0 !important;
+}
+
 .article-header {
   padding: 2rem 0;
   margin-bottom: 3rem;

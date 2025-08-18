@@ -194,23 +194,23 @@ export default async function KnowledgeContentPage({ params }: PageProps) {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div 
           className="prose prose-lg dark:prose-invert max-w-none 
-            prose-headings:text-foreground prose-headings:font-bold prose-headings:mb-4 prose-headings:mt-8
+            prose-headings:text-foreground prose-headings:font-bold prose-headings:mb-6 prose-headings:mt-8
             prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg
-            prose-p:text-foreground prose-p:mb-4 prose-p:leading-relaxed
+            prose-p:text-foreground prose-p:mb-6 prose-p:leading-relaxed
             prose-strong:text-foreground prose-strong:font-semibold
-            prose-ul:text-foreground prose-ul:mb-4 prose-ul:space-y-1
-            prose-ol:text-foreground prose-ol:mb-4 prose-ol:space-y-1
+            prose-ul:text-foreground prose-ul:mb-6 prose-ul:space-y-2
+            prose-ol:text-foreground prose-ol:mb-6 prose-ol:space-y-2
             prose-li:text-foreground prose-li:mb-1
-            prose-blockquote:text-muted-foreground prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:my-4
+            prose-blockquote:text-muted-foreground prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:my-6
             prose-code:bg-muted prose-code:text-foreground prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-            prose-pre:bg-gray-900 prose-pre:text-white prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:my-4
+            prose-pre:bg-gray-900 prose-pre:text-white prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:my-6
             prose-pre:code:bg-transparent prose-pre:code:p-0 prose-pre:code:text-inherit
             prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:underline hover:prose-a:no-underline
-            prose-table:w-full prose-table:border-collapse prose-table:my-4
+            prose-table:w-full prose-table:border-collapse prose-table:my-6
             prose-th:text-foreground prose-th:bg-muted prose-th:font-semibold prose-th:border prose-th:border-border prose-th:px-4 prose-th:py-2
             prose-td:text-foreground prose-td:border prose-td:border-border prose-td:px-4 prose-td:py-2
             prose-hr:border-border prose-hr:my-8
-            prose-img:rounded-lg prose-img:shadow-lg prose-img:my-4"
+            prose-img:rounded-lg prose-img:shadow-lg prose-img:my-6"
           dangerouslySetInnerHTML={{ __html: content }}
         />
         
