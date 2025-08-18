@@ -237,8 +237,7 @@ Identify the Target Code: The attack is implemented by altering the logic of the
 
 Implement the Malicious Behavior: Create a new subclass of the existing DCQCN implementation or add a configurable parameter (an ns3::Attribute) to the existing class to enable "malicious mode." Within this mode, the logic for rate reduction upon CNP receipt is bypassed. For example:
 
-C++
-
+```cpp
 void Dcqcn::OnCnpReceived(...)
 {
   if (m_isMalicious)
@@ -250,6 +249,7 @@ void Dcqcn::OnCnpReceived(...)
   // Original rate reduction logic here...
   ReduceRate();
 }
+```
 This modification ensures that your malicious node's congestion control algorithm never enters the rate reduction phase, effectively ignoring all ECN-based feedback.
 
 Simulation Scenario: In your simulation script, configure a multi-tenant scenario where a "malicious" node (with the modified DCQCN) and several "compliant" victim nodes share a common bottleneck link. The malicious behavior can be enabled for the specific attacker node using the NS-3 attribute system.

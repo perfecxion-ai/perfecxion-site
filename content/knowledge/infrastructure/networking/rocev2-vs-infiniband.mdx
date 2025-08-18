@@ -327,7 +327,7 @@ The following table encapsulates key architectural and performance differences a
 | Congestion Control | Inherent backpressure via credits; secondary ECN-like mechanism | DCQCN algorithm in NIC reacts to ECN marks from switches |
 | Routing | Centralized, calculated by Subnet Manager; supports Adaptive Routing | Standard, distributed L3 protocols (e.g., BGP); ECMP hashing for load balancing |
 | Management | Centralized via Subnet Manager for entire fabric | Distributed; standard Ethernet tools, but requires complex per-device tuning |
-| Typical Latency | Lower and more consistent (e.g., <2 µs end-to-end) | Low but more variable (e.g., 2-6 µs end-to-end); longer tail |
+| Typical Latency | Lower and more consistent (e.g., &lt;2 µs end-to-end) | Low but more variable (e.g., 2-6 µs end-to-end); longer tail |
 | Resilience to HoL Blocking | High; architecturally immune due to credit system and VOQ support | Low; highly susceptible due to coarse-grained PFC mechanism |
 | Resilience to Incast | Very High; native, hop-by-hop backpressure via credit system | Moderate to Low; dependent on deep switch buffers and DCQCN reaction speed |
 | Scalability | Proven to massive scale in HPC and AI clusters | Excellent; leverages scalable L3 routing protocols of hyperscale data centers |
@@ -346,7 +346,7 @@ Justification: At this scale, your primary goal is to maximize utilization of an
 
 InfiniBand's superior performance predictability, lower and more consistent tail latency, and architectural resilience to pathological AI traffic patterns provide the most reliable and lowest-risk foundation for these mission-critical deployments. The higher CapEx is justified as necessary investment to ensure performance and stability of your entire system.
 
-Scenario 2: Mid-Scale or Cost-Sensitive Clusters (<512 GPUs, Fine-Tuning, Inference)
+Scenario 2: Mid-Scale or Cost-Sensitive Clusters (&lt;512 GPUs, Fine-Tuning, Inference)
 Recommendation: RoCEv2 (with significant caveats)
 
 Justification: In these smaller-scale deployments, or for workloads like model fine-tuning and inference that may be less sensitive to tail latency than pre-training, budget constraints can be a primary driver. RoCEv2 offers a compelling performance-per-dollar proposition by leveraging lower-cost commodity hardware.
