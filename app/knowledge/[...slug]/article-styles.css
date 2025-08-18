@@ -36,42 +36,43 @@
   }
 }
 
-/* Headings - React docs style */
+/* Headings - React docs style with reasonable sizes */
 .prose h1 {
-  font-size: 2.5rem;
+  font-size: 1.875rem !important; /* Smaller h1 */
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1.5rem;
-  color: rgb(23, 23, 23);
+  color: rgb(255, 255, 255) !important;
+  margin-top: 2rem;
 }
 
 .prose h2 {
-  font-size: 2rem;
+  font-size: 1.5rem !important; /* Smaller h2 */
   font-weight: 700;
   line-height: 1.3;
-  margin-top: 3rem;
-  margin-bottom: 1.25rem;
-  color: rgb(23, 23, 23);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: rgb(255, 255, 255) !important;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgb(229, 231, 235);
+  border-bottom: 1px solid rgb(55, 65, 81);
 }
 
 .prose h3 {
-  font-size: 1.5rem;
+  font-size: 1.25rem !important; /* Smaller h3 */
   font-weight: 600;
   line-height: 1.4;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-  color: rgb(23, 23, 23);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: rgb(255, 255, 255) !important;
 }
 
 .prose h4 {
-  font-size: 1.25rem;
+  font-size: 1.125rem !important; /* Smaller h4 */
   font-weight: 600;
   line-height: 1.5;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-  color: rgb(23, 23, 23);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: rgb(255, 255, 255) !important;
 }
 
 /* FORCE WHITE HEADINGS */
