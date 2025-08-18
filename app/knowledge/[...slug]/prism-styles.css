@@ -133,45 +133,45 @@ pre[class*="language-"] span {
 /* Dark mode adjustments */
 @media (prefers-color-scheme: dark) {
   pre[class*="language-"] {
-    background: #1f2937;
-    border: 1px solid #374151;
-    color: #e5e7eb;
+    background: #374151 !important;
+    border: 1px solid #4b5563 !important;
+    color: #e5e7eb !important;
   }
   
   code[class*="language-"] {
-    background: #374151;
-    color: #d1d5db;
+    background: #374151 !important;
+    color: #d1d5db !important;
   }
   
   .token.comment,
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    color: #9ca3af;
+    color: #9ca3af !important;
   }
   
   .token.punctuation {
-    color: #d1d5db;
+    color: #d1d5db !important;
   }
   
   .token.keyword {
-    color: #fbbf24;
+    color: #fbbf24 !important;
   }
   
   .token.string,
   .token.char,
   .token.builtin,
   .token.inserted {
-    color: #34d399;
+    color: #34d399 !important;
   }
   
   .token.function,
   .token.class-name {
-    color: #60a5fa;
+    color: #60a5fa !important;
   }
   
   .token.number,
   .token.boolean {
-    color: #a78bfa;
+    color: #a78bfa !important;
   }
 }
