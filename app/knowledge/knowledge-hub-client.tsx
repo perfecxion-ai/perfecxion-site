@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import { Search, BookOpen, FileText, Zap, Building, X, Clock, ChevronRight, Tag, ChevronLeft, Rss } from 'lucide-react'
+import { Search, BookOpen, FileText, Zap, Building, X, Clock, ChevronRight, Tag, ChevronLeft, Rss, Calendar, TrendingUp, ChevronDown } from 'lucide-react'
 import React from 'react'
 import { ContentItem } from '@/lib/content-loader'
 import { searchContent, findRelatedContent } from '@/lib/search-utils'
@@ -34,6 +34,18 @@ const domains = [
   { id: 'operations', label: 'Operations' }
 ]
 
+// Sort options
+const sortOptions = [
+  { id: 'newest', label: 'Newest First', icon: Calendar },
+  { id: 'oldest', label: 'Oldest First', icon: Calendar },
+  { id: 'recently-added', label: 'Recently Added', icon: TrendingUp },
+  { id: 'alphabetical', label: 'Alphabetical', icon: null },
+  { id: 'relevance', label: 'Relevance', icon: null }
+]
+
+// Items per page options
+const itemsPerPageOptions = [12, 24, 48, 96]
+
 interface KnowledgeHubClientProps {
   initialContent: ContentItem[]
 }
@@ -45,7 +57,9 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
   const [selectedDomain, setSelectedDomain] = useState('all')
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
-  const itemsPerPage = 12
+  const [itemsPerPage, setItemsPerPage] = useState(24)
+  const [sortBy, setSortBy] = useState('newest')
+  const [showItemsDropdown, setShowItemsDropdown] = useState(false)
 
   // Extract popular topics from content
   const popularTopics = useMemo(() => {
@@ -67,7 +81,7 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
       .map(([topic]) => topic)
   }, [initialContent])
 
-  // Filter content based on all criteria
+  // Filter and sort content based on all criteria
   const filteredContent = useMemo(() => {
     let filtered = initialContent
     
@@ -99,13 +113,50 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
       return true
     })
     
+    // Apply sorting
+    filtered = [...filtered].sort((a, b) => {
+      switch (sortBy) {
+        case 'newest':
+          // Sort by date, newest first
+          if (!a.date && !b.date) return 0
+          if (!a.date) return 1
+          if (!b.date) return -1
+          return new Date(b.date).getTime() - new Date(a.date).getTime()
+        
+        case 'oldest':
+          // Sort by date, oldest first
+          if (!a.date && !b.date) return 0
+          if (!a.date) return 1
+          if (!b.date) return -1
+          return new Date(a.date).getTime() - new Date(b.date).getTime()
+        
+        case 'recently-added':
+          // Sort by isNew flag and then by date
+          if (a.isNew && !b.isNew) return -1
+          if (!a.isNew && b.isNew) return 1
+          if (!a.date && !b.date) return 0
+          if (!a.date) return 1
+          if (!b.date) return -1
+          return new Date(b.date).getTime() - new Date(a.date).getTime()
+        
+        case 'alphabetical':
+          // Sort alphabetically by title
+          return a.title.localeCompare(b.title)
+        
+        case 'relevance':
+        default:
+          // Keep original order (relevance from search)
+          return 0
+      }
+    })
+    
     // Reset to page 1 when filters change
     if (currentPage > Math.ceil(filtered.length / itemsPerPage)) {
       setCurrentPage(1)
     }
     
     return filtered
-  }, [searchQuery, selectedFormat, selectedDifficulty, selectedDomain, selectedTopic, initialContent, currentPage, itemsPerPage])
+  }, [searchQuery, selectedFormat, selectedDifficulty, selectedDomain, selectedTopic, sortBy, initialContent, currentPage, itemsPerPage])
   
   // Paginated content
   const paginatedContent = useMemo(() => {
@@ -226,6 +277,54 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
                     <option key={domain.id} value={domain.id}>{domain.label}</option>
                   ))}
                 </select>
+              </div>
+            </div>
+
+            {/* Sort and Display Options */}
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium text-muted-foreground">Sort by:</span>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="px-3 py-1.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  {sortOptions.map(option => (
+                    <option key={option.id} value={option.id}>{option.label}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium text-muted-foreground">Show:</span>
+                <div className="relative">
+                  <button
+                    onClick={() => setShowItemsDropdown(!showItemsDropdown)}
+                    className="px-3 py-1.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 flex items-center gap-2"
+                  >
+                    {itemsPerPage} items
+                    <ChevronDown className="h-4 w-4" />
+                  </button>
+                  {showItemsDropdown && (
+                    <div className="absolute top-full mt-1 right-0 bg-background border border-border rounded-lg shadow-lg z-10">
+                      {itemsPerPageOptions.map(option => (
+                        <button
+                          key={option}
+                          onClick={() => {
+                            setItemsPerPage(option)
+                            setShowItemsDropdown(false)
+                            setCurrentPage(1)
+                          }}
+                          className={`block w-full px-4 py-2 text-sm text-left hover:bg-muted transition-colors ${
+                            option === itemsPerPage ? 'bg-muted' : ''
+                          }`}
+                        >
+                          {option} items
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
