@@ -93,6 +93,55 @@ function determineDifficulty(content: any): ContentItem['difficulty'] {
   return 'intermediate'
 }
 
+// Smart format inference based on content
+function inferFormat(content: any, defaultFormat: ContentItem['format'] = 'article'): ContentItem['format'] {
+  // First check if explicit type is set
+  if (content.type) {
+    return typeToFormat[content.type] || typeToFormat.default
+  }
+  
+  const title = content.title?.toLowerCase() || ''
+  const description = content.description?.toLowerCase() || ''
+  const fullText = `${title} ${description}`
+  
+  // Look for white paper indicators
+  if (title.includes('white paper') || 
+      title.includes('whitepaper') ||
+      title.includes('technical white paper') ||
+      title.includes('comprehensive technical white paper') ||
+      title.includes('executive report') ||
+      fullText.includes('executive summary')) {
+    return 'whitepaper'
+  }
+  
+  // Look for learning path indicators  
+  if (title.includes('guide') ||
+      title.includes('tutorial') ||
+      title.includes('complete guide') ||
+      title.includes('comprehensive guide') ||
+      title.includes('step-by-step') ||
+      title.includes('learning path') ||
+      title.includes('getting started') ||
+      fullText.includes('learn how to')) {
+    return 'learning'
+  }
+  
+  // Look for reference architecture indicators
+  if (title.includes('architecture') ||
+      title.includes('reference') ||
+      title.includes('framework') ||
+      title.includes('implementation guide') ||
+      title.includes('system design') ||
+      title.includes('blueprint') ||
+      fullText.includes('architectural') ||
+      fullText.includes('implementation strategy')) {
+    return 'architecture'
+  }
+  
+  // Default to article
+  return defaultFormat
+}
+
 // Load content from a directory
 async function loadContentFromDirectory(
   contentDir: string,
@@ -139,10 +188,8 @@ async function loadContentFromDirectory(
              relativePath.includes('compliance') ? 'compliance' :
              'operations')
           
-          // Determine format
-          const format = data.type ? 
-            (typeToFormat[data.type] || typeToFormat.default) :
-            defaultFormat
+          // Determine format using smart inference
+          const format = inferFormat(data, defaultFormat)
           
           // Check if new (within last 30 days)
           const isNew = data.date ? 
