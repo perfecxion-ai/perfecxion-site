@@ -51,9 +51,14 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
   const popularTopics = useMemo(() => {
     const topicCounts: Record<string, number> = {}
     initialContent.forEach(item => {
-      item.topics.forEach(topic => {
-        topicCounts[topic] = (topicCounts[topic] || 0) + 1
-      })
+      if (item.topics && Array.isArray(item.topics)) {
+        item.topics.forEach(topic => {
+          if (topic && typeof topic === 'string') {
+            const trimmedTopic = topic.trim()
+            topicCounts[trimmedTopic] = (topicCounts[trimmedTopic] || 0) + 1
+          }
+        })
+      }
     })
     // Get top 12 topics
     return Object.entries(topicCounts)
@@ -82,10 +87,14 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
       // Domain filter
       if (selectedDomain !== 'all' && item.domain !== selectedDomain) return false
 
-      // Topic filter (case-insensitive)
-      if (selectedTopic && !item.topics.some(topic => 
-        topic.toLowerCase() === selectedTopic.toLowerCase()
-      )) return false
+      // Topic filter (case-insensitive with trimming)
+      if (selectedTopic) {
+        const hasMatchingTopic = item.topics && Array.isArray(item.topics) && 
+          item.topics.some(topic => 
+            topic.trim().toLowerCase() === selectedTopic.trim().toLowerCase()
+          )
+        if (!hasMatchingTopic) return false
+      }
 
       return true
     })
