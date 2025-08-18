@@ -1,0 +1,379 @@
+---
+title: Securing AI Fabric Telemetry and Congestion Systems
+description: >-
+  Best practices for securing telemetry and congestion control mechanisms in AI
+  network fabrics
+date: '2025-08-18'
+category: security
+tags:
+  - AI Fabric
+  - Network Security
+  - Telemetry
+  - Best Practices
+  - Congestion Control
+difficulty: advanced
+readTime: 15 min read
+format: article
+domain: infrastructure
+topics:
+  - AI Fabric
+  - Network Security
+  - Telemetry
+  - Best Practices
+  - Congestion Control
+---
+
+## Section 1: The Architecture of Shared AI Fabrics and Inherent Trust Assumptions
+
+Your pursuit of AI and HPC performance created specialized network fabrics. These fabrics—the nervous system of modern AI clusters—need ultra-low latency and massive bandwidth for tightly coupled, parallel processing in large-scale model training and inference. Yet the architectural decisions enabling this performance rely on implicit trust assumptions. You chose specific interconnects, adopted multi-tenancy for economics, and designed fabric management protocols based on single-user supercomputing assumptions. These assumptions fundamentally misalign with adversarial realities in shared, multi-tenant infrastructures. This misalignment creates complex security risks where performance mechanisms become compromise vectors.
+
+### 1.1 The Evolution of High-Performance Interconnects: From InfiniBand to Converged Ethernet
+
+AI fabrics evolved from proprietary, vertically integrated systems to open-standard, component-based solutions. This transition democratized high-performance networking access while introducing complexity that breeds security vulnerabilities.
+
+InfiniBand remains the gold standard for performance-sensitive AI workloads. It offers extremely low latency, high throughput, and native RDMA support for efficient data movement with minimal CPU overhead. A centralized security model orchestrated by the Subnet Manager (SM) defines its architecture. The SM configures the entire fabric—routing, partitioning, and access control—providing single-point authority. This centralization simplifies trust to "trust the SM." Yet InfiniBand stays proprietary, controlled by a single vendor, limiting flexibility and interoperability. Resource isolation in multi-tenant scenarios relies on complex host-level software layers. Core component failures create wide blast radius effects.
+
+RoCEv2 represents movement toward open standards and cost efficiency through existing Ethernet infrastructure. Replicating InfiniBand's "lossless" RDMA behavior requires complex protocol interplay. Priority Flow Control (PFC) provides hop-by-hop pause mechanisms. Explicit Congestion Notification (ECN) handles end-to-end signaling. Data Center Quantized Congestion Notification (DCQCN) orchestrates these components, requiring meticulous end-to-end tuning across NICs and switches. This complexity becomes the primary vulnerability source explored here. AI fabrics face fundamental tension: raw RDMA performance must reconcile with robust multi-tenant resource isolation—a challenge neither InfiniBand nor standard Ethernet inherently solves. Choosing open Ethernet trades vendor lock-in for new security risks rooted in emergent, unpredictable distributed network control behavior.
+
+### 1.2 The Multi-Tenant Paradigm in AI Clusters: Shared Resources, Divergent Interests
+
+Multi-tenancy lets multiple users, teams, or customers—tenants—share common physical infrastructure. Powerful economic incentives drive this model. Economies of scale emerge. Expensive resources like GPUs and high-performance fabrics achieve maximum use. In AI contexts, multiple independent training or inference jobs from different tenants run concurrently on the same cluster, sharing network fabric.
+
+The "noisy neighbor" problem creates operational challenges—resource-intensive workloads from one tenant monopolize shared resources, degrading others' performance. This extends beyond accidental interference to severe threats: "malicious tenants." In hard multi-tenancy environments like public clouds or large enterprises with competing units, tenants aren't cooperative. Consider them untrusting and potentially adversarial. Malicious tenants actively disrupt other workloads, exfiltrate sensitive data (proprietary models or datasets), or manipulate fabric for unfair resource shares. This threat model demands hostile intent assumptions and strong, verifiable tenant isolation at every infrastructure layer. Architectural choices in AI fabric design must meet this stringent requirement—isolation failures cause performance degradation and catastrophic security breaches.
+
+### 1.3 Implicit Trust Models in Fabric Management and Data Planes
+
+High-performance fabric management and data planes often assume implicit trust suited for cooperative, single-tenant supercomputing. This legacy creates significant security gaps in adversarial multi-tenancy.
+
+InfiniBand embodies centralized trust. The SM holds ultimate authority. Fabric security relies on SM integrity and access control enforcement via Management Keys (M_Keys) for configuration and Partition Keys (P_Keys) for communication isolation. These mechanisms provide protection but aren't infallible. Compromised SMs or rogue devices spoofing identities (Global Unique Identifiers) to SMs undermine entire fabric security policies, reconfiguring partitions or manipulating routing at will.
+
+RoCEv2 fabrics on Ethernet exhibit distributed trust models introducing distributed risks. Control isn't centralized but emerges from cooperative endpoint (RNIC) and switch behavior. Each device must correctly implement PFC, ECN, and DCQCN consistently. This distributed responsibility means single misconfigured or malicious tenant endpoints disrupt entire system balance. Such nodes ignore congestion signals causing packet loss for others, or maliciously generate traffic triggering cascading failures like PFC storms or deadlocks—effectively launching denial-of-service against other tenants.
+
+RDMA introduces profound trust assumptions. Offloading entire network stacks to NICs and bypassing host operating systems offers unparalleled performance. Yet kernel bypass fundamentally opposes multi-tenant security principles. Traditional multi-tenant isolation uses hypervisors or host OS mediating hardware resource access. RDMA subverts this by design, creating direct hardware-level channels between tenant applications and shared NICs. This exposes NIC internal microarchitectural resources—on-chip caches, command queues, memory translation tables—to potential tenant interference. Malicious tenants attack others at hardware levels through side channels or resource exhaustion—threats invisible to host OS where traditional isolation like SR-IOV proves insufficient. RDMA's speed-enabling feature—kernel bypass—makes it inherently insecure in shared environments without specialized hardware-aware defenses.
+
+## Section 2: Exploiting Congestion Control Mechanisms
+
+Congestion control algorithms maintain stability and ensure fair resource allocation under heavy load. Yet their complexity, particularly in lossless RDMA fabrics, creates sophisticated attack surfaces. Malicious actors manipulate algorithm behavior not just for unfair advantage but to actively induce congestion, creating targeted DoS attacks, starving victim bandwidth, and causing widespread performance degradation.
+
+### 2.1 Ethernet (RoCEv2): The Fragile Interplay of PFC, ECN, and DCQCN
+
+RoCEv2 networks achieve lossless transport through precise orchestration of three technologies: PFC, ECN, and DCQCN governing their interaction. Designed to work together preventing network collapse, their complex interplay becomes weaponizable—defensive measures become offensive weapons.
+
+#### 2.1.1 Technical Deep Dive: How DCQCN Balances PFC and ECN
+
+Understanding vulnerabilities requires understanding mechanics. PFC (IEEE 802.1Qbb) provides link-level, hop-by-hop flow control on specific traffic classes. When switch ingress buffers for PFC-enabled priority classes exceed thresholds, switches transmit PAUSE frames to immediate upstream neighbors. These frames halt transmissions for specific priority classes for set durations, preventing buffer overflow and packet drops. PFC powerfully enforces losslessness but bluntly—it causes significant performance issues like head-of-line blocking.
+
+ECN (RFC 3168) provides granular, end-to-end signaling. Instead of pausing links, ECN-capable switches mark packets with Congestion Experienced (CE) bits in IP headers when egress queue depths surpass thresholds. Marked packets reaching destinations trigger receiving NICs to send Congestion Notification Packets (CNPs) back to original senders. CNPs inform senders of path congestion.
+
+DCQCN connects these mechanisms through three-party protocol: sender (Reaction Point, RP), switch (Congestion Point, CP), and receiver (Notification Point, NP). DCQCN uses ECN early warnings for proactive congestion management. Upon receiving CNPs, sender NICs reduce injection rates. Systems tune for rate reduction before congestion fills switch buffers triggering disruptive PFC. Well-functioning DCQCN environments handle incipient congestion gracefully through ECN, with PFC as last-resort safety.
+
+#### 2.1.2 Attack Vector: PFC-Induced Congestion Spreading and Deadlocks
+
+PFC's brute-force nature creates primary vulnerability. Malicious tenants craft traffic weaponizing this mechanism. PFC operates on entire priority classes, not per-flow. Attackers trigger PAUSE frames halting their traffic plus innocent victim tenant traffic sharing priority queues. This creates head-of-line blocking—single malicious flows stall numerous benign workloads.
+
+Sustained attacks cause "PFC storms"—PAUSE frames propagate backward through networks switch-to-switch. Each paused upstream switch fills its ingress buffers, sending PAUSE frames further upstream. Chain reactions freeze traffic across large fabric segments, causing widespread DoS.
+
+Most catastrophic: PFC deadlocks. Cyclic buffer dependencies (CBD) form among switch groups. Simple scenario: attackers control endpoints sending Flow A from Switch 1 to Switch 2 and Flow B from Switch 2 to Switch 1. Simultaneous flooding fills buffers—Flow A fills Switch 2's buffer, causing PFC PAUSE to Switch 1; Flow B fills Switch 1's buffer, causing PFC PAUSE to Switch 2. Both switches pause, waiting for buffer releases neither can provide. Permanent traffic gridlock results, taking down network portions. While deadlocks occur from misconfigurations or link failures, sophisticated multi-tenant attackers intentionally orchestrate traffic creating deadlock conditions—reliability mechanisms become potent attack vectors.
+
+#### 2.1.3 Attack Vector: The LoRDMA Low-Rate DoS Attack
+
+Sophisticated attacks exploit emergent behavior from multiple control system interactions. LoRDMA (Low-rate DoS in RDMA) weaponizes PFC-DCQCN interplay for highly effective, stealthy DoS campaigns.
+
+Multi-step attack hijacks network control loops:
+
+**PFC Triggering**: Attackers use compromised nodes ("bots") sending short, intense, line-rate traffic bursts to targeted switch egress ports. Goals: momentarily overwhelm buffers triggering PFC PAUSE frames, not sustain floods.
+
+**Congestion Propagation**: PFC PAUSE frames travel to immediate upstream switches, causing egress queue buildup feeding paused links. Congestion pockets form one hop from attacker paths.
+
+**DCQCN Deception**: DCQCN on upstream switches observes queue buildup without knowing downstream PFC backpressure causes. It sees long queues, marking ECN bits on all passing packets. Crucially, these packets belong to innocent victim flows sharing no downstream links with attacker traffic.
+
+**Victim Throttling**: ECN-marked packets reach destinations, triggering CNPs to victim senders. Victim NICs following DCQCN interpret CNPs as legitimate congestion, drastically cutting sending rates.
+
+**Asymmetric Recovery**: Attackers cease bursts. PFC PAUSEs release, congestion dissipates. Yet DCQCN's Additive-Increase/Multiplicative-Decrease nature means victim flows recover slowly. Research shows flows throttled to zero in 1ms but taking 60ms+ to recover.
+
+Repeating cycles with long periods (60-100ms), attackers maintain low average rates, evading volume-based monitoring while causing severe, widespread degradation. Temporal asymmetry—short attacks causing long recovery—provides massive force multiplication. Simulations and real-world cloud RDMA tests show small bot numbers (2% of nodes) degrade nearly all network flows by 53%, and NCCL training jobs by 18-56%. Attackers use RTT measurements as side-channel feedback adaptively tuning burst parameters for maximum impact—LoRDMA becomes precision weapon against shared AI fabrics.
+
+### 2.2 InfiniBand: Subverting Adaptive Routing and Fabric Management
+
+InfiniBand's centralized architecture presents different attack surfaces than Ethernet. Attacks focus on subverting central authority—the Subnet Manager—or manipulating controlled routing mechanisms.
+
+#### 2.2.1 Technical Deep Dive: Subnet Manager and Adaptive Routing Logic
+
+The SM provides InfiniBand fabric's single truth source. It discovers topology and sends Subnet Management Packets configuring forwarding tables in every switch. Centralized control uses key protection. Management Keys prevent unauthorized configuration changes. Partition Keys enforce isolation like VLAN tags, preventing inter-partition communication.
+
+Adaptive Routing introduces dynamism to centrally planned systems. SMs provide switches with valid alternative destination paths. Switches dynamically select least congested outbound ports based on egress queue depth and path priority, routing around hotspots.
+
+#### 2.2.2 Attack Vector: Manipulating Routing for Tenant Starvation or Isolation Bypass
+
+AR improves performance but enables manipulation. Malicious tenants controlling multiple endpoints generate crafted traffic patterns intentionally congesting specific network paths. This tricks AR algorithms diverting other tenant traffic onto suboptimal routes, inducing targeted victim congestion and bandwidth starvation. Sophisticated attacks reroute traffic through compromised attacker-controlled nodes, enabling man-in-the-middle attacks.
+
+AR side effects include out-of-order packet delivery—different flow packets take different paths. While modern libraries handle this, legacy MPI applications or custom software assume in-order arrival. Attackers craft traffic maximizing reordering effects on victim flows, potentially triggering application errors, crashes, or silent data corruption in AI jobs.
+
+#### 2.2.3 Attack Vector: Exploiting Weaknesses in Partition and Management Keys
+
+Ultimate InfiniBand attacks compromise SMs or bypass key-based security. Achieving this lets attackers remap entire networks at will.
+
+Potential vectors:
+
+**SM Impersonation**: Attackers spoof legitimate SM identities or inject malicious SMPs. Weak or misconfigured M_Key security lets switches accept commands, allowing routing or partition reconfiguration.
+
+**GUID Spoofing**: Devices have unique GUIDs. Attackers program malicious devices reporting legitimate victim GUIDs. SMs detect duplicate GUIDs and isolate offending ports—this tricks SMs into disconnecting legitimate victims from fabrics.
+
+**Key Management Weaknesses**: Fabric security depends on key strength and management. "Key Lease Periods" let new SMs take over when old ones become unresponsive; zero settings (infinite) leave devices vulnerable indefinitely after SM failures. Compromised or weak keys trivially bypass partition isolation, giving attackers free communication with any fabric tenant.
+
+## Section 3: Weaponizing Network Telemetry
+
+Network telemetry—measurement data collection from network devices—provides performance monitoring, troubleshooting, and resource management in complex AI fabrics. Yet these operational visibility streams become potent adversary tools. They're passively mined for sensitive information, actively manipulated deceiving control systems, or used as high-fidelity feedback orchestrating sophisticated attacks.
+
+### 3.1 Passive Information Leakage via Sampled and Aggregated Telemetry
+
+Even correctly functioning telemetry systems inadvertently leak valuable tenant activity information, creating significant confidentiality and operational security risks in multi-tenant environments.
+
+#### 3.1.1 sFlow and Counters: Inferring AI Workload Signatures and Tenant Activity
+
+sFlow samples packet header fractions at regular intervals, exporting them to central collectors for analysis. This scalable approach suits high-speed networks but costs. Sampled headers lack full payloads but contain rich metadata—source/destination IPs, ports, protocol information.
+
+In multi-tenant settings where adversaries access or intercept telemetry streams, metadata becomes competitive intelligence. Analyzing communication patterns, attackers build detailed victim tenant AI workload "signatures":
+
+**Architectural Inference**: Source/destination IP patterns reveal distributed training job topology. Many-to-one patterns indicate parameter server architectures; dense all-to-all patterns signify ring all-reduce collectives.
+
+**Workload Phasing**: Traffic volume fluctuations betray current AI job phases. Intense, high-volume periods correspond to gradient exchange; lower traffic indicates computation-heavy phases.
+
+**Model Fingerprinting**: Different neural architectures and frameworks generate unique communication fingerprints. Attackers correlate observed patterns with known models inferring competitor training.
+
+The fundamental vulnerability: standard telemetry systems lack strong inter-tenant data confidentiality. Even with encrypted application payloads, traffic metadata remains highly sensitive, revealing tenant operations and intellectual property.
+
+#### 3.1.2 Timing Side-Channels: Using Latency Variation as Information Oracle
+
+Side-channel attacks leverage non-functional system property information leaks—power consumption or execution time. In shared fabrics, malicious tenants actively probe network paths or resources measuring response latency. Latency variations reveal victim tenant activity concurrently using same resources (switches, links, NIC components).
+
+This extracts highly sensitive AI workload information:
+
+**Leaking Input Data Attributes**: Research demonstrates certain models like Adaptive Deep Neural Networks correlate inference time with input data characteristics. Attackers repeatedly querying hosted models and precisely measuring response times significantly improve ability inferring sensitive user input attributes—studies show 9.89x probability increases for correct attribute inference.
+
+**Leaking LLM Responses**: Potent timing side-channels attack LLMs using streaming responses. Even with TLS encryption, network packet sizes correspond to token sizes sent. On-path observers capture packet size sequences, inferring response token lengths. Feeding token length sequences into language models, researchers reconstructed 29% of AI assistant responses and correctly inferred topics 55% of the time.
+
+While simple end-to-end probing performs these attacks, advanced fabric telemetry makes them far more dangerous. Per-packet latency telemetry like In-band Network Telemetry offers attackers cleaner, higher-fidelity timing analysis signals—making side-channel attacks more practical, faster, and accurate.
+
+### 3.2 Active Manipulation of In-band Network Telemetry (INT)
+
+Security risks escalate when telemetry transitions from passive observation to active network control components. INT represents this shift—its lacking inherent security creates direct fabric behavior manipulation opportunities.
+
+#### 3.2.1 Technical Deep Dive: INT Data Model and Reporting Pipeline
+
+INT provides revolutionary per-packet data plane visibility. Packets traversing networks have INT-capable switches append metadata blocks to headers—switch IDs, ingress/egress ports, timestamps, and critically, current queue occupancy. Packets reaching destinations strip metadata "trails," aggregate reports, and send to telemetry collectors. This provides complete hop-by-hop records of exact packet paths and conditions. Real-time, fine-grained data proves invaluable for precision troubleshooting and high-performance congestion control like HPCC, relying on accurate queue depths for precise rate adjustments.
+
+#### 3.2.2 Attack Vector: Telemetry Poisoning and Forging Congestion Signals
+
+Standard INT's primary vulnerability: absent authentication and integrity protection for packet telemetry data. Malicious on-path actors—compromised switches or malicious tenants with hypervisor data plane access—intercept packets modifying INT metadata before forwarding.
+
+This enables "telemetry poisoning." Attackers forge congestion signals artificially inflating queue_depth or hop_latency values in victim packet INT headers. Advanced congestion control like HPCC receives forged reports interpreting them as severe congestion evidence. Algorithms instruct victim senders to drastically throttle transmission rates. Attackers gain highly targeted, efficient DoS methods against specific flows or tenants—feeding false data into network control loops. This parallels machine learning data poisoning where manipulated inputs corrupt model behavior. Here, attackers poison network sensory input (telemetry) corrupting reactive behavior (congestion control).
+
+#### 3.2.3 Attack Vector: Spoofing INT Data Masking Malicious Activity or Triggering Faulty Responses
+
+Inverse attacks exist. Attackers launching genuine congestion attacks (traffic floods) simultaneously use on-path positions modifying their packet INT data, setting queue_depth fields to zero. This "cleans" telemetry making networks appear healthy to monitoring systems.
+
+Attackers conduct campaigns evading INT-based monitoring and anomaly detection. Operational staff relying on telemetry dashboards see no issues, delaying or preventing responses. This spoofing proves particularly insidious—unlike jamming denying signals, it provides trusted but false signals. Target systems remain unaware of attacks, operating on manipulated data making incorrect, damaging control decisions. Telemetry systems designed as network state truth sources become deception instruments.
+
+Modern telemetry's detailed performance data becomes high-value adversary assets. Attackers seeking efficient campaigns—maximizing impact while minimizing cost and detectability—need precise network behavior models including topology, traffic patterns, control algorithm responses. sFlow and INT provide this data with unparalleled granularity. Malicious tenants passively collect data training "adversarial network twins"—ML models simulating fabric behavior. These twins discover optimal attack strategies—precise LoRDMA timing, rates, and targets—offline before launching perfectly tuned live attacks. Defensive monitoring infrastructure transforms into powerful offensive reconnaissance and weaponization tools.
+
+## Section 4: Cross-Domain Attack Vectors and Covert Channels
+
+Sophisticated shared AI fabric threats transcend traditional security boundaries, leveraging network, hardware microarchitecture, and software interactions creating novel attack vectors. Cross-domain attacks bypass conventional network-centric defenses establishing covert channels for stealthy data exfiltration—particularly dangerous in environments handling sensitive AI models and data.
+
+### 4.1 Tenant-to-Tenant Interference via Shared RNIC Microarchitecture
+
+Network-level QoS aims providing performance isolation but remains blind to critical battlegrounds: RNIC internal microarchitecture. Multiple tenants sharing physical RNICs share more than network bandwidth—they directly contend for finite on-chip resources including command processing queues, memory translation caches, and protection domain caches.
+
+Shared microarchitecture creates potent attack surfaces. Malicious tenants craft specific RDMA operation sequences designed not for network throughput but intentionally exhausting internal RNIC resources. Repeatedly issuing control verbs causing cache misses or triggering exception handling stalls RNIC processing pipelines. This interference directly impacts all NIC-using tenants.
+
+Impact proves dramatic and disproportionate to generated network traffic. Academic research demonstrated scenarios where victim tenants allocated guaranteed 50 Gbps bandwidth. Well-behaved workloads from other tenants didn't impact guarantees. Yet malicious tenants launching carefully designed 1 Gbps attack streams—rates evading bandwidth monitoring—plummeted victim throughput to 2 Gbps. Microarchitectural attacks completely bypass traditional network performance isolation—bottlenecks exist inside shared hardware, not on wires.
+
+### 4.2 Establishing Covert Channels over RDMA and NVLink Fabrics
+
+Covert channels use shared media not intended for information transfer to transmit data clandestinely. In HPC environments, any contention-exhibiting shared resource becomes modulatable by senders and observable by receivers encoding and decoding bits. High-speed, low-latency AI fabrics prove particularly susceptible.
+
+**RDMA-based Covert Channels**: The Bankrupt attack demonstrates cross-node RDMA covert channels. Senders (spies) and receivers—separate non-communicating tenants—both establish RDMA connections to third intermediary machines, allocating private memory regions. Attackers discover memory addresses in their regions mapping to same physical DRAM banks as receiver region addresses. Senders transmit '1' by barraging RDMA requests to these addresses, causing deep queuing and bank contention. For '0', senders idle. Receivers continuously probe their bank-mapped addresses measuring access latency. High latency indicates '1'; low indicates '0'. This establishes high-rate, clandestine channels bypassing all sender-receiver network firewalls and monitoring.
+
+**NVLink-based Covert Channels**: NVLink's proprietary GPU-to-GPU interconnect creates powerful covert channel media. Multiple tenant workloads on different server GPUs share NVLink fabric. Attackers exploit shared bus contention transmitting information. Research demonstrates practical channels achieving 70 Kbps bandwidth (45.5 kbps in another study with low error). Timing channel mechanism: senders transmit '1' executing cudaMemcpyPeer() over NVLink creating contention; '0' by idling. Receivers on other GPUs continuously time small memory copies. Longer execution indicates contention ('1'); shorter indicates idle bus ('0'). This attack requires no special privileges, operating between typically well-isolated GPU domains.
+
+**PCIe-based Covert Channels**: Even PCIe buses connecting GPUs and NICs to CPUs become exploitable. Multiple devices sharing PCIe switches create traffic congestion. Attackers on one device (RDMA NICs) infer victim process activity on other devices (GPUs) measuring their PCIe operation latency. This proves sensitive enough leaking victim keystroke timings, GPU-rendered web pages, or specific executing machine learning model architectures.
+
+### 4.3 A Synthesis of Attack Chains: From Telemetry Reconnaissance to Congestion Exploitation
+
+Individual attack vectors prove powerful alone, but sophisticated adversaries chain them into multi-stage campaigns maximizing impact and evading detection. Plausible attack lifecycles:
+
+**Stage 1: Reconnaissance**: Attackers operating as legitimate but malicious tenants passively collect network telemetry. Analyzing sFlow or intercepted INT reports, they map topology, identify high-value victims (based on known data repository or high-cost compute node communication), and build detailed AI workload communication signatures.
+
+**Stage 2: Weaponization**: Using collected data, attackers build offline network models—"adversarial twins" simulating and identifying effective attack vectors. They identify critical oversubscribed switch ports ideal for LoRDMA, or discover shared memory controllers vulnerable to Bankrupt-style channels.
+
+**Stage 3: Disruption and Degradation**: Attackers launch low-and-slow disruptive campaigns. LoRDMA subtly degrades victim long-running training performance, increasing costs and delaying time-to-market. Low average rates keep attacks below conventional monitoring thresholds.
+
+**Stage 4: Exfiltration and Command & Control**: During disruption, attackers activate covert channels. NVLink contention channels slowly exfiltrate high-value, low-volume IP—trained weights, novel hyperparameters, proprietary training snippets. Channels provide command and control, coordinating compromised cluster nodes without generating suspicious firewall-flagged traffic.
+
+This synthesized chain highlights siloed defense inadequacy. Network traffic volume solutions miss low-rate DoS and covert channels. Host security misses network and hardware exploitation. Converged compute, memory, and networking in modern AI fabrics necessitates converged, cross-layer security. Traditional host, network, and accelerator boundaries dissolve—security models must adapt where attacks originate in one domain impacting another.
+
+## Table 4.1: Taxonomy of Network-Based Attacks in Shared AI Fabrics
+
+| Attack Class | Specific Attack Vector | Targeted Protocol/Component | Required Attacker Capability | Primary Impact | Detectability | Key References |
+|-------------|------------------------|---------------------------|---------------------------|---------------|--------------|----------------|
+| Congestion Abuse | LoRDMA | PFC/ECN/DCQCN Interaction | Co-resident Tenant | DoS, Performance Degradation | Low (low average rate) | |
+| | Intentional PFC Deadlock | PFC (Cyclic Buffer Dependency) | Co-resident Tenant with multiple endpoints | DoS (Fabric Lockup) | Medium (hard network failure) | |
+| | RNIC Microarchitecture Interference | RDMA NIC Internal Resources | Co-resident Tenant on same host | DoS, Performance Degradation | Low (low bandwidth) | |
+| Telemetry Leakage | sFlow Signature Analysis | sFlow Agent/Collector | Tenant with telemetry access | Sensitive Data Leakage | Low (legitimate usage) | |
+| Telemetry Manipulation | INT Poisoning | INT Data Plane Metadata | On-path Observer or Compromised Switch | Fabric Control Hijacking, Targeted DoS | Low (needs deep inspection) | |
+| Timing Side-Channel | LLM Token Length Leakage | TLS Padding in Streaming | On-path Observer | Sensitive Data Leakage | Low (statistical analysis) | |
+| | ADNN Latency Analysis | Application response timing | Tenant with query access | Sensitive Data Leakage | Low (statistical analysis) | |
+| Covert Channel | NVLink Contention Channel | NVLink Bus | Co-resident on multi-GPU host | Model IP Theft, C2 | Very Low (hardware contention) | |
+| | RDMA Bankrupt Channel | RDMA, Shared DRAM Bank | Co-resident with intermediary access | Model IP Theft, C2 | Very Low (bypasses direct path) | |
+
+## Section 5: Impact Analysis on AI Workloads
+
+Network attacks aren't abstract—they create tangible, severe consequences for AI workload performance, cost, and correctness. Distributed AI's synchronized, communication-intensive nature makes it exceptionally sensitive to congestion abuse and telemetry manipulation network degradation. Understanding this sensitivity reveals full security risk scope.
+
+### 5.1 The Sensitivity of Collective Communications to Latency and Jitter
+
+Distributed training—modern large-scale AI's cornerstone—relies heavily on collective communication operations. Primitives like AllReduce, Broadcast, and All-to-All let GPU groups exchange and synchronize data coordinately. AllReduce, most common, aggregates GPU-calculated gradients cluster-wide producing globally updated models. These operations typically block—no GPU proceeds until all complete communication phases.
+
+This synchronous nature makes AI workloads acutely vulnerable to network jitter—packet delay variation. High latency (average delay) proves detrimental, but high jitter often damages more. In collective operations with hundreds or thousands of GPUs, overall operation time depends on last-arriving packets. Single delayed network flows to one GPU create "stragglers," forcing all collective GPUs idle at synchronization barriers, wasting compute cycles. This "straggler" effect means attackers needn't attack entire clusters—successfully degrading single network links or nodes effectively degrades entire training jobs. This provides massive targeted attack impact amplification.
+
+Jitter effects prove non-linear, more pronounced as GPU clusters grow. Real-world benchmarks produce stark results: controlled tests introducing 20-50 microsecond jitter increased AI training job duration 30-60%. Specific 100-iteration experiments yielded:
+
+- Baseline (0 µs jitter): 12.0 minutes
+- 20 µs jitter: 18.4 minutes (53% increase)
+- 50 µs jitter: 31.1 minutes (159% increase)
+- 100 µs jitter: Unstable convergence and training stalls
+
+TCP/IP environments exacerbate problems. TCP congestion control misinterprets jitter as network congestion, unnecessarily throttling throughput and retransmitting packets despite ample bandwidth. This flawed response further stalls timing-sensitive AI workloads.
+
+### 5.2 Degrading Large-Scale Training: Model Parallelism, Gradient Exchange, and Parameter Server Bottlenecks
+
+Different large model training parallelization strategies exhibit unique network degradation sensitivities, creating diverse attacker targets.
+
+**Data Parallelism**: Most common—each GPU holds full models processing different data subsets. After training steps, gradients synchronize across GPUs using high-bandwidth AllReduce. This gradient exchange phase creates primary communication bottlenecks limiting linear scaling. Attacks introducing fabric congestion or latency directly impact critical paths, slowing every training iteration.
+
+**Model and Pipeline Parallelism**: Models too large for single GPUs split across devices—each responsible for different layers or segments. Pipelines form with sequential data flow. Communication patterns primarily point-to-point between adjacent pipeline stages. This strategy proves highly latency-sensitive. Delays or jitter between any stages create "pipeline bubbles," stalling downstream stages leaving GPUs idle awaiting delayed data. This severely reduces pipeline efficiency.
+
+**Tensor Parallelism**: Fine-grained approach splitting individual tensors across GPUs, often within servers. Requires extremely high-frequency, low-latency communication. Interconnect jitter or packet loss (like NVLink) directly impacts computation speed and numerical accuracy.
+
+**Parameter Server Traffic**: Central servers hold model parameters. Workers compute gradients sending them to parameter servers, which aggregate updates returning new parameters. Network links to/from parameter servers become natural chokepoints. Attackers focus congestion on these links creating system-wide bottlenecks.
+
+Periodic, bursty gradient exchange traffic in all models both causes and targets congestion. DDL architecture inherently generates massive iteration-end traffic bursts saturating switch buffers causing congestion, degrading throughput. Attackers amplify effects or use LoRDMA precisely disrupting critical communication phases.
+
+### 5.3 Quantifying the Cost: From Increased Training Time to Model Convergence Failure
+
+Network degradation impacts extend beyond technical metrics to significant financial and strategic consequences.
+
+**Financial Cost**: AI infrastructure cost measures in GPU-hours. Training delays directly translate to wasted GPU time and money. Minor 3-5% jitter-induced delays amount to thousands of dollars additional cloud billing per large training run. GPT-3 training consumed estimated 355 GPU-years—conservative 5% network-induced delay represents nearly 18 GPU-years wasted resources—non-trivial financial and environmental costs.
+
+**Risk of Convergence Failure**: Severe or prolonged network degradation doesn't just slow training—it prevents models converging to accurate solutions. Jitter experiments show high timing variability (100 µs) leads to unstable training dynamics causing process stalls or failures. Underlying optimization algorithms like SGD assume timely, consistent gradient updates. Disrupting assumptions derails mathematical convergence processes.
+
+**Impact on Inference and SLAs**: Real-time inference AI applications measure tail latency—slowest request percentile response times. Network congestion and jitter directly increase tail latency, violating production service SLAs, causing poor user experience, customer dissatisfaction, and potential financial penalties.
+
+Reliable, high-performance network assumptions bake into AI model design and training software. NCCL assumes near-perfect, lossless transport with minimal error recovery. Attacks introducing packet loss or severe delays trigger failure modes applications can't handle gracefully. Network security elevates from performance optimization to potential model correctness issues. Attacks don't just slow model training—they might make models train incorrectly, far more insidious and damaging outcomes.
+
+## Section 6: Defensive Architectures and Mitigation Strategies
+
+Defending shared AI fabrics against sophisticated cross-layer attacks requires multi-faceted strategies beyond traditional network security. Robust defensive architecture must harden fabrics against manipulation, secure telemetry streams, and proactively detect anomalous behavior. This section evaluates available and emerging countermeasures—their strengths, weaknesses, and applicability to high-performance multi-tenant AI environment challenges.
+
+### 6.1 Hardening the Fabric: QoS Isolation, Rate Limiting, and Secure Enclaves
+
+First defense lines enforce performance isolation directly within fabrics, ensuring tenant actions—malicious or resource-intensive—can't unfairly impact others.
+
+#### 6.1.1 Strengths and Limitations of Traditional QoS in RDMA Environments
+
+QoS manages network resources foundationally. Traffic classifies into priority levels with policies—guaranteed minimum bandwidth or enforced maximum rates. InfiniBand implements through Service Levels; RoCEv2 uses CoS priorities.
+
+**Strengths**: Traditional QoS effectively provides coarse-grained fairness preventing simple resource hogging where tenants saturate links with high-volume floods.
+
+**Weaknesses**: Current RDMA hardware QoS proves fundamentally insufficient for true multi-tenant security. RDMA NICs support minimal hardware-enforced virtual lanes or priority queues (up to 15 in InfiniBand). This inadequately provides fine-grained per-tenant isolation in cloud environments with hundreds or thousands of infrastructure-sharing tenants. More critically, network-level QoS policies remain blind to RNIC internal microarchitectural resource contention—potent DoS vectors using minimal network bandwidth.
+
+#### 6.1.2 Advanced Isolation: Harmonic and Justitia Models
+
+Researchers propose sophisticated RDMA performance isolation models recognizing traditional QoS limitations.
+
+**Justitia**: Software-based end-host solution intercepting RDMA commands, scheduling for better flow isolation (latency-sensitive vs. bandwidth-sensitive). Significantly improves latency and throughput for well-behaved shared environment applications without hardware changes. Primary weakness: software can't see or control RNIC hardware internal resource contention.
+
+**Harmonic**: Hardware/software co-design directly addressing microarchitectural attack vectors. Programmable intelligent PCIe switches between host CPUs and RNICs monitor internal RNIC resource usage per-tenant. Harmonic software repurposes RNIC built-in rate limiters for fine-grained performance isolation. Making isolation microarchitecture-aware, Harmonic successfully defends against resource exhaustion bypassing traditional QoS. Main drawback: requires new specialized hardware hindering immediate adoption.
+
+These models signal inevitable trends: effective AI fabric security requires hardware "shift-left." Microarchitectural and telemetry manipulation attack speed and stealth make purely software end-host defenses too slow and blind. AI fabric security's future lies in programmable hardware—intelligent NICs and switches enforcing policy and monitoring behavior directly in data paths at line rate.
+
+#### 6.1.3 Rate Limiting
+
+Rate limiting restricts client request numbers in time periods using token bucket or sliding window algorithms.
+
+**Strengths**: Straightforward, effective against high-volume brute-force DoS and simple resource abuse.
+
+**Weaknesses**: Largely ineffective against new low-rate sophisticated attacks. LoRDMA using short periodic bursts devastates performance maintaining average rates below typical thresholds. Legitimate AI workloads prove extremely bursty—setting limits blocking malicious traffic without penalizing benign performance-critical communication proves difficult.
+
+### 6.2 Securing the Data Stream: Authenticated Telemetry and Encrypted Control Planes
+
+Countering telemetry or control message manipulation requires cryptographic data security.
+
+**Authenticated Telemetry**: INT poisoning threats where attackers modify in-flight telemetry need authentication mitigation. Research proposes SecureINT using lightweight MACs (SipHash) generating INT metadata tags. Processes efficiently implement in programmable switch data planes allowing line-rate integrity verification. While preventing tampering, this introduces computational overhead requiring new hardware. It doesn't solve passive information leakage from legitimate telemetry.
+
+**Preventing Data Leakage**: Passive leakage defense requires different approaches. Multi-tenant environments need strict logical separation, tenant-specific encryption keys, and robust granular access control. AI-specific risks spawn emerging gateway solutions inspecting prompts and responses real-time, detecting and redacting sensitive data before leakage.
+
+### 6.3 Proactive Defense: AI-Driven Anomaly Detection for High-Speed Fabrics
+
+Stealthy modern attacks necessitate proactive behavior-based defense. AI-driven anomaly detection uses ML models establishing "normal" network behavior baselines, flagging significant deviations as threats.
+
+**Strengths**: Potentially detects novel zero-day attacks and low-and-slow campaigns evading traditional signature or threshold systems. Commercial platforms integrate these techniques into SONiC network operating systems, using telemetry feeding ML models identifying complex correlated anomalies real-time.
+
+**Weaknesses**: AI detection double-edges. High false positive rates cause security team alert fatigue. Defensive AI systems become high-value attack targets. Adversaries attempt poisoning training data building "normal" models, creating blind spots for undetected attacks. Defining stable "normal" baselines proves exceptionally difficult in highly dynamic heterogeneous multi-tenant AI cluster traffic.
+
+### 6.4 Designing Secure Congestion Control Algorithms
+
+Forward-looking defense redesigns core congestion control for inherent security and manipulation resilience.
+
+**AI-driven Congestion Control**: Emerging research uses AI/ML not just detecting anomalies but actively managing networks. Systems create predictive congestion control anticipating traffic hotspots from historical data and real-time telemetry, proactively rerouting traffic or adjusting rates before congestion.
+
+**Strengths**: Truly proactive intelligent congestion control offers superior performance, potentially training to recognize and isolate malicious activity traffic patterns.
+
+**Weaknesses**: Field infancy. Building and validating system complexity proves immense. Like anomaly detection, core AI models become prime adversarial attack targets.
+
+Robust AI fabric defensive postures can't rely on single solutions—defense-in-depth required. Yet simply layering defenses proves insufficient. LoRDMA demonstrates how two control system interactions (PFC and DCQCN) become exploitable. Successful defensive architecture requires holistic design understanding layer interactions—QoS, rate limiting, congestion control, anomaly detection—and how attackers play systems against each other.
+
+## Section 7: The Next Frontier: Security Challenges in Emerging Interconnects
+
+AI workloads continue exponential growth in scale and complexity. Underlying fabrics evolve rapidly. Transitions to 400G, 800G, and 1.6T Ethernet coupled with new memory-semantic interconnects like NVLink and CXL promise new performance levels. Yet next-generation technologies amplify existing risks introducing entirely new vulnerability paradigms current security models can't address.
+
+### 7.1 Scaling to 400/800G/1.6T Ethernet: Amplified Attack Surfaces and Shrinking Response Times
+
+Higher-speed Ethernet isn't incremental—it fundamentally changes network physical and logical properties with significant security implications.
+
+**Amplified Physical Layer Sensitivity**: At 224 Gb/s per lane and beyond, signal integrity becomes paramount. System sensitivity to jitter, noise, and crosstalk increases dramatically. Heightened sensitivity makes subtle low-level physical attacks—previously infeasible at lower speeds—practical error-inducing or side-channel vectors.
+
+**Shrinking Reaction Times**: Critical switch hardware trend: buffer memory doesn't scale with link bandwidth. Buffer-to-link-speed ratios steadily decrease. At 800 Gbps, traffic microbursts completely fill switch buffers in fractions of 100 Gbps times. This drastically reduces congestion control detection and sender reaction windows. Fabrics become brittle, highly susceptible to fast bursty attacks overwhelming shallow buffers before control loops respond.
+
+**Increased "Blast Radius"**: Traffic density and volume at these speeds mean disruptive events—accidental failures or malicious attacks—have larger, more immediate impacts. PFC deadlocks or LoRDMA on 400G fabrics affect far more AI workloads faster than 100G, increasing catastrophic cluster-wide degradation potential.
+
+### 7.2 NVLink and CXL: New Paradigms, New Vulnerabilities in Memory-Semantic Fabrics
+
+Beyond Ethernet, emerging interconnects blur networking, memory, and computation lines creating unified memory-semantic fabrics. Performance boons introduce novel profound security challenges.
+
+**NVLink**: Standard for high-speed scale-up server GPU communication, NVLink proves performance-critical. Yet it lacks inherent encryption, shared nature making it vulnerable to timing side-channels and covert channels (Section 4.2). Multi-tenant GPU virtualization makes securing internal fabrics against tenant GPU-to-GPU communication snooping critical unsolved problems.
+
+**Compute Express Link (CXL)**: Revolutionary open standard enabling cache-coherent memory sharing between CPUs, accelerators, and memory devices over high-speed fabrics. Creates vast disaggregated memory and compute pools fundamentally altering security landscapes.
+
+**Built-in Security**: CXL 2.0 includes robust features—notably Integrity and Data Encryption. CXL.mem and CXL.cache traffic gets FLIT-level 256-bit AES-GCM encryption providing confidentiality, integrity, and replay protection against on-path snooping and manipulation—significant data path security advancement.
+
+**New Interference Risks**: Despite IDE, CXL introduces performance attack avenues. CXL devices sharing resources like memory controllers with host CPU DRAM create high interference potential. Real CXL hardware research shows CXL device-main memory contention causes 93.2% CXL application performance degradation. Malicious tenants exploit interference launching targeted DoS or timing side-channels against CXL resource victim tenants. Complex cache coherency protocol security in untrusted multi-tenant environments remains largely unexplored critical concerns.
+
+Memory-semantic fabrics create "semantic gap" vulnerabilities. Traditional network security like firewalls inspect well-defined packets (IP, TCP). In CXL fabrics, application load instructions transparently translate to CXL.mem packets. Network appliances lack application context distinguishing benign from malicious memory access. Performance-providing abstraction strips semantic context needed for effective policy enforcement. Security can't reside solely in networks—it must deeply integrate into CXL hardware with sophisticated memory permission and access pattern understanding.
+
+### 7.3 Open Research Questions and Recommendations for Secure AI Fabric Design
+
+Evolving AI fabric threat landscapes present critical open research questions for next-generation secure high-performance infrastructure.
+
+**Holistic Cross-Layer Security Models**: Current models silo—focusing on network, host, or hardware security isolation. New unified models must encompass entire AI workload data paths—from applications through host OS and NIC microarchitecture, across fabrics, into remote accelerator memory and compute.
+
+**Verifiably Secure Control Planes**: LoRDMA demonstrates vulnerabilities from unexpected well-intentioned protocol interactions. Formal verification should apply to combined PFC, ECN, and congestion control systems mathematically proving freedom from exploitable negative emergent behaviors.
+
+**Practical Covert Channel Mitigation**: Most timing and storage covert channel defenses impose prohibitive performance overhead unsuitable for AI fabrics. Low-overhead practical mitigation research urgently needed. NetWarden approaches leveraging programmable data planes for targeted traffic shaping and performance boosting represent promising directions.
+
+**Confidential Computing for Distributed AI**: Confidential computing using hardware TEEs protecting data from compromised host OS must extend across distributed fabrics. Challenge: creating "distributed TEEs" protecting AI model data and parameters not just at rest or single CPU use, but in fabric transit and remote shared GPU use.
+
+**The Autonomous Security Arms Race**: Defenders turn to AI anomaly detection and self-managing networks handling complexity. Attackers inevitably use AI devising sophisticated stealthy attacks. LoRDMA's RTT feedback represents primitive "intelligent" attacks. AI fabric security's future likely involves autonomous defensive-offensive AI arms races. Profound questions arise: How secure defensive AI against poisoning or evasion? How ensure automated responses safe, not causing more harm than mitigated attacks? Securing AI fabrics becomes inseparable from broader AI system security challenges.
+
+Future AI fabrics must treat security as foundational architectural principles, not add-ons. Increasing networking-memory convergence, shrinking control loop response times, and growing adversary sophistication demand paradigm shifts toward hardware-rooted, formally verified, holistically designed security solutions.

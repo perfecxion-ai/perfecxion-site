@@ -180,45 +180,13 @@ async function loadContentFromDirectory(
 export async function loadAllContent(): Promise<ContentItem[]> {
   const contentItems: ContentItem[] = []
   
-  // Load blog content (as articles)
-  const blogContent = await loadContentFromDirectory(
-    path.join(process.cwd(), 'content', 'blog'),
+  // Load all content from the knowledge directory (the single source of truth)
+  const knowledgeContent = await loadContentFromDirectory(
+    path.join(process.cwd(), 'content', 'knowledge'),
     '/knowledge',
     'article'
   )
-  contentItems.push(...blogContent)
-  
-  // Load learning content
-  const learningContent = await loadContentFromDirectory(
-    path.join(process.cwd(), 'content', 'learning'),
-    '/knowledge',
-    'learning'
-  )
-  contentItems.push(...learningContent)
-  
-  // Load white papers
-  const whitepaperContent = await loadContentFromDirectory(
-    path.join(process.cwd(), 'content', 'white-papers'),
-    '/knowledge',
-    'whitepaper'
-  )
-  contentItems.push(...whitepaperContent)
-  
-  // Load reference architectures
-  const architectureContent = await loadContentFromDirectory(
-    path.join(process.cwd(), 'content', 'reference-architectures'),
-    '/knowledge',
-    'architecture'
-  )
-  contentItems.push(...architectureContent)
-  
-  // Note: knowledge directory doesn't exist yet
-  // const knowledgeContent = await loadContentFromDirectory(
-  //   path.join(process.cwd(), 'content', 'knowledge'),
-  //   '/knowledge',
-  //   'article'
-  // )
-  // contentItems.push(...knowledgeContent)
+  contentItems.push(...knowledgeContent)
   
   // Sort by date (newest first)
   contentItems.sort((a, b) => {

@@ -1,0 +1,639 @@
+{
+  "summary": {
+    "totalFiles": 105,
+    "blogFiles": 35,
+    "learningFiles": 6,
+    "whitepaperFiles": 3,
+    "referenceArchFiles": 1,
+    "knowledgeFiles": 60,
+    "duplicateGroups": 39,
+    "totalDuplicateFiles": 78,
+    "uniqueInOldDirs": 6,
+    "uniqueInKnowledge": 21
+  },
+  "duplicates": [
+    {
+      "hash": "cf590af08b96dbf94ee049ccb83cef57",
+      "files": [
+        {
+          "path": "./content/blog/50-attack-vectors-ai-red-team-guide.mdx",
+          "category": "blog",
+          "title": "50+ Attack Vectors - A Red Teamer's Guide to Breaking AI Systems"
+        },
+        {
+          "path": "./content/knowledge/security/red-team/50-attack-vectors-ai-red-team-guide.mdx",
+          "category": "knowledge",
+          "title": "50+ Attack Vectors - A Red Teamer's Guide to Breaking AI Systems"
+        }
+      ]
+    },
+    {
+      "hash": "5b6626988d9a2d8f39f13ad30bb7d31e",
+      "files": [
+        {
+          "path": "./content/blog/advanced-prompt-engineering-security-defense-through-design.mdx",
+          "category": "blog",
+          "title": "Advanced Prompt Engineering for Security: Defense Through Design"
+        },
+        {
+          "path": "./content/knowledge/security/defense/advanced-prompt-engineering-security-defense-through-design.mdx",
+          "category": "knowledge",
+          "title": "Advanced Prompt Engineering for Security: Defense Through Design"
+        }
+      ]
+    },
+    {
+      "hash": "f8de5efd3295de0a9f7d749ef3eb49fd",
+      "files": [
+        {
+          "path": "./content/blog/agentic-ai-complete-guide.mdx",
+          "category": "blog",
+          "title": "The Agentic AI Revolution: An Executive Report on Architecture, Implementation, and Security"
+        },
+        {
+          "path": "./content/knowledge/security/fundamentals/agentic-ai-complete-guide.mdx",
+          "category": "knowledge",
+          "title": "The Agentic AI Revolution: An Executive Report on Architecture, Implementation, and Security"
+        }
+      ]
+    },
+    {
+      "hash": "002dae6378c90aa957d1d74c4cd92b28",
+      "files": [
+        {
+          "path": "./content/blog/ai-and-hipaa-compliance-guide.mdx",
+          "category": "blog",
+          "title": "AI and HIPAA: The Complete Compliance Guide for Healthcare Organizations"
+        },
+        {
+          "path": "./content/knowledge/compliance/regulations/ai-and-hipaa-compliance-guide.mdx",
+          "category": "knowledge",
+          "title": "AI and HIPAA: The Complete Compliance Guide for Healthcare Organizations"
+        }
+      ]
+    },
+    {
+      "hash": "0145cbc857f3092de5ba9a0e68fe0f3c",
+      "files": [
+        {
+          "path": "./content/blog/ai-governance-at-scale-enterprise-strategies-responsible-ai.mdx",
+          "category": "blog",
+          "title": "AI Governance at Scale: Enterprise Strategies for Responsible AI"
+        },
+        {
+          "path": "./content/knowledge/compliance/governance/ai-governance-at-scale-enterprise-strategies-responsible-ai.mdx",
+          "category": "knowledge",
+          "title": "AI Governance at Scale: Enterprise Strategies for Responsible AI"
+        }
+      ]
+    },
+    {
+      "hash": "2c39513ce2dbf9bc9570f95961545c6c",
+      "files": [
+        {
+          "path": "./content/blog/ai-guardrails-that-actually-work-beyond-basic-content-filtering.mdx",
+          "category": "blog",
+          "title": "AI Guardrails That Actually Work: Beyond Basic Content Filtering"
+        },
+        {
+          "path": "./content/knowledge/security/defense/ai-guardrails-that-actually-work-beyond-basic-content-filtering.mdx",
+          "category": "knowledge",
+          "title": "AI Guardrails That Actually Work: Beyond Basic Content Filtering"
+        }
+      ]
+    },
+    {
+      "hash": "2c16ee5b8d1673a38d7abc7f3197764f",
+      "files": [
+        {
+          "path": "./content/blog/ai-powered-security-automation-transforming-enterprise-cybersecurity.mdx",
+          "category": "blog",
+          "title": "AI-Powered Security Automation: Transforming Enterprise Cybersecurity Operations"
+        },
+        {
+          "path": "./content/knowledge/security/fundamentals/ai-powered-security-automation-transforming-enterprise-cybersecurity.mdx",
+          "category": "knowledge",
+          "title": "AI-Powered Security Automation: Transforming Enterprise Cybersecurity Operations"
+        }
+      ]
+    },
+    {
+      "hash": "f94660af437c575a90fd01a952a74fa4",
+      "files": [
+        {
+          "path": "./content/blog/ai-red-team-testing-complete-guide.mdx",
+          "category": "blog",
+          "title": "The Complete Guide to AI Red Team Testing: Beyond Traditional Security"
+        },
+        {
+          "path": "./content/knowledge/security/red-team/ai-red-team-testing-complete-guide.mdx",
+          "category": "knowledge",
+          "title": "The Complete Guide to AI Red Team Testing: Beyond Traditional Security"
+        }
+      ]
+    },
+    {
+      "hash": "3093568f0096d42f69049ee2e361b53b",
+      "files": [
+        {
+          "path": "./content/blog/ai-red-team-testing-production-lessons.mdx",
+          "category": "blog",
+          "title": "AI Red Team Testing in Production: Lessons from 1000+ Assessments"
+        },
+        {
+          "path": "./content/knowledge/security/red-team/ai-red-team-testing-production-lessons.mdx",
+          "category": "knowledge",
+          "title": "AI Red Team Testing in Production: Lessons from 1000+ Assessments"
+        }
+      ]
+    },
+    {
+      "hash": "7c7fc50a2a281c3544cd1d1689ec7cf4",
+      "files": [
+        {
+          "path": "./content/blog/ai-security-financial-services-regulatory-requirements.mdx",
+          "category": "blog",
+          "title": "AI Security in Financial Services: Regulatory Requirements and Best Practices"
+        },
+        {
+          "path": "./content/knowledge/industry/finance/ai-security-financial-services-regulatory-requirements.mdx",
+          "category": "knowledge",
+          "title": "AI Security in Financial Services: Regulatory Requirements and Best Practices"
+        }
+      ]
+    },
+    {
+      "hash": "690881b2241b44ee6164bb798f046481",
+      "files": [
+        {
+          "path": "./content/blog/building-mature-ai-security-program-startup-to-enterprise.mdx",
+          "category": "blog",
+          "title": "Building a Mature AI Security Program: From Startup to Enterprise"
+        },
+        {
+          "path": "./content/knowledge/security/fundamentals/building-mature-ai-security-program-startup-to-enterprise.mdx",
+          "category": "knowledge",
+          "title": "Building a Mature AI Security Program: From Startup to Enterprise"
+        }
+      ]
+    },
+    {
+      "hash": "67064070239f6684520bc2c9088ec027",
+      "files": [
+        {
+          "path": "./content/blog/data-poisoning-attacks.mdx",
+          "category": "blog",
+          "title": "Data Poisoning Attacks: The Silent Sabotage in AI Security"
+        },
+        {
+          "path": "./content/knowledge/security/threats/data-poisoning-attacks.mdx",
+          "category": "knowledge",
+          "title": "Data Poisoning Attacks: The Silent Sabotage in AI Security"
+        }
+      ]
+    },
+    {
+      "hash": "8a0f88552b460e44edba8d9429eb1481",
+      "files": [
+        {
+          "path": "./content/blog/executives-guide-ai-risk-management-liability.mdx",
+          "category": "blog",
+          "title": "The Executive's Guide to AI Risk Management and Liability"
+        },
+        {
+          "path": "./content/knowledge/compliance/governance/executives-guide-ai-risk-management-liability.mdx",
+          "category": "knowledge",
+          "title": "The Executive's Guide to AI Risk Management and Liability"
+        }
+      ]
+    },
+    {
+      "hash": "f175893c14133f8ec9f65f7ce55c42c6",
+      "files": [
+        {
+          "path": "./content/blog/from-chatbots-to-autonomous-agents-evolution-ai-security.mdx",
+          "category": "blog",
+          "title": "From Chatbots to Autonomous Agents: The Evolution of AI Security"
+        },
+        {
+          "path": "./content/knowledge/security/fundamentals/from-chatbots-to-autonomous-agents-evolution-ai-security.mdx",
+          "category": "knowledge",
+          "title": "From Chatbots to Autonomous Agents: The Evolution of AI Security"
+        }
+      ]
+    },
+    {
+      "hash": "9916b054d118760d06801df5ecee973a",
+      "files": [
+        {
+          "path": "./content/blog/future-ai-security-emerging-threats-defenses.mdx",
+          "category": "blog",
+          "title": "Future of AI Security: Emerging Threats and Defenses"
+        },
+        {
+          "path": "./content/knowledge/security/threats/future-ai-security-emerging-threats-defenses.mdx",
+          "category": "knowledge",
+          "title": "Future of AI Security: Emerging Threats and Defenses"
+        }
+      ]
+    },
+    {
+      "hash": "01ecefeecccb1cc3722ba5050ed4f384",
+      "files": [
+        {
+          "path": "./content/blog/healthcare-ai-security-protecting-patient-data-safety.mdx",
+          "category": "blog",
+          "title": "Healthcare AI Security: Protecting Patient Data and Ensuring Safety"
+        },
+        {
+          "path": "./content/knowledge/industry/healthcare/healthcare-ai-security-protecting-patient-data-safety.mdx",
+          "category": "knowledge",
+          "title": "Healthcare AI Security: Protecting Patient Data and Ensuring Safety"
+        }
+      ]
+    },
+    {
+      "hash": "77527e14199bd1068beac99e025af7fc",
+      "files": [
+        {
+          "path": "./content/blog/hidden-risks-agentic-ai-monitoring-fails.mdx",
+          "category": "blog",
+          "title": "The Hidden Risks of Agentic AI: Why Traditional Monitoring Fails"
+        },
+        {
+          "path": "./content/knowledge/security/fundamentals/hidden-risks-agentic-ai-monitoring-fails.mdx",
+          "category": "knowledge",
+          "title": "The Hidden Risks of Agentic AI: Why Traditional Monitoring Fails"
+        }
+      ]
+    },
+    {
+      "hash": "ea2dc04c60a2053abd30efb3311bae7b",
+      "files": [
+        {
+          "path": "./content/blog/llm-security-protecting-language-models-production.mdx",
+          "category": "blog",
+          "title": "LLM Security: Protecting Language Models in Production"
+        },
+        {
+          "path": "./content/knowledge/security/defense/llm-security-protecting-language-models-production.mdx",
+          "category": "knowledge",
+          "title": "LLM Security: Protecting Language Models in Production"
+        }
+      ]
+    },
+    {
+      "hash": "f1d288c5e7d3ccd5e7c8ef36b00965ed",
+      "files": [
+        {
+          "path": "./content/blog/making-sense-data-anonymization-ai.mdx",
+          "category": "blog",
+          "title": "Making Sense of Data Anonymization in AI"
+        },
+        {
+          "path": "./content/knowledge/compliance/regulations/making-sense-data-anonymization-ai.mdx",
+          "category": "knowledge",
+          "title": "Making Sense of Data Anonymization in AI"
+        }
+      ]
+    },
+    {
+      "hash": "ed7c0f5371aeef23dbcfb7301922ed17",
+      "files": [
+        {
+          "path": "./content/blog/multi-agent-systems-security-safe-ai-collaboration.mdx",
+          "category": "blog",
+          "title": "Multi-Agent Systems Security: Orchestrating Safe AI Collaboration"
+        },
+        {
+          "path": "./content/knowledge/security/fundamentals/multi-agent-systems-security-safe-ai-collaboration.mdx",
+          "category": "knowledge",
+          "title": "Multi-Agent Systems Security: Orchestrating Safe AI Collaboration"
+        }
+      ]
+    },
+    {
+      "hash": "7735d93022392af05a70bbc14f9c5f3f",
+      "files": [
+        {
+          "path": "./content/blog/multi-cloud-ai-security-strategies-hybrid-deployments.mdx",
+          "category": "blog",
+          "title": "Multi-Cloud AI Security: Strategies for Hybrid AI Deployments"
+        },
+        {
+          "path": "./content/knowledge/infrastructure/ai-fabrics/multi-cloud-ai-security-strategies-hybrid-deployments.mdx",
+          "category": "knowledge",
+          "title": "Multi-Cloud AI Security: Strategies for Hybrid AI Deployments"
+        }
+      ]
+    },
+    {
+      "hash": "943a3ab5d2d0c3f99f48a407e4d008f4",
+      "files": [
+        {
+          "path": "./content/blog/navigating-ai-compliance-framework-security-standards.mdx",
+          "category": "blog",
+          "title": "Navigating AI Compliance: A Framework for 15+ Security Standards"
+        },
+        {
+          "path": "./content/knowledge/compliance/standards/navigating-ai-compliance-framework-security-standards.mdx",
+          "category": "knowledge",
+          "title": "Navigating AI Compliance: A Framework for 15+ Security Standards"
+        }
+      ]
+    },
+    {
+      "hash": "8c16c700ab24b82626f64f575c9f31fe",
+      "files": [
+        {
+          "path": "./content/blog/neural-network-security-beyond-traditional-defenses.mdx",
+          "category": "blog",
+          "title": "Neural Network Security: Beyond Traditional Defenses"
+        },
+        {
+          "path": "./content/knowledge/security/defense/neural-network-security-beyond-traditional-defenses.mdx",
+          "category": "knowledge",
+          "title": "Neural Network Security: Beyond Traditional Defenses"
+        }
+      ]
+    },
+    {
+      "hash": "ba5b115c96a5aee6825fc05bea729403",
+      "files": [
+        {
+          "path": "./content/blog/owasp-top-10-ai-critical-security-vulnerabilities.mdx",
+          "category": "blog",
+          "title": "Untitled"
+        },
+        {
+          "path": "./content/knowledge/security/threats/owasp-top-10-ai-critical-security-vulnerabilities.mdx",
+          "category": "knowledge",
+          "title": "Untitled"
+        }
+      ]
+    },
+    {
+      "hash": "14747618c51a6698fcaa34ab8ffd1417",
+      "files": [
+        {
+          "path": "./content/blog/prompt-injection-playbook-attack-techniques-defenses.mdx",
+          "category": "blog",
+          "title": "The Prompt Injection Playbook: Attack Techniques and Defenses"
+        },
+        {
+          "path": "./content/knowledge/security/threats/prompt-injection-playbook-attack-techniques-defenses.mdx",
+          "category": "knowledge",
+          "title": "The Prompt Injection Playbook: Attack Techniques and Defenses"
+        }
+      ]
+    },
+    {
+      "hash": "6674c6a74b6bcb466265e0a6c83de063",
+      "files": [
+        {
+          "path": "./content/blog/secure-ai-deployment-production-best-practices.mdx",
+          "category": "blog",
+          "title": "Secure AI Deployment: Production Best Practices"
+        },
+        {
+          "path": "./content/knowledge/security/defense/secure-ai-deployment-production-best-practices.mdx",
+          "category": "knowledge",
+          "title": "Secure AI Deployment: Production Best Practices"
+        }
+      ]
+    },
+    {
+      "hash": "992eb43a9c45ca1f61f81fa5ba3e27c7",
+      "files": [
+        {
+          "path": "./content/blog/securing-ai-critical-infrastructure-lessons-from-field.mdx",
+          "category": "blog",
+          "title": "Securing AI in Critical Infrastructure: Lessons from the Field"
+        },
+        {
+          "path": "./content/knowledge/security/fundamentals/securing-ai-critical-infrastructure-lessons-from-field.mdx",
+          "category": "knowledge",
+          "title": "Securing AI in Critical Infrastructure: Lessons from the Field"
+        }
+      ]
+    },
+    {
+      "hash": "f9bf0f6a7231a160c946ffbdfecd76ff",
+      "files": [
+        {
+          "path": "./content/blog/securing-ai-infrastructure-training-to-deployment.mdx",
+          "category": "blog",
+          "title": "Securing AI Infrastructure: From Training to Deployment"
+        },
+        {
+          "path": "./content/knowledge/security/fundamentals/securing-ai-infrastructure-training-to-deployment.mdx",
+          "category": "knowledge",
+          "title": "Securing AI Infrastructure: From Training to Deployment"
+        }
+      ]
+    },
+    {
+      "hash": "d891679ac4fedfa0263bdfd3ece6bbec",
+      "files": [
+        {
+          "path": "./content/blog/securing-ai-systems-enterprise-frameworks.mdx",
+          "category": "blog",
+          "title": "Securing AI Systems: Enterprise Frameworks for AI Security Protection"
+        },
+        {
+          "path": "./content/knowledge/security/defense/securing-ai-systems-enterprise-frameworks.mdx",
+          "category": "knowledge",
+          "title": "Securing AI Systems: Enterprise Frameworks for AI Security Protection"
+        }
+      ]
+    },
+    {
+      "hash": "59123e2785c29b4d9297e560a538d28c",
+      "files": [
+        {
+          "path": "./content/blog/the-agentic-leap-understanding-and-building-modern-ai-agents.mdx",
+          "category": "blog",
+          "title": "The Agentic Leap: Understanding and Building Modern AI Agents"
+        },
+        {
+          "path": "./content/knowledge/infrastructure/ai-fabrics/the-agentic-leap-understanding-and-building-modern-ai-agents.mdx",
+          "category": "knowledge",
+          "title": "The Agentic Leap: Understanding and Building Modern AI Agents"
+        }
+      ]
+    },
+    {
+      "hash": "e547ef4ed6ac003f594c4efcfb53f38a",
+      "files": [
+        {
+          "path": "./content/blog/welcome.mdx",
+          "category": "blog",
+          "title": "Welcome to perfecXion.ai"
+        },
+        {
+          "path": "./content/knowledge/compliance/regulations/welcome.mdx",
+          "category": "knowledge",
+          "title": "Welcome to perfecXion.ai"
+        }
+      ]
+    },
+    {
+      "hash": "c7f1f0c666dac0281583a51b8d1c0788",
+      "files": [
+        {
+          "path": "./content/blog/zero-day-ai-vulnerabilities-detection-response.mdx",
+          "category": "blog",
+          "title": "Zero-Day AI Vulnerabilities: Detection and Response"
+        },
+        {
+          "path": "./content/knowledge/security/threats/zero-day-ai-vulnerabilities-detection-response.mdx",
+          "category": "knowledge",
+          "title": "Zero-Day AI Vulnerabilities: Detection and Response"
+        }
+      ]
+    },
+    {
+      "hash": "893f02b57112e425f5fc63e9b4f6c2f2",
+      "files": [
+        {
+          "path": "./content/blog/zero-trust-architecture-ai-systems-implementation-guide.mdx",
+          "category": "blog",
+          "title": "Zero Trust Architecture for AI Systems: A Practical Implementation Guide"
+        },
+        {
+          "path": "./content/knowledge/security/fundamentals/zero-trust-architecture-ai-systems-implementation-guide.mdx",
+          "category": "knowledge",
+          "title": "Zero Trust Architecture for AI Systems: A Practical Implementation Guide"
+        }
+      ]
+    },
+    {
+      "hash": "82f177d035cb11f78cfeb4e666e25f3e",
+      "files": [
+        {
+          "path": "./content/learning/building-ai-security-programs.mdx",
+          "category": "learning",
+          "title": "Building AI Security Programs"
+        },
+        {
+          "path": "./content/knowledge/security/fundamentals/building-ai-security-programs.mdx",
+          "category": "knowledge",
+          "title": "Building AI Security Programs"
+        }
+      ]
+    },
+    {
+      "hash": "a0d9ca3b9e508426121dba280f443645",
+      "files": [
+        {
+          "path": "./content/learning/compliance-for-ai-systems.mdx",
+          "category": "learning",
+          "title": "Compliance for AI Systems"
+        },
+        {
+          "path": "./content/knowledge/security/fundamentals/compliance-for-ai-systems.mdx",
+          "category": "knowledge",
+          "title": "Compliance for AI Systems"
+        }
+      ]
+    },
+    {
+      "hash": "c01edaf0f7a50250da7275f4831e605c",
+      "files": [
+        {
+          "path": "./content/learning/getting-started.mdx",
+          "category": "learning",
+          "title": "Getting Started with AI Security"
+        },
+        {
+          "path": "./content/knowledge/security/fundamentals/getting-started.mdx",
+          "category": "knowledge",
+          "title": "Getting Started with AI Security"
+        }
+      ]
+    },
+    {
+      "hash": "f074e5a645b7130f76ae8a00a943f789",
+      "files": [
+        {
+          "path": "./content/learning/incident-response-for-ai.mdx",
+          "category": "learning",
+          "title": "Incident Response for AI"
+        },
+        {
+          "path": "./content/knowledge/security/fundamentals/incident-response-for-ai.mdx",
+          "category": "knowledge",
+          "title": "Incident Response for AI"
+        }
+      ]
+    },
+    {
+      "hash": "dfaaf201677533ea9797de3884d82625",
+      "files": [
+        {
+          "path": "./content/learning/types-of-ai-attacks.mdx",
+          "category": "learning",
+          "title": "Types of AI Attacks"
+        },
+        {
+          "path": "./content/knowledge/security/fundamentals/types-of-ai-attacks.mdx",
+          "category": "knowledge",
+          "title": "Types of AI Attacks"
+        }
+      ]
+    },
+    {
+      "hash": "72884a8b538a3f9ddc9a125f5407abb0",
+      "files": [
+        {
+          "path": "./content/learning/understanding-ai-vulnerabilities.mdx",
+          "category": "learning",
+          "title": "Understanding AI Vulnerabilities"
+        },
+        {
+          "path": "./content/knowledge/security/fundamentals/understanding-ai-vulnerabilities.mdx",
+          "category": "knowledge",
+          "title": "Understanding AI Vulnerabilities"
+        }
+      ]
+    }
+  ],
+  "unique": {
+    "oldDirectories": [
+      "./content/blog/ai-arch-security.mdx",
+      "./content/blog/prompt-injection-silent-threat-ai-systems.md",
+      "./content/white-papers/ai-incident-response.mdx",
+      "./content/white-papers/ai-regulatory-compliance.mdx",
+      "./content/white-papers/building-ai-security-programs.mdx",
+      "./content/reference-architectures/secure-llm-deployment.mdx"
+    ],
+    "knowledgeDirectory": [
+      "./content/knowledge/infrastructure/networking/400g-vs-800g-networking.mdx",
+      "./content/knowledge/infrastructure/networking/ai-cloud-networking-case-study-real-world-security-and-performance.mdx",
+      "./content/knowledge/infrastructure/networking/ai-control-plane-attack-vectors-exploiting-management-interfaces.mdx",
+      "./content/knowledge/infrastructure/networking/ai-fabric-congestion-and-telemetry-security-implications.mdx",
+      "./content/knowledge/infrastructure/networking/ai-fabric-vulnerabilities-and-security-countermeasures.mdx",
+      "./content/knowledge/infrastructure/networking/ai-network-and-cluster-control-security-architecture.mdx",
+      "./content/knowledge/infrastructure/networking/ai-network-telemetry-reconnaissance-and-exploitation-techniques.mdx",
+      "./content/knowledge/infrastructure/networking/ai-network-topologies.mdx",
+      "./content/knowledge/infrastructure/networking/ai-security-and-network-performance-balancing-trade-offs.mdx",
+      "./content/knowledge/infrastructure/networking/ai-super-scaling-security-challenges-in-scale-up-and-scale-out.mdx",
+      "./content/knowledge/infrastructure/networking/infiniband-vs-ethernet-future.mdx",
+      "./content/knowledge/infrastructure/networking/infiniband-vs-ethernet-security.mdx",
+      "./content/knowledge/infrastructure/networking/llm-training-tail-latency.mdx",
+      "./content/knowledge/infrastructure/networking/network-resilience-comparison.mdx",
+      "./content/knowledge/infrastructure/networking/photonic-interconnects-1-6tb.mdx",
+      "./content/knowledge/infrastructure/networking/rocev2-and-infiniband-security-simulations-and-analysis.mdx",
+      "./content/knowledge/infrastructure/networking/rocev2-vs-infiniband.mdx",
+      "./content/knowledge/infrastructure/networking/securing-ai-fabric-network-channels-defense-strategies.mdx",
+      "./content/knowledge/infrastructure/networking/securing-ai-fabric-telemetry-and-congestion-systems.mdx",
+      "./content/knowledge/infrastructure/networking/security-risks-in-shared-ai-fabrics-congestion-control-and-telemetry-vulnerabilities.mdx",
+      "./content/knowledge/security/fundamentals/ai-arch-security.mdx"
+    ]
+  },
+  "recommendations": [
+    "Found 39 groups of duplicate content between old and knowledge directories.",
+    "Recommendation: Keep files in knowledge directory (better organized) and remove from old directories.",
+    "Found 6 unique files in old directories that should be migrated to knowledge directory."
+  ]
+}
