@@ -19,8 +19,7 @@ const navigation = {
     { name: 'RSS Feed', href: '/api/rss' },
   ],
   company: [
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/about#contact' },
+    { name: 'Contact', href: '/contact' },
     { name: 'Privacy Policy', href: '/privacy' },
     { name: 'Terms of Service', href: '/terms' },
   ],
@@ -82,9 +81,9 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
               Products
             </h3>
-            <ul className="space-y-3">
-              {/* Removed product links */}
-            </ul>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Coming Soon!
+            </p>
           </div>
 
           <div>
