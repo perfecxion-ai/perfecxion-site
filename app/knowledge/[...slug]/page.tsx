@@ -2,18 +2,28 @@ import { notFound } from 'next/navigation'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { MDXRemote } from 'next-mdx-remote/rsc'
+import { remark } from 'remark'
+import remarkHtml from 'remark-html'
+import remarkGfm from 'remark-gfm'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowLeft, Clock, Calendar, Tag, BookOpen, FileText, Zap, Building } from 'lucide-react'
 import { loadAllContent } from '@/lib/content-loader'
 import { RelatedContent } from '@/components/related-content'
-import { mdxComponents } from '@/components/mdx-components'
 
 interface PageProps {
   params: {
     slug: string[]
   }
+}
+
+async function processMarkdown(content: string): Promise<string> {
+  const result = await remark()
+    .use(remarkGfm) // GitHub Flavored Markdown support
+    .use(remarkHtml)
+    .process(content)
+  
+  return result.toString()
 }
 
 async function getContent(slug: string[]) {
@@ -35,6 +45,9 @@ async function getContent(slug: string[]) {
     const fileContent = fs.readFileSync(fullPath, 'utf-8')
     const { data, content } = matter(fileContent)
     
+    // Process markdown to HTML
+    const processedContent = await processMarkdown(content)
+    
     // Get all content for related items
     const allContent = await loadAllContent()
     const currentItem = allContent.find(item => {
@@ -44,7 +57,7 @@ async function getContent(slug: string[]) {
     
     return {
       metadata: data,
-      content,
+      content: processedContent,
       currentItem,
       allContent
     }
@@ -169,21 +182,22 @@ export default async function KnowledgeContentPage({ params }: PageProps) {
       
       {/* Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="prose prose-lg dark:prose-invert max-w-none 
-          prose-headings:text-foreground 
-          prose-p:text-foreground 
-          prose-strong:text-foreground 
-          prose-ul:text-foreground 
-          prose-ol:text-foreground 
-          prose-li:text-foreground
-          prose-blockquote:text-muted-foreground
-          prose-code:bg-muted prose-code:text-foreground
-          prose-pre:bg-muted
-          prose-a:text-blue-600 dark:prose-a:text-blue-400
-          prose-th:text-foreground
-          prose-td:text-foreground">
-          <MDXRemote source={content} components={mdxComponents} />
-        </div>
+        <div 
+          className="prose prose-lg dark:prose-invert max-w-none 
+            prose-headings:text-foreground 
+            prose-p:text-foreground 
+            prose-strong:text-foreground 
+            prose-ul:text-foreground 
+            prose-ol:text-foreground 
+            prose-li:text-foreground
+            prose-blockquote:text-muted-foreground
+            prose-code:bg-muted prose-code:text-foreground
+            prose-pre:bg-muted
+            prose-a:text-blue-600 dark:prose-a:text-blue-400
+            prose-th:text-foreground
+            prose-td:text-foreground"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
         
         {/* Related Content */}
         {currentItem && allContent && (
