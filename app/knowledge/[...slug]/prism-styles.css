@@ -1,9 +1,9 @@
-/* Clean code styling to match the design */
+/* React.dev inspired code styling */
 pre[class*="language-"],
 code[class*="language-"] {
-  color: #374151 !important;
+  color: rgb(55, 65, 81);
   background: none;
-  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
   font-size: 0.875rem;
   text-align: left;
   white-space: pre;
@@ -16,55 +16,48 @@ code[class*="language-"] {
 }
 
 pre[class*="language-"] {
-  padding: 1.5rem;
-  margin: 1.5rem 0;
-  overflow: auto;
-  border-radius: 6px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  font-size: 0.875rem;
-  line-height: 1.7;
+  /* Styling handled by article-styles.css for consistency */
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  background: transparent;
+  border: none;
 }
 
+/* Inline code styling handled by article-styles.css */
 code[class*="language-"] {
-  background: #f8fafc;
-  color: #475569;
-  padding: 0.125rem 0.375rem;
-  border-radius: 3px;
-  font-size: 0.875rem;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
 }
 
 pre[class*="language-"] code[class*="language-"] {
   background: none;
   padding: 0;
+  color: inherit;
 }
 
-/* Clean, readable token colors with better contrast */
+/* React.dev token colors - clean and professional */
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #6b7280 !important;
+  color: rgb(107, 114, 128);
   font-style: italic;
 }
 
 .token.punctuation {
-  color: #374151 !important;
+  color: rgb(75, 85, 99);
 }
 
 .token.property,
 .token.tag,
+.token.boolean,
+.token.number,
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: #dc2626 !important;
-  font-weight: 500;
-}
-
-.token.boolean,
-.token.number {
-  color: #7c3aed !important;
-  font-weight: 500;
+  color: rgb(220, 38, 127);
 }
 
 .token.selector,
@@ -73,8 +66,7 @@ pre[class*="language-"] code[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #16a34a !important;
-  font-weight: 500;
+  color: rgb(5, 150, 105);
 }
 
 .token.operator,
@@ -83,42 +75,30 @@ pre[class*="language-"] code[class*="language-"] {
 .language-css .token.string,
 .style .token.string,
 .token.variable {
-  color: #374151 !important;
+  color: rgb(75, 85, 99);
 }
 
 .token.atrule,
 .token.attr-value,
 .token.function,
 .token.class-name {
-  color: #2563eb !important;
-  font-weight: 500;
+  color: rgb(59, 130, 246);
 }
 
 .token.keyword {
-  color: #db2777 !important;
-  font-weight: 600;
+  color: rgb(168, 85, 247);
+  font-weight: 500;
 }
 
 .token.regex,
 .token.important {
-  color: #ea580c !important;
-  font-weight: 500;
+  color: rgb(245, 158, 11);
 }
 
-/* Ensure all code text is visible */
-pre[class*="language-"] * {
-  color: inherit;
-}
-
-/* Fix any potential white text issues */
-pre[class*="language-"] code,
-pre[class*="language-"] span {
-  color: #374151 !important;
-}
-
-/* Override any inherited white text */
-.token:not(.comment):not(.string):not(.keyword):not(.function):not(.number):not(.boolean) {
-  color: #374151 !important;
+/* Ensure text is always visible in light mode */
+pre[class*="language-"],
+code[class*="language-"] {
+  color: rgb(55, 65, 81) !important;
 }
 
 .token.important,
@@ -130,48 +110,180 @@ pre[class*="language-"] span {
   font-style: italic;
 }
 
-/* Dark mode adjustments */
+/* Dark mode - React.dev inspired with bright colors */
 @media (prefers-color-scheme: dark) {
-  pre[class*="language-"] {
-    background: #374151 !important;
-    border: 1px solid #4b5563 !important;
-    color: #e5e7eb !important;
-  }
-  
+  pre[class*="language-"],
   code[class*="language-"] {
-    background: #374151 !important;
-    color: #d1d5db !important;
+    color: rgb(255, 255, 255); /* Bright white base text like React.dev */
   }
   
   .token.comment,
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    color: #9ca3af !important;
+    color: rgb(156, 163, 175); /* Gray comments */
   }
   
   .token.punctuation {
-    color: #d1d5db !important;
+    color: rgb(255, 255, 255); /* White punctuation */
   }
   
-  .token.keyword {
-    color: #fbbf24 !important;
+  .token.property,
+  .token.tag,
+  .token.boolean,
+  .token.number,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: rgb(255, 121, 198); /* Bright pink like React.dev */
   }
   
+  .token.selector,
+  .token.attr-name,
   .token.string,
   .token.char,
   .token.builtin,
   .token.inserted {
-    color: #34d399 !important;
+    color: rgb(80, 250, 123); /* Bright green like React.dev */
   }
   
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string,
+  .token.variable {
+    color: rgb(255, 255, 255); /* White operators */
+  }
+  
+  .token.atrule,
+  .token.attr-value,
   .token.function,
   .token.class-name {
-    color: #60a5fa !important;
+    color: rgb(80, 161, 255); /* Bright blue like React.dev */
   }
   
-  .token.number,
-  .token.boolean {
-    color: #a78bfa !important;
+  .token.keyword {
+    color: rgb(255, 121, 198); /* Bright pink keywords like React.dev */
+    font-weight: 500;
+  }
+  
+  .token.regex,
+  .token.important {
+    color: rgb(255, 184, 108); /* Bright orange like React.dev */
+  }
+}
+
+/* Additional React.dev inspired components */
+
+/* Performance metrics */
+.performance-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.metric-category {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgb(229, 231, 235);
+  border-left: 4px solid rgb(59, 130, 246);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+.metric-category h4 {
+  color: rgb(23, 23, 23);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.metric-detail p {
+  margin: 0.5rem 0;
+  color: rgb(75, 85, 99);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+/* Footnotes */
+.footnotes {
+  border-top: 1px solid rgb(229, 231, 235);
+  margin-top: 3rem;
+  padding-top: 2rem;
+}
+
+.footnote {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: rgb(249, 250, 251);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: rgb(75, 85, 99);
+  line-height: 1.75;
+  border: 1px solid rgb(229, 231, 235);
+}
+
+.footnote sup {
+  color: rgb(20, 158, 202);
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+/* Images */
+.article-image {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.responsive-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+}
+
+figcaption {
+  font-style: italic;
+  color: rgb(107, 114, 128);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  padding: 0 1rem;
+  line-height: 1.5;
+}
+
+/* Dark mode for additional components */
+@media (prefers-color-scheme: dark) {
+  .metric-category {
+    background: rgb(17, 24, 39);
+    border-color: rgb(55, 65, 81);
+  }
+  
+  .metric-category h4 {
+    color: rgb(255, 255, 255); /* Bright white headings */
+  }
+  
+  .metric-detail p {
+    color: rgb(229, 231, 235); /* Brighter text */
+  }
+  
+  .footnotes {
+    border-top-color: rgb(55, 65, 81);
+  }
+  
+  .footnote {
+    background: rgb(17, 24, 39);
+    border-color: rgb(55, 65, 81);
+    color: rgb(229, 231, 235); /* Brighter footnote text */
+  }
+  
+  .footnote sup {
+    color: rgb(56, 189, 248);
+  }
+  
+  figcaption {
+    color: rgb(229, 231, 235); /* Brighter caption text */
   }
 }
