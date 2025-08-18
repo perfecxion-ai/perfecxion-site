@@ -228,7 +228,7 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
       </section>
 
       {/* Filters */}
-      <section className="border-b border-border bg-background/95 backdrop-blur-sm lg:sticky lg:top-[64px] z-20">
+      <section className="border-b border-border bg-background lg:sticky lg:top-[64px] z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           {/* Filter buttons */}
           <div className="space-y-4">
