@@ -14,7 +14,8 @@ import Link from 'next/link'
 import { ArrowLeft, Clock, Calendar, Tag, BookOpen, FileText, Zap, Building } from 'lucide-react'
 import { loadAllContent } from '@/lib/content-loader'
 import { RelatedContent } from '@/components/related-content'
-import '../prism-styles.css'
+import './prism-styles.css'
+import './article-styles.css'
 
 interface PageProps {
   params: {
