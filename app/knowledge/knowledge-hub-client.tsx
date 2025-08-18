@@ -2,9 +2,11 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import { Search, BookOpen, FileText, Zap, Building, X, Clock, ChevronRight, Tag, ChevronLeft } from 'lucide-react'
+import { Search, BookOpen, FileText, Zap, Building, X, Clock, ChevronRight, Tag, ChevronLeft, Rss } from 'lucide-react'
 import React from 'react'
 import { ContentItem } from '@/lib/content-loader'
+import { searchContent, findRelatedContent } from '@/lib/search-utils'
+import { NewsletterSignup } from '@/components/newsletter-signup'
 
 // Content types/formats
 const contentFormats = [
@@ -62,17 +64,15 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
 
   // Filter content based on all criteria
   const filteredContent = useMemo(() => {
-    const filtered = initialContent.filter(item => {
-      // Search query filter
-      if (searchQuery) {
-        const query = searchQuery.toLowerCase()
-        const matchesSearch = 
-          item.title.toLowerCase().includes(query) ||
-          item.description.toLowerCase().includes(query) ||
-          item.topics.some(topic => topic.toLowerCase().includes(query))
-        if (!matchesSearch) return false
-      }
-
+    let filtered = initialContent
+    
+    // Apply advanced search if query exists
+    if (searchQuery) {
+      filtered = searchContent(filtered, searchQuery)
+    }
+    
+    // Apply other filters
+    filtered = filtered.filter(item => {
       // Format filter
       if (selectedFormat !== 'all' && item.format !== selectedFormat) return false
 
@@ -258,6 +258,18 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
       {/* Content Grid */}
       <section className="py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
+          {/* RSS Feed Link */}
+          <div className="mb-6 flex justify-end">
+            <Link
+              href="/api/rss"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Rss className="h-4 w-4" />
+              RSS Feed
+            </Link>
+          </div>
           {filteredContent.length > 0 ? (
             <>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -403,6 +415,11 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
               </button>
             </div>
           )}
+          
+          {/* Newsletter Signup */}
+          <div className="mt-16">
+            <NewsletterSignup />
+          </div>
         </div>
       </section>
     </div>
