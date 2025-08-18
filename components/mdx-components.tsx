@@ -1,131 +1,121 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ReactNode } from 'react'
+import { MDXComponents } from 'mdx/types'
 
 // Custom components for MDX rendering
-export const mdxComponents = {
+export const mdxComponents: MDXComponents = {
   // Headings
-  h1: ({ children }: { children: ReactNode }) => (
-    <h1 className="text-4xl font-bold mt-8 mb-4 text-foreground">{children}</h1>
+  h1: (props) => (
+    <h1 className="text-4xl font-bold mt-8 mb-4 text-foreground" {...props} />
   ),
-  h2: ({ children }: { children: ReactNode }) => (
-    <h2 className="text-3xl font-semibold mt-8 mb-4 text-foreground">{children}</h2>
+  h2: (props) => (
+    <h2 className="text-3xl font-semibold mt-8 mb-4 text-foreground" {...props} />
   ),
-  h3: ({ children }: { children: ReactNode }) => (
-    <h3 className="text-2xl font-semibold mt-6 mb-3 text-foreground">{children}</h3>
+  h3: (props) => (
+    <h3 className="text-2xl font-semibold mt-6 mb-3 text-foreground" {...props} />
   ),
-  h4: ({ children }: { children: ReactNode }) => (
-    <h4 className="text-xl font-semibold mt-6 mb-3 text-foreground">{children}</h4>
+  h4: (props) => (
+    <h4 className="text-xl font-semibold mt-6 mb-3 text-foreground" {...props} />
   ),
-  h5: ({ children }: { children: ReactNode }) => (
-    <h5 className="text-lg font-semibold mt-4 mb-2 text-foreground">{children}</h5>
+  h5: (props) => (
+    <h5 className="text-lg font-semibold mt-4 mb-2 text-foreground" {...props} />
   ),
-  h6: ({ children }: { children: ReactNode }) => (
-    <h6 className="text-base font-semibold mt-4 mb-2 text-foreground">{children}</h6>
+  h6: (props) => (
+    <h6 className="text-base font-semibold mt-4 mb-2 text-foreground" {...props} />
   ),
   
   // Paragraphs and text
-  p: ({ children }: { children: ReactNode }) => (
-    <p className="mb-4 leading-relaxed text-foreground">{children}</p>
+  p: (props) => (
+    <p className="mb-4 leading-relaxed text-foreground" {...props} />
   ),
   
   // Lists
-  ul: ({ children }: { children: ReactNode }) => (
-    <ul className="list-disc list-inside mb-4 space-y-2 pl-4">{children}</ul>
+  ul: (props) => (
+    <ul className="list-disc list-inside mb-4 space-y-2 pl-4" {...props} />
   ),
-  ol: ({ children }: { children: ReactNode }) => (
-    <ol className="list-decimal list-inside mb-4 space-y-2 pl-4">{children}</ol>
+  ol: (props) => (
+    <ol className="list-decimal list-inside mb-4 space-y-2 pl-4" {...props} />
   ),
-  li: ({ children }: { children: ReactNode }) => (
-    <li className="text-foreground">{children}</li>
+  li: (props) => (
+    <li className="text-foreground" {...props} />
   ),
   
   // Links
-  a: ({ href, children }: { href?: string; children: ReactNode }) => {
+  a: (props) => {
+    const href = props.href
     const isInternal = href && (href.startsWith('/') || href.startsWith('#'))
     
     if (isInternal) {
       return (
         <Link href={href} className="text-blue-600 dark:text-blue-400 hover:underline">
-          {children}
+          {props.children}
         </Link>
       )
     }
     
     return (
       <a 
-        href={href} 
+        {...props}
         target="_blank" 
         rel="noopener noreferrer"
         className="text-blue-600 dark:text-blue-400 hover:underline"
-      >
-        {children}
-      </a>
+      />
     )
   },
   
   // Code blocks
-  pre: ({ children }: { children: ReactNode }) => (
-    <pre className="bg-muted p-4 rounded-lg overflow-x-auto mb-4 text-sm">
-      {children}
-    </pre>
+  pre: (props) => (
+    <pre className="bg-muted p-4 rounded-lg overflow-x-auto mb-4 text-sm" {...props} />
   ),
-  code: ({ children }: { children: ReactNode }) => (
-    <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono">
-      {children}
-    </code>
+  code: (props) => (
+    <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono" {...props} />
   ),
   
   // Blockquotes
-  blockquote: ({ children }: { children: ReactNode }) => (
-    <blockquote className="border-l-4 border-primary pl-4 italic my-4 text-muted-foreground">
-      {children}
-    </blockquote>
+  blockquote: (props) => (
+    <blockquote className="border-l-4 border-primary pl-4 italic my-4 text-muted-foreground" {...props} />
   ),
   
   // Tables
-  table: ({ children }: { children: ReactNode }) => (
+  table: (props) => (
     <div className="overflow-x-auto mb-4">
-      <table className="min-w-full divide-y divide-border">
-        {children}
-      </table>
+      <table className="min-w-full divide-y divide-border" {...props} />
     </div>
   ),
-  thead: ({ children }: { children: ReactNode }) => (
-    <thead className="bg-muted">{children}</thead>
+  thead: (props) => (
+    <thead className="bg-muted" {...props} />
   ),
-  tbody: ({ children }: { children: ReactNode }) => (
-    <tbody className="divide-y divide-border">{children}</tbody>
+  tbody: (props) => (
+    <tbody className="divide-y divide-border" {...props} />
   ),
-  tr: ({ children }: { children: ReactNode }) => (
-    <tr>{children}</tr>
+  tr: (props) => (
+    <tr {...props} />
   ),
-  th: ({ children }: { children: ReactNode }) => (
-    <th className="px-4 py-2 text-left font-semibold text-foreground">{children}</th>
+  th: (props) => (
+    <th className="px-4 py-2 text-left font-semibold text-foreground" {...props} />
   ),
-  td: ({ children }: { children: ReactNode }) => (
-    <td className="px-4 py-2 text-foreground">{children}</td>
+  td: (props) => (
+    <td className="px-4 py-2 text-foreground" {...props} />
   ),
   
   // Horizontal rule
-  hr: () => <hr className="my-8 border-border" />,
+  hr: (props) => <hr className="my-8 border-border" {...props} />,
   
   // Strong and emphasis
-  strong: ({ children }: { children: ReactNode }) => (
-    <strong className="font-semibold">{children}</strong>
+  strong: (props) => (
+    <strong className="font-semibold" {...props} />
   ),
-  em: ({ children }: { children: ReactNode }) => (
-    <em className="italic">{children}</em>
+  em: (props) => (
+    <em className="italic" {...props} />
   ),
   
   // Images
-  img: ({ src, alt }: { src?: string; alt?: string }) => {
-    if (!src) return null
+  img: (props) => {
+    if (!props.src) return null
     return (
       <div className="my-4">
         <img
-          src={src}
-          alt={alt || ''}
+          {...props}
           className="rounded-lg max-w-full h-auto"
         />
       </div>
