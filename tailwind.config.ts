@@ -24,10 +24,10 @@ const config: Config = {
         },
         background: {
           light: '#ffffff',
-          dark: '#0a0a0a',
+          dark: '#0f172a', // React.dev inspired dark background
           subtle: '#f8fafc',
-          'dark-subtle': '#1a1a1a',
-          'dark-elevated': '#2a2a2a',
+          'dark-subtle': '#1e293b', // React.dev inspired
+          'dark-elevated': '#334155', // React.dev inspired
         },
         text: {
           primary: '#1a1a1a',
