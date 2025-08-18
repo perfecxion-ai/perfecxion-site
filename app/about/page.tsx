@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { MapPin, Shield, Target, Brain, Award, Globe, Zap, Building } from 'lucide-react'
+import { MapPin, Shield, Target, Brain, Award, Globe, Zap, Building, Mail, MessageSquare, Github, Linkedin, Twitter } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'About Us - perfecXion.ai',
@@ -139,15 +139,133 @@ export default function AboutPage() {
 
 
 
-        {/* Office Location */}
-        <section className="mt-20">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">Our Office</h2>
-          <div className="text-center">
-            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-50 dark:bg-primary-900/20">
-              <MapPin className="h-6 w-6 text-primary-600 dark:text-primary-400" />
+        {/* Contact Section */}
+        <section className="mt-20 mb-20">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">Get in Touch</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            {/* Contact Information */}
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Contact Information</h3>
+              
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50 dark:bg-primary-900/20">
+                    <Mail className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Email</p>
+                    <a href="mailto:contact@perfecxion.ai" className="text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400">
+                      contact@perfecxion.ai
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50 dark:bg-primary-900/20">
+                    <MessageSquare className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Support</p>
+                    <a href="mailto:support@perfecxion.ai" className="text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400">
+                      support@perfecxion.ai
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50 dark:bg-primary-900/20">
+                    <MapPin className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Location</p>
+                    <p className="text-gray-900 dark:text-white">San Francisco, CA</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Social Links */}
+              <div className="mt-8">
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">Follow Us</h4>
+                <div className="flex gap-4">
+                  <a href="https://github.com/perfecxion-ai" className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors">
+                    <Github className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                  </a>
+                  <a href="https://linkedin.com/company/perfecxion-ai" className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors">
+                    <Linkedin className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                  </a>
+                  <a href="https://twitter.com/perfecxion-ai" className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors">
+                    <Twitter className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                  </a>
+                </div>
+              </div>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">San Francisco</h3>
-            <p className="text-gray-600 dark:text-gray-300">San Francisco, CA</p>
+            
+            {/* Contact Form */}
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Send us a Message</h3>
+              
+              <form className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="Your name"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="your@email.com"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="How can we help?"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="Tell us more about your needs..."
+                  />
+                </div>
+                
+                <button
+                  type="submit"
+                  className="w-full px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
           </div>
         </section>
       </div>

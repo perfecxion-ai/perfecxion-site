@@ -1,0 +1,210 @@
+// Add these redirects to your next.config.js
+
+async function redirects() {
+  return [
+  {
+    "source": "/blog/50-attack-vectors-ai-red-team-guide",
+    "destination": "/knowledge/security/red-team/50-attack-vectors-ai-red-team-guide",
+    "permanent": true
+  },
+  {
+    "source": "/blog/advanced-prompt-engineering-security-defense-through-design",
+    "destination": "/knowledge/security/defense/advanced-prompt-engineering-security-defense-through-design",
+    "permanent": true
+  },
+  {
+    "source": "/blog/agentic-ai-complete-guide",
+    "destination": "/knowledge/security/fundamentals/agentic-ai-complete-guide",
+    "permanent": true
+  },
+  {
+    "source": "/blog/ai-and-hipaa-compliance-guide",
+    "destination": "/knowledge/compliance/regulations/ai-and-hipaa-compliance-guide",
+    "permanent": true
+  },
+  {
+    "source": "/blog/ai-arch-security",
+    "destination": "/knowledge/security/fundamentals/ai-arch-security",
+    "permanent": true
+  },
+  {
+    "source": "/blog/ai-governance-at-scale-enterprise-strategies-responsible-ai",
+    "destination": "/knowledge/compliance/governance/ai-governance-at-scale-enterprise-strategies-responsible-ai",
+    "permanent": true
+  },
+  {
+    "source": "/blog/ai-guardrails-that-actually-work-beyond-basic-content-filtering",
+    "destination": "/knowledge/security/defense/ai-guardrails-that-actually-work-beyond-basic-content-filtering",
+    "permanent": true
+  },
+  {
+    "source": "/blog/ai-powered-security-automation-transforming-enterprise-cybersecurity",
+    "destination": "/knowledge/security/fundamentals/ai-powered-security-automation-transforming-enterprise-cybersecurity",
+    "permanent": true
+  },
+  {
+    "source": "/blog/ai-red-team-testing-complete-guide",
+    "destination": "/knowledge/security/red-team/ai-red-team-testing-complete-guide",
+    "permanent": true
+  },
+  {
+    "source": "/blog/ai-red-team-testing-production-lessons",
+    "destination": "/knowledge/security/red-team/ai-red-team-testing-production-lessons",
+    "permanent": true
+  },
+  {
+    "source": "/blog/ai-security-financial-services-regulatory-requirements",
+    "destination": "/knowledge/industry/finance/ai-security-financial-services-regulatory-requirements",
+    "permanent": true
+  },
+  {
+    "source": "/blog/building-mature-ai-security-program-startup-to-enterprise",
+    "destination": "/knowledge/security/fundamentals/building-mature-ai-security-program-startup-to-enterprise",
+    "permanent": true
+  },
+  {
+    "source": "/blog/data-poisoning-attacks",
+    "destination": "/knowledge/security/threats/data-poisoning-attacks",
+    "permanent": true
+  },
+  {
+    "source": "/blog/executives-guide-ai-risk-management-liability",
+    "destination": "/knowledge/compliance/governance/executives-guide-ai-risk-management-liability",
+    "permanent": true
+  },
+  {
+    "source": "/blog/from-chatbots-to-autonomous-agents-evolution-ai-security",
+    "destination": "/knowledge/security/fundamentals/from-chatbots-to-autonomous-agents-evolution-ai-security",
+    "permanent": true
+  },
+  {
+    "source": "/blog/future-ai-security-emerging-threats-defenses",
+    "destination": "/knowledge/security/threats/future-ai-security-emerging-threats-defenses",
+    "permanent": true
+  },
+  {
+    "source": "/blog/healthcare-ai-security-protecting-patient-data-safety",
+    "destination": "/knowledge/industry/healthcare/healthcare-ai-security-protecting-patient-data-safety",
+    "permanent": true
+  },
+  {
+    "source": "/blog/hidden-risks-agentic-ai-monitoring-fails",
+    "destination": "/knowledge/security/fundamentals/hidden-risks-agentic-ai-monitoring-fails",
+    "permanent": true
+  },
+  {
+    "source": "/blog/llm-security-protecting-language-models-production",
+    "destination": "/knowledge/security/defense/llm-security-protecting-language-models-production",
+    "permanent": true
+  },
+  {
+    "source": "/blog/making-sense-data-anonymization-ai",
+    "destination": "/knowledge/compliance/regulations/making-sense-data-anonymization-ai",
+    "permanent": true
+  },
+  {
+    "source": "/blog/multi-agent-systems-security-safe-ai-collaboration",
+    "destination": "/knowledge/security/fundamentals/multi-agent-systems-security-safe-ai-collaboration",
+    "permanent": true
+  },
+  {
+    "source": "/blog/multi-cloud-ai-security-strategies-hybrid-deployments",
+    "destination": "/knowledge/infrastructure/ai-fabrics/multi-cloud-ai-security-strategies-hybrid-deployments",
+    "permanent": true
+  },
+  {
+    "source": "/blog/navigating-ai-compliance-framework-security-standards",
+    "destination": "/knowledge/compliance/standards/navigating-ai-compliance-framework-security-standards",
+    "permanent": true
+  },
+  {
+    "source": "/blog/neural-network-security-beyond-traditional-defenses",
+    "destination": "/knowledge/security/defense/neural-network-security-beyond-traditional-defenses",
+    "permanent": true
+  },
+  {
+    "source": "/blog/owasp-top-10-ai-critical-security-vulnerabilities",
+    "destination": "/knowledge/security/threats/owasp-top-10-ai-critical-security-vulnerabilities",
+    "permanent": true
+  },
+  {
+    "source": "/blog/prompt-injection-playbook-attack-techniques-defenses",
+    "destination": "/knowledge/security/threats/prompt-injection-playbook-attack-techniques-defenses",
+    "permanent": true
+  },
+  {
+    "source": "/blog/secure-ai-deployment-production-best-practices",
+    "destination": "/knowledge/security/defense/secure-ai-deployment-production-best-practices",
+    "permanent": true
+  },
+  {
+    "source": "/blog/securing-ai-critical-infrastructure-lessons-from-field",
+    "destination": "/knowledge/security/fundamentals/securing-ai-critical-infrastructure-lessons-from-field",
+    "permanent": true
+  },
+  {
+    "source": "/blog/securing-ai-infrastructure-training-to-deployment",
+    "destination": "/knowledge/security/fundamentals/securing-ai-infrastructure-training-to-deployment",
+    "permanent": true
+  },
+  {
+    "source": "/blog/securing-ai-systems-enterprise-frameworks",
+    "destination": "/knowledge/security/defense/securing-ai-systems-enterprise-frameworks",
+    "permanent": true
+  },
+  {
+    "source": "/blog/the-agentic-leap-understanding-and-building-modern-ai-agents",
+    "destination": "/knowledge/infrastructure/ai-fabrics/the-agentic-leap-understanding-and-building-modern-ai-agents",
+    "permanent": true
+  },
+  {
+    "source": "/blog/welcome",
+    "destination": "/knowledge/compliance/regulations/welcome",
+    "permanent": true
+  },
+  {
+    "source": "/blog/zero-day-ai-vulnerabilities-detection-response",
+    "destination": "/knowledge/security/threats/zero-day-ai-vulnerabilities-detection-response",
+    "permanent": true
+  },
+  {
+    "source": "/blog/zero-trust-architecture-ai-systems-implementation-guide",
+    "destination": "/knowledge/security/fundamentals/zero-trust-architecture-ai-systems-implementation-guide",
+    "permanent": true
+  },
+  {
+    "source": "/learn/building-ai-security-programs",
+    "destination": "/knowledge/security/fundamentals/building-ai-security-programs",
+    "permanent": true
+  },
+  {
+    "source": "/learn/compliance-for-ai-systems",
+    "destination": "/knowledge/security/fundamentals/compliance-for-ai-systems",
+    "permanent": true
+  },
+  {
+    "source": "/learn/getting-started",
+    "destination": "/knowledge/security/fundamentals/getting-started",
+    "permanent": true
+  },
+  {
+    "source": "/learn/incident-response-for-ai",
+    "destination": "/knowledge/security/fundamentals/incident-response-for-ai",
+    "permanent": true
+  },
+  {
+    "source": "/learn/types-of-ai-attacks",
+    "destination": "/knowledge/security/fundamentals/types-of-ai-attacks",
+    "permanent": true
+  },
+  {
+    "source": "/learn/understanding-ai-vulnerabilities",
+    "destination": "/knowledge/security/fundamentals/understanding-ai-vulnerabilities",
+    "permanent": true
+  }
+]
+}
+
+module.exports = {
+  redirects
+}

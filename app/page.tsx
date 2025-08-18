@@ -1,251 +1,332 @@
 import Link from 'next/link'
-import { ArrowRight, Shield, Scan, CheckCircle, Star, Zap, Users, Lock, Eye, Brain } from 'lucide-react'
-import ComplianceBadges, { TrustSignals } from '@/components/ComplianceBadges'
-import CTAWrapper, { CTAPresets } from '@/components/cta/CTAWrapper'
-import PrimaryCTA from '@/components/cta/PrimaryCTA'
-import SecondaryCTA from '@/components/cta/SecondaryCTA'
+import { ArrowRight, Shield, Brain, Zap, BookOpen, FileText, Building, Microscope, ChevronRight, CheckCircle, TrendingUp, Users, Clock, Star } from 'lucide-react'
 import Image from 'next/image'
+
+// Value propositions
+const valueProps = [
+  {
+    icon: FileText,
+    title: '50+ Technical Deep Dives',
+    description: 'Expert analysis on AI infrastructure, security, and optimization'
+  },
+  {
+    icon: Building,
+    title: 'Real-world Case Studies',
+    description: 'Learn from production deployments at scale'
+  },
+  {
+    icon: Microscope,
+    title: 'Reference Architectures',
+    description: 'Battle-tested designs for AI systems'
+  },
+  {
+    icon: Shield,
+    title: 'Security Best Practices',
+    description: 'Protect your AI infrastructure and models'
+  }
+]
+
+// Featured topics (trending or important)
+const featuredTopics = [
+  {
+    title: 'RoCEv2 vs InfiniBand',
+    description: 'Performance comparison and implementation guide for AI networking',
+    tags: ['Networking', 'Performance'],
+    readTime: '20 min',
+    href: '/knowledge?topic=rocev2-infiniband'
+  },
+  {
+    title: 'LLM Security',
+    description: 'Protecting language models from prompt injection and data poisoning',
+    tags: ['Security', 'LLM'],
+    readTime: '15 min',
+    href: '/knowledge?topic=llm-security'
+  },
+  {
+    title: '400G vs 800G Networking',
+    description: 'Economic analysis for next-generation AI infrastructure',
+    tags: ['Infrastructure', 'Cost Analysis'],
+    readTime: '18 min',
+    href: '/knowledge?topic=400g-800g'
+  },
+  {
+    title: 'AI Fabric Architecture',
+    description: 'Building scalable GPU clusters for distributed training',
+    tags: ['Architecture', 'Training'],
+    readTime: '25 min',
+    href: '/knowledge?topic=ai-fabric'
+  }
+]
+
+// Trust signals
+const trustSignals = [
+  { value: '48+', label: 'Articles & Papers' },
+  { value: 'Weekly', label: 'Updates' },
+  { value: 'Expert', label: 'Contributors' },
+  { value: 'Open', label: 'Access' }
+]
 
 export default function HomePage() {
   return (
-    <div className="bg-white dark:bg-background-dark">
+    <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
       {/* Hero Section */}
-      <div className="relative isolate overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40">
-          <div className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
-            <div className="mt-24 sm:mt-32 lg:mt-16">
-              <div className="inline-flex space-x-6 group">
-                <span className="rounded-full bg-primary-500/10 px-3 py-1 text-sm font-semibold leading-6 text-primary-600 ring-1 ring-inset ring-primary-500/20 dark:text-primary-400">
-                  Innovation
-                </span>
-                <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-600 dark:text-gray-300">
-                  <span>Research & Development</span>
-                </span>
-              </div>
+      <section className="relative overflow-hidden">
+        {/* Background pattern */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-purple-50/50 dark:from-blue-950/20 dark:to-purple-950/20" />
+          <Image
+            src="/homepage-brain.jpg"
+            alt=""
+            fill
+            className="object-cover opacity-5 dark:opacity-10"
+            priority
+          />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+          <div className="text-center max-w-4xl mx-auto">
+            {/* Badge */}
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium mb-8">
+              <TrendingUp className="h-4 w-4 mr-2" />
+              Updated weekly with latest research
             </div>
-            <h1 className="mt-10 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-              Pioneering AI Security Innovation
+            
+            {/* Main headline */}
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
+              The Definitive Source for
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent"> AI Infrastructure</span> &
+              <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent"> Security</span> Knowledge
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              Our research team is at the forefront of AI security, developing cutting-edge technologies
-              that will revolutionize how organizations protect their AI systems. With multiple patents
-              pending, we're building the future of AI security.
+            
+            {/* Subheading */}
+            <p className="text-xl sm:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto">
+              Expert insights on building, securing, and scaling AI systems. 
+              From neural network architectures to production deployment strategies.
             </p>
-            <div className="mt-10">
-              <CTAWrapper
-                {...CTAPresets.securityAssessment}
-                primarySize="lg"
-                secondarySize="lg"
-                trackingPrefix="homepage-hero"
-              />
-            </div>
-          </div>
-          <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
-            <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
-              <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/homepage.png"
-                  alt="AI Security Innovation - Research and Development"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto"
-                  priority
-                />
-              </div>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/knowledge"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors group"
+              >
+                Explore Knowledge Hub
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href="#featured"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-lg border border-border bg-background hover:bg-muted transition-colors"
+              >
+                Browse Topics
+                <ChevronRight className="ml-2 h-5 w-5" />
+              </Link>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Stats Section */}
-      <div className="bg-gray-50 dark:bg-gray-900/50 py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-4">
-            <div className="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt className="text-base leading-7 text-gray-600 dark:text-gray-400">Security frameworks</dt>
-              <dd className="order-first text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-                15+
-              </dd>
-              <dd className="text-base leading-7 text-gray-600 dark:text-gray-400">supported standards</dd>
-            </div>
-            <div className="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt className="text-base leading-7 text-gray-600 dark:text-gray-400">Attack vectors</dt>
-              <dd className="order-first text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-                50+
-              </dd>
-              <dd className="text-base leading-7 text-gray-600 dark:text-gray-400">detected & prevented</dd>
-            </div>
-            <div className="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt className="text-base leading-7 text-gray-600 dark:text-gray-400">Integration</dt>
-              <dd className="order-first text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-                10+
-              </dd>
-              <dd className="text-base leading-7 text-gray-600 dark:text-gray-400">major AI platforms</dd>
-            </div>
-            <div className="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt className="text-base leading-7 text-gray-600 dark:text-gray-400">Patents</dt>
-              <dd className="order-first text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-                3
-              </dd>
-              <dd className="text-base leading-7 text-gray-600 dark:text-gray-400">pending approval</dd>
-            </div>
-          </dl>
-        </div>
-      </div>
-
-      {/* Features Section */}
-      <div className="section-padding">
-        <div className="max-width container-padding">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              Complete AI Security Platform
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              Everything you need to secure, monitor, and ensure compliance of your AI systems.
-            </p>
-          </div>
-
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-              <div className="flex flex-col">
-                <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-500">
-                    <Zap className="h-6 w-6 text-white" />
-                  </div>
-                  Advanced AI Attack Testing
-                </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
-                  <p className="flex-auto">
-                    Our platform will deliver state-of-the-art adversarial testing with gradient-based optimization,
-                    multi-modal attacks, and ML-powered adaptation for comprehensive AI security assessment.
-                  </p>
-                  <p className="mt-6">
-                    <SecondaryCTA
-                      text="Learn more"
-                      href="/learn/ai-threats"
-                      icon="arrow"
-                      variant="link"
-                      trackingId="homepage-feature-ai-threats"
-                    />
-                  </p>
-                </dd>
+      {/* Trust Signals Bar */}
+      <section className="border-y border-border bg-background/50 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
+            {trustSignals.map((signal) => (
+              <div key={signal.label} className="text-center">
+                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                  {signal.value}
+                </div>
+                <div className="text-sm text-muted-foreground mt-1">
+                  {signal.label}
+                </div>
               </div>
-
-              <div className="flex flex-col">
-                <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-500">
-                    <Shield className="h-6 w-6 text-white" />
-                  </div>
-                  Red Team Testing
-                </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
-                  <p className="flex-auto">
-                    Our red team testing platform will provide comprehensive adversarial testing to identify vulnerabilities
-                    and weaknesses in your AI systems before they reach production.
-                  </p>
-                  <p className="mt-6">
-                    <SecondaryCTA
-                      text="Learn more"
-                      href="/learn/red-team"
-                      icon="arrow"
-                      variant="link"
-                      trackingId="homepage-feature-red-team"
-                    />
-                  </p>
-                </dd>
-              </div>
-
-              <div className="flex flex-col">
-                <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-500">
-                    <CheckCircle className="h-6 w-6 text-white" />
-                  </div>
-                  Compliance & Safety
-                </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
-                  <p className="flex-auto">
-                    Our compliance and safety tools will ensure your AI systems meet all regulatory requirements
-                    and maintain the highest safety standards through automated monitoring.
-                  </p>
-                  <p className="mt-6">
-                    <SecondaryCTA
-                      text="Learn more"
-                      href="/learn/compliance"
-                      icon="arrow"
-                      variant="link"
-                      trackingId="homepage-feature-compliance"
-                    />
-                  </p>
-                </dd>
-              </div>
-            </dl>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Trust & Compliance Section */}
-      <div className="bg-gray-50 dark:bg-gray-900/50">
-        <div className="max-width container-padding section-padding">
+      {/* Value Propositions */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              Enterprise-Grade Security & Compliance
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Why Engineers Choose PerfecXion
             </h2>
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Built with security at the core, certified by industry standards
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Comprehensive, technical content that goes beyond surface-level explanations
             </p>
           </div>
-
-          <div className="mb-12">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6 text-center">
-              Compliance Certifications
-            </h3>
-            <ComplianceBadges variant="detailed" />
-          </div>
-
-          <div className="pt-8 border-t border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6 text-center">
-              Security Features
-            </h3>
-            <TrustSignals />
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {valueProps.map((prop) => {
+              const Icon = prop.icon
+              return (
+                <div key={prop.title} className="text-center group">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 mb-4 group-hover:scale-110 transition-transform">
+                    <Icon className="h-8 w-8" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">
+                    {prop.title}
+                  </h3>
+                  <p className="text-muted-foreground">
+                    {prop.description}
+                  </p>
+                </div>
+              )
+            })}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* CTA Section */}
-      <div className="bg-primary-500">
-        <div className="max-width container-padding section-padding">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Ready to Secure Your AI?
+      {/* Featured Topics */}
+      <section id="featured" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Trending Topics This Week
             </h2>
-
-            <p className="mt-6 text-lg text-white/90">
-              Get a comprehensive security audit of your AI systems and implementation roadmap.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Hot topics our community is exploring right now
             </p>
-            <div className="mt-10">
-              <CTAWrapper
-                primary={{
-                  text: 'Book Security Assessment',
-                  href: '/assessment',
-                  icon: 'calendar',
-                  variant: 'default',
-                }}
-                secondary={{
-                  text: 'Contact Sales',
-                  href: '/contact/sales',
-                  icon: 'arrow',
-                  variant: 'ghost',
-                }}
-                align="center"
-                primarySize="xl"
-                secondarySize="lg"
-                trackingPrefix="homepage-cta"
-                className="[&_button]:!bg-white [&_button]:!text-primary-600 [&_button:hover]:!bg-gray-100 [&_a:nth-child(2)]:!text-white [&_a:nth-child(2):hover]:!text-primary-100"
-              />
+          </div>
+          
+          <div className="grid sm:grid-cols-2 gap-6">
+            {featuredTopics.map((topic) => (
+              <Link
+                key={topic.title}
+                href={topic.href}
+                className="group p-6 bg-background rounded-xl border border-border hover:border-blue-500/50 hover:shadow-lg transition-all duration-200"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="text-xl font-semibold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                    {topic.title}
+                  </h3>
+                  <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all group-hover:translate-x-1" />
+                </div>
+                
+                <p className="text-muted-foreground mb-4">
+                  {topic.description}
+                </p>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex gap-2">
+                    {topic.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1 text-xs font-medium rounded-full bg-muted text-muted-foreground"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center text-sm text-muted-foreground">
+                    <Clock className="h-4 w-4 mr-1" />
+                    {topic.readTime}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+          
+          <div className="text-center mt-10">
+            <Link
+              href="/knowledge"
+              className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline font-medium group"
+            >
+              View all topics in Knowledge Hub
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* What You'll Find */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Content Formats for Every Learning Style
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Choose how you want to consume information
+            </p>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-950/30 dark:to-blue-900/20 rounded-xl">
+              <BookOpen className="h-8 w-8 text-blue-600 dark:text-blue-400 mb-4" />
+              <h3 className="text-lg font-semibold text-foreground mb-2">Articles & Blogs</h3>
+              <p className="text-muted-foreground text-sm mb-4">
+                In-depth technical articles on specific topics, implementations, and best practices
+              </p>
+              <div className="flex items-center text-sm text-blue-600 dark:text-blue-400">
+                <CheckCircle className="h-4 w-4 mr-2" />
+                30+ articles available
+              </div>
+            </div>
+            
+            <div className="p-6 bg-gradient-to-br from-purple-50 to-purple-100/50 dark:from-purple-950/30 dark:to-purple-900/20 rounded-xl">
+              <FileText className="h-8 w-8 text-purple-600 dark:text-purple-400 mb-4" />
+              <h3 className="text-lg font-semibold text-foreground mb-2">White Papers</h3>
+              <p className="text-muted-foreground text-sm mb-4">
+                Comprehensive research papers and detailed technical documentation
+              </p>
+              <div className="flex items-center text-sm text-purple-600 dark:text-purple-400">
+                <CheckCircle className="h-4 w-4 mr-2" />
+                8+ papers available
+              </div>
+            </div>
+            
+            <div className="p-6 bg-gradient-to-br from-green-50 to-green-100/50 dark:from-green-950/30 dark:to-green-900/20 rounded-xl">
+              <Zap className="h-8 w-8 text-green-600 dark:text-green-400 mb-4" />
+              <h3 className="text-lg font-semibold text-foreground mb-2">Learning Paths</h3>
+              <p className="text-muted-foreground text-sm mb-4">
+                Structured tutorials and step-by-step guides for complex topics
+              </p>
+              <div className="flex items-center text-sm text-green-600 dark:text-green-400">
+                <CheckCircle className="h-4 w-4 mr-2" />
+                6+ paths available
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Social Proof */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-flex items-center justify-center p-3 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg mb-6">
+            <Star className="h-6 w-6 text-yellow-600 dark:text-yellow-400" />
+          </div>
+          
+          <blockquote className="text-2xl sm:text-3xl font-medium text-foreground mb-6">
+            "The most comprehensive resource for understanding AI infrastructure security. 
+            Essential reading for anyone building production AI systems."
+          </blockquote>
+          
+          <div className="flex items-center justify-center gap-2 text-muted-foreground">
+            <Users className="h-5 w-5" />
+            <span>Trusted by engineers at leading AI companies</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+            Start Your Deep Dive Today
+          </h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Join thousands of engineers advancing their AI infrastructure knowledge
+          </p>
+          <Link
+            href="/knowledge"
+            className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-lg bg-white text-blue-600 hover:bg-blue-50 transition-colors group"
+          >
+            Explore Knowledge Hub
+            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      </section>
     </div>
   )
-} 
+}

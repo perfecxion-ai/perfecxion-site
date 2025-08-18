@@ -10,9 +10,7 @@ import SearchBar from './search/SearchBar'
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Learn', href: '/learn' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'Docs', href: '/docs' },
+  { name: 'Knowledge Hub', href: '/knowledge' },
   { name: 'About', href: '/about' },
 ]
 

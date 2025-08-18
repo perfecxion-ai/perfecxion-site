@@ -1,0 +1,1310 @@
+{
+  "timestamp": "2025-08-18T03:57:21.655Z",
+  "blog": {
+    "total": 34,
+    "categorized": {
+      "security": {
+        "red-team": [
+          {
+            "file": "50-attack-vectors-ai-red-team-guide.mdx",
+            "title": "50+ Attack Vectors - A Red Teamer's Guide to Breaking AI Systems",
+            "currentPath": "/blog/50-attack-vectors-ai-red-team-guide",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "red-team",
+            "newPath": "/knowledge/security/red-team/50-attack-vectors-ai-red-team-guide",
+            "tags": [
+              "AI Attack Vectors",
+              "Prompt Injection",
+              "LLM Security",
+              "AI Vulnerabilities",
+              "Red Team Testing",
+              "Threat Analysis"
+            ],
+            "description": "Master the complete taxonomy of AI attack vectors with detailed techniques, real-world examples, and defensive strategies. The definitive guide for security professionals testing AI systems."
+          },
+          {
+            "file": "ai-red-team-testing-complete-guide.mdx",
+            "title": "The Complete Guide to AI Red Team Testing: Beyond Traditional Security",
+            "currentPath": "/blog/ai-red-team-testing-complete-guide",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "red-team",
+            "newPath": "/knowledge/security/red-team/ai-red-team-testing-complete-guide",
+            "tags": [
+              "AI Security",
+              "Red Team Testing",
+              "LLM Security",
+              "Penetration Testing",
+              "AI Vulnerabilities",
+              "Security Testing",
+              "Threat Analysis"
+            ],
+            "description": "Master AI red team testing with comprehensive methodologies, real-world attack vectors, and ROI analysis. Learn how AI systems require fundamentally different security approaches."
+          },
+          {
+            "file": "ai-red-team-testing-production-lessons.mdx",
+            "title": "AI Red Team Testing in Production: Lessons from 1000+ Assessments",
+            "currentPath": "/blog/ai-red-team-testing-production-lessons",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "red-team",
+            "newPath": "/knowledge/security/red-team/ai-red-team-testing-production-lessons",
+            "tags": [
+              "Red Team",
+              "Production Security",
+              "AI Testing",
+              "Security Assessment",
+              "Enterprise AI",
+              "AI Vulnerabilities"
+            ],
+            "description": "Deep insights into production AI security testing, revealing patterns, methodologies, and critical lessons learned from extensive red team assessments in live environments."
+          }
+        ],
+        "defense": [
+          {
+            "file": "advanced-prompt-engineering-security-defense-through-design.mdx",
+            "title": "Advanced Prompt Engineering for Security: Defense Through Design",
+            "currentPath": "/blog/advanced-prompt-engineering-security-defense-through-design",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "defense",
+            "newPath": "/knowledge/security/defense/advanced-prompt-engineering-security-defense-through-design",
+            "tags": [
+              "Prompt Engineering",
+              "AI Security",
+              "Prompt Injection",
+              "Defense Strategies",
+              "AI Safety",
+              "Security Design",
+              "LLM Security",
+              "AI Defense"
+            ],
+            "description": "Master defensive prompt engineering techniques to build AI systems that resist manipulation, prevent injection attacks, and maintain security by design."
+          },
+          {
+            "file": "ai-guardrails-that-actually-work-beyond-basic-content-filtering.mdx",
+            "title": "AI Guardrails That Actually Work: Beyond Basic Content Filtering",
+            "currentPath": "/blog/ai-guardrails-that-actually-work-beyond-basic-content-filtering",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "defense",
+            "newPath": "/knowledge/security/defense/ai-guardrails-that-actually-work-beyond-basic-content-filtering",
+            "tags": [
+              "AI Guardrails",
+              "AI Safety",
+              "Content Filtering",
+              "LLM Security",
+              "AI Safety Systems",
+              "Intelligent Guardrails"
+            ],
+            "description": "Discover advanced AI guardrail techniques that go beyond simple keyword filtering to create truly intelligent, context-aware safety systems for AI applications."
+          },
+          {
+            "file": "llm-security-protecting-language-models-production.mdx",
+            "title": "LLM Security: Protecting Language Models in Production",
+            "currentPath": "/blog/llm-security-protecting-language-models-production",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "defense",
+            "newPath": "/knowledge/security/defense/llm-security-protecting-language-models-production",
+            "tags": [
+              "LLM Security",
+              "Production Security",
+              "Best Practices",
+              "Language Models",
+              "Prompt Injection",
+              "AI Safety",
+              "Large Language Models",
+              "AI Security",
+              "Model Security"
+            ],
+            "description": "Best practices for securing large language models in production environments - from prompt injection defense to data protection and compliance frameworks."
+          },
+          {
+            "file": "neural-network-security-beyond-traditional-defenses.mdx",
+            "title": "Neural Network Security: Beyond Traditional Defenses",
+            "currentPath": "/blog/neural-network-security-beyond-traditional-defenses",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "defense",
+            "newPath": "/knowledge/security/defense/neural-network-security-beyond-traditional-defenses",
+            "tags": [
+              "Neural Networks",
+              "AI Security",
+              "Research",
+              "Advanced Defense",
+              "Machine Learning",
+              "Cybersecurity",
+              "Deep Learning",
+              "Model Security",
+              "Adversarial Attacks"
+            ],
+            "description": "Exploring the unique security challenges of neural networks and advanced defense strategies in an era where traditional cybersecurity approaches fall short."
+          },
+          {
+            "file": "secure-ai-deployment-production-best-practices.mdx",
+            "title": "Secure AI Deployment: Production Best Practices",
+            "currentPath": "/blog/secure-ai-deployment-production-best-practices",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "defense",
+            "newPath": "/knowledge/security/defense/secure-ai-deployment-production-best-practices",
+            "tags": [
+              "AI Security",
+              "Production Deployment",
+              "MLSecOps",
+              "CISO Guide",
+              "Threat Modeling",
+              "Governance",
+              "Zero Trust",
+              "Monitoring",
+              "OWASP"
+            ],
+            "description": "A comprehensive CISO's guide to deploying AI systems securely in production environments. Learn MLSecOps principles, threat modeling, and governance frameworks for resilient AI security."
+          },
+          {
+            "file": "securing-ai-systems-enterprise-frameworks.mdx",
+            "title": "Securing AI Systems: Enterprise Frameworks for AI Security Protection",
+            "currentPath": "/blog/securing-ai-systems-enterprise-frameworks",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "defense",
+            "newPath": "/knowledge/security/defense/securing-ai-systems-enterprise-frameworks",
+            "tags": [
+              "AI Security",
+              "Enterprise Security",
+              "Data Poisoning",
+              "Adversarial Attacks",
+              "Supply Chain Security",
+              "MLSecOps",
+              "OWASP"
+            ],
+            "description": "Comprehensive guide to protecting AI systems from threats like data poisoning, adversarial attacks, and supply chain vulnerabilities. Learn enterprise-grade security frameworks and architectural patterns for defending AI systems."
+          }
+        ],
+        "fundamentals": [
+          {
+            "file": "agentic-ai-complete-guide.mdx",
+            "title": "The Agentic AI Revolution: An Executive Report on Architecture, Implementation, and Security",
+            "currentPath": "/blog/agentic-ai-complete-guide",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "fundamentals",
+            "newPath": "/knowledge/security/fundamentals/agentic-ai-complete-guide",
+            "tags": [
+              "AI Agents",
+              "Autonomous Systems",
+              "Agentic RAG",
+              "Multi-Agent Systems",
+              "Production AI",
+              "LLM Architecture",
+              "OWASP"
+            ],
+            "description": "A comprehensive guide to understanding, implementing, and securing AI agents in the modern enterprise - from basic concepts to multi-agent systems and advanced security frameworks."
+          },
+          {
+            "file": "ai-arch-security.mdx",
+            "currentPath": "/blog/ai-arch-security",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "fundamentals",
+            "newPath": "/knowledge/security/fundamentals/ai-arch-security",
+            "tags": []
+          },
+          {
+            "file": "ai-powered-security-automation-transforming-enterprise-cybersecurity.mdx",
+            "title": "AI-Powered Security Automation: Transforming Enterprise Cybersecurity Operations",
+            "currentPath": "/blog/ai-powered-security-automation-transforming-enterprise-cybersecurity",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "fundamentals",
+            "newPath": "/knowledge/security/fundamentals/ai-powered-security-automation-transforming-enterprise-cybersecurity",
+            "tags": [
+              "AI Security",
+              "Security Automation",
+              "Threat Detection",
+              "Incident Response",
+              "Vulnerability Management",
+              "Compliance",
+              "Machine Learning",
+              "Neural Networks",
+              "AI Defense",
+              "Enterprise Security",
+              "OWASP"
+            ],
+            "description": "Examine how to use AI to automate security processes including threat detection, incident response, vulnerability management, and compliance. Learn scalable frameworks for AI-driven security transformation."
+          },
+          {
+            "file": "building-mature-ai-security-program-startup-to-enterprise.mdx",
+            "title": "Building a Mature AI Security Program: From Startup to Enterprise",
+            "currentPath": "/blog/building-mature-ai-security-program-startup-to-enterprise",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "fundamentals",
+            "newPath": "/knowledge/security/fundamentals/building-mature-ai-security-program-startup-to-enterprise",
+            "tags": [
+              "AI Security Program",
+              "Enterprise Security",
+              "Startup Security",
+              "Security Maturity",
+              "Organizational Development",
+              "Strategic Planning"
+            ],
+            "description": "A comprehensive roadmap for scaling AI security from early-stage startups to enterprise organizations. Learn the essential phases, key milestones, and proven strategies for building world-class AI security programs."
+          },
+          {
+            "file": "from-chatbots-to-autonomous-agents-evolution-ai-security.mdx",
+            "title": "From Chatbots to Autonomous Agents: The Evolution of AI Security",
+            "currentPath": "/blog/from-chatbots-to-autonomous-agents-evolution-ai-security",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "fundamentals",
+            "newPath": "/knowledge/security/fundamentals/from-chatbots-to-autonomous-agents-evolution-ai-security",
+            "tags": [
+              "AI Evolution",
+              "Autonomous Agents",
+              "AI Security",
+              "Agent Security",
+              "AI Development",
+              "Neural Networks",
+              "Machine Learning",
+              "AI Architecture",
+              "Agentic AI"
+            ],
+            "description": "Explore the dramatic shift from simple rule-based chatbots to fully autonomous AI agents, and how security challenges have evolved alongside this transformation."
+          },
+          {
+            "file": "hidden-risks-agentic-ai-monitoring-fails.mdx",
+            "title": "The Hidden Risks of Agentic AI: Why Traditional Monitoring Fails",
+            "currentPath": "/blog/hidden-risks-agentic-ai-monitoring-fails",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "fundamentals",
+            "newPath": "/knowledge/security/fundamentals/hidden-risks-agentic-ai-monitoring-fails",
+            "tags": [
+              "Agentic AI",
+              "Security Monitoring",
+              "Autonomous Systems",
+              "AI Detection",
+              "Enterprise Security"
+            ],
+            "description": "Discover why autonomous AI agents break every security monitoring assumption and learn how to detect threats in systems that think for themselves."
+          },
+          {
+            "file": "multi-agent-systems-security-safe-ai-collaboration.mdx",
+            "title": "Multi-Agent Systems Security: Orchestrating Safe AI Collaboration",
+            "currentPath": "/blog/multi-agent-systems-security-safe-ai-collaboration",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "fundamentals",
+            "newPath": "/knowledge/security/fundamentals/multi-agent-systems-security-safe-ai-collaboration",
+            "tags": [
+              "Multi-Agent Systems",
+              "AI Orchestration",
+              "Agent Security",
+              "Distributed AI",
+              "Collaboration Security"
+            ],
+            "description": "Master the complex security challenges of multi-agent AI systems where autonomous agents interact, compete, and collaborate in unpredictable ways."
+          },
+          {
+            "file": "securing-ai-critical-infrastructure-lessons-from-field.mdx",
+            "title": "Securing AI in Critical Infrastructure: Lessons from the Field",
+            "currentPath": "/blog/securing-ai-critical-infrastructure-lessons-from-field",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "fundamentals",
+            "newPath": "/knowledge/security/fundamentals/securing-ai-critical-infrastructure-lessons-from-field",
+            "tags": [
+              "Critical Infrastructure",
+              "AI Security",
+              "SCADA Systems",
+              "Industrial AI",
+              "Cyber-Physical Security",
+              "National Security",
+              "Machine Learning",
+              "Neural Networks",
+              "Industrial Security",
+              "AI Safety"
+            ],
+            "description": "Real-world insights from securing AI systems in power grids, transportation networks, water systems, and telecommunications. Learn from actual deployments and incidents that shaped modern critical infrastructure security."
+          },
+          {
+            "file": "securing-ai-infrastructure-training-to-deployment.mdx",
+            "title": "Securing AI Infrastructure: From Training to Deployment",
+            "currentPath": "/blog/securing-ai-infrastructure-training-to-deployment",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "fundamentals",
+            "newPath": "/knowledge/security/fundamentals/securing-ai-infrastructure-training-to-deployment",
+            "tags": [],
+            "description": "A comprehensive technical guide to securing every layer of AI infrastructure, from data pipelines and training environments to model serving and edge deployment."
+          },
+          {
+            "file": "zero-trust-architecture-ai-systems-implementation-guide.mdx",
+            "title": "Zero Trust Architecture for AI Systems: A Practical Implementation Guide",
+            "currentPath": "/blog/zero-trust-architecture-ai-systems-implementation-guide",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "fundamentals",
+            "newPath": "/knowledge/security/fundamentals/zero-trust-architecture-ai-systems-implementation-guide",
+            "tags": [
+              "Zero Trust",
+              "AI Security",
+              "Architecture",
+              "Implementation",
+              "Security Frameworks",
+              "AI Governance",
+              "Network Security",
+              "Access Control"
+            ],
+            "description": "Learn how to implement Zero Trust principles specifically for AI systems, with practical examples, architecture patterns, and step-by-step implementation guidance."
+          }
+        ],
+        "threats": [
+          {
+            "file": "data-poisoning-attacks.mdx",
+            "title": "Data Poisoning Attacks: The Silent Sabotage in AI Security",
+            "currentPath": "/blog/data-poisoning-attacks",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "threats",
+            "newPath": "/knowledge/security/threats/data-poisoning-attacks",
+            "tags": [
+              "Data Poisoning",
+              "AI Security",
+              "ML Security",
+              "Training Attacks",
+              "Backdoors",
+              "Defense Strategies",
+              "Machine Learning",
+              "Neural Networks",
+              "Model Security",
+              "AI Training"
+            ],
+            "description": "Comprehensive analysis of data poisoning threats in AI systems, from subtle backdoors to systemic bias injection, with detection strategies and defense mechanisms."
+          },
+          {
+            "file": "future-ai-security-emerging-threats-defenses.mdx",
+            "title": "Future of AI Security: Emerging Threats and Defenses",
+            "currentPath": "/blog/future-ai-security-emerging-threats-defenses",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "threats",
+            "newPath": "/knowledge/security/threats/future-ai-security-emerging-threats-defenses",
+            "tags": [
+              "Future AI Security",
+              "Emerging Threats",
+              "AI Defenses",
+              "Research",
+              "AI Security",
+              "Threat Landscape",
+              "Advanced Security",
+              "AI Evolution",
+              "Threat Analysis"
+            ],
+            "description": "Exploring emerging threats and defense strategies in AI security - from quantum computing vulnerabilities to autonomous AI manipulation and next-generation defense technologies."
+          },
+          {
+            "file": "owasp-top-10-ai-critical-security-vulnerabilities.mdx",
+            "currentPath": "/blog/owasp-top-10-ai-critical-security-vulnerabilities",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "threats",
+            "newPath": "/knowledge/security/threats/owasp-top-10-ai-critical-security-vulnerabilities",
+            "tags": []
+          },
+          {
+            "file": "prompt-injection-playbook-attack-techniques-defenses.mdx",
+            "title": "The Prompt Injection Playbook: Attack Techniques and Defenses",
+            "currentPath": "/blog/prompt-injection-playbook-attack-techniques-defenses",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "threats",
+            "newPath": "/knowledge/security/threats/prompt-injection-playbook-attack-techniques-defenses",
+            "tags": [
+              "AI Security",
+              "Prompt Injection",
+              "Red Team Testing",
+              "LLM Security",
+              "Attack Prevention",
+              "AI Defense"
+            ],
+            "description": "A comprehensive guide to understanding, executing, and defending against prompt injection attacks on AI systems. Learn the complete arsenal of techniques used by attackers and the proven defense strategies that actually work."
+          },
+          {
+            "file": "zero-day-ai-vulnerabilities-detection-response.mdx",
+            "title": "Zero-Day AI Vulnerabilities: Detection and Response",
+            "currentPath": "/blog/zero-day-ai-vulnerabilities-detection-response",
+            "suggestedCategory": "security",
+            "suggestedSubcategory": "threats",
+            "newPath": "/knowledge/security/threats/zero-day-ai-vulnerabilities-detection-response",
+            "tags": [
+              "AI Security",
+              "Zero-Day Vulnerabilities",
+              "AI Incident Response",
+              "Behavioral Security",
+              "AI Red Teaming",
+              "AI Risk Management",
+              "Threat Analysis"
+            ],
+            "description": "Comprehensive guide to understanding and defending against AI-specific zero-day vulnerabilities. Learn detection strategies, incident response frameworks, and proactive defense architectures for the AI threat landscape."
+          }
+        ]
+      },
+      "compliance": {
+        "regulations": [
+          {
+            "file": "ai-and-hipaa-compliance-guide.mdx",
+            "title": "AI and HIPAA: The Complete Compliance Guide for Healthcare Organizations",
+            "currentPath": "/blog/ai-and-hipaa-compliance-guide",
+            "suggestedCategory": "compliance",
+            "suggestedSubcategory": "regulations",
+            "newPath": "/knowledge/compliance/regulations/ai-and-hipaa-compliance-guide",
+            "tags": [
+              "HIPAA Compliance",
+              "Healthcare AI",
+              "AI Security",
+              "Regulatory Compliance",
+              "Patient Privacy",
+              "Healthcare Cybersecurity",
+              "AI Governance",
+              "Medical AI",
+              "Machine Learning",
+              "Neural Networks",
+              "Healthcare Security",
+              "Data Protection"
+            ],
+            "description": "Master the complex intersection of AI technology and HIPAA compliance with this comprehensive guide. Learn practical frameworks for building robust compliance programs, navigating regulatory requirements, and implementing technical safeguards for healthcare AI systems."
+          },
+          {
+            "file": "making-sense-data-anonymization-ai.mdx",
+            "title": "Making Sense of Data Anonymization in AI",
+            "currentPath": "/blog/making-sense-data-anonymization-ai",
+            "suggestedCategory": "compliance",
+            "suggestedSubcategory": "regulations",
+            "newPath": "/knowledge/compliance/regulations/making-sense-data-anonymization-ai",
+            "tags": [
+              "Data Privacy",
+              "Anonymization",
+              "GDPR",
+              "CCPA",
+              "HIPAA",
+              "AI Ethics",
+              "Data Protection"
+            ],
+            "description": "Explore the critical balance between data utility and privacy protection in AI systems, understanding anonymization techniques, global regulations, and emerging privacy-preserving technologies."
+          },
+          {
+            "file": "welcome.mdx",
+            "title": "Welcome to perfecXion.ai",
+            "currentPath": "/blog/welcome",
+            "suggestedCategory": "compliance",
+            "suggestedSubcategory": "regulations",
+            "newPath": "/knowledge/compliance/regulations/welcome",
+            "tags": [
+              "AI Security",
+              "Platform Introduction",
+              "AI Safety",
+              "Compliance",
+              "AI Governance",
+              "Security Tools"
+            ],
+            "description": "Introducing perfecXion.ai"
+          }
+        ],
+        "governance": [
+          {
+            "file": "ai-governance-at-scale-enterprise-strategies-responsible-ai.mdx",
+            "title": "AI Governance at Scale: Enterprise Strategies for Responsible AI",
+            "currentPath": "/blog/ai-governance-at-scale-enterprise-strategies-responsible-ai",
+            "suggestedCategory": "compliance",
+            "suggestedSubcategory": "governance",
+            "newPath": "/knowledge/compliance/governance/ai-governance-at-scale-enterprise-strategies-responsible-ai",
+            "tags": [
+              "AI Governance",
+              "Enterprise Strategy",
+              "Responsible AI",
+              "Risk Management",
+              "AI Ethics",
+              "Compliance"
+            ],
+            "description": "Learn how leading enterprises build comprehensive AI governance frameworks that balance innovation with responsibility, risk management with business value, and compliance with competitive advantage."
+          },
+          {
+            "file": "executives-guide-ai-risk-management-liability.mdx",
+            "title": "The Executive's Guide to AI Risk Management and Liability",
+            "currentPath": "/blog/executives-guide-ai-risk-management-liability",
+            "suggestedCategory": "compliance",
+            "suggestedSubcategory": "governance",
+            "newPath": "/knowledge/compliance/governance/executives-guide-ai-risk-management-liability",
+            "tags": [
+              "Executive Leadership",
+              "AI Risk Management",
+              "Legal Liability",
+              "Board Governance",
+              "C-Suite Strategy",
+              "AI Compliance"
+            ],
+            "description": "A comprehensive guide for C-suite executives on understanding AI risks, managing liability exposure, and building resilient AI strategies that protect shareholder value while enabling innovation."
+          }
+        ],
+        "standards": [
+          {
+            "file": "navigating-ai-compliance-framework-security-standards.mdx",
+            "title": "Navigating AI Compliance: A Framework for 15+ Security Standards",
+            "currentPath": "/blog/navigating-ai-compliance-framework-security-standards",
+            "suggestedCategory": "compliance",
+            "suggestedSubcategory": "standards",
+            "newPath": "/knowledge/compliance/standards/navigating-ai-compliance-framework-security-standards",
+            "tags": [
+              "AI Compliance",
+              "GDPR",
+              "EU AI Act",
+              "Regulatory Framework",
+              "Data Governance",
+              "Security Standards",
+              "Privacy Regulation"
+            ],
+            "description": "Master the complex landscape of AI compliance with a unified framework that addresses GDPR, CCPA, SOC 2, ISO 27001, NIST, and emerging AI-specific regulations."
+          }
+        ]
+      },
+      "industry": {
+        "finance": [
+          {
+            "file": "ai-security-financial-services-regulatory-requirements.mdx",
+            "title": "AI Security in Financial Services: Regulatory Requirements and Best Practices",
+            "currentPath": "/blog/ai-security-financial-services-regulatory-requirements",
+            "suggestedCategory": "industry",
+            "suggestedSubcategory": "finance",
+            "newPath": "/knowledge/industry/finance/ai-security-financial-services-regulatory-requirements",
+            "tags": [
+              "Financial Services",
+              "AI Security",
+              "Regulatory Compliance",
+              "Banking AI",
+              "FinTech Security",
+              "Risk Management",
+              "Machine Learning",
+              "Neural Networks",
+              "Financial Security",
+              "AI Governance",
+              "Banking Security"
+            ],
+            "description": "Navigate the complex landscape of AI security in financial services. From GDPR to Basel III, learn how leading financial institutions are securing AI systems while meeting stringent regulatory requirements."
+          }
+        ],
+        "healthcare": [
+          {
+            "file": "healthcare-ai-security-protecting-patient-data-safety.mdx",
+            "title": "Healthcare AI Security: Protecting Patient Data and Ensuring Safety",
+            "currentPath": "/blog/healthcare-ai-security-protecting-patient-data-safety",
+            "suggestedCategory": "industry",
+            "suggestedSubcategory": "healthcare",
+            "newPath": "/knowledge/industry/healthcare/healthcare-ai-security-protecting-patient-data-safety",
+            "tags": [
+              "Healthcare AI",
+              "HIPAA Compliance",
+              "Patient Safety",
+              "Medical AI",
+              "Data Protection",
+              "Regulatory Compliance",
+              "Machine Learning",
+              "Neural Networks",
+              "Healthcare Security",
+              "AI Safety",
+              "Medical Device Security"
+            ],
+            "description": "Navigate the unique security challenges of healthcare AI systems—from HIPAA compliance to patient-safety safeguards. Learn how leading providers deploy secure AI while protecting both lives and data."
+          }
+        ]
+      },
+      "infrastructure": {
+        "ai-fabrics": [
+          {
+            "file": "multi-cloud-ai-security-strategies-hybrid-deployments.mdx",
+            "title": "Multi-Cloud AI Security: Strategies for Hybrid AI Deployments",
+            "currentPath": "/blog/multi-cloud-ai-security-strategies-hybrid-deployments",
+            "suggestedCategory": "infrastructure",
+            "suggestedSubcategory": "ai-fabrics",
+            "newPath": "/knowledge/infrastructure/ai-fabrics/multi-cloud-ai-security-strategies-hybrid-deployments",
+            "tags": [
+              "Multi-Cloud Security",
+              "AI Deployments",
+              "Hybrid Cloud",
+              "Cloud Architecture",
+              "Enterprise AI",
+              "Security Strategy",
+              "Machine Learning",
+              "Neural Networks",
+              "Cloud Security",
+              "AI Infrastructure"
+            ],
+            "description": "Master the complexities of securing AI systems across multiple cloud providers, edge locations, and hybrid architectures with practical implementation strategies."
+          },
+          {
+            "file": "the-agentic-leap-understanding-and-building-modern-ai-agents.mdx",
+            "title": "The Agentic Leap: Understanding and Building Modern AI Agents",
+            "currentPath": "/blog/the-agentic-leap-understanding-and-building-modern-ai-agents",
+            "suggestedCategory": "infrastructure",
+            "suggestedSubcategory": "ai-fabrics",
+            "newPath": "/knowledge/infrastructure/ai-fabrics/the-agentic-leap-understanding-and-building-modern-ai-agents",
+            "tags": [
+              "AI Agents",
+              "Autonomous Systems",
+              "Agentic RAG",
+              "Multi-Agent Systems",
+              "Production AI",
+              "LLM Architecture"
+            ],
+            "description": "Comprehensive guide to understanding and building production-ready AI agents. Learn frameworks for autonomous systems, agentic RAG, multi-agent orchestration, and enterprise deployment strategies."
+          }
+        ]
+      }
+    },
+    "files": [
+      {
+        "file": "50-attack-vectors-ai-red-team-guide.mdx",
+        "title": "50+ Attack Vectors - A Red Teamer's Guide to Breaking AI Systems",
+        "currentPath": "/blog/50-attack-vectors-ai-red-team-guide",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "red-team",
+        "newPath": "/knowledge/security/red-team/50-attack-vectors-ai-red-team-guide",
+        "tags": [
+          "AI Attack Vectors",
+          "Prompt Injection",
+          "LLM Security",
+          "AI Vulnerabilities",
+          "Red Team Testing",
+          "Threat Analysis"
+        ],
+        "description": "Master the complete taxonomy of AI attack vectors with detailed techniques, real-world examples, and defensive strategies. The definitive guide for security professionals testing AI systems."
+      },
+      {
+        "file": "advanced-prompt-engineering-security-defense-through-design.mdx",
+        "title": "Advanced Prompt Engineering for Security: Defense Through Design",
+        "currentPath": "/blog/advanced-prompt-engineering-security-defense-through-design",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "defense",
+        "newPath": "/knowledge/security/defense/advanced-prompt-engineering-security-defense-through-design",
+        "tags": [
+          "Prompt Engineering",
+          "AI Security",
+          "Prompt Injection",
+          "Defense Strategies",
+          "AI Safety",
+          "Security Design",
+          "LLM Security",
+          "AI Defense"
+        ],
+        "description": "Master defensive prompt engineering techniques to build AI systems that resist manipulation, prevent injection attacks, and maintain security by design."
+      },
+      {
+        "file": "agentic-ai-complete-guide.mdx",
+        "title": "The Agentic AI Revolution: An Executive Report on Architecture, Implementation, and Security",
+        "currentPath": "/blog/agentic-ai-complete-guide",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "fundamentals",
+        "newPath": "/knowledge/security/fundamentals/agentic-ai-complete-guide",
+        "tags": [
+          "AI Agents",
+          "Autonomous Systems",
+          "Agentic RAG",
+          "Multi-Agent Systems",
+          "Production AI",
+          "LLM Architecture",
+          "OWASP"
+        ],
+        "description": "A comprehensive guide to understanding, implementing, and securing AI agents in the modern enterprise - from basic concepts to multi-agent systems and advanced security frameworks."
+      },
+      {
+        "file": "ai-and-hipaa-compliance-guide.mdx",
+        "title": "AI and HIPAA: The Complete Compliance Guide for Healthcare Organizations",
+        "currentPath": "/blog/ai-and-hipaa-compliance-guide",
+        "suggestedCategory": "compliance",
+        "suggestedSubcategory": "regulations",
+        "newPath": "/knowledge/compliance/regulations/ai-and-hipaa-compliance-guide",
+        "tags": [
+          "HIPAA Compliance",
+          "Healthcare AI",
+          "AI Security",
+          "Regulatory Compliance",
+          "Patient Privacy",
+          "Healthcare Cybersecurity",
+          "AI Governance",
+          "Medical AI",
+          "Machine Learning",
+          "Neural Networks",
+          "Healthcare Security",
+          "Data Protection"
+        ],
+        "description": "Master the complex intersection of AI technology and HIPAA compliance with this comprehensive guide. Learn practical frameworks for building robust compliance programs, navigating regulatory requirements, and implementing technical safeguards for healthcare AI systems."
+      },
+      {
+        "file": "ai-arch-security.mdx",
+        "currentPath": "/blog/ai-arch-security",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "fundamentals",
+        "newPath": "/knowledge/security/fundamentals/ai-arch-security",
+        "tags": []
+      },
+      {
+        "file": "ai-governance-at-scale-enterprise-strategies-responsible-ai.mdx",
+        "title": "AI Governance at Scale: Enterprise Strategies for Responsible AI",
+        "currentPath": "/blog/ai-governance-at-scale-enterprise-strategies-responsible-ai",
+        "suggestedCategory": "compliance",
+        "suggestedSubcategory": "governance",
+        "newPath": "/knowledge/compliance/governance/ai-governance-at-scale-enterprise-strategies-responsible-ai",
+        "tags": [
+          "AI Governance",
+          "Enterprise Strategy",
+          "Responsible AI",
+          "Risk Management",
+          "AI Ethics",
+          "Compliance"
+        ],
+        "description": "Learn how leading enterprises build comprehensive AI governance frameworks that balance innovation with responsibility, risk management with business value, and compliance with competitive advantage."
+      },
+      {
+        "file": "ai-guardrails-that-actually-work-beyond-basic-content-filtering.mdx",
+        "title": "AI Guardrails That Actually Work: Beyond Basic Content Filtering",
+        "currentPath": "/blog/ai-guardrails-that-actually-work-beyond-basic-content-filtering",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "defense",
+        "newPath": "/knowledge/security/defense/ai-guardrails-that-actually-work-beyond-basic-content-filtering",
+        "tags": [
+          "AI Guardrails",
+          "AI Safety",
+          "Content Filtering",
+          "LLM Security",
+          "AI Safety Systems",
+          "Intelligent Guardrails"
+        ],
+        "description": "Discover advanced AI guardrail techniques that go beyond simple keyword filtering to create truly intelligent, context-aware safety systems for AI applications."
+      },
+      {
+        "file": "ai-powered-security-automation-transforming-enterprise-cybersecurity.mdx",
+        "title": "AI-Powered Security Automation: Transforming Enterprise Cybersecurity Operations",
+        "currentPath": "/blog/ai-powered-security-automation-transforming-enterprise-cybersecurity",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "fundamentals",
+        "newPath": "/knowledge/security/fundamentals/ai-powered-security-automation-transforming-enterprise-cybersecurity",
+        "tags": [
+          "AI Security",
+          "Security Automation",
+          "Threat Detection",
+          "Incident Response",
+          "Vulnerability Management",
+          "Compliance",
+          "Machine Learning",
+          "Neural Networks",
+          "AI Defense",
+          "Enterprise Security",
+          "OWASP"
+        ],
+        "description": "Examine how to use AI to automate security processes including threat detection, incident response, vulnerability management, and compliance. Learn scalable frameworks for AI-driven security transformation."
+      },
+      {
+        "file": "ai-red-team-testing-complete-guide.mdx",
+        "title": "The Complete Guide to AI Red Team Testing: Beyond Traditional Security",
+        "currentPath": "/blog/ai-red-team-testing-complete-guide",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "red-team",
+        "newPath": "/knowledge/security/red-team/ai-red-team-testing-complete-guide",
+        "tags": [
+          "AI Security",
+          "Red Team Testing",
+          "LLM Security",
+          "Penetration Testing",
+          "AI Vulnerabilities",
+          "Security Testing",
+          "Threat Analysis"
+        ],
+        "description": "Master AI red team testing with comprehensive methodologies, real-world attack vectors, and ROI analysis. Learn how AI systems require fundamentally different security approaches."
+      },
+      {
+        "file": "ai-red-team-testing-production-lessons.mdx",
+        "title": "AI Red Team Testing in Production: Lessons from 1000+ Assessments",
+        "currentPath": "/blog/ai-red-team-testing-production-lessons",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "red-team",
+        "newPath": "/knowledge/security/red-team/ai-red-team-testing-production-lessons",
+        "tags": [
+          "Red Team",
+          "Production Security",
+          "AI Testing",
+          "Security Assessment",
+          "Enterprise AI",
+          "AI Vulnerabilities"
+        ],
+        "description": "Deep insights into production AI security testing, revealing patterns, methodologies, and critical lessons learned from extensive red team assessments in live environments."
+      },
+      {
+        "file": "ai-security-financial-services-regulatory-requirements.mdx",
+        "title": "AI Security in Financial Services: Regulatory Requirements and Best Practices",
+        "currentPath": "/blog/ai-security-financial-services-regulatory-requirements",
+        "suggestedCategory": "industry",
+        "suggestedSubcategory": "finance",
+        "newPath": "/knowledge/industry/finance/ai-security-financial-services-regulatory-requirements",
+        "tags": [
+          "Financial Services",
+          "AI Security",
+          "Regulatory Compliance",
+          "Banking AI",
+          "FinTech Security",
+          "Risk Management",
+          "Machine Learning",
+          "Neural Networks",
+          "Financial Security",
+          "AI Governance",
+          "Banking Security"
+        ],
+        "description": "Navigate the complex landscape of AI security in financial services. From GDPR to Basel III, learn how leading financial institutions are securing AI systems while meeting stringent regulatory requirements."
+      },
+      {
+        "file": "building-mature-ai-security-program-startup-to-enterprise.mdx",
+        "title": "Building a Mature AI Security Program: From Startup to Enterprise",
+        "currentPath": "/blog/building-mature-ai-security-program-startup-to-enterprise",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "fundamentals",
+        "newPath": "/knowledge/security/fundamentals/building-mature-ai-security-program-startup-to-enterprise",
+        "tags": [
+          "AI Security Program",
+          "Enterprise Security",
+          "Startup Security",
+          "Security Maturity",
+          "Organizational Development",
+          "Strategic Planning"
+        ],
+        "description": "A comprehensive roadmap for scaling AI security from early-stage startups to enterprise organizations. Learn the essential phases, key milestones, and proven strategies for building world-class AI security programs."
+      },
+      {
+        "file": "data-poisoning-attacks.mdx",
+        "title": "Data Poisoning Attacks: The Silent Sabotage in AI Security",
+        "currentPath": "/blog/data-poisoning-attacks",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "threats",
+        "newPath": "/knowledge/security/threats/data-poisoning-attacks",
+        "tags": [
+          "Data Poisoning",
+          "AI Security",
+          "ML Security",
+          "Training Attacks",
+          "Backdoors",
+          "Defense Strategies",
+          "Machine Learning",
+          "Neural Networks",
+          "Model Security",
+          "AI Training"
+        ],
+        "description": "Comprehensive analysis of data poisoning threats in AI systems, from subtle backdoors to systemic bias injection, with detection strategies and defense mechanisms."
+      },
+      {
+        "file": "executives-guide-ai-risk-management-liability.mdx",
+        "title": "The Executive's Guide to AI Risk Management and Liability",
+        "currentPath": "/blog/executives-guide-ai-risk-management-liability",
+        "suggestedCategory": "compliance",
+        "suggestedSubcategory": "governance",
+        "newPath": "/knowledge/compliance/governance/executives-guide-ai-risk-management-liability",
+        "tags": [
+          "Executive Leadership",
+          "AI Risk Management",
+          "Legal Liability",
+          "Board Governance",
+          "C-Suite Strategy",
+          "AI Compliance"
+        ],
+        "description": "A comprehensive guide for C-suite executives on understanding AI risks, managing liability exposure, and building resilient AI strategies that protect shareholder value while enabling innovation."
+      },
+      {
+        "file": "from-chatbots-to-autonomous-agents-evolution-ai-security.mdx",
+        "title": "From Chatbots to Autonomous Agents: The Evolution of AI Security",
+        "currentPath": "/blog/from-chatbots-to-autonomous-agents-evolution-ai-security",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "fundamentals",
+        "newPath": "/knowledge/security/fundamentals/from-chatbots-to-autonomous-agents-evolution-ai-security",
+        "tags": [
+          "AI Evolution",
+          "Autonomous Agents",
+          "AI Security",
+          "Agent Security",
+          "AI Development",
+          "Neural Networks",
+          "Machine Learning",
+          "AI Architecture",
+          "Agentic AI"
+        ],
+        "description": "Explore the dramatic shift from simple rule-based chatbots to fully autonomous AI agents, and how security challenges have evolved alongside this transformation."
+      },
+      {
+        "file": "future-ai-security-emerging-threats-defenses.mdx",
+        "title": "Future of AI Security: Emerging Threats and Defenses",
+        "currentPath": "/blog/future-ai-security-emerging-threats-defenses",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "threats",
+        "newPath": "/knowledge/security/threats/future-ai-security-emerging-threats-defenses",
+        "tags": [
+          "Future AI Security",
+          "Emerging Threats",
+          "AI Defenses",
+          "Research",
+          "AI Security",
+          "Threat Landscape",
+          "Advanced Security",
+          "AI Evolution",
+          "Threat Analysis"
+        ],
+        "description": "Exploring emerging threats and defense strategies in AI security - from quantum computing vulnerabilities to autonomous AI manipulation and next-generation defense technologies."
+      },
+      {
+        "file": "healthcare-ai-security-protecting-patient-data-safety.mdx",
+        "title": "Healthcare AI Security: Protecting Patient Data and Ensuring Safety",
+        "currentPath": "/blog/healthcare-ai-security-protecting-patient-data-safety",
+        "suggestedCategory": "industry",
+        "suggestedSubcategory": "healthcare",
+        "newPath": "/knowledge/industry/healthcare/healthcare-ai-security-protecting-patient-data-safety",
+        "tags": [
+          "Healthcare AI",
+          "HIPAA Compliance",
+          "Patient Safety",
+          "Medical AI",
+          "Data Protection",
+          "Regulatory Compliance",
+          "Machine Learning",
+          "Neural Networks",
+          "Healthcare Security",
+          "AI Safety",
+          "Medical Device Security"
+        ],
+        "description": "Navigate the unique security challenges of healthcare AI systems—from HIPAA compliance to patient-safety safeguards. Learn how leading providers deploy secure AI while protecting both lives and data."
+      },
+      {
+        "file": "hidden-risks-agentic-ai-monitoring-fails.mdx",
+        "title": "The Hidden Risks of Agentic AI: Why Traditional Monitoring Fails",
+        "currentPath": "/blog/hidden-risks-agentic-ai-monitoring-fails",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "fundamentals",
+        "newPath": "/knowledge/security/fundamentals/hidden-risks-agentic-ai-monitoring-fails",
+        "tags": [
+          "Agentic AI",
+          "Security Monitoring",
+          "Autonomous Systems",
+          "AI Detection",
+          "Enterprise Security"
+        ],
+        "description": "Discover why autonomous AI agents break every security monitoring assumption and learn how to detect threats in systems that think for themselves."
+      },
+      {
+        "file": "llm-security-protecting-language-models-production.mdx",
+        "title": "LLM Security: Protecting Language Models in Production",
+        "currentPath": "/blog/llm-security-protecting-language-models-production",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "defense",
+        "newPath": "/knowledge/security/defense/llm-security-protecting-language-models-production",
+        "tags": [
+          "LLM Security",
+          "Production Security",
+          "Best Practices",
+          "Language Models",
+          "Prompt Injection",
+          "AI Safety",
+          "Large Language Models",
+          "AI Security",
+          "Model Security"
+        ],
+        "description": "Best practices for securing large language models in production environments - from prompt injection defense to data protection and compliance frameworks."
+      },
+      {
+        "file": "making-sense-data-anonymization-ai.mdx",
+        "title": "Making Sense of Data Anonymization in AI",
+        "currentPath": "/blog/making-sense-data-anonymization-ai",
+        "suggestedCategory": "compliance",
+        "suggestedSubcategory": "regulations",
+        "newPath": "/knowledge/compliance/regulations/making-sense-data-anonymization-ai",
+        "tags": [
+          "Data Privacy",
+          "Anonymization",
+          "GDPR",
+          "CCPA",
+          "HIPAA",
+          "AI Ethics",
+          "Data Protection"
+        ],
+        "description": "Explore the critical balance between data utility and privacy protection in AI systems, understanding anonymization techniques, global regulations, and emerging privacy-preserving technologies."
+      },
+      {
+        "file": "multi-agent-systems-security-safe-ai-collaboration.mdx",
+        "title": "Multi-Agent Systems Security: Orchestrating Safe AI Collaboration",
+        "currentPath": "/blog/multi-agent-systems-security-safe-ai-collaboration",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "fundamentals",
+        "newPath": "/knowledge/security/fundamentals/multi-agent-systems-security-safe-ai-collaboration",
+        "tags": [
+          "Multi-Agent Systems",
+          "AI Orchestration",
+          "Agent Security",
+          "Distributed AI",
+          "Collaboration Security"
+        ],
+        "description": "Master the complex security challenges of multi-agent AI systems where autonomous agents interact, compete, and collaborate in unpredictable ways."
+      },
+      {
+        "file": "multi-cloud-ai-security-strategies-hybrid-deployments.mdx",
+        "title": "Multi-Cloud AI Security: Strategies for Hybrid AI Deployments",
+        "currentPath": "/blog/multi-cloud-ai-security-strategies-hybrid-deployments",
+        "suggestedCategory": "infrastructure",
+        "suggestedSubcategory": "ai-fabrics",
+        "newPath": "/knowledge/infrastructure/ai-fabrics/multi-cloud-ai-security-strategies-hybrid-deployments",
+        "tags": [
+          "Multi-Cloud Security",
+          "AI Deployments",
+          "Hybrid Cloud",
+          "Cloud Architecture",
+          "Enterprise AI",
+          "Security Strategy",
+          "Machine Learning",
+          "Neural Networks",
+          "Cloud Security",
+          "AI Infrastructure"
+        ],
+        "description": "Master the complexities of securing AI systems across multiple cloud providers, edge locations, and hybrid architectures with practical implementation strategies."
+      },
+      {
+        "file": "navigating-ai-compliance-framework-security-standards.mdx",
+        "title": "Navigating AI Compliance: A Framework for 15+ Security Standards",
+        "currentPath": "/blog/navigating-ai-compliance-framework-security-standards",
+        "suggestedCategory": "compliance",
+        "suggestedSubcategory": "standards",
+        "newPath": "/knowledge/compliance/standards/navigating-ai-compliance-framework-security-standards",
+        "tags": [
+          "AI Compliance",
+          "GDPR",
+          "EU AI Act",
+          "Regulatory Framework",
+          "Data Governance",
+          "Security Standards",
+          "Privacy Regulation"
+        ],
+        "description": "Master the complex landscape of AI compliance with a unified framework that addresses GDPR, CCPA, SOC 2, ISO 27001, NIST, and emerging AI-specific regulations."
+      },
+      {
+        "file": "neural-network-security-beyond-traditional-defenses.mdx",
+        "title": "Neural Network Security: Beyond Traditional Defenses",
+        "currentPath": "/blog/neural-network-security-beyond-traditional-defenses",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "defense",
+        "newPath": "/knowledge/security/defense/neural-network-security-beyond-traditional-defenses",
+        "tags": [
+          "Neural Networks",
+          "AI Security",
+          "Research",
+          "Advanced Defense",
+          "Machine Learning",
+          "Cybersecurity",
+          "Deep Learning",
+          "Model Security",
+          "Adversarial Attacks"
+        ],
+        "description": "Exploring the unique security challenges of neural networks and advanced defense strategies in an era where traditional cybersecurity approaches fall short."
+      },
+      {
+        "file": "owasp-top-10-ai-critical-security-vulnerabilities.mdx",
+        "currentPath": "/blog/owasp-top-10-ai-critical-security-vulnerabilities",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "threats",
+        "newPath": "/knowledge/security/threats/owasp-top-10-ai-critical-security-vulnerabilities",
+        "tags": []
+      },
+      {
+        "file": "prompt-injection-playbook-attack-techniques-defenses.mdx",
+        "title": "The Prompt Injection Playbook: Attack Techniques and Defenses",
+        "currentPath": "/blog/prompt-injection-playbook-attack-techniques-defenses",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "threats",
+        "newPath": "/knowledge/security/threats/prompt-injection-playbook-attack-techniques-defenses",
+        "tags": [
+          "AI Security",
+          "Prompt Injection",
+          "Red Team Testing",
+          "LLM Security",
+          "Attack Prevention",
+          "AI Defense"
+        ],
+        "description": "A comprehensive guide to understanding, executing, and defending against prompt injection attacks on AI systems. Learn the complete arsenal of techniques used by attackers and the proven defense strategies that actually work."
+      },
+      {
+        "file": "secure-ai-deployment-production-best-practices.mdx",
+        "title": "Secure AI Deployment: Production Best Practices",
+        "currentPath": "/blog/secure-ai-deployment-production-best-practices",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "defense",
+        "newPath": "/knowledge/security/defense/secure-ai-deployment-production-best-practices",
+        "tags": [
+          "AI Security",
+          "Production Deployment",
+          "MLSecOps",
+          "CISO Guide",
+          "Threat Modeling",
+          "Governance",
+          "Zero Trust",
+          "Monitoring",
+          "OWASP"
+        ],
+        "description": "A comprehensive CISO's guide to deploying AI systems securely in production environments. Learn MLSecOps principles, threat modeling, and governance frameworks for resilient AI security."
+      },
+      {
+        "file": "securing-ai-critical-infrastructure-lessons-from-field.mdx",
+        "title": "Securing AI in Critical Infrastructure: Lessons from the Field",
+        "currentPath": "/blog/securing-ai-critical-infrastructure-lessons-from-field",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "fundamentals",
+        "newPath": "/knowledge/security/fundamentals/securing-ai-critical-infrastructure-lessons-from-field",
+        "tags": [
+          "Critical Infrastructure",
+          "AI Security",
+          "SCADA Systems",
+          "Industrial AI",
+          "Cyber-Physical Security",
+          "National Security",
+          "Machine Learning",
+          "Neural Networks",
+          "Industrial Security",
+          "AI Safety"
+        ],
+        "description": "Real-world insights from securing AI systems in power grids, transportation networks, water systems, and telecommunications. Learn from actual deployments and incidents that shaped modern critical infrastructure security."
+      },
+      {
+        "file": "securing-ai-infrastructure-training-to-deployment.mdx",
+        "title": "Securing AI Infrastructure: From Training to Deployment",
+        "currentPath": "/blog/securing-ai-infrastructure-training-to-deployment",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "fundamentals",
+        "newPath": "/knowledge/security/fundamentals/securing-ai-infrastructure-training-to-deployment",
+        "tags": [],
+        "description": "A comprehensive technical guide to securing every layer of AI infrastructure, from data pipelines and training environments to model serving and edge deployment."
+      },
+      {
+        "file": "securing-ai-systems-enterprise-frameworks.mdx",
+        "title": "Securing AI Systems: Enterprise Frameworks for AI Security Protection",
+        "currentPath": "/blog/securing-ai-systems-enterprise-frameworks",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "defense",
+        "newPath": "/knowledge/security/defense/securing-ai-systems-enterprise-frameworks",
+        "tags": [
+          "AI Security",
+          "Enterprise Security",
+          "Data Poisoning",
+          "Adversarial Attacks",
+          "Supply Chain Security",
+          "MLSecOps",
+          "OWASP"
+        ],
+        "description": "Comprehensive guide to protecting AI systems from threats like data poisoning, adversarial attacks, and supply chain vulnerabilities. Learn enterprise-grade security frameworks and architectural patterns for defending AI systems."
+      },
+      {
+        "file": "the-agentic-leap-understanding-and-building-modern-ai-agents.mdx",
+        "title": "The Agentic Leap: Understanding and Building Modern AI Agents",
+        "currentPath": "/blog/the-agentic-leap-understanding-and-building-modern-ai-agents",
+        "suggestedCategory": "infrastructure",
+        "suggestedSubcategory": "ai-fabrics",
+        "newPath": "/knowledge/infrastructure/ai-fabrics/the-agentic-leap-understanding-and-building-modern-ai-agents",
+        "tags": [
+          "AI Agents",
+          "Autonomous Systems",
+          "Agentic RAG",
+          "Multi-Agent Systems",
+          "Production AI",
+          "LLM Architecture"
+        ],
+        "description": "Comprehensive guide to understanding and building production-ready AI agents. Learn frameworks for autonomous systems, agentic RAG, multi-agent orchestration, and enterprise deployment strategies."
+      },
+      {
+        "file": "welcome.mdx",
+        "title": "Welcome to perfecXion.ai",
+        "currentPath": "/blog/welcome",
+        "suggestedCategory": "compliance",
+        "suggestedSubcategory": "regulations",
+        "newPath": "/knowledge/compliance/regulations/welcome",
+        "tags": [
+          "AI Security",
+          "Platform Introduction",
+          "AI Safety",
+          "Compliance",
+          "AI Governance",
+          "Security Tools"
+        ],
+        "description": "Introducing perfecXion.ai"
+      },
+      {
+        "file": "zero-day-ai-vulnerabilities-detection-response.mdx",
+        "title": "Zero-Day AI Vulnerabilities: Detection and Response",
+        "currentPath": "/blog/zero-day-ai-vulnerabilities-detection-response",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "threats",
+        "newPath": "/knowledge/security/threats/zero-day-ai-vulnerabilities-detection-response",
+        "tags": [
+          "AI Security",
+          "Zero-Day Vulnerabilities",
+          "AI Incident Response",
+          "Behavioral Security",
+          "AI Red Teaming",
+          "AI Risk Management",
+          "Threat Analysis"
+        ],
+        "description": "Comprehensive guide to understanding and defending against AI-specific zero-day vulnerabilities. Learn detection strategies, incident response frameworks, and proactive defense architectures for the AI threat landscape."
+      },
+      {
+        "file": "zero-trust-architecture-ai-systems-implementation-guide.mdx",
+        "title": "Zero Trust Architecture for AI Systems: A Practical Implementation Guide",
+        "currentPath": "/blog/zero-trust-architecture-ai-systems-implementation-guide",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "fundamentals",
+        "newPath": "/knowledge/security/fundamentals/zero-trust-architecture-ai-systems-implementation-guide",
+        "tags": [
+          "Zero Trust",
+          "AI Security",
+          "Architecture",
+          "Implementation",
+          "Security Frameworks",
+          "AI Governance",
+          "Network Security",
+          "Access Control"
+        ],
+        "description": "Learn how to implement Zero Trust principles specifically for AI systems, with practical examples, architecture patterns, and step-by-step implementation guidance."
+      }
+    ]
+  },
+  "learning": {
+    "total": 6,
+    "files": [
+      {
+        "file": "building-ai-security-programs.mdx",
+        "title": "Building AI Security Programs",
+        "currentPath": "/learn/building-ai-security-programs",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "fundamentals",
+        "newPath": "/knowledge/security/fundamentals/building-ai-security-programs"
+      },
+      {
+        "file": "compliance-for-ai-systems.mdx",
+        "title": "Compliance for AI Systems",
+        "currentPath": "/learn/compliance-for-ai-systems",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "fundamentals",
+        "newPath": "/knowledge/security/fundamentals/compliance-for-ai-systems"
+      },
+      {
+        "file": "getting-started.mdx",
+        "title": "Getting Started with AI Security",
+        "currentPath": "/learn/getting-started",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "fundamentals",
+        "newPath": "/knowledge/security/fundamentals/getting-started"
+      },
+      {
+        "file": "incident-response-for-ai.mdx",
+        "title": "Incident Response for AI",
+        "currentPath": "/learn/incident-response-for-ai",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "fundamentals",
+        "newPath": "/knowledge/security/fundamentals/incident-response-for-ai"
+      },
+      {
+        "file": "types-of-ai-attacks.mdx",
+        "title": "Types of AI Attacks",
+        "currentPath": "/learn/types-of-ai-attacks",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "fundamentals",
+        "newPath": "/knowledge/security/fundamentals/types-of-ai-attacks"
+      },
+      {
+        "file": "understanding-ai-vulnerabilities.mdx",
+        "title": "Understanding AI Vulnerabilities",
+        "currentPath": "/learn/understanding-ai-vulnerabilities",
+        "suggestedCategory": "security",
+        "suggestedSubcategory": "fundamentals",
+        "newPath": "/knowledge/security/fundamentals/understanding-ai-vulnerabilities"
+      }
+    ]
+  },
+  "totalFiles": 40
+}
