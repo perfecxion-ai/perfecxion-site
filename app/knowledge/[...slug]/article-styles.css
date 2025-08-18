@@ -8,7 +8,7 @@
   color: rgb(23, 23, 23);
 }
 
-/* FORCE WHITE TEXT - Override everything BUT preserve component styling */
+/* FORCE WHITE TEXT AND DARK BACKGROUNDS - Override everything */
 .prose {
   color: rgb(255, 255, 255) !important;
 }
@@ -18,6 +18,54 @@
 .prose td,
 .prose th,
 .prose blockquote {
+  color: rgb(255, 255, 255) !important;
+}
+
+/* Force any white/light backgrounds to be dark - NUCLEAR APPROACH */
+.prose div[style*="background"],
+.prose div[class*="bg-"],
+.prose span[style*="background"],
+.prose pre,
+.prose code,
+.prose div,
+.prose section,
+.prose article,
+.prose aside,
+.prose nav,
+.prose main,
+.prose figure,
+.prose figcaption {
+  background: rgb(22, 27, 34) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+/* Catch any remaining white/light elements */
+.prose *[style*="background-color: white"],
+.prose *[style*="background-color: #fff"],
+.prose *[style*="background-color: #ffffff"],
+.prose *[style*="background-color: rgb(255,255,255)"],
+.prose *[style*="background-color: rgb(255, 255, 255)"],
+.prose *[style*="background: white"],
+.prose *[style*="background: #fff"],
+.prose *[style*="background: #ffffff"],
+.prose *[style*="background: rgb(255,255,255)"],
+.prose *[style*="background: rgb(255, 255, 255)"],
+.prose .bg-white,
+.prose .bg-gray-50,
+.prose .bg-gray-100,
+.prose .bg-gray-200,
+.prose .bg-slate-50,
+.prose .bg-slate-100,
+.prose .bg-neutral-50,
+.prose .bg-neutral-100 {
+  background: rgb(22, 27, 34) !important;
+  background-color: rgb(22, 27, 34) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+/* Force dark on any containers that might be light */
+.prose div:not(.callout):not(.choice-card):not(.stat-item):not(.toc-container) {
+  background: transparent !important;
   color: rgb(255, 255, 255) !important;
 }
 
@@ -197,18 +245,31 @@
   font-weight: 600;
 }
 
+/* FORCE DARK CODE BLOCKS ALWAYS */
+.prose pre {
+  background: rgb(22, 27, 34) !important; /* Very dark background like React.dev */
+  border: 1px solid rgb(48, 54, 61) !important;
+  color: rgb(255, 255, 255) !important; /* Bright white base text */
+}
+
+.prose code:not(pre code) {
+  background: rgb(40, 44, 52) !important;
+  border: 1px solid rgb(55, 65, 81) !important;
+  color: rgb(255, 183, 197) !important; /* Pink inline code like React.dev */
+}
+
 /* Dark mode code blocks - dark background like React.dev */
 @media (prefers-color-scheme: dark) {
   .prose pre {
-    background: rgb(22, 27, 34); /* Very dark background like React.dev */
-    border: 1px solid rgb(48, 54, 61);
-    color: rgb(255, 255, 255); /* Bright white base text */
+    background: rgb(22, 27, 34) !important; /* Very dark background like React.dev */
+    border: 1px solid rgb(48, 54, 61) !important;
+    color: rgb(255, 255, 255) !important; /* Bright white base text */
   }
   
   .prose code:not(pre code) {
-    background: rgb(40, 44, 52);
-    border: 1px solid rgb(55, 65, 81);
-    color: rgb(255, 183, 197); /* Pink inline code like React.dev */
+    background: rgb(40, 44, 52) !important;
+    border: 1px solid rgb(55, 65, 81) !important;
+    color: rgb(255, 183, 197) !important; /* Pink inline code like React.dev */
   }
 }
 
