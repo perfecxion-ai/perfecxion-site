@@ -328,10 +328,10 @@
   }
 }
 
-/* Table of Contents - React docs style */
+/* Table of Contents - Force dark mode always */
 .toc-container {
-  background: rgb(249, 250, 251);
-  border: 1px solid rgb(229, 231, 235);
+  background: rgb(17, 24, 39) !important;
+  border: 1px solid rgb(55, 65, 81) !important;
   border-radius: 12px;
   padding: 1.5rem;
   margin: 2rem 0;
@@ -339,7 +339,7 @@
 }
 
 .toc-container h2 {
-  color: rgb(23, 23, 23);
+  color: rgb(255, 255, 255) !important;
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 1.125rem;
@@ -347,7 +347,7 @@
 }
 
 .table-of-contents {
-  color: rgb(75, 85, 99);
+  color: rgb(229, 231, 235) !important;
 }
 
 .table-of-contents ol {
@@ -411,49 +411,49 @@
   }
 }
 
-/* Callouts - React docs inspired */
+/* Callouts - Force dark mode always */
 .callout {
   border-radius: 12px;
   padding: 1.5rem;
   margin: 1.5rem 0;
-  background: rgb(249, 250, 251);
-  border: 1px solid rgb(229, 231, 235);
+  background: rgb(17, 24, 39) !important;
+  border: 1px solid rgb(55, 65, 81) !important;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
 }
 
 .callout-insight {
-  background: rgb(239, 246, 255);
-  border-color: rgb(147, 197, 253);
+  background: rgb(30, 58, 138) !important;
+  border-color: rgb(59, 130, 246) !important;
 }
 
 .callout-warning {
-  background: rgb(255, 251, 235);
-  border-color: rgb(251, 191, 36);
+  background: rgb(120, 53, 15) !important;
+  border-color: rgb(245, 158, 11) !important;
 }
 
 .callout-success {
-  background: rgb(240, 253, 244);
-  border-color: rgb(74, 222, 128);
+  background: rgb(20, 83, 45) !important;
+  border-color: rgb(34, 197, 94) !important;
 }
 
 .callout-urgent {
-  background: rgb(254, 242, 242);
-  border-color: rgb(248, 113, 113);
+  background: rgb(127, 29, 29) !important;
+  border-color: rgb(248, 113, 113) !important;
 }
 
 .callout-critical {
-  background: rgb(254, 242, 242);
-  border-color: rgb(239, 68, 68);
+  background: rgb(127, 29, 29) !important;
+  border-color: rgb(239, 68, 68) !important;
 }
 
 .callout-content {
-  color: rgb(75, 85, 99);
+  color: rgb(255, 255, 255) !important;
 }
 
 .callout-content h3 {
   margin-top: 0;
   margin-bottom: 0.75rem;
-  color: rgb(23, 23, 23);
+  color: rgb(255, 255, 255) !important;
   font-size: 1.125rem;
   font-weight: 600;
 }
@@ -462,6 +462,7 @@
   margin: 0;
   font-size: 1rem;
   line-height: 1.75;
+  color: rgb(255, 255, 255) !important;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -508,10 +509,10 @@
 }
 
 .choice-card {
-  background: white;
+  background: rgb(17, 24, 39) !important;
   border-radius: 12px;
   padding: 1.5rem;
-  border: 1px solid rgb(229, 231, 235);
+  border: 1px solid rgb(55, 65, 81) !important;
   transition: all 0.2s ease;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
 }
@@ -536,14 +537,14 @@
 .choice-card h4 {
   margin-top: 0;
   margin-bottom: 0.75rem;
-  color: rgb(23, 23, 23);
+  color: rgb(255, 255, 255) !important;
   font-size: 1.125rem;
   font-weight: 600;
 }
 
 .choice-card p {
   margin: 0;
-  color: rgb(75, 85, 99);
+  color: rgb(229, 231, 235) !important;
   font-size: 1rem;
   line-height: 1.75;
 }
@@ -570,8 +571,8 @@
   gap: 2rem;
   margin: 2rem 0;
   padding: 2rem;
-  background: rgb(249, 250, 251);
-  border: 1px solid rgb(229, 231, 235);
+  background: rgb(17, 24, 39) !important;
+  border: 1px solid rgb(55, 65, 81) !important;
   border-radius: 12px;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
 }
@@ -591,13 +592,13 @@
 .stat-label {
   font-weight: 600;
   font-size: 1rem;
-  color: rgb(23, 23, 23);
+  color: rgb(255, 255, 255) !important;
   margin-bottom: 0.25rem;
 }
 
 .stat-desc {
   font-size: 0.875rem;
-  color: rgb(107, 114, 128);
+  color: rgb(229, 231, 235) !important;
   line-height: 1.5;
 }
 
