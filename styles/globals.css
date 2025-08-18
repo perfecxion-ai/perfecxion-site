@@ -11,7 +11,7 @@
   }
 
   body {
-    @apply bg-slate-800 text-white;
+    @apply bg-gray-900 text-white;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
