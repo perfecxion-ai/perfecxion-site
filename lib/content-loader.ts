@@ -126,9 +126,10 @@ async function loadContentFromDirectory(
           // Skip drafts
           if (data.draft) return
           
-          // Determine URL path
+          // Determine URL path - preserve the full directory structure
           const slug = file.replace(/\.(mdx|md)$/, '')
-          const urlPath = relativePath ? `${baseUrl}/${relativePath}/${slug}` : `${baseUrl}/${slug}`
+          const fullRelativePath = relativePath ? `${relativePath}/${slug}` : slug
+          const urlPath = `${baseUrl}/${fullRelativePath}`
           
           // Determine domain from category or path
           const domain = data.category ? 

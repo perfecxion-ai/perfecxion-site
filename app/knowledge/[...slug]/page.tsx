@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { ArrowLeft, Clock, Calendar, Tag, BookOpen, FileText, Zap, Building } from 'lucide-react'
 import { loadAllContent } from '@/lib/content-loader'
 import { RelatedContent } from '@/components/related-content'
+import { mdxComponents } from '@/components/mdx-components'
 
 interface PageProps {
   params: {
@@ -174,8 +175,20 @@ export default async function KnowledgeContentPage({ params }: PageProps) {
       
       {/* Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="prose prose-gray dark:prose-invert max-w-none">
-          <MDXRemote source={content} />
+        <div className="prose prose-lg dark:prose-invert max-w-none 
+          prose-headings:text-foreground 
+          prose-p:text-foreground 
+          prose-strong:text-foreground 
+          prose-ul:text-foreground 
+          prose-ol:text-foreground 
+          prose-li:text-foreground
+          prose-blockquote:text-muted-foreground
+          prose-code:bg-muted prose-code:text-foreground
+          prose-pre:bg-muted
+          prose-a:text-blue-600 dark:prose-a:text-blue-400
+          prose-th:text-foreground
+          prose-td:text-foreground">
+          <MDXRemote source={content} components={mdxComponents} />
         </div>
         
         {/* Related Content */}
