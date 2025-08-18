@@ -8,10 +8,34 @@
   color: rgb(23, 23, 23);
 }
 
+/* FORCE WHITE TEXT - Override everything */
+.prose,
+.prose *,
+.prose p,
+.prose div,
+.prose span,
+.prose li,
+.prose td,
+.prose th,
+.prose blockquote {
+  color: rgb(255, 255, 255) !important;
+}
+
 /* Dark mode - much brighter text like React.dev */
 @media (prefers-color-scheme: dark) {
   .prose {
-    color: rgb(255, 255, 255); /* Bright white text like React.dev */
+    color: rgb(255, 255, 255) !important; /* Bright white text like React.dev */
+  }
+  
+  .prose *,
+  .prose p,
+  .prose div,
+  .prose span,
+  .prose li,
+  .prose td,
+  .prose th,
+  .prose blockquote {
+    color: rgb(255, 255, 255) !important;
   }
 }
 
@@ -53,10 +77,20 @@
   color: rgb(23, 23, 23);
 }
 
+/* FORCE WHITE HEADINGS */
+.prose h1,
+.prose h2, 
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  color: rgb(255, 255, 255) !important;
+}
+
 /* Dark mode headings - bright white */
 @media (prefers-color-scheme: dark) {
   .prose h1, .prose h2, .prose h3, .prose h4 {
-    color: rgb(255, 255, 255); /* Bright white headings like React.dev */
+    color: rgb(255, 255, 255) !important; /* Bright white headings like React.dev */
   }
   
   .prose h2 {
@@ -97,14 +131,24 @@
   color: rgb(23, 23, 23);
 }
 
+/* FORCE WHITE TEXT IN ALL MODES */
+.prose p, 
+.prose li,
+.prose strong,
+.prose em,
+.prose span,
+.prose div {
+  color: rgb(255, 255, 255) !important;
+}
+
 /* Dark mode text - bright white */
 @media (prefers-color-scheme: dark) {
   .prose p, .prose li {
-    color: rgb(255, 255, 255); /* Bright white text like React.dev */
+    color: rgb(255, 255, 255) !important; /* Bright white text like React.dev */
   }
   
   .prose strong {
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255) !important;
   }
 }
 
