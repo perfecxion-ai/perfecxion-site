@@ -1,7 +1,7 @@
 /* Clean code styling to match the design */
 pre[class*="language-"],
 code[class*="language-"] {
-  color: #1f2937;
+  color: #1f2937 !important;
   background: none;
   font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
   font-size: 0.875rem;
@@ -44,12 +44,12 @@ pre[class*="language-"] code[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #6b7280;
+  color: #6b7280 !important;
   font-style: italic;
 }
 
 .token.punctuation {
-  color: #4b5563;
+  color: #374151 !important;
 }
 
 .token.property,
@@ -57,13 +57,13 @@ pre[class*="language-"] code[class*="language-"] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: #dc2626;
+  color: #dc2626 !important;
   font-weight: 500;
 }
 
 .token.boolean,
 .token.number {
-  color: #7c3aed;
+  color: #7c3aed !important;
   font-weight: 500;
 }
 
@@ -73,7 +73,7 @@ pre[class*="language-"] code[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #16a34a;
+  color: #16a34a !important;
   font-weight: 500;
 }
 
@@ -83,26 +83,42 @@ pre[class*="language-"] code[class*="language-"] {
 .language-css .token.string,
 .style .token.string,
 .token.variable {
-  color: #374151;
+  color: #374151 !important;
 }
 
 .token.atrule,
 .token.attr-value,
 .token.function,
 .token.class-name {
-  color: #2563eb;
+  color: #2563eb !important;
   font-weight: 500;
 }
 
 .token.keyword {
-  color: #db2777;
+  color: #db2777 !important;
   font-weight: 600;
 }
 
 .token.regex,
 .token.important {
-  color: #ea580c;
+  color: #ea580c !important;
   font-weight: 500;
+}
+
+/* Ensure all code text is visible */
+pre[class*="language-"] * {
+  color: inherit;
+}
+
+/* Fix any potential white text issues */
+pre[class*="language-"] code,
+pre[class*="language-"] span {
+  color: #374151 !important;
+}
+
+/* Override any inherited white text */
+.token:not(.comment):not(.string):not(.keyword):not(.function):not(.number):not(.boolean) {
+  color: #374151 !important;
 }
 
 .token.important,

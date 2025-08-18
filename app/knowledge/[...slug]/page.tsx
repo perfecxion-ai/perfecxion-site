@@ -203,8 +203,8 @@ export default async function KnowledgeContentPage({ params }: PageProps) {
             prose-li:text-foreground prose-li:mb-1
             prose-blockquote:text-muted-foreground prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:my-6
             prose-code:bg-muted prose-code:text-foreground prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-            prose-pre:bg-gray-900 prose-pre:text-white prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:my-6
-            prose-pre:code:bg-transparent prose-pre:code:p-0 prose-pre:code:text-inherit
+            prose-pre:bg-transparent prose-pre:text-gray-900 prose-pre:p-0 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:my-6
+            prose-pre:code:bg-transparent prose-pre:code:p-0 prose-pre:code:text-gray-900
             prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:underline hover:prose-a:no-underline
             prose-table:w-full prose-table:border-collapse prose-table:my-6
             prose-th:text-foreground prose-th:bg-muted prose-th:font-semibold prose-th:border prose-th:border-border prose-th:px-4 prose-th:py-2
