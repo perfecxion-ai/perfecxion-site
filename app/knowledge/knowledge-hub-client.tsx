@@ -166,25 +166,25 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
       </section>
 
       {/* Filters */}
-      <section className="border-b border-border bg-background sticky top-[73px] z-40">
+      <section className="border-b border-border bg-background lg:sticky lg:top-[73px] z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           {/* Filter buttons */}
           <div className="space-y-4">
             {/* Format filters */}
             <div className="flex flex-wrap items-center justify-center gap-2">
-              <span className="text-sm font-medium text-muted-foreground mr-2">Format:</span>
+              <span className="text-sm font-medium text-muted-foreground mr-2 hidden sm:inline">Format:</span>
               {contentFormats.map(format => (
                 <button
                   key={format.id}
                   onClick={() => setSelectedFormat(format.id)}
-                  className={`inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  className={`inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
                     selectedFormat === format.id
                       ? 'bg-blue-600 text-white'
                       : 'bg-muted hover:bg-muted/80 text-foreground'
                   }`}
                 >
-                  {format.icon && React.createElement(format.icon, { className: 'h-4 w-4 mr-2' })}
-                  {format.label}
+                  {format.icon && React.createElement(format.icon, { className: 'h-3 w-3 sm:h-4 sm:w-4 sm:mr-2' })}
+                  <span className={format.icon ? 'hidden sm:inline' : ''}>{format.label}</span>
                 </button>
               ))}
             </div>
@@ -221,22 +221,26 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
 
           {/* Popular topics */}
           {popularTopics.length > 0 && (
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-              <span className="text-sm font-medium text-muted-foreground mr-2">Trending:</span>
-              {popularTopics.map(topic => (
-                <button
-                  key={topic}
-                  onClick={() => setSelectedTopic(selectedTopic === topic ? null : topic)}
-                  className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                    selectedTopic === topic
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-muted hover:bg-muted/80 text-muted-foreground'
-                  }`}
-                >
-                  <Tag className="h-3 w-3 mr-1" />
-                  {topic}
-                </button>
-              ))}
+            <div className="mt-4">
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                <span className="text-sm font-medium text-muted-foreground mr-2 hidden sm:inline">Trending:</span>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {popularTopics.map(topic => (
+                    <button
+                      key={topic}
+                      onClick={() => setSelectedTopic(selectedTopic === topic ? null : topic)}
+                      className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium transition-colors min-h-[32px] ${
+                        selectedTopic === topic
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-muted hover:bg-muted/80 text-muted-foreground'
+                      }`}
+                    >
+                      <Tag className="h-3 w-3 mr-1 flex-shrink-0" />
+                      <span className="whitespace-nowrap">{topic}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           )}
 
@@ -272,14 +276,14 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
           </div>
           {filteredContent.length > 0 ? (
             <>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {paginatedContent.map(item => {
                 const Icon = getFormatIcon(item.format)
                 return (
                   <Link
                     key={item.id}
                     href={item.href}
-                    className="group p-6 bg-background rounded-lg border border-border hover:border-blue-500/50 hover:shadow-lg transition-all duration-200"
+                    className="group block p-4 sm:p-6 bg-background rounded-lg border border-border hover:border-blue-500/50 hover:shadow-lg transition-all duration-200 touch-manipulation"
                   >
                     {/* Header */}
                     <div className="flex items-start justify-between mb-3">

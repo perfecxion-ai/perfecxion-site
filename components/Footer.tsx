@@ -14,22 +14,15 @@ import { Github, Twitter, Linkedin, Mail } from 'lucide-react'
  */
 const navigation = {
   resources: [
+    { name: 'Knowledge Hub', href: '/knowledge' },
     { name: 'Documentation', href: '/docs' },
-    { name: 'Learn', href: '/learn' },
-    { name: 'Blog', href: '/blog' },
-    // Support link removed - page shows placeholder content
-    // TODO: Re-add when support page has real content
-    // { name: 'Support', href: '/support' },
+    { name: 'RSS Feed', href: '/api/rss' },
   ],
   company: [
     { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/about#contact' },
     { name: 'Privacy Policy', href: '/privacy' },
     { name: 'Terms of Service', href: '/terms' },
-    { name: 'Privacy Preferences', href: '/privacy-preferences' },
-    { name: 'Legal Contact', href: '/legal/contact' },
-    // Careers link removed - page shows "Coming Soon"
-    // TODO: Re-add when careers page has job listings
-    // { name: 'Careers', href: '/careers' },
   ],
 }
 
