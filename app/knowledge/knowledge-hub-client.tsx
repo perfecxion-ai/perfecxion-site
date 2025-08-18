@@ -82,8 +82,10 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
       // Domain filter
       if (selectedDomain !== 'all' && item.domain !== selectedDomain) return false
 
-      // Topic filter
-      if (selectedTopic && !item.topics.includes(selectedTopic)) return false
+      // Topic filter (case-insensitive)
+      if (selectedTopic && !item.topics.some(topic => 
+        topic.toLowerCase() === selectedTopic.toLowerCase()
+      )) return false
 
       return true
     })

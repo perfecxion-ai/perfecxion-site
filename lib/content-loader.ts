@@ -204,6 +204,14 @@ export async function loadAllContent(): Promise<ContentItem[]> {
   )
   contentItems.push(...whitepaperContent)
   
+  // Load reference architectures
+  const architectureContent = await loadContentFromDirectory(
+    path.join(process.cwd(), 'content', 'reference-architectures'),
+    '/knowledge',
+    'architecture'
+  )
+  contentItems.push(...architectureContent)
+  
   // Note: knowledge directory doesn't exist yet
   // const knowledgeContent = await loadContentFromDirectory(
   //   path.join(process.cwd(), 'content', 'knowledge'),
