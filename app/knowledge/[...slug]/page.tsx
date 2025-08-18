@@ -17,42 +17,36 @@ interface PageProps {
 }
 
 async function getContent(slug: string[]) {
-  // Try different content directories
-  const contentDirs = [
-    path.join(process.cwd(), 'content', 'blog'),
-    path.join(process.cwd(), 'content', 'learning'),
-    path.join(process.cwd(), 'content', 'knowledge'),
-  ]
+  // Only look in the knowledge directory (single source of truth)
+  const contentDir = path.join(process.cwd(), 'content', 'knowledge')
   
-  for (const contentDir of contentDirs) {
-    // Try to find the file
-    const filePath = path.join(contentDir, ...slug) + '.mdx'
-    const altFilePath = path.join(contentDir, ...slug) + '.md'
+  // Try to find the file
+  const filePath = path.join(contentDir, ...slug) + '.mdx'
+  const altFilePath = path.join(contentDir, ...slug) + '.md'
+  
+  let fullPath = ''
+  if (fs.existsSync(filePath)) {
+    fullPath = filePath
+  } else if (fs.existsSync(altFilePath)) {
+    fullPath = altFilePath
+  }
+  
+  if (fullPath) {
+    const fileContent = fs.readFileSync(fullPath, 'utf-8')
+    const { data, content } = matter(fileContent)
     
-    let fullPath = ''
-    if (fs.existsSync(filePath)) {
-      fullPath = filePath
-    } else if (fs.existsSync(altFilePath)) {
-      fullPath = altFilePath
-    }
+    // Get all content for related items
+    const allContent = await loadAllContent()
+    const currentItem = allContent.find(item => {
+      const itemSlug = item.href.replace('/knowledge/', '')
+      return itemSlug === slug.join('/')
+    })
     
-    if (fullPath) {
-      const fileContent = fs.readFileSync(fullPath, 'utf-8')
-      const { data, content } = matter(fileContent)
-      
-      // Get all content for related items
-      const allContent = await loadAllContent()
-      const currentItem = allContent.find(item => {
-        const itemSlug = item.href.replace('/knowledge/', '')
-        return itemSlug === slug.join('/')
-      })
-      
-      return {
-        metadata: data,
-        content,
-        currentItem,
-        allContent
-      }
+    return {
+      metadata: data,
+      content,
+      currentItem,
+      allContent
     }
   }
   

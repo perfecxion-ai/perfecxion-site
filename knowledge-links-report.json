@@ -1,0 +1,272 @@
+{
+  "summary": {
+    "total": 65,
+    "working": 65,
+    "broken": 0,
+    "weakContent": 0
+  },
+  "brokenLinks": [],
+  "contentIssues": [],
+  "workingLinks": [
+    {
+      "title": "Secure LLM Deployment Reference Architecture",
+      "href": "/knowledge/infrastructure/architecture/secure-llm-deployment"
+    },
+    {
+      "title": "400G vs 800G Networking: Economic and Technical Analysis for AI",
+      "href": "/knowledge/infrastructure/networking/400g-vs-800g-networking"
+    },
+    {
+      "title": "AI Cloud Networking Case Study: Real-World Security and Performance",
+      "href": "/knowledge/infrastructure/networking/ai-cloud-networking-case-study-real-world-security-and-performance"
+    },
+    {
+      "title": "AI Control Plane Attack Vectors: Exploiting Management Interfaces",
+      "href": "/knowledge/infrastructure/networking/ai-control-plane-attack-vectors-exploiting-management-interfaces"
+    },
+    {
+      "title": "AI Fabric Congestion and Telemetry: Security Implications",
+      "href": "/knowledge/infrastructure/networking/ai-fabric-congestion-and-telemetry-security-implications"
+    },
+    {
+      "title": "AI Fabric Vulnerabilities and Security Countermeasures",
+      "href": "/knowledge/infrastructure/networking/ai-fabric-vulnerabilities-and-security-countermeasures"
+    },
+    {
+      "title": "AI Network and Cluster Control: Security Architecture",
+      "href": "/knowledge/infrastructure/networking/ai-network-and-cluster-control-security-architecture"
+    },
+    {
+      "title": "AI Network Telemetry: Reconnaissance and Exploitation Techniques",
+      "href": "/knowledge/infrastructure/networking/ai-network-telemetry-reconnaissance-and-exploitation-techniques"
+    },
+    {
+      "title": "AI Network Topologies: Architecture Patterns for Scale",
+      "href": "/knowledge/infrastructure/networking/ai-network-topologies"
+    },
+    {
+      "title": "AI Security and Network Performance: Balancing Trade-offs",
+      "href": "/knowledge/infrastructure/networking/ai-security-and-network-performance-balancing-trade-offs"
+    },
+    {
+      "title": "AI Super Scaling: Security Challenges in Scale-Up and Scale-Out",
+      "href": "/knowledge/infrastructure/networking/ai-super-scaling-security-challenges-in-scale-up-and-scale-out"
+    },
+    {
+      "title": "InfiniBand vs Ethernet: Predicting the Future of AI Networking",
+      "href": "/knowledge/infrastructure/networking/infiniband-vs-ethernet-future"
+    },
+    {
+      "title": "Security Comparison: InfiniBand vs Ethernet in AI Environments",
+      "href": "/knowledge/infrastructure/networking/infiniband-vs-ethernet-security"
+    },
+    {
+      "title": "LLM Training and Tail Latency: Network Optimization Strategies",
+      "href": "/knowledge/infrastructure/networking/llm-training-tail-latency"
+    },
+    {
+      "title": "Network Resilience: InfiniBand vs Ethernet Fault Tolerance",
+      "href": "/knowledge/infrastructure/networking/network-resilience-comparison"
+    },
+    {
+      "title": "1.6Tb/s Photonic Interconnects: The Future of AI Infrastructure",
+      "href": "/knowledge/infrastructure/networking/photonic-interconnects-1-6tb"
+    },
+    {
+      "title": "RoCEv2 and InfiniBand Security: Simulations and Analysis",
+      "href": "/knowledge/infrastructure/networking/rocev2-and-infiniband-security-simulations-and-analysis"
+    },
+    {
+      "title": "RoCEv2 vs InfiniBand: Performance and Implementation Guide",
+      "href": "/knowledge/infrastructure/networking/rocev2-vs-infiniband"
+    },
+    {
+      "title": "Securing AI Fabric Network Channels: Defense Strategies",
+      "href": "/knowledge/infrastructure/networking/securing-ai-fabric-network-channels-defense-strategies"
+    },
+    {
+      "title": "Securing AI Fabric Telemetry and Congestion Systems",
+      "href": "/knowledge/infrastructure/networking/securing-ai-fabric-telemetry-and-congestion-systems"
+    },
+    {
+      "title": "Security Risks in Shared AI Fabrics: Congestion Control and Telemetry Vulnerabilities",
+      "href": "/knowledge/infrastructure/networking/security-risks-in-shared-ai-fabrics-congestion-control-and-telemetry-vulnerabilities"
+    },
+    {
+      "title": "Prompt Injection: The Silent Threat to AI Systems - Complete Security Guide",
+      "href": "/knowledge/security/threats/prompt-injection-silent-threat-ai-systems"
+    },
+    {
+      "title": "AI Security in Financial Services: Regulatory Requirements and Best Practices",
+      "href": "/knowledge/industry/finance/ai-security-financial-services-regulatory-requirements"
+    },
+    {
+      "title": "Building a Mature AI Security Program: From Startup to Enterprise",
+      "href": "/knowledge/security/fundamentals/building-mature-ai-security-program-startup-to-enterprise"
+    },
+    {
+      "title": "Future of AI Security: Emerging Threats and Defenses",
+      "href": "/knowledge/security/threats/future-ai-security-emerging-threats-defenses"
+    },
+    {
+      "title": "From Chatbots to Autonomous Agents: The Evolution of AI Security",
+      "href": "/knowledge/security/fundamentals/from-chatbots-to-autonomous-agents-evolution-ai-security"
+    },
+    {
+      "title": "The Executive's Guide to AI Risk Management and Liability",
+      "href": "/knowledge/compliance/governance/executives-guide-ai-risk-management-liability"
+    },
+    {
+      "title": "AI-Powered Security Automation: Transforming Enterprise Cybersecurity Operations",
+      "href": "/knowledge/security/fundamentals/ai-powered-security-automation-transforming-enterprise-cybersecurity"
+    },
+    {
+      "title": "The Agentic AI Revolution: An Executive Report on Architecture, Implementation, and Security",
+      "href": "/knowledge/security/fundamentals/agentic-ai-complete-guide"
+    },
+    {
+      "title": "The Hidden Risks of Agentic AI: Why Traditional Monitoring Fails",
+      "href": "/knowledge/security/fundamentals/hidden-risks-agentic-ai-monitoring-fails"
+    },
+    {
+      "title": "AI Governance at Scale: Enterprise Strategies for Responsible AI",
+      "href": "/knowledge/compliance/governance/ai-governance-at-scale-enterprise-strategies-responsible-ai"
+    },
+    {
+      "title": "Advanced Prompt Engineering for Security: Defense Through Design",
+      "href": "/knowledge/security/defense/advanced-prompt-engineering-security-defense-through-design"
+    },
+    {
+      "title": "The Prompt Injection Playbook: Attack Techniques and Defenses",
+      "href": "/knowledge/security/threats/prompt-injection-playbook-attack-techniques-defenses"
+    },
+    {
+      "title": "Securing AI in Critical Infrastructure: Lessons from the Field",
+      "href": "/knowledge/security/fundamentals/securing-ai-critical-infrastructure-lessons-from-field"
+    },
+    {
+      "title": "Multi-Agent Systems Security: Orchestrating Safe AI Collaboration",
+      "href": "/knowledge/security/fundamentals/multi-agent-systems-security-safe-ai-collaboration"
+    },
+    {
+      "title": "Navigating AI Compliance: A Framework for 15+ Security Standards",
+      "href": "/knowledge/compliance/standards/navigating-ai-compliance-framework-security-standards"
+    },
+    {
+      "title": "Healthcare AI Security: Protecting Patient Data and Ensuring Safety",
+      "href": "/knowledge/industry/healthcare/healthcare-ai-security-protecting-patient-data-safety"
+    },
+    {
+      "title": "Multi-Cloud AI Security: Strategies for Hybrid AI Deployments",
+      "href": "/knowledge/infrastructure/ai-fabrics/multi-cloud-ai-security-strategies-hybrid-deployments"
+    },
+    {
+      "title": "Data Poisoning Attacks: The Silent Sabotage in AI Security",
+      "href": "/knowledge/security/threats/data-poisoning-attacks"
+    },
+    {
+      "title": "AI Guardrails That Actually Work: Beyond Basic Content Filtering",
+      "href": "/knowledge/security/defense/ai-guardrails-that-actually-work-beyond-basic-content-filtering"
+    },
+    {
+      "title": "Securing AI Infrastructure: From Training to Deployment",
+      "href": "/knowledge/security/fundamentals/securing-ai-infrastructure-training-to-deployment"
+    },
+    {
+      "title": "Zero Trust Architecture for AI Systems: A Practical Implementation Guide",
+      "href": "/knowledge/security/fundamentals/zero-trust-architecture-ai-systems-implementation-guide"
+    },
+    {
+      "title": "Getting Started with AI Security",
+      "href": "/knowledge/security/fundamentals/getting-started"
+    },
+    {
+      "title": "Secure AI Deployment: Production Best Practices",
+      "href": "/knowledge/security/defense/secure-ai-deployment-production-best-practices"
+    },
+    {
+      "title": "The Complete Guide to AI Red Team Testing: Beyond Traditional Security",
+      "href": "/knowledge/security/red-team/ai-red-team-testing-complete-guide"
+    },
+    {
+      "title": "AI Red Team Testing in Production: Lessons from 1000+ Assessments",
+      "href": "/knowledge/security/red-team/ai-red-team-testing-production-lessons"
+    },
+    {
+      "title": "AI and HIPAA: The Complete Compliance Guide for Healthcare Organizations",
+      "href": "/knowledge/compliance/regulations/ai-and-hipaa-compliance-guide"
+    },
+    {
+      "title": "Making Sense of Data Anonymization in AI",
+      "href": "/knowledge/compliance/regulations/making-sense-data-anonymization-ai"
+    },
+    {
+      "title": "The Agentic Leap: Understanding and Building Modern AI Agents",
+      "href": "/knowledge/infrastructure/ai-fabrics/the-agentic-leap-understanding-and-building-modern-ai-agents"
+    },
+    {
+      "title": "Securing AI Systems: Enterprise Frameworks for AI Security Protection",
+      "href": "/knowledge/security/defense/securing-ai-systems-enterprise-frameworks"
+    },
+    {
+      "title": "Zero-Day AI Vulnerabilities: Detection and Response",
+      "href": "/knowledge/security/threats/zero-day-ai-vulnerabilities-detection-response"
+    },
+    {
+      "title": "Neural Network Security: Beyond Traditional Defenses",
+      "href": "/knowledge/security/defense/neural-network-security-beyond-traditional-defenses"
+    },
+    {
+      "title": "LLM Security: Protecting Language Models in Production",
+      "href": "/knowledge/security/defense/llm-security-protecting-language-models-production"
+    },
+    {
+      "title": "Welcome to perfecXion.ai",
+      "href": "/knowledge/compliance/regulations/welcome"
+    },
+    {
+      "title": "50+ Attack Vectors - A Red Teamer's Guide to Breaking AI Systems",
+      "href": "/knowledge/security/red-team/50-attack-vectors-ai-red-team-guide"
+    },
+    {
+      "title": "AI Architecture from First Principles: A Technical and Security Analysis",
+      "href": "/knowledge/security/fundamentals/ai-arch-security"
+    },
+    {
+      "title": "Incident Response for AI",
+      "href": "/knowledge/security/fundamentals/incident-response-for-ai"
+    },
+    {
+      "title": "Compliance for AI Systems",
+      "href": "/knowledge/security/fundamentals/compliance-for-ai-systems"
+    },
+    {
+      "title": "Building AI Security Programs",
+      "href": "/knowledge/security/fundamentals/building-ai-security-programs"
+    },
+    {
+      "title": "Types of AI Attacks",
+      "href": "/knowledge/security/fundamentals/types-of-ai-attacks"
+    },
+    {
+      "title": "Understanding AI Vulnerabilities",
+      "href": "/knowledge/security/fundamentals/understanding-ai-vulnerabilities"
+    },
+    {
+      "title": "Navigating the Global AI Regulatory Maze: A Strategic Playbook for CISOs and Developers",
+      "href": "/knowledge/compliance/regulations/ai-regulatory-compliance"
+    },
+    {
+      "title": "AI-Specific Incident Response: A Comprehensive Guide for Technical Practitioners",
+      "href": "/knowledge/compliance/standards/ai-incident-response"
+    },
+    {
+      "title": "Building AI Security Programs for Enterprise Organizations: A Comprehensive Technical White Paper",
+      "href": "/knowledge/security/fundamentals/white-paper-building-ai-security-programs"
+    },
+    {
+      "title": "Untitled",
+      "href": "/knowledge/security/threats/owasp-top-10-ai-critical-security-vulnerabilities"
+    }
+  ]
+}
