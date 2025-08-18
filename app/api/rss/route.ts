@@ -32,7 +32,7 @@ export async function GET() {
       ${item.author ? `<dc:creator>${escapeXml(item.author)}</dc:creator>` : ''}
       <category>${item.domain}</category>
       <category>${item.format}</category>
-      ${item.topics.map(topic => `<category>${escapeXml(topic)}</category>`).join('')}
+      ${Array.isArray(item.topics) ? item.topics.map(topic => `<category>${escapeXml(topic)}</category>`).join('') : ''}
     </item>`).join('')}
   </channel>
 </rss>`
@@ -45,8 +45,9 @@ export async function GET() {
   })
 }
 
-function escapeXml(text: string): string {
-  return text
+function escapeXml(text: string | undefined | null): string {
+  if (!text) return ''
+  return String(text)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
