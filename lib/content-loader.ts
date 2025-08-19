@@ -237,12 +237,23 @@ async function loadContentFromDirectory(
           const urlPath = `${baseUrl}/${fullRelativePath}`
 
           // Determine domain from category or path
-          const domain = data.category ?
-            (categoryToDomain[data.category] || categoryToDomain.default) :
-            (relativePath.includes('security') ? 'security' :
-              relativePath.includes('infrastructure') ? 'infrastructure' :
-                relativePath.includes('compliance') ? 'compliance' :
-                  'operations')
+          let domain: ContentItem['domain'] = categoryToDomain.default
+          
+          if (data.category && categoryToDomain[data.category]) {
+            domain = categoryToDomain[data.category]
+          } else if (relativePath.includes('security')) {
+            domain = 'ai-security'
+          } else if (relativePath.includes('infrastructure')) {
+            domain = 'ai-infrastructure'
+          } else if (relativePath.includes('compliance')) {
+            domain = 'compliance'
+          } else if (relativePath.includes('operations') || relativePath.includes('industry')) {
+            domain = 'operations'
+          } else if (relativePath.includes('networking')) {
+            domain = 'ai-networking'
+          } else if (relativePath.includes('machine-learning') || relativePath.includes('ml')) {
+            domain = 'machine-learning'
+          }
 
           // Determine format using smart inference
           const format = inferFormat(data, defaultFormat)
