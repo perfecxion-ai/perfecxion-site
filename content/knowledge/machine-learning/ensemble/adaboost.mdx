@@ -379,12 +379,14 @@ The overall objective of the algorithm is to minimize the total exponential loss
 ### 2.2 The Algorithmic Steps: A Detailed Walkthrough with Equations
 The AdaBoost algorithm for binary classification can be broken down into the following precise steps :
 
-**Given:** A training set of **N** labeled examples **{(x₁, y₁), ..., (xᴺ, yᴺ)}**, where **xᵢ** is the feature vector for the i-th example and **yᵢ ∈ {-1, +1}** is its class label.
+**Given:** A training set of **N** labeled examples **{(x_1, y_1), ..., (x_N, y_N)}**, where **x_i** is the feature vector for the i-th example and **y_i ∈ {-1, +1}** is its class label.
 
 #### Step 1: Initialize Sample Weights
 At the beginning of the process (t=1), all training samples are considered equally important. The weights are initialized to a uniform distribution:
 
-D₁(i) = 1/N
+```math
+D_1(i) = \frac{1}{N}
+```
  for i=1,...,N
 
 where **Dₜ(i)** is the weight of sample **i** at iteration **t**.

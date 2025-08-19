@@ -74,7 +74,7 @@ Gradient boosting powers some of today's most successful machine learning models
 
 #### 1.3 Sequential Error Correction Framework
 
-**Gradient boosting constructs a "strong" predictive model F(x)** through iterative, additive process. Starts with simple initial model **F₀(x)**, sequentially adds **"weak" models hₘ(x)**, each aiming to correct current ensemble deficiencies.
+**Gradient boosting constructs a "strong" predictive model F(x)** through iterative, additive process. Starts with simple initial model **F_0(x)**, sequentially adds **"weak" models h_m(x)**, each aiming to correct current ensemble deficiencies.
 
 **Core mechanism:** each new weak learner doesn't predict original target variable **y**. Instead, it predicts **"error" or "residual"** of current strong model. For regression:
 
@@ -88,11 +88,11 @@ error = y - F_{m-1}(x)
 
 *Simple regression task fitting curve to data points.*
 
-**Iteration 0:** Start with naive initial model **F₀(x)**—horizontal line representing target mean. Plot shows data points and flat-line prediction. Second plot shows errors (residuals)—vertical distances from points to mean line.
+**Iteration 0:** Start with naive initial model **F_0(x)**—horizontal line representing target mean. Plot shows data points and flat-line prediction. Second plot shows errors (residuals)—vertical distances from points to mean line.
 
-**Iteration 1:** Weak learner (shallow decision tree) trains on Iteration 0 errors. Tree learns simple, coarse error structure approximation—errors positive on one feature space side, negative on other. Add weak model prediction to initial model, creating refined, step-wise function **F₁(x)**.
+**Iteration 1:** Weak learner (shallow decision tree) trains on Iteration 0 errors. Tree learns simple, coarse error structure approximation—errors positive on one feature space side, negative on other. Add weak model prediction to initial model, creating refined, step-wise function **F_1(x)**.
 
-**Iteration 2:** Calculate **F₁(x)** errors—smaller than previous ones. Second weak learner trains on these smaller errors, focusing on patterns first tree missed. Add predictions to **F₁(x)**, creating better model **F₂(x)**.
+**Iteration 2:** Calculate **F_1(x)** errors—smaller than previous ones. Second weak learner trains on these smaller errors, focusing on patterns first tree missed. Add predictions to **F_1(x)**, creating better model **F_2(x)**.
 
 **Process continues** with subsequent trees focusing on ever-diminishing errors. After many iterations, strong model (sum of initial model + all weak learners) closely resembles true underlying data pattern.
 
@@ -312,7 +312,7 @@ Objective: find function F(x) minimizing chosen loss function L(y, F(x)), quanti
 - **Regression**: Mean Squared Error (MSE), L(y, F) = ½(y - F)²
 - **Classification**: Log-Loss (Cross-Entropy), L(y, F) = y log(p) + (1-y) log(1-p)
 
-Key GBM insight: adding new weak learner hₘ(x) to existing ensemble Fₘ₋₁(x) is analogous to taking gradient descent step. Algorithm adds function pointing in negative gradient direction of loss function. This direction represents steepest descent in loss landscape, ensuring each step most effectively reduces overall error.
+Key GBM insight: adding new weak learner h_m(x) to existing ensemble F_{m-1}(x) is analogous to taking gradient descent step. Algorithm adds function pointing in negative gradient direction of loss function. This direction represents steepest descent in loss landscape, ensuring each step most effectively reduces overall error.
 
 2.2. The Role of Pseudo-Residuals
 This functional gradient descent is made practical through the concept of pseudo-residuals. For each training instance $i$ at iteration $m$, the pseudo-residual $r_{im}$ is defined as the negative gradient of the loss function evaluated at the previous model's prediction $F_{m-1}(x_i)$.
