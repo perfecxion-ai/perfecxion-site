@@ -53,7 +53,9 @@ The neuron first computes a weighted sum of its inputs. To this sum, a **bias te
 
 **The linear operation within the neuron is thus defined as:**
 
-**z = Σᵢ₌₁ⁿ wᵢ xᵢ + b = w · x + b**
+```math
+z = \sum_{i=1}^n w_i x_i + b = \mathbf{w} \cdot \mathbf{x} + b
+```
 **Activation Function:** The result of this linear combination, **z**, is then passed through a non-linear activation function, denoted as **f(z)** or **φ(z)**. This function determines the final output of the neuron and introduces the **non-linearity that is essential for the network's power**. It metaphorically decides whether the neuron **"fires" or activates**, passing its signal to the next layer.
 
 If the output of the neuron exceeds a certain threshold, it is activated; otherwise, no data is passed along. **The introduction of non-linearity is a critical feature;** without it, a deep, multi-layered network would mathematically collapse into an equivalent single-layer linear model, rendering it incapable of learning the complex, non-linear relationships that characterize most real-world problems.

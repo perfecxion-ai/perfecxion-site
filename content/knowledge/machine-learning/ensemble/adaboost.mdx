@@ -356,7 +356,9 @@ While the intuitive mechanics of AdaBoost, such as updating sample weights and w
 
 The final strong classifier, **H(x)**, is an additive model constructed as a linear combination of weak learners, **hₜ(x)**:
 
-**H(x) = Σₜ₌₁ᵀ αₜ hₜ(x)**
+```math
+H(x) = \sum_{t=1}^T \alpha_t h_t(x)
+```
 
 where **T** is the total number of weak learners, and **αₜ** is the weight assigned to the t-th weak learner. For binary classification, the final prediction is given by the sign of this sum, **sign(H(x))**. The labels are encoded as **y ∈ {-1, +1}**.
 
@@ -368,9 +370,11 @@ The term **yᵢ H(xᵢ)** is known as the **margin**. If the prediction is corre
 
 The overall objective of the algorithm is to minimize the total exponential loss over the entire training dataset:
 
-**Σᵢ₌₁ᴺ e^(-yᵢ H(xᵢ))**
+```math
+\sum_{i=1}^N e^{-y_i H(x_i)}
+```
 
-**AdaBoost achieves this minimization in a greedy, stagewise fashion.** At each iteration **t**, it adds a new weak learner **αₜ hₜ(x)** to the existing ensemble **Hₜ₋₁(x)** without altering the previously fitted learners. The algorithm selects the pair **(αₜ, hₜ)** that best minimizes the total loss at that stage. This process can be viewed as a form of **functional gradient descent**, where each new weak learner is chosen to point in the direction of the steepest descent of the loss function in the function space.
+**AdaBoost achieves this minimization in a greedy, stagewise fashion.** At each iteration **t**, it adds a new weak learner **α_t h_t(x)** to the existing ensemble **H_{t-1}(x)** without altering the previously fitted learners. The algorithm selects the pair **(α_t, h_t)** that best minimizes the total loss at that stage. This process can be viewed as a form of **functional gradient descent**, where each new weak learner is chosen to point in the direction of the steepest descent of the loss function in the function space.
 
 ### 2.2 The Algorithmic Steps: A Detailed Walkthrough with Equations
 The AdaBoost algorithm for binary classification can be broken down into the following precise steps :
@@ -393,7 +397,9 @@ t . The objective is to find a weak classifier, **hₜ(x) → {-1, +1}**, that m
 
 **b. Calculate Weighted Error (ϵₜ):** The error of the weak learner **hₜ** is calculated as the sum of the weights of the samples it misclassifies:
 
-**ϵₜ = Σᵢ₌₁ᴺ Dₜ(i) · I(hₜ(xᵢ) ≠ yᵢ)**
+```math
+\epsilon_t = \sum_{i=1}^N D_t(i) \cdot I(h_t(x_i) \neq y_i)
+```
 
 where I(⋅) is the indicator function, which is 1 if the condition is true and 0 otherwise. Since the weights sum to 1, **ϵₜ** is a value between 0 and 1.
 
@@ -403,26 +409,28 @@ where I(⋅) is the indicator function, which is 1 if the condition is true and 
 
 This formula is not arbitrary; it is derived directly from the minimization of the exponential loss function. The term inside the logarithm, **(1-ϵₜ)/ϵₜ**, represents the odds of the classifier being correct versus incorrect. Thus, **αₜ** is proportional to the log-odds of the classifier's performance. If **ϵₜ = 0.5** (random guessing), the odds are 1, and **αₜ = ½ ln(1) = 0**, meaning the classifier has no say. If **ϵₜ → 0** (perfect classification), **αₜ → ∞**. If **ϵₜ → 1** (perfect misclassification), **αₜ → -∞**.
 
-**d. Update Sample Weights:** The sample weights for the next iteration, **Dₜ₊₁**, are updated to give more importance to the samples that were misclassified by hₜ. The update rule is:
+**d. Update Sample Weights:** The sample weights for the next iteration, **D_{t+1}**, are updated to give more importance to the samples that were misclassified by h_t. The update rule is:
 
 ```math
-Dₜ₊₁(i) = (1/Zₜ) Dₜ(i) · e^(-yᵢαₜhₜ(xᵢ))
+D_{t+1}(i) = \frac{1}{Z_t} D_t(i) \cdot e^{-y_i\alpha_th_t(x_i)}
 ```
 
 where **Zₜ** is a normalization factor that ensures the new weights sum to 1:
 
 ```math
-Zₜ = Σᵢ₌₁ᴺ Dₜ(i) · e^(-yᵢαₜhₜ(xᵢ))
+Z_t = \sum_{i=1}^N D_t(i) \cdot e^{-y_i\alpha_th_t(x_i)}
 ```
 
 The exponent term, **-yᵢαₜhₜ(xᵢ)**, is key. For a correctly classified sample, **yᵢhₜ(xᵢ) = 1**, and the weight is multiplied by **e^(-αₜ)**, decreasing it. For a misclassified sample, **yᵢhₜ(xᵢ) = -1**, and the weight is multiplied by **e^(αₜ)**, increasing it.
 
-**e. Normalize Weights:** The normalization step ensures that **Dₜ₊₁** is a valid probability distribution for the next iteration.
+**e. Normalize Weights:** The normalization step ensures that **D_{t+1}** is a valid probability distribution for the next iteration.
 
 #### Step 3: Final Prediction
 After T iterations, the final strong classifier, H(x), is constructed by combining the T weak learners using their calculated importance weights, αₜ. For a new input x, the prediction is:
 
-**H(x) = sign(Σₜ₌₁ᵀ αₜhₜ(x))**
+```math
+H(x) = \text{sign}\left(\sum_{t=1}^T \alpha_th_t(x)\right)
+```
 
 This is the weighted majority vote that forms the final decision.
 
@@ -431,7 +439,9 @@ The performance of AdaBoost is governed by a few critical hyperparameters that c
 
 **n_estimators:** This integer parameter corresponds to **T**, the number of boosting iterations or, equivalently, the number of weak learners in the ensemble. It is one of the most important parameters to tune. A larger n_estimators allows the model to fit more complex decision boundaries, potentially increasing accuracy. However, too many estimators can lead to overfitting, especially if the weak learners are not sufficiently simple, and will always increase the training time.
 
-**learning_rate:** This float parameter, often denoted as **η**, acts as a shrinkage factor, scaling the contribution of each weak learner. The final prediction formula becomes **H(x) = sign(Σₜ₌₁ᵀ ηαₜhₜ(x))**. A smaller learning_rate (e.g., 0.1) reduces the impact of each individual learner, requiring a larger n_estimators to achieve comparable performance. This slower learning process often leads to better generalization and makes the model more robust to overfitting. There is a fundamental trade-off between learning_rate and n_estimators that must be managed during tuning.
+**learning_rate:** This float parameter, often denoted as **η**, acts as a shrinkage factor, scaling the contribution of each weak learner. The final prediction formula becomes ```math
+H(x) = \text{sign}\left(\sum_{t=1}^T \eta\alpha_th_t(x)\right)
+```. A smaller learning_rate (e.g., 0.1) reduces the impact of each individual learner, requiring a larger n_estimators to achieve comparable performance. This slower learning process often leads to better generalization and makes the model more robust to overfitting. There is a fundamental trade-off between learning_rate and n_estimators that must be managed during tuning.
 
 ********************************************base_estimator (or estimator):******************************************** This parameter specifies the weak learner algorithm. While any classifier that accepts sample weights can be used, the canonical and default choice is a decision stump, which is a DecisionTreeClassifier with max_depth=1. The complexity of the base estimator is itself a crucial hyperparameter. Using overly complex base learners (e.g., deep decision trees) can cause AdaBoost to overfit quickly, as the boosting process will amplify their high variance.
 
@@ -524,9 +534,13 @@ Natural Language Processing (NLP): AdaBoost has been successfully employed for t
 4.3 Output Types
 The output of an AdaBoost model can be interpreted in several ways, providing more than just a simple class label.
 
-Class Predictions: For classification tasks, the primary output is the predicted class label. In the binary case, this is determined by the sign of the weighted sum of the weak learners' predictions: sign(**Σₜ₌₁ᵀ αₜhₜ(x)**).
+Class Predictions: For classification tasks, the primary output is the predicted class label. In the binary case, this is determined by the sign of the weighted sum of the weak learners' predictions: ```math
+\text{sign}\left(\sum_{t=1}^T \alpha_th_t(x)\right)
+```.
 
-Confidence Scores: The raw output of the summation, **Σₜ₌₁ᵀ αₜhₜ(x)**, before the sign function is applied, can be interpreted as a confidence score. The magnitude of this value indicates the strength of the ensemble's conviction in its prediction. A large positive value signifies high confidence in the positive class, while a large negative value indicates high confidence in the negative class. Values close to zero suggest an ambiguous or low-confidence prediction.
+Confidence Scores: The raw output of the summation, ```math
+\sum_{t=1}^T \alpha_th_t(x)
+```, before the sign function is applied, can be interpreted as a confidence score. The magnitude of this value indicates the strength of the ensemble's conviction in its prediction. A large positive value signifies high confidence in the positive class, while a large negative value indicates high confidence in the negative class. Values close to zero suggest an ambiguous or low-confidence prediction.
 
 Probability Estimates: The standard AdaBoost algorithm does not directly output class probabilities. However, variants like Real AdaBoost or extensions like LogitBoost are designed to produce well-calibrated probability estimates by modifying the output of the weak learners and the loss function.
 

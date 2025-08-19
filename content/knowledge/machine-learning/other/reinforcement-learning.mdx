@@ -373,11 +373,11 @@ Moving from trial-and-error intuition to formal mathematical model, RL frames as
 
 - **S**: Finite set of states (state space)
 - **A**: Finite set of actions (action space)  
-- **P**: State transition probability function P(s'|s,a) = Pr(Sₜ₊₁ = s'|Sₜ = s, Aₜ = a), specifying probability of transitioning from state s to state s' after taking action a
+- **P**: State transition probability function P(s'|s,a) = Pr(S_{t+1} = s'|S_t = s, A_t = a), specifying probability of transitioning from state s to state s' after taking action a
 - **R**: Reward function R(s,a,s'), defining immediate reward received after transitioning from state s to state s' due to action a
 - **γ**: Discount factor where γ ∈ [0,1), trading off immediate vs. future reward importance. Reward received k timesteps in future worth γᵏ⁻¹ times immediate value
 
-**Foundational assumption**: Markov Property states future is independent of past given present. State sₜ must contain all historical interaction information necessary to determine future transitions and rewards. Next state sₜ₊₁ probability depends only on current state sₜ and action aₜ, not entire preceding sequence.
+**Foundational assumption**: Markov Property states future is independent of past given present. State sₜ must contain all historical interaction information necessary to determine future transitions and rewards. Next state s_{t+1} probability depends only on current state s_t and action a_t, not entire preceding sequence.
 
 MDP framework is powerful enabler, simplifying complex world into tractable mathematical model allowing optimal solution derivation. Simplification costs strong assumption. Real-world scenarios: single observation (camera frame from robot) may not fully capture historically relevant information (velocity, trajectory of moving objects). Markov property violation? Problem becomes Partially Observable MDP (POMDP). This reality underscores critical applied RL aspect: **state representation engineering** challenge. Significant effort in successful RL systems involves designing state signals as close to Markovian as possible—challenge spawning entire State Representation Learning (SRL) subfield.
 

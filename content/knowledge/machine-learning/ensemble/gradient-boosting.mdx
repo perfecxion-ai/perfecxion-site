@@ -79,7 +79,7 @@ Gradient boosting powers some of today's most successful machine learning models
 **Core mechanism:** each new weak learner doesn't predict original target variable **y**. Instead, it predicts **"error" or "residual"** of current strong model. For regression:
 
 ```math
-error = y - Fₘ₋₁(x)
+error = y - F_{m-1}(x)
 ```
 
 ---
@@ -317,12 +317,9 @@ Key GBM insight: adding new weak learner hₘ(x) to existing ensemble Fₘ₋₁
 2.2. The Role of Pseudo-Residuals
 This functional gradient descent is made practical through the concept of pseudo-residuals. For each training instance $i$ at iteration $m$, the pseudo-residual $r_{im}$ is defined as the negative gradient of the loss function evaluated at the previous model's prediction $F_{m-1}(x_i)$.
 
-r 
-im =−[ 
-∂F(xᵢ)
-∂L(yᵢ,F(xᵢ)) ] 
-F(xᵢ)=F 
-m−1 (xᵢ) The new weak learner $h_m(x)$ is then trained to predict these pseudo-residuals. This is the core mechanism that connects the abstract optimization framework to the concrete step of training a new tree.
+```math
+r_{im} = -\left[\frac{\partial L(y_i, F(x_i))}{\partial F(x_i)}\right]_{F(x_i)=F_{m-1}(x_i)}
+``` The new weak learner $h_m(x)$ is then trained to predict these pseudo-residuals. This is the core mechanism that connects the abstract optimization framework to the concrete step of training a new tree.
 
 The power of this formulation lies in its generality. For the specific case of MSE loss, $L(y, F) = \frac{1}{2}(y - F)^2$, the partial derivative is $-(y - F). The negative of this is simply (y - F), which is the standard residual. Thus, for regression with MSE, fitting the pseudo-residuals is identical to fitting the errors. However, by using different loss functions, the same algorithm can be applied to a multitude of problems. For example, with Log-Loss for classification, the pseudo-residuals become 
 
@@ -335,36 +332,24 @@ The generic GBM algorithm can be summarized in the following steps :
 
 Initialization: The process begins by creating an initial, simple model $F_0(x)$. This is a constant value that minimizes the loss function over the entire dataset. For MSE in regression, this is the mean of the target variable $y$. For Log-Loss in classification, it is the log-odds of the positive class.
 
-F 
-0 (x)=arg 
-γ
-min Σᵢ₌₁ᴺ
- L(yᵢ,γ)
+```math
+F_0(x) = \arg\min_{\gamma} \sum_{i=1}^N L(y_i, \gamma)
+```
 Iteration m = 1 to M: For each of the $M$ boosting rounds:
 a.  Compute Pseudo-Residuals: For each training sample $i=1,..., N$, calculate the pseudo-residual $r_{im}$ as the negative gradient of the loss function with respect to the previous iteration's prediction $F_{m-1}(x_i)$.
 b.  Fit a Weak Learner: Train a weak learner, typically a regression decision tree $h_m(x)$, using the features $X$ as input and the calculated pseudo-residuals $\{r_{1m},..., r_{Nm}\}$ as the target labels. The tree is built to partition the data into regions that best predict these pseudo-residuals.
 c.  Compute Optimal Leaf Values: For each terminal leaf region $R_{jm}$ of the new tree $h_m(x)$, determine the optimal output value $\gamma_{jm}$. This value is chosen to minimize the loss function for all samples that fall into that leaf.
 
-γ 
-jm =arg 
-γ
-min xᵢ∈R 
-jm ∑ L(yᵢ,F 
-m−1 (xᵢ)+γ)
+```math
+\gamma_{jm} = \arg\min_{\gamma} \sum_{x_i \in R_{jm}} L(y_i, F_{m-1}(x_i) + \gamma)
+```
 Friedman's "TreeBoost" algorithm proposed this step of finding a separate optimal value for each leaf, which is more refined than finding a single multiplier for the whole tree.
 
 d.  Update the Model: Update the full ensemble model by adding the new weak learner, scaled by a learning rate $\nu$.
 
-F 
-m (x)=F 
-m−1 (x)+ν 
-j=1
-∑
-J 
-m ​
- γ 
-jm I(x∈R 
-jm )
+```math
+F_m(x) = F_{m-1}(x) + \nu \sum_{j=1}^{J_m} \gamma_{jm} I(x \in R_{jm})
+```
 where $I$ is the indicator function.
 
 Output: The final model $F_M(x)$ is the sum of the initial model and all the sequentially trained weak learners.
@@ -397,48 +382,20 @@ Regularized Objective Function: Unlike the standard GBM, which only seeks to min
 
 $t$ is given by:
 
-Obj 
-(t)
- = 
-i=1
-∑
-n L(yᵢ, 
-y
-^ i
-(t−1) +f 
-t (xᵢ))+Ω(f 
-t )
+```math
+\text{Obj}^{(t)} = \sum_{i=1}^n L(y_i, \hat{y}_i^{(t-1)} + f_t(x_i)) + \Omega(f_t)
+```
 Here, $L$ is the loss function, $\hat{y}_i^{(t-1)}$ is the prediction from the previous $t-1$ trees, and $f_t$ is the new tree. The regularization term, $\Omega(f_t)$, penalizes the complexity of this new tree and is defined as:
 
-Ω(f 
-t )=γT+ 
-2
-1 λ 
-j=1
-∑
-T w 
-j
-2 where $T$ is the number of leaves in the tree, $w_j$ are the scores (weights) on each leaf, and $\gamma$ and $\lambda$ are user-defined regularization parameters controlling the penalty for the number of leaves and the magnitude of the leaf weights (L2 regularization), respectively. This explicit regularization directly discourages overly complex models, a primary cause of overfitting.
+```math
+\Omega(f_t) = \gamma T + \frac{1}{2}\lambda \sum_{j=1}^T w_j^2
+``` where $T$ is the number of leaves in the tree, $w_j$ are the scores (weights) on each leaf, and $\gamma$ and $\lambda$ are user-defined regularization parameters controlling the penalty for the number of leaves and the magnitude of the leaf weights (L2 regularization), respectively. This explicit regularization directly discourages overly complex models, a primary cause of overfitting.
 
 Second-Order Approximation: To efficiently optimize this regularized objective, XGBoost employs a second-order Taylor expansion of the loss function around the current prediction. This is a significant departure from traditional GBM, which uses only the first derivative (the gradient). The Taylor expansion approximates the objective as:
 
-Obj 
-(t)
- ≈ 
-i=1
-∑
-n [L(yᵢ, 
-y
-^ i
-(t−1) )+g 
-i f 
-t (xᵢ)+ 
-2
-1 h 
-i f 
-t
-2 (xᵢ)]+Ω(f 
-t )
+```math
+\text{Obj}^{(t)} \approx \sum_{i=1}^n \left[L(y_i, \hat{y}_i^{(t-1)}) + g_i f_t(x_i) + \frac{1}{2}h_i f_t^2(x_i)\right] + \Omega(f_t)
+```
 where $g_i$ and $h_i$ are the first and second-order derivatives (gradient and Hessian) of the loss function with respect to the prediction $\hat{y}_i^{(t-1)}$. This quadratic approximation provides a more accurate picture of the loss function's landscape, allowing the algorithm to take more direct and effective steps towards the minimum, which often results in faster convergence.
 
 3.2. System Optimizations: Sparsity-Aware Split Finding and Parallelization
@@ -460,18 +417,15 @@ Initialization: The process begins with all the training instances (represented 
 Similarity Score Calculation: For any given set of instances in a node, XGBoost calculates a Similarity Score, which is derived from the objective function and measures the purity of the node. The formula is:
 
 Similarity Score= 
-∑h 
-i +λ
-(∑g 
-i ) 
-2 A higher similarity score indicates that the instances in the node have more similar residuals.
+```math
+\text{Similarity Score} = \frac{(\sum g_i)^2}{\sum h_i + \lambda}
+``` A higher similarity score indicates that the instances in the node have more similar residuals.
 
 Gain Calculation for Splits: The algorithm then iterates through every feature and every possible split point for that feature. For each potential split, it partitions the instances into left and right child nodes and calculates the Gain:
 
-Gain=Similarity 
-Left +Similarity 
-Right −Similarity 
-Root The gain represents the improvement in the objective function resulting from the split.
+```math
+\text{Gain} = \text{Similarity}_{\text{Left}} + \text{Similarity}_{\text{Right}} - \text{Similarity}_{\text{Root}}
+``` The gain represents the improvement in the objective function resulting from the split.
 
 Best Split Selection: The split that yields the highest gain across all features and all values is selected as the best split for the current node.
 
