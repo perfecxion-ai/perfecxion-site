@@ -618,7 +618,7 @@ The following table provides a comparison of the most common linkage criteria.
 Table 1: Comparison of Hierarchical Clustering Linkage Criteria
 
 Linkage Criterion	Mathematical Definition (Distance between clusters A and B)	Cluster Shape Bias	Primary Use Case
-Single Linkage	D(A,B)=min 
+Single Linkage	D(A,B) = min 
 a∈A,b∈B d(a,b)	Tends to find long, chained, or non-elliptical clusters. Sensitive to noise and outliers (chaining effect).	Useful for identifying well-separated, non-globular clusters.
 Complete Linkage	D(A,B)=max 
 a∈A,b∈B d(a,b)	Tends to find compact, spherical clusters of similar size. Less susceptible to noise than single linkage.	Effective when clusters are expected to be compact and roughly equal in diameter.
@@ -690,7 +690,7 @@ Small (<1K samples) to Medium (1K-100K samples): These dataset sizes are ideal. 
 
 Large (100K-1M samples) to Very Large (>1M samples): For datasets with a large number of samples (n), the standard agglomerative hierarchical clustering algorithm becomes computationally prohibitive due to its high time and memory complexity. In such cases, practitioners must consider alternatives, such as using more efficient linkage-specific algorithms, subsampling the data, or switching to a more scalable clustering method like K-Means after the PCA step.
 
-### ### ### ### ### 3.2 Computational Complexity
+### ### ### ### ### ### ### ### 3.2 Computational Complexity
 A critical aspect of practical implementation is understanding the computational cost, which helps in planning resources and selecting appropriate algorithms for the scale of the data. The complexity of the pipeline is dominated by the hierarchical clustering step.
 
 PCA: The time complexity of PCA is primarily determined by the method used to compute the eigendecomposition or Singular Value Decomposition (SVD) of the n×p data matrix. A full SVD has a complexity of approximately O(min(n 

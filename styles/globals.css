@@ -67,9 +67,76 @@
 pre {
   @apply rounded-lg bg-gray-900 p-4 overflow-x-auto dark:bg-gray-950 text-gray-100 dark:text-gray-100;
   /* Limit height to approximately 20 lines and add scrollbar */
-  max-height: 28rem; /* ~20 lines at 1.4rem line-height */
+  max-height: 28rem;
+  /* ~20 lines at 1.4rem line-height */
   overflow-y: auto;
   position: relative;
+}
+
+/* Ensure syntax highlighting takes precedence */
+pre[class*="language-"] {
+  background: rgb(22, 27, 34) !important;
+  border: 1px solid rgb(48, 54, 61) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+/* Mathematical Formula Containers */
+pre[class*="math"] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border: 2px solid #4c51bf !important;
+  color: white !important;
+  font-family: 'Computer Modern', 'Times New Roman', serif !important;
+  font-size: 1.1rem !important;
+  line-height: 1.6 !important;
+  text-align: center !important;
+  padding: 1.5rem !important;
+  margin: 2rem 0 !important;
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3) !important;
+  border-radius: 12px !important;
+  position: relative !important;
+  overflow: visible !important;
+  max-height: none !important;
+}
+
+/* Math container label */
+pre[class*="math"]::before {
+  content: "📐 Mathematical Formula";
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: #4c51bf;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: system-ui, -apple-system, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Math container content styling */
+pre[class*="math"] code {
+  background: transparent !important;
+  color: white !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Dark mode math containers */
+@media (prefers-color-scheme: dark) {
+  pre[class*="math"] {
+    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%) !important;
+    border: 2px solid #4c51bf !important;
+    box-shadow: 0 10px 25px rgba(76, 81, 191, 0.4) !important;
+  }
+
+  pre[class*="math"]::before {
+    background: #4c51bf;
+    color: white;
+  }
 }
 
 /* Add a subtle shadow at the bottom when content is scrollable */
@@ -79,15 +146,45 @@ pre::after {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 1rem;
-  background: linear-gradient(transparent, rgba(17, 24, 39, 0.8));
+  height: 20px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.1));
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  border-radius: 0 0 8px 8px;
 }
 
-pre:hover::after {
-  opacity: 1;
+/* Custom scrollbar for code blocks */
+pre::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+pre::-webkit-scrollbar-track {
+  background: rgba(55, 65, 81, 0.1);
+  border-radius: 4px;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: rgba(55, 65, 81, 0.3);
+  border-radius: 4px;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(55, 65, 81, 0.5);
+}
+
+/* Dark mode scrollbar */
+@media (prefers-color-scheme: dark) {
+  pre::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  pre::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  pre::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
 }
 
 code {
@@ -131,6 +228,13 @@ pre code {
 
 .prose pre {
   @apply max-w-full overflow-x-auto;
+}
+
+/* Ensure syntax highlighting works in prose */
+.prose pre[class*="language-"] {
+  background: rgb(22, 27, 34) !important;
+  border: 1px solid rgb(48, 54, 61) !important;
+  color: rgb(255, 255, 255) !important;
 }
 
 .prose .bg-gradient-to-r,

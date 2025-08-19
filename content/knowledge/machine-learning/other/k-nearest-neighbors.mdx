@@ -317,16 +317,18 @@ Unlike many ML algorithms, KNN has no formal cost function to optimize during tr
 Table 1: Comparison of Common Distance Metrics in KNN
 
 Metric Name	Formula	Geometric Interpretation	Ideal Use Case
-Euclidean (L2)	d(p,q)= 
-∑ 
-i=1
-n (p 
-i −q 
-i ) 
-2 Straight-line distance in Euclidean space (hypersphere neighborhood).	Low-dimensional, continuous numerical data where features are well-scaled.
-Manhattan (L1)	$d(p, q) = \sum_{i=1}^{n}	p_i - q_i	$
-Minkowski (Lp)	$d(p, q) = \left( \sum_{i=1}^{n}	p_i - q_i	^p \right)^{1/p}$
-Cosine Distance	$1 - \frac{p \cdot q}{\|p\| \|$	Based on the angle between two vectors, ignoring magnitude.	Text analysis, document similarity, and other high-dimensional sparse data.
+Euclidean (L2)	```math
+d(p,q) = √(Σᵢ₌₁ⁿ (pᵢ - qᵢ)²)
+```	Straight-line distance in Euclidean space (hypersphere neighborhood).	Low-dimensional, continuous numerical data where features are well-scaled.
+Manhattan (L1)	```math
+d(p, q) = Σᵢ₌₁ⁿ |pᵢ - qᵢ|
+```	Sum of absolute differences along each dimension.	When features have different scales or when you want to emphasize differences in individual dimensions.
+Minkowski (Lp)	```math
+d(p, q) = (Σᵢ₌₁ⁿ |pᵢ - qᵢ|ᵖ)^(1/p)
+```	Generalization of Manhattan (p=1) and Euclidean (p=2) distances.	When you want to control the emphasis on larger vs. smaller differences.
+Cosine Distance	```math
+1 - (p·q)/(||p||·||q||)
+```	Based on the angle between two vectors, ignoring magnitude.	Text analysis, document similarity, and other high-dimensional sparse data.
 Hamming Distance	Number of positions where symbols differ.	Counts mismatches between two strings or vectors of equal length.	Categorical data, binary vectors, genetics, and error detection.
 
 ### 2.2 A Step-by-Step Algorithmic Walkthrough
@@ -543,7 +545,7 @@ Handling Missing Data: KNN cannot operate on datasets with missing values, as di
 
 Ideal Dataset Sizes: Due to its computational and memory demands, KNN is best suited for small to medium-sized datasets, generally considered to be those with fewer than 100,000 samples. Its performance and feasibility degrade significantly on large datasets.
 
-### ### ### ### ### 3.2 Computational Complexity Analysis
+### ### ### ### ### ### ### ### 3.2 Computational Complexity Analysis
 The unique "lazy learning" nature of KNN results in an unusual distribution of computational load between the "training" and "prediction" phases. Understanding this complexity is key to knowing when and where to apply the algorithm.
 
 Table 2: Computational Complexity of KNN Implementations
