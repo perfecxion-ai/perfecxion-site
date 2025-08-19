@@ -494,13 +494,9 @@ After the forest is trained on the combined real-and-synthetic dataset, all of t
 
 The mathematical formulation is as follows:
 
-prox(i,j)= 
-N 
-trees 1 t=1
-∑
-N 
-trees ​
- I(leaf(i,t)=leaf(j,t))
+```math
+\text{prox}(i,j) = \frac{1}{N_{\text{trees}}} \sum_{t=1}^{N_{\text{trees}}} I(\text{leaf}(i,t) = \text{leaf}(j,t))
+```
 
 where N 
 trees is the total number of trees in the forest, leaf(i,t) is the index of the terminal node for data point i in tree t, and I(⋅) is the indicator function, which is 1 if the condition is true and 0 otherwise.
