@@ -34,13 +34,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
-      { url: '/logos/icon.png', type: 'image/png', sizes: '512x512' },
-      { url: '/logos/icon.svg', type: 'image/svg+xml' }
+      { url: '/logos/favicon-x.jpg', type: 'image/jpeg', sizes: '512x512' }
     ],
-    apple: '/logos/icon.png',
+    apple: '/logos/favicon-x.jpg',
     other: {
       rel: 'apple-touch-icon-precomposed',
-      url: '/logos/icon.png',
+      url: '/logos/favicon-x.jpg',
     },
   },
   manifest: '/site.webmanifest',
@@ -90,7 +89,7 @@ export default function RootLayout({
     '@type': 'Organization',
     name: 'perfecXion.ai',
     url: 'https://perfecxion.ai',
-    logo: 'https://perfecxion.ai/logo-perfecxion.svg',
+    logo: 'https://perfecxion.ai/logos/logo-dark-bg.jpg',
     description: 'Leading AI security and compliance solutions provider',
     address: {
       '@type': 'PostalAddress',

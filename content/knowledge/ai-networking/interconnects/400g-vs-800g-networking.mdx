@@ -101,6 +101,64 @@ Here's the bottom line: data center power is finite and expensive. Every watt yo
 
 Your ability to build bigger AI models? Limited by your ability to power and cool the network connecting them. The network became the bottleneck.
 
+---
+
+### Practical Example: Modeling Switch Power and Cooling Requirements
+
+```python
+# Estimate total switch power and cooling needs for 400G/800G optics
+# Adjust module_count and module_power for your hardware
+module_count = 64  # e.g., 64 ports per switch
+module_power = 18  # watts per 800G module
+asic_power = 400   # switch ASIC power in watts
+pue = 1.5          # Power Usage Effectiveness (facility overhead)
+
+total_optics_power = module_count * module_power
+switch_total_power = total_optics_power + asic_power
+cooling_required = switch_total_power * (pue - 1)
+
+print(f"Optics Power: {total_optics_power}W")
+print(f"Switch Total Power: {switch_total_power}W")
+print(f"Cooling Required: {cooling_required}W")
+```
+
+*This code helps you estimate the real-world power and cooling impact of high-density switches. Use it to plan rack power budgets and cooling infrastructure for AI clusters.*
+
+---
+
+### Simulating Impact of Failed Optics on Cluster Performance
+
+```sh
+# Simulate the effect of failed optics on AI cluster bandwidth
+# Usage: ./simulate_optic_failure.sh <total_ports> <failed_ports> <port_speed_gbps>
+
+total_ports=$1
+failed_ports=$2
+port_speed_gbps=$3
+
+active_ports=$((total_ports - failed_ports))
+total_bandwidth=$((active_ports * port_speed_gbps))
+echo "Active Ports: $active_ports"
+echo "Total Cluster Bandwidth: ${total_bandwidth} Gbps"
+```
+
+*This shell script lets you quickly model how failed transceivers reduce available bandwidth. Use it to assess risk and plan for redundancy in large AI fabrics.*
+
+---
+
+### Monitoring Optical Module Health (SNMP Example)
+
+```shell
+# Query optical module temperature and status using SNMP
+snmpwalk -v2c -c public <switch_ip> 1.3.6.1.2.1.47.1.1.1.1.10
+```
+
+*This command retrieves sensor data (e.g., temperature) from network switches. Integrate with monitoring systems to detect overheating or failed optics before they impact AI workloads.*
+
+---
+
+These practical tools help you quantify, monitor, and mitigate the operational risks of high-speed optics in AI data centers. Always validate power and cooling requirements before scaling up networking infrastructure.
+
 II. The Incumbent Architecture: Pluggable Optics at 400G and 800G
 Pluggable optics built the modern data center. Their modularity, interoperability, and field-serviceability created an ecosystem that scales. As AI pushes limits, 400G provides the baseline while 800G emerges as the powerful—but strained—successor.
 
