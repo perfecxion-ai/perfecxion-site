@@ -394,8 +394,9 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
                   {paginatedContent.map(item => {
                     return (
-                      <div
+                      <Link
                         key={item.id}
+                        href={item.href}
                         className="group cursor-pointer bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 overflow-hidden"
                       >
                         {/* Header */}
@@ -461,7 +462,7 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
                             <ChevronRight className="h-4 w-4 text-slate-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-all group-hover:translate-x-1" />
                           </div>
                         </div>
-                      </div>
+                      </Link>
                     )
                   })}
                 </div>
