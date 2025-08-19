@@ -1001,7 +1001,7 @@ The performance of AdaBoost is governed by a few critical hyperparameters that c
 
 **learning_rate:** This float parameter, often denoted as **η**, acts as a shrinkage factor, scaling the contribution of each weak learner. The final prediction formula becomes $$H(x) = \text{sign}\left(\sum_{t=1}^T \eta\alpha_t h_t(x)\right)$$. A smaller learning_rate (e.g., 0.1) reduces the impact of each individual learner, requiring a larger n_estimators to achieve comparable performance. This slower learning process often leads to better generalization and makes the model more robust to overfitting. There is a fundamental trade-off between learning_rate and n_estimators that must be managed during tuning.
 
-********************************************base_estimator (or estimator):******************************************** This parameter specifies the weak learner algorithm. While any classifier that accepts sample weights can be used, the canonical and default choice is a decision stump, which is a DecisionTreeClassifier with max_depth=1. The complexity of the base estimator is itself a crucial hyperparameter. Using overly complex base learners (e.g., deep decision trees) can cause AdaBoost to overfit quickly, as the boosting process will amplify their high variance.
+**base_estimator (or estimator):** This parameter specifies the weak learner algorithm. While any classifier that accepts sample weights can be used, the canonical and default choice is a decision stump, which is a DecisionTreeClassifier with max_depth=1. The complexity of the base estimator is itself a crucial hyperparameter. Using overly complex base learners (e.g., deep decision trees) can cause AdaBoost to overfit quickly, as the boosting process will amplify their high variance.
 
 ### 2.4 The Iterative Training Process: Learning from Mistakes
 The mechanism by which the sample weights, **D_t**, influence the training of the next weak learner, **h_t**, can be implemented in two primary ways:
@@ -1226,8 +1226,10 @@ Gradient Boosting or XGBoost is preferable if: The dataset is large, and computa
 
 The following comprehensive table compares the three major ensemble learning approaches across key dimensions:
 
+<div className="text-foreground dark:text-white">
+
 | 📊 **Criterion** | 🚀 **AdaBoost** | 🌲 **Random Forest** | ⚡ **Gradient Boosting** |
-|-----------|----------|-------------------------|-----------------------------|
+|:------------------|:-----------------|:----------------------|:-------------------------|
 | **🗣️ Core Philosophy** | 🎯 Sequential learning; adaptively focus on mistakes from previous learners | 🔄 Parallel learning; train independent models and average predictions | 📈 Sequential learning; fit new models to residual errors of ensemble |
 | **🛠️ Training Process** | 🐌 **Sequential** (inherently slow) - each learner depends on previous | 🚀 **Parallel** (highly scalable) - all trees trained independently | ⚡ **Sequential** with optimizations (XGBoost parallelizes tree building) |
 | **🎯 Primary Objective** | 📉 **Reduce Bias** - combine weak learners into strong ensemble | 📊 **Reduce Variance** - average out overfitting from individual trees | 📉 **Reduce Bias** + regularization controls variance |
@@ -1237,6 +1239,8 @@ The following comprehensive table compares the three major ensemble learning app
 | **⚙️ Hyperparameter Tuning** | 🟢 **Simple** - n_estimators, learning_rate, base_estimator | 🟡 **Moderate** - n_estimators, max_features, max_depth | 🔴 **Complex** - many parameters (regularization, learning_rate, etc.) |
 | **🔍 Model Interpretability** | 🟡 **Moderate** - weighted sum of simple rules (with decision stumps) | 🔴 **Low** - hundreds of complex, deep trees | 🔴 **Low** - sequential complexity makes interpretation difficult |
 | **✅ Best Use Cases** | Clean binary classification, educational baseline, interpretable ensembles | Noisy data, mixed data types, quick robust baseline | Large datasets, competitions, maximum performance priority |
+
+</div>
 
 ## Section 7: Advanced Considerations
 This section explores more nuanced aspects of the AdaBoost algorithm, moving beyond the basic implementation to discuss its interpretability, scalability challenges, significant variants and extensions, and its relationship with feature engineering practices.
@@ -1433,14 +1437,18 @@ This section provides a curated list of high-quality resources for readers who w
 
 Engaging with the primary literature is essential for a deep, theoretical understanding of AdaBoost and its context within machine learning. The following curated collection highlights the most influential papers in chronological order:
 
+<div className="text-foreground dark:text-white">
+
 | 📜 **Paper Title** | 👥 **Authors** | 📅 **Year** | 🎆 **Significance & Impact** |
-|------------------------|-----------------|-----------|---------------------------|
+|:---------------------|:---------------|:---------|:--------------------------|
 | **🏆 A Decision-Theoretic Generalization of On-Line Learning and an Application to Boosting** | Freund, Y., & Schapire, R. E. | **1997** | 🟠 **FOUNDATIONAL** - The seminal journal paper that formally introduced and analyzed the AdaBoost algorithm, establishing its theoretical properties and winning the Gödel Prize. |
 | **📊 Additive Logistic Regression: A Statistical View of Boosting** | Friedman, J., Hastie, T., & Tibshirani, R. | **2000** | 🔵 **THEORETICAL** - Landmark paper that re-framed AdaBoost from a statistical perspective, showing its equivalence to a stagewise additive model minimizing exponential loss. |
 | **📱 The Boosting Approach to Machine Learning: An Overview** | Schapire, R. E. | **2003** | 🟢 **EDUCATIONAL** - Accessible and intuitive overview of the boosting paradigm written by one of AdaBoost's creators. Perfect entry point for newcomers. |
 | **👁️ Robust Real-Time Face Detection** | Viola, P., & Jones, M. | **2004** | 🔴 **APPLIED** - The classic paper detailing the Viola-Jones object detection framework using AdaBoost cascades. Most famous real-world application. |
 | **🔮 Multi-class AdaBoost** | Zhu, J., Rosset, S., Zou, H., & Hastie, T. | **2009** | 🟡 **EXTENSION** - Introduced SAMME and SAMME.R algorithms, providing principled extension of AdaBoost to multi-class classification problems. |
 | **🧠 Explaining AdaBoost** | Schapire, R. E. | **2013** | 🟣 **ANALYSIS** - Comprehensive review of theoretical perspectives on AdaBoost's effectiveness, particularly its surprising resistance to overfitting via margin theory. |
+
+</div>
 
 ### 10.2 Recommended Tutorials and Courses
 These resources provide more accessible explanations and practical guidance for learning and applying AdaBoost.
