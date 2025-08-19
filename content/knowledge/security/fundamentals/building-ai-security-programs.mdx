@@ -88,6 +88,34 @@ class AIRiskAssessment:
 
 **Composite Risk Score = (Probability × Impact × Exposure) / Control Effectiveness**
 
+---
+### Practical Example: Automated AI Risk Scoring
+
+Below is a concise Python example showing how to automate risk scoring for AI systems using the described methodology. This helps security teams quantify and prioritize risks for mitigation.
+
+```python
+def calculate_risk(probability, impact, exposure, control_effectiveness):
+  # All inputs are on a 1-5 scale
+  score = (probability * impact * exposure) / max(control_effectiveness, 1)
+  return score
+
+# Example risk categories
+risks = [
+  {"name": "data_security", "prob": 4, "impact": 5, "exposure": 3, "control": 2},
+  {"name": "model_security", "prob": 3, "impact": 4, "exposure": 4, "control": 3},
+  {"name": "deployment_security", "prob": 2, "impact": 3, "exposure": 2, "control": 4},
+]
+
+for risk in risks:
+  score = calculate_risk(risk["prob"], risk["impact"], risk["exposure"], risk["control"])
+  print(f"{risk['name']} risk score: {score:.2f}")
+```
+
+**Explanation:**
+This code automates the risk scoring process for different AI security categories. Security teams can use this approach to prioritize risks and allocate resources for mitigation based on quantitative scores.
+
+---
+
 #### 3. Security Controls Layer
 
 **Defense-in-Depth Implementation**

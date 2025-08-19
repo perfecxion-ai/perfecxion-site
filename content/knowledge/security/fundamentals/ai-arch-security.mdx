@@ -80,6 +80,48 @@ Intelligent Applications
 | **AI** | Rule-based systems | Automated reasoning | Brittle logic exploitation |
 | **ML** | Learning from data | Manual rule creation | Training data poisoning |
 | **Deep Learning** | Feature learning | Feature engineering | Adversarial examples |
+
+---
+### Practical Example: Adversarial Example Generation and Defense
+
+Adversarial examples are inputs crafted to fool neural networks. Below is a concise PyTorch example showing how to generate an adversarial example and apply a simple defense.
+
+```python
+import torch
+import torch.nn.functional as F
+
+def fgsm_attack(model, data, target, epsilon=0.01):
+    data.requires_grad_()
+    output = model(data)
+    loss = F.cross_entropy(output, target)
+    loss.backward()
+    # Create adversarial example
+    adv_data = data + epsilon * data.grad.sign()
+    return torch.clamp(adv_data, 0, 1)
+
+# Simple defense: input validation
+def validate_input(data):
+    # Reject inputs with abnormal values
+    if torch.any(data < 0) or torch.any(data > 1):
+        raise ValueError("Input out of bounds!")
+    return data
+
+# Usage Example (mocked model/data)
+class DummyModel:
+    def __call__(self, x):
+        return torch.ones((1, 10))
+
+data = torch.rand((1, 10))
+target = torch.tensor([1])
+model = DummyModel()
+adv_data = fgsm_attack(model, data, target)
+validate_input(adv_data)
+```
+
+**Explanation:**
+This code demonstrates how adversarial examples are generated to attack neural networks and how input validation can help defend against such attacks. In production, more advanced defenses are needed, but this illustrates the concept and risk.
+
+---
 | **Transformers** | Parallel attention | Sequential bottlenecks | Attention manipulation |
 | **LLMs** | Scale + pre-training | Task-specific training | Prompt injection |
 | **Agents** | Planning + tool use | Single-shot interaction | Excessive agency |

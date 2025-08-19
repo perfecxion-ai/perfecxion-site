@@ -59,6 +59,42 @@ The distinction between Agentic AI and the more familiar Generative AI is fundam
 
 This marks a fundamental transformation of AI from a responsive tool into a collaborative partner that can act on its own accord.
 
+---
+### Practical Example: Simple Agentic AI Architecture
+
+Below is a concise Python example demonstrating how an agentic AI system can use an LLM (mocked here) to plan and execute multi-step tasks. This illustrates the difference between reactive and agentic AI, and highlights the security implications of autonomous decision-making.
+
+```python
+# Agentic AI Example: Planning and Executing Multi-Step Tasks
+import random
+
+class MockLLM:
+  def generate_plan(self, goal):
+    # Simulate LLM reasoning for planning
+    return [f"Step {i+1}: {action}" for i, action in enumerate([
+      "Analyze data", "Identify bottlenecks", "Propose solution", "Execute action"])]
+
+class AgenticAI:
+  def __init__(self, llm):
+    self.llm = llm
+
+  def achieve_goal(self, goal):
+    plan = self.llm.generate_plan(goal)
+    print(f"Agentic AI received goal: {goal}")
+    for step in plan:
+      print(step)
+    print("All steps executed. Goal achieved.")
+
+# Usage Example
+agent = AgenticAI(MockLLM())
+agent.achieve_goal("Reduce customer service response times")
+```
+
+**Explanation:**
+This code shows how an agentic AI system can autonomously generate and execute a plan to achieve a business goal. In production, the LLM would be a real model, and the agent would interact with external systems. Security controls must be in place to monitor and validate each autonomous action, as the agent can affect critical business processes.
+
+---
+
 ####  Business Impact Example
 
 Consider the transformative difference in capability between traditional and agentic AI systems:

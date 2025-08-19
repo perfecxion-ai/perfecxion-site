@@ -8,13 +8,13 @@ import { ContentItem } from '@/lib/content-loader'
 import { searchContent, findRelatedContent } from '@/lib/search-utils'
 import { NewsletterSignup } from '@/components/newsletter-signup'
 
-// Content types/formats
+// Content formats with better descriptions
 const contentFormats = [
-  { id: 'all', label: 'All Content', icon: '📚' },
-  { id: 'article', label: 'Articles', icon: '📄' },
-  { id: 'whitepaper', label: 'White Papers', icon: '📋' },
-  { id: 'learning', label: 'Learning Paths', icon: '🎓' },
-  { id: 'architecture', label: 'Reference Architectures', icon: '🏗️' }
+  { id: 'all', label: 'All Formats' },
+  { id: 'article', label: '📄 Articles' },
+  { id: 'whitepaper', label: '📋 White Papers' },
+  { id: 'learning', label: '🎓 Learning' },
+  { id: 'architecture', label: '🏗️ Architecture' }
 ]
 
 // Difficulty levels
@@ -27,11 +27,20 @@ const difficultyLevels = [
 
 // Main domains
 const domains = [
-  { id: 'all', label: 'All Domains' },
-  { id: 'infrastructure', label: 'Infrastructure' },
-  { id: 'security', label: 'Security' },
+  { id: 'all', label: 'All Categories' },
+  { id: 'machine-learning', label: 'Machine Learning' },
+  { id: 'ai-security', label: 'AI Security' },
+  { id: 'ai-networking', label: 'AI Networking' },
+  { id: 'ai-infrastructure', label: 'AI Infrastructure' },
   { id: 'compliance', label: 'Compliance' },
   { id: 'operations', label: 'Operations' }
+]
+
+// Popular topics for quick filtering
+const popularTopics = [
+  'LLMs', 'Neural Networks', 'Prompt Injection', 'AI Security', 'GPU Clusters',
+  'Transformers', 'Machine Learning', 'Model Security', 'AI Fabric', 'Compliance',
+  'Red Teaming', 'Threat Modeling', 'Zero Trust', 'HIPAA', 'GDPR', 'MLOps'
 ]
 
 // Sort options
@@ -59,7 +68,7 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   // Extract popular topics from content
-  const popularTopics = useMemo(() => {
+  const popularTopicsFromContent = useMemo(() => {
     const topicCounts: Record<string, number> = {}
     initialContent.forEach(item => {
       if (item.topics && Array.isArray(item.topics)) {
@@ -78,37 +87,45 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
       .map(([topic]) => topic)
   }, [initialContent])
 
-  // Filter and sort content based on all criteria
+  // Helper function to get format icons
+  const getFormatIcon = (formatId: string) => {
+    switch (formatId) {
+      case 'article': return '📄'
+      case 'whitepaper': return '📋'
+      case 'learning': return '🎓'
+      case 'architecture': return '🏗️'
+      default: return '📚'
+    }
+  }
+
+  // Filter content based on selected criteria
   const filteredContent = useMemo(() => {
     let filtered = initialContent
 
-    // Apply advanced search if query exists
-    if (searchQuery) {
-      filtered = searchContent(filtered, searchQuery)
+    // Filter by format
+    if (selectedFormat !== 'all') {
+      filtered = filtered.filter(item => item.format === selectedFormat)
     }
 
-    // Apply other filters
-    filtered = filtered.filter(item => {
-      // Format filter
-      if (selectedFormat !== 'all' && item.format !== selectedFormat) return false
+    // Filter by domain
+    if (selectedDomain !== 'all') {
+      filtered = filtered.filter(item => item.domain === selectedDomain)
+    }
 
-      // Difficulty filter
-      if (selectedDifficulty !== 'all' && item.difficulty !== selectedDifficulty) return false
+    // Filter by difficulty
+    if (selectedDifficulty !== 'all') {
+      filtered = filtered.filter(item => item.difficulty === selectedDifficulty)
+    }
 
-      // Domain filter
-      if (selectedDomain !== 'all' && item.domain !== selectedDomain) return false
-
-      // Topic filter (case-insensitive with trimming)
-      if (selectedTopic) {
-        const hasMatchingTopic = item.topics && Array.isArray(item.topics) &&
-          item.topics.some(topic =>
-            topic.trim().toLowerCase() === selectedTopic.trim().toLowerCase()
-          )
-        if (!hasMatchingTopic) return false
-      }
-
-      return true
-    })
+    // Filter by search query (searches title, description, and topics)
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase()
+      filtered = filtered.filter(item =>
+        item.title.toLowerCase().includes(query) ||
+        item.description.toLowerCase().includes(query) ||
+        item.topics.some(topic => topic.toLowerCase().includes(query))
+      )
+    }
 
     // Apply sorting
     filtered = [...filtered].sort((a, b) => {
@@ -148,7 +165,7 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
     }
 
     return filtered
-  }, [searchQuery, selectedFormat, selectedDifficulty, selectedDomain, selectedTopic, sortBy, initialContent, currentPage, itemsPerPage])
+  }, [initialContent, selectedFormat, selectedDomain, selectedDifficulty, searchQuery, sortBy, currentPage, itemsPerPage])
 
   // Paginated content
   const paginatedContent = useMemo(() => {
@@ -158,17 +175,6 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
   }, [filteredContent, currentPage, itemsPerPage])
 
   const totalPages = Math.ceil(filteredContent.length / itemsPerPage)
-
-  // Get format icon
-  const getFormatIcon = (format: string) => {
-    switch (format) {
-      case 'article': return '📄'
-      case 'whitepaper': return '📋'
-      case 'learning': return '🎓'
-      case 'architecture': return '🏗️'
-      default: return '📄'
-    }
-  }
 
   // Get difficulty color
   const getDifficultyColor = (difficulty: string) => {
@@ -229,22 +235,54 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
                 </button>
               </div>
 
-              {/* Search Bar */}
-              <div className="relative">
-                <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
-                <input
-                  type="text"
-                  placeholder="Search knowledge..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-8 pr-8 py-2 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs shadow-sm"
-                />
-                {searchQuery && (
+              {/* Search and Filter Controls */}
+              <div className="flex flex-col sm:flex-row gap-3 mb-6">
+                {/* Search Bar */}
+                <div className="flex-1 relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+                  <input
+                    type="text"
+                    placeholder="Search articles, topics, or content..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  />
+                  {searchQuery && (
+                    <button
+                      onClick={() => setSearchQuery('')}
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  )}
+                </div>
+
+                {/* Sort Dropdown */}
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="px-4 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                >
+                  {sortOptions.map(option => (
+                    <option key={option.id} value={option.id}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+
+                {/* Clear Filters Button */}
+                {(selectedFormat !== 'all' || selectedDomain !== 'all' || selectedDifficulty !== 'all' || searchQuery) && (
                   <button
-                    onClick={() => setSearchQuery('')}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 p-0.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                    onClick={() => {
+                      setSelectedFormat('all')
+                      setSelectedDomain('all')
+                      setSelectedDifficulty('all')
+                      setSearchQuery('')
+                      setCurrentPage(1)
+                    }}
+                    className="px-4 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-200"
                   >
-                    <X className="h-3.5 w-3.5 text-slate-400" />
+                    Clear Filters
                   </button>
                 )}
               </div>
@@ -252,7 +290,7 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
 
             {/* Navigation Tree */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
-              {/* Content Type Navigation */}
+              {/* Content Type Filter */}
               <div>
                 <h3 className="text-xs font-semibold text-slate-900 dark:text-white mb-2 uppercase tracking-wider">Content Type</h3>
                 <div className="space-y-1.5">
@@ -260,21 +298,20 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
                     <button
                       key={format.id}
                       onClick={() => setSelectedFormat(format.id)}
-                      className={`w-full flex items-center px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 ${selectedFormat === format.id
-                        ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg shadow-blue-500/25'
+                      className={`w-full text-left px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 ${selectedFormat === format.id
+                        ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/25'
                         : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:shadow-md'
                         }`}
                     >
-                      <span className="mr-2 text-base">{format.icon}</span>
                       {format.label}
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* Domain Navigation */}
+              {/* Category Navigation */}
               <div>
-                <h3 className="text-xs font-semibold text-slate-900 dark:text-white mb-2 uppercase tracking-wider">Domains</h3>
+                <h3 className="text-xs font-semibold text-slate-900 dark:text-white mb-2 uppercase tracking-wider">Categories</h3>
                 <div className="space-y-1.5">
                   {domains.map(domain => (
                     <button
@@ -286,6 +323,22 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
                         }`}
                     >
                       {domain.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Popular Topics */}
+              <div>
+                <h3 className="text-xs font-semibold text-slate-900 dark:text-white mb-2 uppercase tracking-wider">Popular Topics</h3>
+                <div className="space-y-1.5">
+                  {popularTopics.slice(0, 8).map(topic => (
+                    <button
+                      key={topic}
+                      onClick={() => setSearchQuery(topic)}
+                      className="w-full text-left px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:shadow-md"
+                    >
+                      {topic}
                     </button>
                   ))}
                 </div>
@@ -386,6 +439,16 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
                   className="w-full pl-4 pr-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm"
                 />
               </div>
+            </div>
+
+            {/* Results Counter */}
+            <div className="mb-4">
+              <p className="text-sm text-slate-600 dark:text-slate-400">
+                Showing {filteredContent.length} of {initialContent.length} articles
+                {searchQuery && ` for "${searchQuery}"`}
+                {selectedDomain !== 'all' && ` in ${domains.find(d => d.id === selectedDomain)?.label}`}
+                {selectedFormat !== 'all' && ` (${contentFormats.find(f => f.id === selectedFormat)?.label})`}
+              </p>
             </div>
 
             {/* Content Grid */}

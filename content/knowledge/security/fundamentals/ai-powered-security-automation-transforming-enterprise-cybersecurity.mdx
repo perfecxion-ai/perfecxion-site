@@ -107,6 +107,45 @@ The secret lies in understanding behavior rather than just looking for specific 
 
 The **hybrid detection model** represents the current state-of-the-art in threat detection:
 
+---
+### Practical Example: Hybrid AI Threat Detection
+
+Below is a concise Python example demonstrating a hybrid threat detection system using both supervised and unsupervised models. This illustrates how AI automation can improve detection accuracy and reduce false positives in security operations.
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.cluster import KMeans
+import numpy as np
+
+# Supervised model for known threats
+supervised_model = RandomForestClassifier()
+# Unsupervised model for anomaly detection
+unsupervised_model = KMeans(n_clusters=2)
+
+# Mock training data
+X_train = np.random.rand(100, 5)
+y_train = np.random.randint(0, 2, 100)
+supervised_model.fit(X_train, y_train)
+unsupervised_model.fit(X_train)
+
+# New event to classify
+event = np.random.rand(1, 5)
+known_threat = supervised_model.predict(event)[0]
+anomaly = unsupervised_model.predict(event)[0]
+
+if known_threat:
+    print("Known threat detected!")
+elif anomaly == 1:
+    print("Anomalous event detected!")
+else:
+    print("Event is normal.")
+```
+
+**Explanation:**
+This code demonstrates how a hybrid AI system can classify known threats using supervised learning and detect unknown anomalies using unsupervised learning. In production, these models would be trained on real security data and integrated into automated response workflows.
+
+---
+
 ** Supervised Learning for Known Threats**
 - Trains on labeled datasets of confirmed malware, phishing attempts, and attack patterns
 - Achieves high accuracy on threat variants and mutations

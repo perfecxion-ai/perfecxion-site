@@ -38,6 +38,40 @@ Over the next 18 months, Alex would lead DataFlow AI through this transformation
 
 Understanding where your organization stands and where it needs to go is essential for building an effective AI security program. **Our maturity model, developed from analyzing hundreds of AI companies**, identifies five distinct phases of AI security program development.
 
+---
+### Practical Example: AI Security Program Maturity Assessment
+
+Below is a concise Python example showing how to assess an organization's AI security maturity phase based on key indicators. This helps teams identify their current state and plan next steps.
+
+```python
+def assess_maturity(size, policies, team, compliance):
+     if size < 50 and not policies:
+          return "Ad Hoc"
+     elif size < 200 and policies and team:
+          return "Foundation"
+     elif size < 1000 and team and compliance:
+          return "Growth"
+     elif size < 5000 and compliance:
+          return "Optimization"
+     else:
+          return "World-Class"
+
+# Example organization
+org = {
+     "size": 120,
+     "policies": True,
+     "team": True,
+     "compliance": False
+}
+phase = assess_maturity(**org)
+print(f"Organization maturity phase: {phase}")
+```
+
+**Explanation:**
+This code helps organizations quickly assess their AI security maturity phase using simple criteria. It supports strategic planning and benchmarking against industry standards.
+
+---
+
 ### Phase 1: Ad Hoc (0-6 months) - "Firefighting Mode"
 
 **What it looks like:**
