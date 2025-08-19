@@ -9,20 +9,19 @@ interface ContentPageExampleProps {
 }
 
 export default function ContentPageExample({ content }: ContentPageExampleProps) {
-  const [currentContent] = useState<ContentItem>({
+  const currentContent = {
     id: 'example-content',
-    title: 'Example AI Security Article',
+    title: 'Example Content Page',
     description: 'This is an example of how individual content pages will look with the new layout.',
     format: 'article',
-    domain: 'security',
+    domain: 'ai-security',
     topics: ['AI Security', 'Machine Learning', 'Cybersecurity'],
     difficulty: 'intermediate',
     readTime: '15 min read',
-    href: '/knowledge/example',
-    isNew: true,
     date: '2025-01-21',
-    author: 'perfecXion AI Team'
-  })
+    author: 'perfecXion AI Team',
+    href: '/knowledge/example'
+  }
 
   return (
     <ContentPageLayout 
