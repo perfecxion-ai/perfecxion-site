@@ -9,14 +9,14 @@ interface ContentPageExampleProps {
 }
 
 export default function ContentPageExample({ content }: ContentPageExampleProps) {
-  const currentContent = {
+  const currentContent: ContentItem = {
     id: 'example-content',
     title: 'Example Content Page',
     description: 'This is an example of how individual content pages will look with the new layout.',
-    format: 'article',
-    domain: 'ai-security',
+    format: 'article' as const,
+    domain: 'ai-security' as const,
     topics: ['AI Security', 'Machine Learning', 'Cybersecurity'],
-    difficulty: 'intermediate',
+    difficulty: 'intermediate' as const,
     readTime: '15 min read',
     date: '2025-01-21',
     author: 'perfecXion AI Team',
@@ -24,14 +24,14 @@ export default function ContentPageExample({ content }: ContentPageExampleProps)
   }
 
   return (
-    <ContentPageLayout 
-      content={content} 
+    <ContentPageLayout
+      content={content}
       currentContent={currentContent}
     >
       {/* This is where the actual article content would go */}
       <div className="space-y-6">
         <h1>Example AI Security Article</h1>
-        
+
         <p>
           This is an example of how individual knowledge content pages will look with the new three-column layout.
         </p>
