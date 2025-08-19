@@ -24,22 +24,39 @@ tags:
 
 ---
 
+## Table of Contents
+
+- [Part I: Foundational Principles](#part-i-foundational-principles-and-historical-context)
+  - [1. Fundamental Concepts](#1-fundamental-concepts)
+  - [2. Mathematical Foundations](#2-mathematical-foundations)
+  - [3. Implementation Details](#3-implementation-details)
+- [Part II: Advanced Techniques](#part-ii-advanced-techniques)
+- [Part III: Practical Applications](#part-iii-practical-applications)
+- [Part IV: Model Evaluation](#part-iv-model-evaluation)
+
+---
+
 ## Part I: Foundational Principles and Historical Context
 
 ## 1. Fundamental Concepts
 
 ### 1.1 Core Algorithm: The Intuitive Basis
-Linear and Logistic Regression form the foundation of supervised machine learning. Both learn from labeled data, but they solve different problems. Linear Regression predicts continuous numbers. Logistic Regression predicts categories.
+
+**Linear and Logistic Regression form the foundation of supervised machine learning.** Both learn from labeled data, but they solve different problems. **Linear Regression predicts continuous numbers. Logistic Regression predicts categories.**
 
 #### Linear Regression
 
-Linear Regression finds the best straight line through your data points. You have input variables (predictors) and one continuous output variable (target). The algorithm learns the linear relationship between them.
+**Linear Regression finds the best straight line through your data points.** You have input variables (predictors) and one continuous output variable (target). The algorithm learns the **linear relationship** between them.
 
-What makes a line "best"? It minimizes the sum of squared distances between actual data points and the line itself. These distances are called residuals or errors. Squaring them penalizes large errors more heavily and prevents positive and negative errors from canceling out. This approach is called Ordinary Least Squares (OLS).
+**What makes a line "best"?** It minimizes the sum of squared distances between actual data points and the line itself. These distances are called **residuals or errors**. Squaring them penalizes large errors more heavily and prevents positive and negative errors from canceling out. This approach is called **Ordinary Least Squares (OLS)**.
 
-Picture this: You have a scatter plot with house size on the x-axis and price on the y-axis. Each dot represents a house that sold. Linear Regression draws the single straight line that best fits through this cloud of points—minimizing the squared distances from points to the line. Use this line to predict any new house's price based on its size.
+**Picture this:** You have a scatter plot with house size on the x-axis and price on the y-axis. Each dot represents a house that sold. Linear Regression draws the single straight line that best fits through this cloud of points—**minimizing the squared distances from points to the line**. Use this line to predict any new house's price based on its size.
+
+---
 
 ### Simple Linear Regression Implementation
+
+This example demonstrates linear regression using realistic house price data, showing how the algorithm learns the relationship between house size and price.
 
 ```python
 import numpy as np

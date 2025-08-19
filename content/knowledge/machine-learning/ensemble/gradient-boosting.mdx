@@ -27,53 +27,76 @@ tags:
 
 ---
 
+## Table of Contents
+
+- [Part I: The Foundations of Gradient Boosting](#part-i-the-foundations-of-gradient-boosting)
+  - [Section 1: The Principle of Ensemble Learning and Boosting](#section-1-the-principle-of-ensemble-learning-and-boosting)
+  - [Section 2: Mathematical Framework](#section-2-mathematical-framework)
+- [Part II: Modern Implementations](#part-ii-modern-implementations)
+  - [XGBoost](#xgboost)
+  - [LightGBM](#lightgbm)
+  - [CatBoost](#catboost)
+- [Part III: Advanced Topics](#part-iii-advanced-topics)
+- [Part IV: Practical Applications](#part-iv-practical-applications)
+
+---
+
 ## Part I: The Foundations of Gradient Boosting
 
 Gradient boosting powers some of today's most successful machine learning models. XGBoost, LightGBM, and CatBoost all build on Jerome Friedman's foundational Gradient Boosting Machine (GBM) framework.
 
 ### Section 1: The Principle of Ensemble Learning and Boosting
 
-#### 1.1. From Weak Learners to a Strong Predictor: The Core Idea
-Ensemble learning combines multiple models to beat any single model. The key insight? Diverse models compensate for each other's errors when combined intelligently.
+#### 1.1 From Weak Learners to a Strong Predictor: The Core Idea
+**Ensemble learning combines multiple models to beat any single model.** The key insight? **Diverse models compensate for each other's errors when combined intelligently.**
 
-Two types of learners matter here. "Weak learners" perform only slightly better than random chance—think simple decision trees with one split. "Strong learners" are the final ensemble models that achieve high accuracy by combining many weak learners.
+**Two types of learners matter here:**
+- **"Weak learners"** perform only slightly better than random chance—think simple decision trees with one split
+- **"Strong learners"** are the final ensemble models that achieve high accuracy by combining many weak learners
 
-Two main ensemble strategies exist:
+**Two main ensemble strategies exist:**
 
 - **Bagging (Bootstrap Aggregating):** Reduces variance by training multiple independent models in parallel on different random data subsets. Random Forest exemplifies this—many trees trained on bootstrapped samples, then averaged or voted.
 
 - **Boosting:** Reduces bias through sequential training. Each new model corrects errors from previous models by focusing on previously misclassified examples. This sequential error correction drives gradient boosting.
 
-#### 1.2. A Brief History: The Path from AdaBoost to Gradient Boosting
-The story starts with a simple question from Michael Kearns and Leslie Valiant in the late 1980s: "Can weak learners create a strong learner?" Robert Schapire answered "yes" in 1990, laying the theoretical foundation.
+#### 1.2 A Brief History: The Path from AdaBoost to Gradient Boosting
 
-AdaBoost (Adaptive Boosting) brought these ideas to practice in the mid-1990s. Yoav Freund and Robert Schapire created the first successful boosting algorithm. AdaBoost trains weak learners sequentially, increasing weights on misclassified examples so subsequent learners focus on "hard" cases. The final prediction uses weighted voting where more accurate learners get more influence.
+**The story starts with a simple question** from Michael Kearns and Leslie Valiant in the late 1980s: **"Can weak learners create a strong learner?"** Robert Schapire answered "yes" in 1990, laying the theoretical foundation.
 
-Leo Breiman delivered the crucial insight: boosting isn't just re-weighting—it's optimization. Boosting finds optimal predictive functions by iteratively adding functions that follow the gradient of a loss function.
+**AdaBoost (Adaptive Boosting)** brought these ideas to practice in the mid-1990s. Yoav Freund and Robert Schapire created the first successful boosting algorithm. AdaBoost trains weak learners sequentially, increasing weights on misclassified examples so subsequent learners focus on **"hard" cases**. The final prediction uses weighted voting where more accurate learners get more influence.
 
-Jerome Friedman formalized this breakthrough between 1999 and 2001. His Gradient Boosting Machine (GBM) recast boosting as numerical optimization in function space. Instead of AdaBoost's specific weighting scheme, GBM uses gradient descent to minimize any differentiable loss function.
+**Leo Breiman delivered the crucial insight:** boosting isn't just re-weighting—it's **optimization**. Boosting finds optimal predictive functions by iteratively adding functions that follow the gradient of a loss function.
 
-This generalization transformed boosting from a specific algorithm into a flexible framework. You can now apply it to regression, ranking, and many tasks beyond binary classification.
+**Jerome Friedman formalized this breakthrough** between 1999 and 2001. His **Gradient Boosting Machine (GBM)** recast boosting as numerical optimization in function space. Instead of AdaBoost's specific weighting scheme, GBM uses **gradient descent** to minimize any differentiable loss function.
+
+**This generalization transformed boosting** from a specific algorithm into a flexible framework. You can now apply it to regression, ranking, and many tasks beyond binary classification.
 
 #### 1.3 Sequential Error Correction Framework
 
-Gradient boosting constructs a "strong" predictive model F(x) through iterative, additive process. Starts with simple initial model F₀(x), sequentially adds "weak" models hₘ(x), each aiming to correct current ensemble deficiencies.
+**Gradient boosting constructs a "strong" predictive model F(x)** through iterative, additive process. Starts with simple initial model **F₀(x)**, sequentially adds **"weak" models hₘ(x)**, each aiming to correct current ensemble deficiencies.
 
-Core mechanism: each new weak learner doesn't predict original target variable y. Instead, it predicts "error" or "residual" of current strong model. For regression, error = y - Fₘ₋₁(x).
+**Core mechanism:** each new weak learner doesn't predict original target variable **y**. Instead, it predicts **"error" or "residual"** of current strong model. For regression, **error = y - Fₘ₋₁(x)**.
 
-**Visual Process Description**:
+---
 
-Simple regression task fitting curve to data points.
+**Visual Process Description:**
 
-**Iteration 0**: Start with naive initial model F₀(x)—horizontal line representing target mean. Plot shows data points and flat-line prediction. Second plot shows errors (residuals)—vertical distances from points to mean line.
+*Simple regression task fitting curve to data points.*
 
-**Iteration 1**: Weak learner (shallow decision tree) trains on Iteration 0 errors. Tree learns simple, coarse error structure approximation—errors positive on one feature space side, negative on other. Add weak model prediction to initial model, creating refined, step-wise function F₁(x).
+**Iteration 0:** Start with naive initial model **F₀(x)**—horizontal line representing target mean. Plot shows data points and flat-line prediction. Second plot shows errors (residuals)—vertical distances from points to mean line.
 
-**Iteration 2**: Calculate F₁(x) errors—smaller than previous ones. Second weak learner trains on these smaller errors, focusing on patterns first tree missed. Add predictions to F₁(x), creating better model F₂(x).
+**Iteration 1:** Weak learner (shallow decision tree) trains on Iteration 0 errors. Tree learns simple, coarse error structure approximation—errors positive on one feature space side, negative on other. Add weak model prediction to initial model, creating refined, step-wise function **F₁(x)**.
 
-Process continues with subsequent trees focusing on ever-diminishing errors. After many iterations, strong model (sum of initial model + all weak learners) closely resembles true underlying data pattern.
+**Iteration 2:** Calculate **F₁(x)** errors—smaller than previous ones. Second weak learner trains on these smaller errors, focusing on patterns first tree missed. Add predictions to **F₁(x)**, creating better model **F₂(x)**.
 
-**Working Example: Gradient Boosting Sequential Error Correction**
+**Process continues** with subsequent trees focusing on ever-diminishing errors. After many iterations, strong model (sum of initial model + all weak learners) closely resembles true underlying data pattern.
+
+---
+
+### Working Example: Gradient Boosting Sequential Error Correction
+
+This example demonstrates the core gradient boosting algorithm step-by-step, showing how the model iteratively improves by focusing on residuals.
 
 ```python
 import numpy as np

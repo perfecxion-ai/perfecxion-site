@@ -26,34 +26,50 @@ tags:
 
 ---
 
+## Table of Contents
+
+- [Section 1: Fundamental Concepts](#section-1-fundamental-concepts-of-ensemble-methods-and-unsupervised-learning)
+  - [1.1 The Random Forest Algorithm](#11-the-random-forest-algorithm-a-supervised-learning-powerhouse)
+  - [1.2 Bootstrap Aggregating](#12-bootstrap-aggregating-bagging)
+  - [1.3 Random Feature Selection](#13-random-feature-subspace-selection)
+- [Section 2: Unsupervised Learning Applications](#section-2-unsupervised-learning-applications)
+- [Section 3: Proximity-Based Clustering](#section-3-proximity-based-clustering)
+- [Section 4: Advanced Techniques](#section-4-advanced-techniques)
+- [Section 5: Practical Implementation](#section-5-practical-implementation)
+
+---
+
 ## Section 1: Fundamental Concepts of Ensemble Methods and Unsupervised Learning
 
 ### 1.1 The Random Forest Algorithm: A Supervised Learning Powerhouse
-Random Forest, created by Leo Breiman, dominates modern machine learning. It's accurate, robust, and easy to use. Before understanding how it works for clustering, you need to grasp its supervised foundations.
 
-Random Forest builds hundreds or thousands of decision trees and combines their predictions. Classification uses majority voting. Regression averages predictions. This ensemble approach fixes decision trees' biggest weakness: overfitting.
+**Random Forest, created by Leo Breiman, dominates modern machine learning.** It's accurate, robust, and easy to use. Before understanding how it works for clustering, you need to grasp its supervised foundations.
 
-Decision trees learn flowcharts of yes/no questions about your data. Start with the entire dataset at the root, then recursively split based on feature questions. Each split aims to increase "purity"—separating different classes more cleanly. Purity gets measured by Gini Impurity or Entropy.
+**Random Forest builds hundreds or thousands of decision trees** and combines their predictions. Classification uses **majority voting**. Regression **averages predictions**. This ensemble approach fixes decision trees' biggest weakness: **overfitting**.
 
-The process continues until you hit a stopping criterion: maximum depth, perfect purity, or too few samples. Terminal leaves carry the final predictions.
+**Decision trees learn flowcharts** of yes/no questions about your data. Start with the entire dataset at the root, then recursively split based on feature questions. Each split aims to increase **"purity"**—separating different classes more cleanly. Purity gets measured by **Gini Impurity** or **Entropy**.
 
-Random Forest's power comes from ensemble learning: multiple models often beat any single model. But you need two things for a strong ensemble: accurate individual models and diversity between them.
+**The process continues** until you hit a stopping criterion: maximum depth, perfect purity, or too few samples. Terminal leaves carry the final predictions.
 
-Random Forest achieves this through two key techniques:
+**Random Forest's power comes from ensemble learning:** multiple models often beat any single model. But you need two things for a strong ensemble: **accurate individual models** and **diversity between them**.
 
-1. **Bootstrap Aggregating (Bagging):** Create many bootstrap samples by drawing with replacement from your original dataset. Each sample has the same size as the original, but some points appear multiple times while others get left out. About two-thirds of original points appear in any bootstrap sample. The remaining one-third forms the "out-of-bag" (OOB) sample for validation.
+**Random Forest achieves this through two key techniques:**
 
-2. **Random Feature Subspace Selection:** This distinguishes Random Forest from simple bagged trees. At every split, instead of considering all features, randomly select a subset and find the best split within that subset. This forces trees to be different—they can't all be dominated by the same highly predictive features. For classification, typically use √p features where p is the total number. 
+#### 1. **Bootstrap Aggregating (Bagging):** 
+Create many bootstrap samples by drawing with replacement from your original dataset. Each sample has the same size as the original, but some points appear multiple times while others get left out. **About two-thirds of original points appear in any bootstrap sample.** The remaining one-third forms the **"out-of-bag" (OOB) sample** for validation.
 
-p features, the default size of the random subset is typically  
-p
+#### 2. **Random Feature Subspace Selection:** 
+This distinguishes Random Forest from simple bagged trees. At every split, instead of considering all features, randomly select a subset and find the best split within that subset. This forces trees to be different—they can't all be dominated by the same highly predictive features. 
 
-​
- , while for regression, it is p/3.
+**For classification, typically use √p features** where **p** is the total number of features, while for regression, it is **p/3**.
 
-Making predictions is simple: pass new data through every tree. Classification uses majority voting across all trees. Regression averages all predictions. This aggregation smooths out individual tree errors, creating a more stable and accurate model.
+**Making predictions is simple:** pass new data through every tree. Classification uses **majority voting** across all trees. Regression **averages predictions**. This aggregation smooths out individual tree errors, creating a more stable and accurate model.
 
-**Working Example: Random Forest Supervised Foundations**
+---
+
+### Working Example: Random Forest Supervised Foundations
+
+This example demonstrates how Random Forest improves upon single decision trees through ensemble learning.
 
 ```python
 import numpy as np

@@ -24,63 +24,61 @@ tags:
 
 ---
 
+## Table of Contents
+
+- [1. Fundamental Concepts](#1-fundamental-concepts-of-neural-networks)
+  - [1.1 Core Algorithmic Principles](#11-the-core-algorithmic-principles-the-artificial-neuron-layers-and-network-topology)
+  - [1.2 Historical Trajectory](#12-a-historical-trajectory-from-the-mcculloch-pitts-neuron-to-the-deep-learning-revolution)
+  - [1.3 Biological Inspiration](#13-biological-inspiration)
+- [2. Mathematical Foundations](#2-mathematical-foundations)
+- [3. Training Algorithms](#3-training-algorithms)
+- [4. Modern Architectures](#4-modern-architectures)
+- [5. Practical Applications](#5-practical-applications)
+
+---
+
 ## 1. Fundamental Concepts of Neural Networks
+
 This section establishes the conceptual groundwork of neural networks, tracing their biological inspiration, defining their core components, charting their historical evolution, and situating them within the broader landscape of machine learning paradigms.
 
-1.1. The Core Algorithmic Principles: The Artificial Neuron, Layers, and Network Topology
+### 1.1 The Core Algorithmic Principles: The Artificial Neuron, Layers, and Network Topology
 At its most fundamental level, an Artificial Neural Network (ANN) is a computational model inspired by the structure and function of biological neural networks in the brain. These models are composed of interconnected processing units, or nodes, that work in concert to process information, learn complex patterns, and make decisions. The entire framework is built upon three core concepts: the artificial neuron as a basic computational unit, the organization of these neurons into layers, and the flow of information through the network's topology.
 
 The Artificial Neuron as a Computational Unit
 The foundational building block of any neural network is the artificial neuron, a simplified mathematical abstraction of its biological counterpart. A biological neuron receives signals through dendrites, processes them in the soma, and transmits an output signal via its axon. Similarly, an artificial neuron receives multiple inputs, performs a computation, and produces a single output that can be passed to other neurons. This process is defined by three key components:
 
-Inputs, Weights, and Bias: Each neuron receives a set of input signals, denoted as a vector x=(x 
-1
-​
- ,x 
-2
-​
- ,…,x 
-n
-​
- ). Each of these input connections is assigned a numerical weight, w=(w 
-1
-​
- ,w 
-2
-​
- ,…,w 
-n
-​
- ). These weights are the primary learnable parameters of the network and serve to modulate the strength and importance of each input signal. A larger weight signifies that its corresponding input has a greater influence on the neuron's output. The neuron first computes a weighted sum of its inputs. To this sum, a 
+**Inputs, Weights, and Bias:** Each neuron receives a set of input signals, denoted as a vector **x = (x₁, x₂, …, xₙ)**. Each of these input connections is assigned a numerical weight, **w = (w₁, w₂, …, wₙ)**. These weights are the primary learnable parameters of the network and serve to modulate the strength and importance of each input signal. A larger weight signifies that its corresponding input has a greater influence on the neuron's output.
 
-bias term, b, is added. The bias acts as an adjustable threshold, allowing the activation function to be shifted to the left or right, which is critical for enabling the model to fit the data more flexibly. Without a bias, the neuron's decision boundary would be forced to pass through the origin, limiting its capacity. The linear operation within the neuron is thus defined as:
+The neuron first computes a weighted sum of its inputs. To this sum, a **bias term, b**, is added. The bias acts as an adjustable threshold, allowing the activation function to be shifted to the left or right, which is critical for enabling the model to fit the data more flexibly. Without a bias, the neuron's decision boundary would be forced to pass through the origin, limiting its capacity.
 
-z= 
-i=1
-∑
-n
-​
- w 
-i
-​
- x 
-i
-​
- +b=w⋅x+b
-Activation Function: The result of this linear combination, z, is then passed through a non-linear activation function, denoted as f(z) or ϕ(z). This function determines the final output of the neuron and introduces the non-linearity that is essential for the network's power. It metaphorically decides whether the neuron "fires" or activates, passing its signal to the next layer. If the output of the neuron exceeds a certain threshold, it is activated; otherwise, no data is passed along. The introduction of non-linearity is a critical feature; without it, a deep, multi-layered network would mathematically collapse into an equivalent single-layer linear model, rendering it incapable of learning the complex, non-linear relationships that characterize most real-world problems.
+**The linear operation within the neuron is thus defined as:**
 
-Network Architecture: Layers and Connectivity
-Individual neurons are organized into a structured architecture of layers. A typical neural network consists of an input layer, one or more hidden layers, and an output layer.
+**z = Σᵢ₌₁ⁿ wᵢ xᵢ + b = w · x + b**
+**Activation Function:** The result of this linear combination, **z**, is then passed through a non-linear activation function, denoted as **f(z)** or **φ(z)**. This function determines the final output of the neuron and introduces the **non-linearity that is essential for the network's power**. It metaphorically decides whether the neuron **"fires" or activates**, passing its signal to the next layer.
 
-Input Layer: This is the entry point of the network. It receives the raw input data, where each neuron typically corresponds to a single feature in the dataset. It does not perform any computation; it simply passes the data to the first hidden layer.
+If the output of the neuron exceeds a certain threshold, it is activated; otherwise, no data is passed along. **The introduction of non-linearity is a critical feature;** without it, a deep, multi-layered network would mathematically collapse into an equivalent single-layer linear model, rendering it incapable of learning the complex, non-linear relationships that characterize most real-world problems.
 
-Hidden Layers: These layers are positioned between the input and output layers and are responsible for the bulk of the computational "heavy lifting". Each hidden layer receives the outputs from the previous layer, transforms them through its neurons' computations, and passes the results to the next layer. It is within these hidden layers that the network learns to extract increasingly abstract features and representations from the data. The term "deep" in "deep learning" refers to the presence of multiple hidden layers, which allows the model to learn a hierarchical representation of the data.
+**Network Architecture: Layers and Connectivity**
 
-Output Layer: This is the final layer of the network, and it produces the model's ultimate prediction. The structure of the output layer is tailored to the specific task. For a binary classification problem (e.g., spam or not spam), it might consist of a single neuron producing a probability. For a multi-class classification problem (e.g., identifying digits 0-9), it would have one neuron for each class. For a regression problem (e.g., predicting a house price), it might be a single neuron that outputs a continuous value.
+Individual neurons are organized into a structured architecture of layers. A typical neural network consists of an **input layer**, one or more **hidden layers**, and an **output layer**.
 
-In the most common network topology, known as a feedforward neural network, information flows in a single direction—from the input layer, through the hidden layers, to the output layer—without any cycles or feedback loops. This unidirectional flow makes the network a complex, nested mathematical function that maps inputs to outputs.
+#### **Input Layer:** 
+This is the entry point of the network. It receives the raw input data, where each neuron typically corresponds to a single feature in the dataset. It does not perform any computation; it simply passes the data to the first hidden layer.
 
-1.2. A Historical Trajectory: From the McCulloch-Pitts Neuron to the Deep Learning Revolution
+#### **Hidden Layers:** 
+These layers are positioned between the input and output layers and are responsible for the bulk of the computational **"heavy lifting"**. Each hidden layer receives the outputs from the previous layer, transforms them through its neurons' computations, and passes the results to the next layer. It is within these hidden layers that the network learns to extract increasingly **abstract features and representations** from the data. 
+
+**The term "deep" in "deep learning"** refers to the presence of multiple hidden layers, which allows the model to learn a **hierarchical representation** of the data.
+
+#### **Output Layer:** 
+This is the final layer of the network, and it produces the model's ultimate prediction. The structure of the output layer is tailored to the specific task:
+- **Binary classification** (e.g., spam or not spam): single neuron producing a probability
+- **Multi-class classification** (e.g., identifying digits 0-9): one neuron for each class  
+- **Regression** (e.g., predicting a house price): single neuron outputting a continuous value
+
+**In the most common network topology**, known as a **feedforward neural network**, information flows in a single direction—from the input layer, through the hidden layers, to the output layer—without any cycles or feedback loops. This unidirectional flow makes the network a complex, nested mathematical function that maps inputs to outputs.
+
+### 1.2 A Historical Trajectory: From the McCulloch-Pitts Neuron to the Deep Learning Revolution
 The history of neural networks is not a linear march of progress but a series of distinct epochs characterized by fervent optimism, profound disillusionment, and powerful resurgence. These cycles reveal a deep, underlying dependency between theoretical advances, available computational power, and the scale of data—a tripartite relationship that has dictated the pace of innovation for over 80 years.
 
 The Dawn of a Concept (1940s)

@@ -25,6 +25,18 @@ tags:
 
 ---
 
+## Table of Contents
+
+- [Part I: Foundations of Tree-Based Models](#part-i-foundations-of-tree-based-models)
+  - [Section 1: Fundamental Concepts](#section-1-fundamental-concepts)
+  - [Section 2: Tree Construction](#section-2-tree-construction)
+  - [Section 3: Random Forests](#section-3-random-forests)
+- [Part II: Advanced Techniques](#part-ii-advanced-techniques)
+- [Part III: Practical Implementation](#part-iii-practical-implementation)
+- [Part IV: Model Evaluation](#part-iv-model-evaluation)
+
+---
+
 ## Part I: Foundations of Tree-Based Models
 
 ### Section 1: Fundamental Concepts
@@ -33,18 +45,22 @@ tags:
 
 ##### Decision Trees
 
-Decision Trees work exactly like human decision-making. You ask a series of yes/no questions about your data, following a path that leads to a prediction. The algorithm learns these questions automatically from your training data.
+**Decision Trees work exactly like human decision-making.** You ask a series of yes/no questions about your data, following a path that leads to a prediction. The algorithm learns these questions automatically from your training data.
 
-Picture an upside-down tree—it's actually a flowchart with these components:
+**Picture an upside-down tree**—it's actually a flowchart with these components:
 
 - **Root Node:** Topmost node representing entire dataset before splits. Starting point of decision process
 - **Internal Nodes (Decision Nodes):** Each node represents "test" on specific feature, splitting data into subsets based on feature value
 - **Branches:** Links connecting nodes. Each branch represents test outcome ("Yes"/"No" or specific value range)
 - **Leaf Nodes (Terminal Nodes):** Tree endpoints that don't split further. Each leaf represents final outcome—class label (classification) or continuous value (regression)
 
-Here's how it works in practice: You're deciding whether to play tennis. The tree asks "What's the weather outlook?" If Sunny, it then asks "Is humidity high?" If yes, you get the prediction: "Don't Play Tennis." This explicit, rule-based structure makes decision trees incredibly interpretable—you can trace exactly why the model made its decision.
+**Here's how it works in practice:** You're deciding whether to play tennis. The tree asks **"What's the weather outlook?"** If Sunny, it then asks **"Is humidity high?"** If yes, you get the prediction: **"Don't Play Tennis."** This explicit, rule-based structure makes decision trees incredibly **interpretable**—you can trace exactly why the model made its decision.
+
+---
 
 ### Building Your First Decision Tree
+
+This example demonstrates decision tree construction using the classic "Play Tennis" dataset, showing how the algorithm learns decision rules from data.
 
 ```python
 import numpy as np

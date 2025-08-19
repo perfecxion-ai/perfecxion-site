@@ -24,14 +24,32 @@ tags:
 
 ---
 
+## Table of Contents
+
+- [Part I: Foundational Principles](#part-i-foundational-principles-of-centroid-based-clustering)
+  - [1. Core Algorithm](#1-the-core-iterative-algorithm-expectation-maximization-in-practice)
+  - [2. Algorithm Steps](#2-algorithm-steps)
+  - [3. Initialization Methods](#3-initialization-methods)
+- [Part II: Advanced Techniques](#part-ii-advanced-techniques)
+- [Part III: Practical Applications](#part-iii-practical-applications)
+- [Part IV: Model Evaluation](#part-iv-model-evaluation)
+
+---
+
 ## Part I: Foundational Principles of Centroid-Based Clustering
 
-K-Means clustering is your go-to algorithm for finding groups in unlabeled data. It's simple, fast, and effective when your data naturally forms spherical clusters.
+**K-Means clustering is your go-to algorithm** for finding groups in unlabeled data. It's **simple, fast, and effective** when your data naturally forms spherical clusters.
 
-### The Core Iterative Algorithm: Expectation-Maximization in Practice
-K-Means divides your data into k distinct groups using a simple two-step process. You specify how many clusters you want (k), and the algorithm finds them through iterative refinement.
+### 1. The Core Iterative Algorithm: Expectation-Maximization in Practice
 
-**Visual K-Means Algorithm in Action**
+**K-Means divides your data into k distinct groups** using a simple two-step process. You specify how many clusters you want **(k)**, and the algorithm finds them through **iterative refinement**.
+
+---
+
+### Visual K-Means Algorithm in Action
+
+This example demonstrates the K-means algorithm step-by-step, showing how centroids move and clusters form through iterative refinement.
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt

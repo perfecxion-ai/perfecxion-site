@@ -25,21 +25,39 @@ tags:
 
 ---
 
-## Section 1: Fundamental Concepts of Density-Based Clustering
-Density-based clustering changed everything in the mid-1990s. While K-Means forces spherical clusters around centroids, density-based algorithms find clusters of any shape by identifying dense regions of points.
+## Table of Contents
 
-This paradigm shift matters. Real-world clusters aren't always round balls—they can be crescents, spirals, or irregular blobs. Density-based clustering handles these naturally.
+- [Section 1: Fundamental Concepts](#section-1-fundamental-concepts-of-density-based-clustering)
+  - [1.1 The Intuition](#11-the-intuition-defining-clusters-as-dense-regions)
+  - [1.2 Core DBSCAN Algorithm](#12-core-dbscan-algorithm)
+  - [1.3 Parameter Selection](#13-parameter-selection)
+- [Section 2: Advanced DBSCAN Variants](#section-2-advanced-dbscan-variants)
+- [Section 3: Practical Applications](#section-3-practical-applications)
+- [Section 4: Performance Optimization](#section-4-performance-optimization)
+- [Section 5: Comparison with Other Methods](#section-5-comparison-with-other-methods)
+
+---
+
+## Section 1: Fundamental Concepts of Density-Based Clustering
+**Density-based clustering changed everything in the mid-1990s.** While K-Means forces spherical clusters around centroids, density-based algorithms find clusters of **any shape** by identifying dense regions of points.
+
+**This paradigm shift matters.** Real-world clusters aren't always round balls—they can be **crescents, spirals, or irregular blobs**. Density-based clustering handles these naturally.
 
 ### 1.1 The Intuition: Defining Clusters as Dense Regions
-Density-based clustering follows human intuition: clusters are dense regions of points separated by sparse areas. Think of cities on a map—dense urban centers form natural clusters, separated by sparsely populated rural areas.
 
-This shift has major implications. Centroid-based methods assume spherical clusters—they fail on elongated, concave, or intertwined shapes. Density-based clustering makes no shape assumptions. It can find crescent moons, winding rivers, or any arbitrary cluster shape that centroid methods miss.
+**Density-based clustering follows human intuition:** clusters are dense regions of points separated by sparse areas. Think of cities on a map—**dense urban centers form natural clusters**, separated by sparsely populated rural areas.
 
-Here's the key advantage: density-based clustering formalizes "noise." K-Means forces every point into some cluster, even clear outliers that distort results. Density-based algorithms classify isolated points as noise—they belong to no cluster.
+**This shift has major implications.** Centroid-based methods assume spherical clusters—they fail on **elongated, concave, or intertwined shapes**. Density-based clustering makes **no shape assumptions**. It can find crescent moons, winding rivers, or any arbitrary cluster shape that centroid methods miss.
 
-This paradigm shift acknowledges reality: real-world data is messy, and not every point belongs to a meaningful group.
+**Here's the key advantage:** density-based clustering formalizes **"noise."** K-Means forces every point into some cluster, even clear outliers that distort results. Density-based algorithms classify isolated points as **noise**—they belong to no cluster.
 
-**Working Example: DBSCAN Core Concepts Demonstration**
+**This paradigm shift acknowledges reality:** real-world data is messy, and not every point belongs to a meaningful group.
+
+---
+
+### Working Example: DBSCAN Core Concepts Demonstration
+
+This example demonstrates DBSCAN's ability to handle irregular cluster shapes and identify noise points.
 
 ```python
 import numpy as np

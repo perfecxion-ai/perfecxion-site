@@ -25,19 +25,40 @@ tags:
 
 ---
 
-## 1. Foundational Principles of the PCA-Clustering Synergy
-High-dimensional data kills clustering algorithms. The "Curse of Dimensionality" makes your data sparse, computationally expensive, and impossible to visualize. Distance-based algorithms struggle when everything becomes equally far apart.
+## Table of Contents
 
-PCA plus hierarchical clustering solves this problem. PCA compresses your data while preserving important patterns. Hierarchical clustering then finds meaningful groups in the simplified space. This two-stage pipeline has become the standard approach for exploratory data analysis.
+- [1. Foundational Principles](#1-foundational-principles-of-the-pca-clustering-synergy)
+  - [1.1 The Curse of Dimensionality](#11-the-challenge-of-high-dimensional-data-the-curse-of-dimensionality)
+  - [1.2 PCA Solution](#12-pca-solution)
+  - [1.3 Clustering Synergy](#13-clustering-synergy)
+- [2. PCA Mathematical Foundation](#2-pca-mathematical-foundation)
+- [3. Implementation and Examples](#3-implementation-and-examples)
+- [4. Advanced Applications](#4-advanced-applications)
+- [5. Best Practices](#5-best-practices)
+
+---
+
+## 1. Foundational Principles of the PCA-Clustering Synergy
+**High-dimensional data kills clustering algorithms.** The **"Curse of Dimensionality"** makes your data sparse, computationally expensive, and impossible to visualize. **Distance-based algorithms struggle when everything becomes equally far apart.**
+
+**PCA plus hierarchical clustering solves this problem.** PCA compresses your data while preserving important patterns. Hierarchical clustering then finds meaningful groups in the simplified space. **This two-stage pipeline has become the standard approach for exploratory data analysis.**
 
 ### 1.1 The Challenge of High-Dimensional Data: The Curse of Dimensionality
-More features create exponentially larger spaces. Your data becomes sparse, scattered across vast empty regions. In high dimensions, the nearest point and farthest point become almost the same distance away. "Neighborhoods" and "clusters" lose meaning.
 
-Three major problems emerge. Computational complexity explodes as algorithms calculate pairwise distances across hundreds or thousands of dimensions. Overfitting becomes likely as models find spurious patterns in noisy high-dimensional training data. Visualization becomes impossible—you can't plot or inspect data beyond three dimensions.
+**More features create exponentially larger spaces.** Your data becomes sparse, scattered across vast empty regions. In high dimensions, **the nearest point and farthest point become almost the same distance away**. **"Neighborhoods" and "clusters" lose meaning.**
 
-You need dimensionality reduction that preserves essential structure while making the data manageable.
+**Three major problems emerge:**
+- **Computational complexity explodes** as algorithms calculate pairwise distances across hundreds or thousands of dimensions
+- **Overfitting becomes likely** as models find spurious patterns in noisy high-dimensional training data  
+- **Visualization becomes impossible**—you can't plot or inspect data beyond three dimensions
 
-**Working Example: Demonstrating the Curse of Dimensionality**
+**You need dimensionality reduction** that preserves essential structure while making the data manageable.
+
+---
+
+### Working Example: Demonstrating the Curse of Dimensionality
+
+This example shows how distance metrics become less meaningful as dimensionality increases, making clustering algorithms ineffective.
 
 ```python
 import numpy as np
