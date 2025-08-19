@@ -403,18 +403,15 @@ where I(⋅) is the indicator function, which is 1 if the condition is true and 
 
 This formula is not arbitrary; it is derived directly from the minimization of the exponential loss function. The term inside the logarithm, **(1-ϵₜ)/ϵₜ**, represents the odds of the classifier being correct versus incorrect. Thus, **αₜ** is proportional to the log-odds of the classifier's performance. If **ϵₜ = 0.5** (random guessing), the odds are 1, and **αₜ = ½ ln(1) = 0**, meaning the classifier has no say. If **ϵₜ → 0** (perfect classification), **αₜ → ∞**. If **ϵₜ → 1** (perfect misclassification), **αₜ → -∞**.
 
-**d. Update Sample Weights:** The sample weights for the next iteration, D 
-t+1 , are updated to give more importance to the samples that were misclassified by hₜ. The update rule is:
+**d. Update Sample Weights:** The sample weights for the next iteration, **Dₜ₊₁**, are updated to give more importance to the samples that were misclassified by hₜ. The update rule is:
 
-D 
-t+1 (i)= 
-Z 
-**t Dₜ(i) · e** 
-**-yᵢαₜhₜ(xᵢ)** where Z 
-t is a normalization factor that ensures the new weights sum to 1 (Z 
-**t = Σᵢ₌₁ᴺ Dₜ(i) · e** 
-**-yᵢαₜhₜ(xᵢ)**
- ). The exponent term, **-yᵢαₜhₜ(xᵢ)**, is key. For a correctly classified sample, **yᵢhₜ(xᵢ) = 1**, and the weight is multiplied by **e^(-αₜ)**, decreasing it. For a misclassified sample, **yᵢhₜ(xᵢ) = -1**, and the weight is multiplied by **e^(αₜ)**, increasing it.
+**Dₜ₊₁(i) = (1/Zₜ) Dₜ(i) · e^(-yᵢαₜhₜ(xᵢ))**
+
+where **Zₜ** is a normalization factor that ensures the new weights sum to 1:
+
+**Zₜ = Σᵢ₌₁ᴺ Dₜ(i) · e^(-yᵢαₜhₜ(xᵢ))**
+
+The exponent term, **-yᵢαₜhₜ(xᵢ)**, is key. For a correctly classified sample, **yᵢhₜ(xᵢ) = 1**, and the weight is multiplied by **e^(-αₜ)**, decreasing it. For a misclassified sample, **yᵢhₜ(xᵢ) = -1**, and the weight is multiplied by **e^(αₜ)**, increasing it.
 
 **e. Normalize Weights:** The normalization step ensures that D 
 t+1 is a valid probability distribution for the next iteration.

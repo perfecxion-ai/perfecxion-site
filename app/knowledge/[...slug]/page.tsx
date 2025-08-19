@@ -29,7 +29,12 @@ async function processMarkdown(content: string): Promise<string> {
     .use(remarkGfm) // GitHub Flavored Markdown support
     .use(remarkBreaks) // Convert line breaks to <br> tags
     .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypePrism, { ignoreMissing: true })
+    .use(rehypePrism, { 
+      ignoreMissing: true,
+      showLineNumbers: false,
+      lineNumbers: false,
+      highlight: true
+    })
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(content)
   

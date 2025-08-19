@@ -15,6 +15,26 @@ code[class*="language-"] {
   hyphens: none;
 }
 
+/* Ensure syntax highlighting works for all code blocks */
+pre code {
+  color: inherit !important;
+  background: none !important;
+}
+
+/* Force syntax highlighting to work */
+pre[class*="language-"] {
+  background: rgb(22, 27, 34) !important;
+  border: 1px solid rgb(48, 54, 61) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+/* Ensure all code blocks get proper styling */
+pre:not([class*="language-"]) {
+  background: rgb(22, 27, 34) !important;
+  border: 1px solid rgb(48, 54, 61) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
 pre[class*="language-"] {
   /* Styling handled by article-styles.css for consistency */
   padding: 0;
