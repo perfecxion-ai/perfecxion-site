@@ -46,6 +46,40 @@ Adversarial examples represent not just the most studied vulnerability in neural
 The mechanics are almost deceptively straightforward: attackers calculate the gradients that will maximize prediction errors, then make tiny, strategically placed modifications in that direction. What appears as random noise to the human eye becomes a loaded question to the neural network—one that consistently leads to catastrophically wrong answers.
 
 ####  Attack Methodologies
+```python
+# FGSM Adversarial Example Generation with PyTorch
+# Requires: pip install torch
+import torch
+import torch.nn as nn
+import torch.optim as optim
+
+def fgsm_attack(model, loss_fn, data, target, epsilon):
+  data.requires_grad = True
+  output = model(data)
+  loss = loss_fn(output, target)
+  model.zero_grad()
+  loss.backward()
+  data_grad = data.grad.data
+  perturbed_data = data + epsilon * data_grad.sign()
+  perturbed_data = torch.clamp(perturbed_data, 0, 1)
+  return perturbed_data
+
+# Example usage (mock model/data):
+class SimpleModel(nn.Module):
+  def __init__(self):
+    super().__init__()
+    self.fc = nn.Linear(10, 2)
+  def forward(self, x):
+    return self.fc(x)
+
+model = SimpleModel()
+loss_fn = nn.CrossEntropyLoss()
+data = torch.rand((1, 10))
+target = torch.tensor([1])
+epsilon = 0.1
+adv_data = fgsm_attack(model, loss_fn, data, target, epsilon)
+print("Adversarial example:", adv_data)
+```
 
 **Fast Gradient Sign Method (FGSM)** serves as the foundational technique in adversarial attack research. This approach nudges input values along the sign of the gradient, creating perturbations that look like harmless noise to humans but represent existential confusion to neural networks.
 
@@ -135,6 +169,48 @@ Among all defense strategies against adversarial attacks, adversarial training s
 In practice, this means augmenting each training batch with freshly generated adversarial examples, typically created using methods like Projected Gradient Descent. This exposes the model to attacks in a controlled environment, building robustness through systematic exposure to adversarial perturbations.
 
 ####  Training Methodologies
+```python
+# Simple Adversarial Training Loop (PyTorch)
+# Requires: pip install torch
+import torch
+import torch.nn as nn
+import torch.optim as optim
+
+model = nn.Linear(10, 2)
+optimizer = optim.Adam(model.parameters())
+loss_fn = nn.CrossEntropyLoss()
+
+def train_step(data, target, epsilon=0.1):
+  # Clean example
+  optimizer.zero_grad()
+  output = model(data)
+  loss = loss_fn(output, target)
+  loss.backward()
+  optimizer.step()
+
+  # Adversarial example
+  data.requires_grad = True
+  output = model(data)
+  loss = loss_fn(output, target)
+  model.zero_grad()
+  loss.backward()
+  data_grad = data.grad.data
+  adv_data = data + epsilon * data_grad.sign()
+  adv_data = torch.clamp(adv_data, 0, 1)
+
+  optimizer.zero_grad()
+  output_adv = model(adv_data)
+  loss_adv = loss_fn(output_adv, target)
+  loss_adv.backward()
+  optimizer.step()
+  return loss.item(), loss_adv.item()
+
+# Example usage
+data = torch.rand((1, 10))
+target = torch.tensor([1])
+clean_loss, adv_loss = train_step(data, target)
+print(f"Clean loss: {clean_loss:.4f}, Adversarial loss: {adv_loss:.4f}")
+```
 
 **Standard adversarial training** interleaves clean and adversarial examples throughout the training process. While effective, this approach typically requires 5-10 times more computational resources than standard training and often results in reduced accuracy on clean examples.
 
@@ -205,6 +281,21 @@ Sometimes the most effective defense strategy is to fundamentally redesign the n
 **Network randomization** techniques like random dropout during inference or random layer activation can disrupt adversarial perturbations while maintaining overall model functionality.
 
 ### Monitoring and Detection Systems
+```python
+# Simple anomaly detection in model outputs
+import numpy as np
+
+def detect_anomaly(outputs, threshold=2.0):
+  mean = np.mean(outputs)
+  std = np.std(outputs)
+  anomalies = [i for i, x in enumerate(outputs) if abs(x - mean) > threshold * std]
+  return anomalies
+
+# Example usage
+outputs = [0.1, 0.2, 0.15, 0.18, 2.5, 0.19, 0.17, 3.0]
+anomalies = detect_anomaly(outputs)
+print("Anomaly indices:", anomalies)
+```
 
 Real-time monitoring provides a critical last line of defense when preventive measures fail. Effective detection systems must balance accuracy with computational efficiency to avoid becoming bottlenecks in production systems.
 

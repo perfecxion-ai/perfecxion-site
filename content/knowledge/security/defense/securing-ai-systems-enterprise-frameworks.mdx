@@ -73,6 +73,37 @@ Organizations must establish **least privilege access controls** that restrict m
 Think of it this way: traditional security protects the fortress. AI security must also protect the decision-maker inside the fortress, ensuring they're not compromised, confused, or manipulated.
 
 ### Architectural Defense Layers
+```python
+# API Authentication Example
+def authenticate_api(token, valid_tokens):
+  return token in valid_tokens
+print("API authenticated:", authenticate_api("token123", ["token123", "token456"]))
+
+# Container Security Check Example
+def check_container_security(config):
+  return config.get("distroless", False) and config.get("read_only_fs", False)
+container_config = {"distroless": True, "read_only_fs": True}
+print("Container secure:", check_container_security(container_config))
+
+# Model Signature Verification Example
+import hashlib
+def verify_model_signature(model_bytes, signature):
+  model_hash = hashlib.sha256(model_bytes).hexdigest()
+  return model_hash == signature
+model_bytes = b"model data"
+signature = hashlib.sha256(model_bytes).hexdigest()
+print("Model signature valid:", verify_model_signature(model_bytes, signature))
+
+# Statistical Anomaly Detection Example
+import numpy as np
+def detect_statistical_anomaly(data, threshold=2.0):
+  mean = np.mean(data)
+  std = np.std(data)
+  anomalies = [i for i, x in enumerate(data) if abs(x - mean) > threshold * std]
+  return anomalies
+data = [1, 2, 2, 1.9, 2.1, 10, 2.2]
+print("Anomaly indices:", detect_statistical_anomaly(data))
+```
 
 The architectural pattern for secure model deployment incorporates multiple layers of defense, each addressing different aspects of the AI attack surface:
 

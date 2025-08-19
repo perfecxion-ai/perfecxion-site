@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import { Search, BookOpen, FileText, Zap, Building, X, Clock, ChevronRight, Tag, ChevronLeft, Rss, Calendar, TrendingUp, ChevronDown } from 'lucide-react'
+import { Search, Clock, ChevronRight, ChevronLeft, X, Tag, Rss, Menu, X as CloseIcon } from 'lucide-react'
 import React from 'react'
 import { ContentItem } from '@/lib/content-loader'
 import { searchContent, findRelatedContent } from '@/lib/search-utils'
@@ -10,11 +10,11 @@ import { NewsletterSignup } from '@/components/newsletter-signup'
 
 // Content types/formats
 const contentFormats = [
-  { id: 'all', label: 'All Content', icon: null },
-  { id: 'article', label: 'Articles', icon: BookOpen },
-  { id: 'whitepaper', label: 'White Papers', icon: FileText },
-  { id: 'learning', label: 'Learning Paths', icon: Zap },
-  { id: 'architecture', label: 'Reference Architectures', icon: Building }
+  { id: 'all', label: 'All Content', icon: '📚' },
+  { id: 'article', label: 'Articles', icon: '📄' },
+  { id: 'whitepaper', label: 'White Papers', icon: '📋' },
+  { id: 'learning', label: 'Learning Paths', icon: '🎓' },
+  { id: 'architecture', label: 'Reference Architectures', icon: '🏗️' }
 ]
 
 // Difficulty levels
@@ -36,15 +36,12 @@ const domains = [
 
 // Sort options
 const sortOptions = [
-  { id: 'newest', label: 'Newest First', icon: Calendar },
-  { id: 'oldest', label: 'Oldest First', icon: Calendar },
-  { id: 'recently-added', label: 'Recently Added', icon: TrendingUp },
-  { id: 'alphabetical', label: 'Alphabetical', icon: null },
-  { id: 'relevance', label: 'Relevance', icon: null }
+  { id: 'newest', label: 'Newest First' },
+  { id: 'oldest', label: 'Oldest First' },
+  { id: 'recently-added', label: 'Recently Added' },
+  { id: 'alphabetical', label: 'Alphabetical' },
+  { id: 'relevance', label: 'Relevance' }
 ]
-
-// Items per page options
-const itemsPerPageOptions = [12, 24, 48, 96]
 
 interface KnowledgeHubClientProps {
   initialContent: ContentItem[]
@@ -59,7 +56,7 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(24)
   const [sortBy, setSortBy] = useState('newest')
-  const [showItemsDropdown, setShowItemsDropdown] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   // Extract popular topics from content
   const popularTopics = useMemo(() => {
@@ -84,12 +81,12 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
   // Filter and sort content based on all criteria
   const filteredContent = useMemo(() => {
     let filtered = initialContent
-    
+
     // Apply advanced search if query exists
     if (searchQuery) {
       filtered = searchContent(filtered, searchQuery)
     }
-    
+
     // Apply other filters
     filtered = filtered.filter(item => {
       // Format filter
@@ -103,8 +100,8 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
 
       // Topic filter (case-insensitive with trimming)
       if (selectedTopic) {
-        const hasMatchingTopic = item.topics && Array.isArray(item.topics) && 
-          item.topics.some(topic => 
+        const hasMatchingTopic = item.topics && Array.isArray(item.topics) &&
+          item.topics.some(topic =>
             topic.trim().toLowerCase() === selectedTopic.trim().toLowerCase()
           )
         if (!hasMatchingTopic) return false
@@ -112,153 +109,195 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
 
       return true
     })
-    
+
     // Apply sorting
     filtered = [...filtered].sort((a, b) => {
       switch (sortBy) {
         case 'newest':
-          // Sort by date, newest first
           if (!a.date && !b.date) return 0
           if (!a.date) return 1
           if (!b.date) return -1
           return new Date(b.date).getTime() - new Date(a.date).getTime()
-        
+
         case 'oldest':
-          // Sort by date, oldest first
           if (!a.date && !b.date) return 0
           if (!a.date) return 1
           if (!b.date) return -1
           return new Date(a.date).getTime() - new Date(b.date).getTime()
-        
+
         case 'recently-added':
-          // Sort by isNew flag and then by date
           if (a.isNew && !b.isNew) return -1
           if (!a.isNew && b.isNew) return 1
           if (!a.date && !b.date) return 0
           if (!a.date) return 1
           if (!b.date) return -1
           return new Date(b.date).getTime() - new Date(a.date).getTime()
-        
+
         case 'alphabetical':
-          // Sort alphabetically by title
           return a.title.localeCompare(b.title)
-        
+
         case 'relevance':
         default:
-          // Keep original order (relevance from search)
           return 0
       }
     })
-    
+
     // Reset to page 1 when filters change
     if (currentPage > Math.ceil(filtered.length / itemsPerPage)) {
       setCurrentPage(1)
     }
-    
+
     return filtered
   }, [searchQuery, selectedFormat, selectedDifficulty, selectedDomain, selectedTopic, sortBy, initialContent, currentPage, itemsPerPage])
-  
+
   // Paginated content
   const paginatedContent = useMemo(() => {
     const startIndex = (currentPage - 1) * itemsPerPage
     const endIndex = startIndex + itemsPerPage
     return filteredContent.slice(startIndex, endIndex)
   }, [filteredContent, currentPage, itemsPerPage])
-  
+
   const totalPages = Math.ceil(filteredContent.length / itemsPerPage)
 
   // Get format icon
   const getFormatIcon = (format: string) => {
-    switch(format) {
-      case 'article': return BookOpen
-      case 'whitepaper': return FileText
-      case 'learning': return Zap
-      case 'architecture': return Building
-      default: return BookOpen
+    switch (format) {
+      case 'article': return '📄'
+      case 'whitepaper': return '📋'
+      case 'learning': return '🎓'
+      case 'architecture': return '🏗️'
+      default: return '📄'
     }
   }
 
   // Get difficulty color
   const getDifficultyColor = (difficulty: string) => {
-    switch(difficulty) {
-      case 'beginner': return 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400'
-      case 'intermediate': return 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400'
-      case 'advanced': return 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400'
-      default: return 'bg-gray-100 dark:bg-gray-900/30 text-gray-700 dark:text-gray-400'
+    switch (difficulty) {
+      case 'beginner': return 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800'
+      case 'intermediate': return 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-800'
+      case 'advanced': return 'bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-400 border-rose-200 dark:border-rose-800'
+      default: return 'bg-slate-100 dark:bg-slate-900/30 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-slate-800'
     }
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <section className="border-b border-border bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+      {/* Mobile Header */}
+      <div className="lg:hidden border-b border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm">
+        <div className="flex items-center justify-between p-4">
+          <h1 className="text-xl font-bold text-slate-900 dark:text-white">Knowledge Hub</h1>
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+          >
+            {sidebarOpen ? <CloseIcon className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Desktop Header */}
+      <div className="hidden lg:block border-b border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-8">
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-900 via-blue-800 to-slate-900 dark:from-white dark:via-blue-300 dark:to-white bg-clip-text text-transparent mb-3">
               Knowledge Hub
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              One place for all AI infrastructure and security knowledge. 
-              Search by topic or filter by your preferred format.
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+              One place for all AI infrastructure and security knowledge.
+              Navigate through our comprehensive collection of resources.
             </p>
           </div>
-
-          {/* Search Bar */}
-          <div className="mt-8 max-w-2xl mx-auto">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-              <input
-                type="text"
-                placeholder="Search topics, technologies, or concepts..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-4 top-1/2 -translate-y-1/2"
-                >
-                  <X className="h-5 w-5 text-muted-foreground hover:text-foreground" />
-                </button>
-              )}
-            </div>
-          </div>
         </div>
-      </section>
+      </div>
 
-      {/* Filters */}
-      <section className="border-b border-border bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          {/* Filter buttons */}
-          <div className="space-y-4">
-            {/* Format filters */}
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              <span className="text-sm font-medium text-muted-foreground mr-2 hidden sm:inline">Format:</span>
-              {contentFormats.map(format => (
+      <div className="flex">
+        {/* Left Sidebar Navigation - Two Sizes Smaller */}
+        <div className={`
+          fixed inset-y-0 left-0 z-50 w-64 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-r border-slate-200 dark:border-slate-700 transform transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 shadow-xl
+          ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+        `}>
+          <div className="h-full flex flex-col">
+            {/* Sidebar Header */}
+            <div className="p-4 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+              <div className="lg:hidden flex items-center justify-between mb-3">
+                <h2 className="text-base font-semibold text-slate-900 dark:text-white">Navigation</h2>
                 <button
-                  key={format.id}
-                  onClick={() => setSelectedFormat(format.id)}
-                  className={`inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
-                    selectedFormat === format.id
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-muted hover:bg-muted/80 text-foreground'
-                  }`}
+                  onClick={() => setSidebarOpen(false)}
+                  className="p-1.5 rounded-lg hover:bg-white/50 dark:hover:bg-slate-800/50 transition-colors"
                 >
-                  {format.icon && React.createElement(format.icon, { className: 'h-3 w-3 sm:h-4 sm:w-4 sm:mr-2' })}
-                  <span className={format.icon ? 'hidden sm:inline' : ''}>{format.label}</span>
+                  <CloseIcon className="h-4 w-4 text-slate-600 dark:text-slate-400" />
                 </button>
-              ))}
+              </div>
+
+              {/* Search Bar */}
+              <div className="relative">
+                <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Search knowledge..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-8 pr-8 py-2 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs shadow-sm"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 p-0.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                  >
+                    <X className="h-3.5 w-3.5 text-slate-400" />
+                  </button>
+                )}
+              </div>
             </div>
 
-            {/* Difficulty and Domain filters */}
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-muted-foreground">Level:</span>
+            {/* Navigation Tree */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              {/* Content Type Navigation */}
+              <div>
+                <h3 className="text-xs font-semibold text-slate-900 dark:text-white mb-2 uppercase tracking-wider">Content Type</h3>
+                <div className="space-y-1.5">
+                  {contentFormats.map(format => (
+                    <button
+                      key={format.id}
+                      onClick={() => setSelectedFormat(format.id)}
+                      className={`w-full flex items-center px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 ${selectedFormat === format.id
+                        ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg shadow-blue-500/25'
+                        : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:shadow-md'
+                        }`}
+                    >
+                      <span className="mr-2 text-base">{format.icon}</span>
+                      {format.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Domain Navigation */}
+              <div>
+                <h3 className="text-xs font-semibold text-slate-900 dark:text-white mb-2 uppercase tracking-wider">Domains</h3>
+                <div className="space-y-1.5">
+                  {domains.map(domain => (
+                    <button
+                      key={domain.id}
+                      onClick={() => setSelectedDomain(domain.id)}
+                      className={`w-full text-left px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 ${selectedDomain === domain.id
+                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/25'
+                        : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:shadow-md'
+                        }`}
+                    >
+                      {domain.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Difficulty Filter */}
+              <div>
+                <h3 className="text-xs font-semibold text-slate-900 dark:text-white mb-2 uppercase tracking-wider">Level</h3>
                 <select
                   value={selectedDifficulty}
                   onChange={(e) => setSelectedDifficulty(e.target.value)}
-                  className="px-3 py-1.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm"
                 >
                   {difficultyLevels.map(level => (
                     <option key={level.id} value={level.id}>{level.label}</option>
@@ -266,28 +305,13 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
                 </select>
               </div>
 
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-muted-foreground">Domain:</span>
-                <select
-                  value={selectedDomain}
-                  onChange={(e) => setSelectedDomain(e.target.value)}
-                  className="px-3 py-1.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  {domains.map(domain => (
-                    <option key={domain.id} value={domain.id}>{domain.label}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            {/* Sort and Display Options */}
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-muted-foreground">Sort by:</span>
+              {/* Sort Options */}
+              <div>
+                <h3 className="text-xs font-semibold text-slate-900 dark:text-white mb-2 uppercase tracking-wider">Sort By</h3>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="px-3 py-1.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm"
                 >
                   {sortOptions.map(option => (
                     <option key={option.id} value={option.id}>{option.label}</option>
@@ -295,247 +319,246 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
                 </select>
               </div>
 
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-muted-foreground">Show:</span>
-                <div className="relative">
-                  <button
-                    onClick={() => setShowItemsDropdown(!showItemsDropdown)}
-                    className="px-3 py-1.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 flex items-center gap-2"
-                  >
-                    {itemsPerPage} items
-                    <ChevronDown className="h-4 w-4" />
-                  </button>
-                  {showItemsDropdown && (
-                    <div className="absolute top-full mt-1 right-0 bg-background border border-border rounded-lg shadow-lg z-10">
-                      {itemsPerPageOptions.map(option => (
-                        <button
-                          key={option}
-                          onClick={() => {
-                            setItemsPerPage(option)
-                            setShowItemsDropdown(false)
-                            setCurrentPage(1)
-                          }}
-                          className={`block w-full px-4 py-2 text-sm text-left hover:bg-muted transition-colors ${
-                            option === itemsPerPage ? 'bg-muted' : ''
+              {/* Trending Topics */}
+              {popularTopics.length > 0 && (
+                <div>
+                  <h3 className="text-xs font-semibold text-slate-900 dark:text-white mb-2 uppercase tracking-wider">Trending</h3>
+                  <div className="flex flex-wrap gap-1.5">
+                    {popularTopics.slice(0, 6).map(topic => (
+                      <button
+                        key={topic}
+                        onClick={() => setSelectedTopic(selectedTopic === topic ? null : topic)}
+                        className={`inline-flex items-center px-2.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${selectedTopic === topic
+                          ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/25'
+                          : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 hover:shadow-md'
                           }`}
-                        >
-                          {option} items
-                        </button>
-                      ))}
-                    </div>
+                      >
+                        <Tag className="h-2.5 w-2.5 mr-1" />
+                        {topic}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Results count */}
+              <div className="text-xs text-slate-500 dark:text-slate-400 pt-3 border-t border-slate-200 dark:border-slate-700">
+                <div className="flex items-center justify-between">
+                  <span>{filteredContent.length} of {initialContent.length} items</span>
+                  {selectedTopic && (
+                    <button
+                      onClick={() => setSelectedTopic(null)}
+                      className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline text-xs"
+                    >
+                      Clear topic
+                    </button>
                   )}
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Popular topics */}
-          {popularTopics.length > 0 && (
-            <div className="mt-4">
-              <div className="flex flex-wrap items-center justify-center gap-2">
-                <span className="text-sm font-medium text-muted-foreground mr-2 hidden sm:inline">Trending:</span>
-                <div className="flex flex-wrap justify-center gap-2">
-                  {popularTopics.map(topic => (
-                    <button
-                      key={topic}
-                      onClick={() => setSelectedTopic(selectedTopic === topic ? null : topic)}
-                      className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium transition-colors min-h-[32px] ${
-                        selectedTopic === topic
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-muted hover:bg-muted/80 text-muted-foreground'
-                      }`}
-                    >
-                      <Tag className="h-3 w-3 mr-1 flex-shrink-0" />
-                      <span className="whitespace-nowrap">{topic}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Results count */}
-          <div className="mt-4 text-sm text-muted-foreground text-center">
-            Showing {filteredContent.length} of {initialContent.length} items
-            {selectedTopic && (
-              <button
-                onClick={() => setSelectedTopic(null)}
-                className="ml-2 text-blue-600 dark:text-blue-400 hover:underline"
+            {/* RSS Feed Link */}
+            <div className="p-4 border-t border-slate-200 dark:border-slate-700 bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800/50 dark:to-blue-900/20">
+              <Link
+                href="/api/rss"
+                className="inline-flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Clear topic filter
-              </button>
-            )}
+                <Rss className="h-3.5 w-3.5" />
+                RSS Feed
+              </Link>
+            </div>
           </div>
         </div>
-      </section>
 
-      {/* Content Grid */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          {/* RSS Feed Link */}
-          <div className="mb-6 flex justify-end">
-            <Link
-              href="/api/rss"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Rss className="h-4 w-4" />
-              RSS Feed
-            </Link>
-          </div>
-          {filteredContent.length > 0 ? (
-            <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                {paginatedContent.map(item => {
-                const Icon = getFormatIcon(item.format)
-                return (
-                  <Link
-                    key={item.id}
-                    href={item.href}
-                    className="group block p-4 sm:p-6 bg-background rounded-lg border border-border hover:border-blue-500/50 hover:shadow-lg transition-all duration-200 touch-manipulation"
-                  >
-                    {/* Header */}
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        <div className="p-1.5 rounded bg-muted">
-                          <Icon className="h-4 w-4 text-muted-foreground" />
-                        </div>
-                        <span className="text-xs font-medium text-muted-foreground capitalize">
-                          {item.format}
-                        </span>
-                      </div>
-                      {item.isNew && (
-                        <span className="px-2 py-1 text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded">
-                          NEW
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="text-lg font-semibold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 mb-2">
-                      {item.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                      {item.description}
-                    </p>
-
-                    {/* Topics */}
-                    {item.topics.length > 0 && (
-                      <div className="flex flex-wrap gap-1 mb-4">
-                        {item.topics.slice(0, 3).map(topic => (
-                          <span
-                            key={topic}
-                            className="px-2 py-1 text-xs rounded-full bg-muted text-muted-foreground"
-                          >
-                            {topic}
-                          </span>
-                        ))}
-                        {item.topics.length > 3 && (
-                          <span className="px-2 py-1 text-xs text-muted-foreground">
-                            +{item.topics.length - 3}
-                          </span>
-                        )}
-                      </div>
-                    )}
-
-                    {/* Footer */}
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <span className={`px-2 py-1 text-xs font-medium rounded ${getDifficultyColor(item.difficulty)}`}>
-                          {item.difficulty}
-                        </span>
-                        <div className="flex items-center text-xs text-muted-foreground">
-                          <Clock className="h-3 w-3 mr-1" />
-                          {item.readTime}
-                        </div>
-                      </div>
-                      <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all group-hover:translate-x-1" />
-                    </div>
-                  </Link>
-                )
-              })}
+        {/* Main Content Area - One Size Smaller */}
+        <div className="flex-1 p-4 lg:p-8">
+          <div className="max-w-5xl mx-auto">
+            {/* Mobile Search (hidden on desktop) */}
+            <div className="lg:hidden mb-6">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search content..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-4 pr-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm"
+                />
+              </div>
             </div>
-            
-            {/* Pagination Controls */}
-            {totalPages > 1 && (
-              <div className="mt-8 flex items-center justify-center gap-2">
-                <button
-                  onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-                  disabled={currentPage === 1}
-                  className="p-2 rounded-lg border border-border bg-background hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </button>
-                
-                <div className="flex gap-1">
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => {
-                    // Show first page, last page, current page, and pages around current
-                    if (
-                      page === 1 ||
-                      page === totalPages ||
-                      (page >= currentPage - 1 && page <= currentPage + 1)
-                    ) {
-                      return (
-                        <button
-                          key={page}
-                          onClick={() => setCurrentPage(page)}
-                          className={`px-3 py-1 rounded-lg transition-colors ${
-                            page === currentPage
-                              ? 'bg-blue-600 text-white'
-                              : 'bg-background border border-border hover:bg-muted'
-                          }`}
-                        >
-                          {page}
-                        </button>
-                      )
-                    }
-                    // Show ellipsis for gaps
-                    if (page === currentPage - 2 || page === currentPage + 2) {
-                      return <span key={page} className="px-2 py-1">...</span>
-                    }
-                    return null
+
+            {/* Content Grid */}
+            {filteredContent.length > 0 ? (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
+                  {paginatedContent.map(item => {
+                    return (
+                      <div
+                        key={item.id}
+                        className="group cursor-pointer bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 overflow-hidden"
+                      >
+                        {/* Header */}
+                        <div className="p-4 pb-3">
+                          <div className="flex items-start justify-between mb-3">
+                            <div className="flex items-center gap-2.5">
+                              <div className="p-1.5 rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30">
+                                <span className="text-xl">{getFormatIcon(item.format)}</span>
+                              </div>
+                              <span className="text-xs font-medium text-slate-600 dark:text-slate-400 capitalize">
+                                {item.format}
+                              </span>
+                            </div>
+                            {item.isNew && (
+                              <span className="px-2.5 py-1 text-xs font-semibold bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-full shadow-lg shadow-emerald-500/25">
+                                NEW
+                              </span>
+                            )}
+                          </div>
+
+                          {/* Title */}
+                          <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 mb-2.5 leading-tight transition-colors">
+                            {item.title}
+                          </h3>
+
+                          {/* Description */}
+                          <p className="text-sm text-slate-600 dark:text-slate-300 mb-3 line-clamp-3 leading-relaxed">
+                            {item.description}
+                          </p>
+
+                          {/* Topics */}
+                          {item.topics.length > 0 && (
+                            <div className="flex flex-wrap gap-1.5 mb-3">
+                              {item.topics.slice(0, 3).map(topic => (
+                                <span
+                                  key={topic}
+                                  className="px-2.5 py-1 text-xs rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-600"
+                                >
+                                  {topic}
+                                </span>
+                              ))}
+                              {item.topics.length > 3 && (
+                                <span className="px-2.5 py-1 text-xs text-slate-500 dark:text-slate-500">
+                                  +{item.topics.length - 3}
+                                </span>
+                              )}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Footer */}
+                        <div className="px-4 pb-4">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2.5">
+                              <span className={`px-2.5 py-1 text-xs font-semibold rounded-full border ${getDifficultyColor(item.difficulty)}`}>
+                                {item.difficulty}
+                              </span>
+                              <div className="flex items-center text-xs text-slate-500 dark:text-slate-400">
+                                <Clock className="h-3 w-3 mr-1" />
+                                {item.readTime}
+                              </div>
+                            </div>
+                            <ChevronRight className="h-4 w-4 text-slate-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-all group-hover:translate-x-1" />
+                          </div>
+                        </div>
+                      </div>
+                    )
                   })}
                 </div>
-                
-                <button
-                  onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-                  disabled={currentPage === totalPages}
-                  className="p-2 rounded-lg border border-border bg-background hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </button>
+
+                {/* Pagination Controls */}
+                {totalPages > 1 && (
+                  <div className="mt-10 flex items-center justify-center gap-2.5">
+                    <button
+                      onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                      disabled={currentPage === 1}
+                      className="p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-sm"
+                    >
+                      <ChevronLeft className="h-4 w-4 text-slate-600 dark:text-slate-400" />
+                    </button>
+
+                    <div className="flex gap-1.5">
+                      {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => {
+                        if (
+                          page === 1 ||
+                          page === totalPages ||
+                          (page >= currentPage - 1 && page <= currentPage + 1)
+                        ) {
+                          return (
+                            <button
+                              key={page}
+                              onClick={() => setCurrentPage(page)}
+                              className={`px-3 py-2.5 rounded-lg transition-all duration-200 ${page === currentPage
+                                ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg shadow-blue-500/25'
+                                : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 shadow-sm'
+                                }`}
+                            >
+                              {page}
+                            </button>
+                          )
+                        }
+                        if (page === currentPage - 2 || page === currentPage + 2) {
+                          return <span key={page} className="px-3 py-2.5 text-slate-400">...</span>
+                        }
+                        return null
+                      })}
+                    </div>
+
+                    <button
+                      onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                      disabled={currentPage === totalPages}
+                      className="p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-sm"
+                    >
+                      <ChevronRight className="h-4 w-4 text-slate-600 dark:text-slate-400" />
+                    </button>
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="text-center py-12">
+                <div className="max-w-md mx-auto">
+                  <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-gradient-to-br from-slate-100 to-blue-100 dark:from-slate-800 dark:to-blue-900 flex items-center justify-center">
+                    <span className="text-2xl">🔍</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2.5">
+                    No content found
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 mb-5">
+                    Try adjusting your filters or search terms.
+                  </p>
+                  <button
+                    onClick={() => {
+                      setSearchQuery('')
+                      setSelectedFormat('all')
+                      setSelectedDifficulty('all')
+                      setSelectedDomain('all')
+                      setSelectedTopic(null)
+                    }}
+                    className="px-5 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg hover:from-blue-600 hover:to-indigo-600 transition-all duration-200 shadow-lg shadow-blue-500/25"
+                  >
+                    Clear all filters
+                  </button>
+                </div>
               </div>
             )}
-            </>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-lg text-muted-foreground mb-4">
-                No content found matching your filters.
-              </p>
-              <button
-                onClick={() => {
-                  setSearchQuery('')
-                  setSelectedFormat('all')
-                  setSelectedDifficulty('all')
-                  setSelectedDomain('all')
-                  setSelectedTopic(null)
-                }}
-                className="text-blue-600 dark:text-blue-400 hover:underline"
-              >
-                Clear all filters
-              </button>
-            </div>
-          )}
-          
-          {/* Newsletter Signup */}
-          <div className="mt-16">
-            <NewsletterSignup />
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Newsletter Signup */}
+      <div className="border-t border-slate-200 dark:border-slate-700 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+        <div className="max-w-4xl mx-auto px-6 py-10">
+          <NewsletterSignup />
+        </div>
+      </div>
+
+      {/* Mobile Sidebar Overlay */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden backdrop-blur-sm"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
     </div>
   )
 }
