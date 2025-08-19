@@ -113,6 +113,51 @@ AI risk assessment builds upon established frameworks while addressing unique AI
 
 Impact and probability matrices calibrate specifically for AI contexts. **Impact scales** range from minimal operational disruption (Level 1) to catastrophic failures affecting enterprise viability (Level 5). Probability assessments consider both likelihood and AI-specific factors like model complexity and data sensitivity. Organizations multiply impact by probability to generate risk scores: Critical risks (20-25) require immediate executive attention, while minimal risks (1-4) accept basic monitoring. This quantitative approach enables consistent prioritization across diverse AI initiatives.
 
+---
+### Practical Example: AI Security Risk Scoring
+
+Below is a concise Python example showing how to score and prioritize AI risks using impact and probability matrices.
+
+```python
+def score_risk(impact, probability):
+  return impact * probability
+
+risks = [
+  {"name": "model_bias", "impact": 5, "prob": 4},
+  {"name": "data_quality", "impact": 3, "prob": 3},
+  {"name": "performance_drift", "impact": 2, "prob": 2}
+]
+for risk in risks:
+  score = score_risk(risk["impact"], risk["prob"])
+  print(f"{risk['name']} risk score: {score}")
+```
+
+**Context:**
+This code helps organizations prioritize AI risks for mitigation based on quantitative scoring, supporting effective security program management.
+
+---
+
+### Practical Example: Governance Role Mapping
+
+Below is a concise Python example showing how to map governance roles and responsibilities for an AI security program.
+
+```python
+roles = {
+  "CEO": "Accountability",
+  "CISO": "Cybersecurity Strategy",
+  "CDO": "Data Governance",
+  "CFO": "Financial Risk",
+  "General Counsel": "Regulatory Compliance"
+}
+for role, responsibility in roles.items():
+  print(f"{role}: {responsibility}")
+```
+
+**Context:**
+This code provides a simple mapping of governance roles and responsibilities, helping organizations clarify accountability in their AI security programs.
+
+---
+
 ### Cross-functional collaboration models balance standardization with flexibility
 
 Successful AI governance requires collaboration models matching organizational structure and culture. **The Hub and Spoke model** works well for large, decentralized organizations where a central AI Governance Council provides strategic direction while business unit AI champions implement governance locally. This balances consistent standards with local flexibility, enabling 30% faster AI deployment compared to fully centralized approaches.

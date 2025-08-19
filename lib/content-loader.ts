@@ -238,7 +238,7 @@ async function loadContentFromDirectory(
 
           // Determine domain from category or path
           let domain: ContentItem['domain'] = categoryToDomain.default
-          
+
           if (data.category && categoryToDomain[data.category]) {
             domain = categoryToDomain[data.category]
           } else if (relativePath.includes('security')) {

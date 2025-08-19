@@ -1,12 +1,11 @@
 ---
-title: Compliance for AI Systems
-description: >-
-  Navigate the complex regulatory landscape for AI systems including EU AI Act,
-  NIST AI RMF, GDPR, and industry-specific requirements.
-publishedAt: '2024-01-18'
-readingTime: 40
+title: 'Compliance for AI Systems'
+description: 'Navigate the complex regulatory landscape for AI systems including EU AI Act, NIST AI RMF, GDPR, and industry-specific requirements.'
+date: '2024-01-18'
+author: perfecXion Legal & Compliance Team
+category: security
 difficulty: intermediate
-category: ai-security
+readTime: 40 min read
 tags:
   - ai-compliance
   - regulation
@@ -14,39 +13,7 @@ tags:
   - nist-ai-rmf
   - gdpr
   - audit
-  - AI Security
-  - Security
-featured: true
-author:
-  name: perfecXion Legal & Compliance Team
-  role: AI Compliance Experts
-learningPath: ai-security-101
-prerequisites:
-  - understanding-ai-vulnerabilities
-  - building-ai-security-programs
-learningObjectives:
-  - Master regulatory requirements across major AI frameworks
-  - Implement compliance monitoring and reporting systems
-  - Conduct AI system audits and assessments
-  - Navigate international AI regulation differences
-nextSections:
-  - incident-response-for-ai
-progress:
-  estimatedMinutes: 40
-  checkpoints:
-    - regulatory-landscape
-    - eu-ai-act
-    - nist-framework
-    - implementation
-    - audit
-subcategory: fundamentals
-type: knowledge
-date: '2024-01-18'
-readTime: 40 min read
-domain: ai-security
-format: article
 ---
-
 # Compliance for AI Systems
 
 ## Executive Summary
@@ -119,6 +86,36 @@ This comprehensive guide provides legal teams, compliance officers, and AI pract
 - **GDPR Article 22**: Automated decision-making restrictions
 
 **Compliance Requirements:**
+
+---
+### Practical Example: Automated AI Compliance Checks
+
+Below is a concise Python example showing how to automate compliance checks for AI systems. This helps organizations validate regulatory requirements programmatically and maintain audit readiness.
+
+```python
+def check_compliance(system, requirements):
+  results = {}
+  for req in requirements:
+    results[req] = system.get(req, False)
+  return results
+
+# Example system and requirements
+ai_system = {
+  "model_validation": True,
+  "performance_monitoring": True,
+  "documentation": False,
+  "back_testing": True
+}
+requirements = ["model_validation", "performance_monitoring", "documentation", "back_testing"]
+compliance_results = check_compliance(ai_system, requirements)
+for req, status in compliance_results.items():
+  print(f"{req}: {'PASS' if status else 'FAIL'}")
+```
+
+**Explanation:**
+This code automates compliance checks for key requirements in financial AI systems. It can be extended for other sectors and integrated into continuous compliance monitoring workflows.
+
+---
 ```yaml
 financial_ai_compliance:
   model_governance:

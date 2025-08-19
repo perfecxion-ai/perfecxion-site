@@ -1,51 +1,17 @@
 ---
-title: Types of AI Attacks
-description: >-
-  Comprehensive analysis of AI attack methodologies, attack vectors, and
-  real-world case studies with technical implementation details.
-publishedAt: '2024-01-16'
-readingTime: 30
+title: 'Types of AI Attacks'
+description: 'Comprehensive analysis of AI attack methodologies, attack vectors, and real-world case studies with technical implementation details.'
+date: '2024-01-16'
+author: perfecXion Security Team
+category: security
 difficulty: intermediate
-category: ai-security
+readTime: 30 min read
 tags:
   - ai-attacks
   - threat-landscape
   - security-assessment
   - attack-vectors
-  - AI Security
-  - Security
-  - Defense
-featured: true
-author:
-  name: perfecXion Security Team
-  role: AI Security Experts
-learningPath: ai-security-101
-prerequisites:
-  - understanding-ai-vulnerabilities
-learningObjectives:
-  - Master the taxonomy of AI attack methodologies
-  - Understand technical implementation of different attack types
-  - Analyze real-world attack case studies and their impact
-  - Learn to identify attack indicators and early warning signs
-nextSections:
-  - building-ai-security-programs
-  - incident-response-for-ai
-progress:
-  estimatedMinutes: 30
-  checkpoints:
-    - attack-taxonomy
-    - technical-analysis
-    - case-studies
-    - detection
-    - mitigation
-subcategory: fundamentals
-type: knowledge
-date: '2024-01-16'
-readTime: 30 min read
-domain: ai-security
-format: article
 ---
-
 # Types of AI Attacks
 
 ## Executive Summary
@@ -88,6 +54,34 @@ These attacks occur during the model development and training phase, often befor
    - Can render models unusable in production
 
 **Technical Implementation:**
+
+---
+### Malicious Example: Data Poisoning Attack
+
+Below is a concise Python example showing how an attacker might poison a dataset by injecting malicious samples. This demonstrates a real-world attack technique and highlights the need for robust data validation.
+
+```python
+import random
+
+def poison_dataset(clean_data, trigger_pattern, target_label, poison_rate=0.1):
+  poisoned_data = clean_data.copy()
+  num_poison = int(len(clean_data) * poison_rate)
+  poison_indices = random.sample(range(len(clean_data)), num_poison)
+  for idx in poison_indices:
+    poisoned_data[idx]['input'] = trigger_pattern
+    poisoned_data[idx]['label'] = target_label
+  return poisoned_data
+
+# Example usage
+clean_data = [{"input": "normal", "label": 0} for _ in range(10)]
+poisoned = poison_dataset(clean_data, "malicious_trigger", 1)
+print(poisoned)
+```
+
+**Context:**
+This code simulates a data poisoning attack, where an attacker injects malicious samples into a training dataset to manipulate model behavior. Defenders should implement data validation and anomaly detection to mitigate this risk.
+
+---
 ```python
 # Example: Backdoor poisoning attack
 def poison_dataset(clean_data, trigger_pattern, target_label, poison_rate=0.1):
@@ -123,6 +117,39 @@ These attacks target deployed models during their operational phase.
 #### Adversarial Examples
 
 **White-Box Attacks** (Full model access)
+
+### Malicious Example: Adversarial Example Generation
+
+Below is a concise PyTorch example showing how to generate adversarial examples using the Fast Gradient Sign Method (FGSM). This demonstrates a real-world attack technique against deployed models.
+
+```python
+import torch
+import torch.nn.functional as F
+
+def fgsm_attack(model, data, target, epsilon=0.01):
+  data.requires_grad_()
+  output = model(data)
+  loss = F.cross_entropy(output, target)
+  loss.backward()
+  adv_data = data + epsilon * data.grad.sign()
+  return torch.clamp(adv_data, 0, 1)
+
+# Example usage (mocked model/data)
+class DummyModel:
+  def __call__(self, x):
+    return torch.ones((1, 10))
+
+data = torch.rand((1, 10))
+target = torch.tensor([1])
+model = DummyModel()
+adv_data = fgsm_attack(model, data, target)
+print(adv_data)
+```
+
+**Context:**
+This code demonstrates how adversarial examples can be generated to fool AI models. Defenders should use adversarial training and input validation to reduce vulnerability to these attacks.
+
+---
 
 1. **Fast Gradient Sign Method (FGSM)**
    ```python
