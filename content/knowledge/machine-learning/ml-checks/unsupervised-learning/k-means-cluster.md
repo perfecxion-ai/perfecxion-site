@@ -1,28 +1,4 @@
----
-title: 'A Comprehensive Monograph on K-Means Clustering'
-description: 'Complete guide to K-means clustering, implementation, and real-world use cases.'
-date: '2025-01-21'
-author: 'perfecXion AI Team'
-category: 'machine-learning'
-domain: 'machine-learning'
-format: 'article'
-difficulty: 'intermediate'
-readTime: '20 min read'
-tags:
-  - Machine Learning
-  - AI
-  - Advanced
-  - Article
-  - Unsupervised Learning
-  - Clustering
-  - Data Analysis
----
-
 # A Comprehensive Monograph on K-Means Clustering
-
-**Complete guide to K-means clustering, implementation, and real-world use cases**
-
----
 
 ## Part I: Foundational Principles of Centroid-Based Clustering
 

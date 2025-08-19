@@ -3,9 +3,9 @@
   "short_name": "perfecXion",
   "icons": [
     {
-      "src": "/logos/favicon-x.jpg",
+      "src": "/logos/favicon-x.png",
       "sizes": "512x512",
-      "type": "image/jpeg"
+      "type": "image/png"
     }
   ],
   "theme_color": "#000000",

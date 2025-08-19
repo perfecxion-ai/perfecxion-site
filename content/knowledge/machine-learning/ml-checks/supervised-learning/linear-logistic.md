@@ -1,28 +1,4 @@
----
-title: 'A Comprehensive Analysis of Linear and Logistic Regression'
-description: 'Deep dive into linear and logistic regression algorithms, implementation, and real-world applications.'
-date: '2025-01-21'
-author: 'perfecXion AI Team'
-category: 'machine-learning'
-domain: 'machine-learning'
-format: 'article'
-difficulty: 'intermediate'
-readTime: '40 min read'
-tags:
-  - Machine Learning
-  - AI
-  - Advanced
-  - Article
-  - Supervised Learning
-  - Regression
-  - Classification
----
-
 # A Comprehensive Analysis of Linear and Logistic Regression
-
-**Deep dive into linear and logistic regression algorithms, implementation, and real-world applications**
-
----
 
 ## Part I: Foundational Principles and Historical Context
 

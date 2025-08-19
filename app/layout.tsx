@@ -31,17 +31,17 @@ export const metadata: Metadata = {
   authors: [{ name: 'perfecXion.ai Team' }],
   creator: 'perfecXion.ai',
   publisher: 'perfecXion.ai',
-  icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/logos/favicon-x.jpg', type: 'image/jpeg', sizes: '512x512' }
-    ],
-    apple: '/logos/favicon-x.jpg',
-    other: {
-      rel: 'apple-touch-icon-precomposed',
-      url: '/logos/favicon-x.jpg',
+      icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/logos/favicon-x.png', type: 'image/png', sizes: '512x512' }
+      ],
+      apple: '/logos/favicon-x.png',
+      other: {
+        rel: 'apple-touch-icon-precomposed',
+        url: '/logos/favicon-x.png',
+      },
     },
-  },
   manifest: '/site.webmanifest',
   openGraph: {
     type: 'website',
@@ -89,7 +89,7 @@ export default function RootLayout({
     '@type': 'Organization',
     name: 'perfecXion.ai',
     url: 'https://perfecxion.ai',
-    logo: 'https://perfecxion.ai/logos/logo-dark-bg.jpg',
+    logo: 'https://perfecxion.ai/logos/logo-dark-bg.png',
     description: 'Leading AI security and compliance solutions provider',
     address: {
       '@type': 'PostalAddress',

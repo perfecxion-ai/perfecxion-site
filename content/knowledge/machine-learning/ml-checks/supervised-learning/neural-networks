@@ -1,30 +1,5 @@
----
-title: 'A Monograph on Artificial Neural Networks: Foundations, Mechanics, and Applications'
-description: 'Comprehensive guide to neural networks, deep learning, and modern AI architectures.'
-date: '2025-01-21'
-author: 'perfecXion AI Team'
-category: 'machine-learning'
-domain: 'machine-learning'
-format: 'article'
-difficulty: 'advanced'
-readTime: '50 min read'
-tags:
-  - Machine Learning
-  - AI
-  - Expert
-  - Article
-  - Neural Networks
-  - Deep Learning
-  - Supervised Learning
----
-
-# A Monograph on Artificial Neural Networks: Foundations, Mechanics, and Applications
-
-**Comprehensive guide to neural networks, deep learning, and modern AI architectures**
-
----
-
-## 1. Fundamental Concepts of Neural Networks
+A Monograph on Artificial Neural Networks: Foundations, Mechanics, and Applications
+1. Fundamental Concepts of Neural Networks
 This section establishes the conceptual groundwork of neural networks, tracing their biological inspiration, defining their core components, charting their historical evolution, and situating them within the broader landscape of machine learning paradigms.
 
 1.1. The Core Algorithmic Principles: The Artificial Neuron, Layers, and Network Topology

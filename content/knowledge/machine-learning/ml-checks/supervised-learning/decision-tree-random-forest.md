@@ -1,29 +1,4 @@
----
-title: 'Decision Trees and Random Forests: A Comprehensive Theoretical and Practical Analysis'
-description: 'Comprehensive coverage of decision tree algorithms, random forests, and ensemble methods.'
-date: '2025-01-21'
-author: 'perfecXion AI Team'
-category: 'machine-learning'
-domain: 'machine-learning'
-format: 'article'
-difficulty: 'intermediate'
-readTime: '35 min read'
-tags:
-  - Machine Learning
-  - AI
-  - Advanced
-  - Article
-  - Supervised Learning
-  - Classification
-  - Regression
-  - Ensemble Methods
----
-
 # Decision Trees and Random Forests: A Comprehensive Theoretical and Practical Analysis
-
-**Comprehensive coverage of decision tree algorithms, random forests, and ensemble methods**
-
----
 
 ## Part I: Foundations of Tree-Based Models
 
