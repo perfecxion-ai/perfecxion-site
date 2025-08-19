@@ -49,9 +49,11 @@ AdaBoost exemplifies **ensemble learning at its finest**. Multiple models combin
 
 **Sequential training distinguishes boosting from bagging.** Random Forest trains models independently in parallel. Boosting trains models one after another, with each new model explicitly correcting errors from previous models. This sequential dependency drives boosting's power.
 
-This process fundamentally **reduces bias**. Weak learners like decision stumps (one-split decision trees) are simple, high-bias models making strong data assumptions, unlikely to capture complex patterns. By iteratively focusing on current ensemble misclassifications, boosting forces weak learner sequences to collectively model increasingly complex decision boundaries, systematically reducing final strong learner bias. Also reduces variance, but primary mechanism is bias mitigation.
+This process fundamentally **reduces bias**. Weak learners like decision stumps (one-split decision trees) are simple, high-bias models making strong data assumptions, unlikely to capture complex patterns. By iteratively focusing on current ensemble misclassifications, boosting forces weak learner sequences to collectively model increasingly complex decision boundaries, systematically reducing final strong learner bias. It also reduces variance, but the primary mechanism is bias mitigation.
 
-**Parallel to sequential ensembling shift represents significant ML innovation.** Bagging methods (Random Forest) build numerous independent models on bootstrapped samples, average predictions to reduce variance and improve robustness. Like polling diverse experts studying different problem parts, then majority voting. AdaBoost orchestrates collaborative, sequential learning. Like assembling specialist team: first specialist tackles entire problem, second specifically solves first's failures, and so on. Focused, iterative error correction allows ensemble to progressively refine data understanding, systematically driving down bias by addressing own shortcomings. This construction difference leads to distinct performance profiles and use cases for these powerful ensemble families.
+**The parallel to sequential ensembling shift represents significant ML innovation.** Bagging methods (Random Forest) build numerous independent models on bootstrapped samples, then average predictions to reduce variance and improve robustness. This is like polling diverse experts studying different problem parts, then majority voting. 
+
+AdaBoost orchestrates collaborative, sequential learning. This is like assembling a specialist team: the first specialist tackles the entire problem, the second specifically solves the first's failures, and so on. Focused, iterative error correction allows the ensemble to progressively refine data understanding, systematically driving down bias by addressing its own shortcomings. This construction difference leads to distinct performance profiles and use cases for these powerful ensemble families.
 
 ### 1.2 The Core Mechanism: Adaptive Weighting
 
@@ -890,19 +892,19 @@ This streamlined workflow makes R an excellent environment for exploratory clust
 
 ### 1.3 Historical Origins: Freund, Schapire, and the Gödel Prize
 
-Yoav Freund and Robert Schapire formally articulated AdaBoost in 1995 conference paper, detailed in 1997 journal publication. Development rooted in foundational computational learning theory question.
+Yoav Freund and Robert Schapire formally articulated AdaBoost in a 1995 conference paper, detailed in a 1997 journal publication. The development was rooted in a foundational computational learning theory question.
 
-Late 1980s: Michael Kearns and Leslie Valiant posed profound theoretical question within "Probably Approximately Correct" (PAC) learning framework—are "weakly learnable" and "strongly learnable" problem classes equivalent? Simpler terms: can algorithm producing classifier only slightly better than random guessing (weak learner) be systematically "boosted" into algorithm achieving arbitrarily high accuracy (strong learner)?
+In the late 1980s, Michael Kearns and Leslie Valiant posed a profound theoretical question within the "Probably Approximately Correct" (PAC) learning framework: are "weakly learnable" and "strongly learnable" problem classes equivalent? In simpler terms: can an algorithm producing a classifier only slightly better than random guessing (weak learner) be systematically "boosted" into an algorithm achieving arbitrarily high accuracy (strong learner)?
 
-Robert Schapire provided first affirmative, constructive proof (1990), demonstrating boosting algorithm existence. While this initial algorithm and subsequent versions had immense theoretical importance, Freund and Schapire's AdaBoost solved many practical predecessor difficulties, creating first widely used, highly effective boosting method.
+Robert Schapire provided the first affirmative, constructive proof (1990), demonstrating the existence of a boosting algorithm. While this initial algorithm and subsequent versions had immense theoretical importance, Freund and Schapire's AdaBoost solved many practical difficulties of its predecessors, creating the first widely used, highly effective boosting method.
 
-Recognizing their work's profound impact, Freund and Schapire received the 2003 Gödel Prize—theoretical computer science's most prestigious award. Citation celebrated AdaBoost for elegant fundamental theoretical problem solution and significant, lasting influence on ML and AI practice.
+Recognizing their work's profound impact, Freund and Schapire received the 2003 Gödel Prize—theoretical computer science's most prestigious award. The citation celebrated AdaBoost for its elegant solution to a fundamental theoretical problem and its significant, lasting influence on ML and AI practice.
 
 ### 1.4 Supervised Learning Meta-Algorithm
 
-AdaBoost is fundamentally supervised learning. Training requires labeled dataset where each input instance pairs with known, correct output label. Algorithm learns input-to-output mapping by minimizing labeled training data errors.
+AdaBoost is fundamentally a supervised learning algorithm. Training requires a labeled dataset where each input instance pairs with a known, correct output label. The algorithm learns the input-to-output mapping by minimizing errors on the labeled training data.
 
-AdaBoost is best described as meta-algorithm or meta-estimator. Not standalone learning algorithm like Decision Tree or SVM. General framework applied on top of another learning algorithm serving as weak learner. Base classifier can theoretically be any algorithm handling weighted samples. This flexibility makes AdaBoost powerful, versatile tool enhancing wide range of existing model performance. Most famously paired with decision stumps, but usable with many classifier types to boost predictive power.
+AdaBoost is best described as a meta-algorithm or meta-estimator. It is not a standalone learning algorithm like Decision Tree or SVM. Rather, it is a general framework applied on top of another learning algorithm that serves as the weak learner. The base classifier can theoretically be any algorithm that can handle weighted samples. This flexibility makes AdaBoost a powerful, versatile tool for enhancing the performance of a wide range of existing models. It is most famously paired with decision stumps, but it can be used with many classifier types to boost predictive power.
 
 ---
 
@@ -1006,9 +1008,9 @@ The performance of AdaBoost is governed by a few critical hyperparameters that c
 ### 2.4 The Iterative Training Process: Learning from Mistakes
 The mechanism by which the sample weights, **D_t**, influence the training of the next weak learner, **h_t**, can be implemented in two primary ways:
 
-Reweighting: This is the most direct approach. If the chosen weak learner algorithm can internally handle weighted samples (as is the case with Scikit-learn's DecisionTreeClassifier), the weight vector **D_t** is passed directly to the learner's training function. The learner's objective function (e.g., weighted Gini impurity or entropy) is then modified to prioritize samples with higher weights.
+**Reweighting:** This is the most direct approach. If the chosen weak learner algorithm can internally handle weighted samples (as is the case with Scikit-learn's DecisionTreeClassifier), the weight vector **D_t** is passed directly to the learner's training function. The learner's objective function (e.g., weighted Gini impurity or entropy) is then modified to prioritize samples with higher weights.
 
-Resampling: For weak learners that cannot handle sample weights directly, an alternative approach is to create a new training dataset for each iteration. This new dataset is formed by sampling (with replacement) from the original dataset, where the probability of each sample being selected is given by its weight in **D_t**. This effectively creates a new dataset where the "hard" examples are over-represented, sometimes appearing multiple times, while "easy" examples may be omitted. This method, also known as "boosting by resampling," can sometimes make the model more robust to overfitting compared to reweighting, though it introduces an element of stochasticity.
+**Resampling:** For weak learners that cannot handle sample weights directly, an alternative approach is to create a new training dataset for each iteration. This new dataset is formed by sampling (with replacement) from the original dataset, where the probability of each sample being selected is given by its weight in **D_t**. This effectively creates a new dataset where the "hard" examples are over-represented, sometimes appearing multiple times, while "easy" examples may be omitted. This method, also known as "boosting by resampling," can sometimes make the model more robust to overfitting compared to reweighting, though it introduces an element of stochasticity.
 
 Visually, the training process can be understood as an iterative refinement of the decision boundary. The first stump makes a simple, axis-aligned split. The next stump is then forced to focus on the regions misclassified by the first, adding another simple split to correct those errors. The weighted combination of these simple linear cuts allows the final ensemble to form a highly complex and non-linear decision boundary capable of separating intricate data patterns.
 
@@ -1022,45 +1024,43 @@ AdaBoost is a versatile algorithm that can be applied to a variety of data types
 
 **Preprocessing for Categorical Data:** While tree-based learners can handle categorical features, they must first be converted into a numerical format. The choice of encoding strategy is a critical preprocessing step that can significantly impact AdaBoost's performance.
 
-One-Hot Encoding: This method creates a new binary feature for each category. While straightforward, it can lead to a very high-dimensional and sparse feature space if a variable has many unique categories (high cardinality). AdaBoost can be sensitive to this "curse of dimensionality," potentially leading to overfitting.
+**One-Hot Encoding:** This method creates a new binary feature for each category. While straightforward, it can lead to a very high-dimensional and sparse feature space if a variable has many unique categories (high cardinality). AdaBoost can be sensitive to this "curse of dimensionality," potentially leading to overfitting.
 
-Label/Ordinal Encoding: This assigns a unique integer to each category. For tree-based models, this is often sufficient as they can split on these integers. However, it can impose an artificial ordering that may mislead other types of learners.
+**Label/Ordinal Encoding:** This assigns a unique integer to each category. For tree-based models, this is often sufficient as they can split on these integers. However, it can impose an artificial ordering that may mislead other types of learners.
 
-Advanced Encoding for High Cardinality: For features with many categories, more sophisticated methods are often preferable. Target encoding (or mean encoding) replaces each category with the mean of the target variable for that category. Frequency encoding replaces each category with its frequency of occurrence. These methods can be more effective as they embed information about the target relationship or feature distribution into the encoding itself, but they must be implemented carefully (using cross-validation) to avoid data leakage.
+**Advanced Encoding for High Cardinality:** For features with many categories, more sophisticated methods are often preferable. Target encoding (or mean encoding) replaces each category with the mean of the target variable for that category. Frequency encoding replaces each category with its frequency of occurrence. These methods can be more effective as they embed information about the target relationship or feature distribution into the encoding itself, but they must be implemented carefully (using cross-validation) to avoid data leakage.
 
-Preprocessing for Numerical Data: When using tree-based weak learners like decision stumps, feature scaling (such as standardization or normalization) is generally not required. Decision trees make splits based on thresholding individual features, a process that is invariant to monotonic transformations of those features. Scaling a feature will not change the optimal split points or the structure of the tree. However, scaling can be beneficial for improving the model's interpretability or if a non-tree-based weak learner (e.g., a linear model) that is sensitive to feature scales is used.
+**Preprocessing for Numerical Data:** When using tree-based weak learners like decision stumps, feature scaling (such as standardization or normalization) is generally not required. Decision trees make splits based on thresholding individual features, a process that is invariant to monotonic transformations of those features. Scaling a feature will not change the optimal split points or the structure of the tree. However, scaling can be beneficial for improving the model's interpretability or if a non-tree-based weak learner (e.g., a linear model) that is sensitive to feature scales is used.
 
-Ideal Dataset Sizes: AdaBoost is particularly well-suited for small to medium-sized datasets, typically ranging from under 1,000 to around 100,000 samples. In this range, it often provides excellent performance without excessive training times. For 
-
-large (100K-1M) and very large (>1M) datasets, the inherently sequential nature of the training process can become a significant computational bottleneck. On these larger scales, more modern and parallelizable boosting algorithms like XGBoost and LightGBM are generally preferred due to their superior efficiency and scalability. While research has explored methods for scaling AdaBoost to larger data, in practice it is most commonly applied where its computational cost is manageable.
+**Ideal Dataset Sizes:** AdaBoost is particularly well-suited for small to medium-sized datasets, typically ranging from under 1,000 to around 100,000 samples. In this range, it often provides excellent performance without excessive training times. For large (100K-1M) and very large (>1M) datasets, the inherently sequential nature of the training process can become a significant computational bottleneck. On these larger scales, more modern and parallelizable boosting algorithms like XGBoost and LightGBM are generally preferred due to their superior efficiency and scalability. While research has explored methods for scaling AdaBoost to larger data, in practice it is most commonly applied where its computational cost is manageable.
 
 ### 3.2 Computational Complexity
 Understanding the computational complexity of an algorithm is crucial for assessing its feasibility for a given problem size and hardware environment.
 
-Training Complexity: The overall time complexity of training an AdaBoost model is the product of the number of estimators and the complexity of training a single weak learner. It can be expressed as O(T⋅f), where T is the number of estimators (n_estimators) and f is the time complexity of the base estimator.
+**Training Complexity:** The overall time complexity of training an AdaBoost model is the product of the number of estimators and the complexity of training a single weak learner. It can be expressed as O(T⋅f), where T is the number of estimators (n_estimators) and f is the time complexity of the base estimator.
 
 For a decision stump (a decision tree of depth 1), the complexity f to find the best split across all features is typically O(N⋅D), where N is the number of training samples and D is the number of features. This is because for each of the D features, the algorithm must typically iterate through all N samples to evaluate potential split points.
 
 Therefore, the total training complexity for AdaBoost with decision stumps is approximately O(T⋅N⋅D). This linear relationship with the number of samples, features, and estimators is a key characteristic.
 
-Prediction Complexity: The time complexity for making a prediction on a new instance is significantly lower. It requires making a prediction with each of the T weak learners and then computing their weighted sum.
+**Prediction Complexity:** The time complexity for making a prediction on a new instance is significantly lower. It requires making a prediction with each of the T weak learners and then computing their weighted sum.
 
 For a decision stump, prediction is very fast, typically O(depth), which is O(1) for a stump.
 
 Therefore, the total prediction complexity is simply O(T), as it involves iterating through the T stored weak learners.
 
-Space Complexity: The space required to store the trained AdaBoost model is determined by the number of weak learners and the complexity of each. For decision stumps, each learner is very simple (storing a feature index, a threshold, and two leaf values). Thus, the space complexity is dominated by the need to store the T learners and their corresponding α weights, resulting in a space complexity of approximately O(T).
+**Space Complexity:** The space required to store the trained AdaBoost model is determined by the number of weak learners and the complexity of each. For decision stumps, each learner is very simple (storing a feature index, a threshold, and two leaf values). Thus, the space complexity is dominated by the need to store the T learners and their corresponding α weights, resulting in a space complexity of approximately O(T).
 
 The training complexity highlights a fundamental scalability challenge for AdaBoost. The core algorithmic loop iterates from t=1 to T, and the state of the algorithm at iteration t (specifically, the sample weights **Dₜ**) is directly dependent on the outcome of iteration t−1. This creates an unbreakable dependency chain that makes the training process inherently sequential. It is not possible to train the 50th weak learner until the 49th has been trained and the sample weights have been updated accordingly. This contrasts sharply with bagging methods like Random Forest, where all T trees are independent and can be trained in parallel—a process often described as "embarrassingly parallel". This sequential bottleneck is the primary reason AdaBoost is less scalable on modern multi-core processors than parallel ensemble methods and was a major motivation for the development of more advanced boosting algorithms that introduce parallelization within the tree-building step itself.
 
 ### 3.3 Popular Libraries/Frameworks
 While AdaBoost can be implemented from scratch for educational purposes, practitioners typically rely on well-tested and optimized libraries.
 
-Scikit-learn (Python): This is the most widely used and standard implementation of AdaBoost. The sklearn.ensemble module provides AdaBoostClassifier for classification tasks and AdaBoostRegressor for regression tasks. These implementations are robust, feature-rich, and integrate seamlessly with the entire Scikit-learn ecosystem of tools for data preprocessing, model evaluation, and hyperparameter tuning.
+**Scikit-learn (Python):** This is the most widely used and standard implementation of AdaBoost. The sklearn.ensemble module provides AdaBoostClassifier for classification tasks and AdaBoostRegressor for regression tasks. These implementations are robust, feature-rich, and integrate seamlessly with the entire Scikit-learn ecosystem of tools for data preprocessing, model evaluation, and hyperparameter tuning.
 
-R Packages: In the R programming language, popular packages for implementing AdaBoost include adabag and gbm (which can implement AdaBoost by setting the distribution parameter).
+**R Packages:** In the R programming language, popular packages for implementing AdaBoost include adabag and gbm (which can implement AdaBoost by setting the distribution parameter).
 
-Other Implementations: Various other machine learning frameworks and from-scratch implementations on platforms like GitHub exist. These are often valuable for gaining a deeper understanding of the algorithm's inner workings or for specialized research applications.
+**Other Implementations:** Various other machine learning frameworks and from-scratch implementations on platforms like GitHub exist. These are often valuable for gaining a deeper understanding of the algorithm's inner workings or for specialized research applications.
 
 ## Section 4: Problem-Solving Capabilities
 This section details the practical applications and performance profile of AdaBoost, identifying the types of problems it is best suited to solve and illustrating its capabilities with real-world examples. It also examines the nature of its outputs and the conditions under which it tends to perform well or poorly.
@@ -1068,13 +1068,13 @@ This section details the practical applications and performance profile of AdaBo
 ### 4.1 Primary Use Cases
 AdaBoost is a versatile algorithm that can be adapted to several machine learning tasks, though it is most renowned for classification.
 
-Binary Classification: This is the canonical application for which AdaBoost was originally conceived. It is highly effective at separating data into two distinct classes and remains a powerful tool for binary classification problems.
+**Binary Classification:** This is the canonical application for which AdaBoost was originally conceived. It is highly effective at separating data into two distinct classes and remains a powerful tool for binary classification problems.
 
-Multi-class Classification: The original AdaBoost algorithm is for binary problems, but it has been extended to handle tasks with more than two classes. The most common extension is the SAMME (Stagewise Additive Modeling using a Multiclass Exponential loss function) algorithm and its variant, SAMME.R. These algorithms modify the error calculation and weight update steps to accommodate a multi-class setting.
+**Multi-class Classification:** The original AdaBoost algorithm is for binary problems, but it has been extended to handle tasks with more than two classes. The most common extension is the SAMME (Stagewise Additive Modeling using a Multiclass Exponential loss function) algorithm and its variant, SAMME.R. These algorithms modify the error calculation and weight update steps to accommodate a multi-class setting.
 
-Regression: AdaBoost can also be adapted for regression tasks, where the goal is to predict a continuous numerical value. The most common variant for this purpose is AdaBoost.R2, which modifies the core logic to handle continuous errors instead of discrete misclassifications.
+**Regression:** AdaBoost can also be adapted for regression tasks, where the goal is to predict a continuous numerical value. The most common variant for this purpose is AdaBoost.R2, which modifies the core logic to handle continuous errors instead of discrete misclassifications.
 
-Feature Selection: An important secondary capability of AdaBoost, particularly when used with decision stumps, is its role in feature selection. At each iteration, the decision stump identifies the single feature and threshold that best separates the data according to the current weights. The sequence of features chosen by the stumps across iterations can be seen as a form of greedy feature selection, highlighting the most discriminative variables for the classification task.
+**Feature Selection:** An important secondary capability of AdaBoost, particularly when used with decision stumps, is its role in feature selection. At each iteration, the decision stump identifies the single feature and threshold that best separates the data according to the current weights. The sequence of features chosen by the stumps across iterations can be seen as a form of greedy feature selection, highlighting the most discriminative variables for the classification task.
 
 ### 4.2 Specific Examples: Real-world Applications and Success Stories
 AdaBoost's effectiveness has been demonstrated across a wide range of domains, with some applications achieving landmark status in the field of artificial intelligence.
@@ -1197,36 +1197,36 @@ Gradient Boosting can be seen as a more generalized and powerful successor to Ad
 
 Evolutionary Connection: AdaBoost is a specific instance of a more general algorithmic framework. It can be shown that AdaBoost is equivalent to a forward stagewise additive model that minimizes an exponential loss function. Gradient Boosting generalizes this idea by allowing for the optimization of any differentiable loss function.
 
-Error Correction Mechanism: The methods differ in how they correct errors. AdaBoost identifies misclassified instances and increases their weights for the next learner. Gradient Boosting takes a more direct approach: it fits each new learner to the residual errors (the difference between the true values and the current ensemble's predictions) of its predecessor. This is analogous to performing gradient descent on the chosen loss function.
+**Error Correction Mechanism:** The methods differ in how they correct errors. AdaBoost identifies misclassified instances and increases their weights for the next learner. Gradient Boosting takes a more direct approach: it fits each new learner to the residual errors (the difference between the true values and the current ensemble's predictions) of its predecessor. This is analogous to performing gradient descent on the chosen loss function.
 
-Flexibility: The ability to use various loss functions makes Gradient Boosting highly flexible. For example, it can use logistic loss for classification (which is often more robust to outliers than exponential loss) or mean squared error for regression. AdaBoost is intrinsically tied to the exponential loss function.
+**Flexibility:** The ability to use various loss functions makes Gradient Boosting highly flexible. For example, it can use logistic loss for classification (which is often more robust to outliers than exponential loss) or mean squared error for regression. AdaBoost is intrinsically tied to the exponential loss function.
 
-XGBoost (Extreme Gradient Boosting) Enhancements: XGBoost builds upon the Gradient Boosting framework by introducing several key optimizations. It incorporates L1 and L2 regularization into its objective function to combat overfitting, has built-in procedures for handling missing values, and employs sophisticated algorithms and data structures (like block structures for parallel processing) to achieve significant speed and scalability improvements over standard Gradient Boosting and AdaBoost.
+**XGBoost (Extreme Gradient Boosting) Enhancements:** XGBoost builds upon the Gradient Boosting framework by introducing several key optimizations. It incorporates L1 and L2 regularization into its objective function to combat overfitting, has built-in procedures for handling missing values, and employs sophisticated algorithms and data structures (like block structures for parallel processing) to achieve significant speed and scalability improvements over standard Gradient Boosting and AdaBoost.
 
 ### 6.3 Decision Framework: When to Choose AdaBoost
 The choice between AdaBoost and its alternatives depends on the specific characteristics of the problem, the dataset, and the project constraints.
 
-Choose AdaBoost when:
+**Choose AdaBoost when:**
 
-The task is binary classification with clean data: This is AdaBoost's classic strength. On low-noise binary problems, it can be exceptionally accurate.
+- **The task is binary classification with clean data:** This is AdaBoost's classic strength. On low-noise binary problems, it can be exceptionally accurate.
 
-Simplicity and interpretability are valued: With decision stumps as weak learners, the final model is a weighted sum of simple rules, which can be easier to inspect and understand than a forest of deep trees or a complex gradient-boosted model.
+- **Simplicity and interpretability are valued:** With decision stumps as weak learners, the final model is a weighted sum of simple rules, which can be easier to inspect and understand than a forest of deep trees or a complex gradient-boosted model.
 
-The dataset is of small to medium size: On datasets where training time is not a major bottleneck, AdaBoost is a strong and reliable choice.
+- **The dataset is of small to medium size:** On datasets where training time is not a major bottleneck, AdaBoost is a strong and reliable choice.
 
-A strong baseline is needed: Due to its good out-of-the-box performance and ease of use, AdaBoost serves as an excellent baseline model against which more complex algorithms can be compared.
+- **A strong baseline is needed:** Due to its good out-of-the-box performance and ease of use, AdaBoost serves as an excellent baseline model against which more complex algorithms can be compared.
 
-Choose Alternatives when:
+**Choose Alternatives when:**
 
-Random Forest is preferable if: The data is known to be noisy or contain outliers, as its bagging mechanism makes it more robust. When training speed on multi-core machines is a priority, as its parallel nature can be fully exploited.
+- **Random Forest is preferable if:** The data is known to be noisy or contain outliers, as its bagging mechanism makes it more robust. When training speed on multi-core machines is a priority, as its parallel nature can be fully exploited.
 
-Gradient Boosting or XGBoost is preferable if: The dataset is large, and computational efficiency and scalability are critical. When the problem requires a specific loss function other than exponential loss. When fine-grained control over regularization is needed to prevent overfitting on a complex dataset.
+- **Gradient Boosting or XGBoost is preferable if:** The dataset is large, and computational efficiency and scalability are critical. When the problem requires a specific loss function other than exponential loss. When fine-grained control over regularization is needed to prevent overfitting on a complex dataset.
 
 ### Algorithm Comparison Matrix
 
 The following comprehensive table compares the three major ensemble learning approaches across key dimensions:
 
-<div className="text-foreground dark:text-white">
+<div className="text-gray-900 dark:text-white [&_table]:text-gray-900 [&_table]:dark:text-white [&_td]:text-gray-900 [&_td]:dark:text-white [&_th]:text-gray-900 [&_th]:dark:text-white">
 
 | 📊 **Criterion** | 🚀 **AdaBoost** | 🌲 **Random Forest** | ⚡ **Gradient Boosting** |
 |:------------------|:-----------------|:----------------------|:-------------------------|
@@ -1437,7 +1437,7 @@ This section provides a curated list of high-quality resources for readers who w
 
 Engaging with the primary literature is essential for a deep, theoretical understanding of AdaBoost and its context within machine learning. The following curated collection highlights the most influential papers in chronological order:
 
-<div className="text-foreground dark:text-white">
+<div className="text-gray-900 dark:text-white [&_table]:text-gray-900 [&_table]:dark:text-white [&_td]:text-gray-900 [&_td]:dark:text-white [&_th]:text-gray-900 [&_th]:dark:text-white">
 
 | 📜 **Paper Title** | 👥 **Authors** | 📅 **Year** | 🎆 **Significance & Impact** |
 |:---------------------|:---------------|:---------|:--------------------------|
