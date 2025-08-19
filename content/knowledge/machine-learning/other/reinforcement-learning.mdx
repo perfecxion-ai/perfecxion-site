@@ -17,30 +17,52 @@ tags:
 
 # A Comprehensive Analysis of Reinforcement Learning
 
+**Complete guide to reinforcement learning, Q-learning, and autonomous AI systems**
+
+---
+
+## Table of Contents
+
+- [1. Foundational Principles](#1-foundational-principles-of-reinforcement-learning)
+  - [1.1 Core Interactive Loop](#11-the-core-interactive-loop-a-paradigm-of-learning-by-doing)
+  - [1.2 Agent-Environment Interaction](#12-agent-environment-interaction)
+  - [1.3 Learning Objectives](#13-learning-objectives)
+- [2. Core Algorithms](#2-core-algorithms)
+- [3. Practical Applications](#3-practical-applications)
+- [4. Advanced Techniques](#4-advanced-techniques)
+- [5. Implementation Examples](#5-implementation-examples)
+
+---
+
 ## 1. Foundational Principles of Reinforcement Learning
 
-Reinforcement Learning (RL) powers game-winning AI like AlphaGo, autonomous vehicles, and recommendation systems. Unlike supervised learning (which needs labeled data) or unsupervised learning (which finds patterns), RL learns through trial and error—just like humans and animals.
+**Reinforcement Learning (RL) powers game-winning AI** like AlphaGo, autonomous vehicles, and recommendation systems. Unlike supervised learning (which needs labeled data) or unsupervised learning (which finds patterns), **RL learns through trial and error—just like humans and animals**.
 
 ### 1.1 The Core Interactive Loop: A Paradigm of Learning by Doing
-RL trains software agents to make optimal decisions through trial-and-error learning. The core mechanism is an interactive feedback loop between two components:
+
+**RL trains software agents to make optimal decisions** through trial-and-error learning. The core mechanism is an **interactive feedback loop** between two components:
 
 - **Agent:** The learner/decision-maker trying to achieve a goal
 - **Environment:** The world or system where the agent operates
 
-Here's how it works at each time step:
+**Here's how it works at each time step:**
 
-1. **Observe:** Agent sees the current state (s) of the environment
-2. **Act:** Agent selects an action (a) from available options
-3. **Transition:** Environment moves to new state (s')
-4. **Feedback:** Environment provides a reward (r)—positive, negative, or zero
+1. **Observe:** Agent sees the current state **(s)** of the environment
+2. **Act:** Agent selects an action **(a)** from available options
+3. **Transition:** Environment moves to new state **(s')**
+4. **Feedback:** Environment provides a reward **(r)**—positive, negative, or zero
 
-Picture a continuous cycle: Agent observes state → takes action → environment transitions to new state → provides reward → repeat. This observation-action-feedback loop drives all RL systems.
+**Picture a continuous cycle:** Agent observes state → takes action → environment transitions to new state → provides reward → repeat. This **observation-action-feedback loop** drives all RL systems.
 
-The key insight: agents don't maximize immediate rewards—they maximize cumulative long-term rewards. This requires strategic thinking and delayed gratification. 
+**The key insight:** agents don't maximize immediate rewards—they maximize **cumulative long-term rewards**. This requires **strategic thinking and delayed gratification**. 
 
-Focus on long-term value makes RL well-suited for scenarios where actions have prolonged, delayed consequences—common in complex real-world problems. Agent learns a strategy (policy) dictating which actions to take in which states to maximize expected return, effectively learning from action consequences through exploration and exploitation.
+**Focus on long-term value makes RL well-suited** for scenarios where actions have prolonged, delayed consequences—common in complex real-world problems. Agent learns a **strategy (policy)** dictating which actions to take in which states to maximize expected return, effectively learning from action consequences through **exploration and exploitation**.
 
-**Working Example: Reinforcement Learning Fundamentals - GridWorld**
+---
+
+### Working Example: Reinforcement Learning Fundamentals - GridWorld
+
+This example demonstrates core RL concepts using a simple GridWorld environment and Q-learning agent.
 
 ```python
 import numpy as np

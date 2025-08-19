@@ -17,19 +17,40 @@ tags:
 
 # Naive Bayes Classifier: Theory, Application, and Modern Context
 
+**Comprehensive guide to Naive Bayes algorithms, applications, and implementation**
+
+---
+
+## Table of Contents
+
+- [Part I: Foundational Principles](#part-i-foundational-principles-and-theory)
+  - [Section 1: Fundamental Concepts](#section-1-fundamental-concepts)
+  - [Section 2: Mathematical Foundation](#section-2-mathematical-foundation)
+  - [Section 3: Algorithm Variants](#section-3-algorithm-variants)
+- [Part II: Practical Implementation](#part-ii-practical-implementation)
+- [Part III: Advanced Applications](#part-iii-advanced-applications)
+- [Part IV: Model Evaluation](#part-iv-model-evaluation)
+
+---
+
 ## Part I: Foundational Principles and Theory
 
-Let's build the theoretical foundation of Naive Bayes. We'll trace its lineage from probability theory to modern machine learning, dissecting its core components: Bayes' Theorem and the "naive" independence assumption.
+**Let's build the theoretical foundation of Naive Bayes.** We'll trace its lineage from probability theory to modern machine learning, dissecting its core components: **Bayes' Theorem** and the **"naive" independence assumption**.
 
 ## Section 1: Fundamental Concepts
 
-Here's the core logic of Naive Bayes: how it uses probability for classification and where it fits in the ML landscape.
+**Here's the core logic of Naive Bayes:** how it uses probability for classification and where it fits in the ML landscape.
 
 ### 1.1 The Core Algorithm: Probabilistic Classification
 
-Naive Bayes isn't one algorithm—it's a family of probabilistic classifiers. Instead of giving deterministic answers, it calculates the probability of an instance belonging to each class. The class with highest probability wins.
+**Naive Bayes isn't one algorithm—it's a family of probabilistic classifiers.** Instead of giving deterministic answers, it calculates the **probability of an instance belonging to each class**. **The class with highest probability wins.**
 
-**Example: Email Spam Classification Fundamentals**
+---
+
+### Example: Email Spam Classification Fundamentals
+
+This example demonstrates Naive Bayes classification using email spam detection, showing how text is converted to features and probabilistic predictions are made.
+
 ```python
 import numpy as np
 import pandas as pd
