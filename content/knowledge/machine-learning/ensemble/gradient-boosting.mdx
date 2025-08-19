@@ -76,7 +76,11 @@ Gradient boosting powers some of today's most successful machine learning models
 
 **Gradient boosting constructs a "strong" predictive model F(x)** through iterative, additive process. Starts with simple initial model **F₀(x)**, sequentially adds **"weak" models hₘ(x)**, each aiming to correct current ensemble deficiencies.
 
-**Core mechanism:** each new weak learner doesn't predict original target variable **y**. Instead, it predicts **"error" or "residual"** of current strong model. For regression, **error = y - Fₘ₋₁(x)**.
+**Core mechanism:** each new weak learner doesn't predict original target variable **y**. Instead, it predicts **"error" or "residual"** of current strong model. For regression:
+
+```math
+error = y - Fₘ₋₁(x)
+```
 
 ---
 

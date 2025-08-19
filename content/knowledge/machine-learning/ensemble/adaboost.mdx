@@ -417,8 +417,7 @@ Zₜ = Σᵢ₌₁ᴺ Dₜ(i) · e^(-yᵢαₜhₜ(xᵢ))
 
 The exponent term, **-yᵢαₜhₜ(xᵢ)**, is key. For a correctly classified sample, **yᵢhₜ(xᵢ) = 1**, and the weight is multiplied by **e^(-αₜ)**, decreasing it. For a misclassified sample, **yᵢhₜ(xᵢ) = -1**, and the weight is multiplied by **e^(αₜ)**, increasing it.
 
-**e. Normalize Weights:** The normalization step ensures that D 
-t+1 is a valid probability distribution for the next iteration.
+**e. Normalize Weights:** The normalization step ensures that **Dₜ₊₁** is a valid probability distribution for the next iteration.
 
 #### Step 3: Final Prediction
 After T iterations, the final strong classifier, H(x), is constructed by combining the T weak learners using their calculated importance weights, αₜ. For a new input x, the prediction is:
@@ -437,14 +436,11 @@ The performance of AdaBoost is governed by a few critical hyperparameters that c
 ********************************************base_estimator (or estimator):******************************************** This parameter specifies the weak learner algorithm. While any classifier that accepts sample weights can be used, the canonical and default choice is a decision stump, which is a DecisionTreeClassifier with max_depth=1. The complexity of the base estimator is itself a crucial hyperparameter. Using overly complex base learners (e.g., deep decision trees) can cause AdaBoost to overfit quickly, as the boosting process will amplify their high variance.
 
 ### 2.4 The Iterative Training Process: Learning from Mistakes
-The mechanism by which the sample weights, D 
-t , influence the training of the next weak learner, hₜ, can be implemented in two primary ways:
+The mechanism by which the sample weights, **Dₜ**, influence the training of the next weak learner, **hₜ**, can be implemented in two primary ways:
 
-Reweighting: This is the most direct approach. If the chosen weak learner algorithm can internally handle weighted samples (as is the case with Scikit-learn's DecisionTreeClassifier), the weight vector D 
-t is passed directly to the learner's training function. The learner's objective function (e.g., weighted Gini impurity or entropy) is then modified to prioritize samples with higher weights.
+Reweighting: This is the most direct approach. If the chosen weak learner algorithm can internally handle weighted samples (as is the case with Scikit-learn's DecisionTreeClassifier), the weight vector **Dₜ** is passed directly to the learner's training function. The learner's objective function (e.g., weighted Gini impurity or entropy) is then modified to prioritize samples with higher weights.
 
-Resampling: For weak learners that cannot handle sample weights directly, an alternative approach is to create a new training dataset for each iteration. This new dataset is formed by sampling (with replacement) from the original dataset, where the probability of each sample being selected is given by its weight in D 
-t . This effectively creates a new dataset where the "hard" examples are over-represented, sometimes appearing multiple times, while "easy" examples may be omitted. This method, also known as "boosting by resampling," can sometimes make the model more robust to overfitting compared to reweighting, though it introduces an element of stochasticity.
+Resampling: For weak learners that cannot handle sample weights directly, an alternative approach is to create a new training dataset for each iteration. This new dataset is formed by sampling (with replacement) from the original dataset, where the probability of each sample being selected is given by its weight in **Dₜ**. This effectively creates a new dataset where the "hard" examples are over-represented, sometimes appearing multiple times, while "easy" examples may be omitted. This method, also known as "boosting by resampling," can sometimes make the model more robust to overfitting compared to reweighting, though it introduces an element of stochasticity.
 
 Visually, the training process can be understood as an iterative refinement of the decision boundary. The first stump makes a simple, axis-aligned split. The next stump is then forced to focus on the regions misclassified by the first, adding another simple split to correct those errors. The weighted combination of these simple linear cuts allows the final ensemble to form a highly complex and non-linear decision boundary capable of separating intricate data patterns.
 
@@ -487,8 +483,7 @@ Therefore, the total prediction complexity is simply O(T), as it involves iterat
 
 Space Complexity: The space required to store the trained AdaBoost model is determined by the number of weak learners and the complexity of each. For decision stumps, each learner is very simple (storing a feature index, a threshold, and two leaf values). Thus, the space complexity is dominated by the need to store the T learners and their corresponding α weights, resulting in a space complexity of approximately O(T).
 
-The training complexity highlights a fundamental scalability challenge for AdaBoost. The core algorithmic loop iterates from t=1 to T, and the state of the algorithm at iteration t (specifically, the sample weights D 
-t ) is directly dependent on the outcome of iteration t−1. This creates an unbreakable dependency chain that makes the training process inherently sequential. It is not possible to train the 50th weak learner until the 49th has been trained and the sample weights have been updated accordingly. This contrasts sharply with bagging methods like Random Forest, where all T trees are independent and can be trained in parallel—a process often described as "embarrassingly parallel". This sequential bottleneck is the primary reason AdaBoost is less scalable on modern multi-core processors than parallel ensemble methods and was a major motivation for the development of more advanced boosting algorithms that introduce parallelization within the tree-building step itself.
+The training complexity highlights a fundamental scalability challenge for AdaBoost. The core algorithmic loop iterates from t=1 to T, and the state of the algorithm at iteration t (specifically, the sample weights **Dₜ**) is directly dependent on the outcome of iteration t−1. This creates an unbreakable dependency chain that makes the training process inherently sequential. It is not possible to train the 50th weak learner until the 49th has been trained and the sample weights have been updated accordingly. This contrasts sharply with bagging methods like Random Forest, where all T trees are independent and can be trained in parallel—a process often described as "embarrassingly parallel". This sequential bottleneck is the primary reason AdaBoost is less scalable on modern multi-core processors than parallel ensemble methods and was a major motivation for the development of more advanced boosting algorithms that introduce parallelization within the tree-building step itself.
 
 3.3 Popular Libraries/Frameworks
 While AdaBoost can be implemented from scratch for educational purposes, practitioners typically rely on well-tested and optimized libraries.
