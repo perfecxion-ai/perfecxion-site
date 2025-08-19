@@ -212,7 +212,7 @@
   text-decoration: underline;
 }
 
-/* Code blocks - React docs style */
+/* Enhanced scrollable code blocks - React docs style */
 .prose pre {
   background: rgb(251, 251, 251);
   border: 1px solid rgb(229, 231, 235);
@@ -220,9 +220,51 @@
   padding: 1.5rem;
   margin: 1.5rem 0;
   overflow-x: auto;
+  overflow-y: auto;
   font-size: 0.875rem;
-  line-height: 1.7;
+  line-height: 1.4; /* Tighter for more lines */
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  /* Limit height to ~20 lines and add scrollbar */
+  max-height: 28rem; /* ~20 lines at 1.4rem line-height */
+  position: relative;
+}
+
+/* Add scrollbar styling for code blocks */
+.prose pre::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.prose pre::-webkit-scrollbar-track {
+  background: rgba(55, 65, 81, 0.1);
+  border-radius: 4px;
+}
+
+.prose pre::-webkit-scrollbar-thumb {
+  background: rgba(55, 65, 81, 0.3);
+  border-radius: 4px;
+}
+
+.prose pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(55, 65, 81, 0.5);
+}
+
+/* Add fade indicator for scrollable content */
+.prose pre::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1rem;
+  background: linear-gradient(transparent, rgba(251, 251, 251, 0.9));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.prose pre:hover::after {
+  opacity: 1;
 }
 
 .prose pre code {
@@ -250,6 +292,35 @@
   background: rgb(22, 27, 34) !important; /* Very dark background like React.dev */
   border: 1px solid rgb(48, 54, 61) !important;
   color: rgb(255, 255, 255) !important; /* Bright white base text */
+  /* Ensure scrollable styling works in dark mode */
+  max-height: 28rem !important;
+  overflow-y: auto !important;
+  position: relative !important;
+}
+
+/* Dark mode scrollbar styling */
+.prose pre::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+.prose pre::-webkit-scrollbar-track {
+  background: rgba(48, 54, 61, 0.3) !important;
+  border-radius: 4px !important;
+}
+
+.prose pre::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.5) !important;
+  border-radius: 4px !important;
+}
+
+.prose pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.7) !important;
+}
+
+/* Dark mode fade indicator */
+.prose pre::after {
+  background: linear-gradient(transparent, rgba(22, 27, 34, 0.9)) !important;
 }
 
 .prose code:not(pre code) {

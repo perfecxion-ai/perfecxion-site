@@ -63,9 +63,31 @@
   }
 }
 
-/* Code highlighting */
+/* Enhanced Code highlighting with scrollable blocks */
 pre {
   @apply rounded-lg bg-gray-900 p-4 overflow-x-auto dark:bg-gray-950 text-gray-100 dark:text-gray-100;
+  /* Limit height to approximately 20 lines and add scrollbar */
+  max-height: 28rem; /* ~20 lines at 1.4rem line-height */
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Add a subtle shadow at the bottom when content is scrollable */
+pre::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1rem;
+  background: linear-gradient(transparent, rgba(17, 24, 39, 0.8));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+pre:hover::after {
+  opacity: 1;
 }
 
 code {

@@ -1,4 +1,4 @@
-/* React.dev inspired code styling */
+/* Enhanced React.dev inspired code styling with scrollable blocks */
 pre[class*="language-"],
 code[class*="language-"] {
   color: rgb(55, 65, 81);
@@ -10,7 +10,7 @@ code[class*="language-"] {
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
-  line-height: 1.7;
+  line-height: 1.4; /* Tighter line height for more lines in view */
   tab-size: 2;
   hyphens: none;
 }
@@ -37,7 +37,7 @@ pre[class*="language-"] code[class*="language-"] {
   color: inherit;
 }
 
-/* React.dev token colors - clean and professional */
+/* Enhanced VSCode-inspired token colors - vibrant and professional */
 .token.comment,
 .token.prolog,
 .token.doctype,
@@ -47,7 +47,7 @@ pre[class*="language-"] code[class*="language-"] {
 }
 
 .token.punctuation {
-  color: rgb(75, 85, 99);
+  color: rgb(156, 163, 175); /* Lighter punctuation */
 }
 
 .token.property,
@@ -57,7 +57,7 @@ pre[class*="language-"] code[class*="language-"] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: rgb(220, 38, 127);
+  color: rgb(239, 68, 68); /* Bright red for literals */
 }
 
 .token.selector,
@@ -66,7 +66,7 @@ pre[class*="language-"] code[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: rgb(5, 150, 105);
+  color: rgb(34, 197, 94); /* Bright green for strings */
 }
 
 .token.operator,
@@ -75,24 +75,41 @@ pre[class*="language-"] code[class*="language-"] {
 .language-css .token.string,
 .style .token.string,
 .token.variable {
-  color: rgb(75, 85, 99);
+  color: rgb(156, 163, 175); /* Neutral for operators */
 }
 
 .token.atrule,
 .token.attr-value,
 .token.function,
 .token.class-name {
-  color: rgb(59, 130, 246);
+  color: rgb(59, 130, 246); /* Bright blue for functions */
 }
 
 .token.keyword {
-  color: rgb(168, 85, 247);
-  font-weight: 500;
+  color: rgb(168, 85, 247); /* Purple for keywords */
+  font-weight: 600; /* Bolder keywords */
 }
 
 .token.regex,
 .token.important {
-  color: rgb(245, 158, 11);
+  color: rgb(245, 158, 11); /* Orange for regex/important */
+}
+
+/* Additional token types for better coverage */
+.token.namespace {
+  color: rgb(168, 85, 247);
+}
+
+.token.parameter {
+  color: rgb(251, 191, 36);
+}
+
+.token.interpolation {
+  color: rgb(34, 197, 94);
+}
+
+.token.interpolation-punctuation {
+  color: rgb(239, 68, 68);
 }
 
 /* Ensure text is always visible in light mode */
@@ -110,22 +127,23 @@ code[class*="language-"] {
   font-style: italic;
 }
 
-/* Dark mode - React.dev inspired with bright colors */
+/* Dark mode - Enhanced VSCode Dark+ inspired theme */
 @media (prefers-color-scheme: dark) {
   pre[class*="language-"],
   code[class*="language-"] {
-    color: rgb(255, 255, 255); /* Bright white base text like React.dev */
+    color: rgb(212, 212, 212); /* Soft white base text */
   }
   
   .token.comment,
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    color: rgb(156, 163, 175); /* Gray comments */
+    color: rgb(106, 153, 85); /* Green comments like VSCode */
+    font-style: italic;
   }
   
   .token.punctuation {
-    color: rgb(255, 255, 255); /* White punctuation */
+    color: rgb(212, 212, 212); /* Soft white punctuation */
   }
   
   .token.property,
@@ -135,7 +153,7 @@ code[class*="language-"] {
   .token.constant,
   .token.symbol,
   .token.deleted {
-    color: rgb(255, 121, 198); /* Bright pink like React.dev */
+    color: rgb(181, 206, 168); /* Light green for literals */
   }
   
   .token.selector,
@@ -144,7 +162,7 @@ code[class*="language-"] {
   .token.char,
   .token.builtin,
   .token.inserted {
-    color: rgb(80, 250, 123); /* Bright green like React.dev */
+    color: rgb(206, 145, 120); /* Warm orange for strings */
   }
   
   .token.operator,
@@ -153,24 +171,55 @@ code[class*="language-"] {
   .language-css .token.string,
   .style .token.string,
   .token.variable {
-    color: rgb(255, 255, 255); /* White operators */
+    color: rgb(156, 220, 254); /* Light blue for operators */
   }
   
   .token.atrule,
   .token.attr-value,
   .token.function,
   .token.class-name {
-    color: rgb(80, 161, 255); /* Bright blue like React.dev */
+    color: rgb(220, 220, 170); /* Yellow for functions */
   }
   
   .token.keyword {
-    color: rgb(255, 121, 198); /* Bright pink keywords like React.dev */
-    font-weight: 500;
+    color: rgb(86, 156, 214); /* Blue keywords like VSCode */
+    font-weight: 600;
   }
   
   .token.regex,
   .token.important {
-    color: rgb(255, 184, 108); /* Bright orange like React.dev */
+    color: rgb(214, 157, 133); /* Warm orange for regex/important */
+  }
+  
+  /* Enhanced dark mode token types */
+  .token.namespace {
+    color: rgb(78, 201, 176); /* Teal for namespaces */
+  }
+  
+  .token.parameter {
+    color: rgb(156, 220, 254); /* Light blue for parameters */
+  }
+  
+  .token.interpolation {
+    color: rgb(206, 145, 120); /* Orange for interpolation */
+  }
+  
+  .token.interpolation-punctuation {
+    color: rgb(212, 212, 212); /* White for interpolation punctuation */
+  }
+  
+  /* Special highlighting for different languages */
+  .language-javascript .token.template-string,
+  .language-typescript .token.template-string {
+    color: rgb(206, 145, 120);
+  }
+  
+  .language-python .token.decorator {
+    color: rgb(78, 201, 176);
+  }
+  
+  .language-css .token.selector {
+    color: rgb(215, 186, 125);
   }
 }
 
