@@ -196,43 +196,22 @@ Your chosen distance metric populates the dissimilarity matrix. Critical decisio
 d(a,b)= 
 i=1
 ∑
-d
-​
- (a 
-i
-​
- −b 
-i
-​
- ) 
-2
- 
-
-​
- 
-**Manhattan Distance (L₁ norm)**: City block distance—sum of absolute coordinate differences. More robust than Euclidean in high dimensions and with outliers.
+d (a 
+i −b 
+i ) 
+2 **Manhattan Distance (L₁ norm)**: City block distance—sum of absolute coordinate differences. More robust than Euclidean in high dimensions and with outliers.
 
 d(a,b)= 
 i=1
 ∑
-d
-​
- ∣a 
-i
-​
- −b 
-i
-​
- ∣
+d ∣a 
+i −b 
+i ∣
 **Cosine Similarity and Distance**: Measures angle cosine between non-zero vectors. Ignores magnitude, focuses on orientation. Excellent for high-dimensional data like text documents where word proportions matter more than document length. Convert to distance: typically 1 - similarity.
 
 similarity(a,b)= 
 ∥a∥∥b∥
-a⋅b
-​
- 
-
-**Working Example: Distance Metrics Comparison**
+a⋅b **Working Example: Distance Metrics Comparison**
 
 ```python
 import numpy as np
@@ -352,9 +331,7 @@ Once distances between individual points are established, the algorithm needs a 
 
 d(A,B)= 
 a∈A,b∈B
-min
-​
- d(a,b)
+min d(a,b)
 
 Single linkage identifies non-elliptical, elongated shapes but highly sensitive to noise. Noisy points create "bridges" between distinct clusters, causing premature merging ("chaining effect").
 
@@ -362,9 +339,7 @@ Single linkage identifies non-elliptical, elongated shapes but highly sensitive 
 
 d(A,B)= 
 a∈A,b∈B
-max
-​
- d(a,b)
+max d(a,b)
 
 Less susceptible to noise than single linkage. Produces tight, compact, roughly spherical clusters.
 
@@ -372,29 +347,17 @@ Less susceptible to noise than single linkage. Produces tight, compact, roughly 
 
 d(A,B)= 
 ∣A∣∣B∣
-1
-​
-  
-a∈A
-∑
-​
-  
-b∈B
-∑
-​
- d(a,b)
+1 a∈A
+∑ b∈B
+∑ d(a,b)
 
 Provides compromise between single and complete linkage extremes. Less sensitive to outliers than single linkage.
 
 **Centroid Linkage**: Distance between clusters equals squared Euclidean distance between their centroids (mean vectors μₐ and μᵦ).
 
 d(A,B)=∥μ 
-A
-​
- −μ 
-B
-​
- ∥ 
+A −μ 
+B ∥ 
 2
  
 
@@ -404,15 +367,9 @@ Intuitive but major drawback: can produce dendrogram inversions where clusters m
 
 Δ(A,B)= 
 ∣A∣+∣B∣
-∣A∣∣B∣
-​
- ∥μ 
-A
-​
- −μ 
-B
-​
- ∥ 
+∣A∣∣B∣ ∥μ 
+A −μ 
+B ∥ 
 2
  
 
@@ -597,12 +554,8 @@ High (less sensitive)
 Tends to break large clusters; sensitive to outliers affecting the maximum distance.
 Average	$\frac{1}{	A		B
 Centroid	∥μ 
-A
-​
- −μ 
-B
-​
- ∥	Spherical	Medium	
+A −μ 
+B ∥	Spherical	Medium	
 Can result in dendrogram inversions, making interpretation difficult.
 
 Ward's	min(ΔVariance)	
@@ -670,7 +623,7 @@ Feature Selection: Using domain knowledge or statistical techniques to select th
 
 Dimensionality Reduction: In high-dimensional spaces, the concept of distance can become less meaningful due to the "curse of dimensionality." All points can appear to be equidistant from one another. Techniques like Principal Component Analysis (PCA) can be applied before clustering to reduce the number of dimensions while retaining the maximum amount of variance in the data, often leading to more robust clusters.
 
-3.2 Computational Complexity and Dataset Size Constraints
+### ### ### ### ### 3.2 Computational Complexity and Dataset Size Constraints
 The primary limitation of classical hierarchical clustering is its poor scalability, which stems from its high computational and memory requirements.
 
 Time Complexity: A naive implementation of agglomerative clustering has a time complexity of O(N 

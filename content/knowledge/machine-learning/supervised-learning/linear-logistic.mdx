@@ -296,50 +296,23 @@ Rigorous understanding of Linear and Logistic Regression requires examining thei
 **Hypothesis Function:** Model's prediction is represented by linear equation. For single feature (Simple Linear Regression), hypothesis function h(x) or ŷ is:
 
 y
-^
-​
- =β 
-0
-​
- +β 
-1
-​
- x
+^ =β 
+0 +β 
+1 x
 
 For multiple features (Multiple Linear Regression), this generalizes to:
 
 y
-^
-​
- =β 
-0
-​
- +β 
-1
-​
- x 
-1
-​
- +β 
-2
-​
- x 
-2
-​
- +⋯+β 
-n
-​
- x 
-n
-​
- 
-
-Vector notation makes this cleaner:
+^ =β 
+0 +β 
+1 x₁+β 
+2 x 
+2 +⋯+β 
+n x 
+n Vector notation makes this cleaner:
 
 y
-^
-​
- =x 
+^ =x 
 T
  β
 
@@ -388,9 +361,7 @@ Suddenly you have a linear relationship again! This is why it's called logistic 
 
 ln( 
 1−p
-p
-​
- )=x 
+p )=x 
 T
  β
 
@@ -707,31 +678,13 @@ $$ \frac{\partial}{\partial \beta_j} J(\boldsymbol{\beta}) = \frac{1}{m} \sum_{i
 Notice how similar this looks to linear regression! The update rule:
 
 β 
-j
-​
- :=β 
-j
-​
- −α 
+j :=β 
+j −α 
 m
-1
-​
-  
-i=1
+1 i=1
 ∑
-m
-​
- (h(x 
-i
-​
- )−y 
-i
-​
- )x 
-ij
-​
- 
-The striking similarity of gradient descent update rules for both models—essentially (prediction - actual) * feature—isn't coincidence. It stems from deep mathematical property shared by broader model class: Generalized Linear Models (GLMs). Linear Regression (Normal distribution + identity link function) and Logistic Regression (Bernoulli distribution + logit link function) are GLM special cases. This underlying unity explains why their learning dynamics are fundamentally similar and why techniques like regularization apply consistently to both.
+m (h(xᵢ)−yᵢ)x 
+ij The striking similarity of gradient descent update rules for both models—essentially (prediction - actual) * feature—isn't coincidence. It stems from deep mathematical property shared by broader model class: Generalized Linear Models (GLMs). Linear Regression (Normal distribution + identity link function) and Logistic Regression (Bernoulli distribution + logit link function) are GLM special cases. This underlying unity explains why their learning dynamics are fundamentally similar and why techniques like regularization apply consistently to both.
 
 Two training methods for linear regression represent critical trade-off between analytical precision and iterative scalability. Normal Equation provides exact, parameter-free solution but is computationally expensive for high-dimensional data due to matrix inversion step (O(n_features³) complexity). Gradient Descent, with per-iteration complexity O(n_samples × n_features), is approximate method scaling far better to large, high-dimensional datasets common in modern ML. This shift from analytical to iterative methods was necessary "Big Data" era adaptation, but introduced new challenges: tuning learning rate and critical need for feature scaling ensuring stable convergence.
 
@@ -1605,7 +1558,7 @@ print(f"Income outliers (>$500k): {(df['income'] > 500000).sum()}")
 
 print(f"\nRaw Data Sample:")
 print(df.head())
-print(f"\nData Types:")
+print(f"\n**Data Types:**")
 print(df.dtypes)
 
 # Define preprocessing steps

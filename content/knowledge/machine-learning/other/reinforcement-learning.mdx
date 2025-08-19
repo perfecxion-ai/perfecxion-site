@@ -447,9 +447,7 @@ Q
 s 
 ′
  ∈S
-∑
-​
- P(s 
+∑ P(s 
 ′
  ∣s,a)
 
@@ -464,15 +462,10 @@ V
 ∗
  (s)= 
 a∈A
-max
-​
-  
-s 
+max s 
 ′
  ∈S
-∑
-​
- P(s 
+∑ P(s 
 ′
  ∣s,a)
 
@@ -484,9 +477,7 @@ Q
 s 
 ′
  ∈S
-∑
-​
- P(s 
+∑ P(s 
 ′
  ∣s,a)
 
@@ -525,10 +516,7 @@ Choose Action: Select an action a from state s using a policy derived from the Q
 
 With probability 1−ϵ, choose the action that has the highest Q-value for the current state (exploitation): a=argmax 
 a 
-′
- 
-​
- Q(s,a 
+′ Q(s,a 
 ′
  ).
 
@@ -544,9 +532,7 @@ Q(s,a)←Q(s,a)+α[r+γ
 a 
 ′
  
-max
-​
- Q(s 
+max Q(s 
 ′
  ,a 
 ′
@@ -554,10 +540,7 @@ max
 
 Here, α is the learning rate. The term r+γmax 
 a 
-′
- 
-​
- Q(s 
+′ Q(s 
 ′
  ,a 
 ′
@@ -575,10 +558,7 @@ This update rule is a powerful synthesis of ideas. It is model-free, like Monte 
 ′
  ). However, it updates its value estimate after every single step, like dynamic programming, by "bootstrapping" from its own current estimate of the value of the next state (max 
 a 
-′
- 
-​
- Q(s 
+′ Q(s 
 ′
  ,a 
 ′
@@ -622,7 +602,7 @@ online RL setting, the agent does not begin with a pre-collected dataset. Instea
 
 (state,action,reward,next_state)—collected over many episodes or timesteps.
 
-Data Types: The state representation (s) can be composed of various data types. For many control problems, states are represented by real-valued vectors containing numerical data like joint angles, velocities, or sensor readings. In other domains, such as game playing, the state can be high-dimensional raw data like images (e.g., pixels from an Atari game screen), which are typically processed by a convolutional neural network (CNN) to extract relevant features. The action space can be discrete (a finite set of choices) or continuous (a range of values).
+**Data Types:** The state representation (s) can be composed of various data types. For many control problems, states are represented by real-valued vectors containing numerical data like joint angles, velocities, or sensor readings. In other domains, such as game playing, the state can be high-dimensional raw data like images (e.g., pixels from an Atari game screen), which are typically processed by a convolutional neural network (CNN) to extract relevant features. The action space can be discrete (a finite set of choices) or continuous (a range of values).
 
 Dataset Sizes: In online RL, the concept of dataset size translates to the number of interactions or timesteps the agent experiences during training. This number can be enormous. For complex tasks, agents may require millions or even billions of timesteps to converge to a good policy. The exact number is highly dependent on the complexity of the environment and the sample efficiency of the algorithm.
 

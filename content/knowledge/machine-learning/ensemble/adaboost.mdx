@@ -375,332 +375,87 @@ The overall objective of the algorithm is to minimize the total exponential loss
 ### 2.2 The Algorithmic Steps: A Detailed Walkthrough with Equations
 The AdaBoost algorithm for binary classification can be broken down into the following precise steps :
 
-Given: A training set of N labeled examples {(x 
-1
-​
- ,y 
-1
-​
- ),...,(x 
-N
-​
- ,y 
-N
-​
- )}, where x 
-i
-​
-  is the feature vector for the i-th example and y 
-i
-​
- ∈{−1,+1} is its class label.
+**Given:** A training set of **N** labeled examples **{(x₁, y₁), ..., (xᴺ, yᴺ)}**, where **xᵢ** is the feature vector for the i-th example and **yᵢ ∈ {-1, +1}** is its class label.
 
-Step 1: Initialize Sample Weights
+#### Step 1: Initialize Sample Weights
 At the beginning of the process (t=1), all training samples are considered equally important. The weights are initialized to a uniform distribution:
 
-D 
-1
-​
- (i)= 
-N
-1
-​
+D₁(i) = 1/N
  for i=1,...,N
 
-where D 
-t
-​
- (i) is the weight of sample i at iteration t.
+where **Dₜ(i)** is the weight of sample **i** at iteration **t**.
 
-Step 2: Iterative Learning (for t=1 to T)
+#### Step 2: Iterative Learning (for t=1 to T)
 The algorithm proceeds for a predefined number of iterations, T. In each iteration t:
 
-a. Train Weak Learner: A weak learning algorithm is trained on the data using the current sample weights, D 
-t
-​
- . The objective is to find a weak classifier, h 
-t
-​
- (x)→{−1,+1}, that minimizes the weighted classification error.
+**a. Train Weak Learner:** A weak learning algorithm is trained on the data using the current sample weights, D 
+t . The objective is to find a weak classifier, **hₜ(x) → {-1, +1}**, that minimizes the weighted classification error.
 
-b. Calculate Weighted Error (ϵ 
-t
-​
- ): The error of the weak learner h 
-t
-​
-  is calculated as the sum of the weights of the samples it misclassifies:
+**b. Calculate Weighted Error (ϵₜ):** The error of the weak learner **hₜ** is calculated as the sum of the weights of the samples it misclassifies:
 
-ϵ 
-t
-​
- = 
-i=1
-∑
-N
-​
- D 
-t
-​
- (i)⋅I(h 
-t
-​
- (x 
-i
-​
- )
-
-=y 
-i
-​
- )
+**ϵₜ = Σᵢ₌₁ᴺ Dₜ(i) · I(hₜ(xᵢ) ≠ yᵢ)**
 
-where I(⋅) is the indicator function, which is 1 if the condition is true and 0 otherwise. Since the weights sum to 1, ϵ 
-t
-​
-  is a value between 0 and 1.
+where I(⋅) is the indicator function, which is 1 if the condition is true and 0 otherwise. Since the weights sum to 1, **ϵₜ** is a value between 0 and 1.
 
-c. Calculate Classifier Importance (α 
-t
-​
- ): The weight or "amount of say" for the classifier h 
-t
-​
-  is calculated based on its weighted error. This value quantifies the classifier's contribution to the final ensemble. The formula is:
+**c. Calculate Classifier Importance (αₜ):** The weight or "amount of say" for the classifier **hₜ** is calculated based on its weighted error. This value quantifies the classifier's contribution to the final ensemble. The formula is:
 
-α 
-t
-​
- = 
-2
-1
-​
- ln( 
-ϵ 
-t
-​
- 
-1−ϵ 
-t
-​
- 
-​
- )
+**αₜ = ½ ln(ϵₜ/(1-ϵₜ))**
 
-This formula is not arbitrary; it is derived directly from the minimization of the exponential loss function. The term inside the logarithm, (1−ϵ 
-t
-​
- )/ϵ 
-t
-​
- , represents the odds of the classifier being correct versus incorrect. Thus, α 
-t
-​
-  is proportional to the log-odds of the classifier's performance. If ϵ 
-t
-​
- =0.5 (random guessing), the odds are 1, and α 
-t
-​
- = 
-2
-1
-​
- ln(1)=0, meaning the classifier has no say. If ϵ 
-t
-​
- →0 (perfect classification), α 
-t
-​
- →∞. If ϵ 
-t
-​
- →1 (perfect misclassification), α 
-t
-​
- →−∞.
+This formula is not arbitrary; it is derived directly from the minimization of the exponential loss function. The term inside the logarithm, **(1-ϵₜ)/ϵₜ**, represents the odds of the classifier being correct versus incorrect. Thus, **αₜ** is proportional to the log-odds of the classifier's performance. If **ϵₜ = 0.5** (random guessing), the odds are 1, and **αₜ = ½ ln(1) = 0**, meaning the classifier has no say. If **ϵₜ → 0** (perfect classification), **αₜ → ∞**. If **ϵₜ → 1** (perfect misclassification), **αₜ → -∞**.
 
-d. Update Sample Weights: The sample weights for the next iteration, D 
-t+1
-​
- , are updated to give more importance to the samples that were misclassified by h 
-t
-​
- . The update rule is:
+**d. Update Sample Weights:** The sample weights for the next iteration, D 
+t+1 , are updated to give more importance to the samples that were misclassified by hₜ. The update rule is:
 
 D 
-t+1
-​
- (i)= 
+t+1 (i)= 
 Z 
-t
-​
- 
-D 
-t
-​
- (i)⋅e 
-−y 
-i
-​
- α 
-t
-​
- h 
-t
-​
- (x 
-i
-​
- )
- 
-​
- 
+**t Dₜ(i) · e** 
+**-yᵢαₜhₜ(xᵢ)** where Z 
+t is a normalization factor that ensures the new weights sum to 1 (Z 
+**t = Σᵢ₌₁ᴺ Dₜ(i) · e** 
+**-yᵢαₜhₜ(xᵢ)**
+ ). The exponent term, **-yᵢαₜhₜ(xᵢ)**, is key. For a correctly classified sample, **yᵢhₜ(xᵢ) = 1**, and the weight is multiplied by **e^(-αₜ)**, decreasing it. For a misclassified sample, **yᵢhₜ(xᵢ) = -1**, and the weight is multiplied by **e^(αₜ)**, increasing it.
 
-where Z 
-t
-​
-  is a normalization factor that ensures the new weights sum to 1 (Z 
-t
-​
- =∑ 
-i=1
-N
-​
- D 
-t
-​
- (i)⋅e 
-−y 
-i
-​
- α 
-t
-​
- h 
-t
-​
- (x 
-i
-​
- )
- ). The exponent term, −y 
-i
-​
- α 
-t
-​
- h 
-t
-​
- (x 
-i
-​
- ), is key. For a correctly classified sample, y 
-i
-​
- h 
-t
-​
- (x 
-i
-​
- )=1, and the weight is multiplied by e 
-−α 
-t
-​
- 
- , decreasing it. For a misclassified sample, y 
-i
-​
- h 
-t
-​
- (x 
-i
-​
- )=−1, and the weight is multiplied by e 
-α 
-t
-​
- 
- , increasing it.
+**e. Normalize Weights:** The normalization step ensures that D 
+t+1 is a valid probability distribution for the next iteration.
 
-e. Normalize Weights: The normalization step ensures that D 
-t+1
-​
-  is a valid probability distribution for the next iteration.
+#### Step 3: Final Prediction
+After T iterations, the final strong classifier, H(x), is constructed by combining the T weak learners using their calculated importance weights, αₜ. For a new input x, the prediction is:
 
-Step 3: Final Prediction
-After T iterations, the final strong classifier, H(x), is constructed by combining the T weak learners using their calculated importance weights, α 
-t
-​
- . For a new input x, the prediction is:
-
-H(x)=sign( 
-t=1
-∑
-T
-​
- α 
-t
-​
- h 
-t
-​
- (x))
+**H(x) = sign(Σₜ₌₁ᵀ αₜhₜ(x))**
 
 This is the weighted majority vote that forms the final decision.
 
-2.3 The Role of Key Hyperparameters
+### 2.3 The Role of Key Hyperparameters
 The performance of AdaBoost is governed by a few critical hyperparameters that control the learning process and the complexity of the final model :
 
-n_estimators: This integer parameter corresponds to T, the number of boosting iterations or, equivalently, the number of weak learners in the ensemble. It is one of the most important parameters to tune. A larger n_estimators allows the model to fit more complex decision boundaries, potentially increasing accuracy. However, too many estimators can lead to overfitting, especially if the weak learners are not sufficiently simple, and will always increase the training time.
+**n_estimators:** This integer parameter corresponds to **T**, the number of boosting iterations or, equivalently, the number of weak learners in the ensemble. It is one of the most important parameters to tune. A larger n_estimators allows the model to fit more complex decision boundaries, potentially increasing accuracy. However, too many estimators can lead to overfitting, especially if the weak learners are not sufficiently simple, and will always increase the training time.
 
-learning_rate: This float parameter, often denoted as η, acts as a shrinkage factor, scaling the contribution of each weak learner. The final prediction formula becomes H(x)=sign(∑ 
-t=1
-T
-​
- ηα 
-t
-​
- h 
-t
-​
- (x)). A smaller learning_rate (e.g., 0.1) reduces the impact of each individual learner, requiring a larger n_estimators to achieve comparable performance. This slower learning process often leads to better generalization and makes the model more robust to overfitting. There is a fundamental trade-off between learning_rate and n_estimators that must be managed during tuning.
+**learning_rate:** This float parameter, often denoted as **η**, acts as a shrinkage factor, scaling the contribution of each weak learner. The final prediction formula becomes **H(x) = sign(Σₜ₌₁ᵀ ηαₜhₜ(x))**. A smaller learning_rate (e.g., 0.1) reduces the impact of each individual learner, requiring a larger n_estimators to achieve comparable performance. This slower learning process often leads to better generalization and makes the model more robust to overfitting. There is a fundamental trade-off between learning_rate and n_estimators that must be managed during tuning.
 
-base_estimator (or estimator): This parameter specifies the weak learner algorithm. While any classifier that accepts sample weights can be used, the canonical and default choice is a decision stump, which is a DecisionTreeClassifier with max_depth=1. The complexity of the base estimator is itself a crucial hyperparameter. Using overly complex base learners (e.g., deep decision trees) can cause AdaBoost to overfit quickly, as the boosting process will amplify their high variance.
+**************************base_estimator (or estimator):************************** This parameter specifies the weak learner algorithm. While any classifier that accepts sample weights can be used, the canonical and default choice is a decision stump, which is a DecisionTreeClassifier with max_depth=1. The complexity of the base estimator is itself a crucial hyperparameter. Using overly complex base learners (e.g., deep decision trees) can cause AdaBoost to overfit quickly, as the boosting process will amplify their high variance.
 
-2.4 The Iterative Training Process: Learning from Mistakes
+### 2.4 The Iterative Training Process: Learning from Mistakes
 The mechanism by which the sample weights, D 
-t
-​
- , influence the training of the next weak learner, h 
-t
-​
- , can be implemented in two primary ways:
+t , influence the training of the next weak learner, hₜ, can be implemented in two primary ways:
 
 Reweighting: This is the most direct approach. If the chosen weak learner algorithm can internally handle weighted samples (as is the case with Scikit-learn's DecisionTreeClassifier), the weight vector D 
-t
-​
-  is passed directly to the learner's training function. The learner's objective function (e.g., weighted Gini impurity or entropy) is then modified to prioritize samples with higher weights.
+t is passed directly to the learner's training function. The learner's objective function (e.g., weighted Gini impurity or entropy) is then modified to prioritize samples with higher weights.
 
 Resampling: For weak learners that cannot handle sample weights directly, an alternative approach is to create a new training dataset for each iteration. This new dataset is formed by sampling (with replacement) from the original dataset, where the probability of each sample being selected is given by its weight in D 
-t
-​
- . This effectively creates a new dataset where the "hard" examples are over-represented, sometimes appearing multiple times, while "easy" examples may be omitted. This method, also known as "boosting by resampling," can sometimes make the model more robust to overfitting compared to reweighting, though it introduces an element of stochasticity.
+t . This effectively creates a new dataset where the "hard" examples are over-represented, sometimes appearing multiple times, while "easy" examples may be omitted. This method, also known as "boosting by resampling," can sometimes make the model more robust to overfitting compared to reweighting, though it introduces an element of stochasticity.
 
 Visually, the training process can be understood as an iterative refinement of the decision boundary. The first stump makes a simple, axis-aligned split. The next stump is then forced to focus on the regions misclassified by the first, adding another simple split to correct those errors. The weighted combination of these simple linear cuts allows the final ensemble to form a highly complex and non-linear decision boundary capable of separating intricate data patterns.
 
-Section 3: Practical Implementation
+## Section 3: Practical Implementation
 This section transitions from the theoretical and mathematical underpinnings of AdaBoost to the practical considerations involved in its application. It covers the types of data the algorithm is suited for, necessary preprocessing steps, its computational performance characteristics, and the primary software libraries used for its implementation.
 
-3.1 Data Requirements and Preprocessing
+### 3.1 Data Requirements and Preprocessing
 AdaBoost is a versatile algorithm that can be applied to a variety of data types, though its performance is contingent on appropriate data preparation.
 
-Data Types: The AdaBoost meta-algorithm itself is agnostic to the data type, as the handling of features is delegated to the chosen weak learner. When using the standard decision stump as the base estimator, AdaBoost can naturally handle both numerical and categorical features.
+**Data Types:** The AdaBoost meta-algorithm itself is agnostic to the data type, as the handling of features is delegated to the chosen weak learner. When using the standard decision stump as the base estimator, AdaBoost can naturally handle both numerical and categorical features.
 
-Preprocessing for Categorical Data: While tree-based learners can handle categorical features, they must first be converted into a numerical format. The choice of encoding strategy is a critical preprocessing step that can significantly impact AdaBoost's performance.
+**Preprocessing for Categorical Data:** While tree-based learners can handle categorical features, they must first be converted into a numerical format. The choice of encoding strategy is a critical preprocessing step that can significantly impact AdaBoost's performance.
 
 One-Hot Encoding: This method creates a new binary feature for each category. While straightforward, it can lead to a very high-dimensional and sparse feature space if a variable has many unique categories (high cardinality). AdaBoost can be sensitive to this "curse of dimensionality," potentially leading to overfitting.
 
@@ -714,7 +469,7 @@ Ideal Dataset Sizes: AdaBoost is particularly well-suited for small to medium-si
 
 large (100K-1M) and very large (>1M) datasets, the inherently sequential nature of the training process can become a significant computational bottleneck. On these larger scales, more modern and parallelizable boosting algorithms like XGBoost and LightGBM are generally preferred due to their superior efficiency and scalability. While research has explored methods for scaling AdaBoost to larger data, in practice it is most commonly applied where its computational cost is manageable.
 
-3.2 Computational Complexity
+### ### ### ### ### 3.2 Computational Complexity
 Understanding the computational complexity of an algorithm is crucial for assessing its feasibility for a given problem size and hardware environment.
 
 Training Complexity: The overall time complexity of training an AdaBoost model is the product of the number of estimators and the complexity of training a single weak learner. It can be expressed as O(T⋅f), where T is the number of estimators (n_estimators) and f is the time complexity of the base estimator.
@@ -732,9 +487,7 @@ Therefore, the total prediction complexity is simply O(T), as it involves iterat
 Space Complexity: The space required to store the trained AdaBoost model is determined by the number of weak learners and the complexity of each. For decision stumps, each learner is very simple (storing a feature index, a threshold, and two leaf values). Thus, the space complexity is dominated by the need to store the T learners and their corresponding α weights, resulting in a space complexity of approximately O(T).
 
 The training complexity highlights a fundamental scalability challenge for AdaBoost. The core algorithmic loop iterates from t=1 to T, and the state of the algorithm at iteration t (specifically, the sample weights D 
-t
-​
- ) is directly dependent on the outcome of iteration t−1. This creates an unbreakable dependency chain that makes the training process inherently sequential. It is not possible to train the 50th weak learner until the 49th has been trained and the sample weights have been updated accordingly. This contrasts sharply with bagging methods like Random Forest, where all T trees are independent and can be trained in parallel—a process often described as "embarrassingly parallel". This sequential bottleneck is the primary reason AdaBoost is less scalable on modern multi-core processors than parallel ensemble methods and was a major motivation for the development of more advanced boosting algorithms that introduce parallelization within the tree-building step itself.
+t ) is directly dependent on the outcome of iteration t−1. This creates an unbreakable dependency chain that makes the training process inherently sequential. It is not possible to train the 50th weak learner until the 49th has been trained and the sample weights have been updated accordingly. This contrasts sharply with bagging methods like Random Forest, where all T trees are independent and can be trained in parallel—a process often described as "embarrassingly parallel". This sequential bottleneck is the primary reason AdaBoost is less scalable on modern multi-core processors than parallel ensemble methods and was a major motivation for the development of more advanced boosting algorithms that introduce parallelization within the tree-building step itself.
 
 3.3 Popular Libraries/Frameworks
 While AdaBoost can be implemented from scratch for educational purposes, practitioners typically rely on well-tested and optimized libraries.
@@ -775,29 +528,9 @@ Natural Language Processing (NLP): AdaBoost has been successfully employed for t
 4.3 Output Types
 The output of an AdaBoost model can be interpreted in several ways, providing more than just a simple class label.
 
-Class Predictions: For classification tasks, the primary output is the predicted class label. In the binary case, this is determined by the sign of the weighted sum of the weak learners' predictions: sign(∑ 
-t=1
-T
-​
- α 
-t
-​
- h 
-t
-​
- (x)).
+Class Predictions: For classification tasks, the primary output is the predicted class label. In the binary case, this is determined by the sign of the weighted sum of the weak learners' predictions: sign(**Σₜ₌₁ᵀ αₜhₜ(x)**).
 
-Confidence Scores: The raw output of the summation, ∑ 
-t=1
-T
-​
- α 
-t
-​
- h 
-t
-​
- (x), before the sign function is applied, can be interpreted as a confidence score. The magnitude of this value indicates the strength of the ensemble's conviction in its prediction. A large positive value signifies high confidence in the positive class, while a large negative value indicates high confidence in the negative class. Values close to zero suggest an ambiguous or low-confidence prediction.
+Confidence Scores: The raw output of the summation, **Σₜ₌₁ᵀ αₜhₜ(x)**, before the sign function is applied, can be interpreted as a confidence score. The magnitude of this value indicates the strength of the ensemble's conviction in its prediction. A large positive value signifies high confidence in the positive class, while a large negative value indicates high confidence in the negative class. Values close to zero suggest an ambiguous or low-confidence prediction.
 
 Probability Estimates: The standard AdaBoost algorithm does not directly output class probabilities. However, variants like Real AdaBoost or extensions like LogitBoost are designed to produce well-calibrated probability estimates by modifying the output of the weak learners and the loss function.
 
@@ -822,13 +555,7 @@ With Overly Complex Weak Learners: If the base estimators are too complex (e.g.,
 
 On Very High-Dimensional Data: Without careful feature selection or dimensionality reduction, AdaBoost can be prone to overfitting in high-dimensional spaces, as it may find spurious correlations in the noise.
 
-When the Weak Learning Assumption is Violated: If the features are not sufficiently predictive, it may be impossible for the weak learner to achieve an error rate better than random guessing (ϵ 
-t
-​
- <0.5). In this scenario, the algorithm will fail to make progress, as the classifier weights (α 
-t
-​
- ) will become zero or negative.
+When the Weak Learning Assumption is Violated: If the features are not sufficiently predictive, it may be impossible for the weak learner to achieve an error rate better than random guessing (ϵₜ<0.5). In this scenario, the algorithm will fail to make progress, as the classifier weights (αₜ) will become zero or negative.
 
 Section 5: Strengths and Limitations
 This section provides a balanced and critical assessment of AdaBoost, detailing its primary advantages and disadvantages, its fundamental underlying assumptions, and its robustness to various data challenges.
@@ -858,24 +585,9 @@ The theoretical guarantees and practical performance of AdaBoost rest on a few k
 
 The Weak Learning Assumption: The most fundamental assumption is that the chosen base learner is indeed a "weak learner." This means it must be able to achieve an error rate slightly better than random guessing on any weighted distribution of the training data that the algorithm presents to it. For a binary classification problem, the weighted error 
 
-ϵ 
-t
-​
-  must be less than 0.5. If this condition is not met, the classifier weight α 
-t
-​
-  becomes zero or negative, and the boosting process cannot proceed effectively.
+ϵₜmust be less than 0.5. If this condition is not met, the classifier weight αₜbecomes zero or negative, and the boosting process cannot proceed effectively.
 
-Binary Class Labels {−1,+1}: The standard mathematical formulation of AdaBoost, particularly the exponential loss function and the weight update rule, is derived based on the assumption that the class labels are encoded as -1 and +1. This encoding allows the product y 
-i
-​
- h 
-t
-​
- (x 
-i
-​
- ) to elegantly determine whether a classification is correct (+1) or incorrect (-1).
+Binary Class Labels {−1,+1}: The standard mathematical formulation of AdaBoost, particularly the exponential loss function and the weight update rule, is derived based on the assumption that the class labels are encoded as -1 and +1. This encoding allows the product yᵢhₜ(xᵢ) to elegantly determine whether a classification is correct (+1) or incorrect (-1).
 
 Sufficient and Representative Data: Like all supervised learning algorithms, AdaBoost assumes that the training data is large enough and representative of the true underlying data distribution. This is necessary for the learned model to generalize well to new, unseen data.
 
@@ -967,10 +679,7 @@ While ensemble models are often considered "black boxes," AdaBoost, particularly
 
 Relative Simplicity: When the weak learner is a decision stump, the final AdaBoost model is a weighted linear combination of very simple, single-feature rules. This structure is inherently more transparent than a deep neural network or a Random Forest composed of hundreds of deep, complex trees.
 
-Deconstructing Decisions: An analyst can inspect the trained model to gain insights. By examining the sequence of decision stumps, one can identify which features were selected most frequently. Furthermore, the magnitude of the α 
-t
-​
-  weights reveals which of these simple rules had the most influence on the final prediction. This can provide a form of feature importance ranking and a high-level understanding of the model's decision logic.
+Deconstructing Decisions: An analyst can inspect the trained model to gain insights. By examining the sequence of decision stumps, one can identify which features were selected most frequently. Furthermore, the magnitude of the αₜweights reveals which of these simple rules had the most influence on the final prediction. This can provide a form of feature importance ranking and a high-level understanding of the model's decision logic.
 
 Limitations on Interpretability: This transparency diminishes rapidly as the number of estimators (n_estimators) increases. A model composed of hundreds or thousands of weighted stumps, while mathematically simple, becomes practically difficult for a human to analyze holistically. The interactions between the many simple rules create a complex decision boundary that is no longer easily interpretable.
 
@@ -988,10 +697,7 @@ The foundational ideas of AdaBoost have inspired numerous variants and extension
 
 SAMME and SAMME.R: These are the primary extensions for multi-class classification.
 
-SAMME (Stagewise Additive Modeling using a Multiclass Exponential loss function) is a direct generalization of the AdaBoost algorithm to handle more than two classes. It modifies the calculation of the error rate and the classifier weight α 
-t
-​
-  accordingly.
+SAMME (Stagewise Additive Modeling using a Multiclass Exponential loss function) is a direct generalization of the AdaBoost algorithm to handle more than two classes. It modifies the calculation of the error rate and the classifier weight αₜaccordingly.
 
 SAMME.R (the 'R' stands for 'Real') is a variation that leverages weak learners capable of outputting class probability estimates instead of just hard class labels. It generally converges faster and achieves a lower test error than SAMME, making it the preferred choice in practice when the base estimator supports probability prediction.
 
@@ -999,10 +705,7 @@ AdaBoost.R2: This is a widely used adaptation of AdaBoost for regression tasks. 
 
 Real AdaBoost: This variant generalizes the output of the weak learners from discrete {−1,+1} predictions to real-valued confidence scores. This allows for a more nuanced combination of learners and often leads to improved accuracy.
 
-Gentle AdaBoost: This version uses a more conservative or "gentle" update step. Instead of taking a potentially large step determined by α 
-t
-​
- , it performs a bounded Newton step, which makes the algorithm more stable and less susceptible to the influence of noisy data and outliers.
+Gentle AdaBoost: This version uses a more conservative or "gentle" update step. Instead of taking a potentially large step determined by αₜ, it performs a bounded Newton step, which makes the algorithm more stable and less susceptible to the influence of noisy data and outliers.
 
 Other Variants: A rich ecosystem of other boosting algorithms has been developed, each modifying a different aspect of the core idea. LogitBoost applies the boosting principle to optimize the logistic loss function, making it more statistically robust. BrownBoost and LPBoost are other notable variants designed to improve robustness and theoretical properties.
 
@@ -1046,17 +749,11 @@ Pitfall 2: Slow Training on Large Datasets. The model takes an impractically lon
 
 Mitigation: If training time is a critical bottleneck, consider reducing the feature space through feature selection or dimensionality reduction. Subsampling the training data can also speed up the process. If these measures are insufficient, it is often a sign that a more scalable algorithm like XGBoost or LightGBM is a better choice for the problem.
 
-Pitfall 3: Weak Learners Are Not "Better Than Random." The algorithm fails to converge or produces poor results because the weighted error ϵ 
-t
-​
-  at some iteration is greater than or equal to 0.5 (for binary classification).
+Pitfall 3: Weak Learners Are Not "Better Than Random." The algorithm fails to converge or produces poor results because the weighted error ϵₜat some iteration is greater than or equal to 0.5 (for binary classification).
 
 Mitigation: This indicates that the features lack predictive power or that the base learner is too simple. The first step should be to engineer more informative features. If feature engineering is exhausted, one might cautiously try a slightly more complex base learner (e.g., max_depth=2 or 3). It is also critical to remember that for multi-class problems with K classes, the "random guessing" error rate is (K−1)/K, not 0.5, so the threshold for failure is different.
 
-Pitfall 4: Misinterpreting Per-Iteration Error. A common misunderstanding is expecting the error of each individual weak learner, ϵ 
-t
-​
- , to decrease with each iteration. Often, this error will stay constant or even increase.
+Pitfall 4: Misinterpreting Per-Iteration Error. A common misunderstanding is expecting the error of each individual weak learner, ϵₜ, to decrease with each iteration. Often, this error will stay constant or even increase.
 
 Mitigation: This is expected behavior and not a sign of failure. As the algorithm progresses, the sample weights are concentrated on the most difficult examples. The task for each subsequent learner is therefore harder than the previous one. The metric to monitor for improvement is the performance of the overall ensemble on a validation set, not the performance of the individual weak learners on their weighted training sets.
 

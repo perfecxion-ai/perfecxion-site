@@ -320,20 +320,10 @@ Metric Name	Formula	Geometric Interpretation	Ideal Use Case
 Euclidean (L2)	d(p,q)= 
 ∑ 
 i=1
-n
-​
- (p 
-i
-​
- −q 
-i
-​
- ) 
-2
- 
-
-​
- 	Straight-line distance in Euclidean space (hypersphere neighborhood).	Low-dimensional, continuous numerical data where features are well-scaled.
+n (p 
+i −q 
+i ) 
+2 Straight-line distance in Euclidean space (hypersphere neighborhood).	Low-dimensional, continuous numerical data where features are well-scaled.
 Manhattan (L1)	$d(p, q) = \sum_{i=1}^{n}	p_i - q_i	$
 Minkowski (Lp)	$d(p, q) = \left( \sum_{i=1}^{n}	p_i - q_i	^p \right)^{1/p}$
 Cosine Distance	$1 - \frac{p \cdot q}{\|p\| \|$	Based on the angle between two vectors, ignoring magnitude.	Text analysis, document similarity, and other high-dimensional sparse data.
@@ -457,10 +447,10 @@ print(f"Prediction: Class {logistic.predict(test_point)[0]}")
 
 This example clearly shows how KNN stores the entire dataset as its "model," while parametric algorithms like Logistic Regression compress the data into a few learned parameters. KNN's memory-based approach explains both its flexibility and computational costs.
 
-## Section 3: Practical Implementation and Data Considerations
+## ## Section 3: Practical Implementation and Data Considerations
 This section transitions from the theoretical underpinnings of K-Nearest Neighbors to the practical realities of its implementation. Effective use of KNN is less about complex model architecture and more about meticulous data preparation and a clear understanding of its computational constraints.
 
-### 3.1 Data Requirements and Preprocessing Imperatives
+### ### 3.1 Data Requirements and Preprocessing Imperatives
 The performance of KNN is exceptionally sensitive to the quality and format of the input data. Unlike some other algorithms that can be robust to variations in data scale or type, KNN's reliance on distance metrics makes preprocessing a critical, non-negotiable step.
 
 **Critical Preprocessing Demo: Feature Scaling Impact**
@@ -538,7 +528,7 @@ print("All features contribute meaningfully to distance calculation")
 
 This example dramatically shows how feature scaling transforms KNN from a broken algorithm (dominated by high-magnitude features) into an effective classifier where all features contribute appropriately to similarity measurements.
 
-Data Types: The algorithm is natively designed for numerical, continuous data, as distance metrics like Euclidean and Manhattan are defined over vector spaces. When dealing with categorical features, these must be converted into a numerical representation. The standard approach is one-hot encoding, where each category is transformed into a binary vector. It is important to create 
+**Data Types:** The algorithm is natively designed for numerical, continuous data, as distance metrics like Euclidean and Manhattan are defined over vector spaces. When dealing with categorical features, these must be converted into a numerical representation. The standard approach is one-hot encoding, where each category is transformed into a binary vector. It is important to create 
 
 k dummy variables for k categories, rather than the k-1 often used in linear regression, to ensure the distance metric treats all categories equally.
 
@@ -554,7 +544,7 @@ Handling Missing Data: KNN cannot operate on datasets with missing values, as di
 
 Ideal Dataset Sizes: Due to its computational and memory demands, KNN is best suited for small to medium-sized datasets, generally considered to be those with fewer than 100,000 samples. Its performance and feasibility degrade significantly on large datasets.
 
-3.2 Computational Complexity Analysis
+### ### ### ### ### 3.2 Computational Complexity Analysis
 The unique "lazy learning" nature of KNN results in an unusual distribution of computational load between the "training" and "prediction" phases. Understanding this complexity is key to knowing when and where to apply the algorithm.
 
 Table 2: Computational Complexity of KNN Implementations
@@ -1299,10 +1289,7 @@ Achieving optimal performance with KNN relies on a series of methodical steps an
 Always Scale Your Data: This is the most critical first step. Before fitting a KNN model, ensure all predictor variables are on a comparable scale. Standardization (to a mean of 0 and standard deviation of 1) is a robust and highly recommended default choice. Failure to do so will likely lead to invalid results.
 
 Use Cross-Validation to Find the Optimal K: Do not rely on heuristics like K= 
-n
-
-​
- . The best value for K is data-dependent and should be determined empirically. Use k-fold cross-validation to evaluate the model's performance across a range of K values and select the one that yields the best score on the validation sets.
+n . The best value for K is data-dependent and should be determined empirically. Use k-fold cross-validation to evaluate the model's performance across a range of K values and select the one that yields the best score on the validation sets.
 
 Choose an Odd K for Binary Classification: To avoid ties in the majority voting process when there are two classes, it is a standard best practice to choose an odd number for K.
 

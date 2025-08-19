@@ -283,41 +283,19 @@ WCSS (also called inertia) sums squared Euclidean distances between each point a
 J= 
 i=1
 ∑
-k
-​
-  
-x∈S 
-i
-​
- 
-∑
-​
- ∣∣x−μ 
-i
-​
- ∣∣ 
+k x∈S 
+i ∑ ∣∣x−μ 
+i ∣∣ 
 2
  
 where μᵢ is the centroid (mean vector) of all points assigned to cluster Sᵢ. Calculate the centroid as:
 
 μ 
-i
-​
- = 
+i = 
 ∣S 
-i
-​
- ∣
-1
-​
-  
-x∈S 
-i
-​
- 
-∑
-​
- x
+i ∣
+1 x∈S 
+i ∑ x
 This objective function naturally creates compact, spherical clusters. Squared Euclidean norm (L₂²) penalizes distant points quadratically, pushing the algorithm toward tightly packed clusters around central means.
 
 Here's a crucial insight: minimizing WCSS equals maximizing Between-Cluster Sum of Squares (BCSS). Why? Total Sum of Squares (TSS) stays constant, and TSS = WCSS + BCSS. Minimize within-cluster variance, automatically maximize between-cluster variance.
@@ -348,28 +326,16 @@ Assign each data point xₕ to its nearest centroid. Compute squared Euclidean d
 
 S 
 i
-(t)
-​
- ={x 
-p
-​
- :∣∣x 
-p
-​
- −μ 
+(t) ={x 
+p :∣∣x 
+p −μ 
 i
-(t)
-​
- ∣∣ 
+(t) ∣∣ 
 2
  ≤∣∣x 
-p
-​
- −μ 
+p −μ 
 j
-(t)
-​
- ∣∣ 
+(t) ∣∣ 
 2
  ∀j,1≤j≤k}
 Step 3: Update Step (Maximization)
@@ -377,39 +343,19 @@ Once all points have been assigned to clusters, the centroids are recomputed. Th
 
 μ 
 i
-(t+1)
-​
- 
-, is calculated as the arithmetic mean of all data points that were assigned to that cluster in the previous step.
+(t+1) , is calculated as the arithmetic mean of all data points that were assigned to that cluster in the previous step.
 
 μ 
 i
-(t+1)
-​
- = 
+(t+1) = 
 ∣S 
 i
-(t)
-​
- ∣
-1
-​
-  
-x 
-j
-​
- ∈S 
+(t) ∣
+1 x 
+j ∈S 
 i
-(t)
-​
- 
-∑
-​
- x 
-j
-​
- 
-Step 4: Iteration and Convergence
+(t) ∑ x 
+j Step 4: Iteration and Convergence
 Steps 2 and 3 are repeated iteratively. With each full iteration, the WCSS value is guaranteed to either decrease or remain the same. This property ensures that the algorithm will eventually converge. The process terminates when a stopping condition is met, which is typically one of the following :
 
 The cluster assignments for all data points do not change from one iteration to the next.

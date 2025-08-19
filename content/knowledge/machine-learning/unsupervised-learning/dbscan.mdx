@@ -528,9 +528,7 @@ HDBSCAN (Hierarchical Density-Based Spatial Clustering of Applications with Nois
 The first conceptual shift in HDBSCAN is to abandon the global eps parameter. Instead of asking whether a point's neighborhood meets a single density threshold, HDBSCAN estimates the local density at every single point in the dataset. This is achieved through the concept of core distance.
 
 Given a hyperparameter k (which is set by min_samples in the implementation and is analogous to DBSCAN's minPts), the core distance of a point p, denoted as core 
-k
-​
- (p), is defined as the distance from p to its k-th nearest neighbor.
+k (p), is defined as the distance from p to its k-th nearest neighbor.
 
 This simple definition provides a continuous measure of local density. A point located deep within a dense region will have a very small core distance, as it does not have to "reach" very far to find k neighbors. Conversely, a point in a sparse region will have a large core distance. This value can be seen as an estimate of the local density, where density is inversely proportional to the core distance.
 
@@ -540,15 +538,9 @@ To make the subsequent clustering process robust against noise and sensitive to 
 The mathematical formulation for the mutual reachability distance between two points, a and b, is:
 
 d 
-mreach−k
-​
- (a,b)=max(core 
-k
-​
- (a),core 
-k
-​
- (b),d(a,b))
+mreach−k (a,b)=max(core 
+k (a),core 
+k (b),d(a,b))
 where d(a,b) is the original metric distance (e.g., Euclidean distance) between a and b.
 
 This transformation has a powerful and intuitive effect. Consider two points, a and b:
@@ -556,12 +548,8 @@ This transformation has a powerful and intuitive effect. Consider two points, a 
 If both a and b are in a dense region, their core distances will be small. As long as the distance between them, d(a,b), is larger than their core distances, their mutual reachability distance is simply their original distance. The geometry of dense regions is largely preserved.
 
 If one point, say a, is in a sparse region, its core distance, core 
-k
-​
- (a), will be large. The mutual reachability distance between a and any other point b will now be at least core 
-k
-​
- (a). This effectively "pushes" sparse points away from all other points, making sparse regions even sparser in this new transformed space.
+k (a), will be large. The mutual reachability distance between a and any other point b will now be at least core 
+k (a). This effectively "pushes" sparse points away from all other points, making sparse regions even sparser in this new transformed space.
 
 This "repelling effect" is crucial for robustness. It makes it much harder for isolated noise points to form tenuous "bridges" between genuine clusters, a common failure mode of simpler algorithms like single-linkage clustering.
 
@@ -579,12 +567,8 @@ This process naturally creates a dendrogram, a tree-like diagram that visualizes
 The full single-linkage hierarchy is often overwhelmingly complex, containing a vast number of splits where only one or two points break away from a larger group. HDBSCAN introduces a crucial simplification step to create a more manageable and interpretable hierarchy, using its primary hyperparameter: min_cluster_size.
 
 The algorithm traverses the hierarchy (conceptually from top to bottom). At each split point where a cluster C divides into sub-clusters C 
-1
-​
- ,C 
-2
-​
- ,..., it checks the size of each new sub-cluster.
+1 ,C 
+2 ,..., it checks the size of each new sub-cluster.
 
 If a sub-cluster's size is less than min_cluster_size, it is not considered a "true" new cluster. Instead, its points are deemed to have "fallen out of" the parent cluster. The parent cluster is considered to persist, just with fewer members.
 
@@ -598,48 +582,25 @@ The final challenge is to select a flat set of clusters from the condensed hiera
 Conceptually, the stability of a cluster is a measure of its "lifetime" weighted by the number of points within it at any given time. To formalize this, it is easier to work with λ=1/distance. A high λ corresponds to a high density level (small distance).
 
 For a given cluster C 
-i
-​
-  in the condensed tree, it is "born" at a certain density level, λ 
-birth
-​
- . This is the λ value at which it split off from its parent.
+i in the condensed tree, it is "born" at a certain density level, λ 
+birth . This is the λ value at which it split off from its parent.
 
 The cluster "dies" when it splits into smaller clusters, at a density level λ 
-death
-​
- .
+death .
 
 For each point p that belongs to cluster C 
-i
-​
- , we can find the λ value, λ 
-p
-​
- , at which it "falls out" of the cluster (or the cluster dies).
+i , we can find the λ value, λ 
+p , at which it "falls out" of the cluster (or the cluster dies).
 
 The stability of the cluster C 
-i
-​
-  is then calculated as the sum of the persistence of each of its points:
+i is then calculated as the sum of the persistence of each of its points:
 
 S(C 
-i
-​
- )= 
+i )= 
 p∈C 
-i
-​
- 
-∑
-​
- (λ 
-p
-​
- −λ 
-birth
-​
- )
+i ∑ (λ 
+p −λ 
+birth )
 This value represents the integrated "mass" of the cluster over its lifetime in the hierarchy. The cluster selection algorithm then traverses the condensed tree from the leaves upwards. At each node (a parent cluster), it compares its own calculated stability to the sum of the stabilities of its children.
 
 If ∑S(children)>S(parent), the children are considered more stable. The parent is not chosen as a final cluster, and its stability is updated to be the sum of its children's stabilities for future comparisons up the tree.
@@ -648,7 +609,7 @@ If S(parent)>∑S(children), the parent cluster is deemed more stable than its c
 
 This elegant process guarantees that the chosen set of clusters is an optimal, non-overlapping partition that maximizes the total stability across the entire dataset.
 
-Section 3: Practical Implementation
+## Section 3: Practical Implementation
 Transitioning from the theoretical underpinnings to practical application is a critical step in mastering any algorithm. HDBSCAN's power is made accessible through robust and user-friendly libraries, primarily within the Python ecosystem. This section provides a guide to implementing HDBSCAN, from setting up the environment and running a basic example to handling different data types and interpreting the rich visual outputs the library provides.
 
 3.1 Toolkit: Leveraging scikit-learn and the hdbscan Library
@@ -713,14 +674,10 @@ Real-world applications often require additional steps before clustering.
 Feature Scaling: Like most distance-based algorithms, HDBSCAN is sensitive to the scale of features. If one feature has a much larger range than others (e.g., income in dollars vs. age in years), it will dominate the distance calculations. It is standard practice to scale the data before clustering, for instance, using sklearn.preprocessing.StandardScaler or MinMaxScaler.
 
 Distance Metrics: The default Euclidean distance (L 
-2
-​
-  norm) is not always appropriate. The hdbscan library supports a wide range of metrics that can be specified during instantiation :
+2 norm) is not always appropriate. The hdbscan library supports a wide range of metrics that can be specified during instantiation :
 
 metric='manhattan' (L 
-1
-​
-  norm): Useful when dimensions are not directly comparable or when outliers should have less influence.
+1 norm): Useful when dimensions are not directly comparable or when outliers should have less influence.
 
 metric='haversine' Useful for geospatial data (latitude and longitude).
 

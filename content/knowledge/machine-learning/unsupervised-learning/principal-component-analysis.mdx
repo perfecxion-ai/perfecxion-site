@@ -541,21 +541,11 @@ First and most critical step. PCA highly sensitive to variable scales—large-ra
 Solution: standardize each variable to mean zero, standard deviation one. For each value xᵢⱼ in data matrix X, standardized value zᵢⱼ becomes:
 
 z 
-ij
-​
- = 
+ij = 
 σ 
-j
-​
- 
-x 
-ij
-​
- −μ 
-j
-​
- 
-​
+j x 
+ij −μ 
+j ​
  
 
 where μⱼ is the j-th variable mean and σⱼ is its standard deviation. This ensures equal variable contribution to analysis.
@@ -568,9 +558,7 @@ For standardized data matrix Z of size n×p (n samples, p features), the p×p co
 
 C= 
 n−1
-1
-​
- Z 
+1 Z 
 T
  Z
 
@@ -587,37 +575,23 @@ Cv=λv
 This means that when the matrix C acts on the vector v, the result is simply the original vector scaled by the scalar λ. The eigenvectors represent the directions of the new axes (the principal components), and the eigenvalues represent the magnitude of the variance along those directions.
 
 The fundamental optimization problem that PCA solves is to find a projection vector (or weight vector) w that maximizes the variance of the projected data. For the first principal component, the objective is to find the unit vector w 
-(1)
-​
-  that maximizes the variance of the scores t 
-1
-​
- =Zw 
-(1)
-​
- :
+(1) that maximizes the variance of the scores t 
+1 =Zw 
+(1) :
 
 w 
-(1)
-​
- =arg 
+(1) =arg 
 ∥w∥=1
-max
-​
- {Var(Zw)}=arg 
+max {Var(Zw)}=arg 
 ∥w∥=1
-max
-​
- {w 
+max {w 
 T
  Cw}
 
 This expression, w 
 T
  Cw, is known as a Rayleigh quotient. A standard result from linear algebra states that this quotient is maximized when w is the eigenvector of C corresponding to the largest eigenvalue, λ 
-1
-​
- . The second principal component is found by solving the same optimization problem with the additional constraint that it must be orthogonal to the first, which yields the eigenvector corresponding to the second-largest eigenvalue, and so on.
+1 . The second principal component is found by solving the same optimization problem with the additional constraint that it must be orthogonal to the first, which yields the eigenvector corresponding to the second-largest eigenvalue, and so on.
 
 2.2 The Mechanics of Hierarchical Clustering: Distance Metrics and Linkage Criteria
 Once the data has been projected onto the selected principal components, the next stage is to build the hierarchical cluster structure. This process is governed by two key choices: the distance metric used to quantify dissimilarity between individual points, and the linkage criterion used to quantify dissimilarity between clusters.
@@ -630,21 +604,8 @@ Euclidean Distance (L2 norm): This is the most intuitive and widely used metric,
 d(x,y)= 
 i=1
 ∑
-p
-​
- (x 
-i
-​
- −y 
-i
-​
- ) 
-2
- 
-
-​
- 
-Manhattan Distance (L1 norm): Also known as the "city block" distance, it is the sum of the absolute differences of their coordinates.
+p (xᵢ−yᵢ) 
+2 Manhattan Distance (L1 norm): Also known as the "city block" distance, it is the sum of the absolute differences of their coordinates.
 
 Correlation Distance: This metric is particularly useful in fields like bioinformatics for analyzing gene expression data. It is typically defined as 1−r, where r is the Pearson correlation coefficient between two vectors. It measures similarity in pattern or shape rather than magnitude, so two vectors with perfect positive correlation have a distance of zero.
 
@@ -659,13 +620,9 @@ Table 1: Comparison of Hierarchical Clustering Linkage Criteria
 
 Linkage Criterion	Mathematical Definition (Distance between clusters A and B)	Cluster Shape Bias	Primary Use Case
 Single Linkage	D(A,B)=min 
-a∈A,b∈B
-​
- d(a,b)	Tends to find long, chained, or non-elliptical clusters. Sensitive to noise and outliers (chaining effect).	Useful for identifying well-separated, non-globular clusters.
+a∈A,b∈B d(a,b)	Tends to find long, chained, or non-elliptical clusters. Sensitive to noise and outliers (chaining effect).	Useful for identifying well-separated, non-globular clusters.
 Complete Linkage	D(A,B)=max 
-a∈A,b∈B
-​
- d(a,b)	Tends to find compact, spherical clusters of similar size. Less susceptible to noise than single linkage.	Effective when clusters are expected to be compact and roughly equal in diameter.
+a∈A,b∈B d(a,b)	Tends to find compact, spherical clusters of similar size. Less susceptible to noise than single linkage.	Effective when clusters are expected to be compact and roughly equal in diameter.
 Average Linkage	$D(A, B) = \frac{1}{	A	
 Ward's Method	Merges the pair of clusters that minimizes the increase in the total within-cluster sum of squares (variance).	Tends to find compact, spherical clusters of equal size. Aims to create very homogeneous clusters.	Often the default choice due to its variance-minimizing property, which aligns well with many statistical objectives and with PCA.
 
@@ -679,31 +636,17 @@ Standardize: Center and scale the data matrix X to produce the standardized matr
 
 Compute Covariance: Calculate the covariance matrix C= 
 n−1
-1
-​
- Z 
+1 Z 
 T
  Z.
 
 Eigendecomposition: Compute the eigenvalues (λ 
-1
-​
- ≥λ 
-2
-​
- ≥⋯≥λ 
-p
-​
- ) and corresponding eigenvectors (w 
-1
-​
- ,w 
-2
-​
- ,…,w 
-p
-​
- ) of the covariance matrix C.
+1 ≥λ 
+2 ≥⋯≥λ 
+p ) and corresponding eigenvectors (w 
+1 ,w 
+2 ,…,w 
+p ) of the covariance matrix C.
 
 Select Principal Components: Choose the first k eigenvectors (where k<p) that explain a sufficient amount of the total variance. This is often determined by inspecting a scree plot or setting a cumulative variance threshold (e.g., 80%). Let W be the p×k matrix whose columns are these top k eigenvectors.
 
@@ -749,7 +692,7 @@ Small (<1K samples) to Medium (1K-100K samples): These dataset sizes are ideal. 
 
 Large (100K-1M samples) to Very Large (>1M samples): For datasets with a large number of samples (n), the standard agglomerative hierarchical clustering algorithm becomes computationally prohibitive due to its high time and memory complexity. In such cases, practitioners must consider alternatives, such as using more efficient linkage-specific algorithms, subsampling the data, or switching to a more scalable clustering method like K-Means after the PCA step.
 
-3.2 Computational Complexity
+### ### ### ### ### 3.2 Computational Complexity
 A critical aspect of practical implementation is understanding the computational cost, which helps in planning resources and selecting appropriate algorithms for the scale of the data. The complexity of the pipeline is dominated by the hierarchical clustering step.
 
 PCA: The time complexity of PCA is primarily determined by the method used to compute the eigendecomposition or Singular Value Decomposition (SVD) of the n×p data matrix. A full SVD has a complexity of approximately O(min(n 

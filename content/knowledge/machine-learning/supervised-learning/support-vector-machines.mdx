@@ -103,54 +103,30 @@ The margin is defined by two parallel hyperplanes, $ \mathbf{w}^T\mathbf{x} + b 
 
 This minimization is performed subject to the constraint that all training data points are correctly classified and lie outside the margin. This constraint is expressed as:
 
-y 
-i
-​
- (w 
+yᵢ(w 
 T
- x 
-i
-​
- +b)≥1for all training samples i=1,…,n
+ xᵢ+b)≥1for all training samples i=1,…,n
 
 This formulation is known as the primal problem for a hard-margin SVM.
 
 The Soft Margin Formulation: Introducing Slack and the Hinge Loss
 The hard-margin formulation is brittle because it assumes perfect linear separability. To make the algorithm practical for real-world data, which is often noisy and overlapping, the soft-margin formulation introduces non-negative slack variables, $ \xi_i \geq 0 $, for each data point $ \mathbf{x}_i $. These variables relax the hard constraint, allowing some points to violate the margin. The constraint is modified to:
 
-y 
-i
-​
- (w 
+yᵢ(w 
 T
- x 
-i
-​
- +b)≥1−ξ 
-i
-​
- 
-
-If $ \xi_i = 0 $, the point is correctly classified and is on or outside the margin. If $ 0 < \xi_i \leq 1 $, the point is within the margin but still on the correct side of the hyperplane. If $ \xi_i > 1 $, the point is misclassified.
+ xᵢ+b)≥1−ξ 
+i If $ \xi_i = 0 $, the point is correctly classified and is on or outside the margin. If $ 0 < \xi_i \leq 1 $, the point is within the margin but still on the correct side of the hyperplane. If $ \xi_i > 1 $, the point is misclassified.
 
 To control these violations, the objective function is updated to include a penalty term. The new objective is to minimize:
 
 2
-1
-​
- ∥w∥ 
+1 ∥w∥ 
 2
  +C 
 i=1
 ∑
-n
-​
- ξ 
-i
-​
- 
-
-The hyperparameter $ C > 0 $ is the regularization parameter that controls the trade-off between maximizing the margin (a small $ |\mathbf{w}|^2 $) and minimizing the classification error (a small $ \sum \xi_i $). A high value of $ C $ imposes a large penalty for margin violations, forcing the model to classify as many points correctly as possible, which can lead to a narrower margin and potential overfitting. Conversely, a small value of $ C $ allows for more margin violations in favor of a wider, simpler margin, which can improve generalization but may underfit the training data.
+n ξ 
+i The hyperparameter $ C > 0 $ is the regularization parameter that controls the trade-off between maximizing the margin (a small $ |\mathbf{w}|^2 $) and minimizing the classification error (a small $ \sum \xi_i $). A high value of $ C $ imposes a large penalty for margin violations, forcing the model to classify as many points correctly as possible, which can lead to a narrower margin and potential overfitting. Conversely, a small value of $ C $ allows for more margin violations in favor of a wider, simpler margin, which can improve generalization but may underfit the training data.
 
 This entire formulation is an elegant implementation of minimizing a specific loss function known as the hinge loss, defined as $ L(y, f(\mathbf{x})) = \max(0, 1 - y \cdot f(\mathbf{x})) $, plus a regularization term $ \lambda|\mathbf{w}|^2 $ (where $ \lambda $ is related to 1/C). The hinge loss is zero for points correctly classified outside the margin. For any point that violates the margin, the loss increases linearly with its distance from the correct margin boundary.
 

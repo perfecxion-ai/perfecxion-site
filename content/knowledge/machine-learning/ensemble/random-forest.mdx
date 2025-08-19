@@ -491,25 +491,14 @@ The mathematical formulation is as follows:
 
 prox(i,j)= 
 N 
-trees
-​
- 
-1
-​
-  
-t=1
+trees 1 t=1
 ∑
 N 
-trees
-​
- 
-​
+trees ​
  I(leaf(i,t)=leaf(j,t))
 
 where N 
-trees
-​
-  is the total number of trees in the forest, leaf(i,t) is the index of the terminal node for data point i in tree t, and I(⋅) is the indicator function, which is 1 if the condition is true and 0 otherwise.
+trees is the total number of trees in the forest, leaf(i,t) is the index of the terminal node for data point i in tree t, and I(⋅) is the indicator function, which is 1 if the condition is true and 0 otherwise.
 
 Visual Description: Consider a single decision tree in the forest and ten original data points. Suppose points {1, 5, 8} land in leaf node A, points {2, 9} land in leaf node B, points {3, 4, 6} land in leaf node C, and points {7, 10} land in leaf node D. For this single tree, the partial proximity matrix would have a 1 at entry (1, 5), (5, 8), (1, 8), (2, 9), etc., and a 0 at entry (1, 2), (5, 9), etc. The final proximity matrix is the element-wise average of these binary matrices over all trees in the forest.
 
@@ -534,41 +523,19 @@ Sidification: A Novel Feature Engineering Process
 The method is based on a two-step feature engineering process called "sidification" (Staggered Interaction Data):
 
 Staggering (SID Main Features): The original features, X=(X 
-1
-​
- ,…,X 
-d
-​
- ), are transformed into a new set of features, Y=(Y 
-1
-​
- ,…,Y 
-d
-​
- ), called the SID main effects. This is done by shifting and "staggering" the features so that their value ranges become mutually exclusive. For example, if X 
-1
-​
-  ranges from  and X 
-2
-​
-  ranges from , they could be transformed such that Y 
-1
-​
-  is in  and Y 
-2
-​
-  is in [15.01, 25.01]. This is a monotonic transformation, and since decision trees are invariant to such transformations, no information is lost.
+1 ,…,X 
+d ), are transformed into a new set of features, Y=(Y 
+1 ,…,Y 
+d ), called the SID main effects. This is done by shifting and "staggering" the features so that their value ranges become mutually exclusive. For example, if X 
+1 ranges from  and X 
+2 ranges from , they could be transformed such that Y 
+1 is in  and Y 
+2 is in [15.01, 25.01]. This is a monotonic transformation, and since decision trees are invariant to such transformations, no information is lost.
 
 Interaction Features (SID Interaction Features): A new set of predictor variables, Z, is created by forming all pairwise interactions of the staggered main features (e.g., Z 
-jk
-​
- =Y 
-j
-​
- ×Y 
-k
-​
- ). The non-overlapping ranges of the Y features ensure a unique relationship between the original features and these new interaction terms.
+jk =Y 
+j ×Y 
+k ). The non-overlapping ranges of the Y features ensure a unique relationship between the original features and these new interaction terms.
 
 Multivariate Random Forest (MVRF) for Structure Learning
 A multivariate random forest (MVRF) is then trained to solve a regression problem: predicting the SID main features (Y) using the SID interaction features (Z) as predictors. The underlying logic is that if the original data has a strong internal structure (i.e., the features are not independent), then the interactions between features (Z) will be predictive of the features themselves (Y). The MVRF will find splits on the interaction features (Z) that effectively reduce the variance (impurity) in the main features (Y). These splits will naturally separate data points into groups that have distinct structural relationships, thereby identifying clusters.
@@ -578,7 +545,7 @@ Instead of the binary proximity score, sidClustering introduces a more nuanced, 
 
 The evolution from Breiman's method to sidClustering represents a significant conceptual advance. It moves from a proxy task based on an external and potentially biasing reference distribution (synthetic data) to a self-referential, regression-based task focused purely on learning the internal dependency structure of the data. This makes the approach theoretically more robust and less susceptible to arbitrary modeling choices.
 
-Section 3: Practical Implementation and Workflow
+## Section 3: Practical Implementation and Workflow
 Translating the theory of Random Forest clustering into practice requires familiarity with specific libraries and workflows, which differ significantly between popular data science environments like R and Python. This section provides a practical guide to implementing these methods, highlighting the key packages, code structures, and common datasets used for benchmarking. The choice of implementation has considerable implications for both ease of use and computational efficiency.
 
 3.1 Implementation in R
@@ -798,7 +765,7 @@ Like any advanced algorithm, Random Forest clustering possesses a distinct set o
 5.1 Key Strengths
 The primary advantages of RF clustering stem from its foundation in ensemble tree-based methods, which grant it remarkable flexibility and robustness.
 
-Handles Mixed Data Types: The algorithm can natively process datasets containing both numerical and categorical features. The decision tree splitting mechanism works on a per-feature basis, obviating the need for extensive preprocessing steps like one-hot encoding, which can artificially inflate dimensionality.
+Handles Mixed **Data Types:** The algorithm can natively process datasets containing both numerical and categorical features. The decision tree splitting mechanism works on a per-feature basis, obviating the need for extensive preprocessing steps like one-hot encoding, which can artificially inflate dimensionality.
 
 Robustness to Scaling and Outliers: RF clustering is invariant to monotonic transformations of numerical features. This means that scaling or normalization (e.g., min-max scaling, standardization) is not required, as the rank order of values is what matters for tree splits, not the magnitude. Furthermore, the ensemble nature and the use of bootstrap sampling make the method highly robust to outliers, whose influence is confined to a subset of trees and averaged out in the final proximity calculation.
 
@@ -814,9 +781,7 @@ Despite its power, the method is constrained by significant computational and in
 Computational and Memory Complexity: The most significant drawback is its scalability. The core of the method involves computing and storing an N×N proximity matrix, where N is the number of samples. The time complexity for generating this matrix is roughly O(N 
 2
  ⋅n 
-trees
-​
- ), and its space complexity is O(N 
+trees ), and its space complexity is O(N 
 2
  ). This quadratic scaling with the number of samples makes the full method computationally prohibitive for datasets with more than a few tens of thousands of data points, as the proximity matrix can easily exceed available RAM.
 
@@ -844,9 +809,7 @@ Cluster Shape Assumption	Arbitrary (No geometric assumption)	Spherical / Convex	
 Scalability (Time Complexity)	Poor (O(N 
 2
  ⋅n 
-trees
-​
- ))	Excellent (O(N⋅k⋅d⋅i))	Poor (O(N 
+trees ))	Excellent (O(N⋅k⋅d⋅i))	Poor (O(N 
 2
  logN) to O(N 
 3
@@ -895,19 +858,13 @@ While Random Forest clustering is a powerful technique, its successful applicati
 The primary barrier to the widespread adoption of RF clustering is its computational cost, which is dominated by the generation of the proximity matrix.
 
 Time Complexity Analysis: The overall time complexity can be broken into two parts. First, training the Random Forest itself has a complexity of approximately O(n 
-trees
-​
- ⋅mtry⋅NlogN), where n 
-trees
-​
-  is the number of trees, mtry is the number of features considered at each split, and N is the number of samples. This part is generally efficient and highly parallelizable. The second and more demanding part is the computation of the 
+trees ⋅mtry⋅NlogN), where n 
+trees is the number of trees, mtry is the number of features considered at each split, and N is the number of samples. This part is generally efficient and highly parallelizable. The second and more demanding part is the computation of the 
 
 N×N proximity matrix. A naive pair-wise comparison has a complexity of O(N 
 2
  ⋅n 
-trees
-​
- ). This quadratic scaling with the number of samples is the main bottleneck.
+trees ). This quadratic scaling with the number of samples is the main bottleneck.
 
 Memory Complexity: The storage of the full proximity matrix requires O(N 
 2
@@ -961,10 +918,7 @@ A low mtry leads to less correlated trees, which is good for the ensemble, but e
 
 A high mtry leads to stronger individual trees but increases their correlation, as they are more likely to select the same dominant features.
 The optimal value, which can be found by tuning and observing the proxy model's OOB error, typically lies somewhere between the default values of  
-p
-
-​
-  and p/3.
+p and p/3.
 
 Tree Complexity (max_depth, min_samples_leaf): In supervised learning, these parameters are used to prune trees and prevent overfitting. For proximity generation, the objective is different. The goal is to capture the maximum amount of structure in the data, which often means growing deep, fully-formed trees. Therefore, it is common practice to leave 
 

@@ -188,11 +188,7 @@ Every Naive Bayes classifier starts here. You have a class variable y and featur
 
 P(y∣X)= 
 P(X)
-P(X∣y)P(y)
-​
- 
-
-Each piece serves a specific purpose:
+P(X∣y)P(y) Each piece serves a specific purpose:
 
 - **P(y|X) - Posterior Probability**: What you're solving for. The probability that your instance belongs to class y given its features.
 - **P(X|y) - Likelihood**: How likely these particular features are if the instance belongs to class y. You calculate this from training data.
@@ -267,24 +263,12 @@ This example shows how Bayes' theorem transforms prior knowledge and observed ev
 
 Here's where "naive" becomes powerful. Calculating P(X|y) directly is computationally nightmarish—you'd need the joint probability of all features together. The naive assumption breaks this down beautifully:
 
-P(X∣y)=P(x 
-1
-​
- ,x 
-2
-​
- ,…,x 
-n
-​
- ∣y)≈ 
+P(X∣y)=P(x₁,x 
+2 ,…,x 
+n ∣y)≈ 
 i=1
 ∏
-n
-​
- P(x 
-i
-​
- ∣y)
+n P(xᵢ∣y)
 
 **Your Classification Decision Rule**
 
@@ -293,25 +277,14 @@ Now you combine everything. Since P(X) is identical across all classes, you can 
 Your prediction ŷ becomes:
 
 y
-^
-​
- = 
+^ = 
 y
-argmax
-​
- P(y∣X)= 
+argmax P(y∣X)= 
 y
-argmax
-​
- P(y) 
+argmax P(y) 
 i=1
 ∏
-n
-​
- P(x 
-i
-​
- ∣y)
+n P(xᵢ∣y)
 
 **Log-Probability: Avoiding Numerical Disasters**
 
@@ -320,21 +293,12 @@ Multiplying many tiny probabilities creates a practical problem—your computer 
 Your MAP rule becomes:
 
 y
-^
-​
- = 
+^ = 
 y
-argmax
-​
- [log(P(y))+ 
+argmax [log(P(y))+ 
 i=1
 ∑
-n
-​
- log(P(x 
-i
-​
- ∣y))]
+n log(P(xᵢ∣y))]
 
 This transformation is more than a mere computational convenience. It reframes the Naive Bayes classifier as a linear model in log-space. The decision boundary between two classes is the set of points where their log-posterior probabilities are equal. Expanding this equality results in a linear equation of the form w 
 T
@@ -350,37 +314,17 @@ Calculate Prior Probabilities P(y): The algorithm first computes the prior proba
 
 P(Play Golf=Yes)= 
 Total number of days
-Number of ’Yes’ days
-​
- 
-
-P(Play Golf=No)= 
+Number of ’Yes’ days P(Play Golf=No)= 
 Total number of days
-Number of ’No’ days
-​
- 
-
-
-Calculate Likelihoods P(x 
-i
-​
- ∣y): Next, the algorithm constructs frequency or likelihood tables for each feature, conditioned on each class.
+Number of ’No’ days Calculate Likelihoods P(xᵢ∣y): Next, the algorithm constructs frequency or likelihood tables for each feature, conditioned on each class.
 
 For the 'Outlook' feature, it calculates probabilities like:
 
 P(Outlook=Sunny∣Play Golf=Yes)= 
 Total count of ’Yes’ days
-Count of ’Sunny’ on ’Yes’ days
-​
- 
-
-P(Outlook=Sunny∣Play Golf=No)= 
+Count of ’Sunny’ on ’Yes’ days P(Outlook=Sunny∣Play Golf=No)= 
 Total count of ’No’ days
-Count of ’Sunny’ on ’No’ days
-​
- 
-
-This process is repeated for every possible value of every feature ('Rainy', 'Overcast'; 'Hot', 'Mild', 'Cool', etc.) for both the 'Yes' and 'No' classes.
+Count of ’Sunny’ on ’No’ days This process is repeated for every possible value of every feature ('Rainy', 'Overcast'; 'Hot', 'Mild', 'Cool', etc.) for both the 'Yes' and 'No' classes.
 
 Prediction Phase:
 Suppose a new day arrives with the conditions: X_new = (Outlook=Sunny, Temperature=Cool, Humidity=High, Windy=True). The algorithm must predict whether golf will be played.
@@ -409,9 +353,7 @@ Score(No)=P(No)×P(Sunny∣No)×P(Cool∣No)×P(High∣No)×P(True∣No)
 
 Assign Class: The algorithm compares Score(Yes) and Score(No). The predicted class  
 y
-^
-​
-  is the one with the higher score.
+^ is the one with the higher score.
 
 This process can be visualized as a flowchart, starting with data input, moving through the calculation of priors and likelihoods during training, and then applying these stored probabilities to new data to generate a final class prediction.
 
@@ -434,7 +376,7 @@ Mathematically, α places a Dirichlet prior on feature probabilities—essential
 
 Now we shift from theory to practice. You'll learn data requirements, computational costs, and the tools that make Naive Bayes work in real ML workflows.
 
-### Section 3: Practical Implementation
+### ## Section 3: Practical Implementation
 
 Hands-on implementation details—from data prep to computational costs to choosing the right libraries.
 
@@ -715,10 +657,7 @@ Linear time complexity makes Naive Bayes exceptionally scalable. It handles both
 
 "Naive Bayes" represents a family of classifiers, each distinguished by different distributional assumptions about features. Choosing the correct variant for your data type is the most critical implementation decision.
 
-| Variant | Core Assumption on P(x 
-i
-​
- ∣y) | Data Type | Key Hyperparameters | Primary Use Case |
+| Variant | Core Assumption on P(xᵢ∣y) | Data Type | Key Hyperparameters | Primary Use Case |
 | :--- | :--- | :--- | :--- | :--- |
 | GaussianNB | Features follow a Gaussian (normal) distribution. | Continuous / Numerical | var_smoothing | General classification with continuous features (e.g., sensor data, medical measurements). |
 | MultinomialNB | Features follow a multinomial distribution. | Discrete Counts | alpha | Text classification with word counts (Bag-of-Words). |
@@ -864,18 +803,9 @@ Most common pitfall with discrete data: zero-frequency problem. Feature value ap
 
 **Solution**: Laplace Smoothing (additive smoothing). Add small constant α to every frequency table count. Ensures no probability equals exactly zero.
 
-P(x 
-i
-​
- ∣y)= 
+P(xᵢ∣y)= 
 count(y)+α×V
-count(x 
-i
-​
- ,y)+α
-​
- 
-Where:
+count(xᵢ,y)+α Where:
 
 α is the smoothing parameter.
 

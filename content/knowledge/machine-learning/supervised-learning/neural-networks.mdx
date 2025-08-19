@@ -269,9 +269,7 @@ This two-step process is repeated for each layer, from the input layer (where A
 [L]
  , represents the network's prediction, often denoted as  
 y
-^
-​
- .
+^ .
 
 Backpropagation: Learning from Error
 Backpropagation is the cornerstone of neural network training. It is an algorithm that efficiently computes the gradient of the cost function J with respect to every weight W and bias b in the network. This gradient information is then used by an optimization algorithm, like gradient descent, to update the parameters and minimize the cost.
@@ -296,9 +294,7 @@ Compute the error at the output layer (L): The error term δ
 ∂Z 
 [L]
  
-∂J
-​
- =(A 
+∂J =(A 
 [L]
  −y)⊙g 
 ′[L]
@@ -322,9 +318,7 @@ Backpropagate the error to previous layers: For each layer l from L−1 down to 
 ∂Z 
 [l]
  
-∂J
-​
- =((W 
+∂J =((W 
 [l+1]
  ) 
 T
@@ -345,13 +339,9 @@ Compute the gradients: Once the error terms (δ
 ∂W 
 [l]
  
-∂J
-​
- = 
+∂J = 
 m
-1
-​
- δ 
+1 δ 
 [l]
  (A 
 [l−1]
@@ -361,18 +351,11 @@ T
 ∂b 
 [l]
  
-∂J
-​
- = 
+∂J = 
 m
-1
-​
-  
-i=1
+1 i=1
 ∑
-m
-​
- δ 
+m δ 
 [l](i)
  
 
@@ -386,32 +369,17 @@ The training of a neural network is framed as an optimization problem. The goal 
 Cost Functions (Loss Functions)
 A cost function (or loss function) quantifies the discrepancy between the network's predictions ( 
 y
-^
-​
- ) and the true target values (y). The choice of cost function is critical and depends on the nature of the task (e.g., regression or classification).
+^ ) and the true target values (y). The choice of cost function is critical and depends on the nature of the task (e.g., regression or classification).
 
 Mean Squared Error (MSE): The standard cost function for regression problems. It calculates the average of the squared differences between the predicted and actual values.
 
 J=MSE= 
 n
-1
-​
-  
-i=1
+1 i=1
 ∑
-n
-​
- (y 
-i
-​
- − 
+n (yᵢ− 
 y
-^
-​
-  
-i
-​
- ) 
+^ i ) 
 2
  
 
@@ -423,31 +391,17 @@ Binary Cross-Entropy: Used for two-class classification problems. The formula fo
 
 J=−[ylog( 
 y
-^
-​
- )+(1−y)log(1− 
+^ )+(1−y)log(1− 
 y
-^
-​
- )]
+^ )]
 Categorical Cross-Entropy: Used for multi-class classification problems with C classes. The formula for a single example is:
 
 J=− 
 i=1
 ∑
-C
-​
- y 
-i
-​
- log( 
+C yᵢlog( 
 y
-^
-​
-  
-i
-​
- )
+^ i )
 
 Cross-entropy is more effective than MSE for classification because it provides larger gradients for predictions that are both incorrect and confident, leading to faster and more effective learning.
 
@@ -457,9 +411,7 @@ Gradient Descent is the foundational iterative optimization algorithm used to fi
 θ is:
 
 θ:=θ−η∇ 
-θ
-​
- J(θ)
+θ J(θ)
 
 where η (eta) is the learning rate, a hyperparameter that controls the size of the update step.
 
@@ -485,9 +437,7 @@ Sigmoid	σ(z)=
 1+e 
 −z
  
-1
-​
- 	(0,1)	σ(z)(1−σ(z))	Outputs are interpretable as probabilities. Smooth gradient.	Vanishing gradients. Not zero-centered. Computationally expensive.
+1 (0,1)	σ(z)(1−σ(z))	Outputs are interpretable as probabilities. Smooth gradient.	Vanishing gradients. Not zero-centered. Computationally expensive.
 Tanh	tanh(z)= 
 e 
 z
@@ -497,10 +447,7 @@ z
 e 
 z
  −e 
-−z
- 
-​
- 	(−1,1)	1−tanh 
+−z (−1,1)	1−tanh 
 2
  (z)	Zero-centered output, which helps with optimization.	Still suffers from vanishing gradients for large inputs.
 ReLU	ReLU(z)=max(0,z)	$ Biases can often be initialized to zero.			
@@ -512,15 +459,11 @@ Iterate Over Mini-batches: Within each epoch, the training data is shuffled and 
 
 a. Forward Propagation: The input data from the current mini-batch is fed into the input layer. The network then performs the forward propagation calculations, passing the data through each hidden layer until it reaches the output layer and generates a set of predictions ( 
 y
-^
-​
- ).
+^ ).
 
 b. Compute Loss: The predictions ( 
 y
-^
-​
- ) are compared to the true labels (y) from the mini-batch using the chosen cost function (e.g., MSE or cross-entropy). This yields a single scalar value representing the average loss for that mini-batch.
+^ ) are compared to the true labels (y) from the mini-batch using the chosen cost function (e.g., MSE or cross-entropy). This yields a single scalar value representing the average loss for that mini-batch.
 
 c. Backward Propagation: The backpropagation algorithm is executed. It starts from the computed loss and works backward through the network, calculating the gradient of the loss with respect to every weight and bias in the network.
 
@@ -556,18 +499,10 @@ Effect: Training for too few epochs will lead to an underfit model that has not 
 Optimizer and its Parameters: The choice of optimization algorithm (e.g., SGD, Adam) and its specific parameters.
 
 Effect: For Adam, this includes the decay rates for the moment estimates, β 
-1
-​
-  and β 
-2
-​
- . While the default values (e.g., β 
-1
-​
- =0.9,β 
-2
-​
- =0.999) work well in many cases, tuning them can sometimes yield better performance.
+1 and β 
+2 . While the default values (e.g., β 
+1 =0.9,β 
+2 =0.999) work well in many cases, tuning them can sometimes yield better performance.
 
 The process of building a neural network is not about optimizing these components in isolation but about achieving a form of system-level coherence. An architectural choice, such as using ReLU activation functions, enables more effective optimization by mitigating vanishing gradients, which in turn allows for the successful training of much deeper architectures. Similarly, the choice of a softmax activation in the output layer is intrinsically linked to the use of a cross-entropy loss function, as this pairing has a sound probabilistic interpretation (maximizing the log-likelihood of the data). A failure in model performance is often not due to a single poor component but a fundamental mismatch between the architecture, the optimizer, and the cost function.
 
@@ -575,34 +510,16 @@ Table 2.2: Overview of Optimization Algorithms: SGD vs. Adam
 
 Feature	Stochastic Gradient Descent (SGD)	Adam (Adaptive Moment Estimation)
 Core Idea	Updates parameters using a gradient estimated from a single sample or a mini-batch.	Computes individual adaptive learning rates for each parameter using estimates of first and second moments of the gradients.
-Update Rule	θ:=θ−η∇J(θ;x 
-i
-​
- ,y 
-i
-​
- )	Involves updating moving averages of the gradient (m 
-t
-​
- ) and squared gradient (v 
-t
-​
- ), applying bias correction, and then updating θ.
+Update Rule	θ:=θ−η∇J(θ;xᵢ,yᵢ)	Involves updating moving averages of the gradient (m 
+t ) and squared gradient (v 
+t ), applying bias correction, and then updating θ.
 Learning Rate	Uses a single, fixed learning rate (η) for all parameter updates. Highly sensitive to this choice.	Maintains a per-parameter learning rate that is adapted during training based on the history of gradients.
 Memory Usage	Minimal; only stores parameters.	Higher; stores parameters plus the first and second moment estimates (m 
-t
-​
-  and v 
-t
-​
- ).
+t and v 
+t ).
 Key Hyperparameters	Learning rate (η), batch size.	Learning rate (α), β 
-1
-​
- , β 
-2
-​
- , ϵ.
+1 , β 
+2 , ϵ.
 Pros	Computationally efficient per update. The inherent noise can help escape local minima.	Converges quickly in practice. Robust to choice of hyperparameters. Well-suited for large datasets and complex models.
 Cons	Can have noisy convergence. Can be slow to converge in ravines (areas where the loss surface is much steeper in one dimension than another).	Higher memory footprint. Can sometimes converge to a suboptimal solution in certain problems compared to finely tuned SGD with momentum.
 
@@ -623,31 +540,17 @@ outliers and noisy data, as these can disproportionately influence the model's t
 Numerical Data: For tabular data with numerical features, feature scaling is a critical step. Neural networks are sensitive to the scale of input features; features with large value ranges can dominate the learning process and slow down the convergence of gradient descent. Common techniques include:
 
 Normalization (Min-Max Scaling): Rescales features to a fixed range, typically $$. This is done using the formula: x 
-scaled
-​
- = 
+scaled = 
 x 
-max
-​
- −x 
-min
-​
- 
-x−x 
-min
-​
- 
-​
+max −x 
+min x−x 
+min ​
  .
 
 Standardization (Z-score Normalization): Rescales features to have a mean of 0 and a standard deviation of 1. This is calculated as: x 
-scaled
-​
- = 
+scaled = 
 σ
-x−μ
-​
- . Standardization is generally preferred as it is less sensitive to outliers.
+x−μ . Standardization is generally preferred as it is less sensitive to outliers.
 
 Categorical Data: Non-numerical, categorical features must be converted into a numerical format. The standard method is one-hot encoding, which transforms a categorical feature with k unique categories into k binary features (a vector of 0s with a single 1). This prevents the model from assuming an artificial ordinal relationship between categories that a simple integer encoding would imply.
 
@@ -694,28 +597,16 @@ Time Complexity
 Training: The training process, involving repeated forward and backward passes, is computationally intensive. The time complexity for a single epoch of training a standard Multi-Layer Perceptron (MLP) is approximately proportional to the number of training samples (N) and the total number of weights in the network (∣W∣). More precisely, for a fully connected network with layers of sizes 
 
 n 
-0
-​
- ,n 
-1
-​
- ,…,n 
-L
-​
- , the complexity of the matrix multiplications dominates. The total time complexity for one epoch is:
+0 ,n 
+1 ,…,n 
+L , the complexity of the matrix multiplications dominates. The total time complexity for one epoch is:
 
 O(N× 
 l=1
 ∑
-L
-​
- n 
-l−1
-​
- ⋅n 
-l
-​
- )
+L n 
+l−1 ⋅n 
+l )
 
 This complexity is then multiplied by the number of epochs (E) for the total training time. This highlights that training time scales linearly with the dataset size and number of epochs, and roughly quadratically with the layer sizes (for a rectangular network).
 
@@ -724,15 +615,9 @@ Inference (Prediction): Making a prediction on new data is significantly faster 
 O( 
 l=1
 ∑
-L
-​
- n 
-l−1
-​
- ⋅n 
-l
-​
- )≈O(∣W∣)
+L n 
+l−1 ⋅n 
+l )≈O(∣W∣)
 
 This efficiency is what makes it feasible to deploy large, pre-trained models in real-time applications.
 
