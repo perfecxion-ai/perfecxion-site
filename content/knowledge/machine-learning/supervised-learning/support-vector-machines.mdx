@@ -509,7 +509,6 @@ Data Scaling Req.	Required	Required	Recommended	Not Required	Required
 Output Type	Class Label, Margin Distance	Class Label, Margin Distance	Class Probabilities	Class Probabilities	Class Probabilities
 Key Strength	Speed, High-dim data	High accuracy on complex, medium data	Interpretability, Probabilities	Robustness, Ease of Use	Feature Learning, Scalability
 
-Export to Sheets
 In the modern machine learning toolkit, the role of SVMs has evolved. Before the deep learning revolution, a well-tuned kernel SVM was often the algorithm of choice for achieving state-of-the-art performance on a wide range of tasks. Today, for unstructured data like images and audio, deep neural networks are dominant. However, for structured, tabular data of small-to-medium size, an SVM remains an extremely strong baseline model that should not be overlooked. Numerous empirical studies and practitioner reports show that a well-tuned SVM can still be highly competitive with, and sometimes superior to, more modern ensemble methods like gradient boosting. Therefore, in a contemporary machine learning workflow for structured data, SVMs should be evaluated alongside tree-based ensembles and neural networks as a primary candidate for the best-performing model.
 
 Advanced Considerations
@@ -632,7 +631,6 @@ C	Regularization parameter. Controls the trade-off between margin width and trai
 gamma	Kernel coefficient for rbf, poly, sigmoid. Defines the influence of a single training point.	Low gamma: Broad Influence, Smoother Boundary, Higher Bias, Lower Variance (Underfitting). High gamma: Local Influence, Complex Boundary, Lower Bias, Higher Variance (Overfitting).	Logarithmic scale, e.g., [1e-4, 1e-3, 0.01, 0.1, 1]
 degree	Degree of the polynomial for the poly kernel.	Controls the flexibility of the polynomial decision boundary. Higher degree leads to a more complex model (higher variance).	Small integers, e.g., ``
 
-Export to Sheets
 Appropriate Evaluation Metrics
 Choosing the right metric to evaluate an SVM model is as important as training it correctly. The choice depends on the problem and the nature of the data.
 

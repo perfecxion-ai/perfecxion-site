@@ -349,7 +349,6 @@ jm ∑ L(yᵢ,F
 m−1 (xᵢ)+γ)
 Friedman's "TreeBoost" algorithm proposed this step of finding a separate optimal value for each leaf, which is more refined than finding a single multiplier for the whole tree.
 
-
 d.  Update the Model: Update the full ensemble model by adding the new weak learner, scaled by a learning rate $\nu$.
 
 F 
@@ -765,7 +764,6 @@ reg_lambda / lambda_l2	All	L2 regularization term on leaf weights.	0 - 100	Contr
 reg_alpha / lambda_l1	All	L1 regularization term on leaf weights.	0 - 100	Controls overfitting; can lead to sparse leaf weights.
 gamma / min_gain_to_split	XGB, LGBM	Minimum loss reduction required to make a further partition on a leaf node.	0 - 20	Controls overfitting by pruning non-beneficial splits.
 
-Export to Sheets
 9.3. Integration into Modern ML Pipelines and MLOps
 In modern production environments, GBDT models are rarely trained in isolation. They are a core component of a larger Machine Learning Operations (MLOps) pipeline designed for automation, reproducibility, and reliability.
 
@@ -872,7 +870,6 @@ CatBoost: https://github.com/catboost/catboost
 NGBoost: https://github.com/stanfordmlgroup/ngboost for probabilistic prediction 
 
 Exploring topics on GitHub like gradient-boosting-classifier and gradient-boosting-regressor can uncover a wide range of community projects and applications.
-
 
 Sources used in the report
 

@@ -105,7 +105,6 @@ class ValidationResult:
     def __repr__(self):
         return f"ValidationResult(warnings={self.warnings}, flags={self.flags}, escalated={self.escalated})"
 
-
     return "ignore" in text.lower() or "override" in text.lower()
 class ContentAnalysis:
     def __init__(self, risk_score):

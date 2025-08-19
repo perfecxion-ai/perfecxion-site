@@ -272,7 +272,6 @@ Transmission Security	HIPAA/PCI-DSS	No native, on-the-wire encryption in the sta
 Audit Trails & Monitoring	HIPAA/PCI-DSS	Centralized logging and telemetry via UFM. Traps for fabric events. Analysis: Comprehensive but proprietary. Integrity relies on secure SM-agent channel. Opaque to host tools.	Diverse ecosystem: NetFlow/IPFIX, sFlow, Streaming Telemetry. Logs from switches/routers. Analysis: Open and flexible, but requires explicit security (e.g., IPsec for collectors) and integration effort.
 Protect Against Vulnerabilities	PCI-DSS	Hardened transport implemented in hardware (less susceptible to software exploits). Centralized SM for consistent patching. Analysis: Reduced software attack surface but vendor-dependent for patches.	Relies on OS/firmware of switches and NICs. Diverse ecosystem requires diligent patch management across multiple vendors. Analysis: Larger attack surface but not dependent on a single vendor's security response.
 
-Export to Sheets
 Both fabrics can pass audit—with work. But Ethernet's controls map directly to compliance requirements. Auditors understand 802.1X. They recognize MACsec. They can verify ACLs.
 
 InfiniBand's P_Keys and M_Keys? You'll spend hours explaining them. The lack of native encryption? That's a red flag requiring compensating controls. Possible, but harder.

@@ -64,7 +64,6 @@ topics:
 
 ## 18. Conclusion and Future Outlook
 
-
 ## Executive Summary
 
 [Original executive summary content remains unchanged]
@@ -359,7 +358,7 @@ Digital Signature
 7856
 Slow (Sign), Moderate (Verify)
 Conservative backup. Very large signatures and slow, but based on different math.
-Export to Sheets
+
 **Note:** Sizes and performance are approximate and can vary by implementation and security level. Data synthesized from sources.
 ## Section 3: Vulnerability Analysis of AI Networking Fabrics
 
@@ -433,7 +432,7 @@ Phase 4: Ongoing Management (2035+)
 
 Refine and operate the crypto-agility framework. Integrate threat intelligence into the policy management engine. Maintain automated compliance and reporting tools.
 Ensures long-term resilience against future cryptographic transitions beyond the initial PQC migration.
-Export to Sheets
+
 ## 4. 3 The Hybrid Approach: A Bridge to the PQC Future
 
 For the foreseeable future, the primary technical strategy for PQC deployment is the hybrid approach. This method involves using a classical algorithm and a PQC algorithm in parallel to perform a single cryptographic operation, such as a key exchange or a digital signature. The results are combined in such a way that the final outcome is secure as long as at least one of the constituent algorithms remains secure.
@@ -558,7 +557,6 @@ This architectural convergence fundamentally alters your security landscape. Tra
 
 A hardware trojan embedded in such a device isn't just a networking threat—it's a systemic threat. It could manipulate network traffic, exfiltrate data directly from storage flows, and disable the security services it should accelerate. This elevates a single network card's risk profile from component-level threat to complete compromise of your infrastructure's trusted computing base.
 
-
 ## Section 2: The Embedded Threat: Hardware Trojans in AI Networking Components
 
 Your semiconductor industry's globalized nature creates countless opportunities for malicious actors to compromise hardware integrity. A complex web of third-party IP vendors, EDA tool providers, and outsourced fabrication and assembly facilities means threats can emerge anywhere. The most insidious threat is the Hardware Trojan (HT)—a malicious, intentional modification to an electronic circuit or design.
@@ -611,7 +609,6 @@ Applying hardware trojan taxonomy to your AI fabric's specific components reveal
 **In Firmware and Peripherals:** The threat extends beyond primary ASICs. Your networking equipment contains numerous microcontrollers and support chips, each with its own firmware. The Baseboard Management Controller (BMC) on a switch is a small, independent computer with privileged access to your main system. BMC firmware compromise, or a trojan in the flash memory chip storing it, could create a persistent backdoor invisible to your main switch operating system. This vector was central to 2018 Bloomberg allegations about Supermicro. Such backdoors could exfiltrate management data, reconfigure your device, or disable it entirely.
 
 The common thread in these scenarios is exploiting your AI workload itself as a trigger mechanism. Unlike generic triggers based on time or simple logic states, workload-aware triggers are exceptionally stealthy. The trojan remains completely dormant during standard functional testing, compliance scans, and any non-AI-related operations. It activates only when the high-value workload it's designed to attack is present, making detection prior to catastrophic security failure exceedingly difficult.
-
 
 ## Section 3: The Geopolitical Battlefield of the Global Supply Chain
 
@@ -685,7 +682,7 @@ TSMC, UMC, GlobalFoundries
 Taiwan, Singapore
 China, Taiwan, Singapore, Philippines
 High dependency on Taiwan for advanced ASICs; Critical supplier to a large portion of the networking industry.
-Export to Sheets
+
 ## 3. 4 Precedent and Plausibility: State-Sponsored Hardware Tampering
 
 Hardware trojan threats aren't merely theoretical. While confirmed, public instances of state-sponsored hardware tampering are rare—owing to detection difficulty and national security implications of disclosure—evidence exists that establishes such attacks' plausibility.
@@ -1066,7 +1063,7 @@ IPoIB Protocol Stack
 Compromised Ethernet host with IPoIB connectivity.
 Generate a high-rate flood of IB packets with invalid P_Keys/Q_Keys from the IPoIB interface, consuming IB fabric bandwidth and switch resources.
 Denial of service within the InfiniBand fabric, initiated from the Ethernet side.
-Export to Sheets
+
 ## Section 6: Analysis of Attack Propagation and Impact
 
 ## 6. 1. Mapping the Kill Chain: From Ethernet Foothold to InfiniBand Control
@@ -1191,9 +1188,8 @@ Implement rate-limiting and ACLs on the gateway's IPoIB interface to drop excess
 
 Use UFM to monitor for high rates of dropped packets due to P_Key/Q_Key violations and trace the source LID.
 Defense-in-Depth
-Export to Sheets
-Sources used in the report
 
+Sources used in the report
 
 ## 8. 2 Gateway and Translation Point Vulnerabilities
 
@@ -1280,7 +1276,7 @@ Point-to-Point (Send/Recv)
 Sustained, lower-intensity, directional flows
 Volume: Proportional to activation/gradient sizes between layers. Periodicity: Continuous flow with "bubbles" at start/end of batch. Topology: Linear chain of worker-to-worker connections.
 Model depth, layer partitioning scheme, inter-layer activation sizes.
-Export to Sheets
+
 An attacker can thus operate hierarchically. At the lowest level, they analyze the source/destination IPs and timing of a single burst to identify the collective primitive being used (e.g., a ring-based AllReduce). At a higher level, they observe the pattern of these primitives over a full training step to deduce the parallelization strategy. Finally, by analyzing these patterns over many steps, they can infer high-level training hyperparameters. This systematic process allows them to deconstruct the entire training setup from raw network telemetry.
 Furthermore, the increasing use of sparse models and communication optimization techniques, such as only transmitting non-zero gradient blocks, introduces a new layer of complexity and a new information channel. In traditional dense training, the communication volume per step is constant. With sparsity-aware collectives, this volume becomes variable, depending on the input data and the model's current state. While this might seem to obfuscate the total parameter count, the
 statistical distribution of the payload sizes itself becomes a new signature, potentially leaking information about the model's gradient sparsity patterns, which is a form of architectural leakage.
@@ -1432,7 +1428,7 @@ P4-programmable pipeline (144 MPUs)
 Hardware Security Accelerators
 Secure Boot, PKA, RegEx, IPsec/TLS, AES-GCM/XTS, TRNG
 Inline IPsec/DTLS, Bulk Crypto, PKE
-Export to Sheets
+
 ## 1. 3 The Programmable Switch ASIC: Data Plane as a Vulnerability
 
 Beyond Fixed Functions
@@ -1653,7 +1649,6 @@ The security of AI fabrics is a rapidly evolving field, and defenders must antic
 - The Rise of Physical Side Channels: This report has focused on timing channels that can often be exploited remotely through software. However, these high-power, high-performance devices are also potent sources of other physical side-channel emissions. Future threats may include attacks that analyze power consumption fluctuations , electromagnetic (EM) emanations , or even thermal and acoustic signals to extract secrets. These attacks may not require any malicious software on the device itself, posing a significant threat in scenarios where an adversary can gain close physical proximity to the hardware.
 Sources used in the report
 
-
 ## 10. 2 Network Covert Channels
 
 Beyond the timing side-channels discussed earlier, sophisticated attackers can create intentional covert channels using network congestion as a communication medium.
@@ -1816,7 +1811,7 @@ Malicious DMA read/write via CXL.io.
 CXL.io, Host Memory
 Full system compromise, exfiltration of entire AI models and datasets.
 Kernel DMA Protection, mandatory IOMMU enforcement for all CXL.io traffic.
-Export to Sheets
+
 #### The Interconnect Domino Effect: Cascading CXL and Network Fabric Vulnerabilities
 
 AI clusters are complex, heterogeneous systems that rely on multiple interconnects. While CXL manages the memory fabric, traditional networks like Ethernet or InfiniBand handle scale-out communication between nodes. The integration of these distinct fabrics isn't merely additive; it creates synergistic risks where a vulnerability in one domain can be used to compromise the other, leading to cascading failures and enabling sophisticated lateral movement by attackers.
@@ -2032,7 +2027,7 @@ Very High: An attacker can use the EPS for C2 and initial staging, then establis
 Low: Typically manifests as detectable congestion or packet loss.
 High/Novel: Topological sabotage and QoT degradation attacks can cripple AI job performance without triggering standard availability alarms.
 High: The potential for topological sabotage remains. Additionally, cross-plane interference can be used to degrade performance.
-Export to Sheets
+
 This comparative analysis demonstrates that while OCS solves many performance issues, it introduces new, more centralized, and often more subtle security risks. The hybrid architecture, while practical, inherits the vulnerabilities of both its constituent parts and adds new, complex cross-domain threats. Securing these next-generation fabrics requires a holistic strategy that addresses this altered threat landscape.
 VI. A Framework for a Hardened Photonic Fabric: Mitigation and Recommendations
 Securing OCS-based AI fabrics requires a departure from traditional network security models. A defense-in-depth strategy is essential, but the layers of defense must be re-architected to address the unique vulnerabilities of a software-defined, all-optical physical layer. This section proposes a multi-layered framework for hardening the photonic fabric, providing actionable recommendations for security architects and network operators.
@@ -2066,7 +2061,6 @@ The adoption of Optical Circuit Switching and hybrid photonic/electrical fabrics
 The traditional model of network security, centered on perimeter defense and the inspection of data plane traffic, is fundamentally inadequate for a fabric where the physical layer is dynamic and the data plane is transparent. The security focus must pivot decisively to a new model centered on ensuring the integrity, authenticity, and resilience of a highly centralized, software-defined control plane. The core security challenge is no longer about filtering bad packets, but about validating the intent of powerful control logic.
 Securing the photonic fabric isn't an incremental problem to be solved with existing tools; it is a new paradigm that demands a holistic, cross-layer approach. This approach must encompass robust physical layer hardening, a zero-trust architecture for the control plane, security-aware orchestration, and a new generation of monitoring and anomaly detection capabilities. Your systems that manage the network's topology must be treated with the same security rigor as the critical data and intellectual property they are designed to transport. Failure to recognize and address this fundamental shift will risk transforming these powerful performance-enhancing tools into systemic, high-impact vulnerabilities that could undermine the very AI revolution they are meant to enable.
 Sources used in the report
-
 
 ## 11. 5 Hybrid Packet/Circuit Switching Attacks
 
@@ -2220,7 +2214,6 @@ time_of_day=02:00-04:00
 Read
 ### ALLOW
 
-Export to Sheets
 These policies demonstrate a shift from "who can access what" to a more nuanced evaluation. For example, POL-GPU-001 allows a job monitor to access power telemetry, but only for the specific nodes that are part of its own job, and only if those nodes are in a healthy state. This enforces the principle of least privilege at a very fine-grained level. This approach, where the security fabric is defined not by physical network topology but by an overlay of verifiable cryptographic identities and the policies governing their interactions, is the cornerstone of securing ephemeral, containerized AI workloads.
 ## Section 3: Implementing Micro-segmentation in Multi-Tenant AI Clusters
 
@@ -2350,8 +2343,6 @@ The Zero Trust Architecture detailed in this report provides a comprehensive blu
 Implementing this architecture is a strategic journey, not a single product deployment. It requires a phased approach that begins with achieving total visibility, progresses through software-defined controls, and culminates in a fully automated, hardware-enforced security posture. By embracing this model, organizations can't only protect their high-value AI assets from a new generation of threats but also build more resilient, manageable, and performant AI infrastructure for the future.
 Sources used in the report
 
-
-
 ## 12. 2 Micro-Segmentation in High-Performance Networks
 
 [PLACEHOLDER D1-2: AI Fabric Micro-Segmentation] Implementation strategies for micro-segmentation in multi-tenant AI clusters without impacting performance.
@@ -2440,7 +2431,7 @@ Low
 Very High (Synchronized Bursts)
 Medium (Fan-out/Gather)
 Low
-Export to Sheets
+
 #### The Fabric-Level Threat Landscape for AI Infrastructure
 
 The unique architecture and traffic patterns of AI fabrics create a distinct threat landscape. Attackers are increasingly targeting the fabric's control and abstraction layers, as compromising these mechanisms can yield a far greater impact than attacking individual endpoints.
@@ -2511,7 +2502,7 @@ Data
 Both
 Data Theft
 Behavioral Baselining, Peer Group Analysis
-Export to Sheets
+
 A Framework for Behavioral Anomaly Detection
 A robust security posture for AI fabrics requires a shift from signature-based detection to a dynamic, data-driven approach based on behavioral analytics. This framework is built on establishing what is normal for the environment and then using machine learning to identify meaningful deviations in real time.
 Establishing Dynamic Baselines
@@ -2583,7 +2574,7 @@ Topological & Relational Anomalies
 Very High
 Labeled or structured graph data
 Identifying anomalous communication graphs and unauthorized connections.
-Export to Sheets
+
 Implementation Guidance and Operationalization
 Deploying a machine learning-based anomaly detection system requires a robust, scalable architecture and a clear strategy for managing its operational lifecycle, from tuning to automated response.
 Architectural Blueprint for a Real-Time Detection System
@@ -2628,7 +2619,6 @@ This analysis demonstrates that an effective defense must be built on a deep und
 
 Ultimately, securing AI fabrics isn't a matter of deploying a single tool but of adopting a holistic, context-aware, and adaptive security posture. By combining rich, multi-source telemetry with advanced machine learning and automated response, organizations can build a resilient security architecture capable of protecting the critical infrastructure that powers the next generation of artificial intelligence.
 Sources used in the report
-
 
 ## 12. 4 Normal Behavior Baselines for AI Workloads
 
@@ -2676,7 +2666,7 @@ Data Interception, DoS, Performance Degradation
 Unexpected traffic path changes, increased latency, BGP route anomalies
 BGP Monitor, RPKI Validator, Network performance monitoring tools
 Verify route legitimacy, Filter malicious announcements
-Export to Sheets
+
 ### Part II: Incident Response Procedures for Priority Flow Control (PFC) Storms
 
 ### Section 2.1: Anatomy of a PFC Storm
@@ -2744,7 +2734,7 @@ detection polling-interval-number
 watchdog-action drop
 recovery time (in ms)
 set class-of-service congestion-notification-profile cnp-name pfc-watchdog detection 4 action drop recovery 800
-Export to Sheets
+
 Section 2.4: Post-Incident Hardening
 Following the resolution of a PFC storm, a post-incident review should be conducted to implement long-term hardening measures.
 - Timer Tuning: Based on the incident, evaluate and tune the PFCWD detection and restoration timers. Timers that are too sensitive may trigger on transient congestion, while timers that are too slow may allow a storm to propagate unnecessarily. The tuning should be based on the fabric's round-trip time and the latency sensitivity of the applications it supports.
@@ -2799,7 +2789,7 @@ Device Configuration State
 N/A (Configuration isn't typically polled via SNMP)
 N/A
 show configuration
-Export to Sheets
+
 Section 3.3: Containment, Eradication, and Recovery Playbook
 Upon suspicion or confirmation of telemetry poisoning, operators must act swiftly to prevent automated systems from causing damage and to restore the integrity of their monitoring data.
 ## 1. Disengage Automation (Immediate Containment): The first and most critical action is to immediately place all AIOps platforms, SOAR playbooks, and any other automated remediation systems into a "manual approval" or "human-in-the-loop" mode. This severs the link between corrupted data and automated action, preventing the system from executing harmful commands based on false inputs. This is the primary containment step.
@@ -2933,7 +2923,7 @@ High (Explicitly designed to prevent lateral movement)
 Management Complexity
 Low (Simple commands)
 High (Requires detailed policy definition and management)
-Export to Sheets
+
 ## Conclusion: Towards a Resilient and Self-Defending Network Fabric
 
 The security threats facing modern network fabrics are sophisticated, targeting the core protocols that ensure their operational integrity and performance. Responding to events like Priority Flow Control storms, telemetry poisoning, and adaptive routing manipulation requires more than traditional security tools; it demands deep protocol expertise and a response plan that is tightly integrated with network operations. This report has detailed specific, actionable playbooks for these threats, adapting the robust, four-phase NIST Incident Response framework to the unique context of the high-performance fabric.
@@ -2997,9 +2987,6 @@ Year 1 Cost (USD)
 Percentage of Total TCO
 Capital Expenditures (CapEx)
 
-
-
-
 #### GPUs (1,024 x $35,000)
 
 CapEx
@@ -3040,9 +3027,6 @@ $44,416,000
 
 Operational Expenditures (OpEx)
 
-
-
-
 Power & Cooling (128 racks @ 60kW)
 OpEx
 $11,333,837
@@ -3071,20 +3055,16 @@ Subtotal Annual OpEx
 
 $14,319,037
 
-
 Subtotal 5-Year OpEx
-
 
 $71,595,184
 ## 67. 3%
 
 Total 5-Year TCO
 
-
 $106,311,184
 ## 100. 0%
 
-Export to Sheets
 **Note:** Model assumes average GPU price of $35,000, 128 servers with 8 GPUs each, power at $0.1063/kWh with a PUE of 1.58, and standard industry estimates for supporting infrastructure and maintenance.
 ## 1. 3. Establishing the Baseline: The Financial Value of a "Healthy" GPU-Hour
 
@@ -3186,7 +3166,7 @@ Unprivileged Local User
 
 Availability
 Job crash (100% downtime)
-Export to Sheets
+
 ## Section 3: Economic Impact Modeling of Fabric-Level Attacks
 
 Translating the technical threats identified in the previous section into a financial framework requires a multi-faceted modeling approach. This section introduces two models: the first calculates the immediate, direct financial loss from GPU idle time, while the second provides a broader framework for assessing the total, long-tail costs of an incident using an Annualized Loss Expectancy model. Together, these models provide a comprehensive methodology for quantifying the economic impact of fabric-level attacks.
@@ -3269,7 +3249,7 @@ C: Full Outage
 $4,096.00
 $16,384
 N/A
-Export to Sheets
+
 ## 3. 3. Model 2: Quantifying the Long-Tail Costs
 
 The DFL model captures the immediate cost of wasted compute, but a full economic assessment must also account for the wider, long-tail costs associated with a security incident. The standard cybersecurity framework for this is the Annualized Loss Expectancy (ALE) model, which provides a more holistic view of risk.
@@ -3370,7 +3350,7 @@ $750,000
 30%
 $329,413
 119%
-Export to Sheets
+
 **Note:** TCO and ALE reduction figures are estimates for a 1,024-GPU cluster based on public data and the models in this report. Actual ROI will vary based on specific implementation, threat environment, and existing controls.
 ## Section 5: Strategic Recommendations for a Resilient and Cost-Effective AI Fabric
 
@@ -3392,7 +3372,6 @@ T_impact variable and control the financial damage from GPU idle time.
 
 The threat landscape and the economics of AI are evolving at an unprecedented pace. The models and analyses presented in this report should not be viewed as a static assessment but as a living framework for continuous risk management. Organizations must establish a process to regularly update the inputs to these modelsÑincluding the cost of new GPU generations, emerging threat intelligence on fabric-level vulnerabilities, and the effectiveness of new defensive technologies. By doing so, they can maintain a dynamic, data-driven cybersecurity investment strategy that is directly tied to the financial realities of their AI infrastructure. This ensures that security spending is continuously optimized, defensible to stakeholders, and aligned with the primary business objective: protecting the organization's most valuable and expensive computational assets.
 Sources used in the report
-
 
 ## 13. 2 Return on Investment for Security Controls
 
@@ -3468,7 +3447,6 @@ Man-in-the-middle attacks, service impersonation, session hijacking
 Mutual TLS (mTLS) via Service Mesh
 #### Inter-Service Request Latency, CPU Overhead
 
-Export to Sheets
 This mapping demonstrates that the performance of an AI fabric isn't a monolithic concept but a composite of latencies and overheads introduced at multiple, distinct control points. The subsequent analysis will dissect each of these control points to provide a quantitative measure of their impact.
 ## Section 2: The Performance Cost of Authenticated Telemetry and Runtime Monitoring
 
@@ -3711,7 +3689,7 @@ Zero-Trust Architecture
 Neutral to positive latency impact vs. legacy perimeter models.
 Implement ZTA using efficient enforcement points like eBPF or a modern service mesh.
 High
-Export to Sheets
+
 Viability Rating: An assessment of the ease of implementation and maturity of the mitigation strategy for achieving both high security and high performance in a typical enterprise AI fabric.
 ## 5. 2. Architectural Mitigation Strategies
 
@@ -4050,7 +4028,6 @@ This report has provided a comprehensive blueprint for the design, construction,
 
 Looking forward, the AI Fabric security testbed should be viewed not just as a passive environment for validating known threats, but as an active data generation platform for creating next-generation defenses. By capturing the detailed digital signatures of controlled adversarial campaigns, these testbeds can produce the unique, high-quality training data needed to build AI-powered security systems capable of detecting and responding to novel threats in real-world AI Fabrics. This creates a virtuous cycle where the study of attacks directly enables the creation of more resilient and trustworthy AI systems.
 Sources used in the report
-
 
 ## 14. 2 Safe Testing Methodologies
 
@@ -4421,7 +4398,6 @@ The successful implementation of this framework requires a concerted effort from
 Adopting this framework isn't merely an exercise in good scientific practice; it is a strategic necessity. The adversaries we faceÑthose who will seek to exploit the vulnerabilities in these complex AI systemsÑare collaborative, innovative, and unconstrained by process. The research community dedicated to defending these systems must be even more so. By building our work on a foundation of shared data, common tools, and rigorous, verifiable methods, we can move from a collection of disparate, often incomparable studies to a truly cumulative science. This framework provides the blueprint for that foundation. It's a call to action for researchers, reviewers, editors, and funders to collectively invest in the infrastructure of trust. By doing so, we can ensure that our progress is real, our solutions are robust, and our efforts contribute effectively to securing the future of artificial intelligence.
 Sources used in the report
 
-
 ## 14. 5 Standardized Datasets and Benchmarks
 
 [PLACEHOLDER F2-3: Security Benchmarking Suite] Development of standardized datasets and benchmarks for evaluating AI fabric security measures.
@@ -4517,8 +4493,6 @@ AWS-only proprietary protocol, not lowest absolute latency
 ```
 Requires end-to-end NVIDIA hardware for full functionality
 ```
-
-Export to Sheets
 
 ## 15. 1 Updated Threat Matrix
 

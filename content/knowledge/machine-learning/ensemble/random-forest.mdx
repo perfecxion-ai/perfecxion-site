@@ -818,7 +818,6 @@ Parameter Requirements	n_trees, mtry, k (for final clustering step)	k (number of
 Noise/Outlier Handling	Robust (Outlier scores can be derived)	Sensitive (Outliers can skew centroids)	Sensitive (Forces all points into a cluster)	Excellent (Explicitly identifies noise points)
 Interpretability	Low (Proximity metric is a black box)	High (Clusters defined by clear centroids)	High (Dendrogram shows cluster hierarchy)	Moderate (Density-based rules are intuitive)
 
-Export to Sheets
 Narrative Comparison:
 
 vs. K-Means: The contrast with K-Means is stark. K-Means is fast, scalable, and easy to interpret, but it makes strong assumptions about the data that are often violated in practice. It requires numerical, scaled data and struggles with non-spherical clusters. RF clustering is its conceptual opposite: it is computationally expensive and less interpretable but makes very few assumptions, handling raw, mixed-type data and discovering arbitrarily shaped clusters with high fidelity.
@@ -841,7 +840,6 @@ Potential for Bias	High (Dependent on the quality and distribution of synthetic 
 Distance Metric	Proximity (Binary co-occurrence in leaf nodes)	RF Distance (Continuous, path-based topology)
 Metric Sensitivity	Lower (Can be sparse, many zero-proximities)	Higher (More granular, differentiates path lengths)
 
-Export to Sheets
 Summary: sidClustering represents a second-generation approach that is theoretically more robust. By reformulating the problem as a self-contained multivariate regression task, it eliminates the primary source of potential bias in Breiman's method—the arbitrary choice of a synthetic data distribution. Furthermore, its more sensitive, topology-based RF Distance metric is better equipped to capture fine-grained similarities than the coarser, binary proximity score. For practitioners who have access to an implementation, sidClustering should be the preferred method.
 
 6.3 RF vs. Other Advanced Models (Briefly)

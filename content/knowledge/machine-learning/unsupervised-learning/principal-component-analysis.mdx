@@ -546,7 +546,6 @@ ij =
 j x 
 ij −μ 
 j ​
- 
 
 where μⱼ is the j-th variable mean and σⱼ is its standard deviation. This ensures equal variable contribution to analysis.
 
@@ -626,7 +625,6 @@ a∈A,b∈B d(a,b)	Tends to find compact, spherical clusters of similar size. Le
 Average Linkage	$D(A, B) = \frac{1}{	A	
 Ward's Method	Merges the pair of clusters that minimizes the increase in the total within-cluster sum of squares (variance).	Tends to find compact, spherical clusters of equal size. Aims to create very homogeneous clusters.	Often the default choice due to its variance-minimizing property, which aligns well with many statistical objectives and with PCA.
 
-Export to Sheets
 2.3 Algorithmic Walkthrough: The PCA + Agglomerative Clustering Pipeline
 The complete end-to-end pipeline can be summarized in the following algorithmic steps:
 
@@ -901,7 +899,6 @@ Requires # of Clusters?	No (chosen post-hoc from dendrogram)	Yes (must be pre-sp
 Interpretability	High (interpretable PCs and hierarchical structure)	Moderate (centroids are interpretable)	Low (parameters are less intuitive, no hierarchy)	Very Low (axes are not interpretable, only relative distances matter)
 Best For...	Exploratory analysis of small-to-medium datasets where hierarchical relationships are important.	Large datasets where a fast, flat partitioning into a known number of globular clusters is needed.	Datasets with irregular cluster shapes, noise, and where density is a meaningful concept.	Visualizing the cluster structure of complex, high-dimensional data as a preliminary analysis step.
 
-Export to Sheets
 7. Advanced Methodologies and Interpretive Frameworks
 The standard PCA and hierarchical clustering pipeline, while powerful, is based on assumptions of linearity and is sensitive to outliers. To address these limitations, several advanced extensions and alternative frameworks have been developed. These variants enhance the pipeline's robustness and expand its applicability to more complex data structures. Furthermore, the ultimate value of any clustering analysis lies in its interpretation, a process that requires specific techniques to translate abstract mathematical outputs into meaningful, domain-specific insights.
 
@@ -969,7 +966,6 @@ Hierarchical Clustering	affinity (Distance Metric)	The metric used to compute th
 Hierarchical Clustering	linkage	The criterion used to compute the distance between clusters.	Ward's (default, minimizes variance), Complete (maximizes distance), Average (average distance), Single (minimizes distance).	High: Strongly influences the shape and size of the resulting clusters. Ward's and Complete favor globular clusters; Single can find non-globular shapes but is sensitive to noise.
 Hierarchical Clustering	n_clusters (Cut Level)	The number of clusters to extract from the dendrogram.	Visual inspection of the dendrogram (cutting at a high-distance merge), optimizing an internal validation metric (e.g., Silhouette Score) across a range of cluster counts.	High: Directly determines the granularity of the final output. An incorrect choice can either over-segment or under-segment the data, obscuring the true structure.
 
-Export to Sheets
 8.2 A Guide to Effective Evaluation Metrics
 Since clustering is an unsupervised task, there are no ground truth labels to compare against. Therefore, evaluation relies on metrics that assess the intrinsic quality of the cluster structure.
 

@@ -906,7 +906,6 @@ Automatic k?	No	Yes	Yes	Yes	No
 Computational Complexity	~O(n) (very fast)	O(n log n) / O(n²)	O(n log n) / O(n²)	O(n log n) / O(n²)	O(n²) or O(n³), O(n log n) for some
 Ideal Use Case	Large datasets, known k, globular clusters	Noisy data, arbitrary shapes, uniform density	Exploratory analysis, varying densities, noise	Exploratory analysis, visualizing density hierarchy	When the hierarchy itself is the desired output
 
-Export to Sheets
 Section 7: Advanced Considerations
 The capabilities of the modern hdbscan library extend far beyond simple cluster label assignment. It provides a suite of advanced features that transform it from a basic clustering algorithm into a sophisticated framework for nuanced data exploration, probabilistic modeling, and deployment in production environments. This section delves into these advanced functionalities, including soft clustering, prediction on new data, and the detection of complex sub-structures.
 
@@ -1012,7 +1011,6 @@ A dense region is fragmented into many "micro-clusters" (HDBSCAN)	min_cluster_si
 Almost all points are in one big cluster (DBSCAN)	The eps value is too large, causing the neighborhoods of most points to overlap and connect into a single component.	Decrease eps.	A smaller radius will make the density requirement more localized, allowing dense regions to separate.
 Almost all points are labeled as noise (DBSCAN)	The eps value is too small, so no points can gather minPts neighbors to become core points.	Increase eps. Use a k-distance plot to find the "elbow" as a good estimate for eps.	A larger radius allows more points to qualify as core points, enabling cluster formation. The k-distance plot helps find a suitable global density threshold.
 
-Export to Sheets
 This diagnostic approach transforms tuning from a brute-force search into a more reasoned process, allowing practitioners to intelligently adjust parameters based on a deeper understanding of the algorithm's behavior.
 
 Section 9: Recent Developments and Future Directions (2023-2025)
@@ -1112,7 +1110,6 @@ HDBSCAN systematically dismantles this limitation. By transforming the problem i
 The practical success of HDBSCAN, evidenced by its widespread application in fields as diverse as financial fraud detection, bioinformatics, and remote sensing, is a testament to its utility. Its role as a key component in modern machine learning pipelines, particularly in tandem with non-linear dimensionality reduction techniques like UMAP, underscores its relevance in an era of complex, high-dimensional data.
 
 Recent advancements continue to push the boundaries, focusing on unprecedented scalability through GPU acceleration and distributed computing, and on adapting the hierarchical framework to dynamic, streaming data. The development of more sophisticated evaluation metrics that align with the algorithm's core principles signals a maturing understanding of how to properly validate and deploy these powerful tools. Ultimately, the evolution from DBSCAN to HDBSCAN is more than just an algorithmic improvement; it is a powerful demonstration of how a clear, intuitive concept—that clusters are simply regions of high density—can be progressively formalized and refined to create robust, practical, and insightful tools for data discovery.
-
 
 Sources used in the report
 

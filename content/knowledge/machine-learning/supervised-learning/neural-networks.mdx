@@ -357,7 +357,6 @@ m
 ∑
 m δ 
 [l](i)
- 
 
 where m is the number of examples in the mini-batch.
 
@@ -381,7 +380,6 @@ n (yᵢ−
 y
 ^ i ) 
 2
- 
 
 The squaring of the error term means that MSE heavily penalizes larger errors, which can be desirable but also makes the model sensitive to outliers. The resulting cost function is convex, which simplifies optimization.
 
@@ -427,7 +425,6 @@ Momentum: It maintains an exponentially decaying average of past gradients (the 
 
 RMSprop: It maintains an exponentially decaying average of past squared gradients (the second moment), which scales the learning rate on a per-parameter basis. This gives smaller updates for frequently occurring features and larger updates for infrequent ones.
 
-
 Adam also incorporates a bias-correction step to account for the fact that these moving averages are initialized at zero, which is particularly important during the initial stages of training. Its robustness and good default parameter settings have made it a go-to optimizer for many deep learning applications.
 
 Table 2.1: Comparison of Common Activation Functions
@@ -452,7 +449,6 @@ z
  (z)	Zero-centered output, which helps with optimization.	Still suffers from vanishing gradients for large inputs.
 ReLU	ReLU(z)=max(0,z)	$ Biases can often be initialized to zero.			
 
-Export to Sheets
 Define the Training Loop (Epochs): The training process is structured around epochs. One epoch represents a single complete pass of the entire training dataset through the network. The model is trained for a specified number of epochs, allowing it to see and learn from the data multiple times.
 
 Iterate Over Mini-batches: Within each epoch, the training data is shuffled and divided into smaller, equal-sized chunks called mini-batches. The network's parameters are updated after processing each mini-batch, rather than after each individual sample (SGD) or the entire dataset (batch gradient descent). This mini-batch approach offers a balance between computational efficiency and the stability of the gradient estimate. For each mini-batch:
@@ -523,7 +519,6 @@ Key Hyperparameters	Learning rate (η), batch size.	Learning rate (α), β
 Pros	Computationally efficient per update. The inherent noise can help escape local minima.	Converges quickly in practice. Robust to choice of hyperparameters. Well-suited for large datasets and complex models.
 Cons	Can have noisy convergence. Can be slow to converge in ravines (areas where the loss surface is much steeper in one dimension than another).	Higher memory footprint. Can sometimes converge to a suboptimal solution in certain problems compared to finely tuned SGD with momentum.
 
-Export to Sheets
 3. Practical Implementation and Resource Considerations
 Transitioning from the theoretical foundations of neural networks to their practical application requires a deep understanding of data handling, computational resource management, and the software ecosystem. This section covers the essential requirements for data preprocessing, analyzes the computational complexity of training and inference, and surveys the dominant software libraries that form the modern deep learning toolkit.
 
@@ -589,7 +584,6 @@ Categorical	1. Handle Missing Values 2. Encoding (One-Hot Encoding, Target Encod
 Image	1. Resizing to a uniform dimension 2. Pixel Value Scaling (e.g., to ) 3. Data Augmentation (rotation, flips, zooms, color shifts) 4. Channel Ordering (if necessary)	Scaling pixel values is crucial for stable training. Augmentation is vital for preventing overfitting, especially with smaller datasets. Tools: TensorFlow/Keras ImageDataGenerator, PyTorch torchvision.transforms.
 Text	1. Text Cleaning (remove punctuation, special characters) 2. Tokenization (splitting text into words or sub-words) 3. Vectorization (e.g., TF-IDF, Word Embeddings like Word2Vec, GloVe) 4. Padding/Truncating sequences to a uniform length	Choice of vectorization is critical (embeddings capture semantic meaning). Sequence length must be standardized for batch processing in RNNs/Transformers. Tools: NLTK, spaCy, Scikit-learn's TfidfVectorizer, Gensim, Hugging Face Tokenizers.
 
-Export to Sheets
 3.2. Computational Complexity Analysis: Time and Space Requirements
 Understanding the computational cost of neural networks is essential for project planning, resource allocation, and model design. The complexity is typically analyzed in terms of time (how long it takes to train or predict) and space (how much memory is required).
 
@@ -658,7 +652,6 @@ Debugging	Simple, as models are often straightforward	Can be difficult, especial
 Deployment Ecosystem	Leverages backend (primarily TensorFlow Serving/Lite)	Excellent; TFX, TF Serving, TF Lite for mobile/edge	Maturing; TorchServe, TorchScript
 Community	Large, integrated with TensorFlow community	Very large, strong industry backing from Google	Very large, dominant in the academic/research community
 
-Export to Sheets
 4. Problem-Solving Capabilities and Applications
 Neural networks have demonstrated extraordinary problem-solving capabilities across a multitude of domains, largely due to their ability to learn complex patterns directly from data. Their success is not due to a single, monolithic algorithm but rather to the development of specialized architectures tailored to the unique structures of different data types. This section explores the primary application domains, highlights real-world success stories, details the types of outputs these models can produce, and characterizes the scenarios in which they are most likely to excel or fail.
 
@@ -927,7 +920,6 @@ Simple, Interpretable Models: Linear regression and decision trees offer high tr
 
 Complex, Black-Box Models: Deep neural networks and large GBDT ensembles sit at the other end of the spectrum. They can achieve state-of-the-art accuracy by modeling highly complex, non-linear relationships, but their internal workings are opaque.
 
-
 The appropriate balance depends entirely on the context. In a regulated industry like finance, an interpretable model for loan decisions may be legally required, even if it is slightly less accurate than a black-box alternative. In a low-stakes application like movie recommendations, maximizing accuracy is the primary goal.
 
 Speed vs. Accuracy:
@@ -949,7 +941,6 @@ Need for Feature Scaling	Yes; highly sensitive to feature scales	Yes; sensitive 
 Key Strengths	Automatic feature learning, state-of-the-art on unstructured data, end-to-end differentiability	Strong theoretical foundation, effective in high-dimensional spaces, robust on smaller datasets	State-of-the-art on tabular data, fast training, robust to uninformative features and outliers
 Key Weaknesses	Black box, data-hungry, computationally expensive, complex to tune	Computationally intensive to train on large data, choice of kernel is critical	Prone to overfitting if not tuned, cannot extrapolate beyond the range of training data
 
-Export to Sheets
 7. Advanced Architectural and Methodological Considerations
 Beyond the fundamentals, the modern practice of deep learning involves a range of advanced topics that are essential for achieving state-of-the-art performance, ensuring model reliability, and scaling solutions to meet real-world demands. This section delves into methods for model interpretability, strategies for large-scale distributed training, a closer examination of key architectural variants, and the evolving role of feature engineering.
 

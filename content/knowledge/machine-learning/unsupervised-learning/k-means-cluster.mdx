@@ -560,8 +560,6 @@ O(n⋅k⋅d⋅i)
 
 'i' is the number of iterations required for convergence.
 
-
-
 In most practical scenarios, 'k', 'd', and 'i' are significantly smaller than 'n'. The number of iterations, 'i', is often small and can be treated as a constant. This allows the complexity to be simplified to 
 
 O(n)
@@ -1037,7 +1035,6 @@ Scalability	Excellent (O(nkdi))	Poor (O(n
  ))
 Output Type	Hard assignments	Dendrogram, Hard assignments	Hard assignments + Noise label	Soft (probabilistic) assignments
 
-Export to Sheets
 Speed vs. Accuracy/Flexibility: K-Means prioritizes speed and scalability at the cost of flexibility. It imposes strong assumptions on the data, which, when met, lead to excellent results quickly. GMM and DBSCAN offer greater flexibility to model complex data structures but at a higher computational cost.
 
 Interpretability vs. Performance: K-Means clusters are highly interpretable, as they are defined by a simple mean vector. The dendrogram from hierarchical clustering is also very informative about data structure. GMMs are less directly interpretable, being defined by both means and covariance matrices. The trade-off is often between the simple, interpretable-but-rigid model of K-Means and the complex, less-interpretable-but-flexible models of its alternatives.

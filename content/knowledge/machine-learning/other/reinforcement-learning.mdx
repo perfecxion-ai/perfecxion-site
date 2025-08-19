@@ -418,7 +418,6 @@ Feedback Mechanism	Explicit labels/ground truth	Inherent data structure	Scalar r
 Data Assumption	i.i.d. (independently and identically distributed) data	i.i.d. data	Sequential, correlated data (state-action tuples)
 Core Challenge	Generalization, Overfitting	Defining "structure"	Exploration-Exploitation Trade-off
 
-Export to Sheets
 Reinforcement Learning vs. Supervised Learning: Supervised learning is learning from a "teacher" who provides a labeled dataset. The goal is to learn a function that maps inputs to known outputs. In contrast, RL does not use labeled examples of correct or incorrect behavior; it learns to 
 
 act through trial and error, guided only by a reward signal. The feedback is evaluative (how good was the action?), not instructive (this was the correct action).
@@ -704,7 +703,6 @@ Reinforcement Learning: This initial policy was then refined through self-play. 
 value network was also trained with RL to evaluate board positions and predict the winner.
 
 Planning: During actual gameplay, AlphaGo used Monte Carlo Tree Search (MCTS), a powerful planning algorithm, guided by the policy and value networks to explore the most promising move sequences.
-
 
 The successor, AlphaGo Zero, went even further by learning entirely from scratch through self-play, without any human data, and ultimately defeated the original AlphaGo 100-0. This demonstrated that RL could discover novel, superior strategies beyond the scope of human knowledge. This success was not just about "pure" RL, but about the intelligent integration of RL as an optimization component within a larger system that also leveraged search and supervised pre-training.
 
@@ -1009,7 +1007,6 @@ Clip Range (ϵ)	PPO	Clipping parameter in the surrogate objective.	0.1 to 0.3	Co
 GAE Lambda (λ)	PPO	Parameter for Generalized Advantage Estimation.	0.9 to 1.0	Controls the bias-variance trade-off in the advantage estimate.
 Number of Epochs	PPO	How many times to iterate over the collected data per policy update.	3 to 15	Affects how much the policy is updated on the same batch of data.
 
-Export to Sheets
 8.4 Evaluation Metrics: Assessing Agent Performance
 Evaluating an RL agent requires a different set of metrics than supervised learning, focusing on performance over time and stability.
 
@@ -1133,5 +1130,4 @@ From a practical standpoint, RL's greatest strength—its ability to learn auton
 Despite these challenges, RL has demonstrated remarkable problem-solving capabilities, achieving superhuman performance in complex games like Go and enabling significant advances in robotics, financial trading, and resource optimization. The most impactful successes often arise not from "pure" RL, but from hybrid systems that intelligently combine RL's optimization power with supervised pre-training and domain-specific search algorithms.
 
 Looking forward, the field is moving towards creating more general, robust, and sample-efficient agents. Key research directions include developing algorithms that can learn effectively from fixed, offline datasets, transferring knowledge across tasks, and ensuring that agent decisions are interpretable and safe. The integration of RL with large language models, particularly through techniques like RLHF, has already become a transformative force in aligning generative AI, and this synergy promises to be a major driver of future progress. For practitioners, the growing ecosystem of high-quality libraries and benchmark environments has made RL more accessible than ever, yet success still demands a deep understanding of its core principles, a systematic approach to implementation and evaluation, and a keen awareness of its inherent limitations and trade-offs.
-
 

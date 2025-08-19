@@ -329,7 +329,6 @@ Minkowski (Lp)	$d(p, q) = \left( \sum_{i=1}^{n}	p_i - q_i	^p \right)^{1/p}$
 Cosine Distance	$1 - \frac{p \cdot q}{\|p\| \|$	Based on the angle between two vectors, ignoring magnitude.	Text analysis, document similarity, and other high-dimensional sparse data.
 Hamming Distance	Number of positions where symbols differ.	Counts mismatches between two strings or vectors of equal length.	Categorical data, binary vectors, genetics, and error detection.
 
-Export to Sheets
 ### 2.2 A Step-by-Step Algorithmic Walkthrough
 KNN algorithm's operational flow at prediction time is direct and procedural. Following steps outline process for classifying or regressing single new query point:
 
@@ -554,7 +553,6 @@ Brute-Force	O(1)	O(n⋅d)	O(n⋅d)	Prohibitively slow for large n.
 KD-Tree	O(d⋅nlogn)	O(n⋅d)	Approx. O(dlogn)	Becomes inefficient in high dimensions (d > ~20).
 Ball-Tree	O(d⋅nlogn)	O(n⋅d)	Approx. O(dlogn)	More robust than KD-Tree in higher dimensions.
 
-Export to Sheets
 Training Phase:
 
 Time Complexity: For the naive, brute-force implementation, the training time complexity is O(1), as the algorithm simply stores the data without any processing. For more advanced implementations that use spatial data structures like KD-Trees or Ball-Trees to speed up prediction, the training phase involves building this tree, which typically has a time complexity of 
@@ -583,7 +581,6 @@ Specialized Libraries for Approximate Nearest Neighbor (ANN) Search: For very la
 Faiss (Facebook AI Similarity Search): A library developed by Facebook AI for efficient similarity search and clustering of dense vectors.
 
 HNSWLib (Hierarchical Navigable Small World): A library implementing the HNSW algorithm, known for its high speed and accuracy in approximate nearest neighbor search.
-
 
 These tools are crucial for applying neighbor-based methods at an industrial scale.
 

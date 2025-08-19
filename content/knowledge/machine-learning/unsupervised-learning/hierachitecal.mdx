@@ -359,7 +359,6 @@ d(A,B)=∥μ
 A −μ 
 B ∥ 
 2
- 
 
 Intuitive but major drawback: can produce dendrogram inversions where clusters merge at distances smaller than previous merges. Makes visual interpretation difficult.
 
@@ -371,7 +370,6 @@ Intuitive but major drawback: can produce dendrogram inversions where clusters m
 A −μ 
 B ∥ 
 2
- 
 
 Ward's method widely used (default in scikit-learn). Produces compact, similar-sized clusters. Sensitive to outliers, assumes roughly spherical clusters.
 
@@ -586,7 +584,6 @@ Initialization: Start with a single cluster that contains all N data points.
 
 Iterative Splitting: Recursively apply the following steps:
 a.  Select Cluster to Split: Choose a cluster from the current set to partition. This is often the largest cluster or the one with the highest internal heterogeneity (e.g., largest diameter or variance).
-
 
 b.  Split the Cluster: Divide the selected cluster into two sub-clusters. This is the most difficult step. The DIANA algorithm, for instance, finds the object with the maximum average dissimilarity to other objects in the cluster and uses it to seed a new "splinter group." Other objects are then moved to this new group if they are more similar to it than to the remainder. Alternatively, a flat clustering algorithm like K-Means (with 
 
