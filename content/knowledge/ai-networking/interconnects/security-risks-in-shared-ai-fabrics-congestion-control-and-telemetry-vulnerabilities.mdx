@@ -5,8 +5,13 @@ title: >-
 description: >-
   Critical vulnerabilities in AI fabric congestion control and telemetry systems
   that enable tenant-to-tenant attacks and performance degradation
-date: '2025-08-18'
 category: ai-networking
+domain: ai-networking
+format: article
+date: '2025-08-18'
+author: perfecXion AI Team
+difficulty: advanced
+readTime: 15 min read
 tags:
   - AI Fabric
   - Network Security
@@ -16,17 +21,16 @@ tags:
   - Congestion Control
   - Multi-Tenant Security
   - AI Networking
-difficulty: advanced
-readTime: 15 min read
-format: article
-domain: ai-networking
 topics:
   - AI Fabric
   - Network Security
   - RoCEv2
   - InfiniBand
   - Network Telemetry
+status: published
 ---
+
+# Security Risks in Shared AI Fabrics: Congestion Control and Telemetry Vulnerabilities
 
 ## Executive Summary
 
@@ -163,6 +167,58 @@ Self-healing networks using AI-powered anomaly detection represent next-generati
 ### Secure-by-Design Interconnects
 
 Future interconnect standards must incorporate hardware-level security from the ground up. Authenticated congestion signaling, encrypted telemetry channels, and tamper-resistant buffer management become requirements.[41][23][22]
+
+## Practical Example: Simulating Congestion Attack Impact on AI Training Iteration Time
+
+Below is a Python code example that models the effect of a targeted congestion attack during gradient exchange phases on AI training iteration time. The code visualizes how attack timing can increase iteration duration and overall job completion time.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+def simulate_iteration_times(base_time_ms, attack_time_ms, attack_frequency, num_iterations):
+    """
+    Simulate AI training iteration times under periodic congestion attacks.
+    Args:
+        base_time_ms: Baseline iteration time in milliseconds
+        attack_time_ms: Iteration time during attack
+        attack_frequency: Every N iterations, an attack occurs
+        num_iterations: Total number of iterations
+    Returns:
+        List of iteration times
+    """
+    times = []
+    for i in range(num_iterations):
+        if i % attack_frequency == 0:
+            times.append(attack_time_ms)
+        else:
+            times.append(base_time_ms)
+    return times
+
+# Example usage
+BASE_TIME = 100  # ms
+ATTACK_TIME = 300  # ms
+ATTACK_FREQ = 10  # every 10th iteration
+NUM_ITER = 100
+iteration_times = simulate_iteration_times(BASE_TIME, ATTACK_TIME, ATTACK_FREQ, NUM_ITER)
+
+# Visualization
+plt.figure(figsize=(10, 4))
+plt.plot(range(NUM_ITER), iteration_times, marker='o', linestyle='-', label='Iteration Time (ms)')
+plt.xlabel('Iteration')
+plt.ylabel('Iteration Time (ms)')
+plt.title('Impact of Targeted Congestion Attack on AI Training Iteration Time')
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+print(f"Total Training Time: {sum(iteration_times)/1000:.2f} seconds")
+```
+
+**Commentary:**
+- This code models how periodic congestion attacks during critical gradient exchange phases can increase iteration time and total training duration for distributed AI jobs.
+- You can adjust `BASE_TIME`, `ATTACK_TIME`, `ATTACK_FREQ`, and `NUM_ITER` to match your workload and attack scenario.
+- The visualization helps communicate the operational risk of congestion manipulation in multi-tenant AI fabrics.
 
 ## Conclusion
 

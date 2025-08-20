@@ -3,8 +3,13 @@ title: 'RoCEv2 and InfiniBand Security: Simulations and Analysis'
 description: >-
   Security analysis and simulation results for RoCEv2 and InfiniBand protocols
   in AI environments
-date: '2025-08-18'
 category: ai-networking
+domain: ai-networking
+format: article
+date: '2025-08-18'
+author: perfecXion AI Team
+difficulty: advanced
+readTime: 15 min read
 tags:
   - RoCEv2
   - InfiniBand
@@ -14,19 +19,21 @@ tags:
   - Simulation
   - AI Networking
   - Networking
-difficulty: advanced
-readTime: 15 min read
-format: article
-domain: ai-networking
 topics:
   - RoCEv2
   - InfiniBand
   - Network Security
   - RDMA
   - Protocol Analysis
+status: published
 ---
+
+# RoCEv2 and InfiniBand Security: Simulations and Analysis
+
 Your Guide to Simulation Frameworks for Security Research in RoCEv2 and InfiniBand Networks
+
 Section 1: Architectural Foundations and Attack Surfaces of High-Performance Interconnects
+
 High-performance computing (HPC) and artificial intelligence (AI) rely on two primary interconnect technologies: RDMA over Converged Ethernet version 2 (RoCEv2) and InfiniBand. Both provide the ultra-low latency and high bandwidth your demanding distributed workloads require through Remote Direct Memory Access (RDMA). RDMA lets one machine access another's memory without involving the remote machine's CPU. But their underlying architectural philosophies differ fundamentally. RoCEv2 leverages the ubiquitous and cost-effective Ethernet ecosystem, while InfiniBand provides a specialized, self-contained fabric. These architectural distinctions directly influence their performance characteristics, operational models, and, most critically for this analysis, their inherent security postures and attack surfaces. You need to understand these foundational differences to select appropriate simulation frameworks and design meaningful security experiments.
 
 1.1 RoCEv2 (RDMA over Converged Ethernet): The Distributed Paradigm
@@ -86,6 +93,7 @@ In contrast, InfiniBand's closed, non-IP-based architecture provides a degree of
 Consequently, if you're investigating network security in these environments, you must tailor your experiments to the appropriate architecture. Simulating a PFC pause frame attack is a highly relevant scenario for RoCEv2 but is architecturally irrelevant for a pure InfiniBand fabric. Conversely, modeling an attack on the Subnet Manager is a critical scenario for InfiniBand but has no equivalent in the distributed world of RoCEv2. This architectural dichotomy must guide your selection of simulation frameworks and the design of any security-related experiments.
 
 Section 2: The Researcher's Arsenal: A Comparative Evaluation of Simulation and Emulation Frameworks
+
 Selecting the appropriate tool is a critical first step in conducting meaningful research on high-performance interconnects' security and performance. The landscape of available tools spans a spectrum from high-fidelity, packet-level simulators that allow for deep protocol modification to realistic network emulators and vendor-specific digital twins that model system-level behavior. Each category of tool presents a unique set of capabilities and limitations, making the choice dependent on the specific research question being addressed.
 
 2.1 High-Fidelity Packet-Level Simulation
@@ -143,41 +151,55 @@ Conversely, once you've designed and proven an attack in a simulator, you might 
 Mininet occupies a unique middle ground specifically for research on programmable data planes. It emulates the network topology, but the P4 software switch (BMv2) that runs within it is itself a simulator of a programmable ASIC. This powerful combination allows for the high-fidelity simulation of custom data plane logic (such as that used for In-band Network Telemetry) within a realistic, emulated network of hosts, making it the perfect tool for that specific domain. Your comprehensive research workflow might therefore involve using NS-3 to design and prototype a novel protocol exploit, followed by testing its system-level impact (if possible) in NVIDIA Air to validate its effects on a production-like environment.
 
 Key Table: Comparative Analysis of Simulation and Emulation Frameworks
+
 Criterion	NS-3	OMNeT++	Broadcom htsim	Mininet	NVIDIA Air
+
 Primary Use Case	Detailed, packet-level network simulation	Modular, component-based network simulation	High-speed congestion control algorithm analysis	SDN/P4 network emulation	Data center digital twin and validation
-RoCEv2 Support	
-Excellent (via ns3-rdma module) 
 
-Moderate (via academic extensions) 
+RoCEv2 Support
 
-Basic model for CC analysis 
+Excellent (via ns3-rdma module)
 
-None (Soft-RoCE unsupported) 
+Moderate (via academic extensions)
 
-High-fidelity emulation of NVIDIA hardware 
+Basic model for CC analysis
 
-InfiniBand Support	None (no mature public model)	
-Good (Mellanox-contributed flit-level model) 
+None (Soft-RoCE unsupported)
 
-None	None	
-High-fidelity emulation of NVIDIA hardware 
+High-fidelity emulation of NVIDIA hardware
 
-Congestion Control Models	
-DCQCN, TIMELY 
+InfiniBand Support	None (no mature public model)
 
-RCM, IB CC 
+Good (Mellanox-contributed flit-level model)
 
-DCQCN, Swift, HPCC, DCTCP 
+None	None
+
+High-fidelity emulation of NVIDIA hardware
+
+Congestion Control Models
+
+DCQCN, TIMELY
+
+RCM, IB CC
+
+DCQCN, Swift, HPCC, DCTCP
 
 N/A (TCP/IP focused)	Emulates hardware-native CC (e.g., DCQCN)
-Telemetry (INT/P4) Support	None	None	None	
-Excellent (via BMv2 software switch) 
+
+Telemetry (INT/P4) Support	None	None	None
+
+Excellent (via BMv2 software switch)
 
 Emulation of INT-capable hardware (e.g., Spectrum)
+
 Extensibility for Security	High (full C++ source code modification)	High (full C++ source code modification)	Moderate (focused on CC logic)	High (for P4/SDN logic)	Low (closed, commercial platform)
+
 Scalability	Moderate (can be resource-intensive)	Moderate	High (optimized for CC simulation)	High (for emulated nodes)	Very High (cloud-based, large topologies)
+
 Learning Curve/Community	High / Excellent	High / Good	Moderate / Limited	Moderate / Excellent	Low / Vendor-supported
+
 Section 3: Modeling Collective Communication: Simulating All-Reduce Workloads
+
 To accurately assess the security and performance of interconnects for HPC and AI, it's not sufficient to model simple point-to-point traffic. The dominant communication patterns in these domains are collective operations, such as all-reduce, which involve complex, synchronized data exchanges among many nodes. The bursty and often conflicting traffic generated by these operations creates the network congestion that makes the system vulnerable to performance degradation and security attacks. Therefore, realistic workload modeling is a critical component of any meaningful simulation study.
 
 3.1 Synthetic Workload Generation
@@ -212,6 +234,7 @@ A simple synthetic traffic model, such as one based on Poisson arrival processes
 By capturing the exact sequence, timing, and dependencies of communication and computation from a real application, ATLAHS reproduces the precise traffic dynamics that lead to realistic congestion scenarios. This provides a high-fidelity baseline against which the impact of a security attack can be accurately measured. To understand how a malicious actor can worsen the performance of a legitimate, high-performance application, your simulation must first be able to accurately model that application's baseline behavior under stress. Only a trace-based approach like that enabled by ATLAHS can provide this necessary level of fidelity, ensuring that the results of the security analysis are both meaningful and relevant to real-world systems.
 
 Section 4: A Practical Guide to Simulating Network Security Attacks in RDMA Fabrics
+
 This section provides concrete methodologies for implementing specific network security attacks within the most suitable simulation frameworks. The focus is on translating the theoretical principles of each attack into a practical simulation experiment, enabling you to model and quantify their impact on RoCEv2 and P4-based networks.
 
 4.1 Exploiting Link-Layer Flow Control: Simulating PFC Pause Frame Storms
@@ -249,16 +272,27 @@ Implement the Malicious Behavior: Create a new subclass of the existing DCQCN im
 C++
 
 void Dcqcn::OnCnpReceived(...)
+
 {
-  if (m_isMalicious)
-  {
-    // Ignore the CNP and do not reduce the rate.
-    NS_LOG_INFO("Malicious node ignoring CNP.");
-    return;
-  }
-  // Original rate reduction logic here...
-  ReduceRate();
+
+if (m_isMalicious)
+
+{
+
+// Ignore the CNP and do not reduce the rate.
+
+NS_LOG_INFO("Malicious node ignoring CNP.");
+
+return;
+
 }
+
+// Original rate reduction logic here...
+
+ReduceRate();
+
+}
+
 This modification ensures that your malicious node's congestion control algorithm never enters the rate reduction phase, effectively ignoring all ECN-based feedback.
 
 Simulation Scenario: In your simulation script, configure a multi-tenant scenario where a "malicious" node (with the modified DCQCN) and several "compliant" victim nodes share a common bottleneck link. The malicious behavior can be enabled for the specific attacker node using the NS-3 attribute system.
@@ -308,6 +342,7 @@ Instead of cycling between them, it divides the total data to be sent among all 
 Since the network's fair-sharing mechanism allocates bandwidth on a per-QP basis, your attacker's application unfairly obtains a share of the bottleneck bandwidth proportional to the number of QPs it opens, starving compliant applications that use a single QP.
 
 Section 5: Quantifying the Impact: Metrics for Security Analysis in Multi-Tenant GPU Clusters
+
 Simulating an attack is only your first step; the critical next step is to quantify its impact using metrics that are meaningful in the context of HPC and AI workloads. The consequences of a network attack in these environments are not just about packet loss or latency but translate directly into wasted computational resources, extended job runtimes, and violations of fairness between competing users.
 
 5.1 Application and System Performance Degradation
@@ -318,7 +353,7 @@ Job Completion Time (JCT) is the single most important application-level perform
 
 Measurement Methodology:
 
-In NS-3: You must measure JCT within the custom application model that generates the workload (e.g., the synthetic all-reduce application or the ATLAHS trace-driven application). Your application should record the simulation time at the start of the first communication operation of a job using Simulator::Now(). Your application must then track the state of the distributed job. When the logic determines that the final required packet has been successfully received (e.g., the final all-gather phase is complete), it again calls Simulator::Now(). The difference between these two timestamps is the JCT for that job. The 
+In NS-3: You must measure JCT within the custom application model that generates the workload (e.g., the synthetic all-reduce application or the ATLAHS trace-driven application). Your application should record the simulation time at the start of the first communication operation of a job using Simulator::Now(). Your application must then track the state of the distributed job. When the logic determines that the final required packet has been successfully received (e.g., the final all-gather phase is complete), it again calls Simulator::Now(). The difference between these two timestamps is the JCT for that job. The
 
 ns3::Application class provides StartTime and StopTime attributes, but these typically define the application's activity window and are not suitable for measuring the completion time of dynamic, network-dependent jobs.
 
@@ -335,16 +370,24 @@ Simulate Communication Phases: Run your application's workload trace in the netw
 
 Calculate Effective GPU Utilization: Use a post-processing script to calculate your effective GPU utilization. Your total job time is the sum of the total intrinsic computation time (from the trace) and the total simulated communication time. The formula is:
 
-Effective GPU Utilization= 
-∑T 
+Effective GPU Utilization=
+
+∑T
+
 compute
+
 ​
- +T 
+
++T
+
 communication_simulated
+
 ​
  
-∑T 
+∑T
+
 compute
+
 ​
  
 ​
@@ -362,45 +405,114 @@ Throughput Analysis: The most direct measure of unfairness is the bandwidth allo
 
 JCT Degradation for Victims: Measure the Job Completion Time for a standard task run by your victim tenant under two conditions: (1) running in isolation, and (2) running concurrently with the attacker tenant's malicious workload. The percentage increase in your victim's JCT provides a clear and compelling measure of the collateral damage caused by the attack's breach of performance isolation.
 
-Jain's Fairness Index: To produce a single, quantitative score for fairness across your multiple tenants, Jain's Fairness Index can be calculated from the throughputs (x 
-i
-​
- ) achieved by each of the n tenants:
+Jain's Fairness Index: To produce a single, quantitative score for fairness across your multiple tenants, Jain's Fairness Index can be calculated from the throughputs (x
 
-J(x 
-1
-​
- ,x 
-2
-​
- ,…,x 
-n
-​
- )= 
-n∑ 
-i=1
-n
-​
- x 
 i
+
+​
+
+) achieved by each of the n tenants:
+
+J(x
+
+1
+
+​
+
+,x
+
 2
+
+​
+
+,…,x
+
+n
+
+​
+
+)=
+
+n∑
+
+i=1
+
+n
+
+​
+
+x
+
+i
+
+2
+
 ​
  
-(∑ 
+(∑
+
 i=1
+
 n
+
 ​
- x 
+
+x
+
 i
+
 ​
- ) 
+
+)
+
 2
  
 ​
  
 The index ranges from 1/n (worst case) to 1 (perfect fairness). Comparing the fairness index of your baseline scenario to your attack scenario provides a standardized measure of the attack's impact on resource allocation equity.
 
+## Practical Example: Simulating Fairness and Job Completion Time Impact of Malicious RDMA Tenant
+
+Below is a Python code example that models the impact of a malicious tenant (e.g., ECN non-compliance or QP attack) on fairness and job completion time in a multi-tenant RDMA environment. The code uses Jain's Fairness Index and visualizes throughput allocation.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+def jains_fairness_index(throughputs):
+    throughputs = np.array(throughputs)
+    n = len(throughputs)
+    return (np.sum(throughputs) ** 2) / (n * np.sum(throughputs ** 2))
+
+# Example: 1 malicious tenant, 4 compliant tenants
+compliant_throughput = 100
+malicious_throughput = 400
+throughputs = [malicious_throughput] + [compliant_throughput] * 4
+fairness = jains_fairness_index(throughputs)
+
+# Simulate job completion time impact (higher throughput = lower JCT)
+jct_compliant = 1000 / compliant_throughput
+jct_malicious = 1000 / malicious_throughput
+
+# Visualization
+plt.figure(figsize=(8, 4))
+plt.bar(['Malicious'] + [f'Compliant {i+1}' for i in range(4)], throughputs, color=['red'] + ['blue']*4)
+plt.ylabel('Throughput (MB/s)')
+plt.title(f'RDMA Tenant Throughput Allocation\nJain Fairness Index: {fairness:.2f}')
+plt.tight_layout()
+plt.show()
+
+print(f"Job Completion Time (Malicious): {jct_malicious:.2f} sec")
+print(f"Job Completion Time (Compliant): {jct_compliant:.2f} sec")
+```
+
+**Commentary:**
+- This code demonstrates how a malicious tenant can monopolize bandwidth, reducing fairness and increasing job completion time for compliant tenants.
+- Jain's Fairness Index quantifies the equity of resource allocation (1 = perfect fairness, lower values = more unfair).
+- The visualization and JCT calculation help communicate the operational impact of protocol-level attacks in multi-tenant RDMA environments.
+
 Section 6: Synthesis and Strategic Recommendations for Future Research
+
 This analysis has surveyed the landscape of simulation and emulation frameworks for studying the security of high-performance RoCEv2 and InfiniBand networks. It's provided detailed methodologies for modeling realistic AI/HPC workloads, implementing a range of sophisticated network attacks, and quantifying their impact on application performance and system fairness. The findings culminate in a set of strategic recommendations for researchers in this domain, highlighting the optimal tools for specific research goals and identifying critical areas for future investigation.
 
 6.1 A Decision Framework for Researchers

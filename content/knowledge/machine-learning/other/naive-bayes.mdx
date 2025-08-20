@@ -1,37 +1,25 @@
 ---
 title: 'Naive Bayes: Probabilistic Classification'
-description: 'Comprehensive guide to Naive Bayes algorithms, applications, and implementation.'
+description: >-
+  Comprehensive guide to Naive Bayes algorithms, applications, and
+  implementation.
+category: machine-learning
+domain: machine-learning
+format: article
 date: '2025-01-21'
-author: 'perfecXion AI Team'
-category: 'machine-learning'
-domain: 'machine-learning'
-format: 'article'
-difficulty: 'beginner'
-readTime: '20 min read'
+author: perfecXion AI Team
+difficulty: beginner
+readTime: 20 min read
 tags:
   - Machine Learning
   - AI
   - Fundamentals
   - Article
+status: published
 ---
+# Naive Bayes: Probabilistic Classification
 
-# Naive Bayes Classifier: Theory, Application, and Modern Context
-
-**Comprehensive guide to Naive Bayes algorithms, applications, and implementation**
-
----
-
-## Table of Contents
-
-- [Part I: Foundational Principles](#part-i-foundational-principles-and-theory)
-  - [Section 1: Fundamental Concepts](#section-1-fundamental-concepts)
-  - [Section 2: Mathematical Foundation](#section-2-mathematical-foundation)
-  - [Section 3: Algorithm Variants](#section-3-algorithm-variants)
-- [Part II: Practical Implementation](#part-ii-practical-implementation)
-- [Part III: Advanced Applications](#part-iii-advanced-applications)
-- [Part IV: Model Evaluation](#part-iv-model-evaluation)
-
----
+Comprehensive guide to Naive Bayes algorithms, applications, and implementation
 
 ## Part I: Foundational Principles and Theory
 
@@ -43,9 +31,7 @@ tags:
 
 ### 1.1 The Core Algorithm: Probabilistic Classification
 
-**Naive Bayes isn't one algorithm—it's a family of probabilistic classifiers.** Instead of giving deterministic answers, it calculates the **probability of an instance belonging to each class**. **The class with highest probability wins.**
-
----
+Naive Bayes isn't one algorithm—it's a family of probabilistic classifiers.** Instead of giving deterministic answers, it calculates the **probability of an instance belonging to each class**. **The class with highest probability wins.
 
 ### Example: Email Spam Classification Fundamentals
 
@@ -139,19 +125,21 @@ print("• Words like 'project', 'meeting' suggest legitimate emails")
 
 This example demonstrates how Naive Bayes transforms the classification problem into probability estimation, showing exactly how word frequencies translate into spam/ham predictions with confidence scores.
 
-This probabilistic approach is fundamentally rooted in Bayes' Theorem, a cornerstone of probability theory formulated by Thomas Bayes. The theorem provides a mathematical framework for updating beliefs in light of new evidence. It allows one to "invert" conditional probabilities—that is, to calculate the probability of a hypothesis (a cause) given the observed data (an effect). In the context of machine learning classification, this translates to calculating the probability of a specific 
+This probabilistic approach is fundamentally rooted in Bayes' Theorem, a cornerstone of probability theory formulated by Thomas Bayes. The theorem provides a mathematical framework for updating beliefs in light of new evidence. It allows one to "invert" conditional probabilities—that is, to calculate the probability of a hypothesis (a cause) given the observed data (an effect). In the context of machine learning classification, this translates to calculating the probability of a specific
 
 class given a set of observed features.
 
 To illustrate, consider a classic medical diagnosis scenario. A doctor knows the probability that a patient with a certain disease will test positive—P(Positive Test∣Disease). However, what the doctor truly needs to know is the reverse: the probability that a patient who tested positive actually has the disease—P(Disease∣Positive Test). Bayes' Theorem provides the mechanism for this inversion, incorporating the prior probability of the disease occurring in the population and the overall probability of anyone testing positive. This ability to sequentially update an initial belief (the prior probability) with new information to arrive at a more informed conclusion (the posterior probability) is the essence of Bayesian reasoning.
 
-### 1.2 The "Naive" Assumption: Conditional Independence
+## 1.2 The "Naive" Assumption: Conditional Independence
+
 The \"naive\" assumption gives the algorithm its name and its power. Once you know the class, all features are assumed independent of each other. This is obviously false in most real-world scenarios, but it works surprisingly well.
 
 Here's an example: classifying fruit as \"apple.\" Features include color (red), shape (round), and diameter (3 inches). Naive Bayes assumes these features contribute independently to the \"apple\" probability. It treats color=red as completely unrelated to shape=round, given the apple class. In reality, apple redness and roundness are highly correlated.
 
 This assumption is deliberate simplification. Without it, you'd need joint probability for every feature combination per class—computationally infeasible as features grow ("curse of dimensionality"). Dataset with n binary features needs 2^n
-  parameters per class. Independence assumption elegantly sidesteps this by reducing complex joint probability into simple product of individual feature probabilities. Not an oversight—pragmatic design choice making Bayesian methods viable for high-dimensional problems with limited computing resources.
+
+parameters per class. Independence assumption elegantly sidesteps this by reducing complex joint probability into simple product of individual feature probabilities. Not an oversight—pragmatic design choice making Bayesian methods viable for high-dimensional problems with limited computing resources.
 
 **Visual**: Central "Class" node (Spam) with arrows pointing to "Feature" nodes (free, money, urgent). No arrows between features = conditional independence given class.
 
@@ -167,7 +155,7 @@ Formal ML development came much later. Gained traction mid-20th century (1960s-7
 
 Naive Bayes is definitely supervised learning—requires pre-labeled training data. Example: spam filter needs emails marked 'spam' or 'ham'. Algorithm learns statistical parameters: prior probabilities of classes and conditional probabilities of features given classes.
 
-**Generative vs. Discriminative**: Naive Bayes is generative, unlike discriminative models (Logistic Regression, SVMs). 
+**Generative vs. Discriminative**: Naive Bayes is generative, unlike discriminative models (Logistic Regression, SVMs).
 
 - **Discriminative**: Learn decision boundary separating classes
 - **Generative**: Learn feature distribution for each class—builds model of what each class "looks like"
@@ -182,12 +170,14 @@ Rigorous mathematical and algorithmic breakdown—from foundational equations to
 
 Here's where things get mathematically concrete. You'll see how Bayes' Theorem transforms into a practical classification tool through a series of elegant mathematical steps.
 
-**Bayes' Theorem: Your Starting Point**
+Bayes' Theorem: Your Starting Point
 
 Every Naive Bayes classifier starts here. You have a class variable y and features X=(x₁, x₂, ..., xₙ). Bayes' Theorem connects these through conditional probabilities:
 
-P(y∣X)= 
+P(y∣X)=
+
 P(X)
+
 P(X∣y)P(y) Each piece serves a specific purpose:
 
 - **P(y|X) - Posterior Probability**: What you're solving for. The probability that your instance belongs to class y given its features.
@@ -195,7 +185,8 @@ P(X∣y)P(y) Each piece serves a specific purpose:
 - **P(y) - Prior Probability**: Your baseline expectation. How common is class y in your training data?
 - **P(X) - Evidence**: A normalizing factor. Since it's the same for all classes, you can ignore it when comparing.
 
-**Concrete Example: Bayes Theorem in Action**
+Concrete Example: Bayes Theorem in Action
+
 ```python
 import numpy as np
 from sklearn.naive_bayes import GaussianNB
@@ -259,50 +250,71 @@ print("then normalizes to get probabilities that sum to 1.0")
 
 This example shows how Bayes' theorem transforms prior knowledge and observed evidence into concrete probability estimates for classification decisions.
 
-**The Naive Assumption in Action**
+The Naive Assumption in Action
 
 Here's where "naive" becomes powerful. Calculating P(X|y) directly is computationally nightmarish—you'd need the joint probability of all features together. The naive assumption breaks this down beautifully:
 
-P(X∣y)=P(x₁,x 
-2 ,…,x 
-n ∣y)≈ 
+P(X∣y)=P(x₁,x
+
+2 ,…,x
+
+n ∣y)≈
+
 i=1
+
 ∏
+
 n P(xᵢ∣y)
 
-**Your Classification Decision Rule**
+Your Classification Decision Rule
 
 Now you combine everything. Since P(X) is identical across all classes, you can drop it entirely. You're looking for the class that maximizes the posterior probability—this is Maximum A Posteriori (MAP) estimation.
 
 Your prediction ŷ becomes:
 
 y
-^ = 
+
+^ =
+
 y
-argmax P(y∣X)= 
+
+argmax P(y∣X)=
+
 y
-argmax P(y) 
+
+argmax P(y)
+
 i=1
+
 ∏
+
 n P(xᵢ∣y)
 
-**Log-Probability: Avoiding Numerical Disasters**
+Log-Probability: Avoiding Numerical Disasters
 
 Multiplying many tiny probabilities creates a practical problem—your computer can't handle numbers that small (arithmetic underflow). The solution? Work in log space. This transforms multiplication into addition, which computers handle much better.
 
 Your MAP rule becomes:
 
 y
-^ = 
+
+^ =
+
 y
-argmax [log(P(y))+ 
+
+argmax [log(P(y))+
+
 i=1
+
 ∑
+
 n log(P(xᵢ∣y))]
 
-This transformation is more than a mere computational convenience. It reframes the Naive Bayes classifier as a linear model in log-space. The decision boundary between two classes is the set of points where their log-posterior probabilities are equal. Expanding this equality results in a linear equation of the form w 
+This transformation is more than a mere computational convenience. It reframes the Naive Bayes classifier as a linear model in log-space. The decision boundary between two classes is the set of points where their log-posterior probabilities are equal. Expanding this equality results in a linear equation of the form w
+
 T
- x+b=0, where the weights w and bias b are functions of the log-priors and log-likelihoods learned from the data. This reveals a deep connection between the probabilistic Naive Bayes model and geometric linear classifiers like Logistic Regression and SVMs, helping to unify the understanding of these seemingly disparate algorithms.
+
+x+b=0, where the weights w and bias b are functions of the log-priors and log-likelihoods learned from the data. This reveals a deep connection between the probabilistic Naive Bayes model and geometric linear classifiers like Logistic Regression and SVMs, helping to unify the understanding of these seemingly disparate algorithms.
 
 2.2. Algorithm Steps: A Practical Walkthrough
 To make the process concrete, consider a simple, classic example: predicting whether to 'Play Golf' based on weather conditions. The features are 'Outlook', 'Temperature', 'Humidity', and 'Windy', and the target class is 'Play Golf' (Yes/No).
@@ -312,24 +324,32 @@ The training phase involves calculating and storing all necessary probabilities 
 
 Calculate Prior Probabilities P(y): The algorithm first computes the prior probability for each class. This is simply the relative frequency of each class in the training data.
 
-P(Play Golf=Yes)= 
+P(Play Golf=Yes)=
+
 Total number of days
-Number of ’Yes’ days P(Play Golf=No)= 
+
+Number of ’Yes’ days P(Play Golf=No)=
+
 Total number of days
+
 Number of ’No’ days Calculate Likelihoods P(xᵢ∣y): Next, the algorithm constructs frequency or likelihood tables for each feature, conditioned on each class.
 
 For the 'Outlook' feature, it calculates probabilities like:
 
-P(Outlook=Sunny∣Play Golf=Yes)= 
+P(Outlook=Sunny∣Play Golf=Yes)=
+
 Total count of ’Yes’ days
-Count of ’Sunny’ on ’Yes’ days P(Outlook=Sunny∣Play Golf=No)= 
+
+Count of ’Sunny’ on ’Yes’ days P(Outlook=Sunny∣Play Golf=No)=
+
 Total count of ’No’ days
+
 Count of ’Sunny’ on ’No’ days This process is repeated for every possible value of every feature ('Rainy', 'Overcast'; 'Hot', 'Mild', 'Cool', etc.) for both the 'Yes' and 'No' classes.
 
 Prediction Phase:
 Suppose a new day arrives with the conditions: X_new = (Outlook=Sunny, Temperature=Cool, Humidity=High, Windy=True). The algorithm must predict whether golf will be played.
 
-**Calculate Score for 'Play Golf = Yes':**
+Calculate Score for 'Play Golf = Yes':
 
 Retrieve the prior: P(Play Golf=Yes)
 
@@ -349,26 +369,31 @@ Score(Yes)=P(Yes)×P(Sunny∣Yes)×P(Cool∣Yes)×P(High∣Yes)×P(True∣Yes)
 Calculate Score for 'Play Golf = No':
 
 Repeat the same process for the 'No' class, retrieving the prior P(No) and the corresponding likelihoods for the observed weather conditions.
+
 Score(No)=P(No)×P(Sunny∣No)×P(Cool∣No)×P(High∣No)×P(True∣No)
 
-Assign Class: The algorithm compares Score(Yes) and Score(No). The predicted class  
+Assign Class: The algorithm compares Score(Yes) and Score(No). The predicted class
+
 y
+
 ^ is the one with the higher score.
 
 This process can be visualized as a flowchart, starting with data input, moving through the calculation of priors and likelihoods during training, and then applying these stored probabilities to new data to generate a final class prediction.
 
 2.3. Key Parameters and the Training Process
 Hyperparameters
-A notable feature of Naive Bayes is its scarcity of tunable hyperparameters, which contributes to its speed and simplicity. The most critical hyperparameter is the 
+
+A notable feature of Naive Bayes is its scarcity of tunable hyperparameters, which contributes to its speed and simplicity. The most critical hyperparameter is the
 
 smoothing parameter α (alpha). This parameter is used in the Multinomial, Bernoulli, and Categorical variants to address the "zero-frequency problem," an issue where a feature value in a test instance was never seen during training for a particular class. Without smoothing, this would result in a likelihood of zero, nullifying the entire calculation for that class. The role and tuning of α will be discussed in greater detail in Section 8.
 
 Training Process
+
 The training of a Naive Bayes model is not an iterative optimization process like gradient descent. Instead, it is a direct, one-pass procedure of calculating probabilities from the training data. The "trained model" is simply the collection of all calculated prior and conditional probability tables.
 
 This process is **Maximum Likelihood Estimation (MLE)**—choosing parameters that maximize the probability of seeing your training data. Simple example: P(y) equals how often class y appears in your dataset.
 
-Smoothing parameter α shifts you from MLE to **Maximum A Posteriori (MAP) estimation**. Why does this matter? MLE assigns zero probability to anything unseen in training. New feature value appears? Your model crashes. The α parameter prevents this disaster. 
+Smoothing parameter α shifts you from MLE to **Maximum A Posteriori (MAP) estimation**. Why does this matter? MLE assigns zero probability to anything unseen in training. New feature value appears? Your model crashes. The α parameter prevents this disaster.
 
 Mathematically, α places a Dirichlet prior on feature probabilities—essentially saying "all feature values are possible, even if unseen." This makes your model robust for real-world data where surprise feature values appear.
 
@@ -384,20 +409,22 @@ Hands-on implementation details—from data prep to computational costs to choos
 
 Naive Bayes adapts to your data through different variants. Your feature types determine which variant you choose.
 
-**Data Types and Variants:**
+Data Types and Variants:
 
 - **Categorical/Discrete Data**: Use Multinomial Naive Bayes for discrete counts (word frequencies in documents) or Categorical Naive Bayes for unordered categories (color, country).
 - **Binary Data**: Bernoulli Naive Bayes handles binary features (0/1, True/False). Perfect for "word present/absent" in text classification.
 - **Continuous Data**: Gaussian Naive Bayes assumes your features follow normal distributions. Works for height, weight, temperature, etc.
 
-**Data Preprocessing:**
+Data Preprocessing:
 
 **Text Data** requires careful preparation:
+
 - **Tokenization**: Split text into individual words or tokens
 - **Normalization**: Lowercase everything, remove punctuation and stop words ('the', 'a', 'is')
 - **Stemming/Lemmatization**: Reduce words to root forms ('running' → 'run')
 
 Convert cleaned text to numbers using:
+
 - **Bag-of-Words (BoW)**: Simple word count vectors
 - **TF-IDF**: Weighted frequencies that highlight document-specific important words
 
@@ -405,7 +432,7 @@ Convert cleaned text to numbers using:
 
 **Missing Values**: Here's where Naive Bayes shines. Missing features? Just ignore them during prediction—omit their likelihood terms from the calculation. This natural robustness beats algorithms like SVMs or Logistic Regression that require complete feature vectors and error-prone imputation strategies.
 
-**Dataset Sizes:**
+Dataset Sizes:
 
 Small datasets? Naive Bayes excels. Its strong assumptions prevent overfitting when data is scarce.
 
@@ -428,9 +455,10 @@ Bottom line: Exceptionally fast training and prediction compared to iterative me
 While you can implement from scratch for learning, use optimized libraries for production.
 
 **Python (scikit-learn)**: The go-to choice. Provides:
+
 - **GaussianNB**: Continuous, normally distributed features
 - **MultinomialNB**: Discrete count data (word counts)
-- **BernoulliNB**: Binary/boolean features  
+- **BernoulliNB**: Binary/boolean features
 - **ComplementNB**: MultinomialNB adapted for imbalanced datasets
 - **CategoricalNB**: Discrete categories
 
@@ -487,19 +515,21 @@ Naive Bayes offers more than binary decisions—nuanced outputs for sophisticate
 
 Naive Bayes effectiveness depends heavily on data characteristics.
 
-**Performs Well When:**
+Performs Well When:
+
 - Independence assumption isn't severely violated (rarely perfect, but robust to moderate dependencies)
 - Very high dimensionality (text classification with tens of thousands of features)
 - Well-separated classes where decision boundary complexity isn't the challenge
 - Limited training data (strong assumptions prevent overfitting)
 
-**Performs Poorly When:**
+Performs Poorly When:
+
 - Features are strongly correlated (major failure mode—"double-counts" evidence. 'Fever' and 'chills' treated as independent infection evidence, artificially inflating probability)
 - Complex feature interactions required (model structure prevents learning these patterns)
 - Regression tasks (classification-only algorithm)
 - Accurate probability calibration needed (probabilities unreliable in absolute sense)
 
-**Why Naive Bayes Succeeds Despite Broken Assumptions**
+Why Naive Bayes Succeeds Despite Broken Assumptions
 
 Surprising success in text classification (where words clearly aren't independent) reveals something profound: classification only needs correct ranking, not accurate probabilities. Independence assumption biases affect all classes similarly, preserving rank order. You get right answers despite flawed reasoning. Research shows classification error doesn't correlate directly with feature dependence—optimal performance possible if argmax decision stays correct.
 
@@ -561,29 +591,35 @@ Understand Naive Bayes' place in the ML landscape through comparison with Logist
 
 #### Naive Bayes vs. Logistic Regression
 
-**Model Paradigm**: 
+**Model Paradigm**:
+
 - Naive Bayes: Generative model (learns P(X|y), derives P(y|X) via Bayes' rule)
 - Logistic Regression: Discriminative model (models P(y|X) directly through decision boundary)
 
 **Assumptions**:
+
 - Naive Bayes: Strong conditional independence assumption
 - Logistic Regression: No independence assumption, handles correlated features better
 
 **Performance by Dataset Size**:
+
 - Small datasets: Naive Bayes converges quickly, may outperform (strong assumptions = regularization)
 - Large datasets: Logistic Regression typically wins (learns optimal boundary without false independence constraint)
 
 **Decision Boundary**:
+
 - Naive Bayes: Generally quadratic
 - Logistic Regression: Linear (non-linear via feature engineering)
 
 #### Naive Bayes vs. Support Vector Machines (SVM)
 
-**Model Paradigm**: 
+**Model Paradigm**:
+
 - Naive Bayes: Probabilistic model using Bayes' theorem and feature frequency distributions
 - SVM: Geometric model finding maximum-margin hyperplane in high-dimensional space
 
 **Core Approach**:
+
 - Naive Bayes: Models probability distributions, makes predictions via Bayes' rule
 - SVM: Identifies "support vectors" (points closest to decision boundary), constructs optimal separating hyperplane
 
@@ -614,14 +650,23 @@ Given these trade-offs, choose Naive Bayes in these specific scenarios:
 The following table provides a concise summary of these comparisons to aid in model selection.
 
 Feature	Naive Bayes	Logistic Regression	Support Vector Machine (SVM)
+
 Model Type	Generative	Discriminative	Geometric (Large-Margin)
+
 Core Assumption	Conditional independence of features	Linearity of the log-odds	Data is separable by a hyperplane
+
 Speed (Training)	Very Fast (single pass)	Moderate (iterative optimization)	Slow (computationally intensive)
+
 Speed (Prediction)	Very Fast	Fast	Fast
+
 Performance (Small Data)	Often very good	Prone to overfitting	Prone to overfitting
+
 Performance (Large Data)	Often outperformed	Generally very good	Generally very good, high accuracy
+
 Handling Correlated Features	Poorly (violates assumption)	Well	Well
+
 Interpretability	High (based on probabilities)	Moderate (based on feature weights)	Low (especially with kernels)
+
 Key Weakness	Strong independence assumption	Assumes linear decision boundary	Computationally expensive to train
 
 ## Part IV: Advanced Considerations and Practitioner's Guide
@@ -655,14 +700,21 @@ Linear time complexity makes Naive Bayes exceptionally scalable. It handles both
 "Naive Bayes" represents a family of classifiers, each distinguished by different distributional assumptions about features. Choosing the correct variant for your data type is the most critical implementation decision.
 
 | Variant | Core Assumption on P(xᵢ∣y) | Data Type | Key Hyperparameters | Primary Use Case |
+
 | :--- | :--- | :--- | :--- | :--- |
+
 | GaussianNB | Features follow a Gaussian (normal) distribution. | Continuous / Numerical | var_smoothing | General classification with continuous features (e.g., sensor data, medical measurements). |
+
 | MultinomialNB | Features follow a multinomial distribution. | Discrete Counts | alpha | Text classification with word counts (Bag-of-Words). |
+
 | BernoulliNB | Features follow a multivariate Bernoulli distribution. | Binary / Boolean | alpha, binarize | Text classification with word presence/absence vectors, especially for short documents. |
+
 | ComplementNB| An adaptation of MultinomialNB. | Discrete Counts | alpha, norm | Text classification on imbalanced datasets. |
+
 | CategoricalNB| Features follow a categorical distribution. | Categorical | alpha, min_categories | Classification with discrete features that are not counts (e.g., 'color', 'country'). |
 
-**Comparing Naive Bayes Variants in Practice**
+Comparing Naive Bayes Variants in Practice
+
 ```python
 import numpy as np
 import pandas as pd
@@ -772,7 +824,7 @@ This comparison demonstrates how different variants handle different data types,
 
 **Categorical Naive Bayes (CategoricalNB)**: For categorical features that aren't counts ('car_brand', 'day_of_week'). Assumes numerical encoding (0, 1, 2) and estimates category probability per feature, conditioned on class.
 
-#### Feature Engineering
+## Feature Engineering
 
 Thoughtful feature engineering significantly enhances Naive Bayes performance despite its algorithmic simplicity.
 
@@ -800,15 +852,17 @@ Most common pitfall with discrete data: zero-frequency problem. Feature value ap
 
 **Solution**: Laplace Smoothing (additive smoothing). Add small constant α to every frequency table count. Ensures no probability equals exactly zero.
 
-P(xᵢ∣y)= 
+P(xᵢ∣y)=
+
 count(y)+α×V
+
 count(xᵢ,y)+α Where:
 
 α is the smoothing parameter.
 
 V is the number of unique features in the dataset (e.g., the size of the vocabulary in text classification).
 
-When α=1, it is called Laplace smoothing. When 0<α<1, it is called Lidstone smoothing. Using 
+When α=1, it is called Laplace smoothing. When 0<α<1, it is called Lidstone smoothing. Using
 
 α>0 is essential for building a robust Naive Bayes classifier.
 
@@ -817,6 +871,7 @@ When α=1, it is called Laplace smoothing. When 0<α<1, it is called Lidstone sm
 Smoothing parameter α is the primary hyperparameter for Multinomial, Bernoulli, and Categorical variants.
 
 **α as Regularization**:
+
 - **Low α (near zero)**: High trust in observed training frequencies
 - **High α**: Stronger smoothing, pushes probabilities toward uniform distribution
 
@@ -824,7 +879,8 @@ Balancing act: prevents overfitting on rare features but can cause underfitting 
 
 **Tuning Strategy**: Data-dependent optimization using GridSearchCV or RandomizedSearchCV with cross-validation. Systematically search α ranges to maximize validation performance.
 
-**Complete Alpha Tuning Workflow**
+Complete Alpha Tuning Workflow
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -919,31 +975,32 @@ print("• Optimal alpha is dataset-dependent - always validate!")
 
 This comprehensive example shows how alpha affects the bias-variance tradeoff and demonstrates systematic approaches to finding the optimal smoothing parameter.
 
-# 2. Create a pipeline
 pipeline = make_pipeline(TfidfVectorizer(), MultinomialNB())
 
-# 3. Define the hyperparameter grid to search
-# A logarithmic range is often effective for alpha
 param_grid = {
-    'multinomialnb__alpha': [0.001, 0.01, 0.1, 0.5, 1.0, 5.0, 10.0]
+
+'multinomialnb__alpha': [0.001, 0.01, 0.1, 0.5, 1.0, 5.0, 10.0]
+
 }
 
-# 4. Set up and run the grid search with 5-fold cross-validation
 grid_search = GridSearchCV(pipeline, param_grid, cv=5, scoring='accuracy', n_jobs=-1)
+
 grid_search.fit(X, y)
 
-# 5. Print the best hyperparameter found
 print(f"Best alpha: {grid_search.best_params_['multinomialnb__alpha']}")
+
 print(f"Best cross-validation accuracy: {grid_search.best_score_:.4f}")
-#### Evaluation Metrics
+
+## Evaluation Metrics
 
 Choosing appropriate metrics is crucial, especially with class imbalance in real-world problems.
 
 **Accuracy**: Simple but misleading on imbalanced datasets. Model predicting only majority class can achieve high accuracy while being useless.
 
 **Confusion Matrix + Derived Metrics**: More nuanced evaluation:
+
 - **Precision**: Of predicted positives, what proportion were actually positive? (Exactness)
-- **Recall (Sensitivity)**: Of actual positives, what proportion were correctly identified? (Completeness)  
+- **Recall (Sensitivity)**: Of actual positives, what proportion were correctly identified? (Completeness)
 - **F1-Score**: Harmonic mean of precision and recall. Single balanced score.
 
 Essential for per-class performance understanding.
@@ -1020,11 +1077,12 @@ Accessible, practical introductions:
 
 Hands-on learning through practical implementations:
 
-**From-Scratch Implementations:**
+From-Scratch Implementations:
+
 - **Machine Learning Mastery**: Jason Brownlee's "Naive Bayes Classifier From Scratch in Python" provides step-by-step Gaussian variant construction. Excellent for understanding underlying mechanics.
 - **Kaggle Notebooks and GitHub**: Numerous public repositories demonstrate from-scratch Gaussian and Multinomial implementations with different perspectives and coding styles.
 
-**Discovery Resources:**
+Discovery Resources:
+
 - **GitHub Topics**: Search 'naive-bayes-classifier' and 'bayes-classifier' for diverse projects, libraries, and applications across programming languages showcasing practical usage.
 - **Kaggle Notebooks**: Invaluable applied examples. "Naive Bayes" search yields hundreds of notebooks applying algorithm to diverse datasets. Includes detailed preprocessing, tuning, evaluation. Excellent case studies for spam detection and sentiment analysis.
-

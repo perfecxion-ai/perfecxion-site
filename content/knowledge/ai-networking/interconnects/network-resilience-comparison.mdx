@@ -3,10 +3,14 @@ title: 'Network Resilience: InfiniBand vs Ethernet Fault Tolerance'
 description: >-
   Comparative analysis of fault tolerance, redundancy, and resilience mechanisms
   in InfiniBand and Ethernet networks.
-date: '2025-08-18'
-author: perfecXion AI Team
 category: ai-networking
 subcategory: networking
+domain: ai-networking
+format: article
+date: '2025-08-18'
+author: perfecXion AI Team
+difficulty: advanced
+readTime: 27 min read
 tags:
   - resilience
   - fault-tolerance
@@ -16,20 +20,19 @@ tags:
   - high-availability
   - AI Networking
   - Networking
-difficulty: advanced
-readTime: 27 min read
-featured: true
 toc: true
-type: knowledge
+featured: true
 excerpt: >-
   Resilience and Serviceability in High-Performance Fabrics: A Comparative
   Architectural Analysis of InfiniBand and Ethernet Executive Summary The
   relentless scaling of High-Performance Computing and AI workloads has elevated
   your network fabric from a mere transport layer to a mission-critical
   compon...
-domain: ai-networking
-format: article
+status: published
 ---
+
+# Network Resilience: InfiniBand vs Ethernet Fault Tolerance
+
 Resilience and Serviceability in High-Performance Fabrics: A Comparative Architectural Analysis of InfiniBand and Ethernet
 
 Executive Summary
@@ -201,13 +204,21 @@ You have granular control over timers and can debug protocol states, offering hi
 Analysis of the two fabrics reveals a tiered landscape of reconvergence capabilities. Your choice is not simply between "InfiniBand" and "Ethernet," but between different generations and implementations of their respective recovery technologies.
 
 | Feature | InfiniBand (Standard SM Sweep) | InfiniBand (Self-Healing Network) | Ethernet (Leaf-Spine with BGP+BFD) |
+
 |---------|-------------------------------|-----------------------------------|-----------------------------------|
+
 | Primary Mechanism | Centralized SM recalculation | Distributed, hardware-based rerouting | Decentralized, protocol-driven reconvergence |
+
 | Detection Method | Periodic fabric scan by SM | Hardware link-state detection in ASIC | BFD hello packets (UDP) |
+
 | Typical Detection Time | 10 seconds (default sweep interval) | < 1 millisecond | 30 - 300 milliseconds (tunable) |
+
 | Rerouting Method | SM pushes new routing tables to all switches | In-ASIC switch to pre-computed alternate paths | Local FIB update from ECMP; BGP withdraw/update propagation |
+
 | Typical Total Reconvergence | 5 - 30+ seconds (scales with fabric size) | ~1 millisecond | < 500 milliseconds |
+
 | Key Dependencies | SM host performance and availability | Switch ASIC capabilities (vendor-specific) | BFD timers, BGP tuning, switch CPU performance |
+
 | Operational Model | Centralized, polling-based | Distributed, event-driven (hardware) | Distributed, event-driven (protocol software) |
 
 This comparison highlights three distinct tiers of resilience:
@@ -351,3 +362,44 @@ Simultaneously, the Ethernet ecosystem has explicitly targeted the AI/HPC space 
 The final takeaway for architects is that the lines are blurring. The future of high-performance networking will not be a victory of one standard over the other, but rather a synthesis of the best attributes of both worlds. It will combine the raw performance, low latency, and hardware offloads pioneered in the HPC space with the scalability, operational maturity, and open, standards-based foundation of the cloud and enterprise data center.
 
 When evaluating today's technologies, you must therefore consider not only current specifications but also each technology's trajectory and alignment with this inevitable, converged future.
+
+## Practical Example: Simulating Network Reconvergence Impact on Application Survival
+
+Below is a Python code example that models the probability of application survival after a network fault, based on reconvergence times for InfiniBand and Ethernet. This simulation helps illustrate how recovery speed affects the likelihood of saving a running job.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+def survival_probability(reconvergence_times, app_timeout=2.0):
+    """
+    Calculate probability of application survival given reconvergence times.
+    Args:
+        reconvergence_times: List of reconvergence times in seconds (e.g., [0.001, 0.5, 30])
+        app_timeout: Application timeout in seconds (e.g., 2.0)
+    Returns:
+        List of survival probabilities (0 to 1)
+    """
+    # If reconvergence is faster than app timeout, job survives
+    return [1.0 if t < app_timeout else 0.0 for t in reconvergence_times]
+
+# Example reconvergence times (seconds)
+labels = ["InfiniBand Self-Healing", "Ethernet BGP+BFD", "InfiniBand SM Sweep"]
+times = [0.001, 0.5, 30]
+probs = survival_probability(times)
+
+# Visualization
+plt.figure(figsize=(7, 4))
+plt.bar(labels, probs, color=['green', 'blue', 'red'])
+plt.ylim(0, 1.1)
+plt.ylabel('Probability of Application Survival')
+plt.title('Impact of Network Reconvergence Time on Job Survival')
+plt.grid(axis='y', linestyle='--', alpha=0.5)
+plt.tight_layout()
+plt.show()
+```
+
+**Commentary:**
+- This code demonstrates how rapid network reconvergence (e.g., InfiniBand Self-Healing or Ethernet BGP+BFD) dramatically increases the probability of saving a running job after a fault, compared to slower recovery (InfiniBand SM Sweep).
+- You can adjust `app_timeout` to match your cluster's job scheduler settings or application tolerance.
+- The visualization makes the operational impact of network resilience clear for architects and operators.
