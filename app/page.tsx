@@ -75,14 +75,14 @@ export default function HomePage() {
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-purple-50/50 dark:from-blue-950/20 dark:to-purple-950/20" />
           <Image
-            src="/homepage-brain.jpg"
+            src="/images/homepage.png"
             alt=""
             fill
-            className="object-cover opacity-5 dark:opacity-10"
+            className="object-cover opacity-20 dark:opacity-30"
             priority
           />
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
           <div className="text-center max-w-4xl mx-auto">
             {/* Badge */}
@@ -90,20 +90,20 @@ export default function HomePage() {
               <TrendingUp className="h-4 w-4 mr-2" />
               Updated weekly with latest research
             </div>
-            
+
             {/* Main headline */}
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
               The Definitive Source for
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent"> AI Infrastructure</span> &
               <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent"> Security</span> Knowledge
             </h1>
-            
+
             {/* Subheading */}
             <p className="text-xl sm:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto">
-              Expert insights on building, securing, and scaling AI systems. 
+              Expert insights on building, securing, and scaling AI systems.
               From neural network architectures to production deployment strategies.
             </p>
-            
+
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -154,7 +154,7 @@ export default function HomePage() {
               Comprehensive, technical content that goes beyond surface-level explanations
             </p>
           </div>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {valueProps.map((prop) => {
               const Icon = prop.icon
@@ -187,7 +187,7 @@ export default function HomePage() {
               Hot topics our community is exploring right now
             </p>
           </div>
-          
+
           <div className="grid sm:grid-cols-2 gap-6">
             {featuredTopics.map((topic) => (
               <Link
@@ -201,11 +201,11 @@ export default function HomePage() {
                   </h3>
                   <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all group-hover:translate-x-1" />
                 </div>
-                
+
                 <p className="text-muted-foreground mb-4">
                   {topic.description}
                 </p>
-                
+
                 <div className="flex items-center justify-between">
                   <div className="flex gap-2">
                     {topic.tags.map((tag) => (
@@ -225,7 +225,7 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
-          
+
           <div className="text-center mt-10">
             <Link
               href="/knowledge"
@@ -249,7 +249,7 @@ export default function HomePage() {
               Choose how you want to consume information
             </p>
           </div>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-950/30 dark:to-blue-900/20 rounded-xl">
               <BookOpen className="h-8 w-8 text-blue-600 dark:text-blue-400 mb-4" />
@@ -262,7 +262,7 @@ export default function HomePage() {
                 30+ articles available
               </div>
             </div>
-            
+
             <div className="p-6 bg-gradient-to-br from-purple-50 to-purple-100/50 dark:from-purple-950/30 dark:to-purple-900/20 rounded-xl">
               <FileText className="h-8 w-8 text-purple-600 dark:text-purple-400 mb-4" />
               <h3 className="text-lg font-semibold text-foreground mb-2">White Papers</h3>
@@ -274,7 +274,7 @@ export default function HomePage() {
                 8+ papers available
               </div>
             </div>
-            
+
             <div className="p-6 bg-gradient-to-br from-green-50 to-green-100/50 dark:from-green-950/30 dark:to-green-900/20 rounded-xl">
               <Zap className="h-8 w-8 text-green-600 dark:text-green-400 mb-4" />
               <h3 className="text-lg font-semibold text-foreground mb-2">Learning Paths</h3>
@@ -296,12 +296,12 @@ export default function HomePage() {
           <div className="inline-flex items-center justify-center p-3 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg mb-6">
             <Star className="h-6 w-6 text-yellow-600 dark:text-yellow-400" />
           </div>
-          
+
           <blockquote className="text-2xl sm:text-3xl font-medium text-foreground mb-6">
-            "The most comprehensive resource for understanding AI infrastructure security. 
+            "The most comprehensive resource for understanding AI infrastructure security.
             Essential reading for anyone building production AI systems."
           </blockquote>
-          
+
           <div className="flex items-center justify-center gap-2 text-muted-foreground">
             <Users className="h-5 w-5" />
             <span>Trusted by engineers at leading AI companies</span>
