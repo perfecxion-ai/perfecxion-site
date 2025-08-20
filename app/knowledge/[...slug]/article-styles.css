@@ -353,34 +353,35 @@
   color: rgb(75, 85, 99);
 }
 
-/* Tables */
+/* Tables - FORCE DARK MODE ALWAYS */
 .prose table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
-  background: white;
+  background: rgb(17, 24, 39) !important; /* Dark background always */
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-  border: 1px solid rgb(229, 231, 235);
+  border: 1px solid rgb(55, 65, 81) !important; /* Dark border always */
 }
 
 .prose th, .prose td {
   padding: 0.75rem 1rem;
   text-align: left;
-  border-bottom: 1px solid rgb(243, 244, 246);
+  border-bottom: 1px solid rgb(55, 65, 81) !important; /* Dark border always */
 }
 
 .prose th {
-  background: rgb(249, 250, 251);
+  background: rgb(31, 41, 55) !important; /* Dark header background always */
   font-weight: 600;
-  color: rgb(55, 65, 81);
+  color: rgb(255, 255, 255) !important; /* White text always */
   font-size: 0.875rem;
 }
 
 .prose td {
-  color: rgb(75, 85, 99);
+  color: rgb(229, 231, 235) !important; /* Light text always */
   font-size: 0.875rem;
+  background: rgb(17, 24, 39) !important; /* Dark background always */
 }
 
 /* Dark mode blockquotes and tables */

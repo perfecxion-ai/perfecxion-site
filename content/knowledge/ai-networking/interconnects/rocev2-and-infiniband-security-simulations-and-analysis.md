@@ -299,27 +299,7 @@ Network simulators like NS-3 and OMNeT++ don't inherently model the internal arc
 
 <u>Calculate Effective GPU Utilization:</u> Use a post-processing script to calculate your effective GPU utilization. Your total job time is the sum of the total intrinsic computation time (from the trace) and the total simulated communication time. The formula is:
 
-Effective GPU Utilization=
-
-∑T
-
-compute
-
-
-
-+T
-
-communication_simulated
-
-
-
-∑T
-
-compute
-
-
-
-
+**Effective GPU Utilization = Σ T_compute / (Σ T_compute + T_communication_simulated)**
 
 By comparing the utilization percentage calculated with the baseline communication time versus the attack communication time, you can directly quantify the attack's impact on the efficiency of expensive GPU resources. For example, if an attack doubles the communication time, your job that was previously 50% communication-bound (and thus 50% GPU utilized) would become 66% communication-bound, dropping its GPU utilization to 33%. This gives you a powerful and intuitive metric for expressing the financial and operational cost of a network security vulnerability.
 

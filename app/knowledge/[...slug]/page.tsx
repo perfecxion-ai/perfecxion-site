@@ -123,9 +123,9 @@ export default async function KnowledgeContentPage({ params }: PageProps) {
   const FormatIcon = getFormatIcon()
   
   return (
-    <article className="min-h-screen bg-background">
+    <article className="min-h-screen bg-white dark:bg-slate-800">
       {/* Header */}
-      <header className="border-b border-border bg-muted/30">
+      <header className="border-b border-border bg-slate-50 dark:bg-slate-700/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Link 
             href="/knowledge" 
