@@ -15,44 +15,44 @@ const valueProps = [
     description: 'GPU clusters, AI fabrics, and high-performance interconnects'
   },
   {
-    icon: Brain,
-    title: 'Quantum Computing',
-    description: 'Post-quantum cryptography and quantum algorithms for AI'
+    icon: FileText,
+    title: '50+ Technical Resources',
+    description: 'Deep dives, white papers, and reference architectures'
   },
   {
-    icon: FileText,
-    title: '60+ Technical Resources',
-    description: 'Deep dives, white papers, and reference architectures'
+    icon: Microscope,
+    title: 'Reference Architectures',
+    description: 'Battle-tested designs for production AI systems'
   }
 ]
 
 // Featured topics (trending or important)
 const featuredTopics = [
   {
-    title: 'Post-Quantum Cryptography Migration',
-    description: 'Preparing for the quantum threat with NIST-standardized algorithms',
-    tags: ['Quantum', 'Cryptography'],
+    title: 'AI Guardrails That Work',
+    description: 'Beyond basic filtering - advanced guardrail systems and implementation',
+    tags: ['AI Security', 'Guardrails'],
     readTime: '25 min',
-    href: '/knowledge/quantum-computing/cryptography/post-quantum-cryptography-migration-guide'
+    href: '/knowledge/ai-security/defense/ai-guardrails-that-actually-work-beyond-basic-content-filtering'
   },
   {
     title: 'LLM Security & Defense',
-    description: 'Advanced prompt engineering and guardrail implementation',
+    description: 'Advanced prompt engineering and security through design',
     tags: ['AI Security', 'LLM'],
-    readTime: '22 min',
+    readTime: '25 min',
     href: '/knowledge/ai-security/defense/advanced-prompt-engineering-security-defense-through-design'
   },
   {
-    title: 'Quantum Computing Fundamentals',
-    description: 'Understanding qubits, superposition, and quantum algorithms',
-    tags: ['Quantum', 'Fundamentals'],
+    title: 'RoCEv2 vs InfiniBand',
+    description: 'Performance comparison and implementation guide for AI networking',
+    tags: ['Networking', 'Performance'],
     readTime: '20 min',
-    href: '/knowledge/quantum-computing/fundamentals/quantum-computing-fundamentals'
+    href: '/knowledge?topic=rocev2-infiniband'
   },
   {
     title: 'AI Fabric Architecture',
-    description: 'Building scalable GPU clusters with RoCEv2 and InfiniBand',
-    tags: ['Infrastructure', 'Networking'],
+    description: 'Building scalable GPU clusters for distributed training',
+    tags: ['Infrastructure', 'Architecture'],
     readTime: '25 min',
     href: '/knowledge?topic=ai-fabric'
   }
@@ -60,7 +60,7 @@ const featuredTopics = [
 
 // Trust signals
 const trustSignals = [
-  { value: '60+', label: 'Articles & Papers' },
+  { value: '48+', label: 'Articles & Papers' },
   { value: 'Weekly', label: 'Updates' },
   { value: 'Expert', label: 'Contributors' },
   { value: 'Open', label: 'Access' }
@@ -94,15 +94,14 @@ export default function HomePage() {
             {/* Main headline */}
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
               The Definitive Source for
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent"> AI Security</span>,
-              <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent"> Infrastructure</span> &
-              <span className="bg-gradient-to-r from-pink-600 to-orange-600 dark:from-pink-400 dark:to-orange-400 bg-clip-text text-transparent"> Quantum</span> Knowledge
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent"> AI Security</span> &
+              <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent"> Infrastructure</span> Knowledge
             </h1>
 
             {/* Subheading */}
             <p className="text-xl sm:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto">
-              Expert insights spanning AI/ML security, high-performance infrastructure, 
-              and quantum computing. From prompt injection defense to post-quantum cryptography.
+              Expert insights on building, securing, and scaling AI systems.
+              From neural network architectures to production deployment strategies.
             </p>
 
             {/* CTA Buttons */}
@@ -152,7 +151,7 @@ export default function HomePage() {
               Why Engineers Choose PerfecXion
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive coverage from AI security and infrastructure to quantum computing
+              Comprehensive, technical content that goes beyond surface-level explanations
             </p>
           </div>
 
@@ -276,15 +275,15 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="p-6 bg-gradient-to-br from-orange-50 to-orange-100/50 dark:from-orange-950/30 dark:to-orange-900/20 rounded-xl">
-              <Brain className="h-8 w-8 text-orange-600 dark:text-orange-400 mb-4" />
-              <h3 className="text-lg font-semibold text-foreground mb-2">Quantum Computing</h3>
+            <div className="p-6 bg-gradient-to-br from-green-50 to-green-100/50 dark:from-green-950/30 dark:to-green-900/20 rounded-xl">
+              <Zap className="h-8 w-8 text-green-600 dark:text-green-400 mb-4" />
+              <h3 className="text-lg font-semibold text-foreground mb-2">Learning Paths</h3>
               <p className="text-muted-foreground text-sm mb-4">
-                Post-quantum cryptography, quantum algorithms, and future-proofing strategies
+                Structured tutorials and step-by-step guides for complex topics
               </p>
-              <div className="flex items-center text-sm text-orange-600 dark:text-orange-400">
+              <div className="flex items-center text-sm text-green-600 dark:text-green-400">
                 <CheckCircle className="h-4 w-4 mr-2" />
-                15+ quantum resources
+                6+ paths available
               </div>
             </div>
           </div>
@@ -299,7 +298,7 @@ export default function HomePage() {
           </div>
 
           <blockquote className="text-2xl sm:text-3xl font-medium text-foreground mb-6">
-            "The most comprehensive resource for AI security, infrastructure, and quantum computing.
+            "The most comprehensive resource for understanding AI infrastructure security.
             Essential reading for anyone building production AI systems."
           </blockquote>
 
@@ -317,7 +316,7 @@ export default function HomePage() {
             Start Your Deep Dive Today
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Join thousands of engineers advancing their AI security, infrastructure, and quantum computing knowledge
+            Join thousands of engineers advancing their AI infrastructure knowledge
           </p>
           <Link
             href="/knowledge"

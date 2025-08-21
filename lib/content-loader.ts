@@ -7,7 +7,7 @@ export interface ContentItem {
   title: string
   description: string
   format: 'article' | 'whitepaper' | 'learning' | 'architecture'
-  domain: 'machine-learning' | 'ai-security' | 'ai-networking' | 'ai-infrastructure' | 'compliance' | 'operations' | 'quantum-computing'
+  domain: 'machine-learning' | 'ai-security' | 'ai-networking' | 'ai-infrastructure' | 'compliance' | 'operations'
   topics: string[]
   difficulty: 'beginner' | 'intermediate' | 'advanced'
   readTime: string
@@ -41,11 +41,6 @@ const categoryToDomain: Record<string, ContentItem['domain']> = {
   'enterprise': 'operations',
   'finance': 'compliance',
   'government': 'compliance',
-  'quantum': 'quantum-computing',
-  'quantum-computing': 'quantum-computing',
-  'quantum-security': 'quantum-computing',
-  'post-quantum': 'quantum-computing',
-  'cryptography': 'quantum-computing',
   // Default mapping for uncategorized content
   'default': 'ai-security'
 }

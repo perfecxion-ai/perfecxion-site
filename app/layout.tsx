@@ -23,11 +23,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://perfecxion.ai'),
   title: {
-    default: 'perfecXion.ai - AI Security, Infrastructure & Quantum Computing',
+    default: 'perfecXion.ai - AI Security & Compliance Solutions',
     template: '%s | perfecXion.ai'
   },
-  description: 'Leading resource for AI security, infrastructure, and quantum computing. From prompt injection defense to post-quantum cryptography and GPU cluster optimization.',
-  keywords: ['AI security', 'AI infrastructure', 'quantum computing', 'post-quantum cryptography', 'prompt injection', 'AI compliance', 'GPU clusters'],
+  description: 'Leading AI security and compliance solutions. Protect your AI systems with our comprehensive suite of tools including red teaming, scanning, and guardrails.',
+  keywords: ['AI security', 'AI compliance', 'red teaming', 'AI safety', 'machine learning security'],
   authors: [{ name: 'perfecXion.ai Team' }],
   creator: 'perfecXion.ai',
   publisher: 'perfecXion.ai',
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://perfecxion.ai',
     siteName: 'perfecXion.ai',
-    title: 'perfecXion.ai - AI Security, Infrastructure & Quantum Computing',
-    description: 'Leading resource for AI security, infrastructure, and quantum computing. Expert knowledge and practical guidance.',
+    title: 'perfecXion.ai - AI Security & Compliance Solutions',
+    description: 'Leading AI security and compliance solutions. Protect your AI systems with our comprehensive suite of tools.',
     images: [
       {
         url: '/og-image.png',
@@ -61,8 +61,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'perfecXion.ai - AI Security, Infrastructure & Quantum Computing',
-    description: 'Leading resource for AI security, infrastructure, and quantum computing knowledge.',
+    title: 'perfecXion.ai - AI Security & Compliance Solutions',
+    description: 'Leading AI security and compliance solutions for modern AI systems.',
     creator: '@perfecxionai',
     images: ['/og-image.png'],
   },
