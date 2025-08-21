@@ -204,22 +204,14 @@ You have granular control over timers and can debug protocol states, offering hi
 Analysis of the two fabrics reveals a tiered landscape of reconvergence capabilities. Your choice is not simply between "InfiniBand" and "Ethernet," but between different generations and implementations of their respective recovery technologies.
 
 | Feature | InfiniBand (Standard SM Sweep) | InfiniBand (Self-Healing Network) | Ethernet (Leaf-Spine with BGP+BFD) |
-
 |---------|-------------------------------|-----------------------------------|-----------------------------------|
-
-| Primary Mechanism | Centralized SM recalculation | Distributed, hardware-based rerouting | Decentralized, protocol-driven reconvergence |
-
-| Detection Method | Periodic fabric scan by SM | Hardware link-state detection in ASIC | BFD hello packets (UDP) |
-
-| Typical Detection Time | 10 seconds (default sweep interval) | < 1 millisecond | 30 - 300 milliseconds (tunable) |
-
-| Rerouting Method | SM pushes new routing tables to all switches | In-ASIC switch to pre-computed alternate paths | Local FIB update from ECMP; BGP withdraw/update propagation |
-
-| Typical Total Reconvergence | 5 - 30+ seconds (scales with fabric size) | ~1 millisecond | < 500 milliseconds |
-
-| Key Dependencies | SM host performance and availability | Switch ASIC capabilities (vendor-specific) | BFD timers, BGP tuning, switch CPU performance |
-
-| Operational Model | Centralized, polling-based | Distributed, event-driven (hardware) | Distributed, event-driven (protocol software) |
+| **Primary Mechanism** | Centralized SM recalculation | Distributed, hardware-based rerouting | Decentralized, protocol-driven reconvergence |
+| **Detection Method** | Periodic fabric scan by SM | Hardware link-state detection in ASIC | BFD hello packets (UDP) |
+| **Typical Detection Time** | 10 seconds (default sweep interval) | < 1 millisecond | 30 - 300 milliseconds (tunable) |
+| **Rerouting Method** | SM pushes new routing tables to all switches | In-ASIC switch to pre-computed alternate paths | Local FIB update from ECMP; BGP withdraw/update propagation |
+| **Typical Total Reconvergence** | 5 - 30+ seconds (scales with fabric size) | ~1 millisecond | < 500 milliseconds |
+| **Key Dependencies** | SM host performance and availability | Switch ASIC capabilities (vendor-specific) | BFD timers, BGP tuning, switch CPU performance |
+| **Operational Model** | Centralized, polling-based | Distributed, event-driven (hardware) | Distributed, event-driven (protocol software) |
 
 This comparison highlights three distinct tiers of resilience:
 
