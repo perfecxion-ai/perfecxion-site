@@ -5,54 +5,54 @@ import Image from 'next/image'
 // Value propositions
 const valueProps = [
   {
-    icon: FileText,
-    title: '50+ Technical Deep Dives',
-    description: 'Expert analysis on AI infrastructure, security, and optimization'
+    icon: Shield,
+    title: 'AI/ML Security Expertise',
+    description: 'From prompt injection defense to model poisoning prevention'
   },
   {
     icon: Building,
-    title: 'Real-world Case Studies',
-    description: 'Learn from production deployments at scale'
+    title: 'Infrastructure & Networking',
+    description: 'GPU clusters, AI fabrics, and high-performance interconnects'
   },
   {
-    icon: Microscope,
-    title: 'Reference Architectures',
-    description: 'Battle-tested designs for AI systems'
+    icon: Brain,
+    title: 'Quantum Computing',
+    description: 'Post-quantum cryptography and quantum algorithms for AI'
   },
   {
-    icon: Shield,
-    title: 'Security Best Practices',
-    description: 'Protect your AI infrastructure and models'
+    icon: FileText,
+    title: '60+ Technical Resources',
+    description: 'Deep dives, white papers, and reference architectures'
   }
 ]
 
 // Featured topics (trending or important)
 const featuredTopics = [
   {
-    title: 'RoCEv2 vs InfiniBand',
-    description: 'Performance comparison and implementation guide for AI networking',
-    tags: ['Networking', 'Performance'],
+    title: 'Post-Quantum Cryptography Migration',
+    description: 'Preparing for the quantum threat with NIST-standardized algorithms',
+    tags: ['Quantum', 'Cryptography'],
+    readTime: '25 min',
+    href: '/knowledge/quantum-computing/cryptography/post-quantum-cryptography-migration-guide'
+  },
+  {
+    title: 'LLM Security & Defense',
+    description: 'Advanced prompt engineering and guardrail implementation',
+    tags: ['AI Security', 'LLM'],
+    readTime: '22 min',
+    href: '/knowledge/ai-security/defense/advanced-prompt-engineering-security-defense-through-design'
+  },
+  {
+    title: 'Quantum Computing Fundamentals',
+    description: 'Understanding qubits, superposition, and quantum algorithms',
+    tags: ['Quantum', 'Fundamentals'],
     readTime: '20 min',
-    href: '/knowledge?topic=rocev2-infiniband'
-  },
-  {
-    title: 'LLM Security',
-    description: 'Protecting language models from prompt injection and data poisoning',
-    tags: ['Security', 'LLM'],
-    readTime: '15 min',
-    href: '/knowledge?topic=llm-security'
-  },
-  {
-    title: '400G vs 800G Networking',
-    description: 'Economic analysis for next-generation AI infrastructure',
-    tags: ['Infrastructure', 'Cost Analysis'],
-    readTime: '18 min',
-    href: '/knowledge?topic=400g-800g'
+    href: '/knowledge/quantum-computing/fundamentals/quantum-computing-fundamentals'
   },
   {
     title: 'AI Fabric Architecture',
-    description: 'Building scalable GPU clusters for distributed training',
-    tags: ['Architecture', 'Training'],
+    description: 'Building scalable GPU clusters with RoCEv2 and InfiniBand',
+    tags: ['Infrastructure', 'Networking'],
     readTime: '25 min',
     href: '/knowledge?topic=ai-fabric'
   }
@@ -60,7 +60,7 @@ const featuredTopics = [
 
 // Trust signals
 const trustSignals = [
-  { value: '48+', label: 'Articles & Papers' },
+  { value: '60+', label: 'Articles & Papers' },
   { value: 'Weekly', label: 'Updates' },
   { value: 'Expert', label: 'Contributors' },
   { value: 'Open', label: 'Access' }
@@ -94,14 +94,15 @@ export default function HomePage() {
             {/* Main headline */}
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
               The Definitive Source for
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent"> AI Infrastructure</span> &
-              <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent"> Security</span> Knowledge
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent"> AI Security</span>,
+              <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent"> Infrastructure</span> &
+              <span className="bg-gradient-to-r from-pink-600 to-orange-600 dark:from-pink-400 dark:to-orange-400 bg-clip-text text-transparent"> Quantum</span> Knowledge
             </h1>
 
             {/* Subheading */}
             <p className="text-xl sm:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto">
-              Expert insights on building, securing, and scaling AI systems.
-              From neural network architectures to production deployment strategies.
+              Expert insights spanning AI/ML security, high-performance infrastructure, 
+              and quantum computing. From prompt injection defense to post-quantum cryptography.
             </p>
 
             {/* CTA Buttons */}
@@ -151,7 +152,7 @@ export default function HomePage() {
               Why Engineers Choose PerfecXion
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive, technical content that goes beyond surface-level explanations
+              Comprehensive coverage from AI security and infrastructure to quantum computing
             </p>
           </div>
 
@@ -252,38 +253,38 @@ export default function HomePage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-950/30 dark:to-blue-900/20 rounded-xl">
-              <BookOpen className="h-8 w-8 text-blue-600 dark:text-blue-400 mb-4" />
-              <h3 className="text-lg font-semibold text-foreground mb-2">Articles & Blogs</h3>
+              <Shield className="h-8 w-8 text-blue-600 dark:text-blue-400 mb-4" />
+              <h3 className="text-lg font-semibold text-foreground mb-2">AI Security Research</h3>
               <p className="text-muted-foreground text-sm mb-4">
-                In-depth technical articles on specific topics, implementations, and best practices
+                Advanced defense strategies, threat modeling, and prompt injection mitigation
               </p>
               <div className="flex items-center text-sm text-blue-600 dark:text-blue-400">
                 <CheckCircle className="h-4 w-4 mr-2" />
-                30+ articles available
+                25+ security articles
               </div>
             </div>
 
             <div className="p-6 bg-gradient-to-br from-purple-50 to-purple-100/50 dark:from-purple-950/30 dark:to-purple-900/20 rounded-xl">
-              <FileText className="h-8 w-8 text-purple-600 dark:text-purple-400 mb-4" />
-              <h3 className="text-lg font-semibold text-foreground mb-2">White Papers</h3>
+              <Building className="h-8 w-8 text-purple-600 dark:text-purple-400 mb-4" />
+              <h3 className="text-lg font-semibold text-foreground mb-2">Infrastructure Guides</h3>
               <p className="text-muted-foreground text-sm mb-4">
-                Comprehensive research papers and detailed technical documentation
+                GPU clusters, AI fabrics, networking architectures, and performance optimization
               </p>
               <div className="flex items-center text-sm text-purple-600 dark:text-purple-400">
                 <CheckCircle className="h-4 w-4 mr-2" />
-                8+ papers available
+                20+ infrastructure papers
               </div>
             </div>
 
-            <div className="p-6 bg-gradient-to-br from-green-50 to-green-100/50 dark:from-green-950/30 dark:to-green-900/20 rounded-xl">
-              <Zap className="h-8 w-8 text-green-600 dark:text-green-400 mb-4" />
-              <h3 className="text-lg font-semibold text-foreground mb-2">Learning Paths</h3>
+            <div className="p-6 bg-gradient-to-br from-orange-50 to-orange-100/50 dark:from-orange-950/30 dark:to-orange-900/20 rounded-xl">
+              <Brain className="h-8 w-8 text-orange-600 dark:text-orange-400 mb-4" />
+              <h3 className="text-lg font-semibold text-foreground mb-2">Quantum Computing</h3>
               <p className="text-muted-foreground text-sm mb-4">
-                Structured tutorials and step-by-step guides for complex topics
+                Post-quantum cryptography, quantum algorithms, and future-proofing strategies
               </p>
-              <div className="flex items-center text-sm text-green-600 dark:text-green-400">
+              <div className="flex items-center text-sm text-orange-600 dark:text-orange-400">
                 <CheckCircle className="h-4 w-4 mr-2" />
-                6+ paths available
+                15+ quantum resources
               </div>
             </div>
           </div>
@@ -298,7 +299,7 @@ export default function HomePage() {
           </div>
 
           <blockquote className="text-2xl sm:text-3xl font-medium text-foreground mb-6">
-            "The most comprehensive resource for understanding AI infrastructure security.
+            "The most comprehensive resource for AI security, infrastructure, and quantum computing.
             Essential reading for anyone building production AI systems."
           </blockquote>
 
@@ -316,7 +317,7 @@ export default function HomePage() {
             Start Your Deep Dive Today
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Join thousands of engineers advancing their AI infrastructure knowledge
+            Join thousands of engineers advancing their AI security, infrastructure, and quantum computing knowledge
           </p>
           <Link
             href="/knowledge"

@@ -28,18 +28,19 @@ const difficultyLevels = [
 // Main domains
 const domains = [
   { id: 'all', label: 'All Categories' },
-  { id: 'machine-learning', label: 'Machine Learning' },
   { id: 'ai-security', label: 'AI Security' },
-  { id: 'ai-networking', label: 'AI Networking' },
   { id: 'ai-infrastructure', label: 'AI Infrastructure' },
+  { id: 'ai-networking', label: 'AI Networking' },
+  { id: 'quantum-computing', label: 'Quantum Computing' },
+  { id: 'machine-learning', label: 'Machine Learning' },
   { id: 'compliance', label: 'Compliance' },
   { id: 'operations', label: 'Operations' }
 ]
 
 // Popular topics for quick filtering
 const popularTopics = [
-  'LLMs', 'Neural Networks', 'Prompt Injection', 'AI Security', 'GPU Clusters',
-  'Transformers', 'Machine Learning', 'Model Security', 'AI Fabric', 'Compliance',
+  'LLMs', 'Prompt Injection', 'AI Security', 'Post-Quantum Cryptography', 'GPU Clusters',
+  'Quantum Computing', 'Neural Networks', 'Model Security', 'AI Fabric', 'Quantum Algorithms',
   'Red Teaming', 'Threat Modeling', 'Zero Trust', 'HIPAA', 'GDPR', 'MLOps'
 ]
 
@@ -209,7 +210,7 @@ export default function KnowledgeHubClient({ initialContent }: KnowledgeHubClien
               Knowledge Hub
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-              One place for all AI infrastructure and security knowledge.
+              One place for all AI security, infrastructure, and quantum computing knowledge.
               Navigate through our comprehensive collection of resources.
             </p>
           </div>

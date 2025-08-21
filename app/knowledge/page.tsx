@@ -3,8 +3,8 @@ import { getKnowledgeHubContent } from '@/lib/content-loader'
 import KnowledgeHubClient from './knowledge-hub-client'
 
 export const metadata: Metadata = {
-  title: 'Knowledge Hub - AI Infrastructure & Security Resources',
-  description: 'Comprehensive knowledge base for AI infrastructure, security, compliance, and operations. Articles, white papers, and learning paths.',
+  title: 'Knowledge Hub - AI Security, Infrastructure & Quantum Computing',
+  description: 'Comprehensive knowledge base for AI security, infrastructure, networking, quantum computing, and compliance. Articles, white papers, and learning paths.',
 }
 
 export default async function KnowledgeHubPage() {
