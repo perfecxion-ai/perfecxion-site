@@ -395,18 +395,6 @@ class ContentManager {
       },
       {
         type: 'blog',
-        title: 'The Complete Guide to AI Red Team Testing: Beyond Traditional Security',
-        description: 'Master AI red team testing with comprehensive methodologies, real-world attack vectors, and ROI analysis. Learn how AI systems require fundamentally different security approaches.',
-        publishedAt: '2025-03-12',
-        readingTime: 22,
-        difficulty: 'intermediate',
-        category: 'Red Team Testing',
-        tags: ["AI Security", "Red Team Testing", "LLM Security", "Penetration Testing", "AI Vulnerabilities"],
-        slug: 'ai-red-team-testing-complete-guide',
-        featured: true
-      },
-      {
-        type: 'blog',
         title: 'AI Guardrails That Actually Work: Beyond Basic Content Filtering',
         description: 'Discover advanced AI guardrail techniques that go beyond simple keyword filtering to create truly intelligent, context-aware safety systems for AI applications.',
         publishedAt: '2025-02-26',
